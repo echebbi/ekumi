@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/fr.kazejiyu.ekumi.core/src-gen" creationIcons="false"
+    editDirectory="/fr.kazejiyu.ekumi.core.edit/src-gen" editorDirectory="/fr.kazejiyu.ekumi.core.editor/src-gen"
+    modelPluginID="fr.kazejiyu.ekumi.core" modelName="Ekumi" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>ekumi.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Ekumi" basePackage="fr.kazejiyu.ekumi.core" disposableProviderFactory="true"
+      ecorePackage="ekumi.ecore#/">
+    <genClasses ecoreClass="ekumi.ecore#//Task">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Task/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Task/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Task/join"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Task/outgoingFlows"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Task/incomingFlows"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//Task/inputs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//Task/outputs"/>
+    </genClasses>
+    <genClasses ecoreClass="ekumi.ecore#//Workflow">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//Workflow/tasks"/>
+    </genClasses>
+    <genClasses ecoreClass="ekumi.ecore#//Sequence"/>
+    <genClasses ecoreClass="ekumi.ecore#//MultipleInstances"/>
+    <genClasses ecoreClass="ekumi.ecore#//ParallelSplit"/>
+    <genClasses ecoreClass="ekumi.ecore#//Join">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Join/predecessor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Join/successor"/>
+    </genClasses>
+    <genClasses ecoreClass="ekumi.ecore#//DataFlow">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//DataFlow/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//DataFlow/destination"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//DataFlow/input"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//DataFlow/output"/>
+    </genClasses>
+    <genClasses ecoreClass="ekumi.ecore#//Data">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Data/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

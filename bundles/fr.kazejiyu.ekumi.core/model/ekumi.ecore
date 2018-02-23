@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ekumi" nsURI="http://fr.kazejiyu.io/ekumi" nsPrefix="ekumi">
+  <eClassifiers xsi:type="ecore:EClass" name="Task" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="join" lowerBound="1" eType="#//Join"
+        eOpposite="#//Join/predecessor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingFlows" upperBound="-1"
+        eType="#//DataFlow" containment="true" eOpposite="#//DataFlow/source"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incomingFlows" upperBound="-1"
+        eType="#//DataFlow" eOpposite="#//DataFlow/destination"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
+        eType="#//Data" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
+        eType="#//Data" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Workflow" eSuperTypes="#//Task">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
+        eType="#//Task" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Sequence" eSuperTypes="#//Workflow"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MultipleInstances" eSuperTypes="#//Workflow"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ParallelSplit" eSuperTypes="#//Workflow"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Join">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predecessor" lowerBound="1"
+        eType="#//Task" eOpposite="#//Task/join"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="successor" eType="#//Task"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataFlow">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//Task"
+        eOpposite="#//Task/outgoingFlows"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="destination" lowerBound="1"
+        eType="#//Task" eOpposite="#//Task/incomingFlows"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" lowerBound="1" eType="#//Data"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" lowerBound="1"
+        eType="#//Data"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Data">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>
