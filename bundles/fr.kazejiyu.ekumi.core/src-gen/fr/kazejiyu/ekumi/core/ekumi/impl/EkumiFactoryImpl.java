@@ -63,8 +63,6 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 			return createMultipleInstances();
 		case EkumiPackage.PARALLEL_SPLIT:
 			return createParallelSplit();
-		case EkumiPackage.JOIN:
-			return createJoin();
 		case EkumiPackage.DATA_FLOW:
 			return createDataFlow();
 		case EkumiPackage.DATA:
@@ -112,16 +110,6 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 	public ParallelSplit createParallelSplit() {
 		ParallelSplitImpl parallelSplit = new ParallelSplitImpl();
 		return parallelSplit;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Join createJoin() {
-		JoinImpl join = new JoinImpl();
-		return join;
 	}
 
 	/**

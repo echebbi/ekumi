@@ -13,11 +13,12 @@
     <genClasses ecoreClass="ekumi.ecore#//Task">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Task/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Task/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Task/join"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Task/outgoingFlows"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Task/incomingFlows"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//Task/inputs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//Task/outputs"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Task/successors"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Task/predecessor"/>
     </genClasses>
     <genClasses ecoreClass="ekumi.ecore#//Workflow">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//Workflow/tasks"/>
@@ -25,10 +26,6 @@
     <genClasses ecoreClass="ekumi.ecore#//Sequence"/>
     <genClasses ecoreClass="ekumi.ecore#//MultipleInstances"/>
     <genClasses ecoreClass="ekumi.ecore#//ParallelSplit"/>
-    <genClasses ecoreClass="ekumi.ecore#//Join">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Join/predecessor"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Join/successor"/>
-    </genClasses>
     <genClasses ecoreClass="ekumi.ecore#//DataFlow">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//DataFlow/source"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//DataFlow/destination"/>

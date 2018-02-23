@@ -6,7 +6,6 @@ import fr.kazejiyu.ekumi.core.ekumi.Data;
 import fr.kazejiyu.ekumi.core.ekumi.DataFlow;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
-import fr.kazejiyu.ekumi.core.ekumi.Join;
 import fr.kazejiyu.ekumi.core.ekumi.MultipleInstances;
 import fr.kazejiyu.ekumi.core.ekumi.ParallelSplit;
 import fr.kazejiyu.ekumi.core.ekumi.Sequence;
@@ -61,13 +60,6 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * @generated
 	 */
 	private EClass parallelSplitEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass joinEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -178,7 +170,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTask_Join() {
+	public EReference getTask_OutgoingFlows() {
 		return (EReference) taskEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -187,7 +179,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTask_OutgoingFlows() {
+	public EReference getTask_IncomingFlows() {
 		return (EReference) taskEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -196,7 +188,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTask_IncomingFlows() {
+	public EReference getTask_Inputs() {
 		return (EReference) taskEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -205,7 +197,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTask_Inputs() {
+	public EReference getTask_Outputs() {
 		return (EReference) taskEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -214,8 +206,17 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTask_Outputs() {
+	public EReference getTask_Successors() {
 		return (EReference) taskEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTask_Predecessor() {
+		return (EReference) taskEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -261,33 +262,6 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 */
 	public EClass getParallelSplit() {
 		return parallelSplitEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getJoin() {
-		return joinEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getJoin_Predecessor() {
-		return (EReference) joinEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getJoin_Successor() {
-		return (EReference) joinEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -385,11 +359,12 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		taskEClass = createEClass(TASK);
 		createEAttribute(taskEClass, TASK__ID);
 		createEAttribute(taskEClass, TASK__NAME);
-		createEReference(taskEClass, TASK__JOIN);
 		createEReference(taskEClass, TASK__OUTGOING_FLOWS);
 		createEReference(taskEClass, TASK__INCOMING_FLOWS);
 		createEReference(taskEClass, TASK__INPUTS);
 		createEReference(taskEClass, TASK__OUTPUTS);
+		createEReference(taskEClass, TASK__SUCCESSORS);
+		createEReference(taskEClass, TASK__PREDECESSOR);
 
 		workflowEClass = createEClass(WORKFLOW);
 		createEReference(workflowEClass, WORKFLOW__TASKS);
@@ -399,10 +374,6 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		multipleInstancesEClass = createEClass(MULTIPLE_INSTANCES);
 
 		parallelSplitEClass = createEClass(PARALLEL_SPLIT);
-
-		joinEClass = createEClass(JOIN);
-		createEReference(joinEClass, JOIN__PREDECESSOR);
-		createEReference(joinEClass, JOIN__SUCCESSOR);
 
 		dataFlowEClass = createEClass(DATA_FLOW);
 		createEReference(dataFlowEClass, DATA_FLOW__SOURCE);
@@ -454,9 +425,6 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Name(), ecorePackage.getEString(), "name", null, 0, 1, Task.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTask_Join(), this.getJoin(), this.getJoin_Predecessor(), "join", null, 1, 1, Task.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTask_OutgoingFlows(), this.getDataFlow(), this.getDataFlow_Source(), "outgoingFlows", null, 0,
 				-1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -469,6 +437,12 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		initEReference(getTask_Outputs(), this.getData(), null, "outputs", null, 0, -1, Task.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
+		initEReference(getTask_Successors(), this.getTask(), this.getTask_Predecessor(), "successors", null, 0, -1,
+				Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTask_Predecessor(), this.getTask(), this.getTask_Successors(), "predecessor", null, 0, 1,
+				Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(workflowEClass, Workflow.class, "Workflow", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -484,14 +458,6 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 
 		initEClass(parallelSplitEClass, ParallelSplit.class, "ParallelSplit", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(joinEClass, Join.class, "Join", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getJoin_Predecessor(), this.getTask(), this.getTask_Join(), "predecessor", null, 1, 1,
-				Join.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getJoin_Successor(), this.getTask(), null, "successor", null, 0, 1, Join.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
 
 		initEClass(dataFlowEClass, DataFlow.class, "DataFlow", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

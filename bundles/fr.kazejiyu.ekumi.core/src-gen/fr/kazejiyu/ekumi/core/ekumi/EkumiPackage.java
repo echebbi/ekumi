@@ -85,22 +85,13 @@ public interface EkumiPackage extends EPackage {
 	int TASK__NAME = 1;
 
 	/**
-	 * The feature id for the '<em><b>Join</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK__JOIN = 2;
-
-	/**
 	 * The feature id for the '<em><b>Outgoing Flows</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__OUTGOING_FLOWS = 3;
+	int TASK__OUTGOING_FLOWS = 2;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Flows</b></em>' reference list.
@@ -109,7 +100,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__INCOMING_FLOWS = 4;
+	int TASK__INCOMING_FLOWS = 3;
 
 	/**
 	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
@@ -118,7 +109,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__INPUTS = 5;
+	int TASK__INPUTS = 4;
 
 	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
@@ -127,7 +118,25 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__OUTPUTS = 6;
+	int TASK__OUTPUTS = 5;
+
+	/**
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__SUCCESSORS = 6;
+
+	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__PREDECESSOR = 7;
 
 	/**
 	 * The number of structural features of the '<em>Task</em>' class.
@@ -136,7 +145,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_FEATURE_COUNT = 7;
+	int TASK_FEATURE_COUNT = 8;
 
 	/**
 	 * The number of operations of the '<em>Task</em>' class.
@@ -176,15 +185,6 @@ public interface EkumiPackage extends EPackage {
 	int WORKFLOW__NAME = TASK__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Join</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORKFLOW__JOIN = TASK__JOIN;
-
-	/**
 	 * The feature id for the '<em><b>Outgoing Flows</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -219,6 +219,24 @@ public interface EkumiPackage extends EPackage {
 	 * @ordered
 	 */
 	int WORKFLOW__OUTPUTS = TASK__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW__SUCCESSORS = TASK__SUCCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW__PREDECESSOR = TASK__PREDECESSOR;
 
 	/**
 	 * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
@@ -276,15 +294,6 @@ public interface EkumiPackage extends EPackage {
 	int SEQUENCE__NAME = WORKFLOW__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Join</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEQUENCE__JOIN = WORKFLOW__JOIN;
-
-	/**
 	 * The feature id for the '<em><b>Outgoing Flows</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -319,6 +328,24 @@ public interface EkumiPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEQUENCE__OUTPUTS = WORKFLOW__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE__SUCCESSORS = WORKFLOW__SUCCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE__PREDECESSOR = WORKFLOW__PREDECESSOR;
 
 	/**
 	 * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
@@ -376,15 +403,6 @@ public interface EkumiPackage extends EPackage {
 	int MULTIPLE_INSTANCES__NAME = WORKFLOW__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Join</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MULTIPLE_INSTANCES__JOIN = WORKFLOW__JOIN;
-
-	/**
 	 * The feature id for the '<em><b>Outgoing Flows</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -419,6 +437,24 @@ public interface EkumiPackage extends EPackage {
 	 * @ordered
 	 */
 	int MULTIPLE_INSTANCES__OUTPUTS = WORKFLOW__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_INSTANCES__SUCCESSORS = WORKFLOW__SUCCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_INSTANCES__PREDECESSOR = WORKFLOW__PREDECESSOR;
 
 	/**
 	 * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
@@ -476,15 +512,6 @@ public interface EkumiPackage extends EPackage {
 	int PARALLEL_SPLIT__NAME = WORKFLOW__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Join</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARALLEL_SPLIT__JOIN = WORKFLOW__JOIN;
-
-	/**
 	 * The feature id for the '<em><b>Outgoing Flows</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -521,6 +548,24 @@ public interface EkumiPackage extends EPackage {
 	int PARALLEL_SPLIT__OUTPUTS = WORKFLOW__OUTPUTS;
 
 	/**
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT__SUCCESSORS = WORKFLOW__SUCCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT__PREDECESSOR = WORKFLOW__PREDECESSOR;
+
+	/**
 	 * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -548,52 +593,6 @@ public interface EkumiPackage extends EPackage {
 	int PARALLEL_SPLIT_OPERATION_COUNT = WORKFLOW_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.JoinImpl <em>Join</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.JoinImpl
-	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getJoin()
-	 * @generated
-	 */
-	int JOIN = 5;
-
-	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN__PREDECESSOR = 0;
-
-	/**
-	 * The feature id for the '<em><b>Successor</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN__SUCCESSOR = 1;
-
-	/**
-	 * The number of structural features of the '<em>Join</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Join</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.DataFlowImpl <em>Data Flow</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -601,7 +600,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getDataFlow()
 	 * @generated
 	 */
-	int DATA_FLOW = 6;
+	int DATA_FLOW = 5;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' container reference.
@@ -665,7 +664,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getData()
 	 * @generated
 	 */
-	int DATA = 7;
+	int DATA = 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -727,17 +726,6 @@ public interface EkumiPackage extends EPackage {
 	EAttribute getTask_Name();
 
 	/**
-	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.core.ekumi.Task#getJoin <em>Join</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Join</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Task#getJoin()
-	 * @see #getTask()
-	 * @generated
-	 */
-	EReference getTask_Join();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.core.ekumi.Task#getOutgoingFlows <em>Outgoing Flows</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -780,6 +768,28 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTask_Outputs();
+
+	/**
+	 * Returns the meta object for the reference list '{@link fr.kazejiyu.ekumi.core.ekumi.Task#getSuccessors <em>Successors</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Successors</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Task#getSuccessors()
+	 * @see #getTask()
+	 * @generated
+	 */
+	EReference getTask_Successors();
+
+	/**
+	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.core.ekumi.Task#getPredecessor <em>Predecessor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Predecessor</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Task#getPredecessor()
+	 * @see #getTask()
+	 * @generated
+	 */
+	EReference getTask_Predecessor();
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Workflow <em>Workflow</em>}'.
@@ -831,38 +841,6 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getParallelSplit();
-
-	/**
-	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Join <em>Join</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Join</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Join
-	 * @generated
-	 */
-	EClass getJoin();
-
-	/**
-	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.core.ekumi.Join#getPredecessor <em>Predecessor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Predecessor</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Join#getPredecessor()
-	 * @see #getJoin()
-	 * @generated
-	 */
-	EReference getJoin_Predecessor();
-
-	/**
-	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.core.ekumi.Join#getSuccessor <em>Successor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Successor</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Join#getSuccessor()
-	 * @see #getJoin()
-	 * @generated
-	 */
-	EReference getJoin_Successor();
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow <em>Data Flow</em>}'.
@@ -989,14 +967,6 @@ public interface EkumiPackage extends EPackage {
 		EAttribute TASK__NAME = eINSTANCE.getTask_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Join</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TASK__JOIN = eINSTANCE.getTask_Join();
-
-		/**
 		 * The meta object literal for the '<em><b>Outgoing Flows</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1027,6 +997,22 @@ public interface EkumiPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TASK__OUTPUTS = eINSTANCE.getTask_Outputs();
+
+		/**
+		 * The meta object literal for the '<em><b>Successors</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TASK__SUCCESSORS = eINSTANCE.getTask_Successors();
+
+		/**
+		 * The meta object literal for the '<em><b>Predecessor</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TASK__PREDECESSOR = eINSTANCE.getTask_Predecessor();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.WorkflowImpl <em>Workflow</em>}' class.
@@ -1075,32 +1061,6 @@ public interface EkumiPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PARALLEL_SPLIT = eINSTANCE.getParallelSplit();
-
-		/**
-		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.JoinImpl <em>Join</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.JoinImpl
-		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getJoin()
-		 * @generated
-		 */
-		EClass JOIN = eINSTANCE.getJoin();
-
-		/**
-		 * The meta object literal for the '<em><b>Predecessor</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference JOIN__PREDECESSOR = eINSTANCE.getJoin_Predecessor();
-
-		/**
-		 * The meta object literal for the '<em><b>Successor</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference JOIN__SUCCESSOR = eINSTANCE.getJoin_Successor();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.DataFlowImpl <em>Data Flow</em>}' class.
