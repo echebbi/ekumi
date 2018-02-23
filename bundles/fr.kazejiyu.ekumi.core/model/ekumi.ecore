@@ -4,8 +4,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Task" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="join" lowerBound="1" eType="#//Join"
-        eOpposite="#//Join/predecessor"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingFlows" upperBound="-1"
         eType="#//DataFlow" containment="true" eOpposite="#//DataFlow/source"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomingFlows" upperBound="-1"
@@ -14,6 +12,10 @@
         eType="#//Data" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
         eType="#//Data" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="successors" upperBound="-1"
+        eType="#//Task" eOpposite="#//Task/predecessor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predecessor" eType="#//Task"
+        eOpposite="#//Task/successors"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Workflow" eSuperTypes="#//Task">
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
@@ -22,11 +24,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Sequence" eSuperTypes="#//Workflow"/>
   <eClassifiers xsi:type="ecore:EClass" name="MultipleInstances" eSuperTypes="#//Workflow"/>
   <eClassifiers xsi:type="ecore:EClass" name="ParallelSplit" eSuperTypes="#//Workflow"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Join">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="predecessor" lowerBound="1"
-        eType="#//Task" eOpposite="#//Task/join"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="successor" eType="#//Task"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataFlow">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//Task"
         eOpposite="#//Task/outgoingFlows"/>

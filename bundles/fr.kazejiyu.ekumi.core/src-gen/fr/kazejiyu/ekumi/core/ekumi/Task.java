@@ -17,11 +17,12 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Task#getId <em>Id</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Task#getName <em>Name</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Task#getJoin <em>Join</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Task#getOutgoingFlows <em>Outgoing Flows</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Task#getIncomingFlows <em>Incoming Flows</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Task#getInputs <em>Inputs</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Task#getOutputs <em>Outputs</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Task#getSuccessors <em>Successors</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Task#getPredecessor <em>Predecessor</em>}</li>
  * </ul>
  *
  * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getTask()
@@ -80,34 +81,6 @@ public interface Task extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Join</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.Join#getPredecessor <em>Predecessor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Join</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Join</em>' reference.
-	 * @see #setJoin(Join)
-	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getTask_Join()
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Join#getPredecessor
-	 * @model opposite="predecessor" required="true"
-	 * @generated
-	 */
-	Join getJoin();
-
-	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Task#getJoin <em>Join</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Join</em>' reference.
-	 * @see #getJoin()
-	 * @generated
-	 */
-	void setJoin(Join value);
 
 	/**
 	 * Returns the value of the '<em><b>Outgoing Flows</b></em>' containment reference list.
@@ -176,5 +149,51 @@ public interface Task extends EObject {
 	 * @generated
 	 */
 	EList<Data> getOutputs();
+
+	/**
+	 * Returns the value of the '<em><b>Successors</b></em>' reference list.
+	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Task}.
+	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.Task#getPredecessor <em>Predecessor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Successors</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Successors</em>' reference list.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getTask_Successors()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Task#getPredecessor
+	 * @model opposite="predecessor"
+	 * @generated
+	 */
+	EList<Task> getSuccessors();
+
+	/**
+	 * Returns the value of the '<em><b>Predecessor</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.Task#getSuccessors <em>Successors</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Predecessor</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Predecessor</em>' reference.
+	 * @see #setPredecessor(Task)
+	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getTask_Predecessor()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Task#getSuccessors
+	 * @model opposite="successors"
+	 * @generated
+	 */
+	Task getPredecessor();
+
+	/**
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Task#getPredecessor <em>Predecessor</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Predecessor</em>' reference.
+	 * @see #getPredecessor()
+	 * @generated
+	 */
+	void setPredecessor(Task value);
 
 } // Task

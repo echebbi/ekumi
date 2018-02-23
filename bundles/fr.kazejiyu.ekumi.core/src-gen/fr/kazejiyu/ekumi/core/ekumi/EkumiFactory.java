@@ -58,15 +58,6 @@ public interface EkumiFactory extends EFactory {
 	ParallelSplit createParallelSplit();
 
 	/**
-	 * Returns a new object of class '<em>Join</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Join</em>'.
-	 * @generated
-	 */
-	Join createJoin();
-
-	/**
 	 * Returns a new object of class '<em>Data Flow</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

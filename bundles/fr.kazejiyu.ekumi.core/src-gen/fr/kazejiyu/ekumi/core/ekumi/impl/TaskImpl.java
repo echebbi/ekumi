@@ -5,7 +5,6 @@ package fr.kazejiyu.ekumi.core.ekumi.impl;
 import fr.kazejiyu.ekumi.core.ekumi.Data;
 import fr.kazejiyu.ekumi.core.ekumi.DataFlow;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
-import fr.kazejiyu.ekumi.core.ekumi.Join;
 import fr.kazejiyu.ekumi.core.ekumi.Task;
 
 import java.util.Collection;
@@ -36,11 +35,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.TaskImpl#getId <em>Id</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.TaskImpl#getName <em>Name</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.TaskImpl#getJoin <em>Join</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.TaskImpl#getOutgoingFlows <em>Outgoing Flows</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.TaskImpl#getIncomingFlows <em>Incoming Flows</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.TaskImpl#getInputs <em>Inputs</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.TaskImpl#getOutputs <em>Outputs</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.TaskImpl#getSuccessors <em>Successors</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.TaskImpl#getPredecessor <em>Predecessor</em>}</li>
  * </ul>
  *
  * @generated
@@ -87,16 +87,6 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getJoin() <em>Join</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getJoin()
-	 * @generated
-	 * @ordered
-	 */
-	protected Join join;
-
-	/**
 	 * The cached value of the '{@link #getOutgoingFlows() <em>Outgoing Flows</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -135,6 +125,26 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 	 * @ordered
 	 */
 	protected EList<Data> outputs;
+
+	/**
+	 * The cached value of the '{@link #getSuccessors() <em>Successors</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuccessors()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Task> successors;
+
+	/**
+	 * The cached value of the '{@link #getPredecessor() <em>Predecessor</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPredecessor()
+	 * @generated
+	 * @ordered
+	 */
+	protected Task predecessor;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -202,70 +212,6 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Join getJoin() {
-		if (join != null && join.eIsProxy()) {
-			InternalEObject oldJoin = (InternalEObject) join;
-			join = (Join) eResolveProxy(oldJoin);
-			if (join != oldJoin) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EkumiPackage.TASK__JOIN, oldJoin, join));
-			}
-		}
-		return join;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Join basicGetJoin() {
-		return join;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetJoin(Join newJoin, NotificationChain msgs) {
-		Join oldJoin = join;
-		join = newJoin;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EkumiPackage.TASK__JOIN,
-					oldJoin, newJoin);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setJoin(Join newJoin) {
-		if (newJoin != join) {
-			NotificationChain msgs = null;
-			if (join != null)
-				msgs = ((InternalEObject) join).eInverseRemove(this, EkumiPackage.JOIN__PREDECESSOR, Join.class, msgs);
-			if (newJoin != null)
-				msgs = ((InternalEObject) newJoin).eInverseAdd(this, EkumiPackage.JOIN__PREDECESSOR, Join.class, msgs);
-			msgs = basicSetJoin(newJoin, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.TASK__JOIN, newJoin, newJoin));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<DataFlow> getOutgoingFlows() {
 		if (outgoingFlows == null) {
 			outgoingFlows = new EObjectContainmentWithInverseEList<DataFlow>(DataFlow.class, this,
@@ -316,18 +262,102 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Task> getSuccessors() {
+		if (successors == null) {
+			successors = new EObjectWithInverseResolvingEList<Task>(Task.class, this, EkumiPackage.TASK__SUCCESSORS,
+					EkumiPackage.TASK__PREDECESSOR);
+		}
+		return successors;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Task getPredecessor() {
+		if (predecessor != null && predecessor.eIsProxy()) {
+			InternalEObject oldPredecessor = (InternalEObject) predecessor;
+			predecessor = (Task) eResolveProxy(oldPredecessor);
+			if (predecessor != oldPredecessor) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EkumiPackage.TASK__PREDECESSOR,
+							oldPredecessor, predecessor));
+			}
+		}
+		return predecessor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Task basicGetPredecessor() {
+		return predecessor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetPredecessor(Task newPredecessor, NotificationChain msgs) {
+		Task oldPredecessor = predecessor;
+		predecessor = newPredecessor;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					EkumiPackage.TASK__PREDECESSOR, oldPredecessor, newPredecessor);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPredecessor(Task newPredecessor) {
+		if (newPredecessor != predecessor) {
+			NotificationChain msgs = null;
+			if (predecessor != null)
+				msgs = ((InternalEObject) predecessor).eInverseRemove(this, EkumiPackage.TASK__SUCCESSORS, Task.class,
+						msgs);
+			if (newPredecessor != null)
+				msgs = ((InternalEObject) newPredecessor).eInverseAdd(this, EkumiPackage.TASK__SUCCESSORS, Task.class,
+						msgs);
+			msgs = basicSetPredecessor(newPredecessor, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.TASK__PREDECESSOR, newPredecessor,
+					newPredecessor));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case EkumiPackage.TASK__JOIN:
-			if (join != null)
-				msgs = ((InternalEObject) join).eInverseRemove(this, EkumiPackage.JOIN__PREDECESSOR, Join.class, msgs);
-			return basicSetJoin((Join) otherEnd, msgs);
 		case EkumiPackage.TASK__OUTGOING_FLOWS:
 			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutgoingFlows()).basicAdd(otherEnd, msgs);
 		case EkumiPackage.TASK__INCOMING_FLOWS:
 			return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncomingFlows()).basicAdd(otherEnd, msgs);
+		case EkumiPackage.TASK__SUCCESSORS:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getSuccessors()).basicAdd(otherEnd, msgs);
+		case EkumiPackage.TASK__PREDECESSOR:
+			if (predecessor != null)
+				msgs = ((InternalEObject) predecessor).eInverseRemove(this, EkumiPackage.TASK__SUCCESSORS, Task.class,
+						msgs);
+			return basicSetPredecessor((Task) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -340,8 +370,6 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case EkumiPackage.TASK__JOIN:
-			return basicSetJoin(null, msgs);
 		case EkumiPackage.TASK__OUTGOING_FLOWS:
 			return ((InternalEList<?>) getOutgoingFlows()).basicRemove(otherEnd, msgs);
 		case EkumiPackage.TASK__INCOMING_FLOWS:
@@ -350,6 +378,10 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 			return ((InternalEList<?>) getInputs()).basicRemove(otherEnd, msgs);
 		case EkumiPackage.TASK__OUTPUTS:
 			return ((InternalEList<?>) getOutputs()).basicRemove(otherEnd, msgs);
+		case EkumiPackage.TASK__SUCCESSORS:
+			return ((InternalEList<?>) getSuccessors()).basicRemove(otherEnd, msgs);
+		case EkumiPackage.TASK__PREDECESSOR:
+			return basicSetPredecessor(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -366,10 +398,6 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 			return getId();
 		case EkumiPackage.TASK__NAME:
 			return getName();
-		case EkumiPackage.TASK__JOIN:
-			if (resolve)
-				return getJoin();
-			return basicGetJoin();
 		case EkumiPackage.TASK__OUTGOING_FLOWS:
 			return getOutgoingFlows();
 		case EkumiPackage.TASK__INCOMING_FLOWS:
@@ -378,6 +406,12 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 			return getInputs();
 		case EkumiPackage.TASK__OUTPUTS:
 			return getOutputs();
+		case EkumiPackage.TASK__SUCCESSORS:
+			return getSuccessors();
+		case EkumiPackage.TASK__PREDECESSOR:
+			if (resolve)
+				return getPredecessor();
+			return basicGetPredecessor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -397,9 +431,6 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 		case EkumiPackage.TASK__NAME:
 			setName((String) newValue);
 			return;
-		case EkumiPackage.TASK__JOIN:
-			setJoin((Join) newValue);
-			return;
 		case EkumiPackage.TASK__OUTGOING_FLOWS:
 			getOutgoingFlows().clear();
 			getOutgoingFlows().addAll((Collection<? extends DataFlow>) newValue);
@@ -415,6 +446,13 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 		case EkumiPackage.TASK__OUTPUTS:
 			getOutputs().clear();
 			getOutputs().addAll((Collection<? extends Data>) newValue);
+			return;
+		case EkumiPackage.TASK__SUCCESSORS:
+			getSuccessors().clear();
+			getSuccessors().addAll((Collection<? extends Task>) newValue);
+			return;
+		case EkumiPackage.TASK__PREDECESSOR:
+			setPredecessor((Task) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -434,9 +472,6 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 		case EkumiPackage.TASK__NAME:
 			setName(NAME_EDEFAULT);
 			return;
-		case EkumiPackage.TASK__JOIN:
-			setJoin((Join) null);
-			return;
 		case EkumiPackage.TASK__OUTGOING_FLOWS:
 			getOutgoingFlows().clear();
 			return;
@@ -448,6 +483,12 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 			return;
 		case EkumiPackage.TASK__OUTPUTS:
 			getOutputs().clear();
+			return;
+		case EkumiPackage.TASK__SUCCESSORS:
+			getSuccessors().clear();
+			return;
+		case EkumiPackage.TASK__PREDECESSOR:
+			setPredecessor((Task) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -465,8 +506,6 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		case EkumiPackage.TASK__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-		case EkumiPackage.TASK__JOIN:
-			return join != null;
 		case EkumiPackage.TASK__OUTGOING_FLOWS:
 			return outgoingFlows != null && !outgoingFlows.isEmpty();
 		case EkumiPackage.TASK__INCOMING_FLOWS:
@@ -475,6 +514,10 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 			return inputs != null && !inputs.isEmpty();
 		case EkumiPackage.TASK__OUTPUTS:
 			return outputs != null && !outputs.isEmpty();
+		case EkumiPackage.TASK__SUCCESSORS:
+			return successors != null && !successors.isEmpty();
+		case EkumiPackage.TASK__PREDECESSOR:
+			return predecessor != null;
 		}
 		return super.eIsSet(featureID);
 	}
