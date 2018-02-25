@@ -5,6 +5,7 @@
 -->
 
 <plugin>
+   <extension-point id="languages" name="Languagues" schema="schema/languages.exsd"/>
 
    <extension
          point="org.eclipse.ui.startup">
