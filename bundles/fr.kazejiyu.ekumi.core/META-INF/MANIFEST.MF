@@ -10,7 +10,9 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: fr.kazejiyu.ekumi.core.ekumi,
  fr.kazejiyu.ekumi.core.ekumi.impl,
  fr.kazejiyu.ekumi.core.ekumi.util,
- fr.kazejiyu.ekumi.core.languages
+ fr.kazejiyu.ekumi.core.exceptions,
+ fr.kazejiyu.ekumi.core.languages,
+ fr.kazejiyu.ekumi.core.languages.exceptions
 Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.core.runtime,
  org.eclipse.ui;bundle-version="3.109.0",
