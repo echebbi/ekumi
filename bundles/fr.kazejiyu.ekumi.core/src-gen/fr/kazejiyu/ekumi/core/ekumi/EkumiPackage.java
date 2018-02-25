@@ -4,6 +4,8 @@ package fr.kazejiyu.ekumi.core.ekumi;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -57,14 +59,14 @@ public interface EkumiPackage extends EPackage {
 	EkumiPackage eINSTANCE = fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.TaskImpl <em>Task</em>}' class.
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl <em>Activity</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.TaskImpl
-	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getTask()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getActivity()
 	 * @generated
 	 */
-	int TASK = 0;
+	int ACTIVITY = 0;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -73,7 +75,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__ID = 0;
+	int ACTIVITY__ID = 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -82,7 +84,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__NAME = 1;
+	int ACTIVITY__NAME = 1;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Flows</b></em>' containment reference list.
@@ -91,7 +93,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__OUTGOING_FLOWS = 2;
+	int ACTIVITY__OUTGOING_FLOWS = 2;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Flows</b></em>' reference list.
@@ -100,7 +102,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__INCOMING_FLOWS = 3;
+	int ACTIVITY__INCOMING_FLOWS = 3;
 
 	/**
 	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
@@ -109,7 +111,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__INPUTS = 4;
+	int ACTIVITY__INPUTS = 4;
 
 	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
@@ -118,7 +120,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__OUTPUTS = 5;
+	int ACTIVITY__OUTPUTS = 5;
 
 	/**
 	 * The feature id for the '<em><b>Successors</b></em>' reference list.
@@ -127,7 +129,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__SUCCESSORS = 6;
+	int ACTIVITY__SUCCESSORS = 6;
 
 	/**
 	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
@@ -136,25 +138,43 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__PREDECESSOR = 7;
+	int ACTIVITY__PREDECESSOR = 7;
 
 	/**
-	 * The number of structural features of the '<em>Task</em>' class.
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_FEATURE_COUNT = 8;
+	int ACTIVITY__STATUS = 8;
 
 	/**
-	 * The number of operations of the '<em>Task</em>' class.
+	 * The number of structural features of the '<em>Activity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_OPERATION_COUNT = 0;
+	int ACTIVITY_FEATURE_COUNT = 9;
+
+	/**
+	 * The operation id for the '<em>Run</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY___RUN = 0;
+
+	/**
+	 * The number of operations of the '<em>Activity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.WorkflowImpl <em>Workflow</em>}' class.
@@ -173,7 +193,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW__ID = TASK__ID;
+	int WORKFLOW__ID = ACTIVITY__ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -182,7 +202,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW__NAME = TASK__NAME;
+	int WORKFLOW__NAME = ACTIVITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Flows</b></em>' containment reference list.
@@ -191,7 +211,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW__OUTGOING_FLOWS = TASK__OUTGOING_FLOWS;
+	int WORKFLOW__OUTGOING_FLOWS = ACTIVITY__OUTGOING_FLOWS;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Flows</b></em>' reference list.
@@ -200,7 +220,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW__INCOMING_FLOWS = TASK__INCOMING_FLOWS;
+	int WORKFLOW__INCOMING_FLOWS = ACTIVITY__INCOMING_FLOWS;
 
 	/**
 	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
@@ -209,7 +229,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW__INPUTS = TASK__INPUTS;
+	int WORKFLOW__INPUTS = ACTIVITY__INPUTS;
 
 	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
@@ -218,7 +238,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW__OUTPUTS = TASK__OUTPUTS;
+	int WORKFLOW__OUTPUTS = ACTIVITY__OUTPUTS;
 
 	/**
 	 * The feature id for the '<em><b>Successors</b></em>' reference list.
@@ -227,7 +247,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW__SUCCESSORS = TASK__SUCCESSORS;
+	int WORKFLOW__SUCCESSORS = ACTIVITY__SUCCESSORS;
 
 	/**
 	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
@@ -236,7 +256,16 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW__PREDECESSOR = TASK__PREDECESSOR;
+	int WORKFLOW__PREDECESSOR = ACTIVITY__PREDECESSOR;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW__STATUS = ACTIVITY__STATUS;
 
 	/**
 	 * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
@@ -245,7 +274,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW__TASKS = TASK_FEATURE_COUNT + 0;
+	int WORKFLOW__TASKS = ACTIVITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Workflow</em>' class.
@@ -254,7 +283,16 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW_FEATURE_COUNT = TASK_FEATURE_COUNT + 1;
+	int WORKFLOW_FEATURE_COUNT = ACTIVITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Run</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW___RUN = ACTIVITY___RUN;
 
 	/**
 	 * The number of operations of the '<em>Workflow</em>' class.
@@ -263,7 +301,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW_OPERATION_COUNT = TASK_OPERATION_COUNT + 0;
+	int WORKFLOW_OPERATION_COUNT = ACTIVITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.SequenceImpl <em>Sequence</em>}' class.
@@ -348,6 +386,15 @@ public interface EkumiPackage extends EPackage {
 	int SEQUENCE__PREDECESSOR = WORKFLOW__PREDECESSOR;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE__STATUS = WORKFLOW__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -364,6 +411,15 @@ public interface EkumiPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEQUENCE_FEATURE_COUNT = WORKFLOW_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Run</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE___RUN = WORKFLOW___RUN;
 
 	/**
 	 * The number of operations of the '<em>Sequence</em>' class.
@@ -457,6 +513,15 @@ public interface EkumiPackage extends EPackage {
 	int MULTIPLE_INSTANCES__PREDECESSOR = WORKFLOW__PREDECESSOR;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_INSTANCES__STATUS = WORKFLOW__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -473,6 +538,15 @@ public interface EkumiPackage extends EPackage {
 	 * @ordered
 	 */
 	int MULTIPLE_INSTANCES_FEATURE_COUNT = WORKFLOW_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Run</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_INSTANCES___RUN = WORKFLOW___RUN;
 
 	/**
 	 * The number of operations of the '<em>Multiple Instances</em>' class.
@@ -566,6 +640,15 @@ public interface EkumiPackage extends EPackage {
 	int PARALLEL_SPLIT__PREDECESSOR = WORKFLOW__PREDECESSOR;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT__STATUS = WORKFLOW__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -582,6 +665,15 @@ public interface EkumiPackage extends EPackage {
 	 * @ordered
 	 */
 	int PARALLEL_SPLIT_FEATURE_COUNT = WORKFLOW_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Run</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT___RUN = WORKFLOW___RUN;
 
 	/**
 	 * The number of operations of the '<em>Parallel Split</em>' class.
@@ -694,102 +786,699 @@ public interface EkumiPackage extends EPackage {
 	int DATA_OPERATION_COUNT = 0;
 
 	/**
-	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Task <em>Task</em>}'.
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.StructuredLoopImpl <em>Structured Loop</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Task</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Task
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.StructuredLoopImpl
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getStructuredLoop()
 	 * @generated
 	 */
-	EClass getTask();
+	int STRUCTURED_LOOP = 7;
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.Task#getId <em>Id</em>}'.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_LOOP__ID = WORKFLOW__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_LOOP__NAME = WORKFLOW__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Flows</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_LOOP__OUTGOING_FLOWS = WORKFLOW__OUTGOING_FLOWS;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Flows</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_LOOP__INCOMING_FLOWS = WORKFLOW__INCOMING_FLOWS;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_LOOP__INPUTS = WORKFLOW__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_LOOP__OUTPUTS = WORKFLOW__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_LOOP__SUCCESSORS = WORKFLOW__SUCCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_LOOP__PREDECESSOR = WORKFLOW__PREDECESSOR;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_LOOP__STATUS = WORKFLOW__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_LOOP__TASKS = WORKFLOW__TASKS;
+
+	/**
+	 * The feature id for the '<em><b>Test</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_LOOP__TEST = WORKFLOW_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Structured Loop</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_LOOP_FEATURE_COUNT = WORKFLOW_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Run</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_LOOP___RUN = WORKFLOW___RUN;
+
+	/**
+	 * The number of operations of the '<em>Structured Loop</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_LOOP_OPERATION_COUNT = WORKFLOW_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ScriptImpl <em>Script</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.ScriptImpl
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getScript()
+	 * @generated
+	 */
+	int SCRIPT = 12;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT__PATH = 0;
+
+	/**
+	 * The number of structural features of the '<em>Script</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Script</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.TestableScriptImpl <em>Testable Script</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.TestableScriptImpl
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getTestableScript()
+	 * @generated
+	 */
+	int TESTABLE_SCRIPT = 8;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TESTABLE_SCRIPT__PATH = SCRIPT__PATH;
+
+	/**
+	 * The number of structural features of the '<em>Testable Script</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TESTABLE_SCRIPT_FEATURE_COUNT = SCRIPT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Check</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TESTABLE_SCRIPT___CHECK = SCRIPT_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Testable Script</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TESTABLE_SCRIPT_OPERATION_COUNT = SCRIPT_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.TaskImpl <em>Task</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.TaskImpl
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getTask()
+	 * @generated
+	 */
+	int TASK = 9;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__ID = ACTIVITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__NAME = ACTIVITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Flows</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__OUTGOING_FLOWS = ACTIVITY__OUTGOING_FLOWS;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Flows</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__INCOMING_FLOWS = ACTIVITY__INCOMING_FLOWS;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__INPUTS = ACTIVITY__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__OUTPUTS = ACTIVITY__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__SUCCESSORS = ACTIVITY__SUCCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__PREDECESSOR = ACTIVITY__PREDECESSOR;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__STATUS = ACTIVITY__STATUS;
+
+	/**
+	 * The number of structural features of the '<em>Task</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_FEATURE_COUNT = ACTIVITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Run</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK___RUN = ACTIVITY___RUN;
+
+	/**
+	 * The number of operations of the '<em>Task</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_OPERATION_COUNT = ACTIVITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.RunnableScriptImpl <em>Runnable Script</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.RunnableScriptImpl
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getRunnableScript()
+	 * @generated
+	 */
+	int RUNNABLE_SCRIPT = 10;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_SCRIPT__PATH = SCRIPT__PATH;
+
+	/**
+	 * The number of structural features of the '<em>Runnable Script</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_SCRIPT_FEATURE_COUNT = SCRIPT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Run</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_SCRIPT___RUN = SCRIPT_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Runnable Script</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_SCRIPT_OPERATION_COUNT = SCRIPT_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ScriptableTaskImpl <em>Scriptable Task</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.ScriptableTaskImpl
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getScriptableTask()
+	 * @generated
+	 */
+	int SCRIPTABLE_TASK = 11;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPTABLE_TASK__ID = TASK__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPTABLE_TASK__NAME = TASK__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Flows</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPTABLE_TASK__OUTGOING_FLOWS = TASK__OUTGOING_FLOWS;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Flows</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPTABLE_TASK__INCOMING_FLOWS = TASK__INCOMING_FLOWS;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPTABLE_TASK__INPUTS = TASK__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPTABLE_TASK__OUTPUTS = TASK__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPTABLE_TASK__SUCCESSORS = TASK__SUCCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPTABLE_TASK__PREDECESSOR = TASK__PREDECESSOR;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPTABLE_TASK__STATUS = TASK__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Script</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPTABLE_TASK__SCRIPT = TASK_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Scriptable Task</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPTABLE_TASK_FEATURE_COUNT = TASK_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Run</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPTABLE_TASK___RUN = TASK___RUN;
+
+	/**
+	 * The number of operations of the '<em>Scriptable Task</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPTABLE_TASK_OPERATION_COUNT = TASK_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage <em>Scripting Language</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getScriptingLanguage()
+	 * @generated
+	 */
+	int SCRIPTING_LANGUAGE = 13;
+
+	/**
+	 * The number of structural features of the '<em>Scripting Language</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPTING_LANGUAGE_FEATURE_COUNT = 0;
+
+	/**
+	 * The operation id for the '<em>Resolve Runnable</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPTING_LANGUAGE___RESOLVE_RUNNABLE__STRING = 0;
+
+	/**
+	 * The operation id for the '<em>Resolve Testable</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPTING_LANGUAGE___RESOLVE_TESTABLE__STRING = 1;
+
+	/**
+	 * The number of operations of the '<em>Scripting Language</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPTING_LANGUAGE_OPERATION_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.Status <em>Status</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Status
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getStatus()
+	 * @generated
+	 */
+	int STATUS = 14;
+
+	/**
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.TestResult <em>Test Result</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.core.ekumi.TestResult
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getTestResult()
+	 * @generated
+	 */
+	int TEST_RESULT = 15;
+
+	/**
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Activity <em>Activity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Activity</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity
+	 * @generated
+	 */
+	EClass getActivity();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Task#getId()
-	 * @see #getTask()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getId()
+	 * @see #getActivity()
 	 * @generated
 	 */
-	EAttribute getTask_Id();
+	EAttribute getActivity_Id();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.Task#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Task#getName()
-	 * @see #getTask()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getName()
+	 * @see #getActivity()
 	 * @generated
 	 */
-	EAttribute getTask_Name();
+	EAttribute getActivity_Name();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.core.ekumi.Task#getOutgoingFlows <em>Outgoing Flows</em>}'.
+	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getOutgoingFlows <em>Outgoing Flows</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Outgoing Flows</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Task#getOutgoingFlows()
-	 * @see #getTask()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getOutgoingFlows()
+	 * @see #getActivity()
 	 * @generated
 	 */
-	EReference getTask_OutgoingFlows();
+	EReference getActivity_OutgoingFlows();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fr.kazejiyu.ekumi.core.ekumi.Task#getIncomingFlows <em>Incoming Flows</em>}'.
+	 * Returns the meta object for the reference list '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getIncomingFlows <em>Incoming Flows</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Incoming Flows</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Task#getIncomingFlows()
-	 * @see #getTask()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getIncomingFlows()
+	 * @see #getActivity()
 	 * @generated
 	 */
-	EReference getTask_IncomingFlows();
+	EReference getActivity_IncomingFlows();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.core.ekumi.Task#getInputs <em>Inputs</em>}'.
+	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getInputs <em>Inputs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Inputs</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Task#getInputs()
-	 * @see #getTask()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getInputs()
+	 * @see #getActivity()
 	 * @generated
 	 */
-	EReference getTask_Inputs();
+	EReference getActivity_Inputs();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.core.ekumi.Task#getOutputs <em>Outputs</em>}'.
+	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getOutputs <em>Outputs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Outputs</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Task#getOutputs()
-	 * @see #getTask()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getOutputs()
+	 * @see #getActivity()
 	 * @generated
 	 */
-	EReference getTask_Outputs();
+	EReference getActivity_Outputs();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fr.kazejiyu.ekumi.core.ekumi.Task#getSuccessors <em>Successors</em>}'.
+	 * Returns the meta object for the reference list '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getSuccessors <em>Successors</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Successors</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Task#getSuccessors()
-	 * @see #getTask()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getSuccessors()
+	 * @see #getActivity()
 	 * @generated
 	 */
-	EReference getTask_Successors();
+	EReference getActivity_Successors();
 
 	/**
-	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.core.ekumi.Task#getPredecessor <em>Predecessor</em>}'.
+	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getPredecessor <em>Predecessor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Predecessor</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Task#getPredecessor()
-	 * @see #getTask()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getPredecessor()
+	 * @see #getActivity()
 	 * @generated
 	 */
-	EReference getTask_Predecessor();
+	EReference getActivity_Predecessor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getStatus <em>Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Status</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getStatus()
+	 * @see #getActivity()
+	 * @generated
+	 */
+	EAttribute getActivity_Status();
+
+	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#run() <em>Run</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Run</em>' operation.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#run()
+	 * @generated
+	 */
+	EOperation getActivity__Run();
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Workflow <em>Workflow</em>}'.
@@ -918,6 +1607,169 @@ public interface EkumiPackage extends EPackage {
 	EAttribute getData_Name();
 
 	/**
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.StructuredLoop <em>Structured Loop</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Structured Loop</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.StructuredLoop
+	 * @generated
+	 */
+	EClass getStructuredLoop();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link fr.kazejiyu.ekumi.core.ekumi.StructuredLoop#getTest <em>Test</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Test</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.StructuredLoop#getTest()
+	 * @see #getStructuredLoop()
+	 * @generated
+	 */
+	EReference getStructuredLoop_Test();
+
+	/**
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.TestableScript <em>Testable Script</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Testable Script</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.TestableScript
+	 * @generated
+	 */
+	EClass getTestableScript();
+
+	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.TestableScript#check() <em>Check</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Check</em>' operation.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.TestableScript#check()
+	 * @generated
+	 */
+	EOperation getTestableScript__Check();
+
+	/**
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Task <em>Task</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Task</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Task
+	 * @generated
+	 */
+	EClass getTask();
+
+	/**
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.RunnableScript <em>Runnable Script</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Runnable Script</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.RunnableScript
+	 * @generated
+	 */
+	EClass getRunnableScript();
+
+	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.RunnableScript#run() <em>Run</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Run</em>' operation.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.RunnableScript#run()
+	 * @generated
+	 */
+	EOperation getRunnableScript__Run();
+
+	/**
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptableTask <em>Scriptable Task</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Scriptable Task</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.ScriptableTask
+	 * @generated
+	 */
+	EClass getScriptableTask();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptableTask#getScript <em>Script</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Script</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.ScriptableTask#getScript()
+	 * @see #getScriptableTask()
+	 * @generated
+	 */
+	EReference getScriptableTask_Script();
+
+	/**
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Script <em>Script</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Script</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Script
+	 * @generated
+	 */
+	EClass getScript();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.Script#getPath <em>Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Path</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Script#getPath()
+	 * @see #getScript()
+	 * @generated
+	 */
+	EAttribute getScript_Path();
+
+	/**
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage <em>Scripting Language</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Scripting Language</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage
+	 * @generated
+	 */
+	EClass getScriptingLanguage();
+
+	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage#resolveRunnable(java.lang.String) <em>Resolve Runnable</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Resolve Runnable</em>' operation.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage#resolveRunnable(java.lang.String)
+	 * @generated
+	 */
+	EOperation getScriptingLanguage__ResolveRunnable__String();
+
+	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage#resolveTestable(java.lang.String) <em>Resolve Testable</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Resolve Testable</em>' operation.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage#resolveTestable(java.lang.String)
+	 * @generated
+	 */
+	EOperation getScriptingLanguage__ResolveTestable__String();
+
+	/**
+	 * Returns the meta object for enum '{@link fr.kazejiyu.ekumi.core.ekumi.Status <em>Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Status</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Status
+	 * @generated
+	 */
+	EEnum getStatus();
+
+	/**
+	 * Returns the meta object for enum '{@link fr.kazejiyu.ekumi.core.ekumi.TestResult <em>Test Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Test Result</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.TestResult
+	 * @generated
+	 */
+	EEnum getTestResult();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -941,14 +1793,14 @@ public interface EkumiPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.TaskImpl <em>Task</em>}' class.
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl <em>Activity</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.TaskImpl
-		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getTask()
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getActivity()
 		 * @generated
 		 */
-		EClass TASK = eINSTANCE.getTask();
+		EClass ACTIVITY = eINSTANCE.getActivity();
 
 		/**
 		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
@@ -956,7 +1808,7 @@ public interface EkumiPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TASK__ID = eINSTANCE.getTask_Id();
+		EAttribute ACTIVITY__ID = eINSTANCE.getActivity_Id();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -964,7 +1816,7 @@ public interface EkumiPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TASK__NAME = eINSTANCE.getTask_Name();
+		EAttribute ACTIVITY__NAME = eINSTANCE.getActivity_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Outgoing Flows</b></em>' containment reference list feature.
@@ -972,7 +1824,7 @@ public interface EkumiPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TASK__OUTGOING_FLOWS = eINSTANCE.getTask_OutgoingFlows();
+		EReference ACTIVITY__OUTGOING_FLOWS = eINSTANCE.getActivity_OutgoingFlows();
 
 		/**
 		 * The meta object literal for the '<em><b>Incoming Flows</b></em>' reference list feature.
@@ -980,7 +1832,7 @@ public interface EkumiPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TASK__INCOMING_FLOWS = eINSTANCE.getTask_IncomingFlows();
+		EReference ACTIVITY__INCOMING_FLOWS = eINSTANCE.getActivity_IncomingFlows();
 
 		/**
 		 * The meta object literal for the '<em><b>Inputs</b></em>' containment reference list feature.
@@ -988,7 +1840,7 @@ public interface EkumiPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TASK__INPUTS = eINSTANCE.getTask_Inputs();
+		EReference ACTIVITY__INPUTS = eINSTANCE.getActivity_Inputs();
 
 		/**
 		 * The meta object literal for the '<em><b>Outputs</b></em>' containment reference list feature.
@@ -996,7 +1848,7 @@ public interface EkumiPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TASK__OUTPUTS = eINSTANCE.getTask_Outputs();
+		EReference ACTIVITY__OUTPUTS = eINSTANCE.getActivity_Outputs();
 
 		/**
 		 * The meta object literal for the '<em><b>Successors</b></em>' reference list feature.
@@ -1004,7 +1856,7 @@ public interface EkumiPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TASK__SUCCESSORS = eINSTANCE.getTask_Successors();
+		EReference ACTIVITY__SUCCESSORS = eINSTANCE.getActivity_Successors();
 
 		/**
 		 * The meta object literal for the '<em><b>Predecessor</b></em>' reference feature.
@@ -1012,7 +1864,23 @@ public interface EkumiPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TASK__PREDECESSOR = eINSTANCE.getTask_Predecessor();
+		EReference ACTIVITY__PREDECESSOR = eINSTANCE.getActivity_Predecessor();
+
+		/**
+		 * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACTIVITY__STATUS = eINSTANCE.getActivity_Status();
+
+		/**
+		 * The meta object literal for the '<em><b>Run</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ACTIVITY___RUN = eINSTANCE.getActivity__Run();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.WorkflowImpl <em>Workflow</em>}' class.
@@ -1121,6 +1989,154 @@ public interface EkumiPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DATA__NAME = eINSTANCE.getData_Name();
+
+		/**
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.StructuredLoopImpl <em>Structured Loop</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.StructuredLoopImpl
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getStructuredLoop()
+		 * @generated
+		 */
+		EClass STRUCTURED_LOOP = eINSTANCE.getStructuredLoop();
+
+		/**
+		 * The meta object literal for the '<em><b>Test</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STRUCTURED_LOOP__TEST = eINSTANCE.getStructuredLoop_Test();
+
+		/**
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.TestableScriptImpl <em>Testable Script</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.TestableScriptImpl
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getTestableScript()
+		 * @generated
+		 */
+		EClass TESTABLE_SCRIPT = eINSTANCE.getTestableScript();
+
+		/**
+		 * The meta object literal for the '<em><b>Check</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TESTABLE_SCRIPT___CHECK = eINSTANCE.getTestableScript__Check();
+
+		/**
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.TaskImpl <em>Task</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.TaskImpl
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getTask()
+		 * @generated
+		 */
+		EClass TASK = eINSTANCE.getTask();
+
+		/**
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.RunnableScriptImpl <em>Runnable Script</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.RunnableScriptImpl
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getRunnableScript()
+		 * @generated
+		 */
+		EClass RUNNABLE_SCRIPT = eINSTANCE.getRunnableScript();
+
+		/**
+		 * The meta object literal for the '<em><b>Run</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation RUNNABLE_SCRIPT___RUN = eINSTANCE.getRunnableScript__Run();
+
+		/**
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ScriptableTaskImpl <em>Scriptable Task</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.ScriptableTaskImpl
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getScriptableTask()
+		 * @generated
+		 */
+		EClass SCRIPTABLE_TASK = eINSTANCE.getScriptableTask();
+
+		/**
+		 * The meta object literal for the '<em><b>Script</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SCRIPTABLE_TASK__SCRIPT = eINSTANCE.getScriptableTask_Script();
+
+		/**
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ScriptImpl <em>Script</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.ScriptImpl
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getScript()
+		 * @generated
+		 */
+		EClass SCRIPT = eINSTANCE.getScript();
+
+		/**
+		 * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SCRIPT__PATH = eINSTANCE.getScript_Path();
+
+		/**
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage <em>Scripting Language</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getScriptingLanguage()
+		 * @generated
+		 */
+		EClass SCRIPTING_LANGUAGE = eINSTANCE.getScriptingLanguage();
+
+		/**
+		 * The meta object literal for the '<em><b>Resolve Runnable</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SCRIPTING_LANGUAGE___RESOLVE_RUNNABLE__STRING = eINSTANCE
+				.getScriptingLanguage__ResolveRunnable__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Resolve Testable</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SCRIPTING_LANGUAGE___RESOLVE_TESTABLE__STRING = eINSTANCE
+				.getScriptingLanguage__ResolveTestable__String();
+
+		/**
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.Status <em>Status</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.core.ekumi.Status
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getStatus()
+		 * @generated
+		 */
+		EEnum STATUS = eINSTANCE.getStatus();
+
+		/**
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.TestResult <em>Test Result</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.core.ekumi.TestResult
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getTestResult()
+		 * @generated
+		 */
+		EEnum TEST_RESULT = eINSTANCE.getTestResult();
 
 	}
 

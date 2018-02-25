@@ -67,8 +67,8 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 	 */
 	protected EkumiSwitch<Adapter> modelSwitch = new EkumiSwitch<Adapter>() {
 		@Override
-		public Adapter caseTask(Task object) {
-			return createTaskAdapter();
+		public Adapter caseActivity(Activity object) {
+			return createActivityAdapter();
 		}
 
 		@Override
@@ -102,6 +102,41 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseStructuredLoop(StructuredLoop object) {
+			return createStructuredLoopAdapter();
+		}
+
+		@Override
+		public Adapter caseTestableScript(TestableScript object) {
+			return createTestableScriptAdapter();
+		}
+
+		@Override
+		public Adapter caseTask(Task object) {
+			return createTaskAdapter();
+		}
+
+		@Override
+		public Adapter caseRunnableScript(RunnableScript object) {
+			return createRunnableScriptAdapter();
+		}
+
+		@Override
+		public Adapter caseScriptableTask(ScriptableTask object) {
+			return createScriptableTaskAdapter();
+		}
+
+		@Override
+		public Adapter caseScript(Script object) {
+			return createScriptAdapter();
+		}
+
+		@Override
+		public Adapter caseScriptingLanguage(ScriptingLanguage object) {
+			return createScriptingLanguageAdapter();
+		}
+
+		@Override
 		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
@@ -121,16 +156,16 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.Task <em>Task</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.Activity <em>Activity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Task
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity
 	 * @generated
 	 */
-	public Adapter createTaskAdapter() {
+	public Adapter createActivityAdapter() {
 		return null;
 	}
 
@@ -215,6 +250,104 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDataAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.StructuredLoop <em>Structured Loop</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.StructuredLoop
+	 * @generated
+	 */
+	public Adapter createStructuredLoopAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.TestableScript <em>Testable Script</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.TestableScript
+	 * @generated
+	 */
+	public Adapter createTestableScriptAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.Task <em>Task</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Task
+	 * @generated
+	 */
+	public Adapter createTaskAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.RunnableScript <em>Runnable Script</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.RunnableScript
+	 * @generated
+	 */
+	public Adapter createRunnableScriptAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptableTask <em>Scriptable Task</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.ScriptableTask
+	 * @generated
+	 */
+	public Adapter createScriptableTaskAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.Script <em>Script</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Script
+	 * @generated
+	 */
+	public Adapter createScriptAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage <em>Scripting Language</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage
+	 * @generated
+	 */
+	public Adapter createScriptingLanguageAdapter() {
 		return null;
 	}
 

@@ -76,6 +76,51 @@ public interface EkumiFactory extends EFactory {
 	Data createData();
 
 	/**
+	 * Returns a new object of class '<em>Structured Loop</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Structured Loop</em>'.
+	 * @generated
+	 */
+	StructuredLoop createStructuredLoop();
+
+	/**
+	 * Returns a new object of class '<em>Testable Script</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Testable Script</em>'.
+	 * @generated
+	 */
+	TestableScript createTestableScript();
+
+	/**
+	 * Returns a new object of class '<em>Task</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Task</em>'.
+	 * @generated
+	 */
+	Task createTask();
+
+	/**
+	 * Returns a new object of class '<em>Runnable Script</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Runnable Script</em>'.
+	 * @generated
+	 */
+	RunnableScript createRunnableScript();
+
+	/**
+	 * Returns a new object of class '<em>Scriptable Task</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Scriptable Task</em>'.
+	 * @generated
+	 */
+	ScriptableTask createScriptableTask();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

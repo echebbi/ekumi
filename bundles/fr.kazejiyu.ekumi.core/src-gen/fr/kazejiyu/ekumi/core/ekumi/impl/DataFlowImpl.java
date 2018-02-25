@@ -2,10 +2,10 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.impl;
 
+import fr.kazejiyu.ekumi.core.ekumi.Activity;
 import fr.kazejiyu.ekumi.core.ekumi.Data;
 import fr.kazejiyu.ekumi.core.ekumi.DataFlow;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
-import fr.kazejiyu.ekumi.core.ekumi.Task;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -43,7 +43,7 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	 * @generated
 	 * @ordered
 	 */
-	protected Task destination;
+	protected Activity destination;
 
 	/**
 	 * The cached value of the '{@link #getInput() <em>Input</em>}' reference.
@@ -89,10 +89,10 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Task getSource() {
+	public Activity getSource() {
 		if (eContainerFeatureID() != EkumiPackage.DATA_FLOW__SOURCE)
 			return null;
-		return (Task) eInternalContainer();
+		return (Activity) eInternalContainer();
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSource(Task newSource, NotificationChain msgs) {
+	public NotificationChain basicSetSource(Activity newSource, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newSource, EkumiPackage.DATA_FLOW__SOURCE, msgs);
 		return msgs;
 	}
@@ -110,7 +110,7 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSource(Task newSource) {
+	public void setSource(Activity newSource) {
 		if (newSource != eInternalContainer()
 				|| (eContainerFeatureID() != EkumiPackage.DATA_FLOW__SOURCE && newSource != null)) {
 			if (EcoreUtil.isAncestor(this, newSource))
@@ -119,8 +119,8 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newSource != null)
-				msgs = ((InternalEObject) newSource).eInverseAdd(this, EkumiPackage.TASK__OUTGOING_FLOWS, Task.class,
-						msgs);
+				msgs = ((InternalEObject) newSource).eInverseAdd(this, EkumiPackage.ACTIVITY__OUTGOING_FLOWS,
+						Activity.class, msgs);
 			msgs = basicSetSource(newSource, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -134,10 +134,10 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Task getDestination() {
+	public Activity getDestination() {
 		if (destination != null && destination.eIsProxy()) {
 			InternalEObject oldDestination = (InternalEObject) destination;
-			destination = (Task) eResolveProxy(oldDestination);
+			destination = (Activity) eResolveProxy(oldDestination);
 			if (destination != oldDestination) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EkumiPackage.DATA_FLOW__DESTINATION,
@@ -152,7 +152,7 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Task basicGetDestination() {
+	public Activity basicGetDestination() {
 		return destination;
 	}
 
@@ -161,8 +161,8 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDestination(Task newDestination, NotificationChain msgs) {
-		Task oldDestination = destination;
+	public NotificationChain basicSetDestination(Activity newDestination, NotificationChain msgs) {
+		Activity oldDestination = destination;
 		destination = newDestination;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
@@ -180,15 +180,15 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDestination(Task newDestination) {
+	public void setDestination(Activity newDestination) {
 		if (newDestination != destination) {
 			NotificationChain msgs = null;
 			if (destination != null)
-				msgs = ((InternalEObject) destination).eInverseRemove(this, EkumiPackage.TASK__INCOMING_FLOWS,
-						Task.class, msgs);
+				msgs = ((InternalEObject) destination).eInverseRemove(this, EkumiPackage.ACTIVITY__INCOMING_FLOWS,
+						Activity.class, msgs);
 			if (newDestination != null)
-				msgs = ((InternalEObject) newDestination).eInverseAdd(this, EkumiPackage.TASK__INCOMING_FLOWS,
-						Task.class, msgs);
+				msgs = ((InternalEObject) newDestination).eInverseAdd(this, EkumiPackage.ACTIVITY__INCOMING_FLOWS,
+						Activity.class, msgs);
 			msgs = basicSetDestination(newDestination, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -286,12 +286,12 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 		case EkumiPackage.DATA_FLOW__SOURCE:
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			return basicSetSource((Task) otherEnd, msgs);
+			return basicSetSource((Activity) otherEnd, msgs);
 		case EkumiPackage.DATA_FLOW__DESTINATION:
 			if (destination != null)
-				msgs = ((InternalEObject) destination).eInverseRemove(this, EkumiPackage.TASK__INCOMING_FLOWS,
-						Task.class, msgs);
-			return basicSetDestination((Task) otherEnd, msgs);
+				msgs = ((InternalEObject) destination).eInverseRemove(this, EkumiPackage.ACTIVITY__INCOMING_FLOWS,
+						Activity.class, msgs);
+			return basicSetDestination((Activity) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -321,7 +321,8 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 		case EkumiPackage.DATA_FLOW__SOURCE:
-			return eInternalContainer().eInverseRemove(this, EkumiPackage.TASK__OUTGOING_FLOWS, Task.class, msgs);
+			return eInternalContainer().eInverseRemove(this, EkumiPackage.ACTIVITY__OUTGOING_FLOWS, Activity.class,
+					msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -361,10 +362,10 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case EkumiPackage.DATA_FLOW__SOURCE:
-			setSource((Task) newValue);
+			setSource((Activity) newValue);
 			return;
 		case EkumiPackage.DATA_FLOW__DESTINATION:
-			setDestination((Task) newValue);
+			setDestination((Activity) newValue);
 			return;
 		case EkumiPackage.DATA_FLOW__INPUT:
 			setInput((Data) newValue);
@@ -385,10 +386,10 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case EkumiPackage.DATA_FLOW__SOURCE:
-			setSource((Task) null);
+			setSource((Activity) null);
 			return;
 		case EkumiPackage.DATA_FLOW__DESTINATION:
-			setDestination((Task) null);
+			setDestination((Activity) null);
 			return;
 		case EkumiPackage.DATA_FLOW__INPUT:
 			setInput((Data) null);

@@ -2,8 +2,8 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.impl;
 
+import fr.kazejiyu.ekumi.core.ekumi.Activity;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
-import fr.kazejiyu.ekumi.core.ekumi.Task;
 import fr.kazejiyu.ekumi.core.ekumi.Workflow;
 
 import java.util.Collection;
@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class WorkflowImpl extends TaskImpl implements Workflow {
+public class WorkflowImpl extends ActivityImpl implements Workflow {
 	/**
 	 * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -40,7 +40,7 @@ public class WorkflowImpl extends TaskImpl implements Workflow {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Task> tasks;
+	protected EList<Activity> tasks;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -66,9 +66,9 @@ public class WorkflowImpl extends TaskImpl implements Workflow {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Task> getTasks() {
+	public EList<Activity> getTasks() {
 		if (tasks == null) {
-			tasks = new EObjectContainmentEList<Task>(Task.class, this, EkumiPackage.WORKFLOW__TASKS);
+			tasks = new EObjectContainmentEList<Activity>(Activity.class, this, EkumiPackage.WORKFLOW__TASKS);
 		}
 		return tasks;
 	}
@@ -112,7 +112,7 @@ public class WorkflowImpl extends TaskImpl implements Workflow {
 		switch (featureID) {
 		case EkumiPackage.WORKFLOW__TASKS:
 			getTasks().clear();
-			getTasks().addAll((Collection<? extends Task>) newValue);
+			getTasks().addAll((Collection<? extends Activity>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);

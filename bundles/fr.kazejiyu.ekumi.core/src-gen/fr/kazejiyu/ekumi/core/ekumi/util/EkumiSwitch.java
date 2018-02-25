@@ -66,9 +66,9 @@ public class EkumiSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-		case EkumiPackage.TASK: {
-			Task task = (Task) theEObject;
-			T result = caseTask(task);
+		case EkumiPackage.ACTIVITY: {
+			Activity activity = (Activity) theEObject;
+			T result = caseActivity(activity);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -77,7 +77,7 @@ public class EkumiSwitch<T> extends Switch<T> {
 			Workflow workflow = (Workflow) theEObject;
 			T result = caseWorkflow(workflow);
 			if (result == null)
-				result = caseTask(workflow);
+				result = caseActivity(workflow);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -88,7 +88,7 @@ public class EkumiSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseWorkflow(sequence);
 			if (result == null)
-				result = caseTask(sequence);
+				result = caseActivity(sequence);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -99,7 +99,7 @@ public class EkumiSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseWorkflow(multipleInstances);
 			if (result == null)
-				result = caseTask(multipleInstances);
+				result = caseActivity(multipleInstances);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -110,7 +110,7 @@ public class EkumiSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseWorkflow(parallelSplit);
 			if (result == null)
-				result = caseTask(parallelSplit);
+				result = caseActivity(parallelSplit);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -129,23 +129,86 @@ public class EkumiSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case EkumiPackage.STRUCTURED_LOOP: {
+			StructuredLoop structuredLoop = (StructuredLoop) theEObject;
+			T result = caseStructuredLoop(structuredLoop);
+			if (result == null)
+				result = caseWorkflow(structuredLoop);
+			if (result == null)
+				result = caseActivity(structuredLoop);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case EkumiPackage.TESTABLE_SCRIPT: {
+			TestableScript testableScript = (TestableScript) theEObject;
+			T result = caseTestableScript(testableScript);
+			if (result == null)
+				result = caseScript(testableScript);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case EkumiPackage.TASK: {
+			Task task = (Task) theEObject;
+			T result = caseTask(task);
+			if (result == null)
+				result = caseActivity(task);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case EkumiPackage.RUNNABLE_SCRIPT: {
+			RunnableScript runnableScript = (RunnableScript) theEObject;
+			T result = caseRunnableScript(runnableScript);
+			if (result == null)
+				result = caseScript(runnableScript);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case EkumiPackage.SCRIPTABLE_TASK: {
+			ScriptableTask scriptableTask = (ScriptableTask) theEObject;
+			T result = caseScriptableTask(scriptableTask);
+			if (result == null)
+				result = caseTask(scriptableTask);
+			if (result == null)
+				result = caseActivity(scriptableTask);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case EkumiPackage.SCRIPT: {
+			Script script = (Script) theEObject;
+			T result = caseScript(script);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case EkumiPackage.SCRIPTING_LANGUAGE: {
+			ScriptingLanguage scriptingLanguage = (ScriptingLanguage) theEObject;
+			T result = caseScriptingLanguage(scriptingLanguage);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		default:
 			return defaultCase(theEObject);
 		}
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Task</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Activity</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Task</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Activity</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseTask(Task object) {
+	public T caseActivity(Activity object) {
 		return null;
 	}
 
@@ -236,6 +299,111 @@ public class EkumiSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseData(Data object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Structured Loop</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Structured Loop</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStructuredLoop(StructuredLoop object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Testable Script</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Testable Script</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTestableScript(TestableScript object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Task</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Task</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTask(Task object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Runnable Script</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Runnable Script</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRunnableScript(RunnableScript object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Scriptable Task</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Scriptable Task</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseScriptableTask(ScriptableTask object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Script</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Script</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseScript(Script object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Scripting Language</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Scripting Language</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseScriptingLanguage(ScriptingLanguage object) {
 		return null;
 	}
 
