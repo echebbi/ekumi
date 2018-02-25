@@ -6,18 +6,12 @@
 
 <plugin>
    <extension-point id="languages" name="Languages" schema="schema/languages.exsd"/>
-   <extension
-         point="org.eclipse.ui.startup">
-      <startup
-            class="fr.kazejiyu.ekumi.core.Startup">
-      </startup>
-   </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated ekumi -->
       <package
             uri="http://fr.kazejiyu.io/ekumi"
-            class="fr.kazejiyu.ekumi.core.languages.EkumiPackage"
+            class="fr.kazejiyu.ekumi.core.ekumi.EkumiPackage"
             genModel="model/ekumi.genmodel"/>
    </extension>
 
