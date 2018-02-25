@@ -12,7 +12,6 @@ import fr.kazejiyu.ekumi.core.ekumi.ParallelSplit;
 import fr.kazejiyu.ekumi.core.ekumi.RunnableScript;
 import fr.kazejiyu.ekumi.core.ekumi.Script;
 import fr.kazejiyu.ekumi.core.ekumi.ScriptableTask;
-import fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage;
 import fr.kazejiyu.ekumi.core.ekumi.Sequence;
 import fr.kazejiyu.ekumi.core.ekumi.Status;
 import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
@@ -20,6 +19,7 @@ import fr.kazejiyu.ekumi.core.ekumi.Task;
 import fr.kazejiyu.ekumi.core.ekumi.TestResult;
 import fr.kazejiyu.ekumi.core.ekumi.TestableScript;
 import fr.kazejiyu.ekumi.core.ekumi.Workflow;
+import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
