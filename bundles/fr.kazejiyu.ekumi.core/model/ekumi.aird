@@ -1093,7 +1093,7 @@
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_sDAD0BpREei2TZ0vFWg0uw" name="fr.kazejiyu.ekumi.core.languages.ScriptingLanguages" tooltipText="">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_sDAD0BpREei2TZ0vFWg0uw" name="fr.kazejiyu.ekumi.core.languages.ScriptingLanguage" tooltipText="">
         <target xmi:type="ecore:EDataType" href="ekumi.ecore#//ScriptingLanguage"/>
         <semanticElements xmi:type="ecore:EDataType" href="ekumi.ecore#//ScriptingLanguage"/>
         <decorations xmi:type="viewpoint:Decoration" xmi:id="_sDB5ABpREei2TZ0vFWg0uw">

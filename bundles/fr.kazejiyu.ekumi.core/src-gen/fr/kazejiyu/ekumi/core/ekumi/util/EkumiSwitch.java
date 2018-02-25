@@ -21,7 +21,6 @@ import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
 import fr.kazejiyu.ekumi.core.ekumi.Task;
 import fr.kazejiyu.ekumi.core.ekumi.TestableScript;
 import fr.kazejiyu.ekumi.core.ekumi.Workflow;
-import fr.kazejiyu.ekumi.core.languages.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -195,13 +194,6 @@ public class EkumiSwitch<T> extends Switch<T> {
 		case EkumiPackage.SCRIPT: {
 			Script script = (Script) theEObject;
 			T result = caseScript(script);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case EkumiPackage.SCRIPTING_LANGUAGE: {
-			ScriptingLanguage scriptingLanguage = (ScriptingLanguage) theEObject;
-			T result = caseScriptingLanguage(scriptingLanguage);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -403,21 +395,6 @@ public class EkumiSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseScript(Script object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Scripting Language</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Scripting Language</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseScriptingLanguage(ScriptingLanguage object) {
 		return null;
 	}
 

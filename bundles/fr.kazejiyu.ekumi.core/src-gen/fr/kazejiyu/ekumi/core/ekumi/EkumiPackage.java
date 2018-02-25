@@ -4,6 +4,7 @@ package fr.kazejiyu.ekumi.core.ekumi;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
@@ -1269,13 +1270,22 @@ public interface EkumiPackage extends EPackage {
 	int SCRIPTABLE_TASK__SCRIPT = TASK_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Script Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPTABLE_TASK__SCRIPT_PATH = TASK_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Scriptable Task</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCRIPTABLE_TASK_FEATURE_COUNT = TASK_FEATURE_COUNT + 1;
+	int SCRIPTABLE_TASK_FEATURE_COUNT = TASK_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Run</em>' operation.
@@ -1296,50 +1306,14 @@ public interface EkumiPackage extends EPackage {
 	int SCRIPTABLE_TASK_OPERATION_COUNT = TASK_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.languages.ScriptingLanguage <em>Scripting Language</em>}' class.
+	 * The meta object id for the '<em>Scripting Language</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see fr.kazejiyu.ekumi.core.languages.ScriptingLanguage
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getScriptingLanguage()
 	 * @generated
 	 */
-	int SCRIPTING_LANGUAGE = 13;
-
-	/**
-	 * The number of structural features of the '<em>Scripting Language</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCRIPTING_LANGUAGE_FEATURE_COUNT = 0;
-
-	/**
-	 * The operation id for the '<em>Resolve Runnable</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCRIPTING_LANGUAGE___RESOLVE_RUNNABLE__STRING = 0;
-
-	/**
-	 * The operation id for the '<em>Resolve Testable</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCRIPTING_LANGUAGE___RESOLVE_TESTABLE__STRING = 1;
-
-	/**
-	 * The number of operations of the '<em>Scripting Language</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCRIPTING_LANGUAGE_OPERATION_COUNT = 2;
+	int SCRIPTING_LANGUAGE = 15;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.Status <em>Status</em>}' enum.
@@ -1349,7 +1323,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getStatus()
 	 * @generated
 	 */
-	int STATUS = 14;
+	int STATUS = 13;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.TestResult <em>Test Result</em>}' enum.
@@ -1359,7 +1333,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getTestResult()
 	 * @generated
 	 */
-	int TEST_RESULT = 15;
+	int TEST_RESULT = 14;
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Activity <em>Activity</em>}'.
@@ -1699,6 +1673,17 @@ public interface EkumiPackage extends EPackage {
 	EReference getScriptableTask_Script();
 
 	/**
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptableTask#getScriptPath <em>Script Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Script Path</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.ScriptableTask#getScriptPath()
+	 * @see #getScriptableTask()
+	 * @generated
+	 */
+	EAttribute getScriptableTask_ScriptPath();
+
+	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Script <em>Script</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1720,34 +1705,15 @@ public interface EkumiPackage extends EPackage {
 	EAttribute getScript_Path();
 
 	/**
-	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.languages.ScriptingLanguage <em>Scripting Language</em>}'.
+	 * Returns the meta object for data type '{@link fr.kazejiyu.ekumi.core.languages.ScriptingLanguage <em>Scripting Language</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Scripting Language</em>'.
+	 * @return the meta object for data type '<em>Scripting Language</em>'.
 	 * @see fr.kazejiyu.ekumi.core.languages.ScriptingLanguage
+	 * @model instanceClass="fr.kazejiyu.ekumi.core.languages.ScriptingLanguage"
 	 * @generated
 	 */
-	EClass getScriptingLanguage();
-
-	/**
-	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.languages.ScriptingLanguage#resolveRunnable(java.lang.String) <em>Resolve Runnable</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Resolve Runnable</em>' operation.
-	 * @see fr.kazejiyu.ekumi.core.languages.ScriptingLanguage#resolveRunnable(java.lang.String)
-	 * @generated
-	 */
-	EOperation getScriptingLanguage__ResolveRunnable__String();
-
-	/**
-	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.languages.ScriptingLanguage#resolveTestable(java.lang.String) <em>Resolve Testable</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Resolve Testable</em>' operation.
-	 * @see fr.kazejiyu.ekumi.core.languages.ScriptingLanguage#resolveTestable(java.lang.String)
-	 * @generated
-	 */
-	EOperation getScriptingLanguage__ResolveTestable__String();
+	EDataType getScriptingLanguage();
 
 	/**
 	 * Returns the meta object for enum '{@link fr.kazejiyu.ekumi.core.ekumi.Status <em>Status</em>}'.
@@ -2073,6 +2039,14 @@ public interface EkumiPackage extends EPackage {
 		EReference SCRIPTABLE_TASK__SCRIPT = eINSTANCE.getScriptableTask_Script();
 
 		/**
+		 * The meta object literal for the '<em><b>Script Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SCRIPTABLE_TASK__SCRIPT_PATH = eINSTANCE.getScriptableTask_ScriptPath();
+
+		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ScriptImpl <em>Script</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2091,32 +2065,14 @@ public interface EkumiPackage extends EPackage {
 		EAttribute SCRIPT__PATH = eINSTANCE.getScript_Path();
 
 		/**
-		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.languages.ScriptingLanguage <em>Scripting Language</em>}' class.
+		 * The meta object literal for the '<em>Scripting Language</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see fr.kazejiyu.ekumi.core.languages.ScriptingLanguage
 		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getScriptingLanguage()
 		 * @generated
 		 */
-		EClass SCRIPTING_LANGUAGE = eINSTANCE.getScriptingLanguage();
-
-		/**
-		 * The meta object literal for the '<em><b>Resolve Runnable</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation SCRIPTING_LANGUAGE___RESOLVE_RUNNABLE__STRING = eINSTANCE
-				.getScriptingLanguage__ResolveRunnable__String();
-
-		/**
-		 * The meta object literal for the '<em><b>Resolve Testable</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation SCRIPTING_LANGUAGE___RESOLVE_TESTABLE__STRING = eINSTANCE
-				.getScriptingLanguage__ResolveTestable__String();
+		EDataType SCRIPTING_LANGUAGE = eINSTANCE.getScriptingLanguage();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.Status <em>Status</em>}' enum.

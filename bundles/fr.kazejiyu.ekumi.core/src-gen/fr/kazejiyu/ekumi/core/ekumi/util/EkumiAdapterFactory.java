@@ -23,7 +23,6 @@ import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
 import fr.kazejiyu.ekumi.core.ekumi.Task;
 import fr.kazejiyu.ekumi.core.ekumi.TestableScript;
 import fr.kazejiyu.ekumi.core.ekumi.Workflow;
-import fr.kazejiyu.ekumi.core.languages.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -143,11 +142,6 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseScript(Script object) {
 			return createScriptAdapter();
-		}
-
-		@Override
-		public Adapter caseScriptingLanguage(ScriptingLanguage object) {
-			return createScriptingLanguageAdapter();
 		}
 
 		@Override
@@ -348,20 +342,6 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createScriptAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.languages.ScriptingLanguage <em>Scripting Language</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see fr.kazejiyu.ekumi.core.languages.ScriptingLanguage
-	 * @generated
-	 */
-	public Adapter createScriptingLanguageAdapter() {
 		return null;
 	}
 

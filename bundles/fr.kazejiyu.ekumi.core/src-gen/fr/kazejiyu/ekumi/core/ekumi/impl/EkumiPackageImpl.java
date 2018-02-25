@@ -20,9 +20,9 @@ import fr.kazejiyu.ekumi.core.ekumi.TestResult;
 import fr.kazejiyu.ekumi.core.ekumi.TestableScript;
 import fr.kazejiyu.ekumi.core.ekumi.Workflow;
 import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
@@ -133,13 +133,6 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass scriptingLanguageEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EEnum statusEEnum = null;
 
 	/**
@@ -148,6 +141,13 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * @generated
 	 */
 	private EEnum testResultEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType scriptingLanguageEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -505,6 +505,15 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getScriptableTask_ScriptPath() {
+		return (EAttribute) scriptableTaskEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getScript() {
 		return scriptEClass;
 	}
@@ -523,26 +532,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getScriptingLanguage() {
-		return scriptingLanguageEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getScriptingLanguage__ResolveRunnable__String() {
-		return scriptingLanguageEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getScriptingLanguage__ResolveTestable__String() {
-		return scriptingLanguageEClass.getEOperations().get(1);
+	public EDataType getScriptingLanguage() {
+		return scriptingLanguageEDataType;
 	}
 
 	/**
@@ -635,17 +626,17 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 
 		scriptableTaskEClass = createEClass(SCRIPTABLE_TASK);
 		createEReference(scriptableTaskEClass, SCRIPTABLE_TASK__SCRIPT);
+		createEAttribute(scriptableTaskEClass, SCRIPTABLE_TASK__SCRIPT_PATH);
 
 		scriptEClass = createEClass(SCRIPT);
 		createEAttribute(scriptEClass, SCRIPT__PATH);
 
-		scriptingLanguageEClass = createEClass(SCRIPTING_LANGUAGE);
-		createEOperation(scriptingLanguageEClass, SCRIPTING_LANGUAGE___RESOLVE_RUNNABLE__STRING);
-		createEOperation(scriptingLanguageEClass, SCRIPTING_LANGUAGE___RESOLVE_TESTABLE__STRING);
-
 		// Create enums
 		statusEEnum = createEEnum(STATUS);
 		testResultEEnum = createEEnum(TEST_RESULT);
+
+		// Create data types
+		scriptingLanguageEDataType = createEDataType(SCRIPTING_LANGUAGE);
 	}
 
 	/**
@@ -773,21 +764,13 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		initEReference(getScriptableTask_Script(), this.getRunnableScript(), null, "script", null, 0, 1,
 				ScriptableTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScriptableTask_ScriptPath(), ecorePackage.getEString(), "scriptPath", null, 0, 1,
+				ScriptableTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(scriptEClass, Script.class, "Script", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getScript_Path(), ecorePackage.getEString(), "path", null, 0, 1, Script.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(scriptingLanguageEClass, ScriptingLanguage.class, "ScriptingLanguage", IS_ABSTRACT, IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-
-		EOperation op = initEOperation(getScriptingLanguage__ResolveRunnable__String(), this.getRunnableScript(),
-				"resolveRunnable", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "path", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = initEOperation(getScriptingLanguage__ResolveTestable__String(), this.getTestableScript(),
-				"resolveTestable", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "path", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(statusEEnum, Status.class, "Status");
@@ -799,6 +782,10 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		initEEnum(testResultEEnum, TestResult.class, "TestResult");
 		addEEnumLiteral(testResultEEnum, TestResult.FULFILLED);
 		addEEnumLiteral(testResultEEnum, TestResult.UNSATISFIED);
+
+		// Initialize data types
+		initEDataType(scriptingLanguageEDataType, ScriptingLanguage.class, "ScriptingLanguage", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
