@@ -14,5 +14,6 @@
 	<description>EKumi's build environment.</description>
 
 	<modules>
+        <module>fr.kazejiyu.ekumi.target</module>
 	</modules>
 </project>
