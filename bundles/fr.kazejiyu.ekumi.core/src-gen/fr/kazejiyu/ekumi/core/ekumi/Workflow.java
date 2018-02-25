@@ -20,10 +20,10 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Workflow extends Task {
+public interface Workflow extends Activity {
 	/**
 	 * Returns the value of the '<em><b>Tasks</b></em>' containment reference list.
-	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Task}.
+	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Activity}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Tasks</em>' containment reference list isn't clear,
@@ -35,6 +35,6 @@ public interface Workflow extends Task {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Task> getTasks();
+	EList<Activity> getTasks();
 
 } // Workflow

@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface DataFlow extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.Task#getOutgoingFlows <em>Outgoing Flows</em>}'.
+	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getOutgoingFlows <em>Outgoing Flows</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Source</em>' container reference isn't clear,
@@ -34,13 +34,13 @@ public interface DataFlow extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Source</em>' container reference.
-	 * @see #setSource(Task)
+	 * @see #setSource(Activity)
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getDataFlow_Source()
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Task#getOutgoingFlows
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getOutgoingFlows
 	 * @model opposite="outgoingFlows" transient="false"
 	 * @generated
 	 */
-	Task getSource();
+	Activity getSource();
 
 	/**
 	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getSource <em>Source</em>}' container reference.
@@ -50,11 +50,11 @@ public interface DataFlow extends EObject {
 	 * @see #getSource()
 	 * @generated
 	 */
-	void setSource(Task value);
+	void setSource(Activity value);
 
 	/**
 	 * Returns the value of the '<em><b>Destination</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.Task#getIncomingFlows <em>Incoming Flows</em>}'.
+	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getIncomingFlows <em>Incoming Flows</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Destination</em>' reference isn't clear,
@@ -62,13 +62,13 @@ public interface DataFlow extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Destination</em>' reference.
-	 * @see #setDestination(Task)
+	 * @see #setDestination(Activity)
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getDataFlow_Destination()
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Task#getIncomingFlows
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getIncomingFlows
 	 * @model opposite="incomingFlows" required="true"
 	 * @generated
 	 */
-	Task getDestination();
+	Activity getDestination();
 
 	/**
 	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getDestination <em>Destination</em>}' reference.
@@ -78,7 +78,7 @@ public interface DataFlow extends EObject {
 	 * @see #getDestination()
 	 * @generated
 	 */
-	void setDestination(Task value);
+	void setDestination(Activity value);
 
 	/**
 	 * Returns the value of the '<em><b>Input</b></em>' reference.

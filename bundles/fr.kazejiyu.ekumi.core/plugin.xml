@@ -6,6 +6,13 @@
 
 <plugin>
 
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="fr.kazejiyu.ekumi.core.Startup">
+      </startup>
+   </extension>
+
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated ekumi -->
       <package
