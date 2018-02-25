@@ -1296,10 +1296,10 @@ public interface EkumiPackage extends EPackage {
 	int SCRIPTABLE_TASK_OPERATION_COUNT = TASK_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage <em>Scripting Language</em>}' class.
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.languages.ScriptingLanguage <em>Scripting Language</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage
+	 * @see fr.kazejiyu.ekumi.core.languages.ScriptingLanguage
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getScriptingLanguage()
 	 * @generated
 	 */
@@ -1720,31 +1720,31 @@ public interface EkumiPackage extends EPackage {
 	EAttribute getScript_Path();
 
 	/**
-	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage <em>Scripting Language</em>}'.
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.languages.ScriptingLanguage <em>Scripting Language</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Scripting Language</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage
+	 * @see fr.kazejiyu.ekumi.core.languages.ScriptingLanguage
 	 * @generated
 	 */
 	EClass getScriptingLanguage();
 
 	/**
-	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage#resolveRunnable(java.lang.String) <em>Resolve Runnable</em>}' operation.
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.languages.ScriptingLanguage#resolveRunnable(java.lang.String) <em>Resolve Runnable</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Resolve Runnable</em>' operation.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage#resolveRunnable(java.lang.String)
+	 * @see fr.kazejiyu.ekumi.core.languages.ScriptingLanguage#resolveRunnable(java.lang.String)
 	 * @generated
 	 */
 	EOperation getScriptingLanguage__ResolveRunnable__String();
 
 	/**
-	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage#resolveTestable(java.lang.String) <em>Resolve Testable</em>}' operation.
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.languages.ScriptingLanguage#resolveTestable(java.lang.String) <em>Resolve Testable</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Resolve Testable</em>' operation.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage#resolveTestable(java.lang.String)
+	 * @see fr.kazejiyu.ekumi.core.languages.ScriptingLanguage#resolveTestable(java.lang.String)
 	 * @generated
 	 */
 	EOperation getScriptingLanguage__ResolveTestable__String();
@@ -2091,10 +2091,10 @@ public interface EkumiPackage extends EPackage {
 		EAttribute SCRIPT__PATH = eINSTANCE.getScript_Path();
 
 		/**
-		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage <em>Scripting Language</em>}' class.
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.languages.ScriptingLanguage <em>Scripting Language</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage
+		 * @see fr.kazejiyu.ekumi.core.languages.ScriptingLanguage
 		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getScriptingLanguage()
 		 * @generated
 		 */

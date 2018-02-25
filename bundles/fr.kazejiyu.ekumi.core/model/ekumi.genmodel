@@ -31,6 +31,9 @@
         <ecoreEnumLiteral href="ekumi.ecore#//TestResult/UNSATISFIED"/>
       </genEnumLiterals>
     </genEnums>
+    <genDataTypes>
+      <ecoreDataType href="ekumi.ecore#//ScriptingLanguage"/>
+    </genDataTypes>
     <genClasses>
       <ecoreClass href="ekumi.ecore#//Activity"/>
       <genFeatures createChild="false">
@@ -129,33 +132,12 @@
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="ekumi.ecore#//ScriptableTask/scriptPath"/>
       </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="ekumi.ecore#//ScriptableTask/language"/>
-      </genFeatures>
     </genClasses>
     <genClasses>
       <ecoreClass href="ekumi.ecore#//Script"/>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="ekumi.ecore#//Script/path"/>
       </genFeatures>
-    </genClasses>
-    <genClasses image="false">
-      <ecoreClass href="ekumi.ecore#//ScriptingLanguage"/>
-      <genOperations>
-        <ecoreOperation href="ekumi.ecore#//ScriptingLanguage/resolveRunnable"/>
-        <genParameters>
-          <ecoreParameter href="ekumi.ecore#//ScriptingLanguage/resolveRunnable/path"/>
-        </genParameters>
-      </genOperations>
-      <genOperations>
-        <ecoreOperation href="ekumi.ecore#//ScriptingLanguage/resolveTestable"/>
-        <genParameters>
-          <ecoreParameter href="ekumi.ecore#//ScriptingLanguage/resolveTestable/path"/>
-        </genParameters>
-      </genOperations>
-      <genOperations>
-        <ecoreOperation href="ekumi.ecore#//ScriptingLanguage/getName"/>
-      </genOperations>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

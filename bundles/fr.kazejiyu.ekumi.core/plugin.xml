@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.0"?>
+<?eclipse version="3.5"?>
 
 <!--
 -->
 
 <plugin>
-   <extension-point id="languages" name="Languagues" schema="schema/languages.exsd"/>
-
+   <extension-point id="languages" name="Languages" schema="schema/languages.exsd"/>
    <extension
          point="org.eclipse.ui.startup">
       <startup
@@ -18,7 +17,7 @@
       <!-- @generated ekumi -->
       <package
             uri="http://fr.kazejiyu.io/ekumi"
-            class="fr.kazejiyu.ekumi.core.ekumi.EkumiPackage"
+            class="fr.kazejiyu.ekumi.core.languages.EkumiPackage"
             genModel="model/ekumi.genmodel"/>
    </extension>
 

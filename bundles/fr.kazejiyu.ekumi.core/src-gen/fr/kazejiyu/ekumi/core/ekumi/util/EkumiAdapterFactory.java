@@ -2,14 +2,28 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.util;
 
-import fr.kazejiyu.ekumi.core.ekumi.*;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
+
+import fr.kazejiyu.ekumi.core.ekumi.Activity;
+import fr.kazejiyu.ekumi.core.ekumi.Data;
+import fr.kazejiyu.ekumi.core.ekumi.DataFlow;
+import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
+import fr.kazejiyu.ekumi.core.ekumi.MultipleInstances;
+import fr.kazejiyu.ekumi.core.ekumi.ParallelSplit;
+import fr.kazejiyu.ekumi.core.ekumi.RunnableScript;
+import fr.kazejiyu.ekumi.core.ekumi.Script;
+import fr.kazejiyu.ekumi.core.ekumi.ScriptableTask;
+import fr.kazejiyu.ekumi.core.ekumi.Sequence;
+import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
+import fr.kazejiyu.ekumi.core.ekumi.Task;
+import fr.kazejiyu.ekumi.core.ekumi.TestableScript;
+import fr.kazejiyu.ekumi.core.ekumi.Workflow;
+import fr.kazejiyu.ekumi.core.languages.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -338,13 +352,13 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage <em>Scripting Language</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.languages.ScriptingLanguage <em>Scripting Language</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.ScriptingLanguage
+	 * @see fr.kazejiyu.ekumi.core.languages.ScriptingLanguage
 	 * @generated
 	 */
 	public Adapter createScriptingLanguageAdapter() {

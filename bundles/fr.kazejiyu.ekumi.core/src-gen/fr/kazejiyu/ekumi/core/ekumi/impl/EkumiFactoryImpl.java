@@ -2,8 +2,6 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.impl;
 
-import fr.kazejiyu.ekumi.core.ekumi.*;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -12,6 +10,23 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import fr.kazejiyu.ekumi.core.ekumi.Data;
+import fr.kazejiyu.ekumi.core.ekumi.DataFlow;
+import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
+import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
+import fr.kazejiyu.ekumi.core.ekumi.MultipleInstances;
+import fr.kazejiyu.ekumi.core.ekumi.ParallelSplit;
+import fr.kazejiyu.ekumi.core.ekumi.RunnableScript;
+import fr.kazejiyu.ekumi.core.ekumi.ScriptableTask;
+import fr.kazejiyu.ekumi.core.ekumi.Sequence;
+import fr.kazejiyu.ekumi.core.ekumi.Status;
+import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
+import fr.kazejiyu.ekumi.core.ekumi.Task;
+import fr.kazejiyu.ekumi.core.ekumi.TestResult;
+import fr.kazejiyu.ekumi.core.ekumi.TestableScript;
+import fr.kazejiyu.ekumi.core.ekumi.Workflow;
+import fr.kazejiyu.ekumi.core.languages.*;
 
 /**
  * <!-- begin-user-doc -->
