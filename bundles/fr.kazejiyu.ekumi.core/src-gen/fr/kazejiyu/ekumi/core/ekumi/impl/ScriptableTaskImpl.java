@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ScriptableTaskImpl#getScript <em>Script</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ScriptableTaskImpl#getScriptPath <em>Script Path</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,6 +38,25 @@ public class ScriptableTaskImpl extends TaskImpl implements ScriptableTask {
 	 * @ordered
 	 */
 	protected RunnableScript script;
+
+	/**
+	 * The default value of the '{@link #getScriptPath() <em>Script Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getScriptPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SCRIPT_PATH_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getScriptPath() <em>Script Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getScriptPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected String scriptPath = SCRIPT_PATH_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -112,6 +132,28 @@ public class ScriptableTaskImpl extends TaskImpl implements ScriptableTask {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getScriptPath() {
+		return scriptPath;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setScriptPath(String newScriptPath) {
+		String oldScriptPath = scriptPath;
+		scriptPath = newScriptPath;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.SCRIPTABLE_TASK__SCRIPT_PATH,
+					oldScriptPath, scriptPath));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -131,6 +173,8 @@ public class ScriptableTaskImpl extends TaskImpl implements ScriptableTask {
 		switch (featureID) {
 		case EkumiPackage.SCRIPTABLE_TASK__SCRIPT:
 			return getScript();
+		case EkumiPackage.SCRIPTABLE_TASK__SCRIPT_PATH:
+			return getScriptPath();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -145,6 +189,9 @@ public class ScriptableTaskImpl extends TaskImpl implements ScriptableTask {
 		switch (featureID) {
 		case EkumiPackage.SCRIPTABLE_TASK__SCRIPT:
 			setScript((RunnableScript) newValue);
+			return;
+		case EkumiPackage.SCRIPTABLE_TASK__SCRIPT_PATH:
+			setScriptPath((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -161,6 +208,9 @@ public class ScriptableTaskImpl extends TaskImpl implements ScriptableTask {
 		case EkumiPackage.SCRIPTABLE_TASK__SCRIPT:
 			setScript((RunnableScript) null);
 			return;
+		case EkumiPackage.SCRIPTABLE_TASK__SCRIPT_PATH:
+			setScriptPath(SCRIPT_PATH_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -175,8 +225,27 @@ public class ScriptableTaskImpl extends TaskImpl implements ScriptableTask {
 		switch (featureID) {
 		case EkumiPackage.SCRIPTABLE_TASK__SCRIPT:
 			return script != null;
+		case EkumiPackage.SCRIPTABLE_TASK__SCRIPT_PATH:
+			return SCRIPT_PATH_EDEFAULT == null ? scriptPath != null : !SCRIPT_PATH_EDEFAULT.equals(scriptPath);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (scriptPath: ");
+		result.append(scriptPath);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ScriptableTaskImpl

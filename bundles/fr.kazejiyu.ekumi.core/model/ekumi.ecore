@@ -64,5 +64,5 @@
     <eLiterals name="FULFILLED"/>
     <eLiterals name="UNSATISFIED" value="1"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="ScriptingLanguage" instanceClassName="fr.kazejiyu.ekumi.core.languages.ScriptingLanguages"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="ScriptingLanguage" instanceClassName="fr.kazejiyu.ekumi.core.languages.ScriptingLanguage"/>
 </ecore:EPackage>

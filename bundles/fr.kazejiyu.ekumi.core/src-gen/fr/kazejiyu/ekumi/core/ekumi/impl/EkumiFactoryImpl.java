@@ -6,9 +6,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import fr.kazejiyu.ekumi.core.ekumi.Data;
@@ -26,7 +24,7 @@ import fr.kazejiyu.ekumi.core.ekumi.Task;
 import fr.kazejiyu.ekumi.core.ekumi.TestResult;
 import fr.kazejiyu.ekumi.core.ekumi.TestableScript;
 import fr.kazejiyu.ekumi.core.ekumi.Workflow;
-import fr.kazejiyu.ekumi.core.languages.*;
+import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
 
 /**
  * <!-- begin-user-doc -->
@@ -110,6 +108,8 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 			return createStatusFromString(eDataType, initialValue);
 		case EkumiPackage.TEST_RESULT:
 			return createTestResultFromString(eDataType, initialValue);
+		case EkumiPackage.SCRIPTING_LANGUAGE:
+			return createScriptingLanguageFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -127,6 +127,8 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 			return convertStatusToString(eDataType, instanceValue);
 		case EkumiPackage.TEST_RESULT:
 			return convertTestResultToString(eDataType, instanceValue);
+		case EkumiPackage.SCRIPTING_LANGUAGE:
+			return convertScriptingLanguageToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -284,6 +286,24 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 	 */
 	public String convertTestResultToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ScriptingLanguage createScriptingLanguageFromString(EDataType eDataType, String initialValue) {
+		return (ScriptingLanguage) super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertScriptingLanguageToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

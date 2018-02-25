@@ -12,6 +12,7 @@ package fr.kazejiyu.ekumi.core.ekumi;
  * </p>
  * <ul>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.ScriptableTask#getScript <em>Script</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.ScriptableTask#getScriptPath <em>Script Path</em>}</li>
  * </ul>
  *
  * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getScriptableTask()
@@ -44,5 +45,31 @@ public interface ScriptableTask extends Task {
 	 * @generated
 	 */
 	void setScript(RunnableScript value);
+
+	/**
+	 * Returns the value of the '<em><b>Script Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Script Path</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Script Path</em>' attribute.
+	 * @see #setScriptPath(String)
+	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getScriptableTask_ScriptPath()
+	 * @model
+	 * @generated
+	 */
+	String getScriptPath();
+
+	/**
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptableTask#getScriptPath <em>Script Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Script Path</em>' attribute.
+	 * @see #getScriptPath()
+	 * @generated
+	 */
+	void setScriptPath(String value);
 
 } // ScriptableTask
