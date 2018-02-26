@@ -15,6 +15,7 @@
 
 	<modules>
         <module>fr.kazejiyu.ekumi.core</module>
+        <module>fr.kazejiyu.ekumi.datatypes</module>
         <module>fr.kazejiyu.ekumi.languages</module>
 	</modules>
 
