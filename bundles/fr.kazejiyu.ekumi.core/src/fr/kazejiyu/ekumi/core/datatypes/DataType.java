@@ -1,9 +1,13 @@
 package fr.kazejiyu.ekumi.core.datatypes;
 
+import fr.kazejiyu.ekumi.core.datatypes.exceptions.DataTypeSerializationException;
+import fr.kazejiyu.ekumi.core.datatypes.exceptions.DataTypeUnserializationException;
 import fr.kazejiyu.ekumi.core.ekumi.Data;
 
 /**
  * Defines the type of a {@link Data}.
+ * 
+ * @param <T> The Java class of the type.
  * 
  * @author Emmanuel CHEBBI
  */
@@ -30,20 +34,29 @@ public interface DataType<T> {
 	/**
 	 * Returns a String representation of the type.<br>
 	 * <br>
-	 * For any type {@code t}, the following assertion must be {@code true}:
-	 * <pre>{@code t.unserialize(
+	 * For any type {@code type}, the following assertion must be {@code true}:
+	 * <pre>{@code instance.equals( type.unserialize(type.serialize(instance)) );}</pre>
 	 * 
 	 * @return a String representation of the type.
 	 * 
+	 * @throws DataTypeSerializationException if T cannot be turned into a String
+	 * 
 	 * @see #unserialize(String)
 	 */
-	String serialize(T object);
+	String serialize(T instance) throws DataTypeSerializationException;
 	
 	/**
+	 * Returns a new instance of the type from a given representation.<br>
+	 * <br>
+	 * For any type {@code type}, the following assertion must be {@code true}:
+	 * <pre>{@code instance.equals( type.unserialize(type.serialize(instance)) );}</pre>
 	 * 
 	 * @param representation
+	 * 			The string representation of the type.
+	 * 
+	 * @throws DataTypeUnserializationException if representation cannot be turned into an instance of T
 	 * 
 	 * @see #serialize()
 	 */
-	T unserialize(String representation);
+	T unserialize(String representation) throws DataTypeUnserializationException;
 }
