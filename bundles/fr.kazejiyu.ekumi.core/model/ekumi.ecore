@@ -37,6 +37,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Data">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//DataType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StructuredLoop" eSuperTypes="#//Workflow">
     <eStructuralFeatures xsi:type="ecore:EReference" name="test" lowerBound="1" eType="#//TestableScript"
@@ -68,4 +69,5 @@
     <eLiterals name="UNSATISFIED" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="ScriptingLanguage" instanceClassName="fr.kazejiyu.ekumi.core.languages.ScriptingLanguage"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="DataType" instanceClassName="fr.kazejiyu.ekumi.core.datatypes.DataType"/>
 </ecore:EPackage>

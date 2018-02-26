@@ -24,6 +24,7 @@
       <genEnumLiterals ecoreEnumLiteral="ekumi.ecore#//TestResult/UNSATISFIED"/>
     </genEnums>
     <genDataTypes ecoreDataType="ekumi.ecore#//ScriptingLanguage"/>
+    <genDataTypes ecoreDataType="ekumi.ecore#//DataType"/>
     <genClasses ecoreClass="ekumi.ecore#//Activity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Activity/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Activity/name"/>
@@ -50,6 +51,7 @@
     </genClasses>
     <genClasses ecoreClass="ekumi.ecore#//Data">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Data/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Data/type"/>
     </genClasses>
     <genClasses ecoreClass="ekumi.ecore#//StructuredLoop">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//StructuredLoop/test"/>
