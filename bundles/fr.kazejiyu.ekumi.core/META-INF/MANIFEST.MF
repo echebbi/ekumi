@@ -8,6 +8,7 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: fr.kazejiyu.ekumi.core.datatypes,
+ fr.kazejiyu.ekumi.core.datatypes.exceptions,
  fr.kazejiyu.ekumi.core.ekumi,
  fr.kazejiyu.ekumi.core.ekumi.impl,
  fr.kazejiyu.ekumi.core.ekumi.util,
