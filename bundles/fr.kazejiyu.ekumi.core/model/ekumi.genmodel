@@ -1,143 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/fr.kazejiyu.ekumi.core/src-gen" creationIcons="false" editDirectory="/fr.kazejiyu.ekumi.core.edit/src-gen" editorDirectory="/fr.kazejiyu.ekumi.core.editor/src-gen" modelPluginID="fr.kazejiyu.ekumi.core" redirection="" modelName="Ekumi" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/fr.kazejiyu.ekumi.core/src-gen" creationIcons="false"
+    editDirectory="/fr.kazejiyu.ekumi.core.edit/src-gen" editorDirectory="/fr.kazejiyu.ekumi.core.editor/src-gen"
+    modelPluginID="fr.kazejiyu.ekumi.core" redirection="" modelName="Ekumi" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
   <genAnnotations source="http://www.eclipse.org/OCL/GenModel">
     <details key="Use Delegates" value="false"/>
   </genAnnotations>
   <foreignModel>ekumi.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>
-  <genPackages prefix="Ekumi" basePackage="fr.kazejiyu.ekumi.core" disposableProviderFactory="true">
-    <ecorePackage href="ekumi.ecore#/"/>
-    <genEnums typeSafeEnumCompatible="false">
-      <ecoreEnum href="ekumi.ecore#//Status"/>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="ekumi.ecore#//Status/IDLE"/>
-      </genEnumLiterals>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="ekumi.ecore#//Status/RUNNING"/>
-      </genEnumLiterals>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="ekumi.ecore#//Status/SUCCEEDED"/>
-      </genEnumLiterals>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="ekumi.ecore#//Status/FAILED"/>
-      </genEnumLiterals>
+  <genPackages prefix="Ekumi" basePackage="fr.kazejiyu.ekumi.core" disposableProviderFactory="true"
+      ecorePackage="ekumi.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ekumi.ecore#//Status">
+      <genEnumLiterals ecoreEnumLiteral="ekumi.ecore#//Status/IDLE"/>
+      <genEnumLiterals ecoreEnumLiteral="ekumi.ecore#//Status/RUNNING"/>
+      <genEnumLiterals ecoreEnumLiteral="ekumi.ecore#//Status/SUCCEEDED"/>
+      <genEnumLiterals ecoreEnumLiteral="ekumi.ecore#//Status/FAILED"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false">
-      <ecoreEnum href="ekumi.ecore#//TestResult"/>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="ekumi.ecore#//TestResult/FULFILLED"/>
-      </genEnumLiterals>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="ekumi.ecore#//TestResult/UNSATISFIED"/>
-      </genEnumLiterals>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ekumi.ecore#//TestResult">
+      <genEnumLiterals ecoreEnumLiteral="ekumi.ecore#//TestResult/FULFILLED"/>
+      <genEnumLiterals ecoreEnumLiteral="ekumi.ecore#//TestResult/UNSATISFIED"/>
     </genEnums>
-    <genDataTypes>
-      <ecoreDataType href="ekumi.ecore#//ScriptingLanguage"/>
-    </genDataTypes>
-    <genClasses>
-      <ecoreClass href="ekumi.ecore#//Activity"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="ekumi.ecore#//Activity/id"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="ekumi.ecore#//Activity/name"/>
-      </genFeatures>
-      <genFeatures children="true" createChild="true" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="ekumi.ecore#//Activity/outgoingFlows"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="ekumi.ecore#//Activity/incomingFlows"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="ekumi.ecore#//Activity/inputs"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="ekumi.ecore#//Activity/outputs"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="ekumi.ecore#//Activity/successors"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="ekumi.ecore#//Activity/predecessor"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="ekumi.ecore#//Activity/status"/>
-      </genFeatures>
-      <genOperations>
-        <ecoreOperation href="ekumi.ecore#//Activity/run"/>
-      </genOperations>
+    <genDataTypes ecoreDataType="ekumi.ecore#//ScriptingLanguage"/>
+    <genClasses ecoreClass="ekumi.ecore#//Activity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Activity/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Activity/name"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Activity/outgoingFlows"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Activity/incomingFlows"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//Activity/inputs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//Activity/outputs"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Activity/successors"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Activity/predecessor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Activity/status"/>
+      <genOperations ecoreOperation="ekumi.ecore#//Activity/run"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="ekumi.ecore#//Workflow"/>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="ekumi.ecore#//Workflow/tasks"/>
-      </genFeatures>
+    <genClasses ecoreClass="ekumi.ecore#//Workflow">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//Workflow/tasks"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="ekumi.ecore#//Sequence"/>
+    <genClasses ecoreClass="ekumi.ecore#//Sequence"/>
+    <genClasses ecoreClass="ekumi.ecore#//MultipleInstances"/>
+    <genClasses ecoreClass="ekumi.ecore#//ParallelSplit"/>
+    <genClasses ecoreClass="ekumi.ecore#//DataFlow">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//DataFlow/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//DataFlow/destination"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//DataFlow/input"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//DataFlow/output"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="ekumi.ecore#//MultipleInstances"/>
+    <genClasses ecoreClass="ekumi.ecore#//Data">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Data/name"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="ekumi.ecore#//ParallelSplit"/>
+    <genClasses ecoreClass="ekumi.ecore#//StructuredLoop">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//StructuredLoop/test"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="ekumi.ecore#//DataFlow"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="ekumi.ecore#//DataFlow/source"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="ekumi.ecore#//DataFlow/destination"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="ekumi.ecore#//DataFlow/input"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="ekumi.ecore#//DataFlow/output"/>
-      </genFeatures>
+    <genClasses ecoreClass="ekumi.ecore#//TestableScript">
+      <genOperations ecoreOperation="ekumi.ecore#//TestableScript/check"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="ekumi.ecore#//Data"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="ekumi.ecore#//Data/name"/>
-      </genFeatures>
+    <genClasses ecoreClass="ekumi.ecore#//Task"/>
+    <genClasses ecoreClass="ekumi.ecore#//RunnableScript">
+      <genOperations ecoreOperation="ekumi.ecore#//RunnableScript/run"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="ekumi.ecore#//StructuredLoop"/>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="ekumi.ecore#//StructuredLoop/test"/>
-      </genFeatures>
+    <genClasses ecoreClass="ekumi.ecore#//ScriptableTask">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//ScriptableTask/script"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//ScriptableTask/scriptPath"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="ekumi.ecore#//TestableScript"/>
-      <genOperations>
-        <ecoreOperation href="ekumi.ecore#//TestableScript/check"/>
-      </genOperations>
-    </genClasses>
-    <genClasses>
-      <ecoreClass href="ekumi.ecore#//Task"/>
-    </genClasses>
-    <genClasses>
-      <ecoreClass href="ekumi.ecore#//RunnableScript"/>
-      <genOperations>
-        <ecoreOperation href="ekumi.ecore#//RunnableScript/run"/>
-      </genOperations>
-    </genClasses>
-    <genClasses>
-      <ecoreClass href="ekumi.ecore#//ScriptableTask"/>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="ekumi.ecore#//ScriptableTask/script"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="ekumi.ecore#//ScriptableTask/scriptPath"/>
-      </genFeatures>
-    </genClasses>
-    <genClasses>
-      <ecoreClass href="ekumi.ecore#//Script"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="ekumi.ecore#//Script/path"/>
-      </genFeatures>
+    <genClasses ecoreClass="ekumi.ecore#//Script">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Script/path"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
