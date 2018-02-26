@@ -3,7 +3,9 @@
 <plugin>
    <extension
          point="fr.kazejiyu.ekumi.core.languages">
-      <language></language>
+      <language
+            class="fr.kazejiyu.ekumi.languages.java.JavaLanguage"
+            name="Java"></language>
    </extension>
 
 </plugin>
