@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension
+         point="fr.kazejiyu.ekumi.core.datatypes">
+      <datatype
+            class="fr.kazejiyu.ekumi.datatypes.String"
+            name="fr.kazejiyu.ekumi.datatypes.string">
+      </datatype>
+      <datatype
+            class="fr.kazejiyu.ekumi.datatypes.DoubleType"
+            name="fr.kazejiyu.ekumi.datatypes.double">
+      </datatype>
+   </extension>
 
 </plugin>
