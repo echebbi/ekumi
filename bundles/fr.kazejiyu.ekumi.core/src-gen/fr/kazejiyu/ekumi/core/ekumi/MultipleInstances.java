@@ -12,5 +12,5 @@ package fr.kazejiyu.ekumi.core.ekumi;
  * @model
  * @generated
  */
-public interface MultipleInstances extends Workflow {
+public interface MultipleInstances extends Activity {
 } // MultipleInstances

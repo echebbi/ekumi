@@ -3,6 +3,7 @@
 package fr.kazejiyu.ekumi.core.ekumi.impl;
 
 import fr.kazejiyu.ekumi.core.ekumi.Activity;
+import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.Data;
 import fr.kazejiyu.ekumi.core.ekumi.DataFlow;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
@@ -45,6 +46,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getSuccessors <em>Successors</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getPredecessor <em>Predecessor</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getStatus <em>Status</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getEnvironment <em>Environment</em>}</li>
  * </ul>
  *
  * @generated
@@ -169,6 +171,16 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected Status status = STATUS_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getEnvironment() <em>Environment</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEnvironment()
+	 * @generated
+	 * @ordered
+	 */
+	protected Context environment;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -388,6 +400,46 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Context getEnvironment() {
+		if (environment != null && environment.eIsProxy()) {
+			InternalEObject oldEnvironment = (InternalEObject) environment;
+			environment = (Context) eResolveProxy(oldEnvironment);
+			if (environment != oldEnvironment) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EkumiPackage.ACTIVITY__ENVIRONMENT,
+							oldEnvironment, environment));
+			}
+		}
+		return environment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Context basicGetEnvironment() {
+		return environment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEnvironment(Context newEnvironment) {
+		Context oldEnvironment = environment;
+		environment = newEnvironment;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.ACTIVITY__ENVIRONMENT, oldEnvironment,
+					environment));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void run() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -470,6 +522,10 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 			return basicGetPredecessor();
 		case EkumiPackage.ACTIVITY__STATUS:
 			return getStatus();
+		case EkumiPackage.ACTIVITY__ENVIRONMENT:
+			if (resolve)
+				return getEnvironment();
+			return basicGetEnvironment();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -515,6 +571,9 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 		case EkumiPackage.ACTIVITY__STATUS:
 			setStatus((Status) newValue);
 			return;
+		case EkumiPackage.ACTIVITY__ENVIRONMENT:
+			setEnvironment((Context) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -554,6 +613,9 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 		case EkumiPackage.ACTIVITY__STATUS:
 			setStatus(STATUS_EDEFAULT);
 			return;
+		case EkumiPackage.ACTIVITY__ENVIRONMENT:
+			setEnvironment((Context) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -584,6 +646,8 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 			return predecessor != null;
 		case EkumiPackage.ACTIVITY__STATUS:
 			return status != STATUS_EDEFAULT;
+		case EkumiPackage.ACTIVITY__ENVIRONMENT:
+			return environment != null;
 		}
 		return super.eIsSet(featureID);
 	}

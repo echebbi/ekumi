@@ -2,27 +2,14 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.util;
 
+import fr.kazejiyu.ekumi.core.ekumi.*;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
-
-import fr.kazejiyu.ekumi.core.ekumi.Activity;
-import fr.kazejiyu.ekumi.core.ekumi.Data;
-import fr.kazejiyu.ekumi.core.ekumi.DataFlow;
-import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
-import fr.kazejiyu.ekumi.core.ekumi.MultipleInstances;
-import fr.kazejiyu.ekumi.core.ekumi.ParallelSplit;
-import fr.kazejiyu.ekumi.core.ekumi.RunnableScript;
-import fr.kazejiyu.ekumi.core.ekumi.Script;
-import fr.kazejiyu.ekumi.core.ekumi.ScriptableTask;
-import fr.kazejiyu.ekumi.core.ekumi.Sequence;
-import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
-import fr.kazejiyu.ekumi.core.ekumi.Task;
-import fr.kazejiyu.ekumi.core.ekumi.TestableScript;
-import fr.kazejiyu.ekumi.core.ekumi.Workflow;
 
 /**
  * <!-- begin-user-doc -->
@@ -135,13 +122,28 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseScriptableTask(ScriptableTask object) {
-			return createScriptableTaskAdapter();
+		public Adapter caseScriptedTask(ScriptedTask object) {
+			return createScriptedTaskAdapter();
 		}
 
 		@Override
 		public Adapter caseScript(Script object) {
 			return createScriptAdapter();
+		}
+
+		@Override
+		public Adapter caseMultiChoice(MultiChoice object) {
+			return createMultiChoiceAdapter();
+		}
+
+		@Override
+		public Adapter caseBranch(Branch object) {
+			return createBranchAdapter();
+		}
+
+		@Override
+		public Adapter caseContext(Context object) {
+			return createContextAdapter();
 		}
 
 		@Override
@@ -318,16 +320,16 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptableTask <em>Scriptable Task</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptedTask <em>Scripted Task</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.ScriptableTask
+	 * @see fr.kazejiyu.ekumi.core.ekumi.ScriptedTask
 	 * @generated
 	 */
-	public Adapter createScriptableTaskAdapter() {
+	public Adapter createScriptedTaskAdapter() {
 		return null;
 	}
 
@@ -342,6 +344,48 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createScriptAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.MultiChoice <em>Multi Choice</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.MultiChoice
+	 * @generated
+	 */
+	public Adapter createMultiChoiceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.Branch <em>Branch</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Branch
+	 * @generated
+	 */
+	public Adapter createBranchAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.Context <em>Context</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Context
+	 * @generated
+	 */
+	public Adapter createContextAdapter() {
 		return null;
 	}
 

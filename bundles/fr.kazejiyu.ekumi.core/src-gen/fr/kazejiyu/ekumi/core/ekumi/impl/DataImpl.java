@@ -2,6 +2,8 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.impl;
 
+import fr.kazejiyu.ekumi.core.datatypes.DataType;
+
 import fr.kazejiyu.ekumi.core.ekumi.Data;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 
@@ -21,6 +23,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.DataImpl#getName <em>Name</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.DataImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -45,6 +48,26 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final DataType TYPE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected DataType type = TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,11 +114,34 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public DataType getType() {
+		return type;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setType(DataType newType) {
+		DataType oldType = type;
+		type = newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.DATA__TYPE, oldType, type));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case EkumiPackage.DATA__NAME:
 			return getName();
+		case EkumiPackage.DATA__TYPE:
+			return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -110,6 +156,9 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 		switch (featureID) {
 		case EkumiPackage.DATA__NAME:
 			setName((String) newValue);
+			return;
+		case EkumiPackage.DATA__TYPE:
+			setType((DataType) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -126,6 +175,9 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 		case EkumiPackage.DATA__NAME:
 			setName(NAME_EDEFAULT);
 			return;
+		case EkumiPackage.DATA__TYPE:
+			setType(TYPE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -140,6 +192,8 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 		switch (featureID) {
 		case EkumiPackage.DATA__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case EkumiPackage.DATA__TYPE:
+			return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -157,6 +211,8 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", type: ");
+		result.append(type);
 		result.append(')');
 		return result.toString();
 	}

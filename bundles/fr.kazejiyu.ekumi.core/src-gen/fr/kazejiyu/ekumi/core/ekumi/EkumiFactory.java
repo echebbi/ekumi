@@ -22,15 +22,6 @@ public interface EkumiFactory extends EFactory {
 	EkumiFactory eINSTANCE = fr.kazejiyu.ekumi.core.ekumi.impl.EkumiFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Workflow</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Workflow</em>'.
-	 * @generated
-	 */
-	Workflow createWorkflow();
-
-	/**
 	 * Returns a new object of class '<em>Sequence</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -94,15 +85,6 @@ public interface EkumiFactory extends EFactory {
 	TestableScript createTestableScript();
 
 	/**
-	 * Returns a new object of class '<em>Task</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Task</em>'.
-	 * @generated
-	 */
-	Task createTask();
-
-	/**
 	 * Returns a new object of class '<em>Runnable Script</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -112,13 +94,40 @@ public interface EkumiFactory extends EFactory {
 	RunnableScript createRunnableScript();
 
 	/**
-	 * Returns a new object of class '<em>Scriptable Task</em>'.
+	 * Returns a new object of class '<em>Scripted Task</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Scriptable Task</em>'.
+	 * @return a new object of class '<em>Scripted Task</em>'.
 	 * @generated
 	 */
-	ScriptableTask createScriptableTask();
+	ScriptedTask createScriptedTask();
+
+	/**
+	 * Returns a new object of class '<em>Multi Choice</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Multi Choice</em>'.
+	 * @generated
+	 */
+	MultiChoice createMultiChoice();
+
+	/**
+	 * Returns a new object of class '<em>Branch</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Branch</em>'.
+	 * @generated
+	 */
+	Branch createBranch();
+
+	/**
+	 * Returns a new object of class '<em>Context</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Context</em>'.
+	 * @generated
+	 */
+	Context createContext();
 
 	/**
 	 * Returns the package supported by this factory.
