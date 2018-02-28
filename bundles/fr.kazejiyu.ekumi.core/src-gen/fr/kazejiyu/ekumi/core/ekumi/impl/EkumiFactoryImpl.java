@@ -2,29 +2,20 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.impl;
 
+import fr.kazejiyu.ekumi.core.datatypes.DataType;
+
+import fr.kazejiyu.ekumi.core.ekumi.*;
+
+import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.impl.EFactoryImpl;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import fr.kazejiyu.ekumi.core.ekumi.Data;
-import fr.kazejiyu.ekumi.core.ekumi.DataFlow;
-import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
-import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
-import fr.kazejiyu.ekumi.core.ekumi.MultipleInstances;
-import fr.kazejiyu.ekumi.core.ekumi.ParallelSplit;
-import fr.kazejiyu.ekumi.core.ekumi.RunnableScript;
-import fr.kazejiyu.ekumi.core.ekumi.ScriptableTask;
-import fr.kazejiyu.ekumi.core.ekumi.Sequence;
-import fr.kazejiyu.ekumi.core.ekumi.Status;
-import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
-import fr.kazejiyu.ekumi.core.ekumi.Task;
-import fr.kazejiyu.ekumi.core.ekumi.TestResult;
-import fr.kazejiyu.ekumi.core.ekumi.TestableScript;
-import fr.kazejiyu.ekumi.core.ekumi.Workflow;
-import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
+import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
  * <!-- begin-user-doc -->
@@ -69,8 +60,6 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case EkumiPackage.WORKFLOW:
-			return createWorkflow();
 		case EkumiPackage.SEQUENCE:
 			return createSequence();
 		case EkumiPackage.MULTIPLE_INSTANCES:
@@ -85,12 +74,16 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 			return createStructuredLoop();
 		case EkumiPackage.TESTABLE_SCRIPT:
 			return createTestableScript();
-		case EkumiPackage.TASK:
-			return createTask();
 		case EkumiPackage.RUNNABLE_SCRIPT:
 			return createRunnableScript();
-		case EkumiPackage.SCRIPTABLE_TASK:
-			return createScriptableTask();
+		case EkumiPackage.SCRIPTED_TASK:
+			return createScriptedTask();
+		case EkumiPackage.MULTI_CHOICE:
+			return createMultiChoice();
+		case EkumiPackage.BRANCH:
+			return createBranch();
+		case EkumiPackage.CONTEXT:
+			return createContext();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -110,6 +103,8 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 			return createTestResultFromString(eDataType, initialValue);
 		case EkumiPackage.SCRIPTING_LANGUAGE:
 			return createScriptingLanguageFromString(eDataType, initialValue);
+		case EkumiPackage.DATA_TYPE:
+			return createDataTypeFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -129,19 +124,11 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 			return convertTestResultToString(eDataType, instanceValue);
 		case EkumiPackage.SCRIPTING_LANGUAGE:
 			return convertScriptingLanguageToString(eDataType, instanceValue);
+		case EkumiPackage.DATA_TYPE:
+			return convertDataTypeToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Workflow createWorkflow() {
-		WorkflowImpl workflow = new WorkflowImpl();
-		return workflow;
 	}
 
 	/**
@@ -219,16 +206,6 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Task createTask() {
-		TaskImpl task = new TaskImpl();
-		return task;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public RunnableScript createRunnableScript() {
 		RunnableScriptImpl runnableScript = new RunnableScriptImpl();
 		return runnableScript;
@@ -239,9 +216,39 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ScriptableTask createScriptableTask() {
-		ScriptableTaskImpl scriptableTask = new ScriptableTaskImpl();
-		return scriptableTask;
+	public ScriptedTask createScriptedTask() {
+		ScriptedTaskImpl scriptedTask = new ScriptedTaskImpl();
+		return scriptedTask;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MultiChoice createMultiChoice() {
+		MultiChoiceImpl multiChoice = new MultiChoiceImpl();
+		return multiChoice;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Branch createBranch() {
+		BranchImpl branch = new BranchImpl();
+		return branch;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Context createContext() {
+		ContextImpl context = new ContextImpl();
+		return context;
 	}
 
 	/**
@@ -303,6 +310,24 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 	 * @generated
 	 */
 	public String convertScriptingLanguageToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataType createDataTypeFromString(EDataType eDataType, String initialValue) {
+		return (DataType) super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDataTypeToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

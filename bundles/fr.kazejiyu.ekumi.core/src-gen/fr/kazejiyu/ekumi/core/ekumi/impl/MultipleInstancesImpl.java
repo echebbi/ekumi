@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class MultipleInstancesImpl extends WorkflowImpl implements MultipleInstances {
+public class MultipleInstancesImpl extends ActivityImpl implements MultipleInstances {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

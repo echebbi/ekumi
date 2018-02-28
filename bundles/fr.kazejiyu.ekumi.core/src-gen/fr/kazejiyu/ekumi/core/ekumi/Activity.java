@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getSuccessors <em>Successors</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getPredecessor <em>Predecessor</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getStatus <em>Status</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getEnvironment <em>Environment</em>}</li>
  * </ul>
  *
  * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getActivity()
@@ -225,6 +226,32 @@ public interface Activity extends EObject {
 	 * @generated
 	 */
 	void setStatus(Status value);
+
+	/**
+	 * Returns the value of the '<em><b>Environment</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Environment</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Environment</em>' reference.
+	 * @see #setEnvironment(Context)
+	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getActivity_Environment()
+	 * @model required="true"
+	 * @generated
+	 */
+	Context getEnvironment();
+
+	/**
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getEnvironment <em>Environment</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Environment</em>' reference.
+	 * @see #getEnvironment()
+	 * @generated
+	 */
+	void setEnvironment(Context value);
 
 	/**
 	 * <!-- begin-user-doc -->

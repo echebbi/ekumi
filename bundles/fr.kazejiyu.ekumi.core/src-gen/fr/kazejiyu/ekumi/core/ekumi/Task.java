@@ -9,7 +9,7 @@ package fr.kazejiyu.ekumi.core.ekumi;
  *
  *
  * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getTask()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Task extends Activity {

@@ -2,9 +2,9 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.impl;
 
-import fr.kazejiyu.ekumi.core.ekumi.Activity;
+import fr.kazejiyu.ekumi.core.ekumi.Context;
+import fr.kazejiyu.ekumi.core.ekumi.Data;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
-import fr.kazejiyu.ekumi.core.ekumi.Workflow;
 
 import java.util.Collection;
 
@@ -15,39 +15,41 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Workflow</b></em>'.
+ * An implementation of the model object '<em><b>Context</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.WorkflowImpl#getTasks <em>Tasks</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ContextImpl#getVariable <em>Variable</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
+public class ContextImpl extends MinimalEObjectImpl.Container implements Context {
 	/**
-	 * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list.
+	 * The cached value of the '{@link #getVariable() <em>Variable</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTasks()
+	 * @see #getVariable()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Activity> tasks;
+	protected EList<Data> variable;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected WorkflowImpl() {
+	protected ContextImpl() {
 		super();
 	}
 
@@ -58,7 +60,7 @@ public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EkumiPackage.Literals.WORKFLOW;
+		return EkumiPackage.Literals.CONTEXT;
 	}
 
 	/**
@@ -66,11 +68,11 @@ public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Activity> getTasks() {
-		if (tasks == null) {
-			tasks = new EObjectContainmentEList<Activity>(Activity.class, this, EkumiPackage.WORKFLOW__TASKS);
+	public EList<Data> getVariable() {
+		if (variable == null) {
+			variable = new EObjectContainmentEList<Data>(Data.class, this, EkumiPackage.CONTEXT__VARIABLE);
 		}
-		return tasks;
+		return variable;
 	}
 
 	/**
@@ -81,8 +83,8 @@ public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case EkumiPackage.WORKFLOW__TASKS:
-			return ((InternalEList<?>) getTasks()).basicRemove(otherEnd, msgs);
+		case EkumiPackage.CONTEXT__VARIABLE:
+			return ((InternalEList<?>) getVariable()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -95,8 +97,8 @@ public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case EkumiPackage.WORKFLOW__TASKS:
-			return getTasks();
+		case EkumiPackage.CONTEXT__VARIABLE:
+			return getVariable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -110,9 +112,9 @@ public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case EkumiPackage.WORKFLOW__TASKS:
-			getTasks().clear();
-			getTasks().addAll((Collection<? extends Activity>) newValue);
+		case EkumiPackage.CONTEXT__VARIABLE:
+			getVariable().clear();
+			getVariable().addAll((Collection<? extends Data>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -126,8 +128,8 @@ public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case EkumiPackage.WORKFLOW__TASKS:
-			getTasks().clear();
+		case EkumiPackage.CONTEXT__VARIABLE:
+			getVariable().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -141,10 +143,10 @@ public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case EkumiPackage.WORKFLOW__TASKS:
-			return tasks != null && !tasks.isEmpty();
+		case EkumiPackage.CONTEXT__VARIABLE:
+			return variable != null && !variable.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //WorkflowImpl
+} //ContextImpl

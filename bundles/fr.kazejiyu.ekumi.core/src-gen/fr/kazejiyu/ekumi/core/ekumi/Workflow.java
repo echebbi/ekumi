@@ -6,8 +6,12 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Workflow</b></em>'.
+ * A set of {@link Activity Activities}.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -17,7 +21,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getWorkflow()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Workflow extends Activity {

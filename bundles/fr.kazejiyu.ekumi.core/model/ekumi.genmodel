@@ -35,6 +35,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Activity/successors"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Activity/predecessor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Activity/status"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Activity/environment"/>
       <genOperations ecoreOperation="ekumi.ecore#//Activity/run"/>
     </genClasses>
     <genClasses ecoreClass="ekumi.ecore#//Workflow">
@@ -54,7 +55,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Data/type"/>
     </genClasses>
     <genClasses ecoreClass="ekumi.ecore#//StructuredLoop">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//StructuredLoop/test"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//StructuredLoop/preTest"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//StructuredLoop/postTest"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//StructuredLoop/activity"/>
     </genClasses>
     <genClasses ecoreClass="ekumi.ecore#//TestableScript">
       <genOperations ecoreOperation="ekumi.ecore#//TestableScript/check"/>
@@ -63,12 +66,22 @@
     <genClasses ecoreClass="ekumi.ecore#//RunnableScript">
       <genOperations ecoreOperation="ekumi.ecore#//RunnableScript/run"/>
     </genClasses>
-    <genClasses ecoreClass="ekumi.ecore#//ScriptableTask">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//ScriptableTask/script"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//ScriptableTask/scriptPath"/>
+    <genClasses ecoreClass="ekumi.ecore#//ScriptedTask">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//ScriptedTask/script"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//ScriptedTask/scriptPath"/>
     </genClasses>
     <genClasses ecoreClass="ekumi.ecore#//Script">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Script/path"/>
+    </genClasses>
+    <genClasses ecoreClass="ekumi.ecore#//MultiChoice">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//MultiChoice/branches"/>
+    </genClasses>
+    <genClasses ecoreClass="ekumi.ecore#//Branch">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//Branch/availability"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Branch/activity"/>
+    </genClasses>
+    <genClasses ecoreClass="ekumi.ecore#//Context">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//Context/variable"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -4,7 +4,7 @@ package fr.kazejiyu.ekumi.core.ekumi.impl;
 
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.core.ekumi.RunnableScript;
-import fr.kazejiyu.ekumi.core.ekumi.ScriptableTask;
+import fr.kazejiyu.ekumi.core.ekumi.ScriptedTask;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -16,19 +16,19 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Scriptable Task</b></em>'.
+ * An implementation of the model object '<em><b>Scripted Task</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ScriptableTaskImpl#getScript <em>Script</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ScriptableTaskImpl#getScriptPath <em>Script Path</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ScriptedTaskImpl#getScript <em>Script</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ScriptedTaskImpl#getScriptPath <em>Script Path</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ScriptableTaskImpl extends TaskImpl implements ScriptableTask {
+public class ScriptedTaskImpl extends TaskImpl implements ScriptedTask {
 	/**
 	 * The cached value of the '{@link #getScript() <em>Script</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -48,6 +48,7 @@ public class ScriptableTaskImpl extends TaskImpl implements ScriptableTask {
 	 * @ordered
 	 */
 	protected static final String SCRIPT_PATH_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getScriptPath() <em>Script Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -63,7 +64,7 @@ public class ScriptableTaskImpl extends TaskImpl implements ScriptableTask {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ScriptableTaskImpl() {
+	protected ScriptedTaskImpl() {
 		super();
 	}
 
@@ -74,7 +75,7 @@ public class ScriptableTaskImpl extends TaskImpl implements ScriptableTask {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EkumiPackage.Literals.SCRIPTABLE_TASK;
+		return EkumiPackage.Literals.SCRIPTED_TASK;
 	}
 
 	/**
@@ -96,7 +97,7 @@ public class ScriptableTaskImpl extends TaskImpl implements ScriptableTask {
 		script = newScript;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					EkumiPackage.SCRIPTABLE_TASK__SCRIPT, oldScript, newScript);
+					EkumiPackage.SCRIPTED_TASK__SCRIPT, oldScript, newScript);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -115,15 +116,15 @@ public class ScriptableTaskImpl extends TaskImpl implements ScriptableTask {
 			NotificationChain msgs = null;
 			if (script != null)
 				msgs = ((InternalEObject) script).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - EkumiPackage.SCRIPTABLE_TASK__SCRIPT, null, msgs);
+						EOPPOSITE_FEATURE_BASE - EkumiPackage.SCRIPTED_TASK__SCRIPT, null, msgs);
 			if (newScript != null)
 				msgs = ((InternalEObject) newScript).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - EkumiPackage.SCRIPTABLE_TASK__SCRIPT, null, msgs);
+						EOPPOSITE_FEATURE_BASE - EkumiPackage.SCRIPTED_TASK__SCRIPT, null, msgs);
 			msgs = basicSetScript(newScript, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.SCRIPTABLE_TASK__SCRIPT, newScript,
+			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.SCRIPTED_TASK__SCRIPT, newScript,
 					newScript));
 	}
 
@@ -145,7 +146,7 @@ public class ScriptableTaskImpl extends TaskImpl implements ScriptableTask {
 		String oldScriptPath = scriptPath;
 		scriptPath = newScriptPath;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.SCRIPTABLE_TASK__SCRIPT_PATH,
+			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.SCRIPTED_TASK__SCRIPT_PATH,
 					oldScriptPath, scriptPath));
 	}
 
@@ -157,7 +158,7 @@ public class ScriptableTaskImpl extends TaskImpl implements ScriptableTask {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case EkumiPackage.SCRIPTABLE_TASK__SCRIPT:
+		case EkumiPackage.SCRIPTED_TASK__SCRIPT:
 			return basicSetScript(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -171,9 +172,9 @@ public class ScriptableTaskImpl extends TaskImpl implements ScriptableTask {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case EkumiPackage.SCRIPTABLE_TASK__SCRIPT:
+		case EkumiPackage.SCRIPTED_TASK__SCRIPT:
 			return getScript();
-		case EkumiPackage.SCRIPTABLE_TASK__SCRIPT_PATH:
+		case EkumiPackage.SCRIPTED_TASK__SCRIPT_PATH:
 			return getScriptPath();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -187,10 +188,10 @@ public class ScriptableTaskImpl extends TaskImpl implements ScriptableTask {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case EkumiPackage.SCRIPTABLE_TASK__SCRIPT:
+		case EkumiPackage.SCRIPTED_TASK__SCRIPT:
 			setScript((RunnableScript) newValue);
 			return;
-		case EkumiPackage.SCRIPTABLE_TASK__SCRIPT_PATH:
+		case EkumiPackage.SCRIPTED_TASK__SCRIPT_PATH:
 			setScriptPath((String) newValue);
 			return;
 		}
@@ -205,10 +206,10 @@ public class ScriptableTaskImpl extends TaskImpl implements ScriptableTask {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case EkumiPackage.SCRIPTABLE_TASK__SCRIPT:
+		case EkumiPackage.SCRIPTED_TASK__SCRIPT:
 			setScript((RunnableScript) null);
 			return;
-		case EkumiPackage.SCRIPTABLE_TASK__SCRIPT_PATH:
+		case EkumiPackage.SCRIPTED_TASK__SCRIPT_PATH:
 			setScriptPath(SCRIPT_PATH_EDEFAULT);
 			return;
 		}
@@ -223,9 +224,9 @@ public class ScriptableTaskImpl extends TaskImpl implements ScriptableTask {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case EkumiPackage.SCRIPTABLE_TASK__SCRIPT:
+		case EkumiPackage.SCRIPTED_TASK__SCRIPT:
 			return script != null;
-		case EkumiPackage.SCRIPTABLE_TASK__SCRIPT_PATH:
+		case EkumiPackage.SCRIPTED_TASK__SCRIPT_PATH:
 			return SCRIPT_PATH_EDEFAULT == null ? scriptPath != null : !SCRIPT_PATH_EDEFAULT.equals(scriptPath);
 		}
 		return super.eIsSet(featureID);
@@ -248,4 +249,4 @@ public class ScriptableTaskImpl extends TaskImpl implements ScriptableTask {
 		return result.toString();
 	}
 
-} //ScriptableTaskImpl
+} //ScriptedTaskImpl

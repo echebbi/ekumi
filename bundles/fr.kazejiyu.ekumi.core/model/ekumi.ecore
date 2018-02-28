@@ -18,13 +18,22 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="predecessor" eType="#//Activity"
         eOpposite="#//Activity/successors"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//Status"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="environment" lowerBound="1"
+        eType="#//Context"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Workflow" abstract="true" eSuperTypes="#//Activity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
         eType="#//Activity" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Sequence" eSuperTypes="#//Workflow"/>
-  <eClassifiers xsi:type="ecore:EClass" name="MultipleInstances" eSuperTypes="#//Workflow"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Sequence" eSuperTypes="#//Workflow">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultipleInstances" eSuperTypes="#//Activity"/>
   <eClassifiers xsi:type="ecore:EClass" name="ParallelSplit" eSuperTypes="#//Workflow"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataFlow">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//Activity"
@@ -39,9 +48,15 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//DataType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StructuredLoop" eSuperTypes="#//Workflow">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="test" lowerBound="1" eType="#//TestableScript"
+  <eClassifiers xsi:type="ecore:EClass" name="StructuredLoop" eSuperTypes="#//Activity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="preTest" eType="#//TestableScript"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="postTest" eType="#//TestableScript"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestableScript" eSuperTypes="#//Script">
     <eOperations name="check" eType="#//TestResult"/>
@@ -56,7 +71,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="RunnableScript" eSuperTypes="#//Script">
     <eOperations name="run"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ScriptableTask" eSuperTypes="#//Task">
+  <eClassifiers xsi:type="ecore:EClass" name="ScriptedTask" eSuperTypes="#//Task">
     <eStructuralFeatures xsi:type="ecore:EReference" name="script" eType="#//RunnableScript"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scriptPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -70,4 +85,20 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="ScriptingLanguage" instanceClassName="fr.kazejiyu.ekumi.core.languages.ScriptingLanguage"/>
   <eClassifiers xsi:type="ecore:EDataType" name="DataType" instanceClassName="fr.kazejiyu.ekumi.core.datatypes.DataType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiChoice" eSuperTypes="#//Activity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Represents a simple If / Else statement.&#xD;&#xA;&#xD;&#xA;@see &lt;a href=&quot;http://www.workflowpatterns.com/patterns/control/basic/wcp4.php&quot;>www.workflowpatterns.com&lt;/a>."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="branches" upperBound="-1"
+        eType="#//Branch" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Branch">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="availability" eType="#//TestableScript"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Context">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" upperBound="-1"
+        eType="#//Data" containment="true"/>
+  </eClassifiers>
 </ecore:EPackage>

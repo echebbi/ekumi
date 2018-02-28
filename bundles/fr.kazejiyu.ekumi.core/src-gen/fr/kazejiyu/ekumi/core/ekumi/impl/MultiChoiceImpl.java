@@ -2,9 +2,9 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.impl;
 
-import fr.kazejiyu.ekumi.core.ekumi.Activity;
+import fr.kazejiyu.ekumi.core.ekumi.Branch;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
-import fr.kazejiyu.ekumi.core.ekumi.Workflow;
+import fr.kazejiyu.ekumi.core.ekumi.MultiChoice;
 
 import java.util.Collection;
 
@@ -20,34 +20,34 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Workflow</b></em>'.
+ * An implementation of the model object '<em><b>Multi Choice</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.WorkflowImpl#getTasks <em>Tasks</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.MultiChoiceImpl#getBranches <em>Branches</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
+public class MultiChoiceImpl extends ActivityImpl implements MultiChoice {
 	/**
-	 * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list.
+	 * The cached value of the '{@link #getBranches() <em>Branches</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTasks()
+	 * @see #getBranches()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Activity> tasks;
+	protected EList<Branch> branches;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected WorkflowImpl() {
+	protected MultiChoiceImpl() {
 		super();
 	}
 
@@ -58,7 +58,7 @@ public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EkumiPackage.Literals.WORKFLOW;
+		return EkumiPackage.Literals.MULTI_CHOICE;
 	}
 
 	/**
@@ -66,11 +66,11 @@ public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Activity> getTasks() {
-		if (tasks == null) {
-			tasks = new EObjectContainmentEList<Activity>(Activity.class, this, EkumiPackage.WORKFLOW__TASKS);
+	public EList<Branch> getBranches() {
+		if (branches == null) {
+			branches = new EObjectContainmentEList<Branch>(Branch.class, this, EkumiPackage.MULTI_CHOICE__BRANCHES);
 		}
-		return tasks;
+		return branches;
 	}
 
 	/**
@@ -81,8 +81,8 @@ public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case EkumiPackage.WORKFLOW__TASKS:
-			return ((InternalEList<?>) getTasks()).basicRemove(otherEnd, msgs);
+		case EkumiPackage.MULTI_CHOICE__BRANCHES:
+			return ((InternalEList<?>) getBranches()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -95,8 +95,8 @@ public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case EkumiPackage.WORKFLOW__TASKS:
-			return getTasks();
+		case EkumiPackage.MULTI_CHOICE__BRANCHES:
+			return getBranches();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -110,9 +110,9 @@ public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case EkumiPackage.WORKFLOW__TASKS:
-			getTasks().clear();
-			getTasks().addAll((Collection<? extends Activity>) newValue);
+		case EkumiPackage.MULTI_CHOICE__BRANCHES:
+			getBranches().clear();
+			getBranches().addAll((Collection<? extends Branch>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -126,8 +126,8 @@ public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case EkumiPackage.WORKFLOW__TASKS:
-			getTasks().clear();
+		case EkumiPackage.MULTI_CHOICE__BRANCHES:
+			getBranches().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -141,10 +141,10 @@ public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case EkumiPackage.WORKFLOW__TASKS:
-			return tasks != null && !tasks.isEmpty();
+		case EkumiPackage.MULTI_CHOICE__BRANCHES:
+			return branches != null && !branches.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //WorkflowImpl
+} //MultiChoiceImpl

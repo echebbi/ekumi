@@ -2,16 +2,21 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.impl;
 
+import fr.kazejiyu.ekumi.core.datatypes.DataType;
+
 import fr.kazejiyu.ekumi.core.ekumi.Activity;
+import fr.kazejiyu.ekumi.core.ekumi.Branch;
+import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.Data;
 import fr.kazejiyu.ekumi.core.ekumi.DataFlow;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
+import fr.kazejiyu.ekumi.core.ekumi.MultiChoice;
 import fr.kazejiyu.ekumi.core.ekumi.MultipleInstances;
 import fr.kazejiyu.ekumi.core.ekumi.ParallelSplit;
 import fr.kazejiyu.ekumi.core.ekumi.RunnableScript;
 import fr.kazejiyu.ekumi.core.ekumi.Script;
-import fr.kazejiyu.ekumi.core.ekumi.ScriptableTask;
+import fr.kazejiyu.ekumi.core.ekumi.ScriptedTask;
 import fr.kazejiyu.ekumi.core.ekumi.Sequence;
 import fr.kazejiyu.ekumi.core.ekumi.Status;
 import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
@@ -19,7 +24,9 @@ import fr.kazejiyu.ekumi.core.ekumi.Task;
 import fr.kazejiyu.ekumi.core.ekumi.TestResult;
 import fr.kazejiyu.ekumi.core.ekumi.TestableScript;
 import fr.kazejiyu.ekumi.core.ekumi.Workflow;
+
 import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -119,7 +126,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass scriptableTaskEClass = null;
+	private EClass scriptedTaskEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -127,6 +134,27 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * @generated
 	 */
 	private EClass scriptEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass multiChoiceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass branchEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass contextEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -148,6 +176,13 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * @generated
 	 */
 	private EDataType scriptingLanguageEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType dataTypeEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -307,6 +342,15 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getActivity_Environment() {
+		return (EReference) activityEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getActivity__Run() {
 		return activityEClass.getEOperations().get(0);
 	}
@@ -424,6 +468,15 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getData_Type() {
+		return (EAttribute) dataEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getStructuredLoop() {
 		return structuredLoopEClass;
 	}
@@ -433,8 +486,26 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getStructuredLoop_Test() {
+	public EReference getStructuredLoop_PreTest() {
 		return (EReference) structuredLoopEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStructuredLoop_PostTest() {
+		return (EReference) structuredLoopEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStructuredLoop_Activity() {
+		return (EReference) structuredLoopEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -487,8 +558,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getScriptableTask() {
-		return scriptableTaskEClass;
+	public EClass getScriptedTask() {
+		return scriptedTaskEClass;
 	}
 
 	/**
@@ -496,8 +567,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getScriptableTask_Script() {
-		return (EReference) scriptableTaskEClass.getEStructuralFeatures().get(0);
+	public EReference getScriptedTask_Script() {
+		return (EReference) scriptedTaskEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -505,8 +576,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getScriptableTask_ScriptPath() {
-		return (EAttribute) scriptableTaskEClass.getEStructuralFeatures().get(1);
+	public EAttribute getScriptedTask_ScriptPath() {
+		return (EAttribute) scriptedTaskEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -532,8 +603,62 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EDataType getScriptingLanguage() {
-		return scriptingLanguageEDataType;
+	public EClass getMultiChoice() {
+		return multiChoiceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMultiChoice_Branches() {
+		return (EReference) multiChoiceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getBranch() {
+		return branchEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getBranch_Availability() {
+		return (EReference) branchEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getBranch_Activity() {
+		return (EReference) branchEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getContext() {
+		return contextEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getContext_Variable() {
+		return (EReference) contextEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -552,6 +677,24 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 */
 	public EEnum getTestResult() {
 		return testResultEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getScriptingLanguage() {
+		return scriptingLanguageEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getDataType() {
+		return dataTypeEDataType;
 	}
 
 	/**
@@ -593,6 +736,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		createEReference(activityEClass, ACTIVITY__SUCCESSORS);
 		createEReference(activityEClass, ACTIVITY__PREDECESSOR);
 		createEAttribute(activityEClass, ACTIVITY__STATUS);
+		createEReference(activityEClass, ACTIVITY__ENVIRONMENT);
 		createEOperation(activityEClass, ACTIVITY___RUN);
 
 		workflowEClass = createEClass(WORKFLOW);
@@ -612,9 +756,12 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 
 		dataEClass = createEClass(DATA);
 		createEAttribute(dataEClass, DATA__NAME);
+		createEAttribute(dataEClass, DATA__TYPE);
 
 		structuredLoopEClass = createEClass(STRUCTURED_LOOP);
-		createEReference(structuredLoopEClass, STRUCTURED_LOOP__TEST);
+		createEReference(structuredLoopEClass, STRUCTURED_LOOP__PRE_TEST);
+		createEReference(structuredLoopEClass, STRUCTURED_LOOP__POST_TEST);
+		createEReference(structuredLoopEClass, STRUCTURED_LOOP__ACTIVITY);
 
 		testableScriptEClass = createEClass(TESTABLE_SCRIPT);
 		createEOperation(testableScriptEClass, TESTABLE_SCRIPT___CHECK);
@@ -624,12 +771,22 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		runnableScriptEClass = createEClass(RUNNABLE_SCRIPT);
 		createEOperation(runnableScriptEClass, RUNNABLE_SCRIPT___RUN);
 
-		scriptableTaskEClass = createEClass(SCRIPTABLE_TASK);
-		createEReference(scriptableTaskEClass, SCRIPTABLE_TASK__SCRIPT);
-		createEAttribute(scriptableTaskEClass, SCRIPTABLE_TASK__SCRIPT_PATH);
+		scriptedTaskEClass = createEClass(SCRIPTED_TASK);
+		createEReference(scriptedTaskEClass, SCRIPTED_TASK__SCRIPT);
+		createEAttribute(scriptedTaskEClass, SCRIPTED_TASK__SCRIPT_PATH);
 
 		scriptEClass = createEClass(SCRIPT);
 		createEAttribute(scriptEClass, SCRIPT__PATH);
+
+		multiChoiceEClass = createEClass(MULTI_CHOICE);
+		createEReference(multiChoiceEClass, MULTI_CHOICE__BRANCHES);
+
+		branchEClass = createEClass(BRANCH);
+		createEReference(branchEClass, BRANCH__AVAILABILITY);
+		createEReference(branchEClass, BRANCH__ACTIVITY);
+
+		contextEClass = createEClass(CONTEXT);
+		createEReference(contextEClass, CONTEXT__VARIABLE);
 
 		// Create enums
 		statusEEnum = createEEnum(STATUS);
@@ -637,6 +794,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 
 		// Create data types
 		scriptingLanguageEDataType = createEDataType(SCRIPTING_LANGUAGE);
+		dataTypeEDataType = createEDataType(DATA_TYPE);
 	}
 
 	/**
@@ -670,13 +828,14 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		// Add supertypes to classes
 		workflowEClass.getESuperTypes().add(this.getActivity());
 		sequenceEClass.getESuperTypes().add(this.getWorkflow());
-		multipleInstancesEClass.getESuperTypes().add(this.getWorkflow());
+		multipleInstancesEClass.getESuperTypes().add(this.getActivity());
 		parallelSplitEClass.getESuperTypes().add(this.getWorkflow());
-		structuredLoopEClass.getESuperTypes().add(this.getWorkflow());
+		structuredLoopEClass.getESuperTypes().add(this.getActivity());
 		testableScriptEClass.getESuperTypes().add(this.getScript());
 		taskEClass.getESuperTypes().add(this.getActivity());
 		runnableScriptEClass.getESuperTypes().add(this.getScript());
-		scriptableTaskEClass.getESuperTypes().add(this.getTask());
+		scriptedTaskEClass.getESuperTypes().add(this.getTask());
+		multiChoiceEClass.getESuperTypes().add(this.getActivity());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(activityEClass, Activity.class, "Activity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -704,11 +863,13 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getActivity_Status(), this.getStatus(), "status", null, 0, 1, Activity.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getActivity_Environment(), this.getContext(), null, "environment", null, 1, 1, Activity.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getActivity__Run(), null, "run", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(workflowEClass, Workflow.class, "Workflow", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
+		initEClass(workflowEClass, Workflow.class, "Workflow", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getWorkflow_Tasks(), this.getActivity(), null, "tasks", null, 0, -1, Workflow.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -740,11 +901,19 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		initEClass(dataEClass, Data.class, "Data", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getData_Name(), ecorePackage.getEString(), "name", null, 0, 1, Data.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getData_Type(), this.getDataType(), "type", null, 0, 1, Data.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(structuredLoopEClass, StructuredLoop.class, "StructuredLoop", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getStructuredLoop_Test(), this.getTestableScript(), null, "test", null, 1, 1,
+		initEReference(getStructuredLoop_PreTest(), this.getTestableScript(), null, "preTest", null, 0, 1,
 				StructuredLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStructuredLoop_PostTest(), this.getTestableScript(), null, "postTest", null, 0, 1,
+				StructuredLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStructuredLoop_Activity(), this.getActivity(), null, "activity", null, 0, 1,
+				StructuredLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(testableScriptEClass, TestableScript.class, "TestableScript", !IS_ABSTRACT, !IS_INTERFACE,
@@ -752,25 +921,44 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 
 		initEOperation(getTestableScript__Check(), this.getTestResult(), "check", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(taskEClass, Task.class, "Task", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(runnableScriptEClass, RunnableScript.class, "RunnableScript", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
 		initEOperation(getRunnableScript__Run(), null, "run", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(scriptableTaskEClass, ScriptableTask.class, "ScriptableTask", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(scriptedTaskEClass, ScriptedTask.class, "ScriptedTask", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getScriptableTask_Script(), this.getRunnableScript(), null, "script", null, 0, 1,
-				ScriptableTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+		initEReference(getScriptedTask_Script(), this.getRunnableScript(), null, "script", null, 0, 1,
+				ScriptedTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getScriptableTask_ScriptPath(), ecorePackage.getEString(), "scriptPath", null, 0, 1,
-				ScriptableTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEAttribute(getScriptedTask_ScriptPath(), ecorePackage.getEString(), "scriptPath", null, 0, 1,
+				ScriptedTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(scriptEClass, Script.class, "Script", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getScript_Path(), ecorePackage.getEString(), "path", null, 0, 1, Script.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(multiChoiceEClass, MultiChoice.class, "MultiChoice", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMultiChoice_Branches(), this.getBranch(), null, "branches", null, 0, -1, MultiChoice.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(branchEClass, Branch.class, "Branch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBranch_Availability(), this.getTestableScript(), null, "availability", null, 0, 1,
+				Branch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBranch_Activity(), this.getActivity(), null, "activity", null, 0, 1, Branch.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(contextEClass, Context.class, "Context", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getContext_Variable(), this.getData(), null, "variable", null, 0, -1, Context.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(statusEEnum, Status.class, "Status");
@@ -786,6 +974,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		// Initialize data types
 		initEDataType(scriptingLanguageEDataType, ScriptingLanguage.class, "ScriptingLanguage", IS_SERIALIZABLE,
 				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(dataTypeEDataType, DataType.class, "DataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
