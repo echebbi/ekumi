@@ -8,6 +8,11 @@ public class BasicStructuredLoop extends StructuredLoopImpl {
 	
 	@Override
 	public void run(Context context) {
+		if (getActivity() == null) {
+			setStatus(SUCCEEDED);
+			return;
+		}
+		
 		boolean endConditionIsSatisfied = false;
 		boolean encounteredErrors = false;
 		
