@@ -4,10 +4,12 @@ package fr.kazejiyu.ekumi.core.ekumi.impl;
 
 import fr.kazejiyu.ekumi.core.ekumi.Activity;
 import fr.kazejiyu.ekumi.core.ekumi.Branch;
+import fr.kazejiyu.ekumi.core.ekumi.Condition;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
-import fr.kazejiyu.ekumi.core.ekumi.TestableScript;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -37,10 +39,10 @@ public class BranchImpl extends MinimalEObjectImpl.Container implements Branch {
 	 * @generated
 	 * @ordered
 	 */
-	protected TestableScript availability;
+	protected Condition availability;
 
 	/**
-	 * The cached value of the '{@link #getActivity() <em>Activity</em>}' reference.
+	 * The cached value of the '{@link #getActivity() <em>Activity</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getActivity()
@@ -73,7 +75,7 @@ public class BranchImpl extends MinimalEObjectImpl.Container implements Branch {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TestableScript getAvailability() {
+	public Condition getAvailability() {
 		return availability;
 	}
 
@@ -82,8 +84,8 @@ public class BranchImpl extends MinimalEObjectImpl.Container implements Branch {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetAvailability(TestableScript newAvailability, NotificationChain msgs) {
-		TestableScript oldAvailability = availability;
+	public NotificationChain basicSetAvailability(Condition newAvailability, NotificationChain msgs) {
+		Condition oldAvailability = availability;
 		availability = newAvailability;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
@@ -101,7 +103,7 @@ public class BranchImpl extends MinimalEObjectImpl.Container implements Branch {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAvailability(TestableScript newAvailability) {
+	public void setAvailability(Condition newAvailability) {
 		if (newAvailability != availability) {
 			NotificationChain msgs = null;
 			if (availability != null)
@@ -124,15 +126,6 @@ public class BranchImpl extends MinimalEObjectImpl.Container implements Branch {
 	 * @generated
 	 */
 	public Activity getActivity() {
-		if (activity != null && activity.eIsProxy()) {
-			InternalEObject oldActivity = (InternalEObject) activity;
-			activity = (Activity) eResolveProxy(oldActivity);
-			if (activity != oldActivity) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EkumiPackage.BRANCH__ACTIVITY,
-							oldActivity, activity));
-			}
-		}
 		return activity;
 	}
 
@@ -141,8 +134,18 @@ public class BranchImpl extends MinimalEObjectImpl.Container implements Branch {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Activity basicGetActivity() {
-		return activity;
+	public NotificationChain basicSetActivity(Activity newActivity, NotificationChain msgs) {
+		Activity oldActivity = activity;
+		activity = newActivity;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					EkumiPackage.BRANCH__ACTIVITY, oldActivity, newActivity);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -151,11 +154,20 @@ public class BranchImpl extends MinimalEObjectImpl.Container implements Branch {
 	 * @generated
 	 */
 	public void setActivity(Activity newActivity) {
-		Activity oldActivity = activity;
-		activity = newActivity;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.BRANCH__ACTIVITY, oldActivity,
-					activity));
+		if (newActivity != activity) {
+			NotificationChain msgs = null;
+			if (activity != null)
+				msgs = ((InternalEObject) activity).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - EkumiPackage.BRANCH__ACTIVITY, null, msgs);
+			if (newActivity != null)
+				msgs = ((InternalEObject) newActivity).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - EkumiPackage.BRANCH__ACTIVITY, null, msgs);
+			msgs = basicSetActivity(newActivity, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.BRANCH__ACTIVITY, newActivity,
+					newActivity));
 	}
 
 	/**
@@ -168,6 +180,8 @@ public class BranchImpl extends MinimalEObjectImpl.Container implements Branch {
 		switch (featureID) {
 		case EkumiPackage.BRANCH__AVAILABILITY:
 			return basicSetAvailability(null, msgs);
+		case EkumiPackage.BRANCH__ACTIVITY:
+			return basicSetActivity(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -183,9 +197,7 @@ public class BranchImpl extends MinimalEObjectImpl.Container implements Branch {
 		case EkumiPackage.BRANCH__AVAILABILITY:
 			return getAvailability();
 		case EkumiPackage.BRANCH__ACTIVITY:
-			if (resolve)
-				return getActivity();
-			return basicGetActivity();
+			return getActivity();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -195,12 +207,11 @@ public class BranchImpl extends MinimalEObjectImpl.Container implements Branch {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case EkumiPackage.BRANCH__AVAILABILITY:
-			setAvailability((TestableScript) newValue);
+			setAvailability((Condition) newValue);
 			return;
 		case EkumiPackage.BRANCH__ACTIVITY:
 			setActivity((Activity) newValue);
@@ -218,7 +229,7 @@ public class BranchImpl extends MinimalEObjectImpl.Container implements Branch {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case EkumiPackage.BRANCH__AVAILABILITY:
-			setAvailability((TestableScript) null);
+			setAvailability((Condition) null);
 			return;
 		case EkumiPackage.BRANCH__ACTIVITY:
 			setActivity((Activity) null);

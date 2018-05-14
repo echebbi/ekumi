@@ -3,9 +3,9 @@
 package fr.kazejiyu.ekumi.core.ekumi.impl;
 
 import fr.kazejiyu.ekumi.core.ekumi.Activity;
+import fr.kazejiyu.ekumi.core.ekumi.Condition;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
-import fr.kazejiyu.ekumi.core.ekumi.TestableScript;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -23,8 +23,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.StructuredLoopImpl#getPreTest <em>Pre Test</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.StructuredLoopImpl#getPostTest <em>Post Test</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.StructuredLoopImpl#getPreCondition <em>Pre Condition</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.StructuredLoopImpl#getPostCondition <em>Post Condition</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.StructuredLoopImpl#getActivity <em>Activity</em>}</li>
  * </ul>
  *
@@ -32,27 +32,27 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class StructuredLoopImpl extends ActivityImpl implements StructuredLoop {
 	/**
-	 * The cached value of the '{@link #getPreTest() <em>Pre Test</em>}' containment reference.
+	 * The cached value of the '{@link #getPreCondition() <em>Pre Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPreTest()
+	 * @see #getPreCondition()
 	 * @generated
 	 * @ordered
 	 */
-	protected TestableScript preTest;
+	protected Condition preCondition;
 
 	/**
-	 * The cached value of the '{@link #getPostTest() <em>Post Test</em>}' containment reference.
+	 * The cached value of the '{@link #getPostCondition() <em>Post Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPostTest()
+	 * @see #getPostCondition()
 	 * @generated
 	 * @ordered
 	 */
-	protected TestableScript postTest;
+	protected Condition postCondition;
 
 	/**
-	 * The cached value of the '{@link #getActivity() <em>Activity</em>}' reference.
+	 * The cached value of the '{@link #getActivity() <em>Activity</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getActivity()
@@ -85,8 +85,8 @@ public class StructuredLoopImpl extends ActivityImpl implements StructuredLoop {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TestableScript getPreTest() {
-		return preTest;
+	public Condition getPreCondition() {
+		return preCondition;
 	}
 
 	/**
@@ -94,12 +94,12 @@ public class StructuredLoopImpl extends ActivityImpl implements StructuredLoop {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPreTest(TestableScript newPreTest, NotificationChain msgs) {
-		TestableScript oldPreTest = preTest;
-		preTest = newPreTest;
+	public NotificationChain basicSetPreCondition(Condition newPreCondition, NotificationChain msgs) {
+		Condition oldPreCondition = preCondition;
+		preCondition = newPreCondition;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					EkumiPackage.STRUCTURED_LOOP__PRE_TEST, oldPreTest, newPreTest);
+					EkumiPackage.STRUCTURED_LOOP__PRE_CONDITION, oldPreCondition, newPreCondition);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -113,21 +113,21 @@ public class StructuredLoopImpl extends ActivityImpl implements StructuredLoop {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPreTest(TestableScript newPreTest) {
-		if (newPreTest != preTest) {
+	public void setPreCondition(Condition newPreCondition) {
+		if (newPreCondition != preCondition) {
 			NotificationChain msgs = null;
-			if (preTest != null)
-				msgs = ((InternalEObject) preTest).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - EkumiPackage.STRUCTURED_LOOP__PRE_TEST, null, msgs);
-			if (newPreTest != null)
-				msgs = ((InternalEObject) newPreTest).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - EkumiPackage.STRUCTURED_LOOP__PRE_TEST, null, msgs);
-			msgs = basicSetPreTest(newPreTest, msgs);
+			if (preCondition != null)
+				msgs = ((InternalEObject) preCondition).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - EkumiPackage.STRUCTURED_LOOP__PRE_CONDITION, null, msgs);
+			if (newPreCondition != null)
+				msgs = ((InternalEObject) newPreCondition).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - EkumiPackage.STRUCTURED_LOOP__PRE_CONDITION, null, msgs);
+			msgs = basicSetPreCondition(newPreCondition, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.STRUCTURED_LOOP__PRE_TEST, newPreTest,
-					newPreTest));
+			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.STRUCTURED_LOOP__PRE_CONDITION,
+					newPreCondition, newPreCondition));
 	}
 
 	/**
@@ -135,8 +135,8 @@ public class StructuredLoopImpl extends ActivityImpl implements StructuredLoop {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TestableScript getPostTest() {
-		return postTest;
+	public Condition getPostCondition() {
+		return postCondition;
 	}
 
 	/**
@@ -144,12 +144,12 @@ public class StructuredLoopImpl extends ActivityImpl implements StructuredLoop {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPostTest(TestableScript newPostTest, NotificationChain msgs) {
-		TestableScript oldPostTest = postTest;
-		postTest = newPostTest;
+	public NotificationChain basicSetPostCondition(Condition newPostCondition, NotificationChain msgs) {
+		Condition oldPostCondition = postCondition;
+		postCondition = newPostCondition;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					EkumiPackage.STRUCTURED_LOOP__POST_TEST, oldPostTest, newPostTest);
+					EkumiPackage.STRUCTURED_LOOP__POST_CONDITION, oldPostCondition, newPostCondition);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -163,21 +163,21 @@ public class StructuredLoopImpl extends ActivityImpl implements StructuredLoop {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPostTest(TestableScript newPostTest) {
-		if (newPostTest != postTest) {
+	public void setPostCondition(Condition newPostCondition) {
+		if (newPostCondition != postCondition) {
 			NotificationChain msgs = null;
-			if (postTest != null)
-				msgs = ((InternalEObject) postTest).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - EkumiPackage.STRUCTURED_LOOP__POST_TEST, null, msgs);
-			if (newPostTest != null)
-				msgs = ((InternalEObject) newPostTest).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - EkumiPackage.STRUCTURED_LOOP__POST_TEST, null, msgs);
-			msgs = basicSetPostTest(newPostTest, msgs);
+			if (postCondition != null)
+				msgs = ((InternalEObject) postCondition).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - EkumiPackage.STRUCTURED_LOOP__POST_CONDITION, null, msgs);
+			if (newPostCondition != null)
+				msgs = ((InternalEObject) newPostCondition).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - EkumiPackage.STRUCTURED_LOOP__POST_CONDITION, null, msgs);
+			msgs = basicSetPostCondition(newPostCondition, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.STRUCTURED_LOOP__POST_TEST, newPostTest,
-					newPostTest));
+			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.STRUCTURED_LOOP__POST_CONDITION,
+					newPostCondition, newPostCondition));
 	}
 
 	/**
@@ -186,15 +186,6 @@ public class StructuredLoopImpl extends ActivityImpl implements StructuredLoop {
 	 * @generated
 	 */
 	public Activity getActivity() {
-		if (activity != null && activity.eIsProxy()) {
-			InternalEObject oldActivity = (InternalEObject) activity;
-			activity = (Activity) eResolveProxy(oldActivity);
-			if (activity != oldActivity) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EkumiPackage.STRUCTURED_LOOP__ACTIVITY,
-							oldActivity, activity));
-			}
-		}
 		return activity;
 	}
 
@@ -203,8 +194,18 @@ public class StructuredLoopImpl extends ActivityImpl implements StructuredLoop {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Activity basicGetActivity() {
-		return activity;
+	public NotificationChain basicSetActivity(Activity newActivity, NotificationChain msgs) {
+		Activity oldActivity = activity;
+		activity = newActivity;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					EkumiPackage.STRUCTURED_LOOP__ACTIVITY, oldActivity, newActivity);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -213,11 +214,20 @@ public class StructuredLoopImpl extends ActivityImpl implements StructuredLoop {
 	 * @generated
 	 */
 	public void setActivity(Activity newActivity) {
-		Activity oldActivity = activity;
-		activity = newActivity;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.STRUCTURED_LOOP__ACTIVITY, oldActivity,
-					activity));
+		if (newActivity != activity) {
+			NotificationChain msgs = null;
+			if (activity != null)
+				msgs = ((InternalEObject) activity).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - EkumiPackage.STRUCTURED_LOOP__ACTIVITY, null, msgs);
+			if (newActivity != null)
+				msgs = ((InternalEObject) newActivity).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - EkumiPackage.STRUCTURED_LOOP__ACTIVITY, null, msgs);
+			msgs = basicSetActivity(newActivity, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.STRUCTURED_LOOP__ACTIVITY, newActivity,
+					newActivity));
 	}
 
 	/**
@@ -228,10 +238,12 @@ public class StructuredLoopImpl extends ActivityImpl implements StructuredLoop {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case EkumiPackage.STRUCTURED_LOOP__PRE_TEST:
-			return basicSetPreTest(null, msgs);
-		case EkumiPackage.STRUCTURED_LOOP__POST_TEST:
-			return basicSetPostTest(null, msgs);
+		case EkumiPackage.STRUCTURED_LOOP__PRE_CONDITION:
+			return basicSetPreCondition(null, msgs);
+		case EkumiPackage.STRUCTURED_LOOP__POST_CONDITION:
+			return basicSetPostCondition(null, msgs);
+		case EkumiPackage.STRUCTURED_LOOP__ACTIVITY:
+			return basicSetActivity(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -244,14 +256,12 @@ public class StructuredLoopImpl extends ActivityImpl implements StructuredLoop {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case EkumiPackage.STRUCTURED_LOOP__PRE_TEST:
-			return getPreTest();
-		case EkumiPackage.STRUCTURED_LOOP__POST_TEST:
-			return getPostTest();
+		case EkumiPackage.STRUCTURED_LOOP__PRE_CONDITION:
+			return getPreCondition();
+		case EkumiPackage.STRUCTURED_LOOP__POST_CONDITION:
+			return getPostCondition();
 		case EkumiPackage.STRUCTURED_LOOP__ACTIVITY:
-			if (resolve)
-				return getActivity();
-			return basicGetActivity();
+			return getActivity();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -264,11 +274,11 @@ public class StructuredLoopImpl extends ActivityImpl implements StructuredLoop {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case EkumiPackage.STRUCTURED_LOOP__PRE_TEST:
-			setPreTest((TestableScript) newValue);
+		case EkumiPackage.STRUCTURED_LOOP__PRE_CONDITION:
+			setPreCondition((Condition) newValue);
 			return;
-		case EkumiPackage.STRUCTURED_LOOP__POST_TEST:
-			setPostTest((TestableScript) newValue);
+		case EkumiPackage.STRUCTURED_LOOP__POST_CONDITION:
+			setPostCondition((Condition) newValue);
 			return;
 		case EkumiPackage.STRUCTURED_LOOP__ACTIVITY:
 			setActivity((Activity) newValue);
@@ -285,11 +295,11 @@ public class StructuredLoopImpl extends ActivityImpl implements StructuredLoop {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case EkumiPackage.STRUCTURED_LOOP__PRE_TEST:
-			setPreTest((TestableScript) null);
+		case EkumiPackage.STRUCTURED_LOOP__PRE_CONDITION:
+			setPreCondition((Condition) null);
 			return;
-		case EkumiPackage.STRUCTURED_LOOP__POST_TEST:
-			setPostTest((TestableScript) null);
+		case EkumiPackage.STRUCTURED_LOOP__POST_CONDITION:
+			setPostCondition((Condition) null);
 			return;
 		case EkumiPackage.STRUCTURED_LOOP__ACTIVITY:
 			setActivity((Activity) null);
@@ -306,10 +316,10 @@ public class StructuredLoopImpl extends ActivityImpl implements StructuredLoop {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case EkumiPackage.STRUCTURED_LOOP__PRE_TEST:
-			return preTest != null;
-		case EkumiPackage.STRUCTURED_LOOP__POST_TEST:
-			return postTest != null;
+		case EkumiPackage.STRUCTURED_LOOP__PRE_CONDITION:
+			return preCondition != null;
+		case EkumiPackage.STRUCTURED_LOOP__POST_CONDITION:
+			return postCondition != null;
 		case EkumiPackage.STRUCTURED_LOOP__ACTIVITY:
 			return activity != null;
 		}

@@ -43,7 +43,7 @@ public interface DataType<T> {
 	 * 
 	 * @see #unserialize(String)
 	 */
-	String serialize(T instance) throws DataTypeSerializationException;
+	String serialize(T instance);
 	
 	/**
 	 * Returns a new instance of the type from a given representation.<br>
@@ -58,5 +58,5 @@ public interface DataType<T> {
 	 * 
 	 * @see #serialize()
 	 */
-	T unserialize(String representation) throws DataTypeUnserializationException;
+	T unserialize(String representation);
 }

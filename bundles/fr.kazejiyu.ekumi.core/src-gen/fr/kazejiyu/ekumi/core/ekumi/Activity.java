@@ -17,14 +17,12 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getId <em>Id</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getName <em>Name</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getOutgoingFlows <em>Outgoing Flows</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getIncomingFlows <em>Incoming Flows</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getInputs <em>Inputs</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getSuccessors <em>Successors</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getPredecessor <em>Predecessor</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getStatus <em>Status</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getEnvironment <em>Environment</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getFlows <em>Flows</em>}</li>
  * </ul>
  *
  * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getActivity()
@@ -85,44 +83,9 @@ public interface Activity extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Outgoing Flows</b></em>' containment reference list.
-	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.DataFlow}.
-	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getSource <em>Source</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Outgoing Flows</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Outgoing Flows</em>' containment reference list.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getActivity_OutgoingFlows()
-	 * @see fr.kazejiyu.ekumi.core.ekumi.DataFlow#getSource
-	 * @model opposite="source" containment="true"
-	 * @generated
-	 */
-	EList<DataFlow> getOutgoingFlows();
-
-	/**
-	 * Returns the value of the '<em><b>Incoming Flows</b></em>' reference list.
-	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.DataFlow}.
-	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getDestination <em>Destination</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Incoming Flows</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Incoming Flows</em>' reference list.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getActivity_IncomingFlows()
-	 * @see fr.kazejiyu.ekumi.core.ekumi.DataFlow#getDestination
-	 * @model opposite="destination"
-	 * @generated
-	 */
-	EList<DataFlow> getIncomingFlows();
-
-	/**
 	 * Returns the value of the '<em><b>Inputs</b></em>' containment reference list.
 	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Data}.
+	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.Data#getOwner <em>Owner</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inputs</em>' containment reference list isn't clear,
@@ -131,7 +94,8 @@ public interface Activity extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Inputs</em>' containment reference list.
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getActivity_Inputs()
-	 * @model containment="true"
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Data#getOwner
+	 * @model opposite="owner" containment="true"
 	 * @generated
 	 */
 	EList<Data> getInputs();
@@ -228,30 +192,20 @@ public interface Activity extends EObject {
 	void setStatus(Status value);
 
 	/**
-	 * Returns the value of the '<em><b>Environment</b></em>' reference.
+	 * Returns the value of the '<em><b>Flows</b></em>' containment reference list.
+	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.DataFlows}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Environment</em>' reference isn't clear,
+	 * If the meaning of the '<em>Flows</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Environment</em>' reference.
-	 * @see #setEnvironment(Context)
-	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getActivity_Environment()
-	 * @model required="true"
+	 * @return the value of the '<em>Flows</em>' containment reference list.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getActivity_Flows()
+	 * @model containment="true"
 	 * @generated
 	 */
-	Context getEnvironment();
-
-	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getEnvironment <em>Environment</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Environment</em>' reference.
-	 * @see #getEnvironment()
-	 * @generated
-	 */
-	void setEnvironment(Context value);
+	EList<DataFlows> getFlows();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -259,6 +213,6 @@ public interface Activity extends EObject {
 	 * @model
 	 * @generated
 	 */
-	void run();
+	void run(Context context);
 
 } // Activity

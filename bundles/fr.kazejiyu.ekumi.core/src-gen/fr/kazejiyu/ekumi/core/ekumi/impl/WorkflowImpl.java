@@ -26,21 +26,21 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.WorkflowImpl#getTasks <em>Tasks</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.WorkflowImpl#getActivities <em>Activities</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
 	/**
-	 * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list.
+	 * The cached value of the '{@link #getActivities() <em>Activities</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTasks()
+	 * @see #getActivities()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Activity> tasks;
+	protected EList<Activity> activities;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -66,11 +66,11 @@ public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Activity> getTasks() {
-		if (tasks == null) {
-			tasks = new EObjectContainmentEList<Activity>(Activity.class, this, EkumiPackage.WORKFLOW__TASKS);
+	public EList<Activity> getActivities() {
+		if (activities == null) {
+			activities = new EObjectContainmentEList<Activity>(Activity.class, this, EkumiPackage.WORKFLOW__ACTIVITIES);
 		}
-		return tasks;
+		return activities;
 	}
 
 	/**
@@ -81,8 +81,8 @@ public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case EkumiPackage.WORKFLOW__TASKS:
-			return ((InternalEList<?>) getTasks()).basicRemove(otherEnd, msgs);
+		case EkumiPackage.WORKFLOW__ACTIVITIES:
+			return ((InternalEList<?>) getActivities()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -95,8 +95,8 @@ public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case EkumiPackage.WORKFLOW__TASKS:
-			return getTasks();
+		case EkumiPackage.WORKFLOW__ACTIVITIES:
+			return getActivities();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -110,9 +110,9 @@ public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case EkumiPackage.WORKFLOW__TASKS:
-			getTasks().clear();
-			getTasks().addAll((Collection<? extends Activity>) newValue);
+		case EkumiPackage.WORKFLOW__ACTIVITIES:
+			getActivities().clear();
+			getActivities().addAll((Collection<? extends Activity>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -126,8 +126,8 @@ public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case EkumiPackage.WORKFLOW__TASKS:
-			getTasks().clear();
+		case EkumiPackage.WORKFLOW__ACTIVITIES:
+			getActivities().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -141,8 +141,8 @@ public abstract class WorkflowImpl extends ActivityImpl implements Workflow {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case EkumiPackage.WORKFLOW__TASKS:
-			return tasks != null && !tasks.isEmpty();
+		case EkumiPackage.WORKFLOW__ACTIVITIES:
+			return activities != null && !activities.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -2,8 +2,8 @@ package fr.kazejiyu.ekumi.core.languages;
 
 import org.eclipse.core.resources.IProject;
 
-import fr.kazejiyu.ekumi.core.ekumi.RunnableScript;
-import fr.kazejiyu.ekumi.core.ekumi.TestableScript;
+import fr.kazejiyu.ekumi.core.ekumi.Condition;
+import fr.kazejiyu.ekumi.core.ekumi.Runner;
 import fr.kazejiyu.ekumi.core.languages.exceptions.ScriptLoadingFailureException;
 
 /**
@@ -26,7 +26,7 @@ public interface ScriptingLanguage {
 	 * 
 	 * @throws ScriptLoadingFailureException if the script cannot be loaded.
 	 */
-	RunnableScript resolveRunnable(String path, IProject project) throws ScriptLoadingFailureException;
+	Runner resolveRunnable(String path, IProject project) throws ScriptLoadingFailureException;
 
 	/**
 	 * Turn a testable written with the language into a EKumi runnable.
@@ -41,6 +41,6 @@ public interface ScriptingLanguage {
 	 * 
 	 * @throws ScriptLoadingFailureException if the script cannot be loaded.
 	 */
-	TestableScript resolveTestable(String path, IProject project) throws ScriptLoadingFailureException;
+	Condition resolveTestable(String path, IProject project) throws ScriptLoadingFailureException;
 
 }

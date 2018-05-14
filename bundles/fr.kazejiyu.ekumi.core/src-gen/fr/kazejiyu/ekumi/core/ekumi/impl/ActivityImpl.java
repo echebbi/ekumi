@@ -5,7 +5,7 @@ package fr.kazejiyu.ekumi.core.ekumi.impl;
 import fr.kazejiyu.ekumi.core.ekumi.Activity;
 import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.Data;
-import fr.kazejiyu.ekumi.core.ekumi.DataFlow;
+import fr.kazejiyu.ekumi.core.ekumi.DataFlows;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.core.ekumi.Status;
 
@@ -39,14 +39,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getId <em>Id</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getName <em>Name</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getOutgoingFlows <em>Outgoing Flows</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getIncomingFlows <em>Incoming Flows</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getInputs <em>Inputs</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getSuccessors <em>Successors</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getPredecessor <em>Predecessor</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getStatus <em>Status</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getEnvironment <em>Environment</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getFlows <em>Flows</em>}</li>
  * </ul>
  *
  * @generated
@@ -91,26 +89,6 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getOutgoingFlows() <em>Outgoing Flows</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOutgoingFlows()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<DataFlow> outgoingFlows;
-
-	/**
-	 * The cached value of the '{@link #getIncomingFlows() <em>Incoming Flows</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getIncomingFlows()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<DataFlow> incomingFlows;
 
 	/**
 	 * The cached value of the '{@link #getInputs() <em>Inputs</em>}' containment reference list.
@@ -173,14 +151,14 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	protected Status status = STATUS_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getEnvironment() <em>Environment</em>}' reference.
+	 * The cached value of the '{@link #getFlows() <em>Flows</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEnvironment()
+	 * @see #getFlows()
 	 * @generated
 	 * @ordered
 	 */
-	protected Context environment;
+	protected EList<DataFlows> flows;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -248,35 +226,10 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<DataFlow> getOutgoingFlows() {
-		if (outgoingFlows == null) {
-			outgoingFlows = new EObjectContainmentWithInverseEList<DataFlow>(DataFlow.class, this,
-					EkumiPackage.ACTIVITY__OUTGOING_FLOWS, EkumiPackage.DATA_FLOW__SOURCE);
-		}
-		return outgoingFlows;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<DataFlow> getIncomingFlows() {
-		if (incomingFlows == null) {
-			incomingFlows = new EObjectWithInverseResolvingEList<DataFlow>(DataFlow.class, this,
-					EkumiPackage.ACTIVITY__INCOMING_FLOWS, EkumiPackage.DATA_FLOW__DESTINATION);
-		}
-		return incomingFlows;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<Data> getInputs() {
 		if (inputs == null) {
-			inputs = new EObjectContainmentEList<Data>(Data.class, this, EkumiPackage.ACTIVITY__INPUTS);
+			inputs = new EObjectContainmentWithInverseEList<Data>(Data.class, this, EkumiPackage.ACTIVITY__INPUTS,
+					EkumiPackage.DATA__OWNER);
 		}
 		return inputs;
 	}
@@ -400,17 +353,11 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Context getEnvironment() {
-		if (environment != null && environment.eIsProxy()) {
-			InternalEObject oldEnvironment = (InternalEObject) environment;
-			environment = (Context) eResolveProxy(oldEnvironment);
-			if (environment != oldEnvironment) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EkumiPackage.ACTIVITY__ENVIRONMENT,
-							oldEnvironment, environment));
-			}
+	public EList<DataFlows> getFlows() {
+		if (flows == null) {
+			flows = new EObjectContainmentEList<DataFlows>(DataFlows.class, this, EkumiPackage.ACTIVITY__FLOWS);
 		}
-		return environment;
+		return flows;
 	}
 
 	/**
@@ -418,29 +365,7 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Context basicGetEnvironment() {
-		return environment;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEnvironment(Context newEnvironment) {
-		Context oldEnvironment = environment;
-		environment = newEnvironment;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.ACTIVITY__ENVIRONMENT, oldEnvironment,
-					environment));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void run() {
+	public void run(Context context) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -455,10 +380,8 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case EkumiPackage.ACTIVITY__OUTGOING_FLOWS:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutgoingFlows()).basicAdd(otherEnd, msgs);
-		case EkumiPackage.ACTIVITY__INCOMING_FLOWS:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncomingFlows()).basicAdd(otherEnd, msgs);
+		case EkumiPackage.ACTIVITY__INPUTS:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getInputs()).basicAdd(otherEnd, msgs);
 		case EkumiPackage.ACTIVITY__SUCCESSORS:
 			return ((InternalEList<InternalEObject>) (InternalEList<?>) getSuccessors()).basicAdd(otherEnd, msgs);
 		case EkumiPackage.ACTIVITY__PREDECESSOR:
@@ -478,10 +401,6 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case EkumiPackage.ACTIVITY__OUTGOING_FLOWS:
-			return ((InternalEList<?>) getOutgoingFlows()).basicRemove(otherEnd, msgs);
-		case EkumiPackage.ACTIVITY__INCOMING_FLOWS:
-			return ((InternalEList<?>) getIncomingFlows()).basicRemove(otherEnd, msgs);
 		case EkumiPackage.ACTIVITY__INPUTS:
 			return ((InternalEList<?>) getInputs()).basicRemove(otherEnd, msgs);
 		case EkumiPackage.ACTIVITY__OUTPUTS:
@@ -490,6 +409,8 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 			return ((InternalEList<?>) getSuccessors()).basicRemove(otherEnd, msgs);
 		case EkumiPackage.ACTIVITY__PREDECESSOR:
 			return basicSetPredecessor(null, msgs);
+		case EkumiPackage.ACTIVITY__FLOWS:
+			return ((InternalEList<?>) getFlows()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -506,10 +427,6 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 			return getId();
 		case EkumiPackage.ACTIVITY__NAME:
 			return getName();
-		case EkumiPackage.ACTIVITY__OUTGOING_FLOWS:
-			return getOutgoingFlows();
-		case EkumiPackage.ACTIVITY__INCOMING_FLOWS:
-			return getIncomingFlows();
 		case EkumiPackage.ACTIVITY__INPUTS:
 			return getInputs();
 		case EkumiPackage.ACTIVITY__OUTPUTS:
@@ -522,10 +439,8 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 			return basicGetPredecessor();
 		case EkumiPackage.ACTIVITY__STATUS:
 			return getStatus();
-		case EkumiPackage.ACTIVITY__ENVIRONMENT:
-			if (resolve)
-				return getEnvironment();
-			return basicGetEnvironment();
+		case EkumiPackage.ACTIVITY__FLOWS:
+			return getFlows();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -545,14 +460,6 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 		case EkumiPackage.ACTIVITY__NAME:
 			setName((String) newValue);
 			return;
-		case EkumiPackage.ACTIVITY__OUTGOING_FLOWS:
-			getOutgoingFlows().clear();
-			getOutgoingFlows().addAll((Collection<? extends DataFlow>) newValue);
-			return;
-		case EkumiPackage.ACTIVITY__INCOMING_FLOWS:
-			getIncomingFlows().clear();
-			getIncomingFlows().addAll((Collection<? extends DataFlow>) newValue);
-			return;
 		case EkumiPackage.ACTIVITY__INPUTS:
 			getInputs().clear();
 			getInputs().addAll((Collection<? extends Data>) newValue);
@@ -571,8 +478,9 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 		case EkumiPackage.ACTIVITY__STATUS:
 			setStatus((Status) newValue);
 			return;
-		case EkumiPackage.ACTIVITY__ENVIRONMENT:
-			setEnvironment((Context) newValue);
+		case EkumiPackage.ACTIVITY__FLOWS:
+			getFlows().clear();
+			getFlows().addAll((Collection<? extends DataFlows>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -592,12 +500,6 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 		case EkumiPackage.ACTIVITY__NAME:
 			setName(NAME_EDEFAULT);
 			return;
-		case EkumiPackage.ACTIVITY__OUTGOING_FLOWS:
-			getOutgoingFlows().clear();
-			return;
-		case EkumiPackage.ACTIVITY__INCOMING_FLOWS:
-			getIncomingFlows().clear();
-			return;
 		case EkumiPackage.ACTIVITY__INPUTS:
 			getInputs().clear();
 			return;
@@ -613,8 +515,8 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 		case EkumiPackage.ACTIVITY__STATUS:
 			setStatus(STATUS_EDEFAULT);
 			return;
-		case EkumiPackage.ACTIVITY__ENVIRONMENT:
-			setEnvironment((Context) null);
+		case EkumiPackage.ACTIVITY__FLOWS:
+			getFlows().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -632,10 +534,6 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		case EkumiPackage.ACTIVITY__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-		case EkumiPackage.ACTIVITY__OUTGOING_FLOWS:
-			return outgoingFlows != null && !outgoingFlows.isEmpty();
-		case EkumiPackage.ACTIVITY__INCOMING_FLOWS:
-			return incomingFlows != null && !incomingFlows.isEmpty();
 		case EkumiPackage.ACTIVITY__INPUTS:
 			return inputs != null && !inputs.isEmpty();
 		case EkumiPackage.ACTIVITY__OUTPUTS:
@@ -646,8 +544,8 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 			return predecessor != null;
 		case EkumiPackage.ACTIVITY__STATUS:
 			return status != STATUS_EDEFAULT;
-		case EkumiPackage.ACTIVITY__ENVIRONMENT:
-			return environment != null;
+		case EkumiPackage.ACTIVITY__FLOWS:
+			return flows != null && !flows.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -660,8 +558,8 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-		case EkumiPackage.ACTIVITY___RUN:
-			run();
+		case EkumiPackage.ACTIVITY___RUN__CONTEXT:
+			run((Context) arguments.get(0));
 			return null;
 		}
 		return super.eInvoke(operationID, arguments);

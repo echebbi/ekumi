@@ -14,9 +14,9 @@ import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.launching.JavaRuntime;
 
-import fr.kazejiyu.ekumi.core.ekumi.RunnableScript;
+import fr.kazejiyu.ekumi.core.ekumi.Condition;
+import fr.kazejiyu.ekumi.core.ekumi.Runner;
 import fr.kazejiyu.ekumi.core.ekumi.Script;
-import fr.kazejiyu.ekumi.core.ekumi.TestableScript;
 import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
 import fr.kazejiyu.ekumi.core.languages.exceptions.ScriptLoadingFailureException;
 
@@ -28,10 +28,10 @@ import fr.kazejiyu.ekumi.core.languages.exceptions.ScriptLoadingFailureException
 public class JavaLanguage implements ScriptingLanguage {
 
 	@Override
-	public RunnableScript resolveRunnable(String path, IProject project) {
+	public Runner resolveRunnable(String path, IProject project) {
 		try {
 			Class<?> clazz = loadClass(path, project);
-			return clazz.asSubclass(RunnableScript.class).newInstance();
+			return clazz.asSubclass(Runner.class).newInstance();
 			
 		} catch (InstantiationException | IllegalAccessException e) {
 			throw new ScriptLoadingFailureException("Unable to resolve runnable from path: " + path, e); 
@@ -39,10 +39,10 @@ public class JavaLanguage implements ScriptingLanguage {
 	}
 
 	@Override
-	public TestableScript resolveTestable(String path, IProject project) {
+	public Condition resolveTestable(String path, IProject project) {
 		try {
 			Class<?> clazz = loadClass(path, project);
-			return clazz.asSubclass(TestableScript.class).newInstance();
+			return clazz.asSubclass(Condition.class).newInstance();
 			
 		} catch (InstantiationException | IllegalAccessException e) {
 			throw new ScriptLoadingFailureException("Unable to resolve runnable from path: " + path, e); 
@@ -88,7 +88,7 @@ public class JavaLanguage implements ScriptingLanguage {
 	private URLClassLoader getClassLoader(IProject project) throws CoreException, MalformedURLException {
 		IJavaProject javaProject = JavaCore.create(project);
 		String[] classPathEntries = JavaRuntime.computeDefaultRuntimeClassPath(javaProject);
-		List<URL> urlList = new ArrayList<URL>();
+		List<URL> urlList = new ArrayList<>();
 		
 		for (int i = 0; i < classPathEntries.length; i++) {
 			String entry = classPathEntries[i];
@@ -100,7 +100,7 @@ public class JavaLanguage implements ScriptingLanguage {
 		// parentClassLoader makes possible to cast instances
 		// loaded by the new URLClassLoader into EKumi classes.
 		ClassLoader parentClassLoader = getClass().getClassLoader();
-		URL[] urls = (URL[]) urlList.toArray(new URL[urlList.size()]);
+		URL[] urls = urlList.toArray(new URL[urlList.size()]);
 		
 		return new URLClassLoader(urls, parentClassLoader);
 	}

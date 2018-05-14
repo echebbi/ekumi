@@ -2,20 +2,16 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.impl;
 
-import fr.kazejiyu.ekumi.core.datatypes.DataType;
-
-import fr.kazejiyu.ekumi.core.ekumi.*;
-
-import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import fr.kazejiyu.ekumi.core.datatypes.DataType;
+import fr.kazejiyu.ekumi.core.ekumi.*;
+import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
 
 /**
  * <!-- begin-user-doc -->
@@ -72,10 +68,6 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 			return createData();
 		case EkumiPackage.STRUCTURED_LOOP:
 			return createStructuredLoop();
-		case EkumiPackage.TESTABLE_SCRIPT:
-			return createTestableScript();
-		case EkumiPackage.RUNNABLE_SCRIPT:
-			return createRunnableScript();
 		case EkumiPackage.SCRIPTED_TASK:
 			return createScriptedTask();
 		case EkumiPackage.MULTI_CHOICE:
@@ -84,6 +76,16 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 			return createBranch();
 		case EkumiPackage.CONTEXT:
 			return createContext();
+		case EkumiPackage.DATA_FLOWS:
+			return createDataFlows();
+		case EkumiPackage.EXECUTION:
+			return createExecution();
+		case EkumiPackage.DATA_LIST:
+			return createDataList();
+		case EkumiPackage.DATA_MAP:
+			return createDataMap();
+		case EkumiPackage.DRIVER:
+			return createDriver();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -134,10 +136,10 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Sequence createSequence() {
-		SequenceImpl sequence = new SequenceImpl();
+		SequenceImpl sequence = new BasicSequence();
 		return sequence;
 	}
 
@@ -194,30 +196,10 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TestableScript createTestableScript() {
-		TestableScriptImpl testableScript = new TestableScriptImpl();
-		return testableScript;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public RunnableScript createRunnableScript() {
-		RunnableScriptImpl runnableScript = new RunnableScriptImpl();
-		return runnableScript;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ScriptedTask createScriptedTask() {
-		ScriptedTaskImpl scriptedTask = new ScriptedTaskImpl();
+		ScriptedTaskImpl scriptedTask = new BasicScriptedTask();
 		return scriptedTask;
 	}
 
@@ -249,6 +231,56 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 	public Context createContext() {
 		ContextImpl context = new ContextImpl();
 		return context;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataFlows createDataFlows() {
+		DataFlowsImpl dataFlows = new DataFlowsImpl();
+		return dataFlows;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Execution createExecution() {
+		ExecutionImpl execution = new ExecutionImpl();
+		return execution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataList createDataList() {
+		DataListImpl dataList = new DataListImpl();
+		return dataList;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataMap createDataMap() {
+		DataMapImpl dataMap = new DataMapImpl();
+		return dataMap;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Driver createDriver() {
+		DriverImpl driver = new DriverImpl();
+		return driver;
 	}
 
 	/**

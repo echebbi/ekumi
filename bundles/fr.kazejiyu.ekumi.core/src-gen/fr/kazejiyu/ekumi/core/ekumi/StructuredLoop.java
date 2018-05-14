@@ -4,17 +4,19 @@ package fr.kazejiyu.ekumi.core.ekumi;
 
 /**
  * <!-- begin-user-doc -->
- * Represents either a While or a For loop.
- * 
- * @see <a href="http://www.workflowpatterns.com/patterns/control/new/wcp21.php">www.workflowspatterns.com</a>
+ * A representation of the model object '<em><b>Structured Loop</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.StructuredLoop#getPreTest <em>Pre Test</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.StructuredLoop#getPostTest <em>Post Test</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.StructuredLoop#getPreCondition <em>Pre Condition</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.StructuredLoop#getPostCondition <em>Post Condition</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.StructuredLoop#getActivity <em>Activity</em>}</li>
  * </ul>
  *
@@ -24,78 +26,78 @@ package fr.kazejiyu.ekumi.core.ekumi;
  */
 public interface StructuredLoop extends Activity {
 	/**
-	 * Returns the value of the '<em><b>Pre Test</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Pre Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Pre Test</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Pre Condition</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Pre Test</em>' containment reference.
-	 * @see #setPreTest(TestableScript)
-	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getStructuredLoop_PreTest()
+	 * @return the value of the '<em>Pre Condition</em>' containment reference.
+	 * @see #setPreCondition(Condition)
+	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getStructuredLoop_PreCondition()
 	 * @model containment="true"
 	 * @generated
 	 */
-	TestableScript getPreTest();
+	Condition getPreCondition();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.StructuredLoop#getPreTest <em>Pre Test</em>}' containment reference.
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.StructuredLoop#getPreCondition <em>Pre Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Pre Test</em>' containment reference.
-	 * @see #getPreTest()
+	 * @param value the new value of the '<em>Pre Condition</em>' containment reference.
+	 * @see #getPreCondition()
 	 * @generated
 	 */
-	void setPreTest(TestableScript value);
+	void setPreCondition(Condition value);
 
 	/**
-	 * Returns the value of the '<em><b>Post Test</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Post Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Post Test</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Post Condition</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Post Test</em>' containment reference.
-	 * @see #setPostTest(TestableScript)
-	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getStructuredLoop_PostTest()
+	 * @return the value of the '<em>Post Condition</em>' containment reference.
+	 * @see #setPostCondition(Condition)
+	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getStructuredLoop_PostCondition()
 	 * @model containment="true"
 	 * @generated
 	 */
-	TestableScript getPostTest();
+	Condition getPostCondition();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.StructuredLoop#getPostTest <em>Post Test</em>}' containment reference.
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.StructuredLoop#getPostCondition <em>Post Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Post Test</em>' containment reference.
-	 * @see #getPostTest()
+	 * @param value the new value of the '<em>Post Condition</em>' containment reference.
+	 * @see #getPostCondition()
 	 * @generated
 	 */
-	void setPostTest(TestableScript value);
+	void setPostCondition(Condition value);
 
 	/**
-	 * Returns the value of the '<em><b>Activity</b></em>' reference.
+	 * Returns the value of the '<em><b>Activity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Activity</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Activity</em>' reference.
+	 * @return the value of the '<em>Activity</em>' containment reference.
 	 * @see #setActivity(Activity)
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getStructuredLoop_Activity()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	Activity getActivity();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.StructuredLoop#getActivity <em>Activity</em>}' reference.
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.StructuredLoop#getActivity <em>Activity</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Activity</em>' reference.
+	 * @param value the new value of the '<em>Activity</em>' containment reference.
 	 * @see #getActivity()
 	 * @generated
 	 */
