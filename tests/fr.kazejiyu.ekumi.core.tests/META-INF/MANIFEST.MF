@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: fr.kazejiyu.ekumi.core.tests
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: fr.kazejiyu.ekumi.tests
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Vendor: %providerName
+Require-Bundle: org.junit.jupiter.api;bundle-version="5.0.0",
+ org.junit.jupiter.engine;bundle-version="5.0.0",
+ org.junit.jupiter.params;bundle-version="5.0.0",
+ fr.kazejiyu.ekumi.core;bundle-version="0.1.0",
+ org.junit.platform.commons;bundle-version="1.0.0",
+ org.junit.platform.launcher;bundle-version="1.0.0",
+ org.junit.platform.engine;bundle-version="1.0.0",
+ org.opentest4j;bundle-version="1.0.0"
