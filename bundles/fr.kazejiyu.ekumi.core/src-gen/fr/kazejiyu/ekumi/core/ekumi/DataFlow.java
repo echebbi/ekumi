@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getSource <em>Source</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getDestination <em>Destination</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getInput <em>Input</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getOutput <em>Output</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getDestination <em>Destination</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getSource <em>Source</em>}</li>
  * </ul>
  *
  * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getDataFlow()
@@ -24,62 +24,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface DataFlow extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Source</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getOutgoingFlows <em>Outgoing Flows</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Source</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Source</em>' container reference.
-	 * @see #setSource(Activity)
-	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getDataFlow_Source()
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getOutgoingFlows
-	 * @model opposite="outgoingFlows" transient="false"
-	 * @generated
-	 */
-	Activity getSource();
-
-	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getSource <em>Source</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Source</em>' container reference.
-	 * @see #getSource()
-	 * @generated
-	 */
-	void setSource(Activity value);
-
-	/**
-	 * Returns the value of the '<em><b>Destination</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getIncomingFlows <em>Incoming Flows</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Destination</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Destination</em>' reference.
-	 * @see #setDestination(Activity)
-	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getDataFlow_Destination()
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getIncomingFlows
-	 * @model opposite="incomingFlows" required="true"
-	 * @generated
-	 */
-	Activity getDestination();
-
-	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getDestination <em>Destination</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Destination</em>' reference.
-	 * @see #getDestination()
-	 * @generated
-	 */
-	void setDestination(Activity value);
-
 	/**
 	 * Returns the value of the '<em><b>Input</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -131,5 +75,59 @@ public interface DataFlow extends EObject {
 	 * @generated
 	 */
 	void setOutput(Data value);
+
+	/**
+	 * Returns the value of the '<em><b>Destination</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Destination</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Destination</em>' reference.
+	 * @see #isSetDestination()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getDataFlow_Destination()
+	 * @model unsettable="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='return output.getOwner();'"
+	 * @generated
+	 */
+	Activity getDestination();
+
+	/**
+	 * Returns whether the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getDestination <em>Destination</em>}' reference is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Destination</em>' reference is set.
+	 * @see #getDestination()
+	 * @generated
+	 */
+	boolean isSetDestination();
+
+	/**
+	 * Returns the value of the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Source</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Source</em>' reference.
+	 * @see #isSetSource()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getDataFlow_Source()
+	 * @model unsettable="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='return input.getOwner();'"
+	 * @generated
+	 */
+	Activity getSource();
+
+	/**
+	 * Returns whether the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getSource <em>Source</em>}' reference is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Source</em>' reference is set.
+	 * @see #getSource()
+	 * @generated
+	 */
+	boolean isSetSource();
 
 } // DataFlow

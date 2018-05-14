@@ -76,24 +76,6 @@ public interface EkumiFactory extends EFactory {
 	StructuredLoop createStructuredLoop();
 
 	/**
-	 * Returns a new object of class '<em>Testable Script</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Testable Script</em>'.
-	 * @generated
-	 */
-	TestableScript createTestableScript();
-
-	/**
-	 * Returns a new object of class '<em>Runnable Script</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Runnable Script</em>'.
-	 * @generated
-	 */
-	RunnableScript createRunnableScript();
-
-	/**
 	 * Returns a new object of class '<em>Scripted Task</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -128,6 +110,51 @@ public interface EkumiFactory extends EFactory {
 	 * @generated
 	 */
 	Context createContext();
+
+	/**
+	 * Returns a new object of class '<em>Data Flows</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Flows</em>'.
+	 * @generated
+	 */
+	DataFlows createDataFlows();
+
+	/**
+	 * Returns a new object of class '<em>Execution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Execution</em>'.
+	 * @generated
+	 */
+	Execution createExecution();
+
+	/**
+	 * Returns a new object of class '<em>Data List</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data List</em>'.
+	 * @generated
+	 */
+	DataList createDataList();
+
+	/**
+	 * Returns a new object of class '<em>Data Map</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Map</em>'.
+	 * @generated
+	 */
+	DataMap createDataMap();
+
+	/**
+	 * Returns a new object of class '<em>Driver</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Driver</em>'.
+	 * @generated
+	 */
+	Driver createDriver();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -4,7 +4,7 @@ package fr.kazejiyu.ekumi.core.ekumi;
 
 /**
  * <!-- begin-user-doc -->
- * A {@link Workflow} that executes its {@link Activity Activities} concurrently.
+ * A representation of the model object '<em><b>Parallel Split</b></em>'.
  * <!-- end-user-doc -->
  *
  *

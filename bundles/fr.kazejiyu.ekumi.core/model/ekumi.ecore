@@ -2,15 +2,13 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ekumi" nsURI="http://fr.kazejiyu.io/ekumi" nsPrefix="ekumi">
   <eClassifiers xsi:type="ecore:EClass" name="Activity" abstract="true">
-    <eOperations name="run"/>
+    <eOperations name="run">
+      <eParameters name="context" eType="#//Context"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingFlows" upperBound="-1"
-        eType="#//DataFlow" containment="true" eOpposite="#//DataFlow/source"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="incomingFlows" upperBound="-1"
-        eType="#//DataFlow" eOpposite="#//DataFlow/destination"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
-        eType="#//Data" containment="true"/>
+        eType="#//Data" containment="true" eOpposite="#//Data/owner"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
         eType="#//Data" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="successors" upperBound="-1"
@@ -18,14 +16,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="predecessor" eType="#//Activity"
         eOpposite="#//Activity/successors"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//Status"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="environment" lowerBound="1"
-        eType="#//Context"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="flows" upperBound="-1"
+        eType="#//DataFlows" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Workflow" abstract="true" eSuperTypes="#//Activity">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value=""/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activities" upperBound="-1"
         eType="#//Activity" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Sequence" eSuperTypes="#//Workflow">
@@ -36,30 +34,45 @@
   <eClassifiers xsi:type="ecore:EClass" name="MultipleInstances" eSuperTypes="#//Activity"/>
   <eClassifiers xsi:type="ecore:EClass" name="ParallelSplit" eSuperTypes="#//Workflow"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataFlow">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//Activity"
-        eOpposite="#//Activity/outgoingFlows"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="destination" lowerBound="1"
-        eType="#//Activity" eOpposite="#//Activity/incomingFlows"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="input" lowerBound="1" eType="#//Data"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="output" lowerBound="1"
         eType="#//Data"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="destination" eType="#//Activity"
+        changeable="false" volatile="true" unsettable="true" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="get" value="return output.getOwner();"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//Activity"
+        changeable="false" volatile="true" unsettable="true" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="get" value="return input.getOwner();"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Data">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//DataType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="#//Activity"
+        eOpposite="#//Activity/inputs"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StructuredLoop" eSuperTypes="#//Activity">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value=""/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="preTest" eType="#//TestableScript"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="preCondition" eType="#//Condition"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="postTest" eType="#//TestableScript"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="postCondition" eType="#//Condition"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"
+        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TestableScript" eSuperTypes="#//Script">
-    <eOperations name="check" eType="#//TestResult"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Condition" abstract="true" eSuperTypes="#//Script">
+    <eOperations name="isVerified" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="loop" eType="#//StructuredLoop"/>
+      <eParameters name="context" eType="#//Context"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Task" abstract="true" eSuperTypes="#//Activity"/>
   <eClassifiers xsi:type="ecore:EEnum" name="Status">
@@ -68,16 +81,22 @@
     <eLiterals name="SUCCEEDED" value="2"/>
     <eLiterals name="FAILED" value="3"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RunnableScript" eSuperTypes="#//Script">
-    <eOperations name="run"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Runner" abstract="true" eSuperTypes="#//Script">
+    <eOperations name="run">
+      <eParameters name="context" eType="#//Context"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ScriptedTask" eSuperTypes="#//Task">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="script" eType="#//RunnableScript"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scriptPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="script" eType="#//Runner"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Script" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
+        eType="#//Data"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
+        eType="#//Data"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TestResult">
     <eLiterals name="FULFILLED"/>
@@ -93,12 +112,41 @@
         eType="#//Branch" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Branch">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="availability" eType="#//TestableScript"
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="availability" eType="#//Condition"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Context">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
         eType="#//Data" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Serializable" abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataFlows">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incoming" upperBound="-1"
+        eType="#//DataFlow" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoings" upperBound="-1"
+        eType="#//DataFlow" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Execution">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="#//Context"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataList" eSuperTypes="#//Data">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        changeable="false" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataMap" eSuperTypes="#//Data"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Driver" eSuperTypes="#//Activity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="driven" eType="#//Activity"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="script" eType="#//DriverRunner"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DriverRunner" abstract="true" eSuperTypes="#//Runner">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="driven" eType="#//Activity"/>
   </eClassifiers>
 </ecore:EPackage>

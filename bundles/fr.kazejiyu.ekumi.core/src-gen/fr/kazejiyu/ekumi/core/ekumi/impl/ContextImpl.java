@@ -2,23 +2,23 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.impl;
 
-import fr.kazejiyu.ekumi.core.ekumi.Context;
-import fr.kazejiyu.ekumi.core.ekumi.Data;
-import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
+import static java.util.Objects.requireNonNull;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import fr.kazejiyu.ekumi.core.ekumi.Context;
+import fr.kazejiyu.ekumi.core.ekumi.Data;
+import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
+import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,21 +28,45 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ContextImpl#getVariable <em>Variable</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ContextImpl#getVariables <em>Variables</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ContextImpl extends MinimalEObjectImpl.Container implements Context {
+
+	@Override
+	public boolean contains(String name) {
+		return get(name).isPresent();
+	}
+
+	@Override
+	public Optional<Data> get(String name) {
+		return getVariables().stream().filter(var -> var.getName().equals(name)).findAny();
+	}
+
+	@Override
+	public void set(String name, Object value) {
+		Data data = EkumiFactory.eINSTANCE.createData();
+		data.setName(requireNonNull(name));
+		data.setValue(value);
+		getVariables().add(data);
+	}
+
+	@Override
+	public void unset(String name) {
+		get(name).ifPresent(var -> getVariables().remove(var));
+	}
+
 	/**
-	 * The cached value of the '{@link #getVariable() <em>Variable</em>}' containment reference list.
+	 * The cached value of the '{@link #getVariables() <em>Variables</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVariable()
+	 * @see #getVariables()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Data> variable;
+	protected EList<Data> variables;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,11 +92,11 @@ public class ContextImpl extends MinimalEObjectImpl.Container implements Context
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Data> getVariable() {
-		if (variable == null) {
-			variable = new EObjectContainmentEList<Data>(Data.class, this, EkumiPackage.CONTEXT__VARIABLE);
+	public EList<Data> getVariables() {
+		if (variables == null) {
+			variables = new EObjectContainmentEList<Data>(Data.class, this, EkumiPackage.CONTEXT__VARIABLES);
 		}
-		return variable;
+		return variables;
 	}
 
 	/**
@@ -83,8 +107,8 @@ public class ContextImpl extends MinimalEObjectImpl.Container implements Context
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case EkumiPackage.CONTEXT__VARIABLE:
-			return ((InternalEList<?>) getVariable()).basicRemove(otherEnd, msgs);
+		case EkumiPackage.CONTEXT__VARIABLES:
+			return ((InternalEList<?>) getVariables()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -97,8 +121,8 @@ public class ContextImpl extends MinimalEObjectImpl.Container implements Context
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case EkumiPackage.CONTEXT__VARIABLE:
-			return getVariable();
+		case EkumiPackage.CONTEXT__VARIABLES:
+			return getVariables();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -112,9 +136,9 @@ public class ContextImpl extends MinimalEObjectImpl.Container implements Context
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case EkumiPackage.CONTEXT__VARIABLE:
-			getVariable().clear();
-			getVariable().addAll((Collection<? extends Data>) newValue);
+		case EkumiPackage.CONTEXT__VARIABLES:
+			getVariables().clear();
+			getVariables().addAll((Collection<? extends Data>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -128,8 +152,8 @@ public class ContextImpl extends MinimalEObjectImpl.Container implements Context
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case EkumiPackage.CONTEXT__VARIABLE:
-			getVariable().clear();
+		case EkumiPackage.CONTEXT__VARIABLES:
+			getVariables().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -143,8 +167,8 @@ public class ContextImpl extends MinimalEObjectImpl.Container implements Context
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case EkumiPackage.CONTEXT__VARIABLE:
-			return variable != null && !variable.isEmpty();
+		case EkumiPackage.CONTEXT__VARIABLES:
+			return variables != null && !variables.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

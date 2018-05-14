@@ -136,11 +136,11 @@ public class EkumiSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case EkumiPackage.TESTABLE_SCRIPT: {
-			TestableScript testableScript = (TestableScript) theEObject;
-			T result = caseTestableScript(testableScript);
+		case EkumiPackage.CONDITION: {
+			Condition condition = (Condition) theEObject;
+			T result = caseCondition(condition);
 			if (result == null)
-				result = caseScript(testableScript);
+				result = caseScript(condition);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -154,11 +154,11 @@ public class EkumiSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case EkumiPackage.RUNNABLE_SCRIPT: {
-			RunnableScript runnableScript = (RunnableScript) theEObject;
-			T result = caseRunnableScript(runnableScript);
+		case EkumiPackage.RUNNER: {
+			Runner runner = (Runner) theEObject;
+			T result = caseRunner(runner);
 			if (result == null)
-				result = caseScript(runnableScript);
+				result = caseScript(runner);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -200,6 +200,65 @@ public class EkumiSwitch<T> extends Switch<T> {
 		case EkumiPackage.CONTEXT: {
 			Context context = (Context) theEObject;
 			T result = caseContext(context);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case EkumiPackage.SERIALIZABLE: {
+			Serializable serializable = (Serializable) theEObject;
+			T result = caseSerializable(serializable);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case EkumiPackage.DATA_FLOWS: {
+			DataFlows dataFlows = (DataFlows) theEObject;
+			T result = caseDataFlows(dataFlows);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case EkumiPackage.EXECUTION: {
+			Execution execution = (Execution) theEObject;
+			T result = caseExecution(execution);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case EkumiPackage.DATA_LIST: {
+			DataList dataList = (DataList) theEObject;
+			T result = caseDataList(dataList);
+			if (result == null)
+				result = caseData(dataList);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case EkumiPackage.DATA_MAP: {
+			DataMap dataMap = (DataMap) theEObject;
+			T result = caseDataMap(dataMap);
+			if (result == null)
+				result = caseData(dataMap);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case EkumiPackage.DRIVER: {
+			Driver driver = (Driver) theEObject;
+			T result = caseDriver(driver);
+			if (result == null)
+				result = caseActivity(driver);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case EkumiPackage.DRIVER_RUNNER: {
+			DriverRunner driverRunner = (DriverRunner) theEObject;
+			T result = caseDriverRunner(driverRunner);
+			if (result == null)
+				result = caseRunner(driverRunner);
+			if (result == null)
+				result = caseScript(driverRunner);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -330,17 +389,17 @@ public class EkumiSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Testable Script</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Condition</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Testable Script</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Condition</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseTestableScript(TestableScript object) {
+	public T caseCondition(Condition object) {
 		return null;
 	}
 
@@ -360,17 +419,17 @@ public class EkumiSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Runnable Script</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Runner</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Runnable Script</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Runner</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseRunnableScript(RunnableScript object) {
+	public T caseRunner(Runner object) {
 		return null;
 	}
 
@@ -446,6 +505,111 @@ public class EkumiSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseContext(Context object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Serializable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Serializable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSerializable(Serializable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Flows</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Flows</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataFlows(DataFlows object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Execution</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Execution</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExecution(Execution object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data List</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data List</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataList(DataList object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Map</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Map</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataMap(DataMap object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Driver</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Driver</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDriver(Driver object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Driver Runner</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Driver Runner</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDriverRunner(DriverRunner object) {
 		return null;
 	}
 

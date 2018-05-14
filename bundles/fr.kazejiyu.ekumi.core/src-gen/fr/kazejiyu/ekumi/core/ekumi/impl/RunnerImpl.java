@@ -2,8 +2,9 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.impl;
 
+import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
-import fr.kazejiyu.ekumi.core.ekumi.RunnableScript;
+import fr.kazejiyu.ekumi.core.ekumi.Runner;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -13,18 +14,18 @@ import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Runnable Script</b></em>'.
+ * An implementation of the model object '<em><b>Runner</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class RunnableScriptImpl extends ScriptImpl implements RunnableScript {
+public abstract class RunnerImpl extends ScriptImpl implements Runner {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected RunnableScriptImpl() {
+	protected RunnerImpl() {
 		super();
 	}
 
@@ -35,7 +36,7 @@ public class RunnableScriptImpl extends ScriptImpl implements RunnableScript {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EkumiPackage.Literals.RUNNABLE_SCRIPT;
+		return EkumiPackage.Literals.RUNNER;
 	}
 
 	/**
@@ -43,7 +44,7 @@ public class RunnableScriptImpl extends ScriptImpl implements RunnableScript {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void run() {
+	public void run(Context context) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -57,11 +58,11 @@ public class RunnableScriptImpl extends ScriptImpl implements RunnableScript {
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-		case EkumiPackage.RUNNABLE_SCRIPT___RUN:
-			run();
+		case EkumiPackage.RUNNER___RUN__CONTEXT:
+			run((Context) arguments.get(0));
 			return null;
 		}
 		return super.eInvoke(operationID, arguments);
 	}
 
-} //RunnableScriptImpl
+} //RunnerImpl

@@ -107,8 +107,8 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseTestableScript(TestableScript object) {
-			return createTestableScriptAdapter();
+		public Adapter caseCondition(Condition object) {
+			return createConditionAdapter();
 		}
 
 		@Override
@@ -117,8 +117,8 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseRunnableScript(RunnableScript object) {
-			return createRunnableScriptAdapter();
+		public Adapter caseRunner(Runner object) {
+			return createRunnerAdapter();
 		}
 
 		@Override
@@ -144,6 +144,41 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseContext(Context object) {
 			return createContextAdapter();
+		}
+
+		@Override
+		public Adapter caseSerializable(Serializable object) {
+			return createSerializableAdapter();
+		}
+
+		@Override
+		public Adapter caseDataFlows(DataFlows object) {
+			return createDataFlowsAdapter();
+		}
+
+		@Override
+		public Adapter caseExecution(Execution object) {
+			return createExecutionAdapter();
+		}
+
+		@Override
+		public Adapter caseDataList(DataList object) {
+			return createDataListAdapter();
+		}
+
+		@Override
+		public Adapter caseDataMap(DataMap object) {
+			return createDataMapAdapter();
+		}
+
+		@Override
+		public Adapter caseDriver(Driver object) {
+			return createDriverAdapter();
+		}
+
+		@Override
+		public Adapter caseDriverRunner(DriverRunner object) {
+			return createDriverRunnerAdapter();
 		}
 
 		@Override
@@ -278,16 +313,16 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.TestableScript <em>Testable Script</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.Condition <em>Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.TestableScript
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Condition
 	 * @generated
 	 */
-	public Adapter createTestableScriptAdapter() {
+	public Adapter createConditionAdapter() {
 		return null;
 	}
 
@@ -306,16 +341,16 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.RunnableScript <em>Runnable Script</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.Runner <em>Runner</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.RunnableScript
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Runner
 	 * @generated
 	 */
-	public Adapter createRunnableScriptAdapter() {
+	public Adapter createRunnerAdapter() {
 		return null;
 	}
 
@@ -386,6 +421,104 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createContextAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.Serializable <em>Serializable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Serializable
+	 * @generated
+	 */
+	public Adapter createSerializableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlows <em>Data Flows</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.DataFlows
+	 * @generated
+	 */
+	public Adapter createDataFlowsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.Execution <em>Execution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Execution
+	 * @generated
+	 */
+	public Adapter createExecutionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.DataList <em>Data List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.DataList
+	 * @generated
+	 */
+	public Adapter createDataListAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.DataMap <em>Data Map</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.DataMap
+	 * @generated
+	 */
+	public Adapter createDataMapAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.Driver <em>Driver</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Driver
+	 * @generated
+	 */
+	public Adapter createDriverAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.DriverRunner <em>Driver Runner</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.DriverRunner
+	 * @generated
+	 */
+	public Adapter createDriverRunnerAdapter() {
 		return null;
 	}
 

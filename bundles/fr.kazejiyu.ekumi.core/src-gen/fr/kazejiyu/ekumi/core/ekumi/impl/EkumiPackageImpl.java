@@ -6,23 +6,30 @@ import fr.kazejiyu.ekumi.core.datatypes.DataType;
 
 import fr.kazejiyu.ekumi.core.ekumi.Activity;
 import fr.kazejiyu.ekumi.core.ekumi.Branch;
+import fr.kazejiyu.ekumi.core.ekumi.Condition;
 import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.Data;
 import fr.kazejiyu.ekumi.core.ekumi.DataFlow;
+import fr.kazejiyu.ekumi.core.ekumi.DataFlows;
+import fr.kazejiyu.ekumi.core.ekumi.DataList;
+import fr.kazejiyu.ekumi.core.ekumi.DataMap;
+import fr.kazejiyu.ekumi.core.ekumi.Driver;
+import fr.kazejiyu.ekumi.core.ekumi.DriverRunner;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
+import fr.kazejiyu.ekumi.core.ekumi.Execution;
 import fr.kazejiyu.ekumi.core.ekumi.MultiChoice;
 import fr.kazejiyu.ekumi.core.ekumi.MultipleInstances;
 import fr.kazejiyu.ekumi.core.ekumi.ParallelSplit;
-import fr.kazejiyu.ekumi.core.ekumi.RunnableScript;
+import fr.kazejiyu.ekumi.core.ekumi.Runner;
 import fr.kazejiyu.ekumi.core.ekumi.Script;
 import fr.kazejiyu.ekumi.core.ekumi.ScriptedTask;
 import fr.kazejiyu.ekumi.core.ekumi.Sequence;
+import fr.kazejiyu.ekumi.core.ekumi.Serializable;
 import fr.kazejiyu.ekumi.core.ekumi.Status;
 import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
 import fr.kazejiyu.ekumi.core.ekumi.Task;
 import fr.kazejiyu.ekumi.core.ekumi.TestResult;
-import fr.kazejiyu.ekumi.core.ekumi.TestableScript;
 import fr.kazejiyu.ekumi.core.ekumi.Workflow;
 
 import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
@@ -105,7 +112,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass testableScriptEClass = null;
+	private EClass conditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -119,7 +126,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass runnableScriptEClass = null;
+	private EClass runnerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -155,6 +162,55 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * @generated
 	 */
 	private EClass contextEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass serializableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dataFlowsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass executionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dataListEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dataMapEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass driverEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass driverRunnerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -279,7 +335,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getActivity_OutgoingFlows() {
+	public EReference getActivity_Inputs() {
 		return (EReference) activityEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -288,7 +344,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getActivity_IncomingFlows() {
+	public EReference getActivity_Outputs() {
 		return (EReference) activityEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -297,7 +353,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getActivity_Inputs() {
+	public EReference getActivity_Successors() {
 		return (EReference) activityEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -306,7 +362,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getActivity_Outputs() {
+	public EReference getActivity_Predecessor() {
 		return (EReference) activityEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -315,8 +371,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getActivity_Successors() {
-		return (EReference) activityEClass.getEStructuralFeatures().get(6);
+	public EAttribute getActivity_Status() {
+		return (EAttribute) activityEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -324,7 +380,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getActivity_Predecessor() {
+	public EReference getActivity_Flows() {
 		return (EReference) activityEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -333,25 +389,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getActivity_Status() {
-		return (EAttribute) activityEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getActivity_Environment() {
-		return (EReference) activityEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getActivity__Run() {
+	public EOperation getActivity__Run__Context() {
 		return activityEClass.getEOperations().get(0);
 	}
 
@@ -369,7 +407,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getWorkflow_Tasks() {
+	public EReference getWorkflow_Activities() {
 		return (EReference) workflowEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -414,7 +452,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataFlow_Source() {
+	public EReference getDataFlow_Input() {
 		return (EReference) dataFlowEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -423,7 +461,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataFlow_Destination() {
+	public EReference getDataFlow_Output() {
 		return (EReference) dataFlowEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -432,7 +470,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataFlow_Input() {
+	public EReference getDataFlow_Destination() {
 		return (EReference) dataFlowEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -441,7 +479,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataFlow_Output() {
+	public EReference getDataFlow_Source() {
 		return (EReference) dataFlowEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -477,6 +515,24 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getData_Owner() {
+		return (EReference) dataEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getData_Value() {
+		return (EAttribute) dataEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getStructuredLoop() {
 		return structuredLoopEClass;
 	}
@@ -486,7 +542,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getStructuredLoop_PreTest() {
+	public EReference getStructuredLoop_PreCondition() {
 		return (EReference) structuredLoopEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -495,7 +551,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getStructuredLoop_PostTest() {
+	public EReference getStructuredLoop_PostCondition() {
 		return (EReference) structuredLoopEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -513,8 +569,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTestableScript() {
-		return testableScriptEClass;
+	public EClass getCondition() {
+		return conditionEClass;
 	}
 
 	/**
@@ -522,8 +578,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getTestableScript__Check() {
-		return testableScriptEClass.getEOperations().get(0);
+	public EOperation getCondition__IsVerified__StructuredLoop_Context() {
+		return conditionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -540,8 +596,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getRunnableScript() {
-		return runnableScriptEClass;
+	public EClass getRunner() {
+		return runnerEClass;
 	}
 
 	/**
@@ -549,8 +605,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getRunnableScript__Run() {
-		return runnableScriptEClass.getEOperations().get(0);
+	public EOperation getRunner__Run__Context() {
+		return runnerEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -567,8 +623,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getScriptedTask_Script() {
-		return (EReference) scriptedTaskEClass.getEStructuralFeatures().get(0);
+	public EAttribute getScriptedTask_ScriptPath() {
+		return (EAttribute) scriptedTaskEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -576,8 +632,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getScriptedTask_ScriptPath() {
-		return (EAttribute) scriptedTaskEClass.getEStructuralFeatures().get(1);
+	public EReference getScriptedTask_Script() {
+		return (EReference) scriptedTaskEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -596,6 +652,24 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 */
 	public EAttribute getScript_Path() {
 		return (EAttribute) scriptEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getScript_Inputs() {
+		return (EReference) scriptEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getScript_Outputs() {
+		return (EReference) scriptEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -657,8 +731,143 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getContext_Variable() {
+	public EReference getContext_Variables() {
 		return (EReference) contextEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSerializable() {
+		return serializableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDataFlows() {
+		return dataFlowsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDataFlows_Incoming() {
+		return (EReference) dataFlowsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDataFlows_Outgoings() {
+		return (EReference) dataFlowsEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getExecution() {
+		return executionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExecution_Activity() {
+		return (EReference) executionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExecution_Context() {
+		return (EReference) executionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDataList() {
+		return dataListEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataList_Size() {
+		return (EAttribute) dataListEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDataMap() {
+		return dataMapEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDriver() {
+		return driverEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDriver_Driven() {
+		return (EReference) driverEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDriver_Script() {
+		return (EReference) driverEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDriverRunner() {
+		return driverRunnerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDriverRunner_Driven() {
+		return (EReference) driverRunnerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -729,18 +938,16 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		activityEClass = createEClass(ACTIVITY);
 		createEAttribute(activityEClass, ACTIVITY__ID);
 		createEAttribute(activityEClass, ACTIVITY__NAME);
-		createEReference(activityEClass, ACTIVITY__OUTGOING_FLOWS);
-		createEReference(activityEClass, ACTIVITY__INCOMING_FLOWS);
 		createEReference(activityEClass, ACTIVITY__INPUTS);
 		createEReference(activityEClass, ACTIVITY__OUTPUTS);
 		createEReference(activityEClass, ACTIVITY__SUCCESSORS);
 		createEReference(activityEClass, ACTIVITY__PREDECESSOR);
 		createEAttribute(activityEClass, ACTIVITY__STATUS);
-		createEReference(activityEClass, ACTIVITY__ENVIRONMENT);
-		createEOperation(activityEClass, ACTIVITY___RUN);
+		createEReference(activityEClass, ACTIVITY__FLOWS);
+		createEOperation(activityEClass, ACTIVITY___RUN__CONTEXT);
 
 		workflowEClass = createEClass(WORKFLOW);
-		createEReference(workflowEClass, WORKFLOW__TASKS);
+		createEReference(workflowEClass, WORKFLOW__ACTIVITIES);
 
 		sequenceEClass = createEClass(SEQUENCE);
 
@@ -749,34 +956,38 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		parallelSplitEClass = createEClass(PARALLEL_SPLIT);
 
 		dataFlowEClass = createEClass(DATA_FLOW);
-		createEReference(dataFlowEClass, DATA_FLOW__SOURCE);
-		createEReference(dataFlowEClass, DATA_FLOW__DESTINATION);
 		createEReference(dataFlowEClass, DATA_FLOW__INPUT);
 		createEReference(dataFlowEClass, DATA_FLOW__OUTPUT);
+		createEReference(dataFlowEClass, DATA_FLOW__DESTINATION);
+		createEReference(dataFlowEClass, DATA_FLOW__SOURCE);
 
 		dataEClass = createEClass(DATA);
 		createEAttribute(dataEClass, DATA__NAME);
 		createEAttribute(dataEClass, DATA__TYPE);
+		createEReference(dataEClass, DATA__OWNER);
+		createEAttribute(dataEClass, DATA__VALUE);
 
 		structuredLoopEClass = createEClass(STRUCTURED_LOOP);
-		createEReference(structuredLoopEClass, STRUCTURED_LOOP__PRE_TEST);
-		createEReference(structuredLoopEClass, STRUCTURED_LOOP__POST_TEST);
+		createEReference(structuredLoopEClass, STRUCTURED_LOOP__PRE_CONDITION);
+		createEReference(structuredLoopEClass, STRUCTURED_LOOP__POST_CONDITION);
 		createEReference(structuredLoopEClass, STRUCTURED_LOOP__ACTIVITY);
 
-		testableScriptEClass = createEClass(TESTABLE_SCRIPT);
-		createEOperation(testableScriptEClass, TESTABLE_SCRIPT___CHECK);
+		conditionEClass = createEClass(CONDITION);
+		createEOperation(conditionEClass, CONDITION___IS_VERIFIED__STRUCTUREDLOOP_CONTEXT);
 
 		taskEClass = createEClass(TASK);
 
-		runnableScriptEClass = createEClass(RUNNABLE_SCRIPT);
-		createEOperation(runnableScriptEClass, RUNNABLE_SCRIPT___RUN);
+		runnerEClass = createEClass(RUNNER);
+		createEOperation(runnerEClass, RUNNER___RUN__CONTEXT);
 
 		scriptedTaskEClass = createEClass(SCRIPTED_TASK);
-		createEReference(scriptedTaskEClass, SCRIPTED_TASK__SCRIPT);
 		createEAttribute(scriptedTaskEClass, SCRIPTED_TASK__SCRIPT_PATH);
+		createEReference(scriptedTaskEClass, SCRIPTED_TASK__SCRIPT);
 
 		scriptEClass = createEClass(SCRIPT);
 		createEAttribute(scriptEClass, SCRIPT__PATH);
+		createEReference(scriptEClass, SCRIPT__INPUTS);
+		createEReference(scriptEClass, SCRIPT__OUTPUTS);
 
 		multiChoiceEClass = createEClass(MULTI_CHOICE);
 		createEReference(multiChoiceEClass, MULTI_CHOICE__BRANCHES);
@@ -786,7 +997,29 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		createEReference(branchEClass, BRANCH__ACTIVITY);
 
 		contextEClass = createEClass(CONTEXT);
-		createEReference(contextEClass, CONTEXT__VARIABLE);
+		createEReference(contextEClass, CONTEXT__VARIABLES);
+
+		serializableEClass = createEClass(SERIALIZABLE);
+
+		dataFlowsEClass = createEClass(DATA_FLOWS);
+		createEReference(dataFlowsEClass, DATA_FLOWS__INCOMING);
+		createEReference(dataFlowsEClass, DATA_FLOWS__OUTGOINGS);
+
+		executionEClass = createEClass(EXECUTION);
+		createEReference(executionEClass, EXECUTION__ACTIVITY);
+		createEReference(executionEClass, EXECUTION__CONTEXT);
+
+		dataListEClass = createEClass(DATA_LIST);
+		createEAttribute(dataListEClass, DATA_LIST__SIZE);
+
+		dataMapEClass = createEClass(DATA_MAP);
+
+		driverEClass = createEClass(DRIVER);
+		createEReference(driverEClass, DRIVER__DRIVEN);
+		createEReference(driverEClass, DRIVER__SCRIPT);
+
+		driverRunnerEClass = createEClass(DRIVER_RUNNER);
+		createEReference(driverRunnerEClass, DRIVER_RUNNER__DRIVEN);
 
 		// Create enums
 		statusEEnum = createEEnum(STATUS);
@@ -831,11 +1064,15 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		multipleInstancesEClass.getESuperTypes().add(this.getActivity());
 		parallelSplitEClass.getESuperTypes().add(this.getWorkflow());
 		structuredLoopEClass.getESuperTypes().add(this.getActivity());
-		testableScriptEClass.getESuperTypes().add(this.getScript());
+		conditionEClass.getESuperTypes().add(this.getScript());
 		taskEClass.getESuperTypes().add(this.getActivity());
-		runnableScriptEClass.getESuperTypes().add(this.getScript());
+		runnerEClass.getESuperTypes().add(this.getScript());
 		scriptedTaskEClass.getESuperTypes().add(this.getTask());
 		multiChoiceEClass.getESuperTypes().add(this.getActivity());
+		dataListEClass.getESuperTypes().add(this.getData());
+		dataMapEClass.getESuperTypes().add(this.getData());
+		driverEClass.getESuperTypes().add(this.getActivity());
+		driverRunnerEClass.getESuperTypes().add(this.getRunner());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(activityEClass, Activity.class, "Activity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -843,15 +1080,9 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getActivity_Name(), ecorePackage.getEString(), "name", null, 0, 1, Activity.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getActivity_OutgoingFlows(), this.getDataFlow(), this.getDataFlow_Source(), "outgoingFlows",
-				null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getActivity_IncomingFlows(), this.getDataFlow(), this.getDataFlow_Destination(), "incomingFlows",
-				null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getActivity_Inputs(), this.getData(), null, "inputs", null, 0, -1, Activity.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEReference(getActivity_Inputs(), this.getData(), this.getData_Owner(), "inputs", null, 0, -1,
+				Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getActivity_Outputs(), this.getData(), null, "outputs", null, 0, -1, Activity.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -863,14 +1094,15 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getActivity_Status(), this.getStatus(), "status", null, 0, 1, Activity.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getActivity_Environment(), this.getContext(), null, "environment", null, 1, 1, Activity.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+		initEReference(getActivity_Flows(), this.getDataFlows(), null, "flows", null, 0, -1, Activity.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getActivity__Run(), null, "run", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = initEOperation(getActivity__Run__Context(), null, "run", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(workflowEClass, Workflow.class, "Workflow", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getWorkflow_Tasks(), this.getActivity(), null, "tasks", null, 0, -1, Workflow.class,
+		initEReference(getWorkflow_Activities(), this.getActivity(), null, "activities", null, 0, -1, Workflow.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -885,61 +1117,75 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 
 		initEClass(dataFlowEClass, DataFlow.class, "DataFlow", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDataFlow_Source(), this.getActivity(), this.getActivity_OutgoingFlows(), "source", null, 0, 1,
-				DataFlow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDataFlow_Destination(), this.getActivity(), this.getActivity_IncomingFlows(), "destination",
-				null, 1, 1, DataFlow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDataFlow_Input(), this.getData(), null, "input", null, 1, 1, DataFlow.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 		initEReference(getDataFlow_Output(), this.getData(), null, "output", null, 1, 1, DataFlow.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
+		initEReference(getDataFlow_Destination(), this.getActivity(), null, "destination", null, 0, 1, DataFlow.class,
+				!IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
+		initEReference(getDataFlow_Source(), this.getActivity(), null, "source", null, 0, 1, DataFlow.class,
+				!IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataEClass, Data.class, "Data", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getData_Name(), ecorePackage.getEString(), "name", null, 0, 1, Data.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getData_Type(), this.getDataType(), "type", null, 0, 1, Data.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getData_Owner(), this.getActivity(), this.getActivity_Inputs(), "owner", null, 0, 1, Data.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getData_Value(), ecorePackage.getEJavaObject(), "value", null, 0, 1, Data.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(structuredLoopEClass, StructuredLoop.class, "StructuredLoop", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getStructuredLoop_PreTest(), this.getTestableScript(), null, "preTest", null, 0, 1,
+		initEReference(getStructuredLoop_PreCondition(), this.getCondition(), null, "preCondition", null, 0, 1,
 				StructuredLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStructuredLoop_PostTest(), this.getTestableScript(), null, "postTest", null, 0, 1,
+		initEReference(getStructuredLoop_PostCondition(), this.getCondition(), null, "postCondition", null, 0, 1,
 				StructuredLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStructuredLoop_Activity(), this.getActivity(), null, "activity", null, 0, 1,
-				StructuredLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				StructuredLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(testableScriptEClass, TestableScript.class, "TestableScript", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(conditionEClass, Condition.class, "Condition", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getTestableScript__Check(), this.getTestResult(), "check", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getCondition__IsVerified__StructuredLoop_Context(), ecorePackage.getEBoolean(),
+				"isVerified", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getStructuredLoop(), "loop", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(taskEClass, Task.class, "Task", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(runnableScriptEClass, RunnableScript.class, "RunnableScript", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
+		initEClass(runnerEClass, Runner.class, "Runner", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getRunnableScript__Run(), null, "run", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getRunner__Run__Context(), null, "run", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(scriptedTaskEClass, ScriptedTask.class, "ScriptedTask", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getScriptedTask_Script(), this.getRunnableScript(), null, "script", null, 0, 1,
-				ScriptedTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getScriptedTask_ScriptPath(), ecorePackage.getEString(), "scriptPath", null, 0, 1,
 				ScriptedTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+		initEReference(getScriptedTask_Script(), this.getRunner(), null, "script", null, 0, 1, ScriptedTask.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(scriptEClass, Script.class, "Script", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getScript_Path(), ecorePackage.getEString(), "path", null, 0, 1, Script.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getScript_Inputs(), this.getData(), null, "inputs", null, 0, -1, Script.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getScript_Outputs(), this.getData(), null, "outputs", null, 0, -1, Script.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
 		initEClass(multiChoiceEClass, MultiChoice.class, "MultiChoice", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -948,16 +1194,58 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(branchEClass, Branch.class, "Branch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBranch_Availability(), this.getTestableScript(), null, "availability", null, 0, 1,
-				Branch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBranch_Availability(), this.getCondition(), null, "availability", null, 0, 1, Branch.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBranch_Activity(), this.getActivity(), null, "activity", null, 0, 1, Branch.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(contextEClass, Context.class, "Context", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getContext_Variable(), this.getData(), null, "variable", null, 0, -1, Context.class,
+		initEReference(getContext_Variables(), this.getData(), null, "variables", null, 0, -1, Context.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(serializableEClass, Serializable.class, "Serializable", IS_ABSTRACT, IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(dataFlowsEClass, DataFlows.class, "DataFlows", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDataFlows_Incoming(), this.getDataFlow(), null, "incoming", null, 0, -1, DataFlows.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataFlows_Outgoings(), this.getDataFlow(), null, "outgoings", null, 0, -1, DataFlows.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(executionEClass, Execution.class, "Execution", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getExecution_Activity(), this.getActivity(), null, "activity", null, 0, 1, Execution.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExecution_Context(), this.getContext(), null, "context", null, 0, 1, Execution.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(dataListEClass, DataList.class, "DataList", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDataList_Size(), ecorePackage.getEInt(), "size", null, 0, 1, DataList.class, !IS_TRANSIENT,
+				!IS_VOLATILE, !IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(dataMapEClass, DataMap.class, "DataMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(driverEClass, Driver.class, "Driver", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDriver_Driven(), this.getActivity(), null, "driven", null, 0, 1, Driver.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getDriver_Script(), this.getDriverRunner(), null, "script", null, 0, 1, Driver.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(driverRunnerEClass, DriverRunner.class, "DriverRunner", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDriverRunner_Driven(), this.getActivity(), null, "driven", null, 0, 1, DriverRunner.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals

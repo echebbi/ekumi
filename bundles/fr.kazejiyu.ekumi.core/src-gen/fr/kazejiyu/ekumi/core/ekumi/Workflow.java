@@ -6,7 +6,9 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
- * A set of {@link Activity Activities}.
+ * An {@link Activity} owning one or more other activities.<br>
+ * <br>
+ * The execution of the activities owned is managed by the workflow.
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
@@ -17,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Workflow#getTasks <em>Tasks</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Workflow#getActivities <em>Activities</em>}</li>
  * </ul>
  *
  * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getWorkflow()
@@ -25,20 +27,31 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Workflow extends Activity {
+
 	/**
-	 * Returns the value of the '<em><b>Tasks</b></em>' containment reference list.
+	 * Returns {@code true} if the workflow does not own any {@link Activity},
+	 * or {@code false} otherwise.
+	 * 
+	 * @return whether the workflow owns any {@code Activity}
+	 */
+	default boolean isEmpty() {
+		return getActivities().isEmpty();
+	}
+
+	/**
+	 * Returns the value of the '<em><b>Activities</b></em>' containment reference list.
 	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Activity}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Tasks</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Activities</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Tasks</em>' containment reference list.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getWorkflow_Tasks()
+	 * @return the value of the '<em>Activities</em>' containment reference list.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getWorkflow_Activities()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Activity> getTasks();
+	EList<Activity> getActivities();
 
 } // Workflow

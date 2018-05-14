@@ -4,7 +4,7 @@ package fr.kazejiyu.ekumi.core.ekumi;
 
 /**
  * <!-- begin-user-doc -->
- * A {@link Workflow} that executes its {@link Activity Activities} sequentially.
+ * A representation of the model object '<em><b>Sequence</b></em>'.
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
