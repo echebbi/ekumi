@@ -3,10 +3,10 @@
 package fr.kazejiyu.ekumi.core.ekumi.impl;
 
 import fr.kazejiyu.ekumi.core.ekumi.Activity;
-import fr.kazejiyu.ekumi.core.ekumi.Data;
 import fr.kazejiyu.ekumi.core.ekumi.DataFlow;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 
+import fr.kazejiyu.ekumi.core.ekumi.Variable;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -40,7 +40,7 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	 * @generated
 	 * @ordered
 	 */
-	protected Data input;
+	protected Variable input;
 
 	/**
 	 * The cached value of the '{@link #getOutput() <em>Output</em>}' reference.
@@ -50,7 +50,7 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	 * @generated
 	 * @ordered
 	 */
-	protected Data output;
+	protected Variable output;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -76,10 +76,10 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Data getInput() {
+	public Variable getInput() {
 		if (input != null && input.eIsProxy()) {
 			InternalEObject oldInput = (InternalEObject) input;
-			input = (Data) eResolveProxy(oldInput);
+			input = (Variable) eResolveProxy(oldInput);
 			if (input != oldInput) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EkumiPackage.DATA_FLOW__INPUT, oldInput,
@@ -94,7 +94,7 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Data basicGetInput() {
+	public Variable basicGetInput() {
 		return input;
 	}
 
@@ -103,8 +103,8 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setInput(Data newInput) {
-		Data oldInput = input;
+	public void setInput(Variable newInput) {
+		Variable oldInput = input;
 		input = newInput;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.DATA_FLOW__INPUT, oldInput, input));
@@ -115,10 +115,10 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Data getOutput() {
+	public Variable getOutput() {
 		if (output != null && output.eIsProxy()) {
 			InternalEObject oldOutput = (InternalEObject) output;
-			output = (Data) eResolveProxy(oldOutput);
+			output = (Variable) eResolveProxy(oldOutput);
 			if (output != oldOutput) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EkumiPackage.DATA_FLOW__OUTPUT, oldOutput,
@@ -133,7 +133,7 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Data basicGetOutput() {
+	public Variable basicGetOutput() {
 		return output;
 	}
 
@@ -142,8 +142,8 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOutput(Data newOutput) {
-		Data oldOutput = output;
+	public void setOutput(Variable newOutput) {
+		Variable oldOutput = output;
 		output = newOutput;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.DATA_FLOW__OUTPUT, oldOutput, output));
@@ -247,10 +247,10 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case EkumiPackage.DATA_FLOW__INPUT:
-			setInput((Data) newValue);
+			setInput((Variable) newValue);
 			return;
 		case EkumiPackage.DATA_FLOW__OUTPUT:
-			setOutput((Data) newValue);
+			setOutput((Variable) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -265,10 +265,10 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case EkumiPackage.DATA_FLOW__INPUT:
-			setInput((Data) null);
+			setInput((Variable) null);
 			return;
 		case EkumiPackage.DATA_FLOW__OUTPUT:
-			setOutput((Data) null);
+			setOutput((Variable) null);
 			return;
 		}
 		super.eUnset(featureID);

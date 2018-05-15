@@ -2,25 +2,25 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.impl;
 
-import fr.kazejiyu.ekumi.core.ekumi.DataMap;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
+import fr.kazejiyu.ekumi.core.ekumi.MapOfVariables;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Data Map</b></em>'.
+ * An implementation of the model object '<em><b>Map Of Variables</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class DataMapImpl extends DataImpl implements DataMap {
+public class MapOfVariablesImpl extends VariableImpl implements MapOfVariables {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DataMapImpl() {
+	protected MapOfVariablesImpl() {
 		super();
 	}
 
@@ -31,7 +31,7 @@ public class DataMapImpl extends DataImpl implements DataMap {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EkumiPackage.Literals.DATA_MAP;
+		return EkumiPackage.Literals.MAP_OF_VARIABLES;
 	}
 
-} //DataMapImpl
+} //MapOfVariablesImpl

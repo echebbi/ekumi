@@ -2,10 +2,10 @@ package fr.kazejiyu.ekumi.core.datatypes;
 
 import fr.kazejiyu.ekumi.core.datatypes.exceptions.DataTypeSerializationException;
 import fr.kazejiyu.ekumi.core.datatypes.exceptions.DataTypeUnserializationException;
-import fr.kazejiyu.ekumi.core.ekumi.Data;
+import fr.kazejiyu.ekumi.core.ekumi.Variable;
 
 /**
- * Defines the type of a {@link Data}.
+ * Defines the type of a {@link Variable}.
  * 
  * @param <T> The Java class of the type.
  * 

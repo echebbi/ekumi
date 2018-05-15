@@ -84,8 +84,8 @@ public interface Activity extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Inputs</b></em>' containment reference list.
-	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Data}.
-	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.Data#getOwner <em>Owner</em>}'.
+	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Variable}.
+	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getOwner <em>Owner</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inputs</em>' containment reference list isn't clear,
@@ -94,15 +94,15 @@ public interface Activity extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Inputs</em>' containment reference list.
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getActivity_Inputs()
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Data#getOwner
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Variable#getOwner
 	 * @model opposite="owner" containment="true"
 	 * @generated
 	 */
-	EList<Data> getInputs();
+	EList<Variable> getInputs();
 
 	/**
 	 * Returns the value of the '<em><b>Outputs</b></em>' containment reference list.
-	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Data}.
+	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Variable}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Outputs</em>' containment reference list isn't clear,
@@ -114,7 +114,7 @@ public interface Activity extends EObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Data> getOutputs();
+	EList<Variable> getOutputs();
 
 	/**
 	 * Returns the value of the '<em><b>Successors</b></em>' reference list.

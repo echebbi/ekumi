@@ -52,7 +52,7 @@ public interface Script extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Inputs</b></em>' reference list.
-	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Data}.
+	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Variable}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inputs</em>' reference list isn't clear,
@@ -64,11 +64,11 @@ public interface Script extends EObject {
 	 * @model
 	 * @generated
 	 */
-	EList<Data> getInputs();
+	EList<Variable> getInputs();
 
 	/**
 	 * Returns the value of the '<em><b>Outputs</b></em>' reference list.
-	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Data}.
+	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Variable}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Outputs</em>' reference list isn't clear,
@@ -80,6 +80,6 @@ public interface Script extends EObject {
 	 * @model
 	 * @generated
 	 */
-	EList<Data> getOutputs();
+	EList<Variable> getOutputs();
 
 } // Script

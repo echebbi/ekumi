@@ -120,9 +120,9 @@ public class EkumiSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case EkumiPackage.DATA: {
-			Data data = (Data) theEObject;
-			T result = caseData(data);
+		case EkumiPackage.VARIABLE: {
+			Variable variable = (Variable) theEObject;
+			T result = caseVariable(variable);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -225,20 +225,20 @@ public class EkumiSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case EkumiPackage.DATA_LIST: {
-			DataList dataList = (DataList) theEObject;
-			T result = caseDataList(dataList);
+		case EkumiPackage.LIST_OF_VARIABLES: {
+			ListOfVariables listOfVariables = (ListOfVariables) theEObject;
+			T result = caseListOfVariables(listOfVariables);
 			if (result == null)
-				result = caseData(dataList);
+				result = caseVariable(listOfVariables);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case EkumiPackage.DATA_MAP: {
-			DataMap dataMap = (DataMap) theEObject;
-			T result = caseDataMap(dataMap);
+		case EkumiPackage.MAP_OF_VARIABLES: {
+			MapOfVariables mapOfVariables = (MapOfVariables) theEObject;
+			T result = caseMapOfVariables(mapOfVariables);
 			if (result == null)
-				result = caseData(dataMap);
+				result = caseVariable(mapOfVariables);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -359,17 +359,17 @@ public class EkumiSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Data</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Data</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Variable</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseData(Data object) {
+	public T caseVariable(Variable object) {
 		return null;
 	}
 
@@ -554,32 +554,32 @@ public class EkumiSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Data List</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>List Of Variables</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Data List</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>List Of Variables</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseDataList(DataList object) {
+	public T caseListOfVariables(ListOfVariables object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Data Map</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Map Of Variables</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Data Map</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Map Of Variables</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseDataMap(DataMap object) {
+	public T caseMapOfVariables(MapOfVariables object) {
 		return null;
 	}
 

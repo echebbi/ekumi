@@ -5,8 +5,8 @@ package fr.kazejiyu.ekumi.core.ekumi.impl;
 import fr.kazejiyu.ekumi.core.datatypes.DataType;
 
 import fr.kazejiyu.ekumi.core.ekumi.Activity;
-import fr.kazejiyu.ekumi.core.ekumi.Data;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
+import fr.kazejiyu.ekumi.core.ekumi.Variable;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -21,21 +21,21 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Data</b></em>'.
+ * An implementation of the model object '<em><b>Variable</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.DataImpl#getName <em>Name</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.DataImpl#getType <em>Type</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.DataImpl#getOwner <em>Owner</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.DataImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.VariableImpl#getName <em>Name</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.VariableImpl#getType <em>Type</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.VariableImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.VariableImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class DataImpl extends MinimalEObjectImpl.Container implements Data {
+public class VariableImpl extends MinimalEObjectImpl.Container implements Variable {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -101,7 +101,7 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DataImpl() {
+	protected VariableImpl() {
 		super();
 	}
 
@@ -112,7 +112,7 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EkumiPackage.Literals.DATA;
+		return EkumiPackage.Literals.VARIABLE;
 	}
 
 	/**
@@ -133,7 +133,7 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.DATA__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.VARIABLE__NAME, oldName, name));
 	}
 
 	/**
@@ -154,7 +154,7 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 		DataType oldType = type;
 		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.DATA__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.VARIABLE__TYPE, oldType, type));
 	}
 
 	/**
@@ -163,7 +163,7 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 	 * @generated
 	 */
 	public Activity getOwner() {
-		if (eContainerFeatureID() != EkumiPackage.DATA__OWNER)
+		if (eContainerFeatureID() != EkumiPackage.VARIABLE__OWNER)
 			return null;
 		return (Activity) eInternalContainer();
 	}
@@ -174,7 +174,7 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 	 * @generated
 	 */
 	public NotificationChain basicSetOwner(Activity newOwner, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newOwner, EkumiPackage.DATA__OWNER, msgs);
+		msgs = eBasicSetContainer((InternalEObject) newOwner, EkumiPackage.VARIABLE__OWNER, msgs);
 		return msgs;
 	}
 
@@ -185,7 +185,7 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 	 */
 	public void setOwner(Activity newOwner) {
 		if (newOwner != eInternalContainer()
-				|| (eContainerFeatureID() != EkumiPackage.DATA__OWNER && newOwner != null)) {
+				|| (eContainerFeatureID() != EkumiPackage.VARIABLE__OWNER && newOwner != null)) {
 			if (EcoreUtil.isAncestor(this, newOwner))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
@@ -198,7 +198,7 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.DATA__OWNER, newOwner, newOwner));
+			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.VARIABLE__OWNER, newOwner, newOwner));
 	}
 
 	/**
@@ -219,7 +219,7 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 		Object oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.DATA__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.VARIABLE__VALUE, oldValue, value));
 	}
 
 	/**
@@ -230,7 +230,7 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case EkumiPackage.DATA__OWNER:
+		case EkumiPackage.VARIABLE__OWNER:
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			return basicSetOwner((Activity) otherEnd, msgs);
@@ -246,7 +246,7 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case EkumiPackage.DATA__OWNER:
+		case EkumiPackage.VARIABLE__OWNER:
 			return basicSetOwner(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -260,7 +260,7 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-		case EkumiPackage.DATA__OWNER:
+		case EkumiPackage.VARIABLE__OWNER:
 			return eInternalContainer().eInverseRemove(this, EkumiPackage.ACTIVITY__INPUTS, Activity.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
@@ -274,13 +274,13 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case EkumiPackage.DATA__NAME:
+		case EkumiPackage.VARIABLE__NAME:
 			return getName();
-		case EkumiPackage.DATA__TYPE:
+		case EkumiPackage.VARIABLE__TYPE:
 			return getType();
-		case EkumiPackage.DATA__OWNER:
+		case EkumiPackage.VARIABLE__OWNER:
 			return getOwner();
-		case EkumiPackage.DATA__VALUE:
+		case EkumiPackage.VARIABLE__VALUE:
 			return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -294,16 +294,16 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case EkumiPackage.DATA__NAME:
+		case EkumiPackage.VARIABLE__NAME:
 			setName((String) newValue);
 			return;
-		case EkumiPackage.DATA__TYPE:
+		case EkumiPackage.VARIABLE__TYPE:
 			setType((DataType) newValue);
 			return;
-		case EkumiPackage.DATA__OWNER:
+		case EkumiPackage.VARIABLE__OWNER:
 			setOwner((Activity) newValue);
 			return;
-		case EkumiPackage.DATA__VALUE:
+		case EkumiPackage.VARIABLE__VALUE:
 			setValue(newValue);
 			return;
 		}
@@ -318,16 +318,16 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case EkumiPackage.DATA__NAME:
+		case EkumiPackage.VARIABLE__NAME:
 			setName(NAME_EDEFAULT);
 			return;
-		case EkumiPackage.DATA__TYPE:
+		case EkumiPackage.VARIABLE__TYPE:
 			setType(TYPE_EDEFAULT);
 			return;
-		case EkumiPackage.DATA__OWNER:
+		case EkumiPackage.VARIABLE__OWNER:
 			setOwner((Activity) null);
 			return;
-		case EkumiPackage.DATA__VALUE:
+		case EkumiPackage.VARIABLE__VALUE:
 			setValue(VALUE_EDEFAULT);
 			return;
 		}
@@ -342,13 +342,13 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case EkumiPackage.DATA__NAME:
+		case EkumiPackage.VARIABLE__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-		case EkumiPackage.DATA__TYPE:
+		case EkumiPackage.VARIABLE__TYPE:
 			return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
-		case EkumiPackage.DATA__OWNER:
+		case EkumiPackage.VARIABLE__OWNER:
 			return getOwner() != null;
-		case EkumiPackage.DATA__VALUE:
+		case EkumiPackage.VARIABLE__VALUE:
 			return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
@@ -375,4 +375,4 @@ public class DataImpl extends MinimalEObjectImpl.Container implements Data {
 		return result.toString();
 	}
 
-} //DataImpl
+} //VariableImpl

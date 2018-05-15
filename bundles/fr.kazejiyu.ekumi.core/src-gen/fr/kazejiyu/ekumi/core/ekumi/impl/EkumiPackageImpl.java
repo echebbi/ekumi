@@ -8,16 +8,15 @@ import fr.kazejiyu.ekumi.core.ekumi.Activity;
 import fr.kazejiyu.ekumi.core.ekumi.Branch;
 import fr.kazejiyu.ekumi.core.ekumi.Condition;
 import fr.kazejiyu.ekumi.core.ekumi.Context;
-import fr.kazejiyu.ekumi.core.ekumi.Data;
 import fr.kazejiyu.ekumi.core.ekumi.DataFlow;
 import fr.kazejiyu.ekumi.core.ekumi.DataFlows;
-import fr.kazejiyu.ekumi.core.ekumi.DataList;
-import fr.kazejiyu.ekumi.core.ekumi.DataMap;
 import fr.kazejiyu.ekumi.core.ekumi.Driver;
 import fr.kazejiyu.ekumi.core.ekumi.DriverRunner;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.core.ekumi.Execution;
+import fr.kazejiyu.ekumi.core.ekumi.ListOfVariables;
+import fr.kazejiyu.ekumi.core.ekumi.MapOfVariables;
 import fr.kazejiyu.ekumi.core.ekumi.MultiChoice;
 import fr.kazejiyu.ekumi.core.ekumi.MultipleInstances;
 import fr.kazejiyu.ekumi.core.ekumi.ParallelSplit;
@@ -30,6 +29,7 @@ import fr.kazejiyu.ekumi.core.ekumi.Status;
 import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
 import fr.kazejiyu.ekumi.core.ekumi.Task;
 import fr.kazejiyu.ekumi.core.ekumi.TestResult;
+import fr.kazejiyu.ekumi.core.ekumi.Variable;
 import fr.kazejiyu.ekumi.core.ekumi.Workflow;
 
 import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
@@ -98,7 +98,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass dataEClass = null;
+	private EClass variableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -189,14 +189,14 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass dataListEClass = null;
+	private EClass listOfVariablesEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass dataMapEClass = null;
+	private EClass mapOfVariablesEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -488,8 +488,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getData() {
-		return dataEClass;
+	public EClass getVariable() {
+		return variableEClass;
 	}
 
 	/**
@@ -497,8 +497,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getData_Name() {
-		return (EAttribute) dataEClass.getEStructuralFeatures().get(0);
+	public EAttribute getVariable_Name() {
+		return (EAttribute) variableEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -506,8 +506,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getData_Type() {
-		return (EAttribute) dataEClass.getEStructuralFeatures().get(1);
+	public EAttribute getVariable_Type() {
+		return (EAttribute) variableEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -515,8 +515,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getData_Owner() {
-		return (EReference) dataEClass.getEStructuralFeatures().get(2);
+	public EReference getVariable_Owner() {
+		return (EReference) variableEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -524,8 +524,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getData_Value() {
-		return (EAttribute) dataEClass.getEStructuralFeatures().get(3);
+	public EAttribute getVariable_Value() {
+		return (EAttribute) variableEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -803,8 +803,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDataList() {
-		return dataListEClass;
+	public EClass getListOfVariables() {
+		return listOfVariablesEClass;
 	}
 
 	/**
@@ -812,8 +812,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDataList_Size() {
-		return (EAttribute) dataListEClass.getEStructuralFeatures().get(0);
+	public EAttribute getListOfVariables_Size() {
+		return (EAttribute) listOfVariablesEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -821,8 +821,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDataMap() {
-		return dataMapEClass;
+	public EClass getMapOfVariables() {
+		return mapOfVariablesEClass;
 	}
 
 	/**
@@ -961,11 +961,11 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		createEReference(dataFlowEClass, DATA_FLOW__DESTINATION);
 		createEReference(dataFlowEClass, DATA_FLOW__SOURCE);
 
-		dataEClass = createEClass(DATA);
-		createEAttribute(dataEClass, DATA__NAME);
-		createEAttribute(dataEClass, DATA__TYPE);
-		createEReference(dataEClass, DATA__OWNER);
-		createEAttribute(dataEClass, DATA__VALUE);
+		variableEClass = createEClass(VARIABLE);
+		createEAttribute(variableEClass, VARIABLE__NAME);
+		createEAttribute(variableEClass, VARIABLE__TYPE);
+		createEReference(variableEClass, VARIABLE__OWNER);
+		createEAttribute(variableEClass, VARIABLE__VALUE);
 
 		structuredLoopEClass = createEClass(STRUCTURED_LOOP);
 		createEReference(structuredLoopEClass, STRUCTURED_LOOP__PRE_CONDITION);
@@ -1009,10 +1009,10 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		createEReference(executionEClass, EXECUTION__ACTIVITY);
 		createEReference(executionEClass, EXECUTION__CONTEXT);
 
-		dataListEClass = createEClass(DATA_LIST);
-		createEAttribute(dataListEClass, DATA_LIST__SIZE);
+		listOfVariablesEClass = createEClass(LIST_OF_VARIABLES);
+		createEAttribute(listOfVariablesEClass, LIST_OF_VARIABLES__SIZE);
 
-		dataMapEClass = createEClass(DATA_MAP);
+		mapOfVariablesEClass = createEClass(MAP_OF_VARIABLES);
 
 		driverEClass = createEClass(DRIVER);
 		createEReference(driverEClass, DRIVER__DRIVEN);
@@ -1069,8 +1069,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		runnerEClass.getESuperTypes().add(this.getScript());
 		scriptedTaskEClass.getESuperTypes().add(this.getTask());
 		multiChoiceEClass.getESuperTypes().add(this.getActivity());
-		dataListEClass.getESuperTypes().add(this.getData());
-		dataMapEClass.getESuperTypes().add(this.getData());
+		listOfVariablesEClass.getESuperTypes().add(this.getVariable());
+		mapOfVariablesEClass.getESuperTypes().add(this.getVariable());
 		driverEClass.getESuperTypes().add(this.getActivity());
 		driverRunnerEClass.getESuperTypes().add(this.getRunner());
 
@@ -1080,10 +1080,10 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getActivity_Name(), ecorePackage.getEString(), "name", null, 0, 1, Activity.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getActivity_Inputs(), this.getData(), this.getData_Owner(), "inputs", null, 0, -1,
+		initEReference(getActivity_Inputs(), this.getVariable(), this.getVariable_Owner(), "inputs", null, 0, -1,
 				Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getActivity_Outputs(), this.getData(), null, "outputs", null, 0, -1, Activity.class,
+		initEReference(getActivity_Outputs(), this.getVariable(), null, "outputs", null, 0, -1, Activity.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getActivity_Successors(), this.getActivity(), this.getActivity_Predecessor(), "successors", null,
@@ -1117,12 +1117,12 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 
 		initEClass(dataFlowEClass, DataFlow.class, "DataFlow", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDataFlow_Input(), this.getData(), null, "input", null, 1, 1, DataFlow.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEReference(getDataFlow_Output(), this.getData(), null, "output", null, 1, 1, DataFlow.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEReference(getDataFlow_Input(), this.getVariable(), null, "input", null, 1, 1, DataFlow.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataFlow_Output(), this.getVariable(), null, "output", null, 1, 1, DataFlow.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDataFlow_Destination(), this.getActivity(), null, "destination", null, 0, 1, DataFlow.class,
 				!IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE,
 				IS_DERIVED, IS_ORDERED);
@@ -1130,16 +1130,17 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 				!IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE,
 				IS_DERIVED, IS_ORDERED);
 
-		initEClass(dataEClass, Data.class, "Data", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getData_Name(), ecorePackage.getEString(), "name", null, 0, 1, Data.class, !IS_TRANSIENT,
+		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1, Variable.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getData_Type(), this.getDataType(), "type", null, 0, 1, Data.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getData_Owner(), this.getActivity(), this.getActivity_Inputs(), "owner", null, 0, 1, Data.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getData_Value(), ecorePackage.getEJavaObject(), "value", null, 0, 1, Data.class, !IS_TRANSIENT,
+		initEAttribute(getVariable_Type(), this.getDataType(), "type", null, 0, 1, Variable.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVariable_Owner(), this.getActivity(), this.getActivity_Inputs(), "owner", null, 0, 1,
+				Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariable_Value(), ecorePackage.getEJavaObject(), "value", null, 0, 1, Variable.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(structuredLoopEClass, StructuredLoop.class, "StructuredLoop", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1180,12 +1181,12 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		initEClass(scriptEClass, Script.class, "Script", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getScript_Path(), ecorePackage.getEString(), "path", null, 0, 1, Script.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getScript_Inputs(), this.getData(), null, "inputs", null, 0, -1, Script.class, !IS_TRANSIENT,
+		initEReference(getScript_Inputs(), this.getVariable(), null, "inputs", null, 0, -1, Script.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		initEReference(getScript_Outputs(), this.getData(), null, "outputs", null, 0, -1, Script.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEReference(getScript_Outputs(), this.getVariable(), null, "outputs", null, 0, -1, Script.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(multiChoiceEClass, MultiChoice.class, "MultiChoice", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1202,7 +1203,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(contextEClass, Context.class, "Context", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getContext_Variables(), this.getData(), null, "variables", null, 0, -1, Context.class,
+		initEReference(getContext_Variables(), this.getVariable(), null, "variables", null, 0, -1, Context.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1227,12 +1228,13 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(dataListEClass, DataList.class, "DataList", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(listOfVariablesEClass, ListOfVariables.class, "ListOfVariables", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDataList_Size(), ecorePackage.getEInt(), "size", null, 0, 1, DataList.class, !IS_TRANSIENT,
-				!IS_VOLATILE, !IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getListOfVariables_Size(), ecorePackage.getEInt(), "size", null, 0, 1, ListOfVariables.class,
+				!IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(dataMapEClass, DataMap.class, "DataMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(mapOfVariablesEClass, MapOfVariables.class, "MapOfVariables", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(driverEClass, Driver.class, "Driver", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDriver_Driven(), this.getActivity(), null, "driven", null, 0, 1, Driver.class, !IS_TRANSIENT,

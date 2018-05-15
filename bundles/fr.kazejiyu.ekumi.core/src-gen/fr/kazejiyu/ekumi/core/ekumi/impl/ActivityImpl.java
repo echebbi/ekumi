@@ -4,11 +4,11 @@ package fr.kazejiyu.ekumi.core.ekumi.impl;
 
 import fr.kazejiyu.ekumi.core.ekumi.Activity;
 import fr.kazejiyu.ekumi.core.ekumi.Context;
-import fr.kazejiyu.ekumi.core.ekumi.Data;
 import fr.kazejiyu.ekumi.core.ekumi.DataFlows;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.core.ekumi.Status;
 
+import fr.kazejiyu.ekumi.core.ekumi.Variable;
 import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
@@ -98,7 +98,7 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Data> inputs;
+	protected EList<Variable> inputs;
 
 	/**
 	 * The cached value of the '{@link #getOutputs() <em>Outputs</em>}' containment reference list.
@@ -108,7 +108,7 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Data> outputs;
+	protected EList<Variable> outputs;
 
 	/**
 	 * The cached value of the '{@link #getSuccessors() <em>Successors</em>}' reference list.
@@ -226,10 +226,10 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Data> getInputs() {
+	public EList<Variable> getInputs() {
 		if (inputs == null) {
-			inputs = new EObjectContainmentWithInverseEList<Data>(Data.class, this, EkumiPackage.ACTIVITY__INPUTS,
-					EkumiPackage.DATA__OWNER);
+			inputs = new EObjectContainmentWithInverseEList<Variable>(Variable.class, this,
+					EkumiPackage.ACTIVITY__INPUTS, EkumiPackage.VARIABLE__OWNER);
 		}
 		return inputs;
 	}
@@ -239,9 +239,9 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Data> getOutputs() {
+	public EList<Variable> getOutputs() {
 		if (outputs == null) {
-			outputs = new EObjectContainmentEList<Data>(Data.class, this, EkumiPackage.ACTIVITY__OUTPUTS);
+			outputs = new EObjectContainmentEList<Variable>(Variable.class, this, EkumiPackage.ACTIVITY__OUTPUTS);
 		}
 		return outputs;
 	}
@@ -462,11 +462,11 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 			return;
 		case EkumiPackage.ACTIVITY__INPUTS:
 			getInputs().clear();
-			getInputs().addAll((Collection<? extends Data>) newValue);
+			getInputs().addAll((Collection<? extends Variable>) newValue);
 			return;
 		case EkumiPackage.ACTIVITY__OUTPUTS:
 			getOutputs().clear();
-			getOutputs().addAll((Collection<? extends Data>) newValue);
+			getOutputs().addAll((Collection<? extends Variable>) newValue);
 			return;
 		case EkumiPackage.ACTIVITY__SUCCESSORS:
 			getSuccessors().clear();

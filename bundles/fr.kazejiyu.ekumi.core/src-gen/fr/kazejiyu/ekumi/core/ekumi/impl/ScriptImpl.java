@@ -2,10 +2,10 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.impl;
 
-import fr.kazejiyu.ekumi.core.ekumi.Data;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.core.ekumi.Script;
 
+import fr.kazejiyu.ekumi.core.ekumi.Variable;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
@@ -60,7 +60,7 @@ public abstract class ScriptImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Data> inputs;
+	protected EList<Variable> inputs;
 
 	/**
 	 * The cached value of the '{@link #getOutputs() <em>Outputs</em>}' reference list.
@@ -70,7 +70,7 @@ public abstract class ScriptImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Data> outputs;
+	protected EList<Variable> outputs;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -117,9 +117,9 @@ public abstract class ScriptImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Data> getInputs() {
+	public EList<Variable> getInputs() {
 		if (inputs == null) {
-			inputs = new EObjectResolvingEList<Data>(Data.class, this, EkumiPackage.SCRIPT__INPUTS);
+			inputs = new EObjectResolvingEList<Variable>(Variable.class, this, EkumiPackage.SCRIPT__INPUTS);
 		}
 		return inputs;
 	}
@@ -129,9 +129,9 @@ public abstract class ScriptImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Data> getOutputs() {
+	public EList<Variable> getOutputs() {
 		if (outputs == null) {
-			outputs = new EObjectResolvingEList<Data>(Data.class, this, EkumiPackage.SCRIPT__OUTPUTS);
+			outputs = new EObjectResolvingEList<Variable>(Variable.class, this, EkumiPackage.SCRIPT__OUTPUTS);
 		}
 		return outputs;
 	}
@@ -168,11 +168,11 @@ public abstract class ScriptImpl extends MinimalEObjectImpl.Container implements
 			return;
 		case EkumiPackage.SCRIPT__INPUTS:
 			getInputs().clear();
-			getInputs().addAll((Collection<? extends Data>) newValue);
+			getInputs().addAll((Collection<? extends Variable>) newValue);
 			return;
 		case EkumiPackage.SCRIPT__OUTPUTS:
 			getOutputs().clear();
-			getOutputs().addAll((Collection<? extends Data>) newValue);
+			getOutputs().addAll((Collection<? extends Variable>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);

@@ -4,21 +4,21 @@ package fr.kazejiyu.ekumi.core.ekumi;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Data List</b></em>'.
+ * A representation of the model object '<em><b>List Of Variables</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.DataList#getSize <em>Size</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.ListOfVariables#getSize <em>Size</em>}</li>
  * </ul>
  *
- * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getDataList()
+ * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getListOfVariables()
  * @model
  * @generated
  */
-public interface DataList extends Data {
+public interface ListOfVariables extends Variable {
 	/**
 	 * Returns the value of the '<em><b>Size</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -29,14 +29,14 @@ public interface DataList extends Data {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Size</em>' attribute.
 	 * @see #isSetSize()
-	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getDataList_Size()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getListOfVariables_Size()
 	 * @model unsettable="true" changeable="false"
 	 * @generated
 	 */
 	int getSize();
 
 	/**
-	 * Returns whether the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.DataList#getSize <em>Size</em>}' attribute is set.
+	 * Returns whether the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.ListOfVariables#getSize <em>Size</em>}' attribute is set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return whether the value of the '<em>Size</em>' attribute is set.
@@ -45,4 +45,4 @@ public interface DataList extends Data {
 	 */
 	boolean isSetSize();
 
-} // DataList
+} // ListOfVariables
