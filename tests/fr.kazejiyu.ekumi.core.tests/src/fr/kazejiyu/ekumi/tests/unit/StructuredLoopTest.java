@@ -4,8 +4,6 @@ import static fr.kazejiyu.ekumi.core.ekumi.Status.FAILED;
 import static fr.kazejiyu.ekumi.core.ekumi.Status.SUCCEEDED;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -13,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
-import fr.kazejiyu.ekumi.core.ekumi.Sequence;
 import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
 import fr.kazejiyu.ekumi.tests.mocks.BrokenActivity;
 import fr.kazejiyu.ekumi.tests.mocks.SetNameInContext;
@@ -58,12 +55,10 @@ public class StructuredLoopTest {
 	@DisplayName("when not empty")
 	class NonEmpty {
 		private StructuredLoop loop;
-		private Context context;
 		
 		@BeforeEach
 		void initialize() {
 			loop = EkumiFactory.eINSTANCE.createStructuredLoop();
-			context = EkumiFactory.eINSTANCE.createContext();
 			loop.setActivity(new SetNameInContext("A"));
 		}
 		

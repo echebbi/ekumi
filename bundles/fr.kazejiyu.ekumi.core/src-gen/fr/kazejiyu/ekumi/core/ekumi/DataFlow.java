@@ -33,12 +33,12 @@ public interface DataFlow extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Input</em>' reference.
-	 * @see #setInput(Data)
+	 * @see #setInput(Variable)
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getDataFlow_Input()
 	 * @model required="true"
 	 * @generated
 	 */
-	Data getInput();
+	Variable getInput();
 
 	/**
 	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getInput <em>Input</em>}' reference.
@@ -48,7 +48,7 @@ public interface DataFlow extends EObject {
 	 * @see #getInput()
 	 * @generated
 	 */
-	void setInput(Data value);
+	void setInput(Variable value);
 
 	/**
 	 * Returns the value of the '<em><b>Output</b></em>' reference.
@@ -59,12 +59,12 @@ public interface DataFlow extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Output</em>' reference.
-	 * @see #setOutput(Data)
+	 * @see #setOutput(Variable)
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getDataFlow_Output()
 	 * @model required="true"
 	 * @generated
 	 */
-	Data getOutput();
+	Variable getOutput();
 
 	/**
 	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getOutput <em>Output</em>}' reference.
@@ -74,7 +74,7 @@ public interface DataFlow extends EObject {
 	 * @see #getOutput()
 	 * @generated
 	 */
-	void setOutput(Data value);
+	void setOutput(Variable value);
 
 	/**
 	 * Returns the value of the '<em><b>Destination</b></em>' reference.

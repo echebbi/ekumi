@@ -202,7 +202,6 @@ public class DriverImpl extends ActivityImpl implements Driver {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {

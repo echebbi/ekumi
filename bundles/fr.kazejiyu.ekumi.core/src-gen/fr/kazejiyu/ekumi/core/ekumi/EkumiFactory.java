@@ -58,13 +58,13 @@ public interface EkumiFactory extends EFactory {
 	DataFlow createDataFlow();
 
 	/**
-	 * Returns a new object of class '<em>Data</em>'.
+	 * Returns a new object of class '<em>Variable</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data</em>'.
+	 * @return a new object of class '<em>Variable</em>'.
 	 * @generated
 	 */
-	Data createData();
+	Variable createVariable();
 
 	/**
 	 * Returns a new object of class '<em>Structured Loop</em>'.
@@ -130,22 +130,22 @@ public interface EkumiFactory extends EFactory {
 	Execution createExecution();
 
 	/**
-	 * Returns a new object of class '<em>Data List</em>'.
+	 * Returns a new object of class '<em>List Of Variables</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data List</em>'.
+	 * @return a new object of class '<em>List Of Variables</em>'.
 	 * @generated
 	 */
-	DataList createDataList();
+	ListOfVariables createListOfVariables();
 
 	/**
-	 * Returns a new object of class '<em>Data Map</em>'.
+	 * Returns a new object of class '<em>Map Of Variables</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data Map</em>'.
+	 * @return a new object of class '<em>Map Of Variables</em>'.
 	 * @generated
 	 */
-	DataMap createDataMap();
+	MapOfVariables createMapOfVariables();
 
 	/**
 	 * Returns a new object of class '<em>Driver</em>'.

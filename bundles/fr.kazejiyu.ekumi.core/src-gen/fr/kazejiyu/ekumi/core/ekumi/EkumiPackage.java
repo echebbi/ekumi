@@ -696,14 +696,14 @@ public interface EkumiPackage extends EPackage {
 	int DATA_FLOW_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.DataImpl <em>Data</em>}' class.
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.VariableImpl <em>Variable</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.DataImpl
-	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getData()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.VariableImpl
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getVariable()
 	 * @generated
 	 */
-	int DATA = 6;
+	int VARIABLE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -712,7 +712,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA__NAME = 0;
+	int VARIABLE__NAME = 0;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -721,7 +721,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA__TYPE = 1;
+	int VARIABLE__TYPE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Owner</b></em>' container reference.
@@ -730,7 +730,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA__OWNER = 2;
+	int VARIABLE__OWNER = 2;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -739,25 +739,25 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA__VALUE = 3;
+	int VARIABLE__VALUE = 3;
 
 	/**
-	 * The number of structural features of the '<em>Data</em>' class.
+	 * The number of structural features of the '<em>Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_FEATURE_COUNT = 4;
+	int VARIABLE_FEATURE_COUNT = 4;
 
 	/**
-	 * The number of operations of the '<em>Data</em>' class.
+	 * The number of operations of the '<em>Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_OPERATION_COUNT = 0;
+	int VARIABLE_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.StructuredLoopImpl <em>Structured Loop</em>}' class.
@@ -1636,14 +1636,14 @@ public interface EkumiPackage extends EPackage {
 	int EXECUTION_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.DataListImpl <em>Data List</em>}' class.
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ListOfVariablesImpl <em>List Of Variables</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.DataListImpl
-	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getDataList()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.ListOfVariablesImpl
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getListOfVariables()
 	 * @generated
 	 */
-	int DATA_LIST = 19;
+	int LIST_OF_VARIABLES = 19;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1652,7 +1652,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_LIST__NAME = DATA__NAME;
+	int LIST_OF_VARIABLES__NAME = VARIABLE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1661,7 +1661,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_LIST__TYPE = DATA__TYPE;
+	int LIST_OF_VARIABLES__TYPE = VARIABLE__TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Owner</b></em>' container reference.
@@ -1670,7 +1670,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_LIST__OWNER = DATA__OWNER;
+	int LIST_OF_VARIABLES__OWNER = VARIABLE__OWNER;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1679,7 +1679,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_LIST__VALUE = DATA__VALUE;
+	int LIST_OF_VARIABLES__VALUE = VARIABLE__VALUE;
 
 	/**
 	 * The feature id for the '<em><b>Size</b></em>' attribute.
@@ -1688,35 +1688,35 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_LIST__SIZE = DATA_FEATURE_COUNT + 0;
+	int LIST_OF_VARIABLES__SIZE = VARIABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Data List</em>' class.
+	 * The number of structural features of the '<em>List Of Variables</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_LIST_FEATURE_COUNT = DATA_FEATURE_COUNT + 1;
+	int LIST_OF_VARIABLES_FEATURE_COUNT = VARIABLE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Data List</em>' class.
+	 * The number of operations of the '<em>List Of Variables</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_LIST_OPERATION_COUNT = DATA_OPERATION_COUNT + 0;
+	int LIST_OF_VARIABLES_OPERATION_COUNT = VARIABLE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.DataMapImpl <em>Data Map</em>}' class.
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.MapOfVariablesImpl <em>Map Of Variables</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.DataMapImpl
-	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getDataMap()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.MapOfVariablesImpl
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getMapOfVariables()
 	 * @generated
 	 */
-	int DATA_MAP = 20;
+	int MAP_OF_VARIABLES = 20;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1725,7 +1725,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAP__NAME = DATA__NAME;
+	int MAP_OF_VARIABLES__NAME = VARIABLE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1734,7 +1734,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAP__TYPE = DATA__TYPE;
+	int MAP_OF_VARIABLES__TYPE = VARIABLE__TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Owner</b></em>' container reference.
@@ -1743,7 +1743,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAP__OWNER = DATA__OWNER;
+	int MAP_OF_VARIABLES__OWNER = VARIABLE__OWNER;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1752,25 +1752,25 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAP__VALUE = DATA__VALUE;
+	int MAP_OF_VARIABLES__VALUE = VARIABLE__VALUE;
 
 	/**
-	 * The number of structural features of the '<em>Data Map</em>' class.
+	 * The number of structural features of the '<em>Map Of Variables</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAP_FEATURE_COUNT = DATA_FEATURE_COUNT + 0;
+	int MAP_OF_VARIABLES_FEATURE_COUNT = VARIABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Data Map</em>' class.
+	 * The number of operations of the '<em>Map Of Variables</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAP_OPERATION_COUNT = DATA_OPERATION_COUNT + 0;
+	int MAP_OF_VARIABLES_OPERATION_COUNT = VARIABLE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.DriverImpl <em>Driver</em>}' class.
@@ -2226,58 +2226,58 @@ public interface EkumiPackage extends EPackage {
 	EReference getDataFlow_Source();
 
 	/**
-	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Data <em>Data</em>}'.
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Variable <em>Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Data</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Data
+	 * @return the meta object for class '<em>Variable</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Variable
 	 * @generated
 	 */
-	EClass getData();
+	EClass getVariable();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.Data#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Data#getName()
-	 * @see #getData()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Variable#getName()
+	 * @see #getVariable()
 	 * @generated
 	 */
-	EAttribute getData_Name();
+	EAttribute getVariable_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.Data#getType <em>Type</em>}'.
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Data#getType()
-	 * @see #getData()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Variable#getType()
+	 * @see #getVariable()
 	 * @generated
 	 */
-	EAttribute getData_Type();
+	EAttribute getVariable_Type();
 
 	/**
-	 * Returns the meta object for the container reference '{@link fr.kazejiyu.ekumi.core.ekumi.Data#getOwner <em>Owner</em>}'.
+	 * Returns the meta object for the container reference '{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getOwner <em>Owner</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the container reference '<em>Owner</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Data#getOwner()
-	 * @see #getData()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Variable#getOwner()
+	 * @see #getVariable()
 	 * @generated
 	 */
-	EReference getData_Owner();
+	EReference getVariable_Owner();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.Data#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Data#getValue()
-	 * @see #getData()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Variable#getValue()
+	 * @see #getVariable()
 	 * @generated
 	 */
-	EAttribute getData_Value();
+	EAttribute getVariable_Value();
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.StructuredLoop <em>Structured Loop</em>}'.
@@ -2596,35 +2596,35 @@ public interface EkumiPackage extends EPackage {
 	EReference getExecution_Context();
 
 	/**
-	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.DataList <em>Data List</em>}'.
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.ListOfVariables <em>List Of Variables</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Data List</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.DataList
+	 * @return the meta object for class '<em>List Of Variables</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.ListOfVariables
 	 * @generated
 	 */
-	EClass getDataList();
+	EClass getListOfVariables();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.DataList#getSize <em>Size</em>}'.
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.ListOfVariables#getSize <em>Size</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Size</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.DataList#getSize()
-	 * @see #getDataList()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.ListOfVariables#getSize()
+	 * @see #getListOfVariables()
 	 * @generated
 	 */
-	EAttribute getDataList_Size();
+	EAttribute getListOfVariables_Size();
 
 	/**
-	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.DataMap <em>Data Map</em>}'.
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.MapOfVariables <em>Map Of Variables</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Data Map</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.DataMap
+	 * @return the meta object for class '<em>Map Of Variables</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.MapOfVariables
 	 * @generated
 	 */
-	EClass getDataMap();
+	EClass getMapOfVariables();
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Driver <em>Driver</em>}'.
@@ -2917,14 +2917,14 @@ public interface EkumiPackage extends EPackage {
 		EReference DATA_FLOW__SOURCE = eINSTANCE.getDataFlow_Source();
 
 		/**
-		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.DataImpl <em>Data</em>}' class.
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.VariableImpl <em>Variable</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.DataImpl
-		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getData()
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.VariableImpl
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getVariable()
 		 * @generated
 		 */
-		EClass DATA = eINSTANCE.getData();
+		EClass VARIABLE = eINSTANCE.getVariable();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -2932,7 +2932,7 @@ public interface EkumiPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATA__NAME = eINSTANCE.getData_Name();
+		EAttribute VARIABLE__NAME = eINSTANCE.getVariable_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
@@ -2940,7 +2940,7 @@ public interface EkumiPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATA__TYPE = eINSTANCE.getData_Type();
+		EAttribute VARIABLE__TYPE = eINSTANCE.getVariable_Type();
 
 		/**
 		 * The meta object literal for the '<em><b>Owner</b></em>' container reference feature.
@@ -2948,7 +2948,7 @@ public interface EkumiPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DATA__OWNER = eINSTANCE.getData_Owner();
+		EReference VARIABLE__OWNER = eINSTANCE.getVariable_Owner();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -2956,7 +2956,7 @@ public interface EkumiPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATA__VALUE = eINSTANCE.getData_Value();
+		EAttribute VARIABLE__VALUE = eINSTANCE.getVariable_Value();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.StructuredLoopImpl <em>Structured Loop</em>}' class.
@@ -3224,14 +3224,14 @@ public interface EkumiPackage extends EPackage {
 		EReference EXECUTION__CONTEXT = eINSTANCE.getExecution_Context();
 
 		/**
-		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.DataListImpl <em>Data List</em>}' class.
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ListOfVariablesImpl <em>List Of Variables</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.DataListImpl
-		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getDataList()
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.ListOfVariablesImpl
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getListOfVariables()
 		 * @generated
 		 */
-		EClass DATA_LIST = eINSTANCE.getDataList();
+		EClass LIST_OF_VARIABLES = eINSTANCE.getListOfVariables();
 
 		/**
 		 * The meta object literal for the '<em><b>Size</b></em>' attribute feature.
@@ -3239,17 +3239,17 @@ public interface EkumiPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATA_LIST__SIZE = eINSTANCE.getDataList_Size();
+		EAttribute LIST_OF_VARIABLES__SIZE = eINSTANCE.getListOfVariables_Size();
 
 		/**
-		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.DataMapImpl <em>Data Map</em>}' class.
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.MapOfVariablesImpl <em>Map Of Variables</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.DataMapImpl
-		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getDataMap()
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.MapOfVariablesImpl
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getMapOfVariables()
 		 * @generated
 		 */
-		EClass DATA_MAP = eINSTANCE.getDataMap();
+		EClass MAP_OF_VARIABLES = eINSTANCE.getMapOfVariables();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.DriverImpl <em>Driver</em>}' class.

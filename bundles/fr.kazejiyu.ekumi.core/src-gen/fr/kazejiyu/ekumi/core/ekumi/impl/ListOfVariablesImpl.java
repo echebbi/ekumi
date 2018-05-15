@@ -2,24 +2,25 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.impl;
 
-import fr.kazejiyu.ekumi.core.ekumi.DataList;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
+import fr.kazejiyu.ekumi.core.ekumi.ListOfVariables;
+
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Data List</b></em>'.
+ * An implementation of the model object '<em><b>List Of Variables</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.DataListImpl#getSize <em>Size</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ListOfVariablesImpl#getSize <em>Size</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class DataListImpl extends DataImpl implements DataList {
+public class ListOfVariablesImpl extends VariableImpl implements ListOfVariables {
 	/**
 	 * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -54,7 +55,7 @@ public class DataListImpl extends DataImpl implements DataList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DataListImpl() {
+	protected ListOfVariablesImpl() {
 		super();
 	}
 
@@ -65,7 +66,7 @@ public class DataListImpl extends DataImpl implements DataList {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EkumiPackage.Literals.DATA_LIST;
+		return EkumiPackage.Literals.LIST_OF_VARIABLES;
 	}
 
 	/**
@@ -94,7 +95,7 @@ public class DataListImpl extends DataImpl implements DataList {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case EkumiPackage.DATA_LIST__SIZE:
+		case EkumiPackage.LIST_OF_VARIABLES__SIZE:
 			return getSize();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -108,7 +109,7 @@ public class DataListImpl extends DataImpl implements DataList {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case EkumiPackage.DATA_LIST__SIZE:
+		case EkumiPackage.LIST_OF_VARIABLES__SIZE:
 			return isSetSize();
 		}
 		return super.eIsSet(featureID);
@@ -134,4 +135,4 @@ public class DataListImpl extends DataImpl implements DataList {
 		return result.toString();
 	}
 
-} //DataListImpl
+} //ListOfVariablesImpl

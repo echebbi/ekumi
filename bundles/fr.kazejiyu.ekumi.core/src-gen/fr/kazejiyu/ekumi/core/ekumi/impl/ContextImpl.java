@@ -16,9 +16,9 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import fr.kazejiyu.ekumi.core.ekumi.Context;
-import fr.kazejiyu.ekumi.core.ekumi.Data;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
+import fr.kazejiyu.ekumi.core.ekumi.Variable;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,16 +41,16 @@ public class ContextImpl extends MinimalEObjectImpl.Container implements Context
 	}
 
 	@Override
-	public Optional<Data> get(String name) {
+	public Optional<Variable> get(String name) {
 		return getVariables().stream().filter(var -> var.getName().equals(name)).findAny();
 	}
 
 	@Override
 	public void set(String name, Object value) {
-		Data data = EkumiFactory.eINSTANCE.createData();
-		data.setName(requireNonNull(name));
-		data.setValue(value);
-		getVariables().add(data);
+		Variable var = EkumiFactory.eINSTANCE.createVariable();
+		var.setName(requireNonNull(name));
+		var.setValue(value);
+		getVariables().add(var);
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class ContextImpl extends MinimalEObjectImpl.Container implements Context
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Data> variables;
+	protected EList<Variable> variables;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -92,9 +92,9 @@ public class ContextImpl extends MinimalEObjectImpl.Container implements Context
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Data> getVariables() {
+	public EList<Variable> getVariables() {
 		if (variables == null) {
-			variables = new EObjectContainmentEList<Data>(Data.class, this, EkumiPackage.CONTEXT__VARIABLES);
+			variables = new EObjectContainmentEList<Variable>(Variable.class, this, EkumiPackage.CONTEXT__VARIABLES);
 		}
 		return variables;
 	}
@@ -138,7 +138,7 @@ public class ContextImpl extends MinimalEObjectImpl.Container implements Context
 		switch (featureID) {
 		case EkumiPackage.CONTEXT__VARIABLES:
 			getVariables().clear();
-			getVariables().addAll((Collection<? extends Data>) newValue);
+			getVariables().addAll((Collection<? extends Variable>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);

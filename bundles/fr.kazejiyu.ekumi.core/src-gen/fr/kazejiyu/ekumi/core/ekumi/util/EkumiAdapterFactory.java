@@ -97,8 +97,8 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseData(Data object) {
-			return createDataAdapter();
+		public Adapter caseVariable(Variable object) {
+			return createVariableAdapter();
 		}
 
 		@Override
@@ -162,13 +162,13 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseDataList(DataList object) {
-			return createDataListAdapter();
+		public Adapter caseListOfVariables(ListOfVariables object) {
+			return createListOfVariablesAdapter();
 		}
 
 		@Override
-		public Adapter caseDataMap(DataMap object) {
-			return createDataMapAdapter();
+		public Adapter caseMapOfVariables(MapOfVariables object) {
+			return createMapOfVariablesAdapter();
 		}
 
 		@Override
@@ -285,16 +285,16 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.Data <em>Data</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.Variable <em>Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Data
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Variable
 	 * @generated
 	 */
-	public Adapter createDataAdapter() {
+	public Adapter createVariableAdapter() {
 		return null;
 	}
 
@@ -467,30 +467,30 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.DataList <em>Data List</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.ListOfVariables <em>List Of Variables</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.DataList
+	 * @see fr.kazejiyu.ekumi.core.ekumi.ListOfVariables
 	 * @generated
 	 */
-	public Adapter createDataListAdapter() {
+	public Adapter createListOfVariablesAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.DataMap <em>Data Map</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.MapOfVariables <em>Map Of Variables</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.DataMap
+	 * @see fr.kazejiyu.ekumi.core.ekumi.MapOfVariables
 	 * @generated
 	 */
-	public Adapter createDataMapAdapter() {
+	public Adapter createMapOfVariablesAdapter() {
 		return null;
 	}
 

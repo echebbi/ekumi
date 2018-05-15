@@ -8,24 +8,24 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Data</b></em>'.
+ * A representation of the model object '<em><b>Variable</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Data#getName <em>Name</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Data#getType <em>Type</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Data#getOwner <em>Owner</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Data#getValue <em>Value</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getName <em>Name</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getType <em>Type</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getOwner <em>Owner</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getValue <em>Value</em>}</li>
  * </ul>
  *
- * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getData()
+ * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getVariable()
  * @model
  * @generated
  */
-public interface Data extends EObject {
+public interface Variable extends EObject {
 
 	/**
 	 * Returns the value casted to the specified class.
@@ -38,7 +38,7 @@ public interface Data extends EObject {
 	default <T> T getValueAs(Class<T> type) {
 		return type.cast(getValue());
 	}
-
+	
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -49,14 +49,14 @@ public interface Data extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getData_Name()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getVariable_Name()
 	 * @model
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Data#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -75,14 +75,14 @@ public interface Data extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see #setType(DataType)
-	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getData_Type()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getVariable_Type()
 	 * @model dataType="fr.kazejiyu.ekumi.core.ekumi.DataType"
 	 * @generated
 	 */
 	DataType getType();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Data#getType <em>Type</em>}' attribute.
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getType <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Type</em>' attribute.
@@ -102,7 +102,7 @@ public interface Data extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owner</em>' container reference.
 	 * @see #setOwner(Activity)
-	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getData_Owner()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getVariable_Owner()
 	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getInputs
 	 * @model opposite="inputs" transient="false"
 	 * @generated
@@ -110,7 +110,7 @@ public interface Data extends EObject {
 	Activity getOwner();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Data#getOwner <em>Owner</em>}' container reference.
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getOwner <em>Owner</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Owner</em>' container reference.
@@ -129,14 +129,14 @@ public interface Data extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(Object)
-	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getData_Value()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getVariable_Value()
 	 * @model
 	 * @generated
 	 */
 	Object getValue();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Data#getValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' attribute.
@@ -145,4 +145,4 @@ public interface Data extends EObject {
 	 */
 	void setValue(Object value);
 
-} // Data
+} // Variable

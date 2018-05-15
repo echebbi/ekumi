@@ -38,14 +38,14 @@ public interface Context extends EObject {
 	boolean contains(String name);
 
 	/**
-	 * Returns the specified data, if found.
+	 * Returns the specified variable, if found.
 	 * 
 	 * @param name
 	 * 			The name of the variable to look for.
 	 * 
-	 * @return the data called {@code name}, if found
+	 * @return the variable called {@code name}, if found
 	 */
-	Optional<Data> get(String name);
+	Optional<Variable> get(String name);
 
 	/**
 	 * Creates a new variable.<br>
@@ -71,7 +71,7 @@ public interface Context extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
-	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Data}.
+	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Variable}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Variables</em>' containment reference list isn't clear,
@@ -83,6 +83,6 @@ public interface Context extends EObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Data> getVariables();
+	EList<Variable> getVariables();
 
 } // Context
