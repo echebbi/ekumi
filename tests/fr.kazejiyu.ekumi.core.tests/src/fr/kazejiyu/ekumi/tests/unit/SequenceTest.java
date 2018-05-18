@@ -1,16 +1,19 @@
 package fr.kazejiyu.ekumi.tests.unit;
 
+import static fr.kazejiyu.ekumi.core.ekumi.Status.FAILED;
+import static fr.kazejiyu.ekumi.core.ekumi.Status.SUCCEEDED;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static fr.kazejiyu.ekumi.core.ekumi.Status.*;
-
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import fr.kazejiyu.ekumi.core.ekumi.Activity;
 import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.Sequence;
@@ -37,11 +40,11 @@ public class SequenceTest {
 			empty = EkumiFactory.eINSTANCE.createSequence();
 		}
 		
-		// isEmpty()
+		// getActivities()
 		
-		@Test @DisplayName("is empty")
-		void is_empty() {
-			assertThat(empty.isEmpty()).isTrue();
+		@Test @DisplayName("has no activity")
+		void has_no_activity() {
+			assertThat(empty.getActivities()).isEmpty();
 		}
 		
 		// run()
@@ -58,39 +61,41 @@ public class SequenceTest {
 	class NonEmpty {
 		private Sequence seq;
 		private Context context;
+		private List<Activity> activities;
 		
 		@BeforeEach
 		void initialize() {
 			seq = EkumiFactory.eINSTANCE.createSequence();
-			seq.getActivities().add(new SetNameInContext("A"));
-			seq.getActivities().add(new SetNameInContext("B"));
-			seq.getActivities().add(new SetNameInContext("C"));
+			activities = new ArrayList<>();
+			
+			activities.add(new SetNameInContext("A"));
+			activities.add(new SetNameInContext("B"));
+			activities.add(new SetNameInContext("C"));
+			
+			seq.setRoot(activities.get(0));
+			seq.getRoot().setSuccessor(activities.get(1));
+			seq.getRoot().getSuccessor().setSuccessor(activities.get(2));
+			
 			context = EkumiFactory.eINSTANCE.createContext();
 		}
 		
-		// isEmpty()
+		// getActivities()
 		
-		@Test @DisplayName("is not empty")
-		void is_not_empty() {
-			assertThat(seq.isEmpty()).isFalse();
-		}
-		
-		@Test @DisplayName("is empty when all its activities have been removed")
-		void is_empty_when_all_its_activites_have_been_removed() {
-			seq.getActivities().clear();
-			assertThat(seq.isEmpty()).isTrue();
+		@Test @DisplayName("provides its activities in order")
+		void provides_its_activities_in_order() {
+			assertThat(seq.getActivities()).containsExactlyElementsOf(activities);
 		}
 		
 		// run()
 		
-		@Test @DisplayName("execute all its tasks")
+		@Test @DisplayName("executes all its tasks")
 		void execute_all_its_tasks() {
 			seq.run(context);
 			assertThat(seq.getActivities()).allMatch(activity -> ((SetNameInContext) activity).hasRun());
 		}
 		
 		@SuppressWarnings("unchecked")
-		@Test @DisplayName("execute all its tasks in order")
+		@Test @DisplayName("executes all its tasks in order")
 		void execute_all_its_tasks_in_order() {
 			seq.run(context);
 			List<String> activities = (List<String>) context.get(SetNameInContext.VARIABLE_IN_CONTEXT).get().getValueAs(List.class);
@@ -98,7 +103,7 @@ public class SequenceTest {
 		}
 		
 		@SuppressWarnings("unchecked")
-		@Test @DisplayName("provide the right context to its tasks")
+		@Test @DisplayName("provides the right context to its tasks")
 		void provides_the_right_context_to_its_tasks() {
 			seq.run(context);
 			List<String> activities = (List<String>) context.get(SetNameInContext.VARIABLE_IN_CONTEXT).get().getValueAs(List.class);
@@ -109,6 +114,12 @@ public class SequenceTest {
 		void has_finished_status_after_run() {
 			seq.run(context);
 			assertThat(seq.getStatus()).isEqualTo(SUCCEEDED);
+		}
+	
+		@Disabled
+		@Test @DisplayName("updates the inputs of a task before running it") 
+		void update_the_inputs_of_a_task_before_running_it() {
+			seq.run(context);
 		}
 	}
 	
@@ -121,14 +132,14 @@ public class SequenceTest {
 		@BeforeEach
 		void initialize() {
 			corrupted = EkumiFactory.eINSTANCE.createSequence();
-			corrupted.getActivities().add(new SetNameInContext("A"));
-			corrupted.getActivities().add(new SetNameInContext("B"));
-			corrupted.getActivities().add(new BrokenActivity());
-			corrupted.getActivities().add(new SetNameInContext("C"));
+			corrupted.setRoot(new SetNameInContext("A"));
+			corrupted.getRoot().setSuccessor(new SetNameInContext("B"));
+			corrupted.getRoot().getSuccessor().setSuccessor(new BrokenActivity());
+			corrupted.getRoot().getSuccessor().getSuccessor().setSuccessor(new SetNameInContext("C"));
 			context = EkumiFactory.eINSTANCE.createContext();
 		}
 		
-		@Test @DisplayName("do not throw when run")
+		@Test @DisplayName("does not throw when run")
 		void do_not_throw_when_run() {
 			corrupted.run(context);
 		}
@@ -140,7 +151,7 @@ public class SequenceTest {
 		}
 		
 		@SuppressWarnings("unchecked")
-		@Test @DisplayName("stop its execution when an activity fails")
+		@Test @DisplayName("stops its execution when an activity fails")
 		void stop_its_execution_when_an_activity_fails() {
 			corrupted.run(context);
 			List<String> activities = (List<String>) context.get(SetNameInContext.VARIABLE_IN_CONTEXT).get().getValueAs(List.class);
