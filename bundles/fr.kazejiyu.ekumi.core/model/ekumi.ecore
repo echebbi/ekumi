@@ -11,28 +11,24 @@
         eType="#//Variable" containment="true" eOpposite="#//Variable/owner"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
         eType="#//Variable" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="successors" upperBound="-1"
-        eType="#//Activity" eOpposite="#//Activity/predecessor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="successor" eType="#//Activity"
+        eOpposite="#//Activity/predecessor"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="predecessor" eType="#//Activity"
-        eOpposite="#//Activity/successors"/>
+        eOpposite="#//Activity/successor"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//Status"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="flows" eType="#//DataFlows"
         containment="true" eOpposite="#//DataFlows/owner"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Workflow" abstract="true" eSuperTypes="#//Activity">
+  <eClassifiers xsi:type="ecore:EClass" name="Sequence" eSuperTypes="#//Activity">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value=""/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="root" eType="#//Activity"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activities" upperBound="-1"
-        eType="#//Activity" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Sequence" eSuperTypes="#//Workflow">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value=""/>
-    </eAnnotations>
+        eType="#//Activity" changeable="false" volatile="true" unsettable="true" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MultipleInstances" eSuperTypes="#//Activity"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ParallelSplit" eSuperTypes="#//Workflow"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataFlow">
     <eStructuralFeatures xsi:type="ecore:EReference" name="input" lowerBound="1" eType="#//Variable"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="output" lowerBound="1"
@@ -151,5 +147,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DriverRunner" abstract="true" eSuperTypes="#//Runner">
     <eStructuralFeatures xsi:type="ecore:EReference" name="driven" eType="#//Activity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParallelSplit" eSuperTypes="#//Activity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="branches" upperBound="-1"
+        eType="#//Activity" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

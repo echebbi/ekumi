@@ -172,12 +172,10 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean isSetDestination() {
-		// TODO: implement this method to return whether the 'Destination' reference is set
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return getDestination() != null;
 	}
 
 	/**
@@ -202,12 +200,10 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean isSetSource() {
-		// TODO: implement this method to return whether the 'Source' reference is set
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return getSource() != null;
 	}
 
 	/**

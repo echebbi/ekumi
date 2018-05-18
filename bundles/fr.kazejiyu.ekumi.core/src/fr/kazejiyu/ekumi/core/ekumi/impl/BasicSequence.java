@@ -1,12 +1,34 @@
 package fr.kazejiyu.ekumi.core.ekumi.impl;
 
-import static fr.kazejiyu.ekumi.core.ekumi.Status.*;
+import static fr.kazejiyu.ekumi.core.ekumi.Status.FAILED;
+import static fr.kazejiyu.ekumi.core.ekumi.Status.SUCCEEDED;
+
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
 
 import fr.kazejiyu.ekumi.core.ekumi.Activity;
 import fr.kazejiyu.ekumi.core.ekumi.Context;
 
 public class BasicSequence extends SequenceImpl {
 
+	@Override
+	public EList<Activity> getActivities() {
+		EList<Activity> activities = new BasicEList<>();
+		Activity current = getRoot();
+		
+		while (current != null) {
+			activities.add(current);
+			current = current.getSuccessor();
+		}
+		
+		return activities;
+	}
+	
+	@Override
+	public boolean isSetActivities() {
+		return true;
+	}
+	
 	@Override
 	public void run(Context context) {
 		boolean oneActivityHasFailed = false;
@@ -27,7 +49,6 @@ public class BasicSequence extends SequenceImpl {
 			activity.run(context);
 		}
 		catch (Exception e) {
-			// TODO log exception
 			return false;
 		}
 		

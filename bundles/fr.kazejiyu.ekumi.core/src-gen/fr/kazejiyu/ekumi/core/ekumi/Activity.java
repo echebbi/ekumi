@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getName <em>Name</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getInputs <em>Inputs</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getOutputs <em>Outputs</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getSuccessors <em>Successors</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getSuccessor <em>Successor</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getPredecessor <em>Predecessor</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getStatus <em>Status</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getFlows <em>Flows</em>}</li>
@@ -145,26 +145,36 @@ public interface Activity extends EObject {
 	EList<Variable> getOutputs();
 
 	/**
-	 * Returns the value of the '<em><b>Successors</b></em>' reference list.
-	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Activity}.
+	 * Returns the value of the '<em><b>Successor</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getPredecessor <em>Predecessor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Successors</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Successor</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Successors</em>' reference list.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getActivity_Successors()
+	 * @return the value of the '<em>Successor</em>' reference.
+	 * @see #setSuccessor(Activity)
+	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getActivity_Successor()
 	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getPredecessor
 	 * @model opposite="predecessor"
 	 * @generated
 	 */
-	EList<Activity> getSuccessors();
+	Activity getSuccessor();
+
+	/**
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getSuccessor <em>Successor</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Successor</em>' reference.
+	 * @see #getSuccessor()
+	 * @generated
+	 */
+	void setSuccessor(Activity value);
 
 	/**
 	 * Returns the value of the '<em><b>Predecessor</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getSuccessors <em>Successors</em>}'.
+	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getSuccessor <em>Successor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Predecessor</em>' reference isn't clear,
@@ -174,8 +184,8 @@ public interface Activity extends EObject {
 	 * @return the value of the '<em>Predecessor</em>' reference.
 	 * @see #setPredecessor(Activity)
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getActivity_Predecessor()
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getSuccessors
-	 * @model opposite="successors"
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getSuccessor
+	 * @model opposite="successor"
 	 * @generated
 	 */
 	Activity getPredecessor();

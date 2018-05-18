@@ -78,8 +78,6 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 			return createSequence();
 		case EkumiPackage.MULTIPLE_INSTANCES:
 			return createMultipleInstances();
-		case EkumiPackage.PARALLEL_SPLIT:
-			return createParallelSplit();
 		case EkumiPackage.DATA_FLOW:
 			return createDataFlow();
 		case EkumiPackage.VARIABLE:
@@ -104,6 +102,8 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 			return createMapOfVariables();
 		case EkumiPackage.DRIVER:
 			return createDriver();
+		case EkumiPackage.PARALLEL_SPLIT:
+			return createParallelSplit();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

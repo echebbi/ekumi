@@ -106,13 +106,13 @@ public interface EkumiPackage extends EPackage {
 	int ACTIVITY__OUTPUTS = 3;
 
 	/**
-	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * The feature id for the '<em><b>Successor</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__SUCCESSORS = 4;
+	int ACTIVITY__SUCCESSOR = 4;
 
 	/**
 	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
@@ -169,124 +169,6 @@ public interface EkumiPackage extends EPackage {
 	int ACTIVITY_OPERATION_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.WorkflowImpl <em>Workflow</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.WorkflowImpl
-	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getWorkflow()
-	 * @generated
-	 */
-	int WORKFLOW = 1;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORKFLOW__ID = ACTIVITY__ID;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORKFLOW__NAME = ACTIVITY__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORKFLOW__INPUTS = ACTIVITY__INPUTS;
-
-	/**
-	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORKFLOW__OUTPUTS = ACTIVITY__OUTPUTS;
-
-	/**
-	 * The feature id for the '<em><b>Successors</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORKFLOW__SUCCESSORS = ACTIVITY__SUCCESSORS;
-
-	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORKFLOW__PREDECESSOR = ACTIVITY__PREDECESSOR;
-
-	/**
-	 * The feature id for the '<em><b>Status</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORKFLOW__STATUS = ACTIVITY__STATUS;
-
-	/**
-	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORKFLOW__FLOWS = ACTIVITY__FLOWS;
-
-	/**
-	 * The feature id for the '<em><b>Activities</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORKFLOW__ACTIVITIES = ACTIVITY_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Workflow</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORKFLOW_FEATURE_COUNT = ACTIVITY_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Run</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORKFLOW___RUN__CONTEXT = ACTIVITY___RUN__CONTEXT;
-
-	/**
-	 * The number of operations of the '<em>Workflow</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORKFLOW_OPERATION_COUNT = ACTIVITY_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.SequenceImpl <em>Sequence</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -294,7 +176,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getSequence()
 	 * @generated
 	 */
-	int SEQUENCE = 2;
+	int SEQUENCE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -303,7 +185,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE__ID = WORKFLOW__ID;
+	int SEQUENCE__ID = ACTIVITY__ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -312,7 +194,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE__NAME = WORKFLOW__NAME;
+	int SEQUENCE__NAME = ACTIVITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
@@ -321,7 +203,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE__INPUTS = WORKFLOW__INPUTS;
+	int SEQUENCE__INPUTS = ACTIVITY__INPUTS;
 
 	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
@@ -330,16 +212,16 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE__OUTPUTS = WORKFLOW__OUTPUTS;
+	int SEQUENCE__OUTPUTS = ACTIVITY__OUTPUTS;
 
 	/**
-	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * The feature id for the '<em><b>Successor</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE__SUCCESSORS = WORKFLOW__SUCCESSORS;
+	int SEQUENCE__SUCCESSOR = ACTIVITY__SUCCESSOR;
 
 	/**
 	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
@@ -348,7 +230,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE__PREDECESSOR = WORKFLOW__PREDECESSOR;
+	int SEQUENCE__PREDECESSOR = ACTIVITY__PREDECESSOR;
 
 	/**
 	 * The feature id for the '<em><b>Status</b></em>' attribute.
@@ -357,7 +239,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE__STATUS = WORKFLOW__STATUS;
+	int SEQUENCE__STATUS = ACTIVITY__STATUS;
 
 	/**
 	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
@@ -366,16 +248,25 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE__FLOWS = WORKFLOW__FLOWS;
+	int SEQUENCE__FLOWS = ACTIVITY__FLOWS;
 
 	/**
-	 * The feature id for the '<em><b>Activities</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Root</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE__ACTIVITIES = WORKFLOW__ACTIVITIES;
+	int SEQUENCE__ROOT = ACTIVITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Activities</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE__ACTIVITIES = ACTIVITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Sequence</em>' class.
@@ -384,7 +275,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE_FEATURE_COUNT = WORKFLOW_FEATURE_COUNT + 0;
+	int SEQUENCE_FEATURE_COUNT = ACTIVITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Run</em>' operation.
@@ -393,7 +284,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE___RUN__CONTEXT = WORKFLOW___RUN__CONTEXT;
+	int SEQUENCE___RUN__CONTEXT = ACTIVITY___RUN__CONTEXT;
 
 	/**
 	 * The number of operations of the '<em>Sequence</em>' class.
@@ -402,7 +293,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE_OPERATION_COUNT = WORKFLOW_OPERATION_COUNT + 0;
+	int SEQUENCE_OPERATION_COUNT = ACTIVITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.MultipleInstancesImpl <em>Multiple Instances</em>}' class.
@@ -412,7 +303,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getMultipleInstances()
 	 * @generated
 	 */
-	int MULTIPLE_INSTANCES = 3;
+	int MULTIPLE_INSTANCES = 2;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -451,13 +342,13 @@ public interface EkumiPackage extends EPackage {
 	int MULTIPLE_INSTANCES__OUTPUTS = ACTIVITY__OUTPUTS;
 
 	/**
-	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * The feature id for the '<em><b>Successor</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MULTIPLE_INSTANCES__SUCCESSORS = ACTIVITY__SUCCESSORS;
+	int MULTIPLE_INSTANCES__SUCCESSOR = ACTIVITY__SUCCESSOR;
 
 	/**
 	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
@@ -521,115 +412,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getParallelSplit()
 	 * @generated
 	 */
-	int PARALLEL_SPLIT = 4;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARALLEL_SPLIT__ID = WORKFLOW__ID;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARALLEL_SPLIT__NAME = WORKFLOW__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARALLEL_SPLIT__INPUTS = WORKFLOW__INPUTS;
-
-	/**
-	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARALLEL_SPLIT__OUTPUTS = WORKFLOW__OUTPUTS;
-
-	/**
-	 * The feature id for the '<em><b>Successors</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARALLEL_SPLIT__SUCCESSORS = WORKFLOW__SUCCESSORS;
-
-	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARALLEL_SPLIT__PREDECESSOR = WORKFLOW__PREDECESSOR;
-
-	/**
-	 * The feature id for the '<em><b>Status</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARALLEL_SPLIT__STATUS = WORKFLOW__STATUS;
-
-	/**
-	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARALLEL_SPLIT__FLOWS = WORKFLOW__FLOWS;
-
-	/**
-	 * The feature id for the '<em><b>Activities</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARALLEL_SPLIT__ACTIVITIES = WORKFLOW__ACTIVITIES;
-
-	/**
-	 * The number of structural features of the '<em>Parallel Split</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARALLEL_SPLIT_FEATURE_COUNT = WORKFLOW_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Run</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARALLEL_SPLIT___RUN__CONTEXT = WORKFLOW___RUN__CONTEXT;
-
-	/**
-	 * The number of operations of the '<em>Parallel Split</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARALLEL_SPLIT_OPERATION_COUNT = WORKFLOW_OPERATION_COUNT + 0;
+	int PARALLEL_SPLIT = 21;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.DataFlowImpl <em>Data Flow</em>}' class.
@@ -639,7 +422,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getDataFlow()
 	 * @generated
 	 */
-	int DATA_FLOW = 5;
+	int DATA_FLOW = 3;
 
 	/**
 	 * The feature id for the '<em><b>Input</b></em>' reference.
@@ -703,7 +486,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getVariable()
 	 * @generated
 	 */
-	int VARIABLE = 6;
+	int VARIABLE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -767,7 +550,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getStructuredLoop()
 	 * @generated
 	 */
-	int STRUCTURED_LOOP = 7;
+	int STRUCTURED_LOOP = 5;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -806,13 +589,13 @@ public interface EkumiPackage extends EPackage {
 	int STRUCTURED_LOOP__OUTPUTS = ACTIVITY__OUTPUTS;
 
 	/**
-	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * The feature id for the '<em><b>Successor</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STRUCTURED_LOOP__SUCCESSORS = ACTIVITY__SUCCESSORS;
+	int STRUCTURED_LOOP__SUCCESSOR = ACTIVITY__SUCCESSOR;
 
 	/**
 	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
@@ -903,7 +686,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getScript()
 	 * @generated
 	 */
-	int SCRIPT = 12;
+	int SCRIPT = 10;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -958,7 +741,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getCondition()
 	 * @generated
 	 */
-	int CONDITION = 8;
+	int CONDITION = 6;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -1022,7 +805,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getTask()
 	 * @generated
 	 */
-	int TASK = 9;
+	int TASK = 7;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1061,13 +844,13 @@ public interface EkumiPackage extends EPackage {
 	int TASK__OUTPUTS = ACTIVITY__OUTPUTS;
 
 	/**
-	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * The feature id for the '<em><b>Successor</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__SUCCESSORS = ACTIVITY__SUCCESSORS;
+	int TASK__SUCCESSOR = ACTIVITY__SUCCESSOR;
 
 	/**
 	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
@@ -1131,7 +914,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getRunner()
 	 * @generated
 	 */
-	int RUNNER = 10;
+	int RUNNER = 8;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -1195,7 +978,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getScriptedTask()
 	 * @generated
 	 */
-	int SCRIPTED_TASK = 11;
+	int SCRIPTED_TASK = 9;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1234,13 +1017,13 @@ public interface EkumiPackage extends EPackage {
 	int SCRIPTED_TASK__OUTPUTS = TASK__OUTPUTS;
 
 	/**
-	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * The feature id for the '<em><b>Successor</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCRIPTED_TASK__SUCCESSORS = TASK__SUCCESSORS;
+	int SCRIPTED_TASK__SUCCESSOR = TASK__SUCCESSOR;
 
 	/**
 	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
@@ -1322,7 +1105,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getMultiChoice()
 	 * @generated
 	 */
-	int MULTI_CHOICE = 13;
+	int MULTI_CHOICE = 11;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1361,13 +1144,13 @@ public interface EkumiPackage extends EPackage {
 	int MULTI_CHOICE__OUTPUTS = ACTIVITY__OUTPUTS;
 
 	/**
-	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * The feature id for the '<em><b>Successor</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MULTI_CHOICE__SUCCESSORS = ACTIVITY__SUCCESSORS;
+	int MULTI_CHOICE__SUCCESSOR = ACTIVITY__SUCCESSOR;
 
 	/**
 	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
@@ -1440,7 +1223,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getBranch()
 	 * @generated
 	 */
-	int BRANCH = 14;
+	int BRANCH = 12;
 
 	/**
 	 * The feature id for the '<em><b>Availability</b></em>' containment reference.
@@ -1486,7 +1269,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getContext()
 	 * @generated
 	 */
-	int CONTEXT = 15;
+	int CONTEXT = 13;
 
 	/**
 	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
@@ -1523,7 +1306,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getSerializable()
 	 * @generated
 	 */
-	int SERIALIZABLE = 16;
+	int SERIALIZABLE = 14;
 
 	/**
 	 * The number of structural features of the '<em>Serializable</em>' class.
@@ -1551,7 +1334,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getDataFlows()
 	 * @generated
 	 */
-	int DATA_FLOWS = 17;
+	int DATA_FLOWS = 15;
 
 	/**
 	 * The feature id for the '<em><b>Incomings</b></em>' containment reference list.
@@ -1615,7 +1398,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getExecution()
 	 * @generated
 	 */
-	int EXECUTION = 18;
+	int EXECUTION = 16;
 
 	/**
 	 * The feature id for the '<em><b>Activity</b></em>' reference.
@@ -1661,7 +1444,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getListOfVariables()
 	 * @generated
 	 */
-	int LIST_OF_VARIABLES = 19;
+	int LIST_OF_VARIABLES = 17;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1734,7 +1517,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getMapOfVariables()
 	 * @generated
 	 */
-	int MAP_OF_VARIABLES = 20;
+	int MAP_OF_VARIABLES = 18;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1798,7 +1581,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getDriver()
 	 * @generated
 	 */
-	int DRIVER = 21;
+	int DRIVER = 19;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1837,13 +1620,13 @@ public interface EkumiPackage extends EPackage {
 	int DRIVER__OUTPUTS = ACTIVITY__OUTPUTS;
 
 	/**
-	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * The feature id for the '<em><b>Successor</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DRIVER__SUCCESSORS = ACTIVITY__SUCCESSORS;
+	int DRIVER__SUCCESSOR = ACTIVITY__SUCCESSOR;
 
 	/**
 	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
@@ -1925,7 +1708,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getDriverRunner()
 	 * @generated
 	 */
-	int DRIVER_RUNNER = 22;
+	int DRIVER_RUNNER = 20;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -1991,6 +1774,114 @@ public interface EkumiPackage extends EPackage {
 	int DRIVER_RUNNER_OPERATION_COUNT = RUNNER_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT__ID = ACTIVITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT__NAME = ACTIVITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT__INPUTS = ACTIVITY__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT__OUTPUTS = ACTIVITY__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Successor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT__SUCCESSOR = ACTIVITY__SUCCESSOR;
+
+	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT__PREDECESSOR = ACTIVITY__PREDECESSOR;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT__STATUS = ACTIVITY__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT__FLOWS = ACTIVITY__FLOWS;
+
+	/**
+	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT__BRANCHES = ACTIVITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Parallel Split</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT_FEATURE_COUNT = ACTIVITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Run</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT___RUN__CONTEXT = ACTIVITY___RUN__CONTEXT;
+
+	/**
+	 * The number of operations of the '<em>Parallel Split</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT_OPERATION_COUNT = ACTIVITY_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.Status <em>Status</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1998,7 +1889,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getStatus()
 	 * @generated
 	 */
-	int STATUS = 23;
+	int STATUS = 22;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.TestResult <em>Test Result</em>}' enum.
@@ -2008,7 +1899,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getTestResult()
 	 * @generated
 	 */
-	int TEST_RESULT = 24;
+	int TEST_RESULT = 23;
 
 	/**
 	 * The meta object id for the '<em>Scripting Language</em>' data type.
@@ -2018,7 +1909,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getScriptingLanguage()
 	 * @generated
 	 */
-	int SCRIPTING_LANGUAGE = 25;
+	int SCRIPTING_LANGUAGE = 24;
 
 	/**
 	 * The meta object id for the '<em>Data Type</em>' data type.
@@ -2028,7 +1919,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getDataType()
 	 * @generated
 	 */
-	int DATA_TYPE = 26;
+	int DATA_TYPE = 25;
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Activity <em>Activity</em>}'.
@@ -2085,15 +1976,15 @@ public interface EkumiPackage extends EPackage {
 	EReference getActivity_Outputs();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getSuccessors <em>Successors</em>}'.
+	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getSuccessor <em>Successor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Successors</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getSuccessors()
+	 * @return the meta object for the reference '<em>Successor</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getSuccessor()
 	 * @see #getActivity()
 	 * @generated
 	 */
-	EReference getActivity_Successors();
+	EReference getActivity_Successor();
 
 	/**
 	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getPredecessor <em>Predecessor</em>}'.
@@ -2139,27 +2030,6 @@ public interface EkumiPackage extends EPackage {
 	EOperation getActivity__Run__Context();
 
 	/**
-	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Workflow <em>Workflow</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Workflow</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Workflow
-	 * @generated
-	 */
-	EClass getWorkflow();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.core.ekumi.Workflow#getActivities <em>Activities</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Activities</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Workflow#getActivities()
-	 * @see #getWorkflow()
-	 * @generated
-	 */
-	EReference getWorkflow_Activities();
-
-	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Sequence <em>Sequence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2168,6 +2038,28 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSequence();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link fr.kazejiyu.ekumi.core.ekumi.Sequence#getRoot <em>Root</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Root</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Sequence#getRoot()
+	 * @see #getSequence()
+	 * @generated
+	 */
+	EReference getSequence_Root();
+
+	/**
+	 * Returns the meta object for the reference list '{@link fr.kazejiyu.ekumi.core.ekumi.Sequence#getActivities <em>Activities</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Activities</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Sequence#getActivities()
+	 * @see #getSequence()
+	 * @generated
+	 */
+	EReference getSequence_Activities();
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.MultipleInstances <em>Multiple Instances</em>}'.
@@ -2188,6 +2080,17 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getParallelSplit();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.core.ekumi.ParallelSplit#getBranches <em>Branches</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Branches</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.ParallelSplit#getBranches()
+	 * @see #getParallelSplit()
+	 * @generated
+	 */
+	EReference getParallelSplit_Branches();
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow <em>Data Flow</em>}'.
@@ -2826,12 +2729,12 @@ public interface EkumiPackage extends EPackage {
 		EReference ACTIVITY__OUTPUTS = eINSTANCE.getActivity_Outputs();
 
 		/**
-		 * The meta object literal for the '<em><b>Successors</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Successor</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ACTIVITY__SUCCESSORS = eINSTANCE.getActivity_Successors();
+		EReference ACTIVITY__SUCCESSOR = eINSTANCE.getActivity_Successor();
 
 		/**
 		 * The meta object literal for the '<em><b>Predecessor</b></em>' reference feature.
@@ -2866,24 +2769,6 @@ public interface EkumiPackage extends EPackage {
 		EOperation ACTIVITY___RUN__CONTEXT = eINSTANCE.getActivity__Run__Context();
 
 		/**
-		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.WorkflowImpl <em>Workflow</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.WorkflowImpl
-		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getWorkflow()
-		 * @generated
-		 */
-		EClass WORKFLOW = eINSTANCE.getWorkflow();
-
-		/**
-		 * The meta object literal for the '<em><b>Activities</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference WORKFLOW__ACTIVITIES = eINSTANCE.getWorkflow_Activities();
-
-		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.SequenceImpl <em>Sequence</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2892,6 +2777,22 @@ public interface EkumiPackage extends EPackage {
 		 * @generated
 		 */
 		EClass SEQUENCE = eINSTANCE.getSequence();
+
+		/**
+		 * The meta object literal for the '<em><b>Root</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SEQUENCE__ROOT = eINSTANCE.getSequence_Root();
+
+		/**
+		 * The meta object literal for the '<em><b>Activities</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SEQUENCE__ACTIVITIES = eINSTANCE.getSequence_Activities();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.MultipleInstancesImpl <em>Multiple Instances</em>}' class.
@@ -2912,6 +2813,14 @@ public interface EkumiPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PARALLEL_SPLIT = eINSTANCE.getParallelSplit();
+
+		/**
+		 * The meta object literal for the '<em><b>Branches</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PARALLEL_SPLIT__BRANCHES = eINSTANCE.getParallelSplit_Branches();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.DataFlowImpl <em>Data Flow</em>}' class.

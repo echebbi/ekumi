@@ -72,11 +72,6 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseWorkflow(Workflow object) {
-			return createWorkflowAdapter();
-		}
-
-		@Override
 		public Adapter caseSequence(Sequence object) {
 			return createSequenceAdapter();
 		}
@@ -84,11 +79,6 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseMultipleInstances(MultipleInstances object) {
 			return createMultipleInstancesAdapter();
-		}
-
-		@Override
-		public Adapter caseParallelSplit(ParallelSplit object) {
-			return createParallelSplitAdapter();
 		}
 
 		@Override
@@ -182,6 +172,11 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseParallelSplit(ParallelSplit object) {
+			return createParallelSplitAdapter();
+		}
+
+		@Override
 		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
@@ -211,20 +206,6 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createActivityAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.Workflow <em>Workflow</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Workflow
-	 * @generated
-	 */
-	public Adapter createWorkflowAdapter() {
 		return null;
 	}
 
