@@ -94,8 +94,10 @@
     </genClasses>
     <genClasses image="false" ecoreClass="ekumi.ecore#//Serializable"/>
     <genClasses ecoreClass="ekumi.ecore#//DataFlows">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//DataFlows/incoming"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//DataFlows/incomings"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//DataFlows/outgoings"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//DataFlows/owner"/>
+      <genOperations ecoreOperation="ekumi.ecore#//DataFlows/resolveInputs"/>
     </genClasses>
     <genClasses ecoreClass="ekumi.ecore#//Execution">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Execution/activity"/>
