@@ -2,8 +2,9 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi;
 
-import org.eclipse.emf.common.util.EList;
+import java.util.Optional;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -30,6 +31,33 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Activity extends EObject {
+
+	/**
+	 * Finds a specific input.
+	 * 
+	 * @param name
+	 * 			The name of the input to look for.
+	 * 			Must not be {@code null}.
+	 * 
+	 * @return the input called {@code name}, if found
+	 */
+	default Optional<Variable> getInput(String name) {
+		return getInputs().stream().filter(input -> input.getName().equals(name)).findAny();
+	}
+
+	/**
+	 * Finds a specific output.
+	 * 
+	 * @param name
+	 * 			The name of the output to look for.
+	 * 			Must not be {@code null}.
+	 * 
+	 * @return the output called {@code name}, if found
+	 */
+	default Optional<Variable> getOutput(String name) {
+		return getOutputs().stream().filter(input -> input.getName().equals(name)).findAny();
+	}
+
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -194,6 +222,7 @@ public interface Activity extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Flows</b></em>' containment reference list.
 	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.DataFlows}.
+	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlows#getOwner <em>Owner</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Flows</em>' containment reference list isn't clear,
@@ -202,7 +231,8 @@ public interface Activity extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Flows</em>' containment reference list.
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getActivity_Flows()
-	 * @model containment="true"
+	 * @see fr.kazejiyu.ekumi.core.ekumi.DataFlows#getOwner
+	 * @model opposite="owner" containment="true"
 	 * @generated
 	 */
 	EList<DataFlows> getFlows();
