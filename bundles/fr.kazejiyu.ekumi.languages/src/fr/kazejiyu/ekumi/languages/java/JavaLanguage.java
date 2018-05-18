@@ -28,24 +28,24 @@ import fr.kazejiyu.ekumi.core.languages.exceptions.ScriptLoadingFailureException
 public class JavaLanguage implements ScriptingLanguage {
 
 	@Override
-	public Runner resolveRunnable(String path, IProject project) {
+	public Runner resolveRunner(String path, IProject project) {
 		try {
 			Class<?> clazz = loadClass(path, project);
 			return clazz.asSubclass(Runner.class).newInstance();
 			
 		} catch (InstantiationException | IllegalAccessException e) {
-			throw new ScriptLoadingFailureException("Unable to resolve runnable from path: " + path, e); 
+			throw new ScriptLoadingFailureException("Unable to instantiate a Runner from path: " + path, e); 
 		}
 	}
 
 	@Override
-	public Condition resolveTestable(String path, IProject project) {
+	public Condition resolveCondition(String path, IProject project) {
 		try {
 			Class<?> clazz = loadClass(path, project);
 			return clazz.asSubclass(Condition.class).newInstance();
 			
 		} catch (InstantiationException | IllegalAccessException e) {
-			throw new ScriptLoadingFailureException("Unable to resolve runnable from path: " + path, e); 
+			throw new ScriptLoadingFailureException("Unable to instantiate a Condition from path: " + path, e); 
 		}
 	}
 	
@@ -67,7 +67,7 @@ public class JavaLanguage implements ScriptingLanguage {
 			return loader.loadClass(fullyQualifiedName);
 			
 		} catch (MalformedURLException | CoreException | ClassNotFoundException | ClassCastException e) {
-			throw new ScriptLoadingFailureException("Unable to resolve runnable from path: " + fullyQualifiedName, e); 
+			throw new ScriptLoadingFailureException("Unable to resolve any Java class from path: " + fullyQualifiedName + " in project " + project, e); 
 		}
 	}
 
