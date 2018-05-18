@@ -758,7 +758,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataFlows_Incoming() {
+	public EReference getDataFlows_Incomings() {
 		return (EReference) dataFlowsEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -769,6 +769,24 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 */
 	public EReference getDataFlows_Outgoings() {
 		return (EReference) dataFlowsEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDataFlows_Owner() {
+		return (EReference) dataFlowsEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataFlows__ResolveInputs() {
+		return dataFlowsEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -1002,8 +1020,10 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		serializableEClass = createEClass(SERIALIZABLE);
 
 		dataFlowsEClass = createEClass(DATA_FLOWS);
-		createEReference(dataFlowsEClass, DATA_FLOWS__INCOMING);
+		createEReference(dataFlowsEClass, DATA_FLOWS__INCOMINGS);
 		createEReference(dataFlowsEClass, DATA_FLOWS__OUTGOINGS);
+		createEReference(dataFlowsEClass, DATA_FLOWS__OWNER);
+		createEOperation(dataFlowsEClass, DATA_FLOWS___RESOLVE_INPUTS);
 
 		executionEClass = createEClass(EXECUTION);
 		createEReference(executionEClass, EXECUTION__ACTIVITY);
@@ -1094,9 +1114,9 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getActivity_Status(), this.getStatus(), "status", null, 0, 1, Activity.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getActivity_Flows(), this.getDataFlows(), null, "flows", null, 0, -1, Activity.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getActivity_Flows(), this.getDataFlows(), this.getDataFlows_Owner(), "flows", null, 0, -1,
+				Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = initEOperation(getActivity__Run__Context(), null, "run", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1212,12 +1232,17 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 
 		initEClass(dataFlowsEClass, DataFlows.class, "DataFlows", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDataFlows_Incoming(), this.getDataFlow(), null, "incoming", null, 0, -1, DataFlows.class,
+		initEReference(getDataFlows_Incomings(), this.getDataFlow(), null, "incomings", null, 0, -1, DataFlows.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDataFlows_Outgoings(), this.getDataFlow(), null, "outgoings", null, 0, -1, DataFlows.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataFlows_Owner(), this.getActivity(), this.getActivity_Flows(), "owner", null, 0, 1,
+				DataFlows.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getDataFlows__ResolveInputs(), null, "resolveInputs", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(executionEClass, Execution.class, "Execution", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

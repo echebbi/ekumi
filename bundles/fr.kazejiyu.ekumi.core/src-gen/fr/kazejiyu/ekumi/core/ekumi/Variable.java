@@ -38,7 +38,7 @@ public interface Variable extends EObject {
 	default <T> T getValueAs(Class<T> type) {
 		return type.cast(getValue());
 	}
-	
+
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

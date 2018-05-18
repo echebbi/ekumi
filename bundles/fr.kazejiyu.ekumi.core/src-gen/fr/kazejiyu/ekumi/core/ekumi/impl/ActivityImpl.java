@@ -355,7 +355,8 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	 */
 	public EList<DataFlows> getFlows() {
 		if (flows == null) {
-			flows = new EObjectContainmentEList<DataFlows>(DataFlows.class, this, EkumiPackage.ACTIVITY__FLOWS);
+			flows = new EObjectContainmentWithInverseEList<DataFlows>(DataFlows.class, this,
+					EkumiPackage.ACTIVITY__FLOWS, EkumiPackage.DATA_FLOWS__OWNER);
 		}
 		return flows;
 	}
@@ -389,6 +390,8 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 				msgs = ((InternalEObject) predecessor).eInverseRemove(this, EkumiPackage.ACTIVITY__SUCCESSORS,
 						Activity.class, msgs);
 			return basicSetPredecessor((Activity) otherEnd, msgs);
+		case EkumiPackage.ACTIVITY__FLOWS:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getFlows()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}

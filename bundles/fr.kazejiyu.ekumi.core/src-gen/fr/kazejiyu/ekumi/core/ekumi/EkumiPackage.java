@@ -1554,13 +1554,13 @@ public interface EkumiPackage extends EPackage {
 	int DATA_FLOWS = 17;
 
 	/**
-	 * The feature id for the '<em><b>Incoming</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Incomings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_FLOWS__INCOMING = 0;
+	int DATA_FLOWS__INCOMINGS = 0;
 
 	/**
 	 * The feature id for the '<em><b>Outgoings</b></em>' containment reference list.
@@ -1572,13 +1572,31 @@ public interface EkumiPackage extends EPackage {
 	int DATA_FLOWS__OUTGOINGS = 1;
 
 	/**
+	 * The feature id for the '<em><b>Owner</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_FLOWS__OWNER = 2;
+
+	/**
 	 * The number of structural features of the '<em>Data Flows</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_FLOWS_FEATURE_COUNT = 2;
+	int DATA_FLOWS_FEATURE_COUNT = 3;
+
+	/**
+	 * The operation id for the '<em>Resolve Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_FLOWS___RESOLVE_INPUTS = 0;
 
 	/**
 	 * The number of operations of the '<em>Data Flows</em>' class.
@@ -1587,7 +1605,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_FLOWS_OPERATION_COUNT = 0;
+	int DATA_FLOWS_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ExecutionImpl <em>Execution</em>}' class.
@@ -2542,15 +2560,15 @@ public interface EkumiPackage extends EPackage {
 	EClass getDataFlows();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlows#getIncoming <em>Incoming</em>}'.
+	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlows#getIncomings <em>Incomings</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Incoming</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.DataFlows#getIncoming()
+	 * @return the meta object for the containment reference list '<em>Incomings</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.DataFlows#getIncomings()
 	 * @see #getDataFlows()
 	 * @generated
 	 */
-	EReference getDataFlows_Incoming();
+	EReference getDataFlows_Incomings();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlows#getOutgoings <em>Outgoings</em>}'.
@@ -2562,6 +2580,27 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDataFlows_Outgoings();
+
+	/**
+	 * Returns the meta object for the container reference '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlows#getOwner <em>Owner</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Owner</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.DataFlows#getOwner()
+	 * @see #getDataFlows()
+	 * @generated
+	 */
+	EReference getDataFlows_Owner();
+
+	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlows#resolveInputs() <em>Resolve Inputs</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Resolve Inputs</em>' operation.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.DataFlows#resolveInputs()
+	 * @generated
+	 */
+	EOperation getDataFlows__ResolveInputs();
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Execution <em>Execution</em>}'.
@@ -3182,12 +3221,12 @@ public interface EkumiPackage extends EPackage {
 		EClass DATA_FLOWS = eINSTANCE.getDataFlows();
 
 		/**
-		 * The meta object literal for the '<em><b>Incoming</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Incomings</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DATA_FLOWS__INCOMING = eINSTANCE.getDataFlows_Incoming();
+		EReference DATA_FLOWS__INCOMINGS = eINSTANCE.getDataFlows_Incomings();
 
 		/**
 		 * The meta object literal for the '<em><b>Outgoings</b></em>' containment reference list feature.
@@ -3196,6 +3235,22 @@ public interface EkumiPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DATA_FLOWS__OUTGOINGS = eINSTANCE.getDataFlows_Outgoings();
+
+		/**
+		 * The meta object literal for the '<em><b>Owner</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_FLOWS__OWNER = eINSTANCE.getDataFlows_Owner();
+
+		/**
+		 * The meta object literal for the '<em><b>Resolve Inputs</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_FLOWS___RESOLVE_INPUTS = eINSTANCE.getDataFlows__ResolveInputs();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ExecutionImpl <em>Execution</em>}' class.
