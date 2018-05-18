@@ -14,33 +14,33 @@ import fr.kazejiyu.ekumi.core.languages.exceptions.ScriptLoadingFailureException
 public interface ScriptingLanguage {
 
 	/**
-	 * Turn a runnable written with the language into a EKumi runnable.
+	 * Turns a runner written with the language into a EKumi {@link Runner}.
 	 *  
 	 * @param path
-	 * 			The path locating the runnable written with the language.
+	 * 			The path locating the runner written with the language.
 	 * 			Must not be {@code null}.
 	 * @param project
 	 * 			The project that contains the file identified by {@code path}.
 	 * 
-	 * @return a runnable that can be handled by EKumi.
+	 * @return a runner that can be handled by EKumi.
 	 * 
 	 * @throws ScriptLoadingFailureException if the script cannot be loaded.
 	 */
-	Runner resolveRunnable(String path, IProject project) throws ScriptLoadingFailureException;
+	Runner resolveRunner(String path, IProject project);
 
 	/**
-	 * Turn a testable written with the language into a EKumi runnable.
+	 * Turns a condition written with the language into a EKumi {@link Condition}.
 	 *  
 	 * @param path
-	 * 			The path locating the testable written with the language.
+	 * 			The path locating the condition written with the language.
 	 * 			Must not be {@code null}.
 	 * @param project
 	 * 			The project that contains the file identified by {@code path}.
 	 * 
-	 * @return a testable that can be handled by EKumi.
+	 * @return a condition that can be handled by EKumi.
 	 * 
 	 * @throws ScriptLoadingFailureException if the script cannot be loaded.
 	 */
-	Condition resolveTestable(String path, IProject project) throws ScriptLoadingFailureException;
+	Condition resolveCondition(String path, IProject project);
 
 }
