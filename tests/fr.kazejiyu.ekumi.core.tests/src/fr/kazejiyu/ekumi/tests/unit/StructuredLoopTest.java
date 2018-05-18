@@ -85,6 +85,8 @@ public class StructuredLoopTest {
 			corrupted.setActivity(new BrokenActivity());
 		}
 		
+		// run()
+		
 		@Test @DisplayName("do not throw when run")
 		void do_not_throw_when_run() {
 			corrupted.run(context);
