@@ -5,6 +5,7 @@ package fr.kazejiyu.ekumi.core.ekumi.impl;
 import fr.kazejiyu.ekumi.core.ekumi.Activity;
 import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.DataFlows;
+import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.core.ekumi.Status;
 
@@ -26,7 +27,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -41,7 +41,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getInputs <em>Inputs</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getOutputs <em>Outputs</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getSuccessors <em>Successors</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getSuccessor <em>Successor</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getPredecessor <em>Predecessor</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getFlows <em>Flows</em>}</li>
@@ -111,14 +111,14 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	protected EList<Variable> outputs;
 
 	/**
-	 * The cached value of the '{@link #getSuccessors() <em>Successors</em>}' reference list.
+	 * The cached value of the '{@link #getSuccessor() <em>Successor</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSuccessors()
+	 * @see #getSuccessor()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Activity> successors;
+	protected Activity successor;
 
 	/**
 	 * The cached value of the '{@link #getPredecessor() <em>Predecessor</em>}' reference.
@@ -163,10 +163,11 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected ActivityImpl() {
 		super();
+		setFlows(EkumiFactory.eINSTANCE.createDataFlows());
 	}
 
 	/**
@@ -251,12 +252,67 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Activity> getSuccessors() {
-		if (successors == null) {
-			successors = new EObjectWithInverseResolvingEList<Activity>(Activity.class, this,
-					EkumiPackage.ACTIVITY__SUCCESSORS, EkumiPackage.ACTIVITY__PREDECESSOR);
+	public Activity getSuccessor() {
+		if (successor != null && successor.eIsProxy()) {
+			InternalEObject oldSuccessor = (InternalEObject) successor;
+			successor = (Activity) eResolveProxy(oldSuccessor);
+			if (successor != oldSuccessor) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EkumiPackage.ACTIVITY__SUCCESSOR,
+							oldSuccessor, successor));
+			}
 		}
-		return successors;
+		return successor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Activity basicGetSuccessor() {
+		return successor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSuccessor(Activity newSuccessor, NotificationChain msgs) {
+		Activity oldSuccessor = successor;
+		successor = newSuccessor;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					EkumiPackage.ACTIVITY__SUCCESSOR, oldSuccessor, newSuccessor);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSuccessor(Activity newSuccessor) {
+		if (newSuccessor != successor) {
+			NotificationChain msgs = null;
+			if (successor != null)
+				msgs = ((InternalEObject) successor).eInverseRemove(this, EkumiPackage.ACTIVITY__PREDECESSOR,
+						Activity.class, msgs);
+			if (newSuccessor != null)
+				msgs = ((InternalEObject) newSuccessor).eInverseAdd(this, EkumiPackage.ACTIVITY__PREDECESSOR,
+						Activity.class, msgs);
+			msgs = basicSetSuccessor(newSuccessor, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.ACTIVITY__SUCCESSOR, newSuccessor,
+					newSuccessor));
 	}
 
 	/**
@@ -314,10 +370,10 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 		if (newPredecessor != predecessor) {
 			NotificationChain msgs = null;
 			if (predecessor != null)
-				msgs = ((InternalEObject) predecessor).eInverseRemove(this, EkumiPackage.ACTIVITY__SUCCESSORS,
+				msgs = ((InternalEObject) predecessor).eInverseRemove(this, EkumiPackage.ACTIVITY__SUCCESSOR,
 						Activity.class, msgs);
 			if (newPredecessor != null)
-				msgs = ((InternalEObject) newPredecessor).eInverseAdd(this, EkumiPackage.ACTIVITY__SUCCESSORS,
+				msgs = ((InternalEObject) newPredecessor).eInverseAdd(this, EkumiPackage.ACTIVITY__SUCCESSOR,
 						Activity.class, msgs);
 			msgs = basicSetPredecessor(newPredecessor, msgs);
 			if (msgs != null)
@@ -419,11 +475,14 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 		switch (featureID) {
 		case EkumiPackage.ACTIVITY__INPUTS:
 			return ((InternalEList<InternalEObject>) (InternalEList<?>) getInputs()).basicAdd(otherEnd, msgs);
-		case EkumiPackage.ACTIVITY__SUCCESSORS:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getSuccessors()).basicAdd(otherEnd, msgs);
+		case EkumiPackage.ACTIVITY__SUCCESSOR:
+			if (successor != null)
+				msgs = ((InternalEObject) successor).eInverseRemove(this, EkumiPackage.ACTIVITY__PREDECESSOR,
+						Activity.class, msgs);
+			return basicSetSuccessor((Activity) otherEnd, msgs);
 		case EkumiPackage.ACTIVITY__PREDECESSOR:
 			if (predecessor != null)
-				msgs = ((InternalEObject) predecessor).eInverseRemove(this, EkumiPackage.ACTIVITY__SUCCESSORS,
+				msgs = ((InternalEObject) predecessor).eInverseRemove(this, EkumiPackage.ACTIVITY__SUCCESSOR,
 						Activity.class, msgs);
 			return basicSetPredecessor((Activity) otherEnd, msgs);
 		case EkumiPackage.ACTIVITY__FLOWS:
@@ -447,8 +506,8 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 			return ((InternalEList<?>) getInputs()).basicRemove(otherEnd, msgs);
 		case EkumiPackage.ACTIVITY__OUTPUTS:
 			return ((InternalEList<?>) getOutputs()).basicRemove(otherEnd, msgs);
-		case EkumiPackage.ACTIVITY__SUCCESSORS:
-			return ((InternalEList<?>) getSuccessors()).basicRemove(otherEnd, msgs);
+		case EkumiPackage.ACTIVITY__SUCCESSOR:
+			return basicSetSuccessor(null, msgs);
 		case EkumiPackage.ACTIVITY__PREDECESSOR:
 			return basicSetPredecessor(null, msgs);
 		case EkumiPackage.ACTIVITY__FLOWS:
@@ -473,8 +532,10 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 			return getInputs();
 		case EkumiPackage.ACTIVITY__OUTPUTS:
 			return getOutputs();
-		case EkumiPackage.ACTIVITY__SUCCESSORS:
-			return getSuccessors();
+		case EkumiPackage.ACTIVITY__SUCCESSOR:
+			if (resolve)
+				return getSuccessor();
+			return basicGetSuccessor();
 		case EkumiPackage.ACTIVITY__PREDECESSOR:
 			if (resolve)
 				return getPredecessor();
@@ -510,9 +571,8 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 			getOutputs().clear();
 			getOutputs().addAll((Collection<? extends Variable>) newValue);
 			return;
-		case EkumiPackage.ACTIVITY__SUCCESSORS:
-			getSuccessors().clear();
-			getSuccessors().addAll((Collection<? extends Activity>) newValue);
+		case EkumiPackage.ACTIVITY__SUCCESSOR:
+			setSuccessor((Activity) newValue);
 			return;
 		case EkumiPackage.ACTIVITY__PREDECESSOR:
 			setPredecessor((Activity) newValue);
@@ -547,8 +607,8 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 		case EkumiPackage.ACTIVITY__OUTPUTS:
 			getOutputs().clear();
 			return;
-		case EkumiPackage.ACTIVITY__SUCCESSORS:
-			getSuccessors().clear();
+		case EkumiPackage.ACTIVITY__SUCCESSOR:
+			setSuccessor((Activity) null);
 			return;
 		case EkumiPackage.ACTIVITY__PREDECESSOR:
 			setPredecessor((Activity) null);
@@ -579,8 +639,8 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 			return inputs != null && !inputs.isEmpty();
 		case EkumiPackage.ACTIVITY__OUTPUTS:
 			return outputs != null && !outputs.isEmpty();
-		case EkumiPackage.ACTIVITY__SUCCESSORS:
-			return successors != null && !successors.isEmpty();
+		case EkumiPackage.ACTIVITY__SUCCESSOR:
+			return successor != null;
 		case EkumiPackage.ACTIVITY__PREDECESSOR:
 			return predecessor != null;
 		case EkumiPackage.ACTIVITY__STATUS:

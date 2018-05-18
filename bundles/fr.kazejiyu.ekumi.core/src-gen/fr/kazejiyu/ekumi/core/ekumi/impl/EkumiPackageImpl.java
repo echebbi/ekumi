@@ -30,8 +30,6 @@ import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
 import fr.kazejiyu.ekumi.core.ekumi.Task;
 import fr.kazejiyu.ekumi.core.ekumi.TestResult;
 import fr.kazejiyu.ekumi.core.ekumi.Variable;
-import fr.kazejiyu.ekumi.core.ekumi.Workflow;
-
 import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -57,13 +55,6 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * @generated
 	 */
 	private EClass activityEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass workflowEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -353,7 +344,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getActivity_Successors() {
+	public EReference getActivity_Successor() {
 		return (EReference) activityEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -398,26 +389,26 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getWorkflow() {
-		return workflowEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getWorkflow_Activities() {
-		return (EReference) workflowEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getSequence() {
 		return sequenceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSequence_Root() {
+		return (EReference) sequenceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSequence_Activities() {
+		return (EReference) sequenceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -436,6 +427,15 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 */
 	public EClass getParallelSplit() {
 		return parallelSplitEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getParallelSplit_Branches() {
+		return (EReference) parallelSplitEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -958,20 +958,17 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		createEAttribute(activityEClass, ACTIVITY__NAME);
 		createEReference(activityEClass, ACTIVITY__INPUTS);
 		createEReference(activityEClass, ACTIVITY__OUTPUTS);
-		createEReference(activityEClass, ACTIVITY__SUCCESSORS);
+		createEReference(activityEClass, ACTIVITY__SUCCESSOR);
 		createEReference(activityEClass, ACTIVITY__PREDECESSOR);
 		createEAttribute(activityEClass, ACTIVITY__STATUS);
 		createEReference(activityEClass, ACTIVITY__FLOWS);
 		createEOperation(activityEClass, ACTIVITY___RUN__CONTEXT);
 
-		workflowEClass = createEClass(WORKFLOW);
-		createEReference(workflowEClass, WORKFLOW__ACTIVITIES);
-
 		sequenceEClass = createEClass(SEQUENCE);
+		createEReference(sequenceEClass, SEQUENCE__ROOT);
+		createEReference(sequenceEClass, SEQUENCE__ACTIVITIES);
 
 		multipleInstancesEClass = createEClass(MULTIPLE_INSTANCES);
-
-		parallelSplitEClass = createEClass(PARALLEL_SPLIT);
 
 		dataFlowEClass = createEClass(DATA_FLOW);
 		createEReference(dataFlowEClass, DATA_FLOW__INPUT);
@@ -1041,6 +1038,9 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		driverRunnerEClass = createEClass(DRIVER_RUNNER);
 		createEReference(driverRunnerEClass, DRIVER_RUNNER__DRIVEN);
 
+		parallelSplitEClass = createEClass(PARALLEL_SPLIT);
+		createEReference(parallelSplitEClass, PARALLEL_SPLIT__BRANCHES);
+
 		// Create enums
 		statusEEnum = createEEnum(STATUS);
 		testResultEEnum = createEEnum(TEST_RESULT);
@@ -1079,10 +1079,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		workflowEClass.getESuperTypes().add(this.getActivity());
-		sequenceEClass.getESuperTypes().add(this.getWorkflow());
+		sequenceEClass.getESuperTypes().add(this.getActivity());
 		multipleInstancesEClass.getESuperTypes().add(this.getActivity());
-		parallelSplitEClass.getESuperTypes().add(this.getWorkflow());
 		structuredLoopEClass.getESuperTypes().add(this.getActivity());
 		conditionEClass.getESuperTypes().add(this.getScript());
 		taskEClass.getESuperTypes().add(this.getActivity());
@@ -1093,6 +1091,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		mapOfVariablesEClass.getESuperTypes().add(this.getVariable());
 		driverEClass.getESuperTypes().add(this.getActivity());
 		driverRunnerEClass.getESuperTypes().add(this.getRunner());
+		parallelSplitEClass.getESuperTypes().add(this.getActivity());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(activityEClass, Activity.class, "Activity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1106,12 +1105,12 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		initEReference(getActivity_Outputs(), this.getVariable(), null, "outputs", null, 0, -1, Activity.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getActivity_Successors(), this.getActivity(), this.getActivity_Predecessor(), "successors", null,
-				0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+		initEReference(getActivity_Successor(), this.getActivity(), this.getActivity_Predecessor(), "successor", null,
+				0, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getActivity_Predecessor(), this.getActivity(), this.getActivity_Successors(), "predecessor",
-				null, 0, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getActivity_Predecessor(), this.getActivity(), this.getActivity_Successor(), "predecessor", null,
+				0, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getActivity_Status(), this.getStatus(), "status", null, 0, 1, Activity.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getActivity_Flows(), this.getDataFlows(), this.getDataFlows_Owner(), "flows", null, 0, 1,
@@ -1121,18 +1120,16 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		EOperation op = initEOperation(getActivity__Run__Context(), null, "run", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(workflowEClass, Workflow.class, "Workflow", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getWorkflow_Activities(), this.getActivity(), null, "activities", null, 0, -1, Workflow.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(sequenceEClass, Sequence.class, "Sequence", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSequence_Root(), this.getActivity(), null, "root", null, 0, 1, Sequence.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getSequence_Activities(), this.getActivity(), null, "activities", null, 0, -1, Sequence.class,
+				!IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE,
+				IS_DERIVED, IS_ORDERED);
 
 		initEClass(multipleInstancesEClass, MultipleInstances.class, "MultipleInstances", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(parallelSplitEClass, ParallelSplit.class, "ParallelSplit", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(dataFlowEClass, DataFlow.class, "DataFlow", !IS_ABSTRACT, !IS_INTERFACE,
@@ -1274,6 +1271,12 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		initEReference(getDriverRunner_Driven(), this.getActivity(), null, "driven", null, 0, 1, DriverRunner.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(parallelSplitEClass, ParallelSplit.class, "ParallelSplit", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getParallelSplit_Branches(), this.getActivity(), null, "branches", null, 0, -1,
+				ParallelSplit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(statusEEnum, Status.class, "Status");

@@ -73,20 +73,9 @@ public class EkumiSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case EkumiPackage.WORKFLOW: {
-			Workflow workflow = (Workflow) theEObject;
-			T result = caseWorkflow(workflow);
-			if (result == null)
-				result = caseActivity(workflow);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
 		case EkumiPackage.SEQUENCE: {
 			Sequence sequence = (Sequence) theEObject;
 			T result = caseSequence(sequence);
-			if (result == null)
-				result = caseWorkflow(sequence);
 			if (result == null)
 				result = caseActivity(sequence);
 			if (result == null)
@@ -98,17 +87,6 @@ public class EkumiSwitch<T> extends Switch<T> {
 			T result = caseMultipleInstances(multipleInstances);
 			if (result == null)
 				result = caseActivity(multipleInstances);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case EkumiPackage.PARALLEL_SPLIT: {
-			ParallelSplit parallelSplit = (ParallelSplit) theEObject;
-			T result = caseParallelSplit(parallelSplit);
-			if (result == null)
-				result = caseWorkflow(parallelSplit);
-			if (result == null)
-				result = caseActivity(parallelSplit);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -263,6 +241,15 @@ public class EkumiSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case EkumiPackage.PARALLEL_SPLIT: {
+			ParallelSplit parallelSplit = (ParallelSplit) theEObject;
+			T result = caseParallelSplit(parallelSplit);
+			if (result == null)
+				result = caseActivity(parallelSplit);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		default:
 			return defaultCase(theEObject);
 		}
@@ -280,21 +267,6 @@ public class EkumiSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseActivity(Activity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Workflow</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Workflow</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseWorkflow(Workflow object) {
 		return null;
 	}
 

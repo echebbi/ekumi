@@ -30,7 +30,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Activity/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//Activity/inputs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//Activity/outputs"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Activity/successors"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Activity/successor"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Activity/predecessor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Activity/status"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//Activity/flows"/>
@@ -38,12 +38,11 @@
         <genParameters ecoreParameter="ekumi.ecore#//Activity/run/context"/>
       </genOperations>
     </genClasses>
-    <genClasses ecoreClass="ekumi.ecore#//Workflow">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//Workflow/activities"/>
+    <genClasses ecoreClass="ekumi.ecore#//Sequence">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//Sequence/root"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Sequence/activities"/>
     </genClasses>
-    <genClasses ecoreClass="ekumi.ecore#//Sequence"/>
     <genClasses ecoreClass="ekumi.ecore#//MultipleInstances"/>
-    <genClasses ecoreClass="ekumi.ecore#//ParallelSplit"/>
     <genClasses ecoreClass="ekumi.ecore#//DataFlow">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//DataFlow/input"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//DataFlow/output"/>
@@ -113,6 +112,9 @@
     </genClasses>
     <genClasses ecoreClass="ekumi.ecore#//DriverRunner">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//DriverRunner/driven"/>
+    </genClasses>
+    <genClasses ecoreClass="ekumi.ecore#//ParallelSplit">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//ParallelSplit/branches"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
