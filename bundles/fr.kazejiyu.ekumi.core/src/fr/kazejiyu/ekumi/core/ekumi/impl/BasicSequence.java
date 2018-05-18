@@ -23,6 +23,7 @@ public class BasicSequence extends SequenceImpl {
 	
 	private boolean runSafely(Activity activity, Context context) {
 		try {
+			activity.getFlows().resolveInputs();
 			activity.run(context);
 		}
 		catch (Exception e) {
