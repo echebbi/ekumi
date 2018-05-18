@@ -22,6 +22,7 @@ public class BasicStructuredLoop extends StructuredLoopImpl {
 			}
 			
 			try {
+				getActivity().getFlows().resolveInputs();
 				getActivity().run(context);
 			}
 			catch (Exception e) {

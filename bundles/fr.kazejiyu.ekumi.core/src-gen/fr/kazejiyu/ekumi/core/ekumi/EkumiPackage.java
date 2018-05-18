@@ -133,7 +133,7 @@ public interface EkumiPackage extends EPackage {
 	int ACTIVITY__STATUS = 6;
 
 	/**
-	 * The feature id for the '<em><b>Flows</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -242,7 +242,7 @@ public interface EkumiPackage extends EPackage {
 	int WORKFLOW__STATUS = ACTIVITY__STATUS;
 
 	/**
-	 * The feature id for the '<em><b>Flows</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -360,7 +360,7 @@ public interface EkumiPackage extends EPackage {
 	int SEQUENCE__STATUS = WORKFLOW__STATUS;
 
 	/**
-	 * The feature id for the '<em><b>Flows</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -478,7 +478,7 @@ public interface EkumiPackage extends EPackage {
 	int MULTIPLE_INSTANCES__STATUS = ACTIVITY__STATUS;
 
 	/**
-	 * The feature id for the '<em><b>Flows</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -587,7 +587,7 @@ public interface EkumiPackage extends EPackage {
 	int PARALLEL_SPLIT__STATUS = WORKFLOW__STATUS;
 
 	/**
-	 * The feature id for the '<em><b>Flows</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -833,7 +833,7 @@ public interface EkumiPackage extends EPackage {
 	int STRUCTURED_LOOP__STATUS = ACTIVITY__STATUS;
 
 	/**
-	 * The feature id for the '<em><b>Flows</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1088,7 +1088,7 @@ public interface EkumiPackage extends EPackage {
 	int TASK__STATUS = ACTIVITY__STATUS;
 
 	/**
-	 * The feature id for the '<em><b>Flows</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1261,7 +1261,7 @@ public interface EkumiPackage extends EPackage {
 	int SCRIPTED_TASK__STATUS = TASK__STATUS;
 
 	/**
-	 * The feature id for the '<em><b>Flows</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1388,7 +1388,7 @@ public interface EkumiPackage extends EPackage {
 	int MULTI_CHOICE__STATUS = ACTIVITY__STATUS;
 
 	/**
-	 * The feature id for the '<em><b>Flows</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1864,7 +1864,7 @@ public interface EkumiPackage extends EPackage {
 	int DRIVER__STATUS = ACTIVITY__STATUS;
 
 	/**
-	 * The feature id for the '<em><b>Flows</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2118,10 +2118,10 @@ public interface EkumiPackage extends EPackage {
 	EAttribute getActivity_Status();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getFlows <em>Flows</em>}'.
+	 * Returns the meta object for the containment reference '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getFlows <em>Flows</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Flows</em>'.
+	 * @return the meta object for the containment reference '<em>Flows</em>'.
 	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getFlows()
 	 * @see #getActivity()
 	 * @generated
@@ -2850,7 +2850,7 @@ public interface EkumiPackage extends EPackage {
 		EAttribute ACTIVITY__STATUS = eINSTANCE.getActivity_Status();
 
 		/**
-		 * The meta object literal for the '<em><b>Flows</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Flows</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

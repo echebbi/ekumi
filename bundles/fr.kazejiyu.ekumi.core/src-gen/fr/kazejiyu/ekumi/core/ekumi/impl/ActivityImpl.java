@@ -151,14 +151,14 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	protected Status status = STATUS_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getFlows() <em>Flows</em>}' containment reference list.
+	 * The cached value of the '{@link #getFlows() <em>Flows</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getFlows()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<DataFlows> flows;
+	protected DataFlows flows;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -353,12 +353,48 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<DataFlows> getFlows() {
-		if (flows == null) {
-			flows = new EObjectContainmentWithInverseEList<DataFlows>(DataFlows.class, this,
-					EkumiPackage.ACTIVITY__FLOWS, EkumiPackage.DATA_FLOWS__OWNER);
-		}
+	public DataFlows getFlows() {
 		return flows;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetFlows(DataFlows newFlows, NotificationChain msgs) {
+		DataFlows oldFlows = flows;
+		flows = newFlows;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EkumiPackage.ACTIVITY__FLOWS,
+					oldFlows, newFlows);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFlows(DataFlows newFlows) {
+		if (newFlows != flows) {
+			NotificationChain msgs = null;
+			if (flows != null)
+				msgs = ((InternalEObject) flows).eInverseRemove(this, EkumiPackage.DATA_FLOWS__OWNER, DataFlows.class,
+						msgs);
+			if (newFlows != null)
+				msgs = ((InternalEObject) newFlows).eInverseAdd(this, EkumiPackage.DATA_FLOWS__OWNER, DataFlows.class,
+						msgs);
+			msgs = basicSetFlows(newFlows, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.ACTIVITY__FLOWS, newFlows, newFlows));
 	}
 
 	/**
@@ -391,7 +427,10 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 						Activity.class, msgs);
 			return basicSetPredecessor((Activity) otherEnd, msgs);
 		case EkumiPackage.ACTIVITY__FLOWS:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getFlows()).basicAdd(otherEnd, msgs);
+			if (flows != null)
+				msgs = ((InternalEObject) flows).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - EkumiPackage.ACTIVITY__FLOWS, null, msgs);
+			return basicSetFlows((DataFlows) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -413,7 +452,7 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 		case EkumiPackage.ACTIVITY__PREDECESSOR:
 			return basicSetPredecessor(null, msgs);
 		case EkumiPackage.ACTIVITY__FLOWS:
-			return ((InternalEList<?>) getFlows()).basicRemove(otherEnd, msgs);
+			return basicSetFlows(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -482,8 +521,7 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 			setStatus((Status) newValue);
 			return;
 		case EkumiPackage.ACTIVITY__FLOWS:
-			getFlows().clear();
-			getFlows().addAll((Collection<? extends DataFlows>) newValue);
+			setFlows((DataFlows) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -519,7 +557,7 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 			setStatus(STATUS_EDEFAULT);
 			return;
 		case EkumiPackage.ACTIVITY__FLOWS:
-			getFlows().clear();
+			setFlows((DataFlows) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -548,7 +586,7 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 		case EkumiPackage.ACTIVITY__STATUS:
 			return status != STATUS_EDEFAULT;
 		case EkumiPackage.ACTIVITY__FLOWS:
-			return flows != null && !flows.isEmpty();
+			return flows != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -220,8 +220,7 @@ public interface Activity extends EObject {
 	void setStatus(Status value);
 
 	/**
-	 * Returns the value of the '<em><b>Flows</b></em>' containment reference list.
-	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.DataFlows}.
+	 * Returns the value of the '<em><b>Flows</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlows#getOwner <em>Owner</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -229,13 +228,24 @@ public interface Activity extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Flows</em>' containment reference list.
+	 * @return the value of the '<em>Flows</em>' containment reference.
+	 * @see #setFlows(DataFlows)
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getActivity_Flows()
 	 * @see fr.kazejiyu.ekumi.core.ekumi.DataFlows#getOwner
 	 * @model opposite="owner" containment="true"
 	 * @generated
 	 */
-	EList<DataFlows> getFlows();
+	DataFlows getFlows();
+
+	/**
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getFlows <em>Flows</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Flows</em>' containment reference.
+	 * @see #getFlows()
+	 * @generated
+	 */
+	void setFlows(DataFlows value);
 
 	/**
 	 * <!-- begin-user-doc -->
