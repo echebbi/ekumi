@@ -14,5 +14,38 @@
 	<description>EKumi's tests.</description>
 
 	<modules>
+        <module>org.assertj</module>
+        <module>fr.kazejiyu.ekumi.core.tests</module>
 	</modules>
+    
+    
+    <build>
+        <plugins>
+            <!-- Executes JUnit tests -->
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-surefire-plugin</artifactId>
+                <version>${tycho-version}</version>
+            </plugin>
+			<!-- Establish code coverage. Used by https://codecov.io/ -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<formats>
+						<format>html</format>
+						<format>xml</format>
+					</formats>
+					<check />
+					<instrumentation>
+						<excludes>
+							<exclude>fr/kazejiyu/ekumi/core/exceptions/**/*.class</exclude>
+							<exclude>fr/kazejiyu/ekumi/core/languages/exceptions/**/*.class</exclude>
+						</excludes>
+					</instrumentation>
+				</configuration>
+			</plugin>
+        </plugins>
+    </build>
 </project>
