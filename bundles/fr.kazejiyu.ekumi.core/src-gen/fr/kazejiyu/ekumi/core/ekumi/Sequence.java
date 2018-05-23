@@ -26,15 +26,12 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Sequence extends Activity {
-
 	/**
-	 * Returns the value of the '<em><b>Root</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Root</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * 
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Root</em>' containment reference.
 	 * @see #setRoot(Activity)
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getSequence_Root()
@@ -44,8 +41,8 @@ public interface Sequence extends Activity {
 	Activity getRoot();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Sequence#getRoot <em>Root</em>}' containment reference.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Sequence#getRoot <em>Root</em>}' containment reference.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Root</em>' containment reference.
 	 * @see #getRoot()
@@ -54,13 +51,9 @@ public interface Sequence extends Activity {
 	void setRoot(Activity value);
 
 	/**
+	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Activities</b></em>' reference list.
 	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Activity}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Activities</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Activities</em>' reference list.
 	 * @see #isSetActivities()
@@ -71,12 +64,13 @@ public interface Sequence extends Activity {
 	EList<Activity> getActivities();
 
 	/**
-	 * Returns whether the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Sequence#getActivities <em>Activities</em>}' reference list is set.
 	 * <!-- begin-user-doc -->
+	 * Returns whether the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Sequence#getActivities <em>Activities</em>}' reference list is set.
 	 * <!-- end-user-doc -->
 	 * @return whether the value of the '<em>Activities</em>' reference list is set.
 	 * @see #getActivities()
 	 * @generated
 	 */
 	boolean isSetActivities();
+
 } // Sequence

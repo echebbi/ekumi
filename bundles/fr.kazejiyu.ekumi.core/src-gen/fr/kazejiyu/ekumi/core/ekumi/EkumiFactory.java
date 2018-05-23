@@ -22,143 +22,143 @@ public interface EkumiFactory extends EFactory {
 	EkumiFactory eINSTANCE = fr.kazejiyu.ekumi.core.ekumi.impl.EkumiFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Sequence</em>'.
 	 * <!-- begin-user-doc -->
+	 * Returns a new instance of class '<em>Sequence</em>'.
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Sequence</em>'.
+	 * @return a new instance of class '<em>Sequence</em>'.
 	 * @generated
 	 */
 	Sequence createSequence();
 
 	/**
-	 * Returns a new object of class '<em>Multiple Instances</em>'.
 	 * <!-- begin-user-doc -->
+	 * Returns a new instance of class '<em>Multiple Instances</em>'.
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Multiple Instances</em>'.
+	 * @return a new instance of class '<em>Multiple Instances</em>'.
 	 * @generated
 	 */
 	MultipleInstances createMultipleInstances();
 
 	/**
-	 * Returns a new object of class '<em>Parallel Split</em>'.
 	 * <!-- begin-user-doc -->
+	 * Returns a new instance of class '<em>Data Flow</em>'.
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Parallel Split</em>'.
-	 * @generated
-	 */
-	ParallelSplit createParallelSplit();
-
-	/**
-	 * Returns a new object of class '<em>Data Flow</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data Flow</em>'.
+	 * @return a new instance of class '<em>Data Flow</em>'.
 	 * @generated
 	 */
 	DataFlow createDataFlow();
 
 	/**
-	 * Returns a new object of class '<em>Variable</em>'.
 	 * <!-- begin-user-doc -->
+	 * Returns a new instance of class '<em>Variable</em>'.
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Variable</em>'.
+	 * @return a new instance of class '<em>Variable</em>'.
 	 * @generated
 	 */
 	Variable createVariable();
 
 	/**
-	 * Returns a new object of class '<em>Structured Loop</em>'.
 	 * <!-- begin-user-doc -->
+	 * Returns a new instance of class '<em>Structured Loop</em>'.
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Structured Loop</em>'.
+	 * @return a new instance of class '<em>Structured Loop</em>'.
 	 * @generated
 	 */
 	StructuredLoop createStructuredLoop();
 
 	/**
-	 * Returns a new object of class '<em>Scripted Task</em>'.
 	 * <!-- begin-user-doc -->
+	 * Returns a new instance of class '<em>Scripted Task</em>'.
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Scripted Task</em>'.
+	 * @return a new instance of class '<em>Scripted Task</em>'.
 	 * @generated
 	 */
 	ScriptedTask createScriptedTask();
 
 	/**
-	 * Returns a new object of class '<em>Multi Choice</em>'.
 	 * <!-- begin-user-doc -->
+	 * Returns a new instance of class '<em>Multi Choice</em>'.
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Multi Choice</em>'.
+	 * @return a new instance of class '<em>Multi Choice</em>'.
 	 * @generated
 	 */
 	MultiChoice createMultiChoice();
 
 	/**
-	 * Returns a new object of class '<em>Branch</em>'.
 	 * <!-- begin-user-doc -->
+	 * Returns a new instance of class '<em>Branch</em>'.
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Branch</em>'.
+	 * @return a new instance of class '<em>Branch</em>'.
 	 * @generated
 	 */
 	Branch createBranch();
 
 	/**
-	 * Returns a new object of class '<em>Context</em>'.
 	 * <!-- begin-user-doc -->
+	 * Returns a new instance of class '<em>Context</em>'.
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Context</em>'.
+	 * @return a new instance of class '<em>Context</em>'.
 	 * @generated
 	 */
 	Context createContext();
 
 	/**
-	 * Returns a new object of class '<em>Data Flows</em>'.
 	 * <!-- begin-user-doc -->
+	 * Returns a new instance of class '<em>Data Flows</em>'.
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data Flows</em>'.
+	 * @return a new instance of class '<em>Data Flows</em>'.
 	 * @generated
 	 */
 	DataFlows createDataFlows();
 
 	/**
-	 * Returns a new object of class '<em>Execution</em>'.
 	 * <!-- begin-user-doc -->
+	 * Returns a new instance of class '<em>Execution</em>'.
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Execution</em>'.
+	 * @return a new instance of class '<em>Execution</em>'.
 	 * @generated
 	 */
 	Execution createExecution();
 
 	/**
-	 * Returns a new object of class '<em>List Of Variables</em>'.
 	 * <!-- begin-user-doc -->
+	 * Returns a new instance of class '<em>List Of Variables</em>'.
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>List Of Variables</em>'.
+	 * @return a new instance of class '<em>List Of Variables</em>'.
 	 * @generated
 	 */
 	ListOfVariables createListOfVariables();
 
 	/**
-	 * Returns a new object of class '<em>Map Of Variables</em>'.
 	 * <!-- begin-user-doc -->
+	 * Returns a new instance of class '<em>Map Of Variables</em>'.
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Map Of Variables</em>'.
+	 * @return a new instance of class '<em>Map Of Variables</em>'.
 	 * @generated
 	 */
 	MapOfVariables createMapOfVariables();
 
 	/**
-	 * Returns a new object of class '<em>Driver</em>'.
 	 * <!-- begin-user-doc -->
+	 * Returns a new instance of class '<em>Driver</em>'.
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Driver</em>'.
+	 * @return a new instance of class '<em>Driver</em>'.
 	 * @generated
 	 */
 	Driver createDriver();
 
 	/**
-	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
+	 * Returns a new instance of class '<em>Parallel Split</em>'.
+	 * <!-- end-user-doc -->
+	 * @return a new instance of class '<em>Parallel Split</em>'.
+	 * @generated
+	 */
+	ParallelSplit createParallelSplit();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Returns the package supported by this factory.
 	 * <!-- end-user-doc -->
 	 * @return the package supported by this factory.
 	 * @generated

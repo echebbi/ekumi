@@ -21,15 +21,10 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface ParallelSplit extends Activity {
-
 	/**
+	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Branches</b></em>' containment reference list.
 	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Activity}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Branches</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Branches</em>' containment reference list.
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getParallelSplit_Branches()
@@ -37,4 +32,5 @@ public interface ParallelSplit extends Activity {
 	 * @generated
 	 */
 	EList<Activity> getBranches();
+
 } // ParallelSplit

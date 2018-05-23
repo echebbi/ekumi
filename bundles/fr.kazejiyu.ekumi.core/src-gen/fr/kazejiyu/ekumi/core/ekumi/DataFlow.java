@@ -25,12 +25,8 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface DataFlow extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Input</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Input</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
+	 * Returns the value of the '<em><b>Input</b></em>' reference.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Input</em>' reference.
 	 * @see #setInput(Variable)
@@ -41,8 +37,8 @@ public interface DataFlow extends EObject {
 	Variable getInput();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getInput <em>Input</em>}' reference.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getInput <em>Input</em>}' reference.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Input</em>' reference.
 	 * @see #getInput()
@@ -51,12 +47,8 @@ public interface DataFlow extends EObject {
 	void setInput(Variable value);
 
 	/**
-	 * Returns the value of the '<em><b>Output</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Output</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
+	 * Returns the value of the '<em><b>Output</b></em>' reference.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Output</em>' reference.
 	 * @see #setOutput(Variable)
@@ -67,8 +59,8 @@ public interface DataFlow extends EObject {
 	Variable getOutput();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getOutput <em>Output</em>}' reference.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getOutput <em>Output</em>}' reference.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Output</em>' reference.
 	 * @see #getOutput()
@@ -77,12 +69,8 @@ public interface DataFlow extends EObject {
 	void setOutput(Variable value);
 
 	/**
-	 * Returns the value of the '<em><b>Destination</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Destination</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
+	 * Returns the value of the '<em><b>Destination</b></em>' reference.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Destination</em>' reference.
 	 * @see #isSetDestination()
@@ -94,8 +82,8 @@ public interface DataFlow extends EObject {
 	Activity getDestination();
 
 	/**
-	 * Returns whether the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getDestination <em>Destination</em>}' reference is set.
 	 * <!-- begin-user-doc -->
+	 * Returns whether the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getDestination <em>Destination</em>}' reference is set.
 	 * <!-- end-user-doc -->
 	 * @return whether the value of the '<em>Destination</em>' reference is set.
 	 * @see #getDestination()
@@ -104,12 +92,8 @@ public interface DataFlow extends EObject {
 	boolean isSetDestination();
 
 	/**
-	 * Returns the value of the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Source</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
+	 * Returns the value of the '<em><b>Source</b></em>' reference.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see #isSetSource()
@@ -121,8 +105,8 @@ public interface DataFlow extends EObject {
 	Activity getSource();
 
 	/**
-	 * Returns whether the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getSource <em>Source</em>}' reference is set.
 	 * <!-- begin-user-doc -->
+	 * Returns whether the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getSource <em>Source</em>}' reference is set.
 	 * <!-- end-user-doc -->
 	 * @return whether the value of the '<em>Source</em>' reference is set.
 	 * @see #getSource()

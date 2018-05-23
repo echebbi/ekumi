@@ -26,12 +26,8 @@ package fr.kazejiyu.ekumi.core.ekumi;
  */
 public interface StructuredLoop extends Activity {
 	/**
-	 * Returns the value of the '<em><b>Pre Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Pre Condition</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
+	 * Returns the value of the '<em><b>Pre Condition</b></em>' containment reference.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Pre Condition</em>' containment reference.
 	 * @see #setPreCondition(Condition)
@@ -42,8 +38,8 @@ public interface StructuredLoop extends Activity {
 	Condition getPreCondition();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.StructuredLoop#getPreCondition <em>Pre Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.StructuredLoop#getPreCondition <em>Pre Condition</em>}' containment reference.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Pre Condition</em>' containment reference.
 	 * @see #getPreCondition()
@@ -52,12 +48,8 @@ public interface StructuredLoop extends Activity {
 	void setPreCondition(Condition value);
 
 	/**
-	 * Returns the value of the '<em><b>Post Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Post Condition</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
+	 * Returns the value of the '<em><b>Post Condition</b></em>' containment reference.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Post Condition</em>' containment reference.
 	 * @see #setPostCondition(Condition)
@@ -68,8 +60,8 @@ public interface StructuredLoop extends Activity {
 	Condition getPostCondition();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.StructuredLoop#getPostCondition <em>Post Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.StructuredLoop#getPostCondition <em>Post Condition</em>}' containment reference.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Post Condition</em>' containment reference.
 	 * @see #getPostCondition()
@@ -78,12 +70,8 @@ public interface StructuredLoop extends Activity {
 	void setPostCondition(Condition value);
 
 	/**
-	 * Returns the value of the '<em><b>Activity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Activity</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
+	 * Returns the value of the '<em><b>Activity</b></em>' containment reference.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Activity</em>' containment reference.
 	 * @see #setActivity(Activity)
@@ -94,8 +82,8 @@ public interface StructuredLoop extends Activity {
 	Activity getActivity();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.StructuredLoop#getActivity <em>Activity</em>}' containment reference.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.StructuredLoop#getActivity <em>Activity</em>}' containment reference.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Activity</em>' containment reference.
 	 * @see #getActivity()

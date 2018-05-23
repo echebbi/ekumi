@@ -405,16 +405,6 @@ public interface EkumiPackage extends EPackage {
 	int MULTIPLE_INSTANCES_OPERATION_COUNT = ACTIVITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ParallelSplitImpl <em>Parallel Split</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.ParallelSplitImpl
-	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getParallelSplit()
-	 * @generated
-	 */
-	int PARALLEL_SPLIT = 21;
-
-	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.DataFlowImpl <em>Data Flow</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1774,6 +1764,16 @@ public interface EkumiPackage extends EPackage {
 	int DRIVER_RUNNER_OPERATION_COUNT = RUNNER_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ParallelSplitImpl <em>Parallel Split</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.ParallelSplitImpl
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getParallelSplit()
+	 * @generated
+	 */
+	int PARALLEL_SPLIT = 21;
+
+	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2070,27 +2070,6 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getMultipleInstances();
-
-	/**
-	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.ParallelSplit <em>Parallel Split</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Parallel Split</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.ParallelSplit
-	 * @generated
-	 */
-	EClass getParallelSplit();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.core.ekumi.ParallelSplit#getBranches <em>Branches</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Branches</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.ParallelSplit#getBranches()
-	 * @see #getParallelSplit()
-	 * @generated
-	 */
-	EReference getParallelSplit_Branches();
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow <em>Data Flow</em>}'.
@@ -2622,6 +2601,27 @@ public interface EkumiPackage extends EPackage {
 	EReference getDriverRunner_Driven();
 
 	/**
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.ParallelSplit <em>Parallel Split</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Parallel Split</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.ParallelSplit
+	 * @generated
+	 */
+	EClass getParallelSplit();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.core.ekumi.ParallelSplit#getBranches <em>Branches</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Branches</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.ParallelSplit#getBranches()
+	 * @see #getParallelSplit()
+	 * @generated
+	 */
+	EReference getParallelSplit_Branches();
+
+	/**
 	 * Returns the meta object for enum '{@link fr.kazejiyu.ekumi.core.ekumi.Status <em>Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2803,24 +2803,6 @@ public interface EkumiPackage extends EPackage {
 		 * @generated
 		 */
 		EClass MULTIPLE_INSTANCES = eINSTANCE.getMultipleInstances();
-
-		/**
-		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ParallelSplitImpl <em>Parallel Split</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.ParallelSplitImpl
-		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getParallelSplit()
-		 * @generated
-		 */
-		EClass PARALLEL_SPLIT = eINSTANCE.getParallelSplit();
-
-		/**
-		 * The meta object literal for the '<em><b>Branches</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PARALLEL_SPLIT__BRANCHES = eINSTANCE.getParallelSplit_Branches();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.DataFlowImpl <em>Data Flow</em>}' class.
@@ -3258,6 +3240,24 @@ public interface EkumiPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DRIVER_RUNNER__DRIVEN = eINSTANCE.getDriverRunner_Driven();
+
+		/**
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ParallelSplitImpl <em>Parallel Split</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.ParallelSplitImpl
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getParallelSplit()
+		 * @generated
+		 */
+		EClass PARALLEL_SPLIT = eINSTANCE.getParallelSplit();
+
+		/**
+		 * The meta object literal for the '<em><b>Branches</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PARALLEL_SPLIT__BRANCHES = eINSTANCE.getParallelSplit_Branches();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.Status <em>Status</em>}' enum.

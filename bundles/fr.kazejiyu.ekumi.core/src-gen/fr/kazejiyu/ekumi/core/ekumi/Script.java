@@ -3,6 +3,7 @@
 package fr.kazejiyu.ekumi.core.ekumi;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -25,12 +26,8 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Script extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Path</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
+	 * Returns the value of the '<em><b>Path</b></em>' attribute.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Path</em>' attribute.
 	 * @see #setPath(String)
@@ -41,8 +38,8 @@ public interface Script extends EObject {
 	String getPath();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Script#getPath <em>Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Script#getPath <em>Path</em>}' attribute.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Path</em>' attribute.
 	 * @see #getPath()
@@ -51,13 +48,9 @@ public interface Script extends EObject {
 	void setPath(String value);
 
 	/**
+	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Inputs</b></em>' reference list.
 	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Variable}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Inputs</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Inputs</em>' reference list.
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getScript_Inputs()
@@ -67,13 +60,9 @@ public interface Script extends EObject {
 	EList<Variable> getInputs();
 
 	/**
+	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Outputs</b></em>' reference list.
 	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Variable}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Outputs</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Outputs</em>' reference list.
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getScript_Outputs()

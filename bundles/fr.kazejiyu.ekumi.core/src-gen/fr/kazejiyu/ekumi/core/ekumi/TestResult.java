@@ -19,8 +19,8 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum TestResult implements Enumerator {
 	/**
-	 * The '<em><b>FULFILLED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
+	 * The '<em><b>FULFILLED</b></em>' literal object.
 	 * <!-- end-user-doc -->
 	 * @see #FULFILLED_VALUE
 	 * @generated
@@ -29,8 +29,8 @@ public enum TestResult implements Enumerator {
 	FULFILLED(0, "FULFILLED", "FULFILLED"),
 
 	/**
-	 * The '<em><b>UNSATISFIED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
+	 * The '<em><b>UNSATISFIED</b></em>' literal object.
 	 * <!-- end-user-doc -->
 	 * @see #UNSATISFIED_VALUE
 	 * @generated
@@ -39,8 +39,8 @@ public enum TestResult implements Enumerator {
 	UNSATISFIED(1, "UNSATISFIED", "UNSATISFIED");
 
 	/**
-	 * The '<em><b>FULFILLED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
+	 * The '<em><b>FULFILLED</b></em>' literal value.
 	 * <p>
 	 * If the meaning of '<em><b>FULFILLED</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
@@ -54,8 +54,8 @@ public enum TestResult implements Enumerator {
 	public static final int FULFILLED_VALUE = 0;
 
 	/**
-	 * The '<em><b>UNSATISFIED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
+	 * The '<em><b>UNSATISFIED</b></em>' literal value.
 	 * <p>
 	 * If the meaning of '<em><b>UNSATISFIED</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
@@ -69,24 +69,24 @@ public enum TestResult implements Enumerator {
 	public static final int UNSATISFIED_VALUE = 1;
 
 	/**
-	 * An array of all the '<em><b>Test Result</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
+	 * An array of all the '<em><b>Test Result</b></em>' enumerators.
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private static final TestResult[] VALUES_ARRAY = new TestResult[] { FULFILLED, UNSATISFIED, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Test Result</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
+	 * A public read-only list of all the '<em><b>Test Result</b></em>' enumerators.
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final List<TestResult> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Test Result</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
+	 * Returns the '<em><b>Test Result</b></em>' literal with the specified literal value.
 	 * <!-- end-user-doc -->
 	 * @param literal the literal.
 	 * @return the matching enumerator or <code>null</code>.
@@ -103,8 +103,8 @@ public enum TestResult implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Test Result</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
+	 * Returns the '<em><b>Test Result</b></em>' literal with the specified name.
 	 * <!-- end-user-doc -->
 	 * @param name the name.
 	 * @return the matching enumerator or <code>null</code>.
@@ -121,8 +121,8 @@ public enum TestResult implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Test Result</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
+	 * Returns the '<em><b>Test Result</b></em>' literal with the specified integer value.
 	 * <!-- end-user-doc -->
 	 * @param value the integer value.
 	 * @return the matching enumerator or <code>null</code>.
@@ -160,8 +160,8 @@ public enum TestResult implements Enumerator {
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
 	 * <!-- begin-user-doc -->
+	 * Only this class can construct instances.
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -199,8 +199,8 @@ public enum TestResult implements Enumerator {
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
 	 * <!-- begin-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string representation.
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */

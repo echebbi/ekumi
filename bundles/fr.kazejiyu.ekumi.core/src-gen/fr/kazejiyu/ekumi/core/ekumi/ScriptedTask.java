@@ -21,12 +21,8 @@ package fr.kazejiyu.ekumi.core.ekumi;
  */
 public interface ScriptedTask extends Task {
 	/**
-	 * Returns the value of the '<em><b>Script Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Script Path</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
+	 * Returns the value of the '<em><b>Script Path</b></em>' attribute.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Script Path</em>' attribute.
 	 * @see #setScriptPath(String)
@@ -37,8 +33,8 @@ public interface ScriptedTask extends Task {
 	String getScriptPath();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptedTask#getScriptPath <em>Script Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptedTask#getScriptPath <em>Script Path</em>}' attribute.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Script Path</em>' attribute.
 	 * @see #getScriptPath()
@@ -47,12 +43,8 @@ public interface ScriptedTask extends Task {
 	void setScriptPath(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Script</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Script</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
+	 * Returns the value of the '<em><b>Script</b></em>' containment reference.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Script</em>' containment reference.
 	 * @see #setScript(Runner)
@@ -63,8 +55,8 @@ public interface ScriptedTask extends Task {
 	Runner getScript();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptedTask#getScript <em>Script</em>}' containment reference.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.ScriptedTask#getScript <em>Script</em>}' containment reference.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Script</em>' containment reference.
 	 * @see #getScript()

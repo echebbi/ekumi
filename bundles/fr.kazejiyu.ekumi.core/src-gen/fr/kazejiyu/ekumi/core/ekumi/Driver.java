@@ -21,12 +21,8 @@ package fr.kazejiyu.ekumi.core.ekumi;
  */
 public interface Driver extends Activity {
 	/**
-	 * Returns the value of the '<em><b>Driven</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Driven</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
+	 * Returns the value of the '<em><b>Driven</b></em>' containment reference.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Driven</em>' containment reference.
 	 * @see #setDriven(Activity)
@@ -37,8 +33,8 @@ public interface Driver extends Activity {
 	Activity getDriven();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Driver#getDriven <em>Driven</em>}' containment reference.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Driver#getDriven <em>Driven</em>}' containment reference.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Driven</em>' containment reference.
 	 * @see #getDriven()
@@ -47,12 +43,8 @@ public interface Driver extends Activity {
 	void setDriven(Activity value);
 
 	/**
-	 * Returns the value of the '<em><b>Script</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Script</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
+	 * Returns the value of the '<em><b>Script</b></em>' containment reference.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Script</em>' containment reference.
 	 * @see #setScript(DriverRunner)
@@ -63,8 +55,8 @@ public interface Driver extends Activity {
 	DriverRunner getScript();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Driver#getScript <em>Script</em>}' containment reference.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Driver#getScript <em>Script</em>}' containment reference.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Script</em>' containment reference.
 	 * @see #getScript()
