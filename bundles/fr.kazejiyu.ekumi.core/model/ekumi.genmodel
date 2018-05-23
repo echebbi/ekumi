@@ -3,7 +3,8 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
     copyrightText="" modelDirectory="/fr.kazejiyu.ekumi.core/src-gen"
     creationIcons="false" editDirectory="/fr.kazejiyu.ekumi.core.edit/src-gen" editorDirectory="/fr.kazejiyu.ekumi.core.editor/src-gen"
-    modelPluginID="fr.kazejiyu.ekumi.core" redirection="" modelName="Ekumi" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    modelPluginID="fr.kazejiyu.ekumi.core" templateDirectory="fr.kazejiyu.ekumi.core/templates"
+    dynamicTemplates="true" redirection="" modelName="Ekumi" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
     copyrightFields="false" operationReflection="true" importOrganizing="true">
   <genAnnotations source="http://www.eclipse.org/OCL/GenModel">
