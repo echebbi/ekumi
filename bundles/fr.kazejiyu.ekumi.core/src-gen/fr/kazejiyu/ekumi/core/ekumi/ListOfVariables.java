@@ -20,12 +20,8 @@ package fr.kazejiyu.ekumi.core.ekumi;
  */
 public interface ListOfVariables extends Variable {
 	/**
-	 * Returns the value of the '<em><b>Size</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Size</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
+	 * Returns the value of the '<em><b>Size</b></em>' attribute.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Size</em>' attribute.
 	 * @see #isSetSize()
@@ -36,8 +32,8 @@ public interface ListOfVariables extends Variable {
 	int getSize();
 
 	/**
-	 * Returns whether the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.ListOfVariables#getSize <em>Size</em>}' attribute is set.
 	 * <!-- begin-user-doc -->
+	 * Returns whether the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.ListOfVariables#getSize <em>Size</em>}' attribute is set.
 	 * <!-- end-user-doc -->
 	 * @return whether the value of the '<em>Size</em>' attribute is set.
 	 * @see #getSize()

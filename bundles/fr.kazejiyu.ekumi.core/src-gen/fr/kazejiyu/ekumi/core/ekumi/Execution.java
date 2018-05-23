@@ -23,12 +23,8 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Execution extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Activity</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Activity</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
+	 * Returns the value of the '<em><b>Activity</b></em>' reference.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Activity</em>' reference.
 	 * @see #setActivity(Activity)
@@ -39,8 +35,8 @@ public interface Execution extends EObject {
 	Activity getActivity();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Execution#getActivity <em>Activity</em>}' reference.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Execution#getActivity <em>Activity</em>}' reference.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Activity</em>' reference.
 	 * @see #getActivity()
@@ -49,12 +45,8 @@ public interface Execution extends EObject {
 	void setActivity(Activity value);
 
 	/**
-	 * Returns the value of the '<em><b>Context</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Context</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
+	 * Returns the value of the '<em><b>Context</b></em>' reference.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Context</em>' reference.
 	 * @see #setContext(Context)
@@ -65,8 +57,8 @@ public interface Execution extends EObject {
 	Context getContext();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Execution#getContext <em>Context</em>}' reference.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Execution#getContext <em>Context</em>}' reference.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Context</em>' reference.
 	 * @see #getContext()

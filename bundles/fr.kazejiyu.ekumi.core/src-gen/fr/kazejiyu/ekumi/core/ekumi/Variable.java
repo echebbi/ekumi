@@ -40,12 +40,8 @@ public interface Variable extends EObject {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
@@ -56,8 +52,8 @@ public interface Variable extends EObject {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getName <em>Name</em>}' attribute.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
@@ -66,12 +62,8 @@ public interface Variable extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
+	 * Returns the value of the '<em><b>Type</b></em>' attribute.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see #setType(DataType)
@@ -82,8 +74,8 @@ public interface Variable extends EObject {
 	DataType getType();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getType <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getType <em>Type</em>}' attribute.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Type</em>' attribute.
 	 * @see #getType()
@@ -92,13 +84,9 @@ public interface Variable extends EObject {
 	void setType(DataType value);
 
 	/**
+	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Owner</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getInputs <em>Inputs</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Owner</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owner</em>' container reference.
 	 * @see #setOwner(Activity)
@@ -110,8 +98,8 @@ public interface Variable extends EObject {
 	Activity getOwner();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getOwner <em>Owner</em>}' container reference.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getOwner <em>Owner</em>}' container reference.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Owner</em>' container reference.
 	 * @see #getOwner()
@@ -120,12 +108,8 @@ public interface Variable extends EObject {
 	void setOwner(Activity value);
 
 	/**
-	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
+	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(Object)
@@ -136,8 +120,8 @@ public interface Variable extends EObject {
 	Object getValue();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getValue <em>Value</em>}' attribute.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' attribute.
 	 * @see #getValue()

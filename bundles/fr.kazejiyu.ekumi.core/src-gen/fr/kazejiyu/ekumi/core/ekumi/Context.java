@@ -68,15 +68,11 @@ public interface Context extends EObject {
 	 * 			Must not be {@code null}.
 	 */
 	void unset(String name);
-
+	
 	/**
+	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
 	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Variable}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Variables</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Variables</em>' containment reference list.
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getContext_Variables()

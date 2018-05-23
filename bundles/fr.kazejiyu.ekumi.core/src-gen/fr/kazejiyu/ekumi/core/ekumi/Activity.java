@@ -59,12 +59,8 @@ public interface Activity extends EObject {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
+	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
@@ -75,8 +71,8 @@ public interface Activity extends EObject {
 	String getId();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getId <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getId <em>Id</em>}' attribute.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Id</em>' attribute.
 	 * @see #getId()
@@ -85,12 +81,8 @@ public interface Activity extends EObject {
 	void setId(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
@@ -101,8 +93,8 @@ public interface Activity extends EObject {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getName <em>Name</em>}' attribute.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
@@ -111,14 +103,10 @@ public interface Activity extends EObject {
 	void setName(String value);
 
 	/**
+	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Inputs</b></em>' containment reference list.
 	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Variable}.
 	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.Variable#getOwner <em>Owner</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Inputs</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Inputs</em>' containment reference list.
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getActivity_Inputs()
@@ -129,13 +117,9 @@ public interface Activity extends EObject {
 	EList<Variable> getInputs();
 
 	/**
+	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Outputs</b></em>' containment reference list.
 	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Variable}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Outputs</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Outputs</em>' containment reference list.
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getActivity_Outputs()
@@ -145,13 +129,9 @@ public interface Activity extends EObject {
 	EList<Variable> getOutputs();
 
 	/**
+	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Successor</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getPredecessor <em>Predecessor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Successor</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Successor</em>' reference.
 	 * @see #setSuccessor(Activity)
@@ -163,8 +143,8 @@ public interface Activity extends EObject {
 	Activity getSuccessor();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getSuccessor <em>Successor</em>}' reference.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getSuccessor <em>Successor</em>}' reference.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Successor</em>' reference.
 	 * @see #getSuccessor()
@@ -173,13 +153,9 @@ public interface Activity extends EObject {
 	void setSuccessor(Activity value);
 
 	/**
+	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Predecessor</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getSuccessor <em>Successor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Predecessor</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Predecessor</em>' reference.
 	 * @see #setPredecessor(Activity)
@@ -191,8 +167,8 @@ public interface Activity extends EObject {
 	Activity getPredecessor();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getPredecessor <em>Predecessor</em>}' reference.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getPredecessor <em>Predecessor</em>}' reference.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Predecessor</em>' reference.
 	 * @see #getPredecessor()
@@ -201,13 +177,9 @@ public interface Activity extends EObject {
 	void setPredecessor(Activity value);
 
 	/**
+	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Status</b></em>' attribute.
 	 * The literals are from the enumeration {@link fr.kazejiyu.ekumi.core.ekumi.Status}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Status</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Status</em>' attribute.
 	 * @see fr.kazejiyu.ekumi.core.ekumi.Status
@@ -219,8 +191,8 @@ public interface Activity extends EObject {
 	Status getStatus();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getStatus <em>Status</em>}' attribute.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getStatus <em>Status</em>}' attribute.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Status</em>' attribute.
 	 * @see fr.kazejiyu.ekumi.core.ekumi.Status
@@ -230,13 +202,9 @@ public interface Activity extends EObject {
 	void setStatus(Status value);
 
 	/**
+	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Flows</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlows#getOwner <em>Owner</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Flows</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Flows</em>' containment reference.
 	 * @see #setFlows(DataFlows)
@@ -248,8 +216,8 @@ public interface Activity extends EObject {
 	DataFlows getFlows();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getFlows <em>Flows</em>}' containment reference.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getFlows <em>Flows</em>}' containment reference.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Flows</em>' containment reference.
 	 * @see #getFlows()

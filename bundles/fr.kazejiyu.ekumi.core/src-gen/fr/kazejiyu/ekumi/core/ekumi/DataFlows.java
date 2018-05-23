@@ -26,13 +26,9 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface DataFlows extends EObject {
 	/**
+	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Incomings</b></em>' containment reference list.
 	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.DataFlow}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Incomings</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Incomings</em>' containment reference list.
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getDataFlows_Incomings()
@@ -42,13 +38,9 @@ public interface DataFlows extends EObject {
 	EList<DataFlow> getIncomings();
 
 	/**
+	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Outgoings</b></em>' containment reference list.
 	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.DataFlow}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Outgoings</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Outgoings</em>' containment reference list.
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getDataFlows_Outgoings()
@@ -58,13 +50,9 @@ public interface DataFlows extends EObject {
 	EList<DataFlow> getOutgoings();
 
 	/**
+	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Owner</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getFlows <em>Flows</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Owner</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owner</em>' container reference.
 	 * @see #setOwner(Activity)
@@ -76,8 +64,8 @@ public interface DataFlows extends EObject {
 	Activity getOwner();
 
 	/**
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlows#getOwner <em>Owner</em>}' container reference.
 	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlows#getOwner <em>Owner</em>}' container reference.
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Owner</em>' container reference.
 	 * @see #getOwner()
@@ -87,7 +75,6 @@ public interface DataFlows extends EObject {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * Resolves {@link #getIncoming() inputs} value.
 	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
