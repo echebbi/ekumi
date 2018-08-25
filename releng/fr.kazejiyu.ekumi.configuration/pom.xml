@@ -18,6 +18,7 @@
 	<properties>
 		<acceleo-version>3.3.0</acceleo-version>
 		<tycho-version>1.2.0</tycho-version>
+		<jacoco-version>0.8.1</jacoco-version>
 	</properties>
 
 	<build>

@@ -17,6 +17,7 @@
         <!-- Common test plug-ins -->
         <module>org.assertj</module>
         <module>fr.kazejiyu.ekumi.tests.common</module>
+        <module>fr.kazejiyu.ekumi.tests.coverage.report</module>
 
         <!-- Test fragments -->
         <module>fr.kazejiyu.ekumi.core.tests</module>
