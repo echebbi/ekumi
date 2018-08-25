@@ -1,10 +1,11 @@
-package fr.kazejiyu.ekumi.core.ekumi.impl;
+package fr.kazejiyu.ekumi.core.activities.impl;
 
 import static fr.kazejiyu.ekumi.core.ekumi.Status.FAILED;
 import static fr.kazejiyu.ekumi.core.ekumi.Status.SUCCEEDED;
 
 import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.DriverRunner;
+import fr.kazejiyu.ekumi.core.ekumi.impl.DriverImpl;
 
 public class BasicDriver extends DriverImpl {
 	
