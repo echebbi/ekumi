@@ -34,4 +34,39 @@
             </plugin>
         </plugins>
     </build>
+
+	<profiles>
+        <!-- mvn -Pjacoco to activate code coverage -->
+        <profile>
+            <id>jacoco</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>${jacoco-version}</version>
+                        <configuration>
+                            <excludes>
+                                <!-- Ignore generated classes -->
+                                <exclude>fr/kazejiyu/ekumi/core/ekumi/**/*</exclude>
+
+                                <!-- Ignore Exceptions -->
+                                <exclude>**/*Exception.class</exclude>
+                            </excludes>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+	</profiles>
 </project>
