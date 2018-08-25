@@ -17,23 +17,8 @@
 
 	<properties>
 		<acceleo-version>3.3.0</acceleo-version>
-		<tycho-version>1.2.0-SNAPSHOT</tycho-version>
-		<acceleo-site>>https://repo.eclipse.org/content/repositories/acceleo-releases</acceleo-site>
-		<orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/R20170919201930/repository</orbit-site>
-		<eclipse-site>http://download.eclipse.org/releases/oxygen</eclipse-site>
+		<tycho-version>1.2.0</tycho-version>
 	</properties>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>codehaus.snapshots</id>
-			<url>http://snapshots.repository.codehaus.org/</url>
-		</pluginRepository>
-        <!-- Use Tycho SNAPSHOTS -->
-        <pluginRepository>
-            <id>tycho-snapshots</id>
-            <url>https://repo.eclipse.org/content/repositories/tycho-snapshots/</url>
-        </pluginRepository>
-	</pluginRepositories>
 
 	<build>
 		<plugins>
