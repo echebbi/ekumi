@@ -2,6 +2,10 @@
 *.class
 bin/
 
+# xText binary files
+*.xtendbin
+**.java._trace
+
 # Log file
 *.log
 
