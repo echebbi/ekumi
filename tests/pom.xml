@@ -14,7 +14,11 @@
 	<description>EKumi's tests.</description>
 
 	<modules>
+        <!-- Common test plug-ins -->
         <module>org.assertj</module>
+        <module>fr.kazejiyu.ekumi.tests.common</module>
+
+        <!-- Test fragments -->
         <module>fr.kazejiyu.ekumi.core.tests</module>
 	</modules>
     
