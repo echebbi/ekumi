@@ -1,4 +1,4 @@
-package fr.kazejiyu.ekumi.core.ekumi.impl;
+package fr.kazejiyu.ekumi.core.activities.impl;
 
 import static fr.kazejiyu.ekumi.core.ekumi.Status.FAILED;
 import static fr.kazejiyu.ekumi.core.ekumi.Status.SUCCEEDED;
@@ -8,6 +8,7 @@ import org.eclipse.emf.common.util.EList;
 
 import fr.kazejiyu.ekumi.core.ekumi.Activity;
 import fr.kazejiyu.ekumi.core.ekumi.Context;
+import fr.kazejiyu.ekumi.core.ekumi.impl.SequenceImpl;
 
 public class BasicSequence extends SequenceImpl {
 

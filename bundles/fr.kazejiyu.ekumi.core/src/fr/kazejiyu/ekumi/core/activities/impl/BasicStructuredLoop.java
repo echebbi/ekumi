@@ -1,8 +1,9 @@
-package fr.kazejiyu.ekumi.core.ekumi.impl;
+package fr.kazejiyu.ekumi.core.activities.impl;
 
 import static fr.kazejiyu.ekumi.core.ekumi.Status.*;
 
 import fr.kazejiyu.ekumi.core.ekumi.Context;
+import fr.kazejiyu.ekumi.core.ekumi.impl.StructuredLoopImpl;
 
 public class BasicStructuredLoop extends StructuredLoopImpl {
 	

@@ -9,6 +9,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
+import fr.kazejiyu.ekumi.core.activities.impl.BasicScriptedTask;
+import fr.kazejiyu.ekumi.core.activities.impl.BasicSequence;
+import fr.kazejiyu.ekumi.core.activities.impl.BasicStructuredLoop;
 import fr.kazejiyu.ekumi.core.datatypes.DataType;
 import fr.kazejiyu.ekumi.core.ekumi.Branch;
 import fr.kazejiyu.ekumi.core.ekumi.Context;

@@ -2,12 +2,35 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.util;
 
-import fr.kazejiyu.ekumi.core.ekumi.*;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
+
+import fr.kazejiyu.ekumi.core.activities.*;
+import fr.kazejiyu.ekumi.core.ekumi.Activity;
+import fr.kazejiyu.ekumi.core.ekumi.Branch;
+import fr.kazejiyu.ekumi.core.ekumi.Condition;
+import fr.kazejiyu.ekumi.core.ekumi.Context;
+import fr.kazejiyu.ekumi.core.ekumi.DataFlow;
+import fr.kazejiyu.ekumi.core.ekumi.DataFlows;
+import fr.kazejiyu.ekumi.core.ekumi.Driver;
+import fr.kazejiyu.ekumi.core.ekumi.DriverRunner;
+import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
+import fr.kazejiyu.ekumi.core.ekumi.Execution;
+import fr.kazejiyu.ekumi.core.ekumi.ListOfVariables;
+import fr.kazejiyu.ekumi.core.ekumi.MapOfVariables;
+import fr.kazejiyu.ekumi.core.ekumi.MultiChoice;
+import fr.kazejiyu.ekumi.core.ekumi.MultipleInstances;
+import fr.kazejiyu.ekumi.core.ekumi.ParallelSplit;
+import fr.kazejiyu.ekumi.core.ekumi.Runner;
+import fr.kazejiyu.ekumi.core.ekumi.Script;
+import fr.kazejiyu.ekumi.core.ekumi.ScriptedTask;
+import fr.kazejiyu.ekumi.core.ekumi.Sequence;
+import fr.kazejiyu.ekumi.core.ekumi.Serializable;
+import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
+import fr.kazejiyu.ekumi.core.ekumi.Task;
+import fr.kazejiyu.ekumi.core.ekumi.Variable;
 
 /**
  * <!-- begin-user-doc -->
