@@ -13,7 +13,7 @@ public class BasicDriver extends DriverImpl {
 	public void run(Context context) {
 		DriverRunner script = getScript();
 		
-		if (script == null) {
+		if (script == null || driven == null) {
 			setStatus(SUCCEEDED);
 			return;
 		}
