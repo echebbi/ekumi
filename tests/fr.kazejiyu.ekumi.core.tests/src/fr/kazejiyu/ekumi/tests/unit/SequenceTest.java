@@ -18,6 +18,7 @@ import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.Sequence;
 import fr.kazejiyu.ekumi.tests.mocks.BrokenActivity;
+import fr.kazejiyu.ekumi.tests.mocks.HopelessActivity;
 import fr.kazejiyu.ekumi.tests.mocks.SetNameInContext;
 
 /**
@@ -45,6 +46,13 @@ public class SequenceTest {
 		@Test @DisplayName("has no activity")
 		void has_no_activity() {
 			assertThat(empty.getActivities()).isEmpty();
+		}
+		
+		// isSetActivities()
+		
+		@Test @DisplayName("has its activites set")
+		void has_its_activities_set() {
+			assertThat(empty.isSetActivities()).isTrue();
 		}
 		
 		// run()
@@ -77,6 +85,13 @@ public class SequenceTest {
 			seq.getRoot().getSuccessor().setSuccessor(activities.get(2));
 			
 			context = EkumiFactory.eINSTANCE.createContext();
+		}
+		
+		// isSetActivities()
+		
+		@Test @DisplayName("has its activites set")
+		void has_its_activities_set() {
+			assertThat(seq.isSetActivities()).isTrue();
 		}
 		
 		// getActivities()
@@ -124,7 +139,7 @@ public class SequenceTest {
 	}
 	
 	@Nested
-	@DisplayName("when containing a broken activity")
+	@DisplayName("when containing an activity that throws")
 	class WhenContainingABrokenActivity {
 		private Sequence corrupted;
 		private Context context;
@@ -135,6 +150,42 @@ public class SequenceTest {
 			corrupted.setRoot(new SetNameInContext("A"));
 			corrupted.getRoot().setSuccessor(new SetNameInContext("B"));
 			corrupted.getRoot().getSuccessor().setSuccessor(new BrokenActivity());
+			corrupted.getRoot().getSuccessor().getSuccessor().setSuccessor(new SetNameInContext("C"));
+			context = EkumiFactory.eINSTANCE.createContext();
+		}
+		
+		@Test @DisplayName("does not throw when run")
+		void do_not_throw_when_run() {
+			corrupted.run(context);
+		}
+		
+		@Test @DisplayName("has 'failed' status after run")
+		void has_failed_status_after_run() {
+			corrupted.run(context);
+			assertThat(corrupted.getStatus()).isEqualTo(FAILED);
+		}
+		
+		@SuppressWarnings("unchecked")
+		@Test @DisplayName("stops its execution when an activity fails")
+		void stop_its_execution_when_an_activity_fails() {
+			corrupted.run(context);
+			List<String> activities = (List<String>) context.get(SetNameInContext.VARIABLE_IN_CONTEXT).get().getValueAs(List.class);
+			assertThat(activities).containsExactly("A", "B");
+		}
+	}
+	
+	@Nested
+	@DisplayName("when containing an activity that fails")
+	class WhenContainingAnHopelessActivity {
+		private Sequence corrupted;
+		private Context context;
+		
+		@BeforeEach
+		void initialize() {
+			corrupted = EkumiFactory.eINSTANCE.createSequence();
+			corrupted.setRoot(new SetNameInContext("A"));
+			corrupted.getRoot().setSuccessor(new SetNameInContext("B"));
+			corrupted.getRoot().getSuccessor().setSuccessor(new HopelessActivity());
 			corrupted.getRoot().getSuccessor().getSuccessor().setSuccessor(new SetNameInContext("C"));
 			context = EkumiFactory.eINSTANCE.createContext();
 		}

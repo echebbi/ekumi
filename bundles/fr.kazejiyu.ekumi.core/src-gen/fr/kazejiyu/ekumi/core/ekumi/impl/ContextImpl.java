@@ -47,10 +47,15 @@ public class ContextImpl extends MinimalEObjectImpl.Container implements Context
 
 	@Override
 	public void set(String name, Object value) {
-		Variable var = EkumiFactory.eINSTANCE.createVariable();
-		var.setName(requireNonNull(name));
-		var.setValue(value);
-		getVariables().add(var);
+		if (contains(name)) {
+			get(name).ifPresent(var -> var.setValue(value));
+		}
+		else {
+			Variable var = EkumiFactory.eINSTANCE.createVariable();
+			var.setName(requireNonNull(name));
+			var.setValue(value);
+			getVariables().add(var);
+		}
 	}
 
 	@Override

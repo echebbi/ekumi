@@ -14,13 +14,11 @@ public class BasicStructuredLoop extends StructuredLoopImpl {
 			return;
 		}
 		
-		boolean endConditionIsSatisfied = false;
 		boolean encounteredErrors = false;
 		
-		while ((!endConditionIsSatisfied) && (!encounteredErrors)) {
-			if (preConditionIsFulfilled(context)) {
-				endConditionIsSatisfied = true;
-			}
+		while (! encounteredErrors) {
+			if (preConditionIsFulfilled(context))
+				break;
 			
 			try {
 				getActivity().getFlows().resolveInputs();
@@ -31,9 +29,8 @@ public class BasicStructuredLoop extends StructuredLoopImpl {
 				encounteredErrors = true;
 			}
 			
-			if (postConditionIsFulfilled(context)) {
-				endConditionIsSatisfied = true;
-			}
+			if (postConditionIsFulfilled(context))
+				break;
 		}
 		
 		setStatus(encounteredErrors ? FAILED : SUCCEEDED);
