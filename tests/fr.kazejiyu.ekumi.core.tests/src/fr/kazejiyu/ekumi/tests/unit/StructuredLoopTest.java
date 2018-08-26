@@ -12,8 +12,11 @@ import org.junit.jupiter.api.Test;
 import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
+import fr.kazejiyu.ekumi.core.ekumi.Variable;
 import fr.kazejiyu.ekumi.tests.mocks.BrokenActivity;
+import fr.kazejiyu.ekumi.tests.mocks.IncrementVarActivity;
 import fr.kazejiyu.ekumi.tests.mocks.SetNameInContext;
+import fr.kazejiyu.ekumi.tests.mocks.Until;
 
 /**
  * Tests the behaviour of {@link StructuredLoop} instances.
@@ -69,11 +72,11 @@ public class StructuredLoopTest {
 			assertThat(loop.getActivity()).isNotNull();
 		}
 		
-		// NEITHER PRE-CONDITION NOR POST-CONDITION: run() will lead to an infinite loop
+		// NEITHER PRE-CONDITION NOR POST-CONDITION => run() would lead to an infinite loop
 	}
 	
 	@Nested
-	@DisplayName("when containing a broken activity")
+	@DisplayName("when containing an activity that throws")
 	class WhenContainingABrokenActivity {
 		private StructuredLoop corrupted;
 		private Context context;
@@ -102,12 +105,61 @@ public class StructuredLoopTest {
 	@Nested
 	@DisplayName("when having a pre-condition")
 	class WhenHavingAPreCondition {
+		private StructuredLoop whileDo;
+		private Context context;
+		
+		private final int LIMIT = 5;
+		
+		@BeforeEach
+		void initialize() {
+			whileDo = EkumiFactory.eINSTANCE.createStructuredLoop();
+			context = EkumiFactory.eINSTANCE.createContext();
+			whileDo.setActivity(new IncrementVarActivity("counter"));
+			whileDo.setPreCondition(new Until("counter", LIMIT));
+		}
+		
+		@Test @DisplayName("stops when the pre-condition is fulfilled")
+		void stops_when_the_pre_condition_is_fulfilled() {
+			whileDo.run(context);
+			assertThat(context.get("counter")).map(Variable::getValue).contains(LIMIT);
+		}
+		
+		@Test @DisplayName("does not execute its activity if the pre-condition is not fulfilled")
+		void executes_its_activity_at_least_once() {
+			whileDo.setPreCondition(new Until("counter", -1));
+			assertThat(context.get("counter")).isEmpty();
+		}
 		
 	}
 	
 	@Nested
 	@DisplayName("when having a post-condition")
 	class WhenHavingAPostCondition {
+		private StructuredLoop doWhile;
+		private Context context;
+		
+		private final int LIMIT = 5;
+		
+		@BeforeEach
+		void initialize() {
+			doWhile = EkumiFactory.eINSTANCE.createStructuredLoop();
+			context = EkumiFactory.eINSTANCE.createContext();
+			doWhile.setActivity(new IncrementVarActivity("counter"));
+			doWhile.setPostCondition(new Until("counter", LIMIT));
+		}
+		
+		@Test @DisplayName("stops when the post-condition is fulfilled")
+		void stops_when_the_pre_condition_is_fulfilled() {
+			doWhile.run(context);
+			assertThat(context.get("counter")).map(Variable::getValue).contains(LIMIT);
+		}
+		
+		@Test @DisplayName("executes its activity at least once")
+		void executes_its_activity_at_least_once() {
+			doWhile.setPostCondition(new Until("counter", -1));
+			doWhile.run(context);
+			assertThat(context.get("counter")).map(Variable::getValue).contains(0);
+		}
 		
 	}
 
