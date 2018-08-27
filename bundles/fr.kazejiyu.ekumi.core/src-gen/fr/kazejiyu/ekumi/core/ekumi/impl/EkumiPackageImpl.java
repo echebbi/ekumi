@@ -740,6 +740,15 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getContext_Execution() {
+		return (EReference) contextEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSerializable() {
 		return serializableEClass;
 	}
@@ -814,6 +823,24 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 */
 	public EReference getExecution_Context() {
 		return (EReference) executionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExecution_StartDate() {
+		return (EAttribute) executionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getExecution__Launch() {
+		return executionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -1013,6 +1040,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 
 		contextEClass = createEClass(CONTEXT);
 		createEReference(contextEClass, CONTEXT__VARIABLES);
+		createEReference(contextEClass, CONTEXT__EXECUTION);
 
 		serializableEClass = createEClass(SERIALIZABLE);
 
@@ -1025,6 +1053,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		executionEClass = createEClass(EXECUTION);
 		createEReference(executionEClass, EXECUTION__ACTIVITY);
 		createEReference(executionEClass, EXECUTION__CONTEXT);
+		createEAttribute(executionEClass, EXECUTION__START_DATE);
+		createEOperation(executionEClass, EXECUTION___LAUNCH);
 
 		listOfVariablesEClass = createEClass(LIST_OF_VARIABLES);
 		createEAttribute(listOfVariablesEClass, LIST_OF_VARIABLES__SIZE);
@@ -1222,7 +1252,10 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		initEClass(contextEClass, Context.class, "Context", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getContext_Variables(), this.getVariable(), null, "variables", null, 0, -1, Context.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+				IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getContext_Execution(), this.getExecution(), this.getExecution_Context(), "execution", null, 0,
+				1, Context.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(serializableEClass, Serializable.class, "Serializable", IS_ABSTRACT, IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1244,11 +1277,15 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		initEClass(executionEClass, Execution.class, "Execution", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExecution_Activity(), this.getActivity(), null, "activity", null, 0, 1, Execution.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExecution_Context(), this.getContext(), null, "context", null, 0, 1, Execution.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExecution_Context(), this.getContext(), this.getContext_Execution(), "context", null, 0, 1,
+				Execution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExecution_StartDate(), ecorePackage.getEDate(), "startDate", null, 0, 1, Execution.class,
+				!IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getExecution__Launch(), null, "launch", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(listOfVariablesEClass, ListOfVariables.class, "ListOfVariables", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

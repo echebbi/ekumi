@@ -6,8 +6,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
-
-import fr.kazejiyu.ekumi.core.activities.*;
 import fr.kazejiyu.ekumi.core.ekumi.Activity;
 import fr.kazejiyu.ekumi.core.ekumi.Branch;
 import fr.kazejiyu.ekumi.core.ekumi.Condition;

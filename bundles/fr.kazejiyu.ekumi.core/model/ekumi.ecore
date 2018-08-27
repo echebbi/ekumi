@@ -118,7 +118,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Context">
     <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
-        eType="#//Variable" containment="true"/>
+        eType="#//Variable" derived="true" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="execution" eType="#//Execution"
+        eOpposite="#//Execution/context"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Serializable" abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataFlows">
@@ -131,8 +133,13 @@
         eOpposite="#//Activity/flows"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Execution">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="#//Context"/>
+    <eOperations name="launch"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="#//Context"
+        eOpposite="#//Context/execution"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="startDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"
+        changeable="false" unsettable="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ListOfVariables" eSuperTypes="#//Variable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"

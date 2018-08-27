@@ -12,7 +12,7 @@
       <!-- @generated ekumi -->
       <package
             uri="http://fr.kazejiyu.io/ekumi"
-            class="fr.kazejiyu.ekumi.core.activities.EkumiPackage"
+            class="fr.kazejiyu.ekumi.core.ekumi.EkumiPackage"
             genModel="model/ekumi.genmodel"/>
    </extension>
 
