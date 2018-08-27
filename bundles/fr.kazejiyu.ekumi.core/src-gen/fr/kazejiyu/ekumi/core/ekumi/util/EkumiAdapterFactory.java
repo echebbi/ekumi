@@ -8,8 +8,6 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
-
-import fr.kazejiyu.ekumi.core.activities.*;
 import fr.kazejiyu.ekumi.core.ekumi.Activity;
 import fr.kazejiyu.ekumi.core.ekumi.Branch;
 import fr.kazejiyu.ekumi.core.ekumi.Condition;

@@ -29,9 +29,6 @@ public interface Sequence extends Activity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * 
-	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Root</em>' containment reference.
 	 * @see #setRoot(Activity)
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getSequence_Root()

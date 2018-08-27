@@ -1271,13 +1271,22 @@ public interface EkumiPackage extends EPackage {
 	int CONTEXT__VARIABLES = 0;
 
 	/**
+	 * The feature id for the '<em><b>Execution</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT__EXECUTION = 1;
+
+	/**
 	 * The number of structural features of the '<em>Context</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTEXT_FEATURE_COUNT = 1;
+	int CONTEXT_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Context</em>' class.
@@ -1391,7 +1400,7 @@ public interface EkumiPackage extends EPackage {
 	int EXECUTION = 16;
 
 	/**
-	 * The feature id for the '<em><b>Activity</b></em>' reference.
+	 * The feature id for the '<em><b>Activity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1409,13 +1418,31 @@ public interface EkumiPackage extends EPackage {
 	int EXECUTION__CONTEXT = 1;
 
 	/**
+	 * The feature id for the '<em><b>Start Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION__START_DATE = 2;
+
+	/**
 	 * The number of structural features of the '<em>Execution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_FEATURE_COUNT = 2;
+	int EXECUTION_FEATURE_COUNT = 3;
+
+	/**
+	 * The operation id for the '<em>Launch</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION___LAUNCH = 0;
 
 	/**
 	 * The number of operations of the '<em>Execution</em>' class.
@@ -1424,7 +1451,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_OPERATION_COUNT = 0;
+	int EXECUTION_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ListOfVariablesImpl <em>List Of Variables</em>}' class.
@@ -2422,6 +2449,17 @@ public interface EkumiPackage extends EPackage {
 	EReference getContext_Variables();
 
 	/**
+	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.core.ekumi.Context#getExecution <em>Execution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Execution</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Context#getExecution()
+	 * @see #getContext()
+	 * @generated
+	 */
+	EReference getContext_Execution();
+
+	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Serializable <em>Serializable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2495,10 +2533,10 @@ public interface EkumiPackage extends EPackage {
 	EClass getExecution();
 
 	/**
-	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.core.ekumi.Execution#getActivity <em>Activity</em>}'.
+	 * Returns the meta object for the containment reference '{@link fr.kazejiyu.ekumi.core.ekumi.Execution#getActivity <em>Activity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Activity</em>'.
+	 * @return the meta object for the containment reference '<em>Activity</em>'.
 	 * @see fr.kazejiyu.ekumi.core.ekumi.Execution#getActivity()
 	 * @see #getExecution()
 	 * @generated
@@ -2515,6 +2553,27 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getExecution_Context();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.Execution#getStartDate <em>Start Date</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Start Date</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Execution#getStartDate()
+	 * @see #getExecution()
+	 * @generated
+	 */
+	EAttribute getExecution_StartDate();
+
+	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.Execution#launch() <em>Launch</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Launch</em>' operation.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Execution#launch()
+	 * @generated
+	 */
+	EOperation getExecution__Launch();
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.ListOfVariables <em>List Of Variables</em>}'.
@@ -3092,6 +3151,14 @@ public interface EkumiPackage extends EPackage {
 		EReference CONTEXT__VARIABLES = eINSTANCE.getContext_Variables();
 
 		/**
+		 * The meta object literal for the '<em><b>Execution</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONTEXT__EXECUTION = eINSTANCE.getContext_Execution();
+
+		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.Serializable <em>Serializable</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3154,7 +3221,7 @@ public interface EkumiPackage extends EPackage {
 		EClass EXECUTION = eINSTANCE.getExecution();
 
 		/**
-		 * The meta object literal for the '<em><b>Activity</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Activity</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -3168,6 +3235,22 @@ public interface EkumiPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EXECUTION__CONTEXT = eINSTANCE.getExecution_Context();
+
+		/**
+		 * The meta object literal for the '<em><b>Start Date</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXECUTION__START_DATE = eINSTANCE.getExecution_StartDate();
+
+		/**
+		 * The meta object literal for the '<em><b>Launch</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EXECUTION___LAUNCH = eINSTANCE.getExecution__Launch();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ListOfVariablesImpl <em>List Of Variables</em>}' class.
