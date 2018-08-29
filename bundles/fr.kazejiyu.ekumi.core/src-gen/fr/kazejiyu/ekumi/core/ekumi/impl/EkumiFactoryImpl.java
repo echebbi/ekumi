@@ -13,7 +13,6 @@ import fr.kazejiyu.ekumi.core.activities.impl.BasicScriptedTask;
 import fr.kazejiyu.ekumi.core.activities.impl.BasicSequence;
 import fr.kazejiyu.ekumi.core.activities.impl.BasicStructuredLoop;
 import fr.kazejiyu.ekumi.core.datatypes.DataType;
-import fr.kazejiyu.ekumi.core.execution.events.Events;
 import fr.kazejiyu.ekumi.core.ekumi.Branch;
 import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.DataFlow;
@@ -33,6 +32,8 @@ import fr.kazejiyu.ekumi.core.ekumi.Status;
 import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
 import fr.kazejiyu.ekumi.core.ekumi.TestResult;
 import fr.kazejiyu.ekumi.core.ekumi.Variable;
+import fr.kazejiyu.ekumi.core.execution.BasicExecution;
+import fr.kazejiyu.ekumi.core.execution.events.Events;
 import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
 
 /**
@@ -272,10 +273,10 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Execution createExecution() {
-		ExecutionImpl execution = new ExecutionImpl();
+		ExecutionImpl execution = new BasicExecution();
 		return execution;
 	}
 

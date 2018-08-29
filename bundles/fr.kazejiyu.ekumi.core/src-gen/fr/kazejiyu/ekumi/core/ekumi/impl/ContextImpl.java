@@ -187,18 +187,15 @@ public class ContextImpl extends MinimalEObjectImpl.Container implements Context
 			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.CONTEXT__EXECUTION, newExecution,
 					newExecution));
 	}
-	
+
 	private Events events = new BasicEvents();
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Events events() {
-//		// TODO: implement this method
-//		// Ensure that you remove @generated or mark it @generated NOT
-//		throw new UnsupportedOperationException();
 		return events;
 	}
 

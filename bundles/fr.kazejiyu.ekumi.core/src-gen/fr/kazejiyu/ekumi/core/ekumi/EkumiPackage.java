@@ -1445,13 +1445,22 @@ public interface EkumiPackage extends EPackage {
 	int EXECUTION_FEATURE_COUNT = 3;
 
 	/**
-	 * The operation id for the '<em>Launch</em>' operation.
+	 * The operation id for the '<em>Start</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION___LAUNCH = 0;
+	int EXECUTION___START = 0;
+
+	/**
+	 * The operation id for the '<em>Join</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION___JOIN = 1;
 
 	/**
 	 * The number of operations of the '<em>Execution</em>' class.
@@ -1460,7 +1469,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_OPERATION_COUNT = 1;
+	int EXECUTION_OPERATION_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ListOfVariablesImpl <em>List Of Variables</em>}' class.
@@ -2595,14 +2604,24 @@ public interface EkumiPackage extends EPackage {
 	EAttribute getExecution_StartDate();
 
 	/**
-	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.Execution#launch() <em>Launch</em>}' operation.
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.Execution#start() <em>Start</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Launch</em>' operation.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Execution#launch()
+	 * @return the meta object for the '<em>Start</em>' operation.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Execution#start()
 	 * @generated
 	 */
-	EOperation getExecution__Launch();
+	EOperation getExecution__Start();
+
+	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.Execution#join() <em>Join</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Join</em>' operation.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Execution#join()
+	 * @generated
+	 */
+	EOperation getExecution__Join();
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.ListOfVariables <em>List Of Variables</em>}'.
@@ -3293,12 +3312,20 @@ public interface EkumiPackage extends EPackage {
 		EAttribute EXECUTION__START_DATE = eINSTANCE.getExecution_StartDate();
 
 		/**
-		 * The meta object literal for the '<em><b>Launch</b></em>' operation.
+		 * The meta object literal for the '<em><b>Start</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation EXECUTION___LAUNCH = eINSTANCE.getExecution__Launch();
+		EOperation EXECUTION___START = eINSTANCE.getExecution__Start();
+
+		/**
+		 * The meta object literal for the '<em><b>Join</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EXECUTION___JOIN = eINSTANCE.getExecution__Join();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ListOfVariablesImpl <em>List Of Variables</em>}' class.

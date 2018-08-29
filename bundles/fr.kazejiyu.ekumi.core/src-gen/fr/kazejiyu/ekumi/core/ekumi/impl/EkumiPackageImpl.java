@@ -856,8 +856,17 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getExecution__Launch() {
+	public EOperation getExecution__Start() {
 		return executionEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getExecution__Join() {
+		return executionEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -1081,7 +1090,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		createEReference(executionEClass, EXECUTION__ACTIVITY);
 		createEReference(executionEClass, EXECUTION__CONTEXT);
 		createEAttribute(executionEClass, EXECUTION__START_DATE);
-		createEOperation(executionEClass, EXECUTION___LAUNCH);
+		createEOperation(executionEClass, EXECUTION___START);
+		createEOperation(executionEClass, EXECUTION___JOIN);
 
 		listOfVariablesEClass = createEClass(LIST_OF_VARIABLES);
 		createEAttribute(listOfVariablesEClass, LIST_OF_VARIABLES__SIZE);
@@ -1315,7 +1325,9 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		initEAttribute(getExecution_StartDate(), ecorePackage.getEDate(), "startDate", null, 0, 1, Execution.class,
 				!IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getExecution__Launch(), null, "launch", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getExecution__Start(), null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getExecution__Join(), null, "join", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(listOfVariablesEClass, ListOfVariables.class, "ListOfVariables", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

@@ -339,6 +339,10 @@
               <styles xmi:type="notation:FontStyle" xmi:id="_OEZBEalWEeiYF63zlN9bRg" fontName="Segoe UI" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_OEZBEqlWEeiYF63zlN9bRg"/>
             </children>
+            <children xmi:type="notation:Node" xmi:id="_R7KRkKu3EeiW7ukDnY6yYw" type="3010" element="_R58woKu3EeiW7ukDnY6yYw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R7KRkau3EeiW7ukDnY6yYw" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R7KRkqu3EeiW7ukDnY6yYw"/>
+            </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_B6RyQlYgEeipQ9goERh_7A"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_B6RyQ1YgEeipQ9goERh_7A"/>
           </children>
@@ -1780,10 +1784,18 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ODMuQKlWEeiYF63zlN9bRg" name="launch()" tooltipText="launch()">
-        <target xmi:type="ecore:EOperation" href="ekumi.ecore#//Execution/launch"/>
-        <semanticElements xmi:type="ecore:EOperation" href="ekumi.ecore#//Execution/launch"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ODMuQKlWEeiYF63zlN9bRg" name="start()" tooltipText="start()">
+        <target xmi:type="ecore:EOperation" href="ekumi.ecore#//Execution/start"/>
+        <semanticElements xmi:type="ecore:EOperation" href="ekumi.ecore#//Execution/start"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ODbXwKlWEeiYF63zlN9bRg" labelAlignment="LEFT">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R58woKu3EeiW7ukDnY6yYw" name="join()" tooltipText="join()">
+        <target xmi:type="ecore:EOperation" href="ekumi.ecore#//Execution/join"/>
+        <semanticElements xmi:type="ecore:EOperation" href="ekumi.ecore#//Execution/join"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_R59XsKu3EeiW7ukDnY6yYw" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>

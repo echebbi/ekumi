@@ -97,6 +97,14 @@ public interface Execution extends EObject {
 	 * @model
 	 * @generated
 	 */
-	void launch();
+	void start();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void join();
 
 } // Execution
