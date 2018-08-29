@@ -13,6 +13,7 @@ import fr.kazejiyu.ekumi.core.activities.impl.BasicScriptedTask;
 import fr.kazejiyu.ekumi.core.activities.impl.BasicSequence;
 import fr.kazejiyu.ekumi.core.activities.impl.BasicStructuredLoop;
 import fr.kazejiyu.ekumi.core.datatypes.DataType;
+import fr.kazejiyu.ekumi.core.execution.events.Events;
 import fr.kazejiyu.ekumi.core.ekumi.Branch;
 import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.DataFlow;
@@ -128,6 +129,8 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 			return createScriptingLanguageFromString(eDataType, initialValue);
 		case EkumiPackage.DATA_TYPE:
 			return createDataTypeFromString(eDataType, initialValue);
+		case EkumiPackage.EVENTS:
+			return createEventsFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -149,6 +152,8 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 			return convertScriptingLanguageToString(eDataType, instanceValue);
 		case EkumiPackage.DATA_TYPE:
 			return convertDataTypeToString(eDataType, instanceValue);
+		case EkumiPackage.EVENTS:
+			return convertEventsToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -381,6 +386,24 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 	 * @generated
 	 */
 	public String convertDataTypeToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Events createEventsFromString(EDataType eDataType, String initialValue) {
+		return (Events) super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertEventsToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

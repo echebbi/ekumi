@@ -3,8 +3,11 @@
 package fr.kazejiyu.ekumi.core.ekumi;
 
 import java.util.Optional;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+
+import fr.kazejiyu.ekumi.core.execution.events.Events;
 
 /**
  * <!-- begin-user-doc -->
@@ -60,6 +63,14 @@ public interface Context extends EObject {
 	 * @generated
 	 */
 	void setExecution(Execution value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="fr.kazejiyu.ekumi.core.ekumi.Events"
+	 * @generated
+	 */
+	Events events();
 
 	/**
 	 * Returns whether a variables called {@code name} is defined.

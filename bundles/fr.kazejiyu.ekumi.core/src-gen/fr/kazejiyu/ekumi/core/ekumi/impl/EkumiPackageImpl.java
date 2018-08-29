@@ -30,6 +30,7 @@ import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
 import fr.kazejiyu.ekumi.core.ekumi.Task;
 import fr.kazejiyu.ekumi.core.ekumi.TestResult;
 import fr.kazejiyu.ekumi.core.ekumi.Variable;
+import fr.kazejiyu.ekumi.core.execution.events.Events;
 import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -230,6 +231,13 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * @generated
 	 */
 	private EDataType dataTypeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType eventsEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -749,6 +757,15 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getContext__Events() {
+		return contextEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSerializable() {
 		return serializableEClass;
 	}
@@ -956,6 +973,15 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getEvents() {
+		return eventsEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EkumiFactory getEkumiFactory() {
 		return (EkumiFactory) getEFactoryInstance();
 	}
@@ -1041,6 +1067,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		contextEClass = createEClass(CONTEXT);
 		createEReference(contextEClass, CONTEXT__VARIABLES);
 		createEReference(contextEClass, CONTEXT__EXECUTION);
+		createEOperation(contextEClass, CONTEXT___EVENTS);
 
 		serializableEClass = createEClass(SERIALIZABLE);
 
@@ -1078,6 +1105,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		// Create data types
 		scriptingLanguageEDataType = createEDataType(SCRIPTING_LANGUAGE);
 		dataTypeEDataType = createEDataType(DATA_TYPE);
+		eventsEDataType = createEDataType(EVENTS);
 	}
 
 	/**
@@ -1257,6 +1285,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 				1, Context.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEOperation(getContext__Events(), this.getEvents(), "events", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(serializableEClass, Serializable.class, "Serializable", IS_ABSTRACT, IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
@@ -1330,6 +1360,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		initEDataType(scriptingLanguageEDataType, ScriptingLanguage.class, "ScriptingLanguage", IS_SERIALIZABLE,
 				!IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(dataTypeEDataType, DataType.class, "DataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(eventsEDataType, Events.class, "Events", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

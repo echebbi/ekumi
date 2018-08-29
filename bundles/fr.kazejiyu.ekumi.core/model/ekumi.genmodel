@@ -26,6 +26,7 @@
     </genEnums>
     <genDataTypes ecoreDataType="ekumi.ecore#//ScriptingLanguage"/>
     <genDataTypes ecoreDataType="ekumi.ecore#//DataType"/>
+    <genDataTypes ecoreDataType="ekumi.ecore#//Events"/>
     <genClasses ecoreClass="ekumi.ecore#//Activity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Activity/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Activity/name"/>
@@ -94,6 +95,7 @@
     <genClasses ecoreClass="ekumi.ecore#//Context">
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Context/variables"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Context/execution"/>
+      <genOperations ecoreOperation="ekumi.ecore#//Context/events"/>
     </genClasses>
     <genClasses image="false" ecoreClass="ekumi.ecore#//Serializable"/>
     <genClasses ecoreClass="ekumi.ecore#//DataFlows">

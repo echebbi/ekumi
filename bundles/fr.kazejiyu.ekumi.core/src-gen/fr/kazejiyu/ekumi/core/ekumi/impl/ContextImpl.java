@@ -4,7 +4,10 @@ package fr.kazejiyu.ekumi.core.ekumi.impl;
 
 import static java.util.Objects.requireNonNull;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
 import java.util.Optional;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -14,12 +17,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.core.ekumi.Execution;
 import fr.kazejiyu.ekumi.core.ekumi.Variable;
-import java.util.Collection;
+import fr.kazejiyu.ekumi.core.execution.events.Events;
+import fr.kazejiyu.ekumi.core.execution.events.impl.BasicEvents;
 
 /**
  * <!-- begin-user-doc -->
@@ -182,6 +187,20 @@ public class ContextImpl extends MinimalEObjectImpl.Container implements Context
 			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.CONTEXT__EXECUTION, newExecution,
 					newExecution));
 	}
+	
+	private Events events = new BasicEvents();
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Events events() {
+//		// TODO: implement this method
+//		// Ensure that you remove @generated or mark it @generated NOT
+//		throw new UnsupportedOperationException();
+		return events;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -286,6 +305,20 @@ public class ContextImpl extends MinimalEObjectImpl.Container implements Context
 			return execution != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+		case EkumiPackage.CONTEXT___EVENTS:
+			return events();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //ContextImpl
