@@ -244,7 +244,18 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void launch() {
+	public void start() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void join() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -365,8 +376,11 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-		case EkumiPackage.EXECUTION___LAUNCH:
-			launch();
+		case EkumiPackage.EXECUTION___START:
+			start();
+			return null;
+		case EkumiPackage.EXECUTION___JOIN:
+			join();
 			return null;
 		}
 		return super.eInvoke(operationID, arguments);

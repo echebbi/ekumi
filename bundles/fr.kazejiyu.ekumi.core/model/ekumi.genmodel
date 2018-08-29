@@ -108,7 +108,8 @@
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Execution/activity"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Execution/context"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Execution/startDate"/>
-      <genOperations ecoreOperation="ekumi.ecore#//Execution/launch"/>
+      <genOperations ecoreOperation="ekumi.ecore#//Execution/start"/>
+      <genOperations ecoreOperation="ekumi.ecore#//Execution/join"/>
     </genClasses>
     <genClasses ecoreClass="ekumi.ecore#//ListOfVariables">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//ListOfVariables/size"/>
