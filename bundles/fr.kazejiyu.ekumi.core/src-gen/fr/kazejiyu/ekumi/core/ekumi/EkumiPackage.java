@@ -1289,13 +1289,22 @@ public interface EkumiPackage extends EPackage {
 	int CONTEXT_FEATURE_COUNT = 2;
 
 	/**
+	 * The operation id for the '<em>Events</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT___EVENTS = 0;
+
+	/**
 	 * The number of operations of the '<em>Context</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTEXT_OPERATION_COUNT = 0;
+	int CONTEXT_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.Serializable <em>Serializable</em>}' class.
@@ -1949,6 +1958,16 @@ public interface EkumiPackage extends EPackage {
 	int DATA_TYPE = 25;
 
 	/**
+	 * The meta object id for the '<em>Events</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.core.execution.events.Events
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getEvents()
+	 * @generated
+	 */
+	int EVENTS = 26;
+
+	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Activity <em>Activity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2460,6 +2479,16 @@ public interface EkumiPackage extends EPackage {
 	EReference getContext_Execution();
 
 	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.Context#events() <em>Events</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Events</em>' operation.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Context#events()
+	 * @generated
+	 */
+	EOperation getContext__Events();
+
+	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Serializable <em>Serializable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2721,6 +2750,17 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getDataType();
+
+	/**
+	 * Returns the meta object for data type '{@link fr.kazejiyu.ekumi.core.execution.events.Events <em>Events</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Events</em>'.
+	 * @see fr.kazejiyu.ekumi.core.execution.events.Events
+	 * @model instanceClass="fr.kazejiyu.ekumi.core.execution.events.Events"
+	 * @generated
+	 */
+	EDataType getEvents();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -3159,6 +3199,14 @@ public interface EkumiPackage extends EPackage {
 		EReference CONTEXT__EXECUTION = eINSTANCE.getContext_Execution();
 
 		/**
+		 * The meta object literal for the '<em><b>Events</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONTEXT___EVENTS = eINSTANCE.getContext__Events();
+
+		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.Serializable <em>Serializable</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3381,6 +3429,16 @@ public interface EkumiPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType DATA_TYPE = eINSTANCE.getDataType();
+
+		/**
+		 * The meta object literal for the '<em>Events</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.core.execution.events.Events
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getEvents()
+		 * @generated
+		 */
+		EDataType EVENTS = eINSTANCE.getEvents();
 
 	}
 
