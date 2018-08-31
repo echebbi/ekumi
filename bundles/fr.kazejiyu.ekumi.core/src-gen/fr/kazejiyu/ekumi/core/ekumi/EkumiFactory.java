@@ -95,15 +95,6 @@ public interface EkumiFactory extends EFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * Returns a new instance of class '<em>Context</em>'.
-	 * <!-- end-user-doc -->
-	 * @return a new instance of class '<em>Context</em>'.
-	 * @generated
-	 */
-	Context createContext();
-
-	/**
-	 * <!-- begin-user-doc -->
 	 * Returns a new instance of class '<em>Data Flows</em>'.
 	 * <!-- end-user-doc -->
 	 * @return a new instance of class '<em>Data Flows</em>'.

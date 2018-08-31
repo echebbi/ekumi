@@ -15,7 +15,6 @@ import fr.kazejiyu.ekumi.core.ekumi.DriverRunner;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.core.ekumi.Execution;
-import fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus;
 import fr.kazejiyu.ekumi.core.ekumi.ListOfVariables;
 import fr.kazejiyu.ekumi.core.ekumi.MapOfVariables;
 import fr.kazejiyu.ekumi.core.ekumi.MultiChoice;
@@ -30,8 +29,10 @@ import fr.kazejiyu.ekumi.core.ekumi.Status;
 import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
 import fr.kazejiyu.ekumi.core.ekumi.Task;
 import fr.kazejiyu.ekumi.core.ekumi.TestResult;
+import fr.kazejiyu.ekumi.core.ekumi.UnsafeContext;
 import fr.kazejiyu.ekumi.core.ekumi.Variable;
 import fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException;
+import fr.kazejiyu.ekumi.core.execution.ExecutionStatus;
 import fr.kazejiyu.ekumi.core.execution.events.Events;
 import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
 
@@ -79,13 +80,6 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * @generated
 	 */
 	private EClass parallelSplitEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass executionStatusEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -156,6 +150,13 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * @generated
 	 */
 	private EClass branchEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass unsafeContextEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -254,6 +255,13 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * @generated
 	 */
 	private EDataType interruptedExecutionExceptionEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType executionStatusEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -467,26 +475,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getExecutionStatus() {
-		return executionStatusEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getExecutionStatus__IsStarted() {
-		return executionStatusEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getExecutionStatus__IsCancelled() {
-		return executionStatusEClass.getEOperations().get(1);
+	public EDataType getExecutionStatus() {
+		return executionStatusEDataType;
 	}
 
 	/**
@@ -773,6 +763,60 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getUnsafeContext() {
+		return unsafeContextEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUnsafeContext_Variables() {
+		return (EReference) unsafeContextEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUnsafeContext_Execution() {
+		return (EReference) unsafeContextEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUnsafeContext_Events() {
+		return (EAttribute) unsafeContextEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUnsafeContext_ExecutionStatus() {
+		return (EAttribute) unsafeContextEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getUnsafeContext__Safe() {
+		return unsafeContextEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getContext() {
 		return contextEClass;
 	}
@@ -784,15 +828,6 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 */
 	public EReference getContext_Variables() {
 		return (EReference) contextEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getContext_Execution() {
-		return (EReference) contextEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -919,6 +954,33 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 */
 	public EOperation getExecution__Join() {
 		return executionEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getExecution__Cancel() {
+		return executionEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getExecution__IsRunning() {
+		return executionEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getExecution__IsCancelled() {
+		return executionEClass.getEOperations().get(4);
 	}
 
 	/**
@@ -1134,11 +1196,12 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		createEReference(branchEClass, BRANCH__AVAILABILITY);
 		createEReference(branchEClass, BRANCH__ACTIVITY);
 
-		contextEClass = createEClass(CONTEXT);
-		createEReference(contextEClass, CONTEXT__VARIABLES);
-		createEReference(contextEClass, CONTEXT__EXECUTION);
-		createEOperation(contextEClass, CONTEXT___EVENTS);
-		createEOperation(contextEClass, CONTEXT___EXECUTION);
+		unsafeContextEClass = createEClass(UNSAFE_CONTEXT);
+		createEReference(unsafeContextEClass, UNSAFE_CONTEXT__VARIABLES);
+		createEReference(unsafeContextEClass, UNSAFE_CONTEXT__EXECUTION);
+		createEAttribute(unsafeContextEClass, UNSAFE_CONTEXT__EVENTS);
+		createEAttribute(unsafeContextEClass, UNSAFE_CONTEXT__EXECUTION_STATUS);
+		createEOperation(unsafeContextEClass, UNSAFE_CONTEXT___SAFE);
 
 		serializableEClass = createEClass(SERIALIZABLE);
 
@@ -1154,6 +1217,9 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		createEAttribute(executionEClass, EXECUTION__START_DATE);
 		createEOperation(executionEClass, EXECUTION___START);
 		createEOperation(executionEClass, EXECUTION___JOIN);
+		createEOperation(executionEClass, EXECUTION___CANCEL);
+		createEOperation(executionEClass, EXECUTION___IS_RUNNING);
+		createEOperation(executionEClass, EXECUTION___IS_CANCELLED);
 
 		listOfVariablesEClass = createEClass(LIST_OF_VARIABLES);
 		createEAttribute(listOfVariablesEClass, LIST_OF_VARIABLES__SIZE);
@@ -1170,9 +1236,10 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		parallelSplitEClass = createEClass(PARALLEL_SPLIT);
 		createEReference(parallelSplitEClass, PARALLEL_SPLIT__BRANCHES);
 
-		executionStatusEClass = createEClass(EXECUTION_STATUS);
-		createEOperation(executionStatusEClass, EXECUTION_STATUS___IS_STARTED);
-		createEOperation(executionStatusEClass, EXECUTION_STATUS___IS_CANCELLED);
+		contextEClass = createEClass(CONTEXT);
+		createEReference(contextEClass, CONTEXT__VARIABLES);
+		createEOperation(contextEClass, CONTEXT___EVENTS);
+		createEOperation(contextEClass, CONTEXT___EXECUTION);
 
 		// Create enums
 		statusEEnum = createEEnum(STATUS);
@@ -1183,6 +1250,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		dataTypeEDataType = createEDataType(DATA_TYPE);
 		eventsEDataType = createEDataType(EVENTS);
 		interruptedExecutionExceptionEDataType = createEDataType(INTERRUPTED_EXECUTION_EXCEPTION);
+		executionStatusEDataType = createEDataType(EXECUTION_STATUS);
 	}
 
 	/**
@@ -1354,17 +1422,21 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(contextEClass, Context.class, "Context", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getContext_Variables(), this.getVariable(), null, "variables", null, 0, -1, Context.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getContext_Execution(), this.getExecution(), this.getExecution_Context(), "execution", null, 0,
-				1, Context.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(unsafeContextEClass, UnsafeContext.class, "UnsafeContext", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getUnsafeContext_Variables(), this.getVariable(), null, "variables", null, 0, -1,
+				UnsafeContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getUnsafeContext_Execution(), this.getExecution(), this.getExecution_Context(), "execution",
+				null, 0, 1, UnsafeContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUnsafeContext_Events(), this.getEvents(), "events", null, 0, 1, UnsafeContext.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUnsafeContext_ExecutionStatus(), this.getExecutionStatus(), "executionStatus", null, 0, 1,
+				UnsafeContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getContext__Events(), this.getEvents(), "events", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getContext__Execution(), this.getExecutionStatus(), "execution", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getUnsafeContext__Safe(), this.getContext(), "safe", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(serializableEClass, Serializable.class, "Serializable", IS_ABSTRACT, IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1388,9 +1460,9 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		initEReference(getExecution_Activity(), this.getActivity(), null, "activity", null, 0, 1, Execution.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExecution_Context(), this.getContext(), this.getContext_Execution(), "context", null, 0, 1,
-				Execution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExecution_Context(), this.getUnsafeContext(), this.getUnsafeContext_Execution(), "context",
+				null, 0, 1, Execution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExecution_StartDate(), ecorePackage.getEDate(), "startDate", null, 0, 1, Execution.class,
 				!IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1398,6 +1470,13 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 
 		op = initEOperation(getExecution__Join(), null, "join", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getInterruptedExecutionException());
+
+		initEOperation(getExecution__Cancel(), null, "cancel", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getExecution__IsRunning(), ecorePackage.getEBoolean(), "isRunning", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getExecution__IsCancelled(), ecorePackage.getEBoolean(), "isCancelled", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
 		initEClass(listOfVariablesEClass, ListOfVariables.class, "ListOfVariables", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1427,12 +1506,14 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 				ParallelSplit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(executionStatusEClass, ExecutionStatus.class, "ExecutionStatus", IS_ABSTRACT, IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
+		initEClass(contextEClass, Context.class, "Context", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getContext_Variables(), this.getVariable(), null, "variables", null, 0, -1, Context.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getExecutionStatus__IsStarted(), null, "isStarted", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContext__Events(), this.getEvents(), "events", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getExecutionStatus__IsCancelled(), null, "isCancelled", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContext__Execution(), this.getExecutionStatus(), "execution", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(statusEEnum, Status.class, "Status");
@@ -1440,6 +1521,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		addEEnumLiteral(statusEEnum, Status.RUNNING);
 		addEEnumLiteral(statusEEnum, Status.SUCCEEDED);
 		addEEnumLiteral(statusEEnum, Status.FAILED);
+		addEEnumLiteral(statusEEnum, Status.CANCELLED);
+		addEEnumLiteral(statusEEnum, Status.PAUSED);
 
 		initEEnum(testResultEEnum, TestResult.class, "TestResult");
 		addEEnumLiteral(testResultEEnum, TestResult.FULFILLED);
@@ -1452,6 +1535,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		initEDataType(eventsEDataType, Events.class, "Events", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(interruptedExecutionExceptionEDataType, InterruptedExecutionException.class,
 				"InterruptedExecutionException", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(executionStatusEDataType, ExecutionStatus.class, "ExecutionStatus", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

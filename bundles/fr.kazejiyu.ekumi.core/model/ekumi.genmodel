@@ -19,6 +19,8 @@
       <genEnumLiterals ecoreEnumLiteral="ekumi.ecore#//Status/RUNNING"/>
       <genEnumLiterals ecoreEnumLiteral="ekumi.ecore#//Status/SUCCEEDED"/>
       <genEnumLiterals ecoreEnumLiteral="ekumi.ecore#//Status/FAILED"/>
+      <genEnumLiterals ecoreEnumLiteral="ekumi.ecore#//Status/CANCELLED"/>
+      <genEnumLiterals ecoreEnumLiteral="ekumi.ecore#//Status/PAUSED"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="ekumi.ecore#//TestResult">
       <genEnumLiterals ecoreEnumLiteral="ekumi.ecore#//TestResult/FULFILLED"/>
@@ -28,6 +30,7 @@
     <genDataTypes ecoreDataType="ekumi.ecore#//DataType"/>
     <genDataTypes ecoreDataType="ekumi.ecore#//Events"/>
     <genDataTypes ecoreDataType="ekumi.ecore#//InterruptedExecutionException"/>
+    <genDataTypes ecoreDataType="ekumi.ecore#//ExecutionStatus"/>
     <genClasses ecoreClass="ekumi.ecore#//Activity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Activity/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Activity/name"/>
@@ -93,11 +96,12 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//Branch/availability"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Branch/activity"/>
     </genClasses>
-    <genClasses ecoreClass="ekumi.ecore#//Context">
-      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Context/variables"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Context/execution.1"/>
-      <genOperations ecoreOperation="ekumi.ecore#//Context/events"/>
-      <genOperations ecoreOperation="ekumi.ecore#//Context/execution"/>
+    <genClasses ecoreClass="ekumi.ecore#//UnsafeContext">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//UnsafeContext/variables"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//UnsafeContext/execution"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//UnsafeContext/events"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//UnsafeContext/executionStatus"/>
+      <genOperations ecoreOperation="ekumi.ecore#//UnsafeContext/safe"/>
     </genClasses>
     <genClasses image="false" ecoreClass="ekumi.ecore#//Serializable"/>
     <genClasses ecoreClass="ekumi.ecore#//DataFlows">
@@ -112,6 +116,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//Execution/startDate"/>
       <genOperations ecoreOperation="ekumi.ecore#//Execution/start"/>
       <genOperations ecoreOperation="ekumi.ecore#//Execution/join"/>
+      <genOperations ecoreOperation="ekumi.ecore#//Execution/cancel"/>
+      <genOperations ecoreOperation="ekumi.ecore#//Execution/isRunning"/>
+      <genOperations ecoreOperation="ekumi.ecore#//Execution/isCancelled"/>
     </genClasses>
     <genClasses ecoreClass="ekumi.ecore#//ListOfVariables">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//ListOfVariables/size"/>
@@ -127,9 +134,10 @@
     <genClasses ecoreClass="ekumi.ecore#//ParallelSplit">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//ParallelSplit/branches"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="ekumi.ecore#//ExecutionStatus">
-      <genOperations ecoreOperation="ekumi.ecore#//ExecutionStatus/isStarted"/>
-      <genOperations ecoreOperation="ekumi.ecore#//ExecutionStatus/isCancelled"/>
+    <genClasses image="false" ecoreClass="ekumi.ecore#//Context">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ekumi.ecore#//Context/variables"/>
+      <genOperations ecoreOperation="ekumi.ecore#//Context/events"/>
+      <genOperations ecoreOperation="ekumi.ecore#//Context/execution"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

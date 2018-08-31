@@ -56,7 +56,25 @@ public enum Status implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	FAILED(3, "FAILED", "FAILED");
+	FAILED(3, "FAILED", "FAILED"),
+	/**
+	 * <!-- begin-user-doc -->
+	* The '<em><b>CANCELLED</b></em>' literal object.
+	* <!-- end-user-doc -->
+	 * @see #CANCELLED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	CANCELLED(4, "CANCELLED", "CANCELLED"),
+	/**
+	 * <!-- begin-user-doc -->
+	* The '<em><b>PAUSED</b></em>' literal object.
+	* <!-- end-user-doc -->
+	 * @see #PAUSED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	PAUSED(5, "PAUSED", "PAUSED");
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -120,11 +138,41 @@ public enum Status implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * The '<em><b>CANCELLED</b></em>' literal value.
+	 * <p>
+	 * If the meaning of '<em><b>CANCELLED</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #CANCELLED
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int CANCELLED_VALUE = 4;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * The '<em><b>PAUSED</b></em>' literal value.
+	 * <p>
+	 * If the meaning of '<em><b>PAUSED</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #PAUSED
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PAUSED_VALUE = 5;
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * An array of all the '<em><b>Status</b></em>' enumerators.
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final Status[] VALUES_ARRAY = new Status[] { IDLE, RUNNING, SUCCEEDED, FAILED, };
+	private static final Status[] VALUES_ARRAY = new Status[] { IDLE, RUNNING, SUCCEEDED, FAILED, CANCELLED, PAUSED, };
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -188,6 +236,10 @@ public enum Status implements Enumerator {
 			return SUCCEEDED;
 		case FAILED_VALUE:
 			return FAILED;
+		case CANCELLED_VALUE:
+			return CANCELLED;
+		case PAUSED_VALUE:
+			return PAUSED;
 		}
 		return null;
 	}

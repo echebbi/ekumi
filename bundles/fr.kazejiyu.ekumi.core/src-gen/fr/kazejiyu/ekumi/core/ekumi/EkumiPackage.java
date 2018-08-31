@@ -1252,14 +1252,14 @@ public interface EkumiPackage extends EPackage {
 	int BRANCH_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ContextImpl <em>Context</em>}' class.
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.UnsafeContextImpl <em>Unsafe Context</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.ContextImpl
-	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getContext()
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.UnsafeContextImpl
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getUnsafeContext()
 	 * @generated
 	 */
-	int CONTEXT = 13;
+	int UNSAFE_CONTEXT = 13;
 
 	/**
 	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
@@ -1268,7 +1268,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTEXT__VARIABLES = 0;
+	int UNSAFE_CONTEXT__VARIABLES = 0;
 
 	/**
 	 * The feature id for the '<em><b>Execution</b></em>' reference.
@@ -1277,43 +1277,62 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTEXT__EXECUTION = 1;
+	int UNSAFE_CONTEXT__EXECUTION = 1;
 
 	/**
-	 * The number of structural features of the '<em>Context</em>' class.
+	 * The feature id for the '<em><b>Events</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTEXT_FEATURE_COUNT = 2;
+	int UNSAFE_CONTEXT__EVENTS = 2;
 
 	/**
-	 * The operation id for the '<em>Events</em>' operation.
+	 * The feature id for the '<em><b>Execution Status</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTEXT___EVENTS = 0;
+	int UNSAFE_CONTEXT__EXECUTION_STATUS = 3;
 
 	/**
-	 * The operation id for the '<em>Execution</em>' operation.
+	 * The number of structural features of the '<em>Unsafe Context</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTEXT___EXECUTION = 1;
+	int UNSAFE_CONTEXT_FEATURE_COUNT = 4;
 
 	/**
-	 * The number of operations of the '<em>Context</em>' class.
+	 * The operation id for the '<em>Safe</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTEXT_OPERATION_COUNT = 2;
+	int UNSAFE_CONTEXT___SAFE = 0;
+
+	/**
+	 * The number of operations of the '<em>Unsafe Context</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNSAFE_CONTEXT_OPERATION_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ContextImpl <em>Context</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.ContextImpl
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getContext()
+	 * @generated
+	 */
+	int CONTEXT = 22;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.Serializable <em>Serializable</em>}' class.
@@ -1472,13 +1491,40 @@ public interface EkumiPackage extends EPackage {
 	int EXECUTION___JOIN = 1;
 
 	/**
+	 * The operation id for the '<em>Cancel</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION___CANCEL = 2;
+
+	/**
+	 * The operation id for the '<em>Is Running</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION___IS_RUNNING = 3;
+
+	/**
+	 * The operation id for the '<em>Is Cancelled</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION___IS_CANCELLED = 4;
+
+	/**
 	 * The number of operations of the '<em>Execution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_OPERATION_COUNT = 2;
+	int EXECUTION_OPERATION_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ListOfVariablesImpl <em>List Of Variables</em>}' class.
@@ -1936,50 +1982,59 @@ public interface EkumiPackage extends EPackage {
 	int PARALLEL_SPLIT_OPERATION_COUNT = ACTIVITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus <em>Execution Status</em>}' class.
+	 * The feature id for the '<em><b>Variables</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT__VARIABLES = 0;
+
+	/**
+	 * The number of structural features of the '<em>Context</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT_FEATURE_COUNT = 1;
+
+	/**
+	 * The operation id for the '<em>Events</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT___EVENTS = 0;
+
+	/**
+	 * The operation id for the '<em>Execution</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT___EXECUTION = 1;
+
+	/**
+	 * The number of operations of the '<em>Context</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT_OPERATION_COUNT = 2;
+
+	/**
+	 * The meta object id for the '<em>Execution Status</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.core.execution.ExecutionStatus
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getExecutionStatus()
 	 * @generated
 	 */
-	int EXECUTION_STATUS = 22;
-
-	/**
-	 * The number of structural features of the '<em>Execution Status</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_STATUS_FEATURE_COUNT = 0;
-
-	/**
-	 * The operation id for the '<em>Is Started</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_STATUS___IS_STARTED = 0;
-
-	/**
-	 * The operation id for the '<em>Is Cancelled</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_STATUS___IS_CANCELLED = 1;
-
-	/**
-	 * The number of operations of the '<em>Execution Status</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_STATUS_OPERATION_COUNT = 2;
+	int EXECUTION_STATUS = 29;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.Status <em>Status</em>}' enum.
@@ -2521,6 +2576,70 @@ public interface EkumiPackage extends EPackage {
 	EReference getBranch_Activity();
 
 	/**
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.UnsafeContext <em>Unsafe Context</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Unsafe Context</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.UnsafeContext
+	 * @generated
+	 */
+	EClass getUnsafeContext();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.core.ekumi.UnsafeContext#getVariables <em>Variables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Variables</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.UnsafeContext#getVariables()
+	 * @see #getUnsafeContext()
+	 * @generated
+	 */
+	EReference getUnsafeContext_Variables();
+
+	/**
+	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.core.ekumi.UnsafeContext#getExecution <em>Execution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Execution</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.UnsafeContext#getExecution()
+	 * @see #getUnsafeContext()
+	 * @generated
+	 */
+	EReference getUnsafeContext_Execution();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.UnsafeContext#getEvents <em>Events</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Events</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.UnsafeContext#getEvents()
+	 * @see #getUnsafeContext()
+	 * @generated
+	 */
+	EAttribute getUnsafeContext_Events();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.UnsafeContext#getExecutionStatus <em>Execution Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Execution Status</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.UnsafeContext#getExecutionStatus()
+	 * @see #getUnsafeContext()
+	 * @generated
+	 */
+	EAttribute getUnsafeContext_ExecutionStatus();
+
+	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.UnsafeContext#safe() <em>Safe</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Safe</em>' operation.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.UnsafeContext#safe()
+	 * @generated
+	 */
+	EOperation getUnsafeContext__Safe();
+
+	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Context <em>Context</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2531,26 +2650,15 @@ public interface EkumiPackage extends EPackage {
 	EClass getContext();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.core.ekumi.Context#getVariables <em>Variables</em>}'.
+	 * Returns the meta object for the reference list '{@link fr.kazejiyu.ekumi.core.ekumi.Context#getVariables <em>Variables</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Variables</em>'.
+	 * @return the meta object for the reference list '<em>Variables</em>'.
 	 * @see fr.kazejiyu.ekumi.core.ekumi.Context#getVariables()
 	 * @see #getContext()
 	 * @generated
 	 */
 	EReference getContext_Variables();
-
-	/**
-	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.core.ekumi.Context#getExecution <em>Execution</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Execution</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Context#getExecution()
-	 * @see #getContext()
-	 * @generated
-	 */
-	EReference getContext_Execution();
 
 	/**
 	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.Context#events() <em>Events</em>}' operation.
@@ -2699,6 +2807,36 @@ public interface EkumiPackage extends EPackage {
 	EOperation getExecution__Join();
 
 	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.Execution#cancel() <em>Cancel</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Cancel</em>' operation.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Execution#cancel()
+	 * @generated
+	 */
+	EOperation getExecution__Cancel();
+
+	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.Execution#isRunning() <em>Is Running</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Running</em>' operation.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Execution#isRunning()
+	 * @generated
+	 */
+	EOperation getExecution__IsRunning();
+
+	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.Execution#isCancelled() <em>Is Cancelled</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Cancelled</em>' operation.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Execution#isCancelled()
+	 * @generated
+	 */
+	EOperation getExecution__IsCancelled();
+
+	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.ListOfVariables <em>List Of Variables</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2804,34 +2942,15 @@ public interface EkumiPackage extends EPackage {
 	EReference getParallelSplit_Branches();
 
 	/**
-	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus <em>Execution Status</em>}'.
+	 * Returns the meta object for data type '{@link fr.kazejiyu.ekumi.core.execution.ExecutionStatus <em>Execution Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Execution Status</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus
+	 * @return the meta object for data type '<em>Execution Status</em>'.
+	 * @see fr.kazejiyu.ekumi.core.execution.ExecutionStatus
+	 * @model instanceClass="fr.kazejiyu.ekumi.core.execution.ExecutionStatus"
 	 * @generated
 	 */
-	EClass getExecutionStatus();
-
-	/**
-	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus#isStarted() <em>Is Started</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Is Started</em>' operation.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus#isStarted()
-	 * @generated
-	 */
-	EOperation getExecutionStatus__IsStarted();
-
-	/**
-	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus#isCancelled() <em>Is Cancelled</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Is Cancelled</em>' operation.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus#isCancelled()
-	 * @generated
-	 */
-	EOperation getExecutionStatus__IsCancelled();
+	EDataType getExecutionStatus();
 
 	/**
 	 * Returns the meta object for enum '{@link fr.kazejiyu.ekumi.core.ekumi.Status <em>Status</em>}'.
@@ -3308,6 +3427,56 @@ public interface EkumiPackage extends EPackage {
 		EReference BRANCH__ACTIVITY = eINSTANCE.getBranch_Activity();
 
 		/**
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.UnsafeContextImpl <em>Unsafe Context</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.UnsafeContextImpl
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getUnsafeContext()
+		 * @generated
+		 */
+		EClass UNSAFE_CONTEXT = eINSTANCE.getUnsafeContext();
+
+		/**
+		 * The meta object literal for the '<em><b>Variables</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UNSAFE_CONTEXT__VARIABLES = eINSTANCE.getUnsafeContext_Variables();
+
+		/**
+		 * The meta object literal for the '<em><b>Execution</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UNSAFE_CONTEXT__EXECUTION = eINSTANCE.getUnsafeContext_Execution();
+
+		/**
+		 * The meta object literal for the '<em><b>Events</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute UNSAFE_CONTEXT__EVENTS = eINSTANCE.getUnsafeContext_Events();
+
+		/**
+		 * The meta object literal for the '<em><b>Execution Status</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute UNSAFE_CONTEXT__EXECUTION_STATUS = eINSTANCE.getUnsafeContext_ExecutionStatus();
+
+		/**
+		 * The meta object literal for the '<em><b>Safe</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation UNSAFE_CONTEXT___SAFE = eINSTANCE.getUnsafeContext__Safe();
+
+		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ContextImpl <em>Context</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3318,20 +3487,12 @@ public interface EkumiPackage extends EPackage {
 		EClass CONTEXT = eINSTANCE.getContext();
 
 		/**
-		 * The meta object literal for the '<em><b>Variables</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Variables</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference CONTEXT__VARIABLES = eINSTANCE.getContext_Variables();
-
-		/**
-		 * The meta object literal for the '<em><b>Execution</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CONTEXT__EXECUTION = eINSTANCE.getContext_Execution();
 
 		/**
 		 * The meta object literal for the '<em><b>Events</b></em>' operation.
@@ -3452,6 +3613,30 @@ public interface EkumiPackage extends EPackage {
 		EOperation EXECUTION___JOIN = eINSTANCE.getExecution__Join();
 
 		/**
+		 * The meta object literal for the '<em><b>Cancel</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EXECUTION___CANCEL = eINSTANCE.getExecution__Cancel();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Running</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EXECUTION___IS_RUNNING = eINSTANCE.getExecution__IsRunning();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Cancelled</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EXECUTION___IS_CANCELLED = eINSTANCE.getExecution__IsCancelled();
+
+		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ListOfVariablesImpl <em>List Of Variables</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3542,30 +3727,14 @@ public interface EkumiPackage extends EPackage {
 		EReference PARALLEL_SPLIT__BRANCHES = eINSTANCE.getParallelSplit_Branches();
 
 		/**
-		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus <em>Execution Status</em>}' class.
+		 * The meta object literal for the '<em>Execution Status</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus
+		 * @see fr.kazejiyu.ekumi.core.execution.ExecutionStatus
 		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getExecutionStatus()
 		 * @generated
 		 */
-		EClass EXECUTION_STATUS = eINSTANCE.getExecutionStatus();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Started</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation EXECUTION_STATUS___IS_STARTED = eINSTANCE.getExecutionStatus__IsStarted();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Cancelled</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation EXECUTION_STATUS___IS_CANCELLED = eINSTANCE.getExecutionStatus__IsCancelled();
+		EDataType EXECUTION_STATUS = eINSTANCE.getExecutionStatus();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.Status <em>Status</em>}' enum.

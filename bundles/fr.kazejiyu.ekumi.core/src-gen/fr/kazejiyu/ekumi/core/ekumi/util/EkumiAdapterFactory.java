@@ -154,8 +154,8 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseContext(Context object) {
-			return createContextAdapter();
+		public Adapter caseUnsafeContext(UnsafeContext object) {
+			return createUnsafeContextAdapter();
 		}
 
 		@Override
@@ -199,8 +199,8 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseExecutionStatus(ExecutionStatus object) {
-			return createExecutionStatusAdapter();
+		public Adapter caseContext(Context object) {
+			return createContextAdapter();
 		}
 
 		@Override
@@ -405,6 +405,20 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.UnsafeContext <em>Unsafe Context</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.UnsafeContext
+	 * @generated
+	 */
+	public Adapter createUnsafeContextAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.Context <em>Context</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -527,20 +541,6 @@ public class EkumiAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createParallelSplitAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus <em>Execution Status</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus
-	 * @generated
-	 */
-	public Adapter createExecutionStatusAdapter() {
 		return null;
 	}
 
