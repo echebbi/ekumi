@@ -20,7 +20,7 @@
         <module>fr.kazejiyu.ekumi.tests.coverage.report</module>
 
         <!-- Test fragments -->
-        <module>fr.kazejiyu.ekumi.core.tests</module>
+        <module>fr.kazejiyu.ekumi.core.test</module>
 	</modules>
     
     
