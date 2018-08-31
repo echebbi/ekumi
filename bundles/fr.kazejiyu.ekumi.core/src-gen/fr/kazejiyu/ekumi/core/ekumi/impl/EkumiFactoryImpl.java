@@ -13,6 +13,7 @@ import fr.kazejiyu.ekumi.core.activities.impl.BasicScriptedTask;
 import fr.kazejiyu.ekumi.core.activities.impl.BasicSequence;
 import fr.kazejiyu.ekumi.core.activities.impl.BasicStructuredLoop;
 import fr.kazejiyu.ekumi.core.datatypes.DataType;
+import fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException;
 import fr.kazejiyu.ekumi.core.ekumi.Branch;
 import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.DataFlow;
@@ -132,6 +133,8 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 			return createDataTypeFromString(eDataType, initialValue);
 		case EkumiPackage.EVENTS:
 			return createEventsFromString(eDataType, initialValue);
+		case EkumiPackage.INTERRUPTED_EXECUTION_EXCEPTION:
+			return createInterruptedExecutionExceptionFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -155,6 +158,8 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 			return convertDataTypeToString(eDataType, instanceValue);
 		case EkumiPackage.EVENTS:
 			return convertEventsToString(eDataType, instanceValue);
+		case EkumiPackage.INTERRUPTED_EXECUTION_EXCEPTION:
+			return convertInterruptedExecutionExceptionToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -405,6 +410,25 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 	 * @generated
 	 */
 	public String convertEventsToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InterruptedExecutionException createInterruptedExecutionExceptionFromString(EDataType eDataType,
+			String initialValue) {
+		return (InterruptedExecutionException) super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertInterruptedExecutionExceptionToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

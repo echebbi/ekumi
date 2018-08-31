@@ -7,6 +7,7 @@ import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.core.ekumi.Execution;
 
+import fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 import org.eclipse.emf.common.notify.Notification;
@@ -255,7 +256,7 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void join() {
+	public void join() throws InterruptedExecutionException {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -380,8 +381,12 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 			start();
 			return null;
 		case EkumiPackage.EXECUTION___JOIN:
-			join();
-			return null;
+			try {
+				join();
+				return null;
+			} catch (Throwable throwable) {
+				throw new InvocationTargetException(throwable);
+			}
 		}
 		return super.eInvoke(operationID, arguments);
 	}

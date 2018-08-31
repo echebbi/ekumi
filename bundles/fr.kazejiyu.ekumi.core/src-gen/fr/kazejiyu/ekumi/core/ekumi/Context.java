@@ -73,6 +73,14 @@ public interface Context extends EObject {
 	Events events();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	ExecutionStatus execution();
+
+	/**
 	 * Returns whether a variables called {@code name} is defined.
 	 * 
 	 * @param name

@@ -1298,13 +1298,22 @@ public interface EkumiPackage extends EPackage {
 	int CONTEXT___EVENTS = 0;
 
 	/**
+	 * The operation id for the '<em>Execution</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT___EXECUTION = 1;
+
+	/**
 	 * The number of operations of the '<em>Context</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTEXT_OPERATION_COUNT = 1;
+	int CONTEXT_OPERATION_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.Serializable <em>Serializable</em>}' class.
@@ -1927,6 +1936,52 @@ public interface EkumiPackage extends EPackage {
 	int PARALLEL_SPLIT_OPERATION_COUNT = ACTIVITY_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus <em>Execution Status</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getExecutionStatus()
+	 * @generated
+	 */
+	int EXECUTION_STATUS = 22;
+
+	/**
+	 * The number of structural features of the '<em>Execution Status</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_STATUS_FEATURE_COUNT = 0;
+
+	/**
+	 * The operation id for the '<em>Is Started</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_STATUS___IS_STARTED = 0;
+
+	/**
+	 * The operation id for the '<em>Is Cancelled</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_STATUS___IS_CANCELLED = 1;
+
+	/**
+	 * The number of operations of the '<em>Execution Status</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_STATUS_OPERATION_COUNT = 2;
+
+	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.Status <em>Status</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1934,7 +1989,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getStatus()
 	 * @generated
 	 */
-	int STATUS = 22;
+	int STATUS = 23;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.TestResult <em>Test Result</em>}' enum.
@@ -1944,7 +1999,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getTestResult()
 	 * @generated
 	 */
-	int TEST_RESULT = 23;
+	int TEST_RESULT = 24;
 
 	/**
 	 * The meta object id for the '<em>Scripting Language</em>' data type.
@@ -1954,7 +2009,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getScriptingLanguage()
 	 * @generated
 	 */
-	int SCRIPTING_LANGUAGE = 24;
+	int SCRIPTING_LANGUAGE = 25;
 
 	/**
 	 * The meta object id for the '<em>Data Type</em>' data type.
@@ -1964,7 +2019,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getDataType()
 	 * @generated
 	 */
-	int DATA_TYPE = 25;
+	int DATA_TYPE = 26;
 
 	/**
 	 * The meta object id for the '<em>Events</em>' data type.
@@ -1974,7 +2029,17 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getEvents()
 	 * @generated
 	 */
-	int EVENTS = 26;
+	int EVENTS = 27;
+
+	/**
+	 * The meta object id for the '<em>Interrupted Execution Exception</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getInterruptedExecutionException()
+	 * @generated
+	 */
+	int INTERRUPTED_EXECUTION_EXCEPTION = 28;
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Activity <em>Activity</em>}'.
@@ -2498,6 +2563,16 @@ public interface EkumiPackage extends EPackage {
 	EOperation getContext__Events();
 
 	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.Context#execution() <em>Execution</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Execution</em>' operation.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Context#execution()
+	 * @generated
+	 */
+	EOperation getContext__Execution();
+
+	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Serializable <em>Serializable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2729,6 +2804,36 @@ public interface EkumiPackage extends EPackage {
 	EReference getParallelSplit_Branches();
 
 	/**
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus <em>Execution Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Execution Status</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus
+	 * @generated
+	 */
+	EClass getExecutionStatus();
+
+	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus#isStarted() <em>Is Started</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Started</em>' operation.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus#isStarted()
+	 * @generated
+	 */
+	EOperation getExecutionStatus__IsStarted();
+
+	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus#isCancelled() <em>Is Cancelled</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Cancelled</em>' operation.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus#isCancelled()
+	 * @generated
+	 */
+	EOperation getExecutionStatus__IsCancelled();
+
+	/**
 	 * Returns the meta object for enum '{@link fr.kazejiyu.ekumi.core.ekumi.Status <em>Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2780,6 +2885,17 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getEvents();
+
+	/**
+	 * Returns the meta object for data type '{@link fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException <em>Interrupted Execution Exception</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Interrupted Execution Exception</em>'.
+	 * @see fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException
+	 * @model instanceClass="fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException"
+	 * @generated
+	 */
+	EDataType getInterruptedExecutionException();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -3226,6 +3342,14 @@ public interface EkumiPackage extends EPackage {
 		EOperation CONTEXT___EVENTS = eINSTANCE.getContext__Events();
 
 		/**
+		 * The meta object literal for the '<em><b>Execution</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONTEXT___EXECUTION = eINSTANCE.getContext__Execution();
+
+		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.Serializable <em>Serializable</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3418,6 +3542,32 @@ public interface EkumiPackage extends EPackage {
 		EReference PARALLEL_SPLIT__BRANCHES = eINSTANCE.getParallelSplit_Branches();
 
 		/**
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus <em>Execution Status</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getExecutionStatus()
+		 * @generated
+		 */
+		EClass EXECUTION_STATUS = eINSTANCE.getExecutionStatus();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Started</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EXECUTION_STATUS___IS_STARTED = eINSTANCE.getExecutionStatus__IsStarted();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Cancelled</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EXECUTION_STATUS___IS_CANCELLED = eINSTANCE.getExecutionStatus__IsCancelled();
+
+		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.Status <em>Status</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3466,6 +3616,16 @@ public interface EkumiPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType EVENTS = eINSTANCE.getEvents();
+
+		/**
+		 * The meta object literal for the '<em>Interrupted Execution Exception</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getInterruptedExecutionException()
+		 * @generated
+		 */
+		EDataType INTERRUPTED_EXECUTION_EXCEPTION = eINSTANCE.getInterruptedExecutionException();
 
 	}
 
