@@ -13,27 +13,10 @@ import fr.kazejiyu.ekumi.core.activities.impl.BasicScriptedTask;
 import fr.kazejiyu.ekumi.core.activities.impl.BasicSequence;
 import fr.kazejiyu.ekumi.core.activities.impl.BasicStructuredLoop;
 import fr.kazejiyu.ekumi.core.datatypes.DataType;
+import fr.kazejiyu.ekumi.core.ekumi.*;
 import fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException;
-import fr.kazejiyu.ekumi.core.ekumi.Branch;
-import fr.kazejiyu.ekumi.core.ekumi.Context;
-import fr.kazejiyu.ekumi.core.ekumi.DataFlow;
-import fr.kazejiyu.ekumi.core.ekumi.DataFlows;
-import fr.kazejiyu.ekumi.core.ekumi.Driver;
-import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
-import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
-import fr.kazejiyu.ekumi.core.ekumi.Execution;
-import fr.kazejiyu.ekumi.core.ekumi.ListOfVariables;
-import fr.kazejiyu.ekumi.core.ekumi.MapOfVariables;
-import fr.kazejiyu.ekumi.core.ekumi.MultiChoice;
-import fr.kazejiyu.ekumi.core.ekumi.MultipleInstances;
-import fr.kazejiyu.ekumi.core.ekumi.ParallelSplit;
-import fr.kazejiyu.ekumi.core.ekumi.ScriptedTask;
-import fr.kazejiyu.ekumi.core.ekumi.Sequence;
-import fr.kazejiyu.ekumi.core.ekumi.Status;
-import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
-import fr.kazejiyu.ekumi.core.ekumi.TestResult;
-import fr.kazejiyu.ekumi.core.ekumi.Variable;
 import fr.kazejiyu.ekumi.core.execution.BasicExecution;
+import fr.kazejiyu.ekumi.core.execution.ExecutionStatus;
 import fr.kazejiyu.ekumi.core.execution.events.Events;
 import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
 
@@ -96,8 +79,6 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 			return createMultiChoice();
 		case EkumiPackage.BRANCH:
 			return createBranch();
-		case EkumiPackage.CONTEXT:
-			return createContext();
 		case EkumiPackage.DATA_FLOWS:
 			return createDataFlows();
 		case EkumiPackage.EXECUTION:
@@ -135,6 +116,8 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 			return createEventsFromString(eDataType, initialValue);
 		case EkumiPackage.INTERRUPTED_EXECUTION_EXCEPTION:
 			return createInterruptedExecutionExceptionFromString(eDataType, initialValue);
+		case EkumiPackage.EXECUTION_STATUS:
+			return createExecutionStatusFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -160,6 +143,8 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 			return convertEventsToString(eDataType, instanceValue);
 		case EkumiPackage.INTERRUPTED_EXECUTION_EXCEPTION:
 			return convertInterruptedExecutionExceptionToString(eDataType, instanceValue);
+		case EkumiPackage.EXECUTION_STATUS:
+			return convertExecutionStatusToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -253,16 +238,6 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 	public Branch createBranch() {
 		BranchImpl branch = new BranchImpl();
 		return branch;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Context createContext() {
-		ContextImpl context = new ContextImpl();
-		return context;
 	}
 
 	/**
@@ -429,6 +404,24 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 	 * @generated
 	 */
 	public String convertInterruptedExecutionExceptionToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExecutionStatus createExecutionStatusFromString(EDataType eDataType, String initialValue) {
+		return (ExecutionStatus) super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertExecutionStatusToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

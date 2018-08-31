@@ -52,13 +52,13 @@ public interface Execution extends EObject {
 	 * Returns the value of the '<em><b>Context</b></em>' reference.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Context</em>' reference.
-	 * @see #setContext(Context)
+	 * @see #setContext(UnsafeContext)
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getExecution_Context()
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Context#getExecution
+	 * @see fr.kazejiyu.ekumi.core.ekumi.UnsafeContext#getExecution
 	 * @model opposite="execution"
 	 * @generated
 	 */
-	Context getContext();
+	UnsafeContext getContext();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,7 +68,7 @@ public interface Execution extends EObject {
 	 * @see #getContext()
 	 * @generated
 	 */
-	void setContext(Context value);
+	void setContext(UnsafeContext value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -107,5 +107,29 @@ public interface Execution extends EObject {
 	 * @generated
 	 */
 	void join() throws InterruptedExecutionException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void cancel();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	boolean isRunning();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	boolean isCancelled();
 
 } // Execution

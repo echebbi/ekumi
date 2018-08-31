@@ -197,9 +197,9 @@ public class EkumiSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case EkumiPackage.CONTEXT: {
-			Context context = (Context) theEObject;
-			T result = caseContext(context);
+		case EkumiPackage.UNSAFE_CONTEXT: {
+			UnsafeContext unsafeContext = (UnsafeContext) theEObject;
+			T result = caseUnsafeContext(unsafeContext);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -272,9 +272,9 @@ public class EkumiSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case EkumiPackage.EXECUTION_STATUS: {
-			ExecutionStatus executionStatus = (ExecutionStatus) theEObject;
-			T result = caseExecutionStatus(executionStatus);
+		case EkumiPackage.CONTEXT: {
+			Context context = (Context) theEObject;
+			T result = caseContext(context);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -480,6 +480,21 @@ public class EkumiSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Unsafe Context</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Unsafe Context</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUnsafeContext(UnsafeContext object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Context</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -611,21 +626,6 @@ public class EkumiSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseParallelSplit(ParallelSplit object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Execution Status</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Execution Status</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseExecutionStatus(ExecutionStatus object) {
 		return null;
 	}
 

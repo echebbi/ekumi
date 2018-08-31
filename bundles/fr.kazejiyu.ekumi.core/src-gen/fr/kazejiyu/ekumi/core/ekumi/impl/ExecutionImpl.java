@@ -3,10 +3,10 @@
 package fr.kazejiyu.ekumi.core.ekumi.impl;
 
 import fr.kazejiyu.ekumi.core.ekumi.Activity;
-import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.core.ekumi.Execution;
 
+import fr.kazejiyu.ekumi.core.ekumi.UnsafeContext;
 import fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
@@ -54,7 +54,7 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 	 * @generated
 	 * @ordered
 	 */
-	protected Context context;
+	protected UnsafeContext context;
 
 	/**
 	 * The default value of the '{@link #getStartDate() <em>Start Date</em>}' attribute.
@@ -159,10 +159,10 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Context getContext() {
+	public UnsafeContext getContext() {
 		if (context != null && context.eIsProxy()) {
 			InternalEObject oldContext = (InternalEObject) context;
-			context = (Context) eResolveProxy(oldContext);
+			context = (UnsafeContext) eResolveProxy(oldContext);
 			if (context != oldContext) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EkumiPackage.EXECUTION__CONTEXT,
@@ -177,7 +177,7 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Context basicGetContext() {
+	public UnsafeContext basicGetContext() {
 		return context;
 	}
 
@@ -186,8 +186,8 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetContext(Context newContext, NotificationChain msgs) {
-		Context oldContext = context;
+	public NotificationChain basicSetContext(UnsafeContext newContext, NotificationChain msgs) {
+		UnsafeContext oldContext = context;
 		context = newContext;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
@@ -205,15 +205,15 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setContext(Context newContext) {
+	public void setContext(UnsafeContext newContext) {
 		if (newContext != context) {
 			NotificationChain msgs = null;
 			if (context != null)
-				msgs = ((InternalEObject) context).eInverseRemove(this, EkumiPackage.CONTEXT__EXECUTION, Context.class,
-						msgs);
+				msgs = ((InternalEObject) context).eInverseRemove(this, EkumiPackage.UNSAFE_CONTEXT__EXECUTION,
+						UnsafeContext.class, msgs);
 			if (newContext != null)
-				msgs = ((InternalEObject) newContext).eInverseAdd(this, EkumiPackage.CONTEXT__EXECUTION, Context.class,
-						msgs);
+				msgs = ((InternalEObject) newContext).eInverseAdd(this, EkumiPackage.UNSAFE_CONTEXT__EXECUTION,
+						UnsafeContext.class, msgs);
 			msgs = basicSetContext(newContext, msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -267,14 +267,47 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void cancel() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isRunning() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isCancelled() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case EkumiPackage.EXECUTION__CONTEXT:
 			if (context != null)
-				msgs = ((InternalEObject) context).eInverseRemove(this, EkumiPackage.CONTEXT__EXECUTION, Context.class,
-						msgs);
-			return basicSetContext((Context) otherEnd, msgs);
+				msgs = ((InternalEObject) context).eInverseRemove(this, EkumiPackage.UNSAFE_CONTEXT__EXECUTION,
+						UnsafeContext.class, msgs);
+			return basicSetContext((UnsafeContext) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -327,7 +360,7 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 			setActivity((Activity) newValue);
 			return;
 		case EkumiPackage.EXECUTION__CONTEXT:
-			setContext((Context) newValue);
+			setContext((UnsafeContext) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -345,7 +378,7 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 			setActivity((Activity) null);
 			return;
 		case EkumiPackage.EXECUTION__CONTEXT:
-			setContext((Context) null);
+			setContext((UnsafeContext) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -387,6 +420,13 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 			} catch (Throwable throwable) {
 				throw new InvocationTargetException(throwable);
 			}
+		case EkumiPackage.EXECUTION___CANCEL:
+			cancel();
+			return null;
+		case EkumiPackage.EXECUTION___IS_RUNNING:
+			return isRunning();
+		case EkumiPackage.EXECUTION___IS_CANCELLED:
+			return isCancelled();
 		}
 		return super.eInvoke(operationID, arguments);
 	}
