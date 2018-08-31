@@ -9,6 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
+import fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException;
 import fr.kazejiyu.ekumi.core.execution.BasicExecution;
 import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
 import fr.kazejiyu.ekumi.tests.mocks.FakeActivity;
@@ -38,7 +39,7 @@ public class BasicExecutionTest implements WithAssertions {
 	class WhenLaunched {
 		
 		@Test @DisplayName("runs its activity")
-		void runs_its_activity() throws InterruptedException {
+		void runs_its_activity() throws InterruptedException, InterruptedExecutionException {
 			execution.start();
 			execution.join();
 			
@@ -54,6 +55,16 @@ public class BasicExecutionTest implements WithAssertions {
 			long after = System.currentTimeMillis();
 			
 			assertThat(after - before).isLessThan(4000);
+		}
+		
+	}
+	
+	@Nested @DisplayName("before launch")
+	class BeforeLaunch {
+		
+		@Test @DisplayName("can be joined")
+		void can_be_joined() throws InterruptedExecutionException {
+			execution.join();
 		}
 		
 	}

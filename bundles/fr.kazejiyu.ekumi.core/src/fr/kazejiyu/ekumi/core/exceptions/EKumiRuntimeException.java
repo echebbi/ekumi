@@ -1,10 +1,10 @@
 package fr.kazejiyu.ekumi.core.exceptions;
 
 /**
- * A runtime exception that can be thrown by EKumi.<br>
+ * A runtime exception that can be thrown by EKumi components.<br>
  * <br>
- * All the exceptions declared by the framework inherit from class, so that it is easier
- * to filter out all the exceptions related to EKumi.
+ * All the runtime exceptions declared by the framework inherit from this class, 
+ * so that it is easier to filter out all the exceptions related to EKumi.
  *
  * @author Emmanuel CHEBBI
  */

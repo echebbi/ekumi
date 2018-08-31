@@ -22,6 +22,7 @@ import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.core.ekumi.Execution;
+import fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus;
 import fr.kazejiyu.ekumi.core.ekumi.Variable;
 import fr.kazejiyu.ekumi.core.execution.events.Events;
 import fr.kazejiyu.ekumi.core.execution.events.impl.BasicEvents;
@@ -204,6 +205,17 @@ public class ContextImpl extends MinimalEObjectImpl.Container implements Context
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ExecutionStatus execution() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -314,6 +326,8 @@ public class ContextImpl extends MinimalEObjectImpl.Container implements Context
 		switch (operationID) {
 		case EkumiPackage.CONTEXT___EVENTS:
 			return events();
+		case EkumiPackage.CONTEXT___EXECUTION:
+			return execution();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

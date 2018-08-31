@@ -118,6 +118,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Context">
     <eOperations name="events" eType="#//Events"/>
+    <eOperations name="execution" eType="#//ExecutionStatus"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
         eType="#//Variable" derived="true" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="execution" eType="#//Execution"
@@ -135,11 +136,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Execution">
     <eOperations name="start"/>
-    <eOperations name="join"/>
+    <eOperations name="join" eExceptions="#//InterruptedExecutionException"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="#//Context"
-        eOpposite="#//Context/execution"/>
+        eOpposite="#//Context/execution.1"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="startDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"
         changeable="false" unsettable="true"/>
   </eClassifiers>
@@ -162,4 +163,9 @@
         eType="#//Activity" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="Events" instanceClassName="fr.kazejiyu.ekumi.core.execution.events.Events"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutionStatus" abstract="true" interface="true">
+    <eOperations name="isStarted"/>
+    <eOperations name="isCancelled"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="InterruptedExecutionException" instanceClassName="fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException"/>
 </ecore:EPackage>

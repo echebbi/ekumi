@@ -2,6 +2,7 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.util;
 
+import fr.kazejiyu.ekumi.core.ekumi.*;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -267,6 +268,13 @@ public class EkumiSwitch<T> extends Switch<T> {
 			T result = caseParallelSplit(parallelSplit);
 			if (result == null)
 				result = caseActivity(parallelSplit);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case EkumiPackage.EXECUTION_STATUS: {
+			ExecutionStatus executionStatus = (ExecutionStatus) theEObject;
+			T result = caseExecutionStatus(executionStatus);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -603,6 +611,21 @@ public class EkumiSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseParallelSplit(ParallelSplit object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Execution Status</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Execution Status</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExecutionStatus(ExecutionStatus object) {
 		return null;
 	}
 

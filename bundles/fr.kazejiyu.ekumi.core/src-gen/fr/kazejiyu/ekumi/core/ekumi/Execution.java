@@ -2,6 +2,7 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi;
 
+import fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException;
 import java.util.Date;
 import org.eclipse.emf.ecore.EObject;
 
@@ -102,9 +103,9 @@ public interface Execution extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model exceptions="fr.kazejiyu.ekumi.core.ekumi.InterruptedExecutionException"
 	 * @generated
 	 */
-	void join();
+	void join() throws InterruptedExecutionException;
 
 } // Execution

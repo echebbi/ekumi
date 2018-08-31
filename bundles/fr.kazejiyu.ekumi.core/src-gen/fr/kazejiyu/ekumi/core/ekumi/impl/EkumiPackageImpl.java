@@ -15,6 +15,7 @@ import fr.kazejiyu.ekumi.core.ekumi.DriverRunner;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.core.ekumi.Execution;
+import fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus;
 import fr.kazejiyu.ekumi.core.ekumi.ListOfVariables;
 import fr.kazejiyu.ekumi.core.ekumi.MapOfVariables;
 import fr.kazejiyu.ekumi.core.ekumi.MultiChoice;
@@ -30,6 +31,7 @@ import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
 import fr.kazejiyu.ekumi.core.ekumi.Task;
 import fr.kazejiyu.ekumi.core.ekumi.TestResult;
 import fr.kazejiyu.ekumi.core.ekumi.Variable;
+import fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException;
 import fr.kazejiyu.ekumi.core.execution.events.Events;
 import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
 
@@ -77,6 +79,13 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * @generated
 	 */
 	private EClass parallelSplitEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass executionStatusEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -238,6 +247,13 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * @generated
 	 */
 	private EDataType eventsEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType interruptedExecutionExceptionEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -444,6 +460,33 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 */
 	public EReference getParallelSplit_Branches() {
 		return (EReference) parallelSplitEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getExecutionStatus() {
+		return executionStatusEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getExecutionStatus__IsStarted() {
+		return executionStatusEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getExecutionStatus__IsCancelled() {
+		return executionStatusEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -766,6 +809,15 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getContext__Execution() {
+		return contextEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSerializable() {
 		return serializableEClass;
 	}
@@ -991,6 +1043,15 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getInterruptedExecutionException() {
+		return interruptedExecutionExceptionEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EkumiFactory getEkumiFactory() {
 		return (EkumiFactory) getEFactoryInstance();
 	}
@@ -1077,6 +1138,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		createEReference(contextEClass, CONTEXT__VARIABLES);
 		createEReference(contextEClass, CONTEXT__EXECUTION);
 		createEOperation(contextEClass, CONTEXT___EVENTS);
+		createEOperation(contextEClass, CONTEXT___EXECUTION);
 
 		serializableEClass = createEClass(SERIALIZABLE);
 
@@ -1108,6 +1170,10 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		parallelSplitEClass = createEClass(PARALLEL_SPLIT);
 		createEReference(parallelSplitEClass, PARALLEL_SPLIT__BRANCHES);
 
+		executionStatusEClass = createEClass(EXECUTION_STATUS);
+		createEOperation(executionStatusEClass, EXECUTION_STATUS___IS_STARTED);
+		createEOperation(executionStatusEClass, EXECUTION_STATUS___IS_CANCELLED);
+
 		// Create enums
 		statusEEnum = createEEnum(STATUS);
 		testResultEEnum = createEEnum(TEST_RESULT);
@@ -1116,6 +1182,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		scriptingLanguageEDataType = createEDataType(SCRIPTING_LANGUAGE);
 		dataTypeEDataType = createEDataType(DATA_TYPE);
 		eventsEDataType = createEDataType(EVENTS);
+		interruptedExecutionExceptionEDataType = createEDataType(INTERRUPTED_EXECUTION_EXCEPTION);
 	}
 
 	/**
@@ -1297,6 +1364,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 
 		initEOperation(getContext__Events(), this.getEvents(), "events", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEOperation(getContext__Execution(), this.getExecutionStatus(), "execution", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(serializableEClass, Serializable.class, "Serializable", IS_ABSTRACT, IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
@@ -1327,7 +1396,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 
 		initEOperation(getExecution__Start(), null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getExecution__Join(), null, "join", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getExecution__Join(), null, "join", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, this.getInterruptedExecutionException());
 
 		initEClass(listOfVariablesEClass, ListOfVariables.class, "ListOfVariables", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1357,6 +1427,13 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 				ParallelSplit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(executionStatusEClass, ExecutionStatus.class, "ExecutionStatus", IS_ABSTRACT, IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEOperation(getExecutionStatus__IsStarted(), null, "isStarted", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getExecutionStatus__IsCancelled(), null, "isCancelled", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(statusEEnum, Status.class, "Status");
 		addEEnumLiteral(statusEEnum, Status.IDLE);
@@ -1373,6 +1450,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 				!IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(dataTypeEDataType, DataType.class, "DataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(eventsEDataType, Events.class, "Events", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(interruptedExecutionExceptionEDataType, InterruptedExecutionException.class,
+				"InterruptedExecutionException", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
