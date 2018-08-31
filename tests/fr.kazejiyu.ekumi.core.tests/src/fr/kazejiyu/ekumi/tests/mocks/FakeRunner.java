@@ -1,15 +1,18 @@
 package fr.kazejiyu.ekumi.tests.mocks;
 
 import fr.kazejiyu.ekumi.core.ekumi.Context;
-import fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl;
+import fr.kazejiyu.ekumi.core.ekumi.impl.RunnerImpl;
 
-public class FakeActivity extends ActivityImpl {
+public class FakeRunner extends RunnerImpl {
 	
 	private int callsToRun = 0;
+	
+	private Context contextOnRun;
 	
 	@Override
 	public void run(Context context) {
 		++callsToRun;
+		contextOnRun = context;
 	}
 	
 	public boolean hasBeenRun() {
@@ -18,6 +21,10 @@ public class FakeActivity extends ActivityImpl {
 	
 	public boolean hasBeenRunOnce() {
 		return callsToRun == 1;
+	}
+	
+	public Context getContextOnRun() {
+		return contextOnRun;
 	}
 
 }

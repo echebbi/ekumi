@@ -8,30 +8,36 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 
 import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.ScriptedTask;
+import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
 import fr.kazejiyu.ekumi.tests.mocks.BrokenRunner;
-import fr.kazejiyu.ekumi.tests.mocks.SetVariableRunner;
+import fr.kazejiyu.ekumi.tests.mocks.FakeRunner;
 
 /**
  * Tests the behaviour of {@link ScriptedTask} instances.
  * 
  * @author Emmanuel CHEBBI
  */
+@ExtendWith(MockitoExtension.class)
 @DisplayName("A Scripted Task")
 public class ScriptedTaskTest {
+	
+	private ScriptedTask task;
+	
+	@Mock
+	private Context context;
 	
 	@Nested
 	@DisplayName("without runner")
 	class Empty {
-		private ScriptedTask task;
-		private Context context;
 		
 		@BeforeEach
 		void initialize() {
-			context = EkumiFactory.eINSTANCE.createContext();
 			task = EkumiFactory.eINSTANCE.createScriptedTask();
 		}
 		
@@ -54,21 +60,21 @@ public class ScriptedTaskTest {
 	@Nested
 	@DisplayName("with a runner")
 	class NonEmpty {
-		private ScriptedTask task;
-		private Context context;
+		
+		private FakeRunner script;
 		
 		@BeforeEach
 		void initialize() {
-			context = EkumiFactory.eINSTANCE.createContext();
+			script = new FakeRunner();
 			task = EkumiFactory.eINSTANCE.createScriptedTask();
-			task.setScript(new SetVariableRunner("piou", "loulou"));
+			task.setScript(script);
 		}
 		
 		// isEmpty()
 		
-		@Test @DisplayName("has a non null script")
+		@Test @DisplayName("has the expected script")
 		void is_not_empty() {
-			assertThat(task.getScript()).isNotNull();
+			assertThat(task.getScript()).isEqualTo(script);
 		}
 		
 		// run()
@@ -79,11 +85,21 @@ public class ScriptedTaskTest {
 			assertThat(task.getStatus()).isEqualTo(SUCCEEDED);
 		}
 		
-		@Test @DisplayName("gives the right context to its script")
-		void gives_the_rigth_context_to_its_script() {
-			task.run(context);
-			assertThat(context.get("piou")).isPresent();
-			assertThat(context.get("piou").get().getValue()).isEqualTo("loulou");
+		@Nested @DisplayName("during the execution")
+		class DuringTheExecution {
+		
+			@Test @DisplayName("gives the right context to its script")
+			void gives_the_rigth_context_to_its_script() {
+				task.run(context);
+				assertThat(script.getContextOnRun()).isSameAs(context);
+			}
+			
+			@Test @DisplayName("executes its script")
+			void executes_its_script() {
+				task.run(context);
+				assertThat(script.hasBeenRunOnce()).isTrue();
+			}
+			
 		}
 	}
 	
@@ -91,11 +107,9 @@ public class ScriptedTaskTest {
 	@DisplayName("with a broken runner")
 	class WhenContainingABrokenActivity {
 		private ScriptedTask corrupted;
-		private Context context;
 		
 		@BeforeEach
 		void initialize() {
-			context = EkumiFactory.eINSTANCE.createContext();
 			corrupted = EkumiFactory.eINSTANCE.createScriptedTask();
 			corrupted.setScript(new BrokenRunner());
 		}

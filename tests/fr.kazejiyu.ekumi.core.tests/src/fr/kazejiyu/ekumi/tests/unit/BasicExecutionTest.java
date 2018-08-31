@@ -1,38 +1,53 @@
 package fr.kazejiyu.ekumi.tests.unit;
 
+import org.assertj.core.api.SoftAssertions;
 import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 
-import fr.kazejiyu.ekumi.core.ekumi.Context;
-import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
+import fr.kazejiyu.ekumi.core.ekumi.Status;
 import fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException;
 import fr.kazejiyu.ekumi.core.execution.BasicExecution;
-import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
 import fr.kazejiyu.ekumi.tests.mocks.FakeActivity;
+import fr.kazejiyu.ekumi.tests.mocks.LoopUntilCancelled;
 import fr.kazejiyu.ekumi.tests.mocks.WaitFor;
 
-@ExtendWith(MockitoExtension.class)
 @DisplayName("A BasicExecution")
 public class BasicExecutionTest implements WithAssertions {
 
 	private BasicExecution execution;
-	
-	private Context context;
+
 	
 	private FakeActivity activity;
 	
 	@BeforeEach
 	void setupSUT() {
-		context = EkumiFactory.eINSTANCE.createContext();
 		activity = new FakeActivity();
 		
 		execution = new BasicExecution();
-		execution.setContext(context);
 		execution.setActivity(activity);
+	}
+	
+	@Nested @DisplayName("before launch")
+	class BeforeLaunch {
+		
+		@Test @DisplayName("can be joined")
+		void can_be_joined() throws InterruptedExecutionException {
+			execution.join();
+		}
+		
+		@Test @DisplayName("is not running")
+		void is_not_running() {
+			assertThat(execution.isRunning()).isFalse();
+		}
+		
+		@Test @DisplayName("is not cancelled")
+		void is_not_cancelled() {
+			assertThat(execution.isCancelled()).isFalse();
+		}
+		
 	}
 	
 	@Nested @DisplayName("when launched")
@@ -57,14 +72,68 @@ public class BasicExecutionTest implements WithAssertions {
 			assertThat(after - before).isLessThan(4000);
 		}
 		
+		@Test @DisplayName("is running")
+		void is_running() {
+			execution.start();
+			assertThat(execution.isRunning()).isTrue();
+		}
+		
+		@Test @DisplayName("is not cancelled")
+		void is_not_cancelled() {
+			execution.start();
+			assertThat(execution.isCancelled()).isFalse();
+		}
+		
 	}
 	
-	@Nested @DisplayName("before launch")
-	class BeforeLaunch {
+	@Nested @DisplayName("when cancelled")
+	class WhenCancelled {
 		
-		@Test @DisplayName("can be joined")
-		void can_be_joined() throws InterruptedExecutionException {
+		private LoopUntilCancelled activity;
+		
+		@BeforeEach
+		void prepareToLoop() {
+			activity = new LoopUntilCancelled();
+			
+			execution = new BasicExecution();
+			execution.setActivity(activity);
+		}
+		
+		@Test @DisplayName("indicates to its activities to stop")
+		void indicates_to_its_activities_to_stop() throws InterruptedExecutionException {
+			execution.start();
+			execution.cancel();
 			execution.join();
+			
+			assertThat(activity.getStatus()).isEqualTo(Status.CANCELLED);
+		}
+		
+		@Test @DisplayName("is not running")
+		void is_not_running() throws InterruptedExecutionException {
+			SoftAssertions softly = new SoftAssertions();
+			
+			execution.start();
+			execution.cancel();
+			
+			softly.assertThat(execution.isRunning()).isFalse();
+			
+			execution.join();
+			
+			softly.assertThat(execution.isRunning()).isFalse();
+		}
+		
+		@Test @DisplayName("is cancelled")
+		void is_cancelled() throws InterruptedExecutionException {
+			SoftAssertions softly = new SoftAssertions();
+			
+			execution.start();
+			execution.cancel();
+			
+			softly.assertThat(execution.isCancelled()).isTrue();
+			
+			execution.join();
+			
+			softly.assertThat(execution.isCancelled()).isTrue();
 		}
 		
 	}

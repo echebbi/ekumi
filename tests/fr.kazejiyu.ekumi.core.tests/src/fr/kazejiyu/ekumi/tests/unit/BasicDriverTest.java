@@ -6,11 +6,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 
 import fr.kazejiyu.ekumi.core.activities.impl.BasicDriver;
 import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.Driver;
-import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.Status;
 import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
 import fr.kazejiyu.ekumi.tests.mocks.BrokenActivity;
@@ -23,12 +23,12 @@ public class BasicDriverTest implements WithAssertions {
 	
 	private Driver driver;
 	
+	@Mock
 	private Context context;
 	
 	@BeforeEach
 	void createDriver() {
 		driver = new BasicDriver();
-		context = EkumiFactory.eINSTANCE.createContext();
 	}
 	
 	@Nested
@@ -67,8 +67,6 @@ public class BasicDriverTest implements WithAssertions {
 		
 		@BeforeEach
 		void createDriver() {
-			context = EkumiFactory.eINSTANCE.createContext();
-			
 			driver = new BasicDriver();
 			driver.setDriven(new BrokenActivity());
 			driver.setScript(new DumbDriverRunner());
@@ -93,8 +91,6 @@ public class BasicDriverTest implements WithAssertions {
 		
 		@BeforeEach
 		void createDriver() {
-			context = EkumiFactory.eINSTANCE.createContext();
-			
 			driver = new BasicDriver();
 			driver.setDriven(new DoNothing());
 			driver.setScript(new DumbDriverRunner());
