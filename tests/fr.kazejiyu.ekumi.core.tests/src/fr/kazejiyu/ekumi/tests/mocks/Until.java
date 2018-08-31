@@ -2,27 +2,23 @@ package fr.kazejiyu.ekumi.tests.mocks;
 
 import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
-import fr.kazejiyu.ekumi.core.ekumi.Variable;
 import fr.kazejiyu.ekumi.core.ekumi.impl.ConditionImpl;
 
 public class Until extends ConditionImpl {
 	
-	private final String variable;
-	
 	private final int max;
 	
-	public Until(String variable, int max) {
-		this.variable = variable;
+	private final Count counter;
+	
+	public Until(Count counter, int max) {
 		this.max = max;
+		this.counter = counter;
 	}
 
 	@Override
 	public boolean isVerified(StructuredLoop loop, Context context) {
-		return context.get(variable).map(Variable::getValue)
-									.filter(Number.class::isInstance)
-									.map(Number.class::cast)
-									.filter(value -> value.doubleValue() >= max)
-									.isPresent();
+		// CAUTION: assumes that isVerified is called only once per loop
+		return counter.getValue() >= max; 
 	}
 	
 }

@@ -8,14 +8,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
+import fr.kazejiyu.ekumi.core.ekumi.Activity;
 import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
-import fr.kazejiyu.ekumi.core.ekumi.Variable;
 import fr.kazejiyu.ekumi.tests.mocks.BrokenActivity;
-import fr.kazejiyu.ekumi.tests.mocks.IncrementVarActivity;
-import fr.kazejiyu.ekumi.tests.mocks.SetNameInContext;
+import fr.kazejiyu.ekumi.tests.mocks.Count;
+import fr.kazejiyu.ekumi.tests.mocks.DoNothing;
 import fr.kazejiyu.ekumi.tests.mocks.Until;
 
 /**
@@ -26,15 +27,16 @@ import fr.kazejiyu.ekumi.tests.mocks.Until;
 @DisplayName("A Structured Loop")
 public class StructuredLoopTest {
 	
+	@Mock
+	private Context context;
+	
 	@Nested
 	@DisplayName("when empty")
 	class Empty {
 		private StructuredLoop empty;
-		private Context context;
 		
 		@BeforeEach
 		void initialize() {
-			context = EkumiFactory.eINSTANCE.createContext();
 			empty = EkumiFactory.eINSTANCE.createStructuredLoop();
 		}
 		
@@ -57,19 +59,24 @@ public class StructuredLoopTest {
 	@Nested
 	@DisplayName("when not empty")
 	class NonEmpty {
+		
 		private StructuredLoop loop;
+		
+		private Activity activity;
 		
 		@BeforeEach
 		void initialize() {
+			activity = new DoNothing();
+			
 			loop = EkumiFactory.eINSTANCE.createStructuredLoop();
-			loop.setActivity(new SetNameInContext("A"));
+			loop.setActivity(activity);
 		}
 		
 		// isEmpty()
 		
 		@Test @DisplayName("has an activity")
 		void is_not_empty() {
-			assertThat(loop.getActivity()).isNotNull();
+			assertThat(loop.getActivity()).isSameAs(activity);
 		}
 		
 		// NEITHER PRE-CONDITION NOR POST-CONDITION => run() would lead to an infinite loop
@@ -79,12 +86,10 @@ public class StructuredLoopTest {
 	@DisplayName("when containing an activity that throws")
 	class WhenContainingABrokenActivity {
 		private StructuredLoop corrupted;
-		private Context context;
 		
 		@BeforeEach
 		void initialize() {
 			corrupted = EkumiFactory.eINSTANCE.createStructuredLoop();
-			context = EkumiFactory.eINSTANCE.createContext();
 			corrupted.setActivity(new BrokenActivity());
 		}
 		
@@ -105,29 +110,31 @@ public class StructuredLoopTest {
 	@Nested
 	@DisplayName("when having a pre-condition")
 	class WhenHavingAPreCondition {
+		
 		private StructuredLoop whileDo;
-		private Context context;
+		private Count counter;
 		
 		private final int LIMIT = 5;
 		
 		@BeforeEach
 		void initialize() {
+			counter = new Count();
+			
 			whileDo = EkumiFactory.eINSTANCE.createStructuredLoop();
-			context = EkumiFactory.eINSTANCE.createContext();
-			whileDo.setActivity(new IncrementVarActivity("counter"));
-			whileDo.setPreCondition(new Until("counter", LIMIT));
+			whileDo.setActivity(counter);
+			whileDo.setPreCondition(new Until(counter, LIMIT));
 		}
 		
 		@Test @DisplayName("stops when the pre-condition is fulfilled")
 		void stops_when_the_pre_condition_is_fulfilled() {
 			whileDo.run(context);
-			assertThat(context.get("counter")).map(Variable::getValue).contains(LIMIT);
+			assertThat(counter.getValue()).isEqualTo(LIMIT);
 		}
 		
 		@Test @DisplayName("does not execute its activity if the pre-condition is not fulfilled")
 		void executes_its_activity_at_least_once() {
-			whileDo.setPreCondition(new Until("counter", -1));
-			assertThat(context.get("counter")).isEmpty();
+			whileDo.setPreCondition(new Until(counter, -1));
+			assertThat(counter.getValue()).isZero();
 		}
 		
 	}
@@ -138,27 +145,30 @@ public class StructuredLoopTest {
 		private StructuredLoop doWhile;
 		private Context context;
 		
+		private Count counter;
+		
 		private final int LIMIT = 5;
 		
 		@BeforeEach
 		void initialize() {
+			counter = new Count();
+			
 			doWhile = EkumiFactory.eINSTANCE.createStructuredLoop();
-			context = EkumiFactory.eINSTANCE.createContext();
-			doWhile.setActivity(new IncrementVarActivity("counter"));
-			doWhile.setPostCondition(new Until("counter", LIMIT));
+			doWhile.setActivity(counter);
+			doWhile.setPostCondition(new Until(counter, LIMIT));
 		}
 		
 		@Test @DisplayName("stops when the post-condition is fulfilled")
 		void stops_when_the_pre_condition_is_fulfilled() {
 			doWhile.run(context);
-			assertThat(context.get("counter")).map(Variable::getValue).contains(LIMIT);
+			assertThat(counter.getValue()).isEqualTo(LIMIT);
 		}
 		
 		@Test @DisplayName("executes its activity at least once")
 		void executes_its_activity_at_least_once() {
-			doWhile.setPostCondition(new Until("counter", -1));
+			doWhile.setPostCondition(new Until(counter, -1));
 			doWhile.run(context);
-			assertThat(context.get("counter")).map(Variable::getValue).contains(0);
+			assertThat(counter.getValue()).isEqualTo(1);
 		}
 		
 	}
