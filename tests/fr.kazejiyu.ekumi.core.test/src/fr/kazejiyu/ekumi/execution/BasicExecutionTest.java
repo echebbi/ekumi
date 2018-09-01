@@ -2,6 +2,7 @@ package fr.kazejiyu.ekumi.execution;
 
 import org.assertj.core.api.SoftAssertions;
 import org.assertj.core.api.WithAssertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -12,6 +13,7 @@ import fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException;
 import fr.kazejiyu.ekumi.core.execution.BasicExecution;
 import fr.kazejiyu.ekumi.tests.common.fake.activities.FakeActivity;
 import fr.kazejiyu.ekumi.tests.common.fake.activities.LoopUntilCancelled;
+import fr.kazejiyu.ekumi.tests.common.fake.activities.LoopUntilEnded;
 import fr.kazejiyu.ekumi.tests.common.fake.activities.WaitFor;
 
 @DisplayName("A BasicExecution")
@@ -52,12 +54,29 @@ public class BasicExecutionTest implements WithAssertions {
 	@Nested @DisplayName("when launched")
 	class WhenLaunched {
 		
+		// Prevents the execution from ending too early during tests
+		private LoopUntilEnded activity;
+		
+		@BeforeEach
+		void createExecution() {
+			activity = new LoopUntilEnded();
+			
+			execution = new BasicExecution();
+			execution.setActivity(activity);
+		}
+		
+		@AfterEach
+		void preventActivityFromRunningForever() {
+			activity.ends();
+		}
+		
 		@Test @DisplayName("runs its activity")
 		void runs_its_activity() throws InterruptedException, InterruptedExecutionException {
 			execution.start();
+			activity.ends();
 			execution.join();
 			
-			assertThat(activity.hasBeenRun()).isTrue();
+			assertThat(activity.getStatus()).isEqualTo(Status.SUCCEEDED);
 		}
 		
 		@Test @DisplayName("runs its activity in background") 
