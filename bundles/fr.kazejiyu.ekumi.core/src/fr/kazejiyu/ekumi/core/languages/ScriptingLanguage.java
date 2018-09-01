@@ -10,6 +10,11 @@ import fr.kazejiyu.ekumi.core.languages.exceptions.ScriptLoadingFailureException
  * Defines a scripting language that can be used by EKumi. 
  * 
  * @author Emmanuel CHEBBI
+ * 
+ * TODO [Refactor] ScriptingLanguage should not depend on org.eclipse.core.resources
+ * 				   The resolve method should just take a String id, which could then 
+ * 				   make the bundle platform-agnostic (EKumi should not require Eclipse
+ * 				   in order to be used).
  */
 public interface ScriptingLanguage {
 
