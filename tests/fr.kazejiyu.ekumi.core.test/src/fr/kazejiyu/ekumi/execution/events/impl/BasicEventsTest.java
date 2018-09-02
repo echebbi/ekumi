@@ -1,6 +1,7 @@
 package fr.kazejiyu.ekumi.execution.events.impl;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.only;
+import static org.mockito.Mockito.verify;
 
 import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,28 +12,37 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 
 import fr.kazejiyu.ekumi.core.ekumi.Activity;
+import fr.kazejiyu.ekumi.core.ekumi.Execution;
 import fr.kazejiyu.ekumi.core.execution.events.impl.BasicEvents;
 import fr.kazejiyu.ekumi.core.execution.listeners.ActivityListener;
+import fr.kazejiyu.ekumi.core.execution.listeners.ExecutionListener;
+import fr.kazejiyu.ekumi.core.execution.listeners.OnActivityFailed;
+import fr.kazejiyu.ekumi.core.execution.listeners.OnActivityStarted;
+import fr.kazejiyu.ekumi.core.execution.listeners.OnActivitySucceeded;
+import fr.kazejiyu.ekumi.core.execution.listeners.OnExecutionStarted;
+import fr.kazejiyu.ekumi.core.execution.listeners.OnExecutionSucceeded;
 import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("A BasicEvents")
 public class BasicEventsTest implements WithAssertions {
 	
-	@Mock
-	private Activity activity;
-	
-	@Mock
-	private ActivityListener listener;
-	
+	// Software under test
 	private BasicEvents events;
 	
+	@Mock private Activity activity;
+	
+	@Mock private Execution execution;
+	
+	@Mock private ActivityListener activityListener;
+	
+	@Mock private ExecutionListener executionListener;
+	
 	@BeforeEach
-	void setupSUT() {
+	void createEventsAndRegisterListeners() {
 		events = new BasicEvents();
-		events.onActivityFailed(listener);
-		events.onActivityStarted(listener);
-		events.onActivitySucceeded(listener);
+		events.onActivityEvent(activityListener);
+		events.onExecutionEvent(executionListener);
 	}
 	
 	@Nested @DisplayName("when registering new listeners")
@@ -59,30 +69,102 @@ public class BasicEventsTest implements WithAssertions {
 			);
 		}
 		
+		@Test @DisplayName("throws if OnActivityListener is null") 
+		void throws_if_OnActivityListener_is_null() {
+			assertThatNullPointerException().isThrownBy(() ->
+				events.onActivityEvent(null)
+			);
+		}
+		
+		@Test @DisplayName("throws if OnExecutionStarted is null")
+		void throws_if_OnExecutionStarted_is_null() {
+			assertThatNullPointerException().isThrownBy(() ->
+				events.onExecutionStarted(null)
+			);
+		}
+		
+		@Test @DisplayName("throws if OnExecutionSucceeded is null")
+		void throws_if_OnExecutionSucceeded_is_null() {
+			assertThatNullPointerException().isThrownBy(() ->
+				events.onExecutionSucceeded(null)
+			);
+		}
+		
+		@Test @DisplayName("throws if OnExecutionListener is null")
+		void throws_if_OnExecutionListener_is_null() {
+			assertThatNullPointerException().isThrownBy(() ->
+				events.onExecutionEvent(null)
+			);
+		}
+		
 	}
 	
 	@Nested @DisplayName("when broadcasting new events")
 	class WhenBroadcastingNewEvents {
 		
 		@Test @DisplayName("notifies all its listeners on activity started")
-		void notifiies_all_its_listeners_on_activity_started() {
+		void notifies_all_its_listeners_on_activity_started(@Mock OnActivityStarted onStarted) {
+			// given a dedicated listener
+			events.onActivityStarted(onStarted);
+			
+			// when the event is broadcasted
 			events.hasStarted(activity);
 			
-			verify(listener, only()).onActivityStarted(activity);
+			// then the listeners are notified
+			verify(onStarted, only()).onActivityStarted(activity);
+			verify(activityListener, only()).onActivityStarted(activity);
 		}
 		
 		@Test @DisplayName("notifies all its listeners on activity failed")
-		void notifiies_all_its_listeners_on_activity_failed() {
+		void notifies_all_its_listeners_on_activity_failed(@Mock OnActivityFailed onFailed) {
+			// given a dedicated listener
+			events.onActivityFailed(onFailed);
+			
+			// when the event is broadcasted
 			events.hasFailed(activity);
 			
-			verify(listener, only()).onActivityFailed(activity);
+			// then listeners are notified
+			verify(onFailed, only()).onActivityFailed(activity);
+			verify(activityListener, only()).onActivityFailed(activity);
 		}
 		
 		@Test @DisplayName("notifies all its listeners on activity succeeded")
-		void notifiies_all_its_listeners_on_activity_succeeded() {
+		void notifies_all_its_listeners_on_activity_succeeded(@Mock OnActivitySucceeded onSucceeded) {
+			// given a dedicated listener
+			events.onActivitySucceeded(onSucceeded);
+			
+			// when the event is broadcasted
 			events.hasSucceeded(activity);
 			
-			verify(listener, only()).onActivitySucceeded(activity);
+			// then the listeners are notified
+			verify(onSucceeded, only()).onActivitySucceeded(activity);
+			verify(activityListener, only()).onActivitySucceeded(activity);
+		}
+		
+		@Test @DisplayName("notifies all its listeners on execution started")
+		void notifies_all_its_listeners_on_execution_started(@Mock OnExecutionStarted onStarted) {
+			// given a dedicated listener
+			events.onExecutionStarted(onStarted);
+			
+			// when the event is broadcasted
+			events.hasStarted(execution);
+			
+			// then listeners are notified
+			verify(onStarted, only()).onExecutionStarted(execution);
+			verify(executionListener, only()).onExecutionStarted(execution);
+		}
+		
+		@Test @DisplayName("notifies all its listeners on execution succeeded")
+		void notifies_all_its_listeners_on_execution_succeeded(@Mock OnExecutionSucceeded onSucceeded) {
+			// given a dedicated listener
+			events.onExecutionSucceeded(onSucceeded);
+			
+			// when the event is broadcasted
+			events.hasSucceeded(execution);
+			
+			// then the listeners are notified
+			verify(onSucceeded, only()).onExecutionSucceeded(execution);
+			verify(executionListener, only()).onExecutionSucceeded(execution);
 		}
 		
 	}

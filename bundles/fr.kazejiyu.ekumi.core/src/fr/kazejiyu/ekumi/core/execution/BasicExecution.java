@@ -57,9 +57,11 @@ public class BasicExecution extends ExecutionImpl {
 	private void runActivityInBackground() {
 		job = Job.create("Executing " + getActivity().getName(), (ICoreRunnable) monitor -> {
 			context.setExecutionStatus(new BasicExecutionStatus(this, monitor));
+			context.getEvents().hasStarted(this);
 			
 			getActivity().run(context.safe());
 			
+			context.getEvents().hasSucceeded(this);
 			status = SUCCEEDED;
 		});
 		job.schedule();
