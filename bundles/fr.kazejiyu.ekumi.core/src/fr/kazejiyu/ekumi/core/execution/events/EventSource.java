@@ -1,6 +1,7 @@
 package fr.kazejiyu.ekumi.core.execution.events;
 
 import fr.kazejiyu.ekumi.core.ekumi.Activity;
+import fr.kazejiyu.ekumi.core.ekumi.Execution;
 import fr.kazejiyu.ekumi.core.execution.listeners.ActivityListener;
 
 /**
@@ -36,5 +37,23 @@ public interface EventSource {
 	 * 			Must not be {@code null}.
 	 */
 	void hasFailed(Activity activity);
+	
+	/**
+	 * Triggers an event indicating that execution has started.
+	 * 
+	 * @param execution
+	 * 			The execution that has started.
+	 * 			Must not be {@code null}.
+	 */
+	void hasStarted(Execution execution);
+	
+	/**
+	 * Triggers an event indicating that execution has succeeded.
+	 * 
+	 * @param execution
+	 * 			The execution that ended successfully.
+	 * 			Must not be {@code null}.
+	 */
+	void hasSucceeded(Execution execution);
 
 }
