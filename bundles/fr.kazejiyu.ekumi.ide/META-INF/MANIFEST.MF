@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EKumi Eclipse IDE Integration
+Bundle-SymbolicName: fr.kazejiyu.ekumi.ide
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: fr.kazejiyu.ekumi.ide
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: fr.kazejiyu.ekumi.core,
+ org.eclipse.e4.core.contexts;bundle-version="1.6.0",
+ org.eclipse.e4.core.di;bundle-version="1.6.100",
+ org.eclipse.core.runtime,
+ org.eclipse.emf.ecore.xmi
