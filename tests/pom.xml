@@ -55,6 +55,9 @@
 
                                 <!-- Ignore Exceptions -->
                                 <exclude>**/*Exception.class</exclude>
+
+                                <!-- Ignore untestable Activator -->
+                                <exclude>**/EKumiPlugin.class</exclude>
                             </excludes>
                         </configuration>
                         <executions>
