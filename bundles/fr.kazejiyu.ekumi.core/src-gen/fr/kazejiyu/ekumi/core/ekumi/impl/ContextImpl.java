@@ -31,7 +31,7 @@ import fr.kazejiyu.ekumi.core.execution.events.Events;
  *
  * @generated
  */
-public abstract class ContextImpl extends MinimalEObjectImpl.Container implements Context {
+public class ContextImpl extends MinimalEObjectImpl.Container implements Context {
 
 	/**
 	 * The cached value of the '{@link #getVariables() <em>Variables</em>}' reference list.

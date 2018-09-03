@@ -79,6 +79,8 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 			return createMultiChoice();
 		case EkumiPackage.BRANCH:
 			return createBranch();
+		case EkumiPackage.UNSAFE_CONTEXT:
+			return createUnsafeContext();
 		case EkumiPackage.DATA_FLOWS:
 			return createDataFlows();
 		case EkumiPackage.EXECUTION:
@@ -91,6 +93,8 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 			return createDriver();
 		case EkumiPackage.PARALLEL_SPLIT:
 			return createParallelSplit();
+		case EkumiPackage.CONTEXT:
+			return createContext();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -185,6 +189,16 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Context createContext() {
+		ContextImpl context = new ContextImpl();
+		return context;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public DataFlow createDataFlow() {
 		DataFlowImpl dataFlow = new DataFlowImpl();
 		return dataFlow;
@@ -238,6 +252,16 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 	public Branch createBranch() {
 		BranchImpl branch = new BranchImpl();
 		return branch;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public UnsafeContext createUnsafeContext() {
+		UnsafeContextImpl unsafeContext = new UnsafeContextImpl();
+		return unsafeContext;
 	}
 
 	/**

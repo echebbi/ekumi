@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getUnsafeContext()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface UnsafeContext extends EObject {
@@ -47,11 +47,11 @@ public interface UnsafeContext extends EObject {
 	 * Returns the value of the '<em><b>Execution</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.Execution#getContext <em>Context</em>}'.
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Execution</em>' reference.
+	 * @return the value of the '<em>Execution</em>' container reference.
 	 * @see #setExecution(Execution)
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getUnsafeContext_Execution()
 	 * @see fr.kazejiyu.ekumi.core.ekumi.Execution#getContext
-	 * @model opposite="context"
+	 * @model opposite="context" transient="false"
 	 * @generated
 	 */
 	Execution getExecution();
@@ -60,7 +60,7 @@ public interface UnsafeContext extends EObject {
 	 * <!-- begin-user-doc -->
 	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.UnsafeContext#getExecution <em>Execution</em>}' reference.
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Execution</em>' reference.
+	 * @param value the new value of the '<em>Execution</em>' container reference.
 	 * @see #getExecution()
 	 * @generated
 	 */
@@ -73,7 +73,7 @@ public interface UnsafeContext extends EObject {
 	 * @return the value of the '<em>Events</em>' attribute.
 	 * @see #setEvents(Events)
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getUnsafeContext_Events()
-	 * @model dataType="fr.kazejiyu.ekumi.core.ekumi.Events"
+	 * @model dataType="fr.kazejiyu.ekumi.core.ekumi.Events" transient="true"
 	 * @generated
 	 */
 	Events getEvents();
@@ -95,7 +95,7 @@ public interface UnsafeContext extends EObject {
 	 * @return the value of the '<em>Execution Status</em>' attribute.
 	 * @see #setExecutionStatus(ExecutionStatus)
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getUnsafeContext_ExecutionStatus()
-	 * @model dataType="fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus"
+	 * @model dataType="fr.kazejiyu.ekumi.core.ekumi.ExecutionStatus" transient="true"
 	 * @generated
 	 */
 	ExecutionStatus getExecutionStatus();

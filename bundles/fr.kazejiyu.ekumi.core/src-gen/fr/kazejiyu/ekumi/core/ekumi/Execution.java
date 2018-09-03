@@ -51,11 +51,11 @@ public interface Execution extends EObject {
 	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Context</b></em>' reference.
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Context</em>' reference.
+	 * @return the value of the '<em>Context</em>' containment reference.
 	 * @see #setContext(UnsafeContext)
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getExecution_Context()
 	 * @see fr.kazejiyu.ekumi.core.ekumi.UnsafeContext#getExecution
-	 * @model opposite="execution"
+	 * @model opposite="execution" containment="true"
 	 * @generated
 	 */
 	UnsafeContext getContext();
@@ -64,7 +64,7 @@ public interface Execution extends EObject {
 	 * <!-- begin-user-doc -->
 	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Execution#getContext <em>Context</em>}' reference.
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Context</em>' reference.
+	 * @param value the new value of the '<em>Context</em>' containment reference.
 	 * @see #getContext()
 	 * @generated
 	 */
@@ -75,22 +75,22 @@ public interface Execution extends EObject {
 	 * Returns the value of the '<em><b>Start Date</b></em>' attribute.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Start Date</em>' attribute.
-	 * @see #isSetStartDate()
+	 * @see #setStartDate(Date)
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getExecution_StartDate()
-	 * @model unsettable="true" changeable="false"
+	 * @model unique="false"
 	 * @generated
 	 */
 	Date getStartDate();
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * Returns whether the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Execution#getStartDate <em>Start Date</em>}' attribute is set.
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Execution#getStartDate <em>Start Date</em>}' attribute.
 	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Start Date</em>' attribute is set.
+	 * @param value the new value of the '<em>Start Date</em>' attribute.
 	 * @see #getStartDate()
 	 * @generated
 	 */
-	boolean isSetStartDate();
+	void setStartDate(Date value);
 
 	/**
 	 * <!-- begin-user-doc -->

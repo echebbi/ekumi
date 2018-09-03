@@ -47,7 +47,7 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 	protected Activity activity;
 
 	/**
-	 * The cached value of the '{@link #getContext() <em>Context</em>}' reference.
+	 * The cached value of the '{@link #getContext() <em>Context</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getContext()
@@ -75,15 +75,6 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 	 * @ordered
 	 */
 	protected Date startDate = START_DATE_EDEFAULT;
-
-	/**
-	 * This is true if the Start Date attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean startDateESet;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -160,24 +151,6 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 	 * @generated
 	 */
 	public UnsafeContext getContext() {
-		if (context != null && context.eIsProxy()) {
-			InternalEObject oldContext = (InternalEObject) context;
-			context = (UnsafeContext) eResolveProxy(oldContext);
-			if (context != oldContext) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EkumiPackage.EXECUTION__CONTEXT,
-							oldContext, context));
-			}
-		}
-		return context;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public UnsafeContext basicGetContext() {
 		return context;
 	}
 
@@ -236,8 +209,12 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetStartDate() {
-		return startDateESet;
+	public void setStartDate(Date newStartDate) {
+		Date oldStartDate = startDate;
+		startDate = newStartDate;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.EXECUTION__START_DATE, oldStartDate,
+					startDate));
 	}
 
 	/**
@@ -305,8 +282,8 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 		switch (featureID) {
 		case EkumiPackage.EXECUTION__CONTEXT:
 			if (context != null)
-				msgs = ((InternalEObject) context).eInverseRemove(this, EkumiPackage.UNSAFE_CONTEXT__EXECUTION,
-						UnsafeContext.class, msgs);
+				msgs = ((InternalEObject) context).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - EkumiPackage.EXECUTION__CONTEXT, null, msgs);
 			return basicSetContext((UnsafeContext) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -339,9 +316,7 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 		case EkumiPackage.EXECUTION__ACTIVITY:
 			return getActivity();
 		case EkumiPackage.EXECUTION__CONTEXT:
-			if (resolve)
-				return getContext();
-			return basicGetContext();
+			return getContext();
 		case EkumiPackage.EXECUTION__START_DATE:
 			return getStartDate();
 		}
@@ -362,6 +337,9 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 		case EkumiPackage.EXECUTION__CONTEXT:
 			setContext((UnsafeContext) newValue);
 			return;
+		case EkumiPackage.EXECUTION__START_DATE:
+			setStartDate((Date) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -380,6 +358,9 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 		case EkumiPackage.EXECUTION__CONTEXT:
 			setContext((UnsafeContext) null);
 			return;
+		case EkumiPackage.EXECUTION__START_DATE:
+			setStartDate(START_DATE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -397,7 +378,7 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 		case EkumiPackage.EXECUTION__CONTEXT:
 			return context != null;
 		case EkumiPackage.EXECUTION__START_DATE:
-			return isSetStartDate();
+			return START_DATE_EDEFAULT == null ? startDate != null : !START_DATE_EDEFAULT.equals(startDate);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -443,10 +424,7 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (startDate: ");
-		if (startDateESet)
-			result.append(startDate);
-		else
-			result.append("<unset>");
+		result.append(startDate);
 		result.append(')');
 		return result.toString();
 	}

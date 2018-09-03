@@ -53,13 +53,6 @@ public class SequenceTest {
 			assertThat(empty.getActivities()).isEmpty();
 		}
 		
-		// isSetActivities()
-		
-		@Test @DisplayName("has its activites set")
-		void has_its_activities_set() {
-			assertThat(empty.isSetActivities()).isTrue();
-		}
-		
 		// run()
 		
 		@Test @DisplayName("has 'finished' status after run")
@@ -91,13 +84,6 @@ public class SequenceTest {
 			seq.setRoot(activities.get(0));
 			seq.getRoot().setSuccessor(activities.get(1));
 			seq.getRoot().getSuccessor().setSuccessor(activities.get(2));
-		}
-		
-		// isSetActivities()
-		
-		@Test @DisplayName("has its activites set")
-		void has_its_activities_set() {
-			assertThat(seq.isSetActivities()).isTrue();
 		}
 		
 		// getActivities()

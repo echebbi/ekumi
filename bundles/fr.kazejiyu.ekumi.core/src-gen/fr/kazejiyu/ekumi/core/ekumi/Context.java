@@ -22,7 +22,7 @@ import fr.kazejiyu.ekumi.core.execution.events.Events;
  * </ul>
  *
  * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getContext()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface Context extends EObject {
@@ -34,7 +34,7 @@ public interface Context extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Variables</em>' reference list.
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getContext_Variables()
-	 * @model derived="true"
+	 * @model transient="true" derived="true"
 	 * @generated
 	 */
 	EList<Variable> getVariables();

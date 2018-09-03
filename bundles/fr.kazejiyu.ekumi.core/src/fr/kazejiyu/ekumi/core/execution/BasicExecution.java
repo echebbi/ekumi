@@ -48,7 +48,7 @@ public class BasicExecution extends ExecutionImpl {
 		Adapter adapter = new StatusToEventAdapter(getContext().getEvents());
 		getActivity().eAdapters().add(adapter);
 		
-		startDate = new Date();
+		setStartDate(new Date());
 		
 		status = RUNNING;
 		runActivityInBackground();                          
