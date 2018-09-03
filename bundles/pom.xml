@@ -15,6 +15,8 @@
 
 	<modules>
         <module>fr.kazejiyu.ekumi.core</module>
+        <module>fr.kazejiyu.ekumi.core.edit</module>
+        <module>fr.kazejiyu.ekumi.core.editor</module>
         <module>fr.kazejiyu.ekumi.datatypes</module>
         <module>fr.kazejiyu.ekumi.languages.java</module>
 	</modules>
