@@ -53,21 +53,10 @@ public interface Sequence extends Activity {
 	 * The list contents are of type {@link fr.kazejiyu.ekumi.core.ekumi.Activity}.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Activities</em>' reference list.
-	 * @see #isSetActivities()
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getSequence_Activities()
-	 * @model unsettable="true" changeable="false" volatile="true" derived="true"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Activity> getActivities();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * Returns whether the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Sequence#getActivities <em>Activities</em>}' reference list is set.
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Activities</em>' reference list is set.
-	 * @see #getActivities()
-	 * @generated
-	 */
-	boolean isSetActivities();
 
 } // Sequence

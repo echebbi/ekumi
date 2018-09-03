@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -46,7 +47,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public abstract class UnsafeContextImpl extends MinimalEObjectImpl.Container implements UnsafeContext {
+public class UnsafeContextImpl extends MinimalEObjectImpl.Container implements UnsafeContext {
 	/**
 	 * The cached value of the '{@link #getVariables() <em>Variables</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -56,16 +57,6 @@ public abstract class UnsafeContextImpl extends MinimalEObjectImpl.Container imp
 	 * @ordered
 	 */
 	protected EList<Variable> variables;
-
-	/**
-	 * The cached value of the '{@link #getExecution() <em>Execution</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExecution()
-	 * @generated
-	 * @ordered
-	 */
-	protected Execution execution;
 
 	/**
 	 * The default value of the '{@link #getEvents() <em>Events</em>}' attribute.
@@ -145,25 +136,9 @@ public abstract class UnsafeContextImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 */
 	public Execution getExecution() {
-		if (execution != null && execution.eIsProxy()) {
-			InternalEObject oldExecution = (InternalEObject) execution;
-			execution = (Execution) eResolveProxy(oldExecution);
-			if (execution != oldExecution) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EkumiPackage.UNSAFE_CONTEXT__EXECUTION,
-							oldExecution, execution));
-			}
-		}
-		return execution;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Execution basicGetExecution() {
-		return execution;
+		if (eContainerFeatureID() != EkumiPackage.UNSAFE_CONTEXT__EXECUTION)
+			return null;
+		return (Execution) eInternalContainer();
 	}
 
 	/**
@@ -172,16 +147,7 @@ public abstract class UnsafeContextImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 */
 	public NotificationChain basicSetExecution(Execution newExecution, NotificationChain msgs) {
-		Execution oldExecution = execution;
-		execution = newExecution;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					EkumiPackage.UNSAFE_CONTEXT__EXECUTION, oldExecution, newExecution);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
+		msgs = eBasicSetContainer((InternalEObject) newExecution, EkumiPackage.UNSAFE_CONTEXT__EXECUTION, msgs);
 		return msgs;
 	}
 
@@ -191,11 +157,13 @@ public abstract class UnsafeContextImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 */
 	public void setExecution(Execution newExecution) {
-		if (newExecution != execution) {
+		if (newExecution != eInternalContainer()
+				|| (eContainerFeatureID() != EkumiPackage.UNSAFE_CONTEXT__EXECUTION && newExecution != null)) {
+			if (EcoreUtil.isAncestor(this, newExecution))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (execution != null)
-				msgs = ((InternalEObject) execution).eInverseRemove(this, EkumiPackage.EXECUTION__CONTEXT,
-						Execution.class, msgs);
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
 			if (newExecution != null)
 				msgs = ((InternalEObject) newExecution).eInverseAdd(this, EkumiPackage.EXECUTION__CONTEXT,
 						Execution.class, msgs);
@@ -271,9 +239,8 @@ public abstract class UnsafeContextImpl extends MinimalEObjectImpl.Container imp
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case EkumiPackage.UNSAFE_CONTEXT__EXECUTION:
-			if (execution != null)
-				msgs = ((InternalEObject) execution).eInverseRemove(this, EkumiPackage.EXECUTION__CONTEXT,
-						Execution.class, msgs);
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
 			return basicSetExecution((Execution) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -301,14 +268,26 @@ public abstract class UnsafeContextImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+		case EkumiPackage.UNSAFE_CONTEXT__EXECUTION:
+			return eInternalContainer().eInverseRemove(this, EkumiPackage.EXECUTION__CONTEXT, Execution.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case EkumiPackage.UNSAFE_CONTEXT__VARIABLES:
 			return getVariables();
 		case EkumiPackage.UNSAFE_CONTEXT__EXECUTION:
-			if (resolve)
-				return getExecution();
-			return basicGetExecution();
+			return getExecution();
 		case EkumiPackage.UNSAFE_CONTEXT__EVENTS:
 			return getEvents();
 		case EkumiPackage.UNSAFE_CONTEXT__EXECUTION_STATUS:
@@ -378,7 +357,7 @@ public abstract class UnsafeContextImpl extends MinimalEObjectImpl.Container imp
 		case EkumiPackage.UNSAFE_CONTEXT__VARIABLES:
 			return variables != null && !variables.isEmpty();
 		case EkumiPackage.UNSAFE_CONTEXT__EXECUTION:
-			return execution != null;
+			return getExecution() != null;
 		case EkumiPackage.UNSAFE_CONTEXT__EVENTS:
 			return EVENTS_EDEFAULT == null ? events != null : !EVENTS_EDEFAULT.equals(events);
 		case EkumiPackage.UNSAFE_CONTEXT__EXECUTION_STATUS:

@@ -95,6 +95,15 @@ public interface EkumiFactory extends EFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Returns a new instance of class '<em>Unsafe Context</em>'.
+	 * <!-- end-user-doc -->
+	 * @return a new instance of class '<em>Unsafe Context</em>'.
+	 * @generated
+	 */
+	UnsafeContext createUnsafeContext();
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * Returns a new instance of class '<em>Data Flows</em>'.
 	 * <!-- end-user-doc -->
 	 * @return a new instance of class '<em>Data Flows</em>'.
@@ -146,6 +155,15 @@ public interface EkumiFactory extends EFactory {
 	 * @generated
 	 */
 	ParallelSplit createParallelSplit();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Returns a new instance of class '<em>Context</em>'.
+	 * <!-- end-user-doc -->
+	 * @return a new instance of class '<em>Context</em>'.
+	 * @generated
+	 */
+	Context createContext();
 
 	/**
 	 * <!-- begin-user-doc -->

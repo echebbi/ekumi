@@ -1271,7 +1271,7 @@ public interface EkumiPackage extends EPackage {
 	int UNSAFE_CONTEXT__VARIABLES = 0;
 
 	/**
-	 * The feature id for the '<em><b>Execution</b></em>' reference.
+	 * The feature id for the '<em><b>Execution</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1446,7 +1446,7 @@ public interface EkumiPackage extends EPackage {
 	int EXECUTION__ACTIVITY = 0;
 
 	/**
-	 * The feature id for the '<em><b>Context</b></em>' reference.
+	 * The feature id for the '<em><b>Context</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2597,10 +2597,10 @@ public interface EkumiPackage extends EPackage {
 	EReference getUnsafeContext_Variables();
 
 	/**
-	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.core.ekumi.UnsafeContext#getExecution <em>Execution</em>}'.
+	 * Returns the meta object for the container reference '{@link fr.kazejiyu.ekumi.core.ekumi.UnsafeContext#getExecution <em>Execution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Execution</em>'.
+	 * @return the meta object for the container reference '<em>Execution</em>'.
 	 * @see fr.kazejiyu.ekumi.core.ekumi.UnsafeContext#getExecution()
 	 * @see #getUnsafeContext()
 	 * @generated
@@ -2765,10 +2765,10 @@ public interface EkumiPackage extends EPackage {
 	EReference getExecution_Activity();
 
 	/**
-	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.core.ekumi.Execution#getContext <em>Context</em>}'.
+	 * Returns the meta object for the containment reference '{@link fr.kazejiyu.ekumi.core.ekumi.Execution#getContext <em>Context</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Context</em>'.
+	 * @return the meta object for the containment reference '<em>Context</em>'.
 	 * @see fr.kazejiyu.ekumi.core.ekumi.Execution#getContext()
 	 * @see #getExecution()
 	 * @generated
@@ -3445,7 +3445,7 @@ public interface EkumiPackage extends EPackage {
 		EReference UNSAFE_CONTEXT__VARIABLES = eINSTANCE.getUnsafeContext_Variables();
 
 		/**
-		 * The meta object literal for the '<em><b>Execution</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Execution</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -3581,7 +3581,7 @@ public interface EkumiPackage extends EPackage {
 		EReference EXECUTION__ACTIVITY = eINSTANCE.getExecution_Activity();
 
 		/**
-		 * The meta object literal for the '<em><b>Context</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Context</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

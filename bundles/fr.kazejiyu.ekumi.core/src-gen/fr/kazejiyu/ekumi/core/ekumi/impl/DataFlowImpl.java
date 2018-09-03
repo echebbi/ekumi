@@ -285,7 +285,7 @@ public class DataFlowImpl extends MinimalEObjectImpl.Container implements DataFl
 		case EkumiPackage.DATA_FLOW__DESTINATION:
 			return isSetDestination();
 		case EkumiPackage.DATA_FLOW__SOURCE:
-			return isSetSource();
+			return basicGetSource() != null;
 		}
 		return super.eIsSet(featureID);
 	}

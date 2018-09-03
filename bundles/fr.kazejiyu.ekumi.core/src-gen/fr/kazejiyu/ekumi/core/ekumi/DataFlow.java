@@ -96,22 +96,11 @@ public interface DataFlow extends EObject {
 	 * Returns the value of the '<em><b>Source</b></em>' reference.
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Source</em>' reference.
-	 * @see #isSetSource()
 	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getDataFlow_Source()
-	 * @model unsettable="true" changeable="false" volatile="true" derived="true"
+	 * @model changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='return input.getOwner();'"
 	 * @generated
 	 */
 	Activity getSource();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * Returns whether the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlow#getSource <em>Source</em>}' reference is set.
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Source</em>' reference is set.
-	 * @see #getSource()
-	 * @generated
-	 */
-	boolean isSetSource();
 
 } // DataFlow

@@ -124,17 +124,6 @@ public class SequenceImpl extends ActivityImpl implements Sequence {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetActivities() {
-		// TODO: implement this method to return whether the 'Activities' reference list is set
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -201,7 +190,7 @@ public class SequenceImpl extends ActivityImpl implements Sequence {
 		case EkumiPackage.SEQUENCE__ROOT:
 			return root != null;
 		case EkumiPackage.SEQUENCE__ACTIVITIES:
-			return isSetActivities();
+			return !getActivities().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

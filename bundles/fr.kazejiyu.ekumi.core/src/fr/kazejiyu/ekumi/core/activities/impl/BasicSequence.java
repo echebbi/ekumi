@@ -26,11 +26,6 @@ public class BasicSequence extends SequenceImpl {
 	}
 	
 	@Override
-	public boolean isSetActivities() {
-		return true;
-	}
-	
-	@Override
 	public void run(Context context) {
 		boolean oneActivityHasFailed = false;
 		
