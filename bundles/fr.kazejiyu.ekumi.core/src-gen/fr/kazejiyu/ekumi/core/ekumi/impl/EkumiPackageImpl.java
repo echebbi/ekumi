@@ -15,6 +15,7 @@ import fr.kazejiyu.ekumi.core.ekumi.DriverRunner;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.core.ekumi.Execution;
+import fr.kazejiyu.ekumi.core.ekumi.History;
 import fr.kazejiyu.ekumi.core.ekumi.ListOfVariables;
 import fr.kazejiyu.ekumi.core.ekumi.MapOfVariables;
 import fr.kazejiyu.ekumi.core.ekumi.MultiChoice;
@@ -164,6 +165,13 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * @generated
 	 */
 	private EClass contextEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass historyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -853,6 +861,24 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getHistory() {
+		return historyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHistory_Executions() {
+		return (EReference) historyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSerializable() {
 		return serializableEClass;
 	}
@@ -1241,6 +1267,9 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		createEOperation(contextEClass, CONTEXT___EVENTS);
 		createEOperation(contextEClass, CONTEXT___EXECUTION);
 
+		historyEClass = createEClass(HISTORY);
+		createEReference(historyEClass, HISTORY__EXECUTIONS);
+
 		// Create enums
 		statusEEnum = createEEnum(STATUS);
 		testResultEEnum = createEEnum(TEST_RESULT);
@@ -1515,6 +1544,11 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		initEOperation(getContext__Events(), this.getEvents(), "events", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getContext__Execution(), this.getExecutionStatus(), "execution", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(historyEClass, History.class, "History", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getHistory_Executions(), this.getExecution(), null, "executions", null, 0, -1, History.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(statusEEnum, Status.class, "Status");

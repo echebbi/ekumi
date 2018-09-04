@@ -2027,6 +2027,43 @@ public interface EkumiPackage extends EPackage {
 	int CONTEXT_OPERATION_COUNT = 2;
 
 	/**
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.HistoryImpl <em>History</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.HistoryImpl
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getHistory()
+	 * @generated
+	 */
+	int HISTORY = 23;
+
+	/**
+	 * The feature id for the '<em><b>Executions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HISTORY__EXECUTIONS = 0;
+
+	/**
+	 * The number of structural features of the '<em>History</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HISTORY_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>History</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HISTORY_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '<em>Execution Status</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2034,7 +2071,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getExecutionStatus()
 	 * @generated
 	 */
-	int EXECUTION_STATUS = 29;
+	int EXECUTION_STATUS = 30;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.Status <em>Status</em>}' enum.
@@ -2044,7 +2081,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getStatus()
 	 * @generated
 	 */
-	int STATUS = 23;
+	int STATUS = 24;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.TestResult <em>Test Result</em>}' enum.
@@ -2054,7 +2091,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getTestResult()
 	 * @generated
 	 */
-	int TEST_RESULT = 24;
+	int TEST_RESULT = 25;
 
 	/**
 	 * The meta object id for the '<em>Scripting Language</em>' data type.
@@ -2064,7 +2101,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getScriptingLanguage()
 	 * @generated
 	 */
-	int SCRIPTING_LANGUAGE = 25;
+	int SCRIPTING_LANGUAGE = 26;
 
 	/**
 	 * The meta object id for the '<em>Data Type</em>' data type.
@@ -2074,7 +2111,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getDataType()
 	 * @generated
 	 */
-	int DATA_TYPE = 26;
+	int DATA_TYPE = 27;
 
 	/**
 	 * The meta object id for the '<em>Events</em>' data type.
@@ -2084,7 +2121,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getEvents()
 	 * @generated
 	 */
-	int EVENTS = 27;
+	int EVENTS = 28;
 
 	/**
 	 * The meta object id for the '<em>Interrupted Execution Exception</em>' data type.
@@ -2094,7 +2131,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getInterruptedExecutionException()
 	 * @generated
 	 */
-	int INTERRUPTED_EXECUTION_EXCEPTION = 28;
+	int INTERRUPTED_EXECUTION_EXCEPTION = 29;
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Activity <em>Activity</em>}'.
@@ -2679,6 +2716,27 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getContext__Execution();
+
+	/**
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.History <em>History</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>History</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.History
+	 * @generated
+	 */
+	EClass getHistory();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.core.ekumi.History#getExecutions <em>Executions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Executions</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.History#getExecutions()
+	 * @see #getHistory()
+	 * @generated
+	 */
+	EReference getHistory_Executions();
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Serializable <em>Serializable</em>}'.
@@ -3509,6 +3567,24 @@ public interface EkumiPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation CONTEXT___EXECUTION = eINSTANCE.getContext__Execution();
+
+		/**
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.HistoryImpl <em>History</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.HistoryImpl
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getHistory()
+		 * @generated
+		 */
+		EClass HISTORY = eINSTANCE.getHistory();
+
+		/**
+		 * The meta object literal for the '<em><b>Executions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HISTORY__EXECUTIONS = eINSTANCE.getHistory_Executions();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.Serializable <em>Serializable</em>}' class.
