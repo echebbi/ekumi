@@ -95,6 +95,8 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 			return createParallelSplit();
 		case EkumiPackage.CONTEXT:
 			return createContext();
+		case EkumiPackage.HISTORY:
+			return createHistory();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -192,6 +194,16 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 	public Context createContext() {
 		ContextImpl context = new ContextImpl();
 		return context;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public History createHistory() {
+		HistoryImpl history = new HistoryImpl();
+		return history;
 	}
 
 	/**

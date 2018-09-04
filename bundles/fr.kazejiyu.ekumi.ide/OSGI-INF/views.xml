@@ -6,5 +6,5 @@
       <provide interface="org.eclipse.e4.core.contexts.IContextFunction"/>
    </service>
    <property name="service.context.key" type="String"
-      value="fr.kazejiyu.ekumi.core.execution.ExecutionHistory"/>
+      value="fr.kazejiyu.ekumi.core.ekumi.History"/>
 </scr:component>

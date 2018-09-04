@@ -139,5 +139,8 @@
       <genOperations ecoreOperation="ekumi.ecore#//Context/events"/>
       <genOperations ecoreOperation="ekumi.ecore#//Context/execution"/>
     </genClasses>
+    <genClasses ecoreClass="ekumi.ecore#//History">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ekumi.ecore#//History/executions"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

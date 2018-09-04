@@ -3,9 +3,11 @@ package fr.kazejiyu.ekumi.ide.history;
 import java.io.File;
 import java.nio.file.Path;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.Map;
+import java.util.stream.Collectors;
 
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -15,21 +17,23 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import fr.kazejiyu.ekumi.core.EKumiPlugin;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.core.ekumi.Execution;
-import fr.kazejiyu.ekumi.core.execution.ExecutionHistory;
+import fr.kazejiyu.ekumi.core.ekumi.impl.HistoryImpl;
 
 /**
  * The history of the {@link Execution}s performed in the Eclipse IDE
  * and persisted in the workspace. 
  */
-public class WorkspaceExecutionHistory implements ExecutionHistory {
+public class WorkspaceExecutionHistory extends HistoryImpl {
 	
 	@Override
-	public Iterator<Execution> iterator() {
+	public EList<Execution> getExecutions() {
 		// TODO [Refactor] This is a dumb implementation to test, will be refactored
-		return Arrays.stream(getLocation().toFile().listFiles(File::isDirectory))
-					 .flatMap(file -> Arrays.stream(file.listFiles(f -> f.getName().endsWith(".ekumi"))))
-					 .map(file -> loadExecutionFromFile(file))
-					 .iterator();
+		return new BasicEList<>(
+			Arrays.stream(getLocation().toFile().listFiles(File::isDirectory))
+			      .flatMap(file -> Arrays.stream(file.listFiles(f -> f.getName().endsWith(".ekumi"))))
+				  .map(file -> loadExecutionFromFile(file))
+				  .collect(Collectors.toList())
+		);
 	}
 	
 	public static Path getLocation() {

@@ -441,6 +441,29 @@ public class EkumiItemProviderAdapterFactory extends EkumiAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.core.ekumi.History} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected HistoryItemProvider historyItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.core.ekumi.History}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createHistoryAdapter() {
+		if (historyItemProvider == null) {
+			historyItemProvider = new HistoryItemProvider(this);
+		}
+
+		return historyItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -571,6 +594,8 @@ public class EkumiItemProviderAdapterFactory extends EkumiAdapterFactory
 			parallelSplitItemProvider.dispose();
 		if (contextItemProvider != null)
 			contextItemProvider.dispose();
+		if (historyItemProvider != null)
+			historyItemProvider.dispose();
 	}
 
 }
