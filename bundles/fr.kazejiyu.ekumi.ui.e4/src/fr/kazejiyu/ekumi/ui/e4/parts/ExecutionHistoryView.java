@@ -7,6 +7,7 @@ import javax.inject.Named;
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.services.IServiceConstants;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.ISelection;
@@ -17,15 +18,9 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Tree;
 
-import fr.kazejiyu.ekumi.core.activities.impl.BasicSequence;
-import fr.kazejiyu.ekumi.core.activities.impl.BasicStructuredLoop;
-import fr.kazejiyu.ekumi.core.ekumi.Activity;
-import fr.kazejiyu.ekumi.core.ekumi.Execution;
 import fr.kazejiyu.ekumi.core.ekumi.History;
-import fr.kazejiyu.ekumi.core.ekumi.provider.EkumiItemProviderAdapterFactory;
+import fr.kazejiyu.ekumi.core.ekumi.provider.EkumiDecoratorAdapterFactory;
 import fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException;
-import fr.kazejiyu.ekumi.core.execution.BasicExecution;
-import fr.kazejiyu.ekumi.ide.history.PersistExecutionInWorkspace;
 
 /**
  * A view displaying an {@link ExecutionHistory} within a {@link TableTreeViewer}.
@@ -41,29 +36,11 @@ public class ExecutionHistoryView {
 
 	@PostConstruct
 	public void createPartControl(Composite parent) throws InterruptedExecutionException {
-		BasicSequence a = new BasicSequence();
-		a.setId("myId");
-		a.setName("a Sequence");
-		
-		Activity b = new BasicStructuredLoop();
-		b.setId("m");
-		b.setName("a Loop");
-		
-		a.setRoot(b);
-
-		Execution ex = new BasicExecution();
-		ex.setActivity(a);
-		
-		ex.getContext().getEvents().onExecutionEvent(new PersistExecutionInWorkspace());
-		ex.start();
-		ex.join();
-		
-		
 		viewer = new TreeViewer(parent, SWT.BORDER);
 		Tree tree = viewer.getTree();
 		tree.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 3, 1));
 		
-		EkumiItemProviderAdapterFactory adapterFactory = new EkumiItemProviderAdapterFactory();
+		AdapterFactory adapterFactory = new EkumiDecoratorAdapterFactory();
 		viewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
 		viewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		viewer.setInput(history);

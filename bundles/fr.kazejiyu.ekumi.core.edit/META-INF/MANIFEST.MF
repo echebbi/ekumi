@@ -13,3 +13,4 @@ Require-Bundle: org.eclipse.core.runtime,
  fr.kazejiyu.ekumi.core;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: fr.kazejiyu.ekumi.core.edit
