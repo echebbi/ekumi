@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: EKumi Languages
-Bundle-SymbolicName: fr.kazejiyu.ekumi.languages;singleton:=true
+Bundle-Name: EKumi Java Language
+Bundle-SymbolicName: fr.kazejiyu.ekumi.languages.java;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: fr.kazejiyu.ekumi.core;bundle-version="0.1.0",
@@ -12,3 +12,4 @@ Require-Bundle: fr.kazejiyu.ekumi.core;bundle-version="0.1.0",
 Export-Package: fr.kazejiyu.ekumi.languages,
  fr.kazejiyu.ekumi.languages.java
 Bundle-Vendor: Emmanuel CHEBBI
+Automatic-Module-Name: fr.kazejiyu.ekumi.languages
