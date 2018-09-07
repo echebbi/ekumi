@@ -30,6 +30,8 @@ import fr.kazejiyu.ekumi.core.ekumi.Runner;
 import fr.kazejiyu.ekumi.core.ekumi.Script;
 import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
 import fr.kazejiyu.ekumi.core.languages.exceptions.ScriptLoadingFailureException;
+import fr.kazejiyu.ekumi.languages.java.inject.EventsModule;
+import fr.kazejiyu.ekumi.languages.java.inject.ExecutionStatusModule;
 
 /**
  * Loads {@link Script}s written in Java.<br>
@@ -203,7 +205,8 @@ public final class JavaLanguage implements ScriptingLanguage {
 	/** @return the list of modules that should be used by Guice injector */
 	private static Collection<Module> createModules(Context context) {
 		return Arrays.asList(
-				
+				new EventsModule(context.events()),
+				new ExecutionStatusModule(context.execution())
 		);
 	}
 
