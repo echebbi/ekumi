@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="fr.kazejiyu.ekumi.target" sequenceNumber="33">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><?pde version="3.8"?><target name="fr.kazejiyu.ekumi.target" sequenceNumber="33">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.junit.jupiter.api" version="5.1.0.v20180327-1502"/>
@@ -15,11 +14,14 @@
 <unit id="org.mockito" version="2.13.0.v20180426-1843"/>
 <unit id="org.objenesis" version="2.6.0.v20180420-1519"/>
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20180606145124/repository"/>
+	<unit id="com.google.inject" version="3.0.0.v201605172100"/>
+	<unit id="com.google.inject.source" version="3.0.0.v201605172100"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.sdk.feature.group" version="2.13.0.v20170609-0928"/>
 <unit id="org.eclipse.equinox.sdk.feature.group" version="3.13.4.v20180322-2228"/>
 <repository location="http://download.eclipse.org/releases/oxygen/"/>
+	<unit id="org.eclipse.sdk.feature.group" version="4.7.3.v20180330-0919"/>
 </location>
 </locations>
 </target>
