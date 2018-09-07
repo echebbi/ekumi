@@ -4,6 +4,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.core.resources.IProject;
@@ -17,7 +19,13 @@ import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.launching.JavaRuntime;
 import org.osgi.framework.Bundle;
 
+import com.google.inject.CreationException;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.google.inject.Module;
+
 import fr.kazejiyu.ekumi.core.ekumi.Condition;
+import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.Runner;
 import fr.kazejiyu.ekumi.core.ekumi.Script;
 import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
@@ -46,9 +54,14 @@ import fr.kazejiyu.ekumi.core.languages.exceptions.ScriptLoadingFailureException
 public final class JavaLanguage implements ScriptingLanguage {
 
 	@Override
-	public Runner resolveRunner(String identifier) {
+	public Runner resolveRunner(String identifier, Context context) {
 		try {
-			return resolve(identifier, Runner.class);
+			Runner runner = resolve(identifier, Runner.class);
+			
+			if (context == null)
+				return runner;
+			
+			return injected(runner, context);
 			
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			throw new ScriptLoadingFailureException("Unable to instantiate a Runner from path: " + identifier, e); 
@@ -56,9 +69,14 @@ public final class JavaLanguage implements ScriptingLanguage {
 	}
 
 	@Override
-	public Condition resolveCondition(String identifier) {
+	public Condition resolveCondition(String identifier, Context context) {
 		try {
-			return resolve(identifier, Condition.class);
+			Condition condition = resolve(identifier, Condition.class);
+			
+			if (context == null)
+				return condition;
+			
+			return injected(condition, context);
 			
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			throw new ScriptLoadingFailureException("Unable to instantiate a Condition from path: " + identifier, e); 
@@ -156,6 +174,37 @@ public final class JavaLanguage implements ScriptingLanguage {
 		URL[] urls = urlList.toArray(new URL[urlList.size()]);
 		
 		return new URLClassLoader(urls, parentClassLoader);
+	}
+	
+	/**
+	 * Injects the given script with data of the given context, then returns it.
+	 * 
+	 * @param script
+	 * 			The script to inject. Must not be {@code null}.
+	 * @param context
+	 * 			The context bringing the data available for injection. Must not be {@code null}.
+	 * 
+	 * @return the injected script.
+	 * 
+	 * @throws ScriptLoadingFailureException if an error occurs during the injection.
+	 */
+	private static <T extends Script> T injected(T script, Context context) {
+		try {
+			Injector injector = Guice.createInjector(createModules(context));
+			injector.injectMembers(script);
+			
+			return script;
+			
+		} catch (CreationException e) {
+			throw new ScriptLoadingFailureException("An error occurred while injecting " + script, e);
+		}
+	}
+	
+	/** @return the list of modules that should be used by Guice injector */
+	private static Collection<Module> createModules(Context context) {
+		return Arrays.asList(
+				
+		);
 	}
 
 }
