@@ -21,6 +21,7 @@
 
         <!-- Test fragments -->
         <module>fr.kazejiyu.ekumi.core.test</module>
+        <module>fr.kazejiyu.ekumi.languages.java.test</module>
 	</modules>
     
     
