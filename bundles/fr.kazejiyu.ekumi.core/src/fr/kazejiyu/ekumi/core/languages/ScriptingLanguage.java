@@ -4,6 +4,7 @@ import fr.kazejiyu.ekumi.core.ekumi.Condition;
 import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.Execution;
 import fr.kazejiyu.ekumi.core.ekumi.Runner;
+import fr.kazejiyu.ekumi.core.languages.exceptions.IllegalScripIdentifierException;
 import fr.kazejiyu.ekumi.core.languages.exceptions.ScriptLoadingFailureException;
 
 /**
@@ -27,6 +28,7 @@ public interface ScriptingLanguage {
 	 * @return a runner that can be handled by EKumi.
 	 * 
 	 * @throws ScriptLoadingFailureException if the script cannot be loaded.
+	 * @throws IllegalScripIdentifierException if the given identifier is not properly formatted.
 	 */
 	Runner resolveRunner(String identifier, Context context);
 
@@ -44,6 +46,7 @@ public interface ScriptingLanguage {
 	 * @return a condition that can be handled by EKumi.
 	 * 
 	 * @throws ScriptLoadingFailureException if the script cannot be loaded.
+	 * @throws IllegalScripIdentifierException if the given identifier is not properly formatted.
 	 */
 	Condition resolveCondition(String identifier, Context context);
 

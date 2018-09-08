@@ -29,6 +29,7 @@ import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.Runner;
 import fr.kazejiyu.ekumi.core.ekumi.Script;
 import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
+import fr.kazejiyu.ekumi.core.languages.exceptions.IllegalScripIdentifierException;
 import fr.kazejiyu.ekumi.core.languages.exceptions.ScriptLoadingFailureException;
 import fr.kazejiyu.ekumi.languages.java.inject.EventsModule;
 import fr.kazejiyu.ekumi.languages.java.inject.ExecutionStatusModule;
@@ -37,19 +38,22 @@ import fr.kazejiyu.ekumi.languages.java.inject.ExecutionStatusModule;
  * Loads {@link Script}s written in Java.<br>
  * <br>
  * In order to resolve the script, an instance of this class expects a unique String identifier.
- * This identifier must be the fully qualified name of the script's class next to the if of its project or bundle,
- * the two separated by a semicolon.<br>
+ * This identifier must be made of three parts, separated by a semicolon:
+ * <ol>
+ * 	<li>the type of plug-in (either 'bundle' or 'project'),
+ * 	<li>the fully qualified name of the script's class,
+ * 	<li>the name of its project or bundle.
+ * </ol>
+ * The type is 'project' if the class is contained by a project located in the workspace. It is 'bundle' 
+ * if the class is contained by a plug-in installed within Eclipse IDE.<br>
  * <br>
- * For instance, the identifier corresponding to the class {@code com.domain.MyClass} within the {@code com.domain}
- * bundle must be:
+ * For instance, the identifier corresponding to the class {@code com.domain.MyClass} contained by the
+ * {@code com.domain} bundle is:
  * <ul>
- * 	<li>com.domain;com.domain.MyClass
+ * 	<li>{@code bundle;com.domain;com.domain.MyClass}
  * </ul>
  * Moreover, the script class must implement either {@link Runner} or {@link Condition} and must provide a
  * default, nullary constructor.
- * 
- * FIXME [Refactor] With the current implementation, any workspace project owning the same name as a bundle
- * 					will be hidden by the bundle, which makes impossible to resolve a class located in the project. 
  * 
  * @author Emmanuel CHEBBI
  */
@@ -58,38 +62,38 @@ public final class JavaLanguage implements ScriptingLanguage {
 	@Override
 	public Runner resolveRunner(String identifier, Context context) {
 		try {
-			Runner runner = resolve(identifier, Runner.class);
+			Runner runner = resolve(new ScriptIdentifier(identifier), Runner.class);
 			
 			if (context == null)
 				return runner;
 			
 			return injected(runner, context);
 			
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			throw new ScriptLoadingFailureException("Unable to instantiate a Runner from path: " + identifier, e); 
+		} catch (IllegalArgumentException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			throw new ScriptLoadingFailureException("Unable to instantiate a Runner from id: " + identifier, e); 
 		}
 	}
 
 	@Override
 	public Condition resolveCondition(String identifier, Context context) {
 		try {
-			Condition condition = resolve(identifier, Condition.class);
+			Condition condition = resolve(new ScriptIdentifier(identifier), Condition.class);
 			
 			if (context == null)
 				return condition;
 			
 			return injected(condition, context);
 			
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			throw new ScriptLoadingFailureException("Unable to instantiate a Condition from path: " + identifier, e); 
+		} catch (IllegalArgumentException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			throw new ScriptLoadingFailureException("Unable to instantiate a Condition from id: " + identifier, e); 
 		}
 	}
 	
 	/**
 	 * Resolves a specific {@link Script} class and instantiates it.
 	 * 
-	 * @param identifier
-	 * 			The String identifying the script to resolve.
+	 * @param id
+	 * 			The instance identifying the script to resolve.
 	 * @param clazz
 	 * 			The expected class of the Script.
 	 * 
@@ -104,21 +108,27 @@ public final class JavaLanguage implements ScriptingLanguage {
 	 * @throws IllegalAccessException if the class or its nullary constructor is not accessible.
 	 * @throws ClassNotFoundException if the class cannot be found.
 	 * @throws ClassCastException if the new script instance cannot be casted to the given clazz.
+	 * @throws ScriptLoadingFailureException if the identifier does not follow the require format.
+	 * @throws IllegalScripIdentifierException if the IProject or Bundle instance cannot be found from the id.
 	 */
-	private static <T> T resolve(String identifier, Class<T> clazz) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		String[] pluginAndClass = identifier.split(";");
-		String fullyQualifiedName = pluginAndClass[1];
-		String plugin = pluginAndClass[0];
-
-		Bundle bundle = Platform.getBundle(plugin);
-		
-		// Bundle  == plug-in that is installed within Eclipse IDE
-		// IProject == project located within the workspace
-		if (bundle != null) {
-			return bundle.loadClass(fullyQualifiedName).asSubclass(clazz).newInstance();
-		} else {
-			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(plugin); 
-			return loadFromProject(fullyQualifiedName, project).asSubclass(clazz).newInstance();
+	private static <T> T resolve(ScriptIdentifier id, Class<T> clazz) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		if (id.isBundled()) {
+			Bundle bundle = Platform.getBundle(id.plugin);
+			
+			if (bundle == null)
+				throw new IllegalArgumentException("Cannot find any Bundle with id " + id.plugin);
+			
+			return bundle.loadClass(id.fullyQualifiedName).asSubclass(clazz).newInstance();
+		} 
+		// Not in a Bundle => must be in an IProject
+		else {
+			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(id.plugin); 
+			
+			if (! project.exists())
+				throw new IllegalArgumentException("Cannot find any Project named  '" + id.plugin + "'. "
+												 + "If it does exist, please ensure that the project is open.");
+			
+			return loadFromProject(id.fullyQualifiedName, project).asSubclass(clazz).newInstance();
 		}
 	}
 	
