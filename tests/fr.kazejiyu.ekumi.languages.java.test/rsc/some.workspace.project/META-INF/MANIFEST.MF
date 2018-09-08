@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EKumi Java Language Test — Fake project
+Bundle-SymbolicName: some.workspace.project
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: some.workspace.project
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Vendor: Emmanuel CHEBBI
+Require-Bundle: fr.kazejiyu.ekumi.core,
+ javax.inject,
+ fr.kazejiyu.ekumi.tests.common
+Export-Package: some.workspace.project
