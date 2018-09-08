@@ -42,9 +42,16 @@ public class ImportableProject {
 				   .getWorkspace()
 				   .getRoot()
 				   .getProject(description.getName());
-		
+
+		// Works most of the time when executed from Eclipse IDE
 		project.create(description, null);
 		project.open(null);
+		
+		// Bad attempt to make the import works from Maven
+		// Still works from Eclipse IDE, but causes Maven tests
+		// to fail all the time
+//		project.refreshLocal(IResource.DEPTH_INFINITE, null);
+//		project.build(IncrementalProjectBuilder.FULL_BUILD, null);
 	}
 	
 	/** @return the path toward the location/.project file */
