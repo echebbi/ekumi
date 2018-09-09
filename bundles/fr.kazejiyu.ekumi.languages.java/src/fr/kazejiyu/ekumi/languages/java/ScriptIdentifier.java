@@ -23,11 +23,11 @@ class ScriptIdentifier {
 	
 	private static final Set<String> ALLOWED_TYPES = new HashSet<>(asList("bundle", "project"));
 	
-	final String type;
+	protected final String type;
 	
-	final String plugin;
+	protected final String plugin;
 	
-	final String fullyQualifiedName;
+	protected final String fullyQualifiedName;
 
 	/**
 	 * Creates a new identifier.
@@ -71,8 +71,8 @@ class ScriptIdentifier {
 	 * 
 	 * @return whether the corresponding script is located in a Bundle.
 	 */
-	boolean isBundled() {
-		return type.equals("bundle");
+	protected boolean isBundled() {
+		return "bundle".equals(type);
 	}
 
 }
