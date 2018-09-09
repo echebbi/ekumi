@@ -6,6 +6,8 @@ import fr.kazejiyu.ekumi.core.ekumi.Activity;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.core.ekumi.Execution;
 
+import fr.kazejiyu.ekumi.core.ekumi.HasStatus;
+import fr.kazejiyu.ekumi.core.ekumi.Status;
 import fr.kazejiyu.ekumi.core.ekumi.UnsafeContext;
 import fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException;
 import java.lang.reflect.InvocationTargetException;
@@ -18,7 +20,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,6 +29,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ExecutionImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ExecutionImpl#getActivity <em>Activity</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ExecutionImpl#getContext <em>Context</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ExecutionImpl#getStartDate <em>Start Date</em>}</li>
@@ -35,7 +37,27 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execution {
+public class ExecutionImpl extends IdentifiableImpl implements Execution {
+	/**
+	 * The default value of the '{@link #getStatus() <em>Status</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStatus()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Status STATUS_EDEFAULT = Status.IDLE;
+
+	/**
+	 * The cached value of the '{@link #getStatus() <em>Status</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStatus()
+	 * @generated
+	 * @ordered
+	 */
+	protected Status status = STATUS_EDEFAULT;
+
 	/**
 	 * The cached value of the '{@link #getActivity() <em>Activity</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -93,6 +115,27 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 	@Override
 	protected EClass eStaticClass() {
 		return EkumiPackage.Literals.EXECUTION;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Status getStatus() {
+		return status;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStatus(Status newStatus) {
+		Status oldStatus = status;
+		status = newStatus == null ? STATUS_EDEFAULT : newStatus;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.EXECUTION__STATUS, oldStatus, status));
 	}
 
 	/**
@@ -313,6 +356,8 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+		case EkumiPackage.EXECUTION__STATUS:
+			return getStatus();
 		case EkumiPackage.EXECUTION__ACTIVITY:
 			return getActivity();
 		case EkumiPackage.EXECUTION__CONTEXT:
@@ -331,6 +376,9 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+		case EkumiPackage.EXECUTION__STATUS:
+			setStatus((Status) newValue);
+			return;
 		case EkumiPackage.EXECUTION__ACTIVITY:
 			setActivity((Activity) newValue);
 			return;
@@ -352,6 +400,9 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+		case EkumiPackage.EXECUTION__STATUS:
+			setStatus(STATUS_EDEFAULT);
+			return;
 		case EkumiPackage.EXECUTION__ACTIVITY:
 			setActivity((Activity) null);
 			return;
@@ -373,6 +424,8 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case EkumiPackage.EXECUTION__STATUS:
+			return status != STATUS_EDEFAULT;
 		case EkumiPackage.EXECUTION__ACTIVITY:
 			return activity != null;
 		case EkumiPackage.EXECUTION__CONTEXT:
@@ -381,6 +434,42 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 			return START_DATE_EDEFAULT == null ? startDate != null : !START_DATE_EDEFAULT.equals(startDate);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == HasStatus.class) {
+			switch (derivedFeatureID) {
+			case EkumiPackage.EXECUTION__STATUS:
+				return EkumiPackage.HAS_STATUS__STATUS;
+			default:
+				return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == HasStatus.class) {
+			switch (baseFeatureID) {
+			case EkumiPackage.HAS_STATUS__STATUS:
+				return EkumiPackage.EXECUTION__STATUS;
+			default:
+				return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**
@@ -423,7 +512,9 @@ public class ExecutionImpl extends MinimalEObjectImpl.Container implements Execu
 			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (startDate: ");
+		result.append(" (status: ");
+		result.append(status);
+		result.append(", startDate: ");
 		result.append(startDate);
 		result.append(')');
 		return result.toString();

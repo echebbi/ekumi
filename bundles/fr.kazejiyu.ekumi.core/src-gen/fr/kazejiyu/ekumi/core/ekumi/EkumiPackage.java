@@ -60,6 +60,52 @@ public interface EkumiPackage extends EPackage {
 	EkumiPackage eINSTANCE = fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.IdentifiableImpl <em>Identifiable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.IdentifiableImpl
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getIdentifiable()
+	 * @generated
+	 */
+	int IDENTIFIABLE = 24;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIABLE__ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIABLE__NAME = 1;
+
+	/**
+	 * The number of structural features of the '<em>Identifiable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIABLE_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Identifiable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIABLE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl <em>Activity</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -76,7 +122,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__ID = 0;
+	int ACTIVITY__ID = IDENTIFIABLE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -85,43 +131,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__NAME = 1;
-
-	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__INPUTS = 2;
-
-	/**
-	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__OUTPUTS = 3;
-
-	/**
-	 * The feature id for the '<em><b>Successor</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__SUCCESSOR = 4;
-
-	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__PREDECESSOR = 5;
+	int ACTIVITY__NAME = IDENTIFIABLE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Status</b></em>' attribute.
@@ -130,7 +140,43 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__STATUS = 6;
+	int ACTIVITY__STATUS = IDENTIFIABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__INPUTS = IDENTIFIABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OUTPUTS = IDENTIFIABLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Successor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__SUCCESSOR = IDENTIFIABLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__PREDECESSOR = IDENTIFIABLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
@@ -139,7 +185,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__FLOWS = 7;
+	int ACTIVITY__FLOWS = IDENTIFIABLE_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Activity</em>' class.
@@ -148,7 +194,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_FEATURE_COUNT = 8;
+	int ACTIVITY_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 6;
 
 	/**
 	 * The operation id for the '<em>Run</em>' operation.
@@ -157,7 +203,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY___RUN__CONTEXT = 0;
+	int ACTIVITY___RUN__CONTEXT = IDENTIFIABLE_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Activity</em>' class.
@@ -166,7 +212,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_OPERATION_COUNT = 1;
+	int ACTIVITY_OPERATION_COUNT = IDENTIFIABLE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.SequenceImpl <em>Sequence</em>}' class.
@@ -195,6 +241,15 @@ public interface EkumiPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEQUENCE__NAME = ACTIVITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE__STATUS = ACTIVITY__STATUS;
 
 	/**
 	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
@@ -231,15 +286,6 @@ public interface EkumiPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEQUENCE__PREDECESSOR = ACTIVITY__PREDECESSOR;
-
-	/**
-	 * The feature id for the '<em><b>Status</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEQUENCE__STATUS = ACTIVITY__STATUS;
 
 	/**
 	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
@@ -324,6 +370,15 @@ public interface EkumiPackage extends EPackage {
 	int MULTIPLE_INSTANCES__NAME = ACTIVITY__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_INSTANCES__STATUS = ACTIVITY__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -358,15 +413,6 @@ public interface EkumiPackage extends EPackage {
 	 * @ordered
 	 */
 	int MULTIPLE_INSTANCES__PREDECESSOR = ACTIVITY__PREDECESSOR;
-
-	/**
-	 * The feature id for the '<em><b>Status</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MULTIPLE_INSTANCES__STATUS = ACTIVITY__STATUS;
 
 	/**
 	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
@@ -561,6 +607,15 @@ public interface EkumiPackage extends EPackage {
 	int STRUCTURED_LOOP__NAME = ACTIVITY__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_LOOP__STATUS = ACTIVITY__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -595,15 +650,6 @@ public interface EkumiPackage extends EPackage {
 	 * @ordered
 	 */
 	int STRUCTURED_LOOP__PREDECESSOR = ACTIVITY__PREDECESSOR;
-
-	/**
-	 * The feature id for the '<em><b>Status</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRUCTURED_LOOP__STATUS = ACTIVITY__STATUS;
 
 	/**
 	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
@@ -816,6 +862,15 @@ public interface EkumiPackage extends EPackage {
 	int TASK__NAME = ACTIVITY__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__STATUS = ACTIVITY__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -850,15 +905,6 @@ public interface EkumiPackage extends EPackage {
 	 * @ordered
 	 */
 	int TASK__PREDECESSOR = ACTIVITY__PREDECESSOR;
-
-	/**
-	 * The feature id for the '<em><b>Status</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK__STATUS = ACTIVITY__STATUS;
 
 	/**
 	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
@@ -989,6 +1035,15 @@ public interface EkumiPackage extends EPackage {
 	int SCRIPTED_TASK__NAME = TASK__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPTED_TASK__STATUS = TASK__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1023,15 +1078,6 @@ public interface EkumiPackage extends EPackage {
 	 * @ordered
 	 */
 	int SCRIPTED_TASK__PREDECESSOR = TASK__PREDECESSOR;
-
-	/**
-	 * The feature id for the '<em><b>Status</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCRIPTED_TASK__STATUS = TASK__STATUS;
 
 	/**
 	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
@@ -1116,6 +1162,15 @@ public interface EkumiPackage extends EPackage {
 	int MULTI_CHOICE__NAME = ACTIVITY__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_CHOICE__STATUS = ACTIVITY__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1150,15 +1205,6 @@ public interface EkumiPackage extends EPackage {
 	 * @ordered
 	 */
 	int MULTI_CHOICE__PREDECESSOR = ACTIVITY__PREDECESSOR;
-
-	/**
-	 * The feature id for the '<em><b>Status</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MULTI_CHOICE__STATUS = ACTIVITY__STATUS;
 
 	/**
 	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
@@ -1437,13 +1483,40 @@ public interface EkumiPackage extends EPackage {
 	int EXECUTION = 16;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION__ID = IDENTIFIABLE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION__NAME = IDENTIFIABLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION__STATUS = IDENTIFIABLE_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Activity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION__ACTIVITY = 0;
+	int EXECUTION__ACTIVITY = IDENTIFIABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Context</b></em>' containment reference.
@@ -1452,7 +1525,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION__CONTEXT = 1;
+	int EXECUTION__CONTEXT = IDENTIFIABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Start Date</b></em>' attribute.
@@ -1461,7 +1534,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION__START_DATE = 2;
+	int EXECUTION__START_DATE = IDENTIFIABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Execution</em>' class.
@@ -1470,7 +1543,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_FEATURE_COUNT = 3;
+	int EXECUTION_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Start</em>' operation.
@@ -1479,7 +1552,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION___START = 0;
+	int EXECUTION___START = IDENTIFIABLE_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Join</em>' operation.
@@ -1488,7 +1561,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION___JOIN = 1;
+	int EXECUTION___JOIN = IDENTIFIABLE_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Cancel</em>' operation.
@@ -1497,7 +1570,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION___CANCEL = 2;
+	int EXECUTION___CANCEL = IDENTIFIABLE_OPERATION_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Is Running</em>' operation.
@@ -1506,7 +1579,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION___IS_RUNNING = 3;
+	int EXECUTION___IS_RUNNING = IDENTIFIABLE_OPERATION_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Is Cancelled</em>' operation.
@@ -1515,7 +1588,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION___IS_CANCELLED = 4;
+	int EXECUTION___IS_CANCELLED = IDENTIFIABLE_OPERATION_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Execution</em>' class.
@@ -1524,7 +1597,7 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_OPERATION_COUNT = 5;
+	int EXECUTION_OPERATION_COUNT = IDENTIFIABLE_OPERATION_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.ListOfVariablesImpl <em>List Of Variables</em>}' class.
@@ -1692,6 +1765,15 @@ public interface EkumiPackage extends EPackage {
 	int DRIVER__NAME = ACTIVITY__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DRIVER__STATUS = ACTIVITY__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1726,15 +1808,6 @@ public interface EkumiPackage extends EPackage {
 	 * @ordered
 	 */
 	int DRIVER__PREDECESSOR = ACTIVITY__PREDECESSOR;
-
-	/**
-	 * The feature id for the '<em><b>Status</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DRIVER__STATUS = ACTIVITY__STATUS;
 
 	/**
 	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
@@ -1892,6 +1965,15 @@ public interface EkumiPackage extends EPackage {
 	int PARALLEL_SPLIT__NAME = ACTIVITY__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT__STATUS = ACTIVITY__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1926,15 +2008,6 @@ public interface EkumiPackage extends EPackage {
 	 * @ordered
 	 */
 	int PARALLEL_SPLIT__PREDECESSOR = ACTIVITY__PREDECESSOR;
-
-	/**
-	 * The feature id for the '<em><b>Status</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARALLEL_SPLIT__STATUS = ACTIVITY__STATUS;
 
 	/**
 	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
@@ -2064,6 +2137,80 @@ public interface EkumiPackage extends EPackage {
 	int HISTORY_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.Executable <em>Executable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Executable
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getExecutable()
+	 * @generated
+	 */
+	int EXECUTABLE = 25;
+
+	/**
+	 * The number of structural features of the '<em>Executable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTABLE_FEATURE_COUNT = 0;
+
+	/**
+	 * The operation id for the '<em>Run</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTABLE___RUN__CONTEXT = 0;
+
+	/**
+	 * The number of operations of the '<em>Executable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTABLE_OPERATION_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.HasStatusImpl <em>Has Status</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.HasStatusImpl
+	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getHasStatus()
+	 * @generated
+	 */
+	int HAS_STATUS = 26;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HAS_STATUS__STATUS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Has Status</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HAS_STATUS_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Has Status</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HAS_STATUS_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '<em>Execution Status</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2071,7 +2218,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getExecutionStatus()
 	 * @generated
 	 */
-	int EXECUTION_STATUS = 30;
+	int EXECUTION_STATUS = 33;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.Status <em>Status</em>}' enum.
@@ -2081,7 +2228,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getStatus()
 	 * @generated
 	 */
-	int STATUS = 24;
+	int STATUS = 27;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.core.ekumi.TestResult <em>Test Result</em>}' enum.
@@ -2091,7 +2238,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getTestResult()
 	 * @generated
 	 */
-	int TEST_RESULT = 25;
+	int TEST_RESULT = 28;
 
 	/**
 	 * The meta object id for the '<em>Scripting Language</em>' data type.
@@ -2101,7 +2248,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getScriptingLanguage()
 	 * @generated
 	 */
-	int SCRIPTING_LANGUAGE = 26;
+	int SCRIPTING_LANGUAGE = 29;
 
 	/**
 	 * The meta object id for the '<em>Data Type</em>' data type.
@@ -2111,7 +2258,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getDataType()
 	 * @generated
 	 */
-	int DATA_TYPE = 27;
+	int DATA_TYPE = 30;
 
 	/**
 	 * The meta object id for the '<em>Events</em>' data type.
@@ -2121,7 +2268,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getEvents()
 	 * @generated
 	 */
-	int EVENTS = 28;
+	int EVENTS = 31;
 
 	/**
 	 * The meta object id for the '<em>Interrupted Execution Exception</em>' data type.
@@ -2131,7 +2278,7 @@ public interface EkumiPackage extends EPackage {
 	 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getInterruptedExecutionException()
 	 * @generated
 	 */
-	int INTERRUPTED_EXECUTION_EXCEPTION = 29;
+	int INTERRUPTED_EXECUTION_EXCEPTION = 32;
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Activity <em>Activity</em>}'.
@@ -2142,28 +2289,6 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getActivity();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getId <em>Id</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getId()
-	 * @see #getActivity()
-	 * @generated
-	 */
-	EAttribute getActivity_Id();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getName()
-	 * @see #getActivity()
-	 * @generated
-	 */
-	EAttribute getActivity_Name();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getInputs <em>Inputs</em>}'.
@@ -2210,17 +2335,6 @@ public interface EkumiPackage extends EPackage {
 	EReference getActivity_Predecessor();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getStatus <em>Status</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Status</em>'.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#getStatus()
-	 * @see #getActivity()
-	 * @generated
-	 */
-	EAttribute getActivity_Status();
-
-	/**
 	 * Returns the meta object for the containment reference '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getFlows <em>Flows</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2230,16 +2344,6 @@ public interface EkumiPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getActivity_Flows();
-
-	/**
-	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#run(fr.kazejiyu.ekumi.core.ekumi.Context) <em>Run</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Run</em>' operation.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Activity#run(fr.kazejiyu.ekumi.core.ekumi.Context)
-	 * @generated
-	 */
-	EOperation getActivity__Run__Context();
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Sequence <em>Sequence</em>}'.
@@ -2739,6 +2843,79 @@ public interface EkumiPackage extends EPackage {
 	EReference getHistory_Executions();
 
 	/**
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Identifiable <em>Identifiable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Identifiable</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Identifiable
+	 * @generated
+	 */
+	EClass getIdentifiable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.Identifiable#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Identifiable#getId()
+	 * @see #getIdentifiable()
+	 * @generated
+	 */
+	EAttribute getIdentifiable_Id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.Identifiable#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Identifiable#getName()
+	 * @see #getIdentifiable()
+	 * @generated
+	 */
+	EAttribute getIdentifiable_Name();
+
+	/**
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Executable <em>Executable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Executable</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Executable
+	 * @generated
+	 */
+	EClass getExecutable();
+
+	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.core.ekumi.Executable#run(fr.kazejiyu.ekumi.core.ekumi.Context) <em>Run</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Run</em>' operation.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.Executable#run(fr.kazejiyu.ekumi.core.ekumi.Context)
+	 * @generated
+	 */
+	EOperation getExecutable__Run__Context();
+
+	/**
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.HasStatus <em>Has Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Has Status</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.HasStatus
+	 * @generated
+	 */
+	EClass getHasStatus();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.core.ekumi.HasStatus#getStatus <em>Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Status</em>'.
+	 * @see fr.kazejiyu.ekumi.core.ekumi.HasStatus#getStatus()
+	 * @see #getHasStatus()
+	 * @generated
+	 */
+	EAttribute getHasStatus_Status();
+
+	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.ekumi.Serializable <em>Serializable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3108,22 +3285,6 @@ public interface EkumiPackage extends EPackage {
 		EClass ACTIVITY = eINSTANCE.getActivity();
 
 		/**
-		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ACTIVITY__ID = eINSTANCE.getActivity_Id();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ACTIVITY__NAME = eINSTANCE.getActivity_Name();
-
-		/**
 		 * The meta object literal for the '<em><b>Inputs</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3156,28 +3317,12 @@ public interface EkumiPackage extends EPackage {
 		EReference ACTIVITY__PREDECESSOR = eINSTANCE.getActivity_Predecessor();
 
 		/**
-		 * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ACTIVITY__STATUS = eINSTANCE.getActivity_Status();
-
-		/**
 		 * The meta object literal for the '<em><b>Flows</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference ACTIVITY__FLOWS = eINSTANCE.getActivity_Flows();
-
-		/**
-		 * The meta object literal for the '<em><b>Run</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation ACTIVITY___RUN__CONTEXT = eINSTANCE.getActivity__Run__Context();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.SequenceImpl <em>Sequence</em>}' class.
@@ -3585,6 +3730,68 @@ public interface EkumiPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HISTORY__EXECUTIONS = eINSTANCE.getHistory_Executions();
+
+		/**
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.IdentifiableImpl <em>Identifiable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.IdentifiableImpl
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getIdentifiable()
+		 * @generated
+		 */
+		EClass IDENTIFIABLE = eINSTANCE.getIdentifiable();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IDENTIFIABLE__ID = eINSTANCE.getIdentifiable_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IDENTIFIABLE__NAME = eINSTANCE.getIdentifiable_Name();
+
+		/**
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.Executable <em>Executable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.core.ekumi.Executable
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getExecutable()
+		 * @generated
+		 */
+		EClass EXECUTABLE = eINSTANCE.getExecutable();
+
+		/**
+		 * The meta object literal for the '<em><b>Run</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EXECUTABLE___RUN__CONTEXT = eINSTANCE.getExecutable__Run__Context();
+
+		/**
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.impl.HasStatusImpl <em>Has Status</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.HasStatusImpl
+		 * @see fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl#getHasStatus()
+		 * @generated
+		 */
+		EClass HAS_STATUS = eINSTANCE.getHasStatus();
+
+		/**
+		 * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute HAS_STATUS__STATUS = eINSTANCE.getHasStatus_Status();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.core.ekumi.Serializable <em>Serializable</em>}' class.

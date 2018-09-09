@@ -97,6 +97,10 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 			return createContext();
 		case EkumiPackage.HISTORY:
 			return createHistory();
+		case EkumiPackage.IDENTIFIABLE:
+			return createIdentifiable();
+		case EkumiPackage.HAS_STATUS:
+			return createHasStatus();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -204,6 +208,26 @@ public class EkumiFactoryImpl extends EFactoryImpl implements EkumiFactory {
 	public History createHistory() {
 		HistoryImpl history = new HistoryImpl();
 		return history;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Identifiable createIdentifiable() {
+		IdentifiableImpl identifiable = new IdentifiableImpl();
+		return identifiable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public HasStatus createHasStatus() {
+		HasStatusImpl hasStatus = new HasStatusImpl();
+		return hasStatus;
 	}
 
 	/**

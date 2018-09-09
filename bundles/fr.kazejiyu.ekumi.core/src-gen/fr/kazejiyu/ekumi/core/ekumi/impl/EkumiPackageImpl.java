@@ -14,8 +14,11 @@ import fr.kazejiyu.ekumi.core.ekumi.Driver;
 import fr.kazejiyu.ekumi.core.ekumi.DriverRunner;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
+import fr.kazejiyu.ekumi.core.ekumi.Executable;
 import fr.kazejiyu.ekumi.core.ekumi.Execution;
+import fr.kazejiyu.ekumi.core.ekumi.HasStatus;
 import fr.kazejiyu.ekumi.core.ekumi.History;
+import fr.kazejiyu.ekumi.core.ekumi.Identifiable;
 import fr.kazejiyu.ekumi.core.ekumi.ListOfVariables;
 import fr.kazejiyu.ekumi.core.ekumi.MapOfVariables;
 import fr.kazejiyu.ekumi.core.ekumi.MultiChoice;
@@ -172,6 +175,27 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * @generated
 	 */
 	private EClass historyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass identifiableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass executableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass hasStatusEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -348,26 +372,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getActivity_Id() {
-		return (EAttribute) activityEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getActivity_Name() {
-		return (EAttribute) activityEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getActivity_Inputs() {
-		return (EReference) activityEClass.getEStructuralFeatures().get(2);
+		return (EReference) activityEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -376,7 +382,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * @generated
 	 */
 	public EReference getActivity_Outputs() {
-		return (EReference) activityEClass.getEStructuralFeatures().get(3);
+		return (EReference) activityEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -385,7 +391,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * @generated
 	 */
 	public EReference getActivity_Successor() {
-		return (EReference) activityEClass.getEStructuralFeatures().get(4);
+		return (EReference) activityEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -394,16 +400,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * @generated
 	 */
 	public EReference getActivity_Predecessor() {
-		return (EReference) activityEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getActivity_Status() {
-		return (EAttribute) activityEClass.getEStructuralFeatures().get(6);
+		return (EReference) activityEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -412,16 +409,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * @generated
 	 */
 	public EReference getActivity_Flows() {
-		return (EReference) activityEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getActivity__Run__Context() {
-		return activityEClass.getEOperations().get(0);
+		return (EReference) activityEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -879,6 +867,69 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getIdentifiable() {
+		return identifiableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIdentifiable_Id() {
+		return (EAttribute) identifiableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIdentifiable_Name() {
+		return (EAttribute) identifiableEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getExecutable() {
+		return executableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getExecutable__Run__Context() {
+		return executableEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getHasStatus() {
+		return hasStatusEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getHasStatus_Status() {
+		return (EAttribute) hasStatusEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSerializable() {
 		return serializableEClass;
 	}
@@ -1165,15 +1216,11 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 
 		// Create classes and their features
 		activityEClass = createEClass(ACTIVITY);
-		createEAttribute(activityEClass, ACTIVITY__ID);
-		createEAttribute(activityEClass, ACTIVITY__NAME);
 		createEReference(activityEClass, ACTIVITY__INPUTS);
 		createEReference(activityEClass, ACTIVITY__OUTPUTS);
 		createEReference(activityEClass, ACTIVITY__SUCCESSOR);
 		createEReference(activityEClass, ACTIVITY__PREDECESSOR);
-		createEAttribute(activityEClass, ACTIVITY__STATUS);
 		createEReference(activityEClass, ACTIVITY__FLOWS);
-		createEOperation(activityEClass, ACTIVITY___RUN__CONTEXT);
 
 		sequenceEClass = createEClass(SEQUENCE);
 		createEReference(sequenceEClass, SEQUENCE__ROOT);
@@ -1270,6 +1317,16 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		historyEClass = createEClass(HISTORY);
 		createEReference(historyEClass, HISTORY__EXECUTIONS);
 
+		identifiableEClass = createEClass(IDENTIFIABLE);
+		createEAttribute(identifiableEClass, IDENTIFIABLE__ID);
+		createEAttribute(identifiableEClass, IDENTIFIABLE__NAME);
+
+		executableEClass = createEClass(EXECUTABLE);
+		createEOperation(executableEClass, EXECUTABLE___RUN__CONTEXT);
+
+		hasStatusEClass = createEClass(HAS_STATUS);
+		createEAttribute(hasStatusEClass, HAS_STATUS__STATUS);
+
 		// Create enums
 		statusEEnum = createEEnum(STATUS);
 		testResultEEnum = createEEnum(TEST_RESULT);
@@ -1311,6 +1368,9 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		activityEClass.getESuperTypes().add(this.getIdentifiable());
+		activityEClass.getESuperTypes().add(this.getExecutable());
+		activityEClass.getESuperTypes().add(this.getHasStatus());
 		sequenceEClass.getESuperTypes().add(this.getActivity());
 		multipleInstancesEClass.getESuperTypes().add(this.getActivity());
 		structuredLoopEClass.getESuperTypes().add(this.getActivity());
@@ -1319,6 +1379,8 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		runnerEClass.getESuperTypes().add(this.getScript());
 		scriptedTaskEClass.getESuperTypes().add(this.getTask());
 		multiChoiceEClass.getESuperTypes().add(this.getActivity());
+		executionEClass.getESuperTypes().add(this.getIdentifiable());
+		executionEClass.getESuperTypes().add(this.getHasStatus());
 		listOfVariablesEClass.getESuperTypes().add(this.getVariable());
 		mapOfVariablesEClass.getESuperTypes().add(this.getVariable());
 		driverEClass.getESuperTypes().add(this.getActivity());
@@ -1327,10 +1389,6 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(activityEClass, Activity.class, "Activity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getActivity_Id(), ecorePackage.getEString(), "id", null, 0, 1, Activity.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getActivity_Name(), ecorePackage.getEString(), "name", null, 0, 1, Activity.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getActivity_Inputs(), this.getVariable(), this.getVariable_Owner(), "inputs", null, 0, -1,
 				Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1343,14 +1401,9 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		initEReference(getActivity_Predecessor(), this.getActivity(), this.getActivity_Successor(), "predecessor", null,
 				0, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getActivity_Status(), this.getStatus(), "status", null, 0, 1, Activity.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getActivity_Flows(), this.getDataFlows(), this.getDataFlows_Owner(), "flows", null, 0, 1,
 				Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		EOperation op = initEOperation(getActivity__Run__Context(), null, "run", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(sequenceEClass, Sequence.class, "Sequence", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1406,7 +1459,7 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		initEClass(conditionEClass, Condition.class, "Condition", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
-		op = initEOperation(getCondition__IsVerified__StructuredLoop_Context(), ecorePackage.getEBoolean(),
+		EOperation op = initEOperation(getCondition__IsVerified__StructuredLoop_Context(), ecorePackage.getEBoolean(),
 				"isVerified", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getStructuredLoop(), "loop", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1549,6 +1602,24 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		initEReference(getHistory_Executions(), this.getExecution(), null, "executions", null, 0, -1, History.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(identifiableEClass, Identifiable.class, "Identifiable", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIdentifiable_Id(), ecorePackage.getEString(), "id", null, 0, 1, Identifiable.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIdentifiable_Name(), ecorePackage.getEString(), "name", null, 0, 1, Identifiable.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(executableEClass, Executable.class, "Executable", IS_ABSTRACT, IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		op = initEOperation(getExecutable__Run__Context(), null, "run", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(hasStatusEClass, HasStatus.class, "HasStatus", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getHasStatus_Status(), this.getStatus(), "status", null, 0, 1, HasStatus.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(statusEEnum, Status.class, "Status");

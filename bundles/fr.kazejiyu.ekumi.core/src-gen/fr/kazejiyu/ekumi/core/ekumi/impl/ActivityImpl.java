@@ -11,7 +11,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -21,6 +20,8 @@ import fr.kazejiyu.ekumi.core.ekumi.Context;
 import fr.kazejiyu.ekumi.core.ekumi.DataFlows;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
+import fr.kazejiyu.ekumi.core.ekumi.Executable;
+import fr.kazejiyu.ekumi.core.ekumi.HasStatus;
 import fr.kazejiyu.ekumi.core.ekumi.Status;
 import fr.kazejiyu.ekumi.core.ekumi.Variable;
 
@@ -32,58 +33,36 @@ import fr.kazejiyu.ekumi.core.ekumi.Variable;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getId <em>Id</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getName <em>Name</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getInputs <em>Inputs</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getSuccessor <em>Successor</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getPredecessor <em>Predecessor</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl#getFlows <em>Flows</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class ActivityImpl extends MinimalEObjectImpl.Container implements Activity {
+public abstract class ActivityImpl extends IdentifiableImpl implements Activity {
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * The default value of the '{@link #getStatus() <em>Status</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getId()
+	 * @see #getStatus()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ID_EDEFAULT = null;
+	protected static final Status STATUS_EDEFAULT = Status.IDLE;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * The cached value of the '{@link #getStatus() <em>Status</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getId()
+	 * @see #getStatus()
 	 * @generated
 	 * @ordered
 	 */
-	protected String id = ID_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
+	protected Status status = STATUS_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getInputs() <em>Inputs</em>}' containment reference list.
@@ -126,26 +105,6 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	protected Activity predecessor;
 
 	/**
-	 * The default value of the '{@link #getStatus() <em>Status</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStatus()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Status STATUS_EDEFAULT = Status.IDLE;
-
-	/**
-	 * The cached value of the '{@link #getStatus() <em>Status</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStatus()
-	 * @generated
-	 * @ordered
-	 */
-	protected Status status = STATUS_EDEFAULT;
-
-	/**
 	 * The cached value of the '{@link #getFlows() <em>Flows</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -180,8 +139,8 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getId() {
-		return id;
+	public Status getStatus() {
+		return status;
 	}
 
 	/**
@@ -189,32 +148,11 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setId(String newId) {
-		String oldId = id;
-		id = newId;
+	public void setStatus(Status newStatus) {
+		Status oldStatus = status;
+		status = newStatus == null ? STATUS_EDEFAULT : newStatus;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.ACTIVITY__ID, oldId, id));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.ACTIVITY__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.ACTIVITY__STATUS, oldStatus, status));
 	}
 
 	/**
@@ -383,27 +321,6 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Status getStatus() {
-		return status;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setStatus(Status newStatus) {
-		Status oldStatus = status;
-		status = newStatus == null ? STATUS_EDEFAULT : newStatus;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EkumiPackage.ACTIVITY__STATUS, oldStatus, status));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public DataFlows getFlows() {
 		return flows;
 	}
@@ -529,10 +446,8 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case EkumiPackage.ACTIVITY__ID:
-			return getId();
-		case EkumiPackage.ACTIVITY__NAME:
-			return getName();
+		case EkumiPackage.ACTIVITY__STATUS:
+			return getStatus();
 		case EkumiPackage.ACTIVITY__INPUTS:
 			return getInputs();
 		case EkumiPackage.ACTIVITY__OUTPUTS:
@@ -545,8 +460,6 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 			if (resolve)
 				return getPredecessor();
 			return basicGetPredecessor();
-		case EkumiPackage.ACTIVITY__STATUS:
-			return getStatus();
 		case EkumiPackage.ACTIVITY__FLOWS:
 			return getFlows();
 		}
@@ -562,11 +475,8 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case EkumiPackage.ACTIVITY__ID:
-			setId((String) newValue);
-			return;
-		case EkumiPackage.ACTIVITY__NAME:
-			setName((String) newValue);
+		case EkumiPackage.ACTIVITY__STATUS:
+			setStatus((Status) newValue);
 			return;
 		case EkumiPackage.ACTIVITY__INPUTS:
 			getInputs().clear();
@@ -581,9 +491,6 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 			return;
 		case EkumiPackage.ACTIVITY__PREDECESSOR:
 			setPredecessor((Activity) newValue);
-			return;
-		case EkumiPackage.ACTIVITY__STATUS:
-			setStatus((Status) newValue);
 			return;
 		case EkumiPackage.ACTIVITY__FLOWS:
 			setFlows((DataFlows) newValue);
@@ -600,11 +507,8 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case EkumiPackage.ACTIVITY__ID:
-			setId(ID_EDEFAULT);
-			return;
-		case EkumiPackage.ACTIVITY__NAME:
-			setName(NAME_EDEFAULT);
+		case EkumiPackage.ACTIVITY__STATUS:
+			setStatus(STATUS_EDEFAULT);
 			return;
 		case EkumiPackage.ACTIVITY__INPUTS:
 			getInputs().clear();
@@ -617,9 +521,6 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 			return;
 		case EkumiPackage.ACTIVITY__PREDECESSOR:
 			setPredecessor((Activity) null);
-			return;
-		case EkumiPackage.ACTIVITY__STATUS:
-			setStatus(STATUS_EDEFAULT);
 			return;
 		case EkumiPackage.ACTIVITY__FLOWS:
 			setFlows((DataFlows) null);
@@ -636,10 +537,8 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case EkumiPackage.ACTIVITY__ID:
-			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-		case EkumiPackage.ACTIVITY__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case EkumiPackage.ACTIVITY__STATUS:
+			return status != STATUS_EDEFAULT;
 		case EkumiPackage.ACTIVITY__INPUTS:
 			return inputs != null && !inputs.isEmpty();
 		case EkumiPackage.ACTIVITY__OUTPUTS:
@@ -648,12 +547,82 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 			return successor != null;
 		case EkumiPackage.ACTIVITY__PREDECESSOR:
 			return predecessor != null;
-		case EkumiPackage.ACTIVITY__STATUS:
-			return status != STATUS_EDEFAULT;
 		case EkumiPackage.ACTIVITY__FLOWS:
 			return flows != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == Executable.class) {
+			switch (derivedFeatureID) {
+			default:
+				return -1;
+			}
+		}
+		if (baseClass == HasStatus.class) {
+			switch (derivedFeatureID) {
+			case EkumiPackage.ACTIVITY__STATUS:
+				return EkumiPackage.HAS_STATUS__STATUS;
+			default:
+				return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == Executable.class) {
+			switch (baseFeatureID) {
+			default:
+				return -1;
+			}
+		}
+		if (baseClass == HasStatus.class) {
+			switch (baseFeatureID) {
+			case EkumiPackage.HAS_STATUS__STATUS:
+				return EkumiPackage.ACTIVITY__STATUS;
+			default:
+				return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == Executable.class) {
+			switch (baseOperationID) {
+			case EkumiPackage.EXECUTABLE___RUN__CONTEXT:
+				return EkumiPackage.ACTIVITY___RUN__CONTEXT;
+			default:
+				return -1;
+			}
+		}
+		if (baseClass == HasStatus.class) {
+			switch (baseOperationID) {
+			default:
+				return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
 	}
 
 	/**
@@ -682,11 +651,7 @@ public abstract class ActivityImpl extends MinimalEObjectImpl.Container implemen
 			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (id: ");
-		result.append(id);
-		result.append(", name: ");
-		result.append(name);
-		result.append(", status: ");
+		result.append(" (status: ");
 		result.append(status);
 		result.append(')');
 		return result.toString();

@@ -4,7 +4,6 @@ package fr.kazejiyu.ekumi.core.ekumi;
 
 import fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException;
 import java.util.Date;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Execution extends EObject {
+public interface Execution extends Identifiable, HasStatus {
 	/**
 	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Activity</b></em>' reference.

@@ -92,6 +92,12 @@ public class EkumiSwitch<T> extends Switch<T> {
 			Activity activity = (Activity) theEObject;
 			T result = caseActivity(activity);
 			if (result == null)
+				result = caseIdentifiable(activity);
+			if (result == null)
+				result = caseExecutable(activity);
+			if (result == null)
+				result = caseHasStatus(activity);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -101,6 +107,12 @@ public class EkumiSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseActivity(sequence);
 			if (result == null)
+				result = caseIdentifiable(sequence);
+			if (result == null)
+				result = caseExecutable(sequence);
+			if (result == null)
+				result = caseHasStatus(sequence);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -109,6 +121,12 @@ public class EkumiSwitch<T> extends Switch<T> {
 			T result = caseMultipleInstances(multipleInstances);
 			if (result == null)
 				result = caseActivity(multipleInstances);
+			if (result == null)
+				result = caseIdentifiable(multipleInstances);
+			if (result == null)
+				result = caseExecutable(multipleInstances);
+			if (result == null)
+				result = caseHasStatus(multipleInstances);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -133,6 +151,12 @@ public class EkumiSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseActivity(structuredLoop);
 			if (result == null)
+				result = caseIdentifiable(structuredLoop);
+			if (result == null)
+				result = caseExecutable(structuredLoop);
+			if (result == null)
+				result = caseHasStatus(structuredLoop);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -150,6 +174,12 @@ public class EkumiSwitch<T> extends Switch<T> {
 			T result = caseTask(task);
 			if (result == null)
 				result = caseActivity(task);
+			if (result == null)
+				result = caseIdentifiable(task);
+			if (result == null)
+				result = caseExecutable(task);
+			if (result == null)
+				result = caseHasStatus(task);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -171,6 +201,12 @@ public class EkumiSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseActivity(scriptedTask);
 			if (result == null)
+				result = caseIdentifiable(scriptedTask);
+			if (result == null)
+				result = caseExecutable(scriptedTask);
+			if (result == null)
+				result = caseHasStatus(scriptedTask);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -186,6 +222,12 @@ public class EkumiSwitch<T> extends Switch<T> {
 			T result = caseMultiChoice(multiChoice);
 			if (result == null)
 				result = caseActivity(multiChoice);
+			if (result == null)
+				result = caseIdentifiable(multiChoice);
+			if (result == null)
+				result = caseExecutable(multiChoice);
+			if (result == null)
+				result = caseHasStatus(multiChoice);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -222,6 +264,10 @@ public class EkumiSwitch<T> extends Switch<T> {
 			Execution execution = (Execution) theEObject;
 			T result = caseExecution(execution);
 			if (result == null)
+				result = caseIdentifiable(execution);
+			if (result == null)
+				result = caseHasStatus(execution);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -249,6 +295,12 @@ public class EkumiSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseActivity(driver);
 			if (result == null)
+				result = caseIdentifiable(driver);
+			if (result == null)
+				result = caseExecutable(driver);
+			if (result == null)
+				result = caseHasStatus(driver);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -269,6 +321,12 @@ public class EkumiSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseActivity(parallelSplit);
 			if (result == null)
+				result = caseIdentifiable(parallelSplit);
+			if (result == null)
+				result = caseExecutable(parallelSplit);
+			if (result == null)
+				result = caseHasStatus(parallelSplit);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -282,6 +340,27 @@ public class EkumiSwitch<T> extends Switch<T> {
 		case EkumiPackage.HISTORY: {
 			History history = (History) theEObject;
 			T result = caseHistory(history);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case EkumiPackage.IDENTIFIABLE: {
+			Identifiable identifiable = (Identifiable) theEObject;
+			T result = caseIdentifiable(identifiable);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case EkumiPackage.EXECUTABLE: {
+			Executable executable = (Executable) theEObject;
+			T result = caseExecutable(executable);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case EkumiPackage.HAS_STATUS: {
+			HasStatus hasStatus = (HasStatus) theEObject;
+			T result = caseHasStatus(hasStatus);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -528,6 +607,51 @@ public class EkumiSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseHistory(History object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Identifiable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Identifiable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIdentifiable(Identifiable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Executable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Executable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExecutable(Executable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Has Status</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Has Status</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseHasStatus(HasStatus object) {
 		return null;
 	}
 

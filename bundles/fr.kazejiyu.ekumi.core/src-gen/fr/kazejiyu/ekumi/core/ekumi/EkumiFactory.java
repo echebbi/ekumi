@@ -176,6 +176,24 @@ public interface EkumiFactory extends EFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Returns a new instance of class '<em>Identifiable</em>'.
+	 * <!-- end-user-doc -->
+	 * @return a new instance of class '<em>Identifiable</em>'.
+	 * @generated
+	 */
+	Identifiable createIdentifiable();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Returns a new instance of class '<em>Has Status</em>'.
+	 * <!-- end-user-doc -->
+	 * @return a new instance of class '<em>Has Status</em>'.
+	 * @generated
+	 */
+	HasStatus createHasStatus();
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * Returns the package supported by this factory.
 	 * <!-- end-user-doc -->
 	 * @return the package supported by this factory.
