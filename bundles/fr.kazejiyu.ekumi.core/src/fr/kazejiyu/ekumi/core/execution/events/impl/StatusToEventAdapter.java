@@ -57,7 +57,7 @@ public class StatusToEventAdapter extends EContentAdapter {
 	}
 
 	private boolean relatedToAStatusChange(Notification notification) {
-		return notification.getFeature().equals(EkumiPackage.Literals.ACTIVITY__STATUS);
+		return notification.getFeature().equals(EkumiPackage.Literals.HAS_STATUS__STATUS);
 	}
 	
 	private boolean oldAndNewValueAreEqual(Notification notification) {

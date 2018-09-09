@@ -464,6 +464,52 @@ public class EkumiItemProviderAdapterFactory extends EkumiAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.core.ekumi.Identifiable} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IdentifiableItemProvider identifiableItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.core.ekumi.Identifiable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createIdentifiableAdapter() {
+		if (identifiableItemProvider == null) {
+			identifiableItemProvider = new IdentifiableItemProvider(this);
+		}
+
+		return identifiableItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.core.ekumi.HasStatus} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected HasStatusItemProvider hasStatusItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.core.ekumi.HasStatus}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createHasStatusAdapter() {
+		if (hasStatusItemProvider == null) {
+			hasStatusItemProvider = new HasStatusItemProvider(this);
+		}
+
+		return hasStatusItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -596,6 +642,10 @@ public class EkumiItemProviderAdapterFactory extends EkumiAdapterFactory
 			contextItemProvider.dispose();
 		if (historyItemProvider != null)
 			historyItemProvider.dispose();
+		if (identifiableItemProvider != null)
+			identifiableItemProvider.dispose();
+		if (hasStatusItemProvider != null)
+			hasStatusItemProvider.dispose();
 	}
 
 }

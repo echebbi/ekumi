@@ -5,7 +5,6 @@ package fr.kazejiyu.ekumi.core.ekumi;
 import java.util.Optional;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,13 +15,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getId <em>Id</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getName <em>Name</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getInputs <em>Inputs</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getSuccessor <em>Successor</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getPredecessor <em>Predecessor</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getStatus <em>Status</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getFlows <em>Flows</em>}</li>
  * </ul>
  *
@@ -30,7 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface Activity extends EObject {
+public interface Activity extends Identifiable, Executable, HasStatus {
 
 	/**
 	 * Finds a specific input.
@@ -57,50 +53,6 @@ public interface Activity extends EObject {
 	default Optional<Variable> getOutput(String name) {
 		return getOutputs().stream().filter(input -> input.getName().equals(name)).findAny();
 	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * Returns the value of the '<em><b>Id</b></em>' attribute.
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Id</em>' attribute.
-	 * @see #setId(String)
-	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getActivity_Id()
-	 * @model
-	 * @generated
-	 */
-	String getId();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getId <em>Id</em>}' attribute.
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Id</em>' attribute.
-	 * @see #getId()
-	 * @generated
-	 */
-	void setId(String value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getActivity_Name()
-	 * @model
-	 * @generated
-	 */
-	String getName();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getName <em>Name</em>}' attribute.
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(String value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -178,31 +130,6 @@ public interface Activity extends EObject {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * Returns the value of the '<em><b>Status</b></em>' attribute.
-	 * The literals are from the enumeration {@link fr.kazejiyu.ekumi.core.ekumi.Status}.
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Status</em>' attribute.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Status
-	 * @see #setStatus(Status)
-	 * @see fr.kazejiyu.ekumi.core.ekumi.EkumiPackage#getActivity_Status()
-	 * @model
-	 * @generated
-	 */
-	Status getStatus();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.core.ekumi.Activity#getStatus <em>Status</em>}' attribute.
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Status</em>' attribute.
-	 * @see fr.kazejiyu.ekumi.core.ekumi.Status
-	 * @see #getStatus()
-	 * @generated
-	 */
-	void setStatus(Status value);
-
-	/**
-	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Flows</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.core.ekumi.DataFlows#getOwner <em>Owner</em>}'.
 	 * <!-- end-user-doc -->
@@ -224,13 +151,5 @@ public interface Activity extends EObject {
 	 * @generated
 	 */
 	void setFlows(DataFlows value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void run(Context context);
 
 } // Activity

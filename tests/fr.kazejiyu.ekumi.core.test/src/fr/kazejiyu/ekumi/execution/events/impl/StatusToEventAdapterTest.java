@@ -45,8 +45,8 @@ public class StatusToEventAdapterTest {
 		when(notification.getNotifier()).thenReturn(activity);
 		
 		// when the notification is related to a change in the status feature
-		when(notification.getFeature()).thenReturn(EkumiPackage.Literals.ACTIVITY__STATUS);
-		when(notification.getFeatureID(Activity.class)).thenReturn(EkumiPackage.ACTIVITY__STATUS);
+		when(notification.getFeature()).thenReturn(EkumiPackage.Literals.HAS_STATUS__STATUS);
+		when(notification.getFeatureID(Activity.class)).thenReturn(EkumiPackage.HAS_STATUS__STATUS);
 	}
 	
 	@Test @DisplayName("calls events.hasStarted when an activity's status becomes RUNNING")
@@ -124,7 +124,7 @@ public class StatusToEventAdapterTest {
 	
 	static Stream<Arguments> irrelevantFeatures() {
 		return Stream.of(
-			Arguments.of(EkumiPackage.ACTIVITY__INPUTS, EkumiPackage.Literals.ACTIVITY__NAME),
+			Arguments.of(EkumiPackage.ACTIVITY__INPUTS, EkumiPackage.Literals.IDENTIFIABLE__NAME),
 			Arguments.of(EkumiPackage.DRIVER_RUNNER__DRIVEN, EkumiPackage.Literals.DRIVER_RUNNER__DRIVEN)
 		);
 	}

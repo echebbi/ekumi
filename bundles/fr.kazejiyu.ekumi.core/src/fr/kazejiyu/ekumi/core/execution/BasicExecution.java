@@ -1,7 +1,7 @@
 package fr.kazejiyu.ekumi.core.execution;
 
 import static fr.kazejiyu.ekumi.core.ekumi.Status.CANCELLED;
-import static fr.kazejiyu.ekumi.core.ekumi.Status.IDLE;
+import static fr.kazejiyu.ekumi.core.ekumi.Status.FAILED;
 import static fr.kazejiyu.ekumi.core.ekumi.Status.RUNNING;
 import static fr.kazejiyu.ekumi.core.ekumi.Status.SUCCEEDED;
 
@@ -12,7 +12,6 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.notify.Adapter;
 
 import fr.kazejiyu.ekumi.core.ekumi.Execution;
-import fr.kazejiyu.ekumi.core.ekumi.Status;
 import fr.kazejiyu.ekumi.core.ekumi.impl.ExecutionImpl;
 import fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException;
 import fr.kazejiyu.ekumi.core.execution.events.impl.StatusToEventAdapter;
@@ -26,21 +25,18 @@ public class BasicExecution extends ExecutionImpl {
 	/** The background process that executes the activity */
 	private Job job;
 	
-	/** The current status of the execution */
-	private Status status = IDLE;
-	
 	public BasicExecution() {
 		setContext(new BasicUnsafeContext());
 	}
 	
 	@Override
 	public boolean isRunning() {
-		return status == RUNNING;
+		return getStatus() == RUNNING;
 	}
 	
 	@Override
 	public boolean isCancelled() {
-		return status == CANCELLED;
+		return getStatus() == CANCELLED;
 	}
 	
 	@Override
@@ -50,7 +46,7 @@ public class BasicExecution extends ExecutionImpl {
 		
 		setStartDate(new Date());
 		
-		status = RUNNING;
+		setStatus(RUNNING);
 		runActivityInBackground();                          
 	}
 
@@ -59,10 +55,16 @@ public class BasicExecution extends ExecutionImpl {
 			context.setExecutionStatus(new BasicExecutionStatus(this, monitor));
 			context.getEvents().hasStarted(this);
 			
-			getActivity().run(context.safe());
+			try {
+				getActivity().run(context.safe());
+				
+				setStatus(SUCCEEDED);
+				context.getEvents().hasSucceeded(this);
+				
+			} catch (Exception e) {
+				setStatus(FAILED);
+			}
 			
-			context.getEvents().hasSucceeded(this);
-			status = SUCCEEDED;
 		});
 		job.schedule();
 	}
