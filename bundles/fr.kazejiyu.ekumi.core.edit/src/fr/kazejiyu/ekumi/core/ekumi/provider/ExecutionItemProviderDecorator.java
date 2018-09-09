@@ -16,7 +16,7 @@ public class ExecutionItemProviderDecorator extends ItemProviderAdapterDecorator
 	@Override
 	public String getText(Object object) {
 		Execution execution = (Execution) object;
-		return execution.getActivity().getId();
+		return execution.getStartDate().toString();
 	}
 
 }
