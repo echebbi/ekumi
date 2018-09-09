@@ -42,6 +42,11 @@ public class PersistExecutionInWorkspace implements ActivityListener, ExecutionL
 		persistInWorkspaceMetada(execution);
 	}
 	
+	@Override
+	public void onExecutionSucceeded(Execution succeeded) {
+		persistInWorkspaceMetada(execution);
+	}
+
 	/**
 	 * Persists given execution as an XMI file in workspace .metadata folder.
 	 * 
