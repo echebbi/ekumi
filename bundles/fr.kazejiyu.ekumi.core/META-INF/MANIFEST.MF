@@ -7,14 +7,14 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: fr.kazejiyu.ekumi.core,
+Export-Package: fr.kazejiyu.ekumi,
+ fr.kazejiyu.ekumi.catalog,
+ fr.kazejiyu.ekumi.catalog.impl,
+ fr.kazejiyu.ekumi.catalog.util,
  fr.kazejiyu.ekumi.core.activities,
  fr.kazejiyu.ekumi.core.activities.impl,
  fr.kazejiyu.ekumi.core.datatypes,
  fr.kazejiyu.ekumi.core.datatypes.exceptions,
- fr.kazejiyu.ekumi.catalog,
- fr.kazejiyu.ekumi.catalog.impl,
- fr.kazejiyu.ekumi.catalog.util,
  fr.kazejiyu.ekumi.core.ekumi,
  fr.kazejiyu.ekumi.core.ekumi.impl,
  fr.kazejiyu.ekumi.core.ekumi.util,
@@ -29,4 +29,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: fr.kazejiyu.ekumi.core
-Bundle-Activator: fr.kazejiyu.ekumi.core.EKumiPlugin
+Bundle-Activator: fr.kazejiyu.ekumi.EKumiPlugin

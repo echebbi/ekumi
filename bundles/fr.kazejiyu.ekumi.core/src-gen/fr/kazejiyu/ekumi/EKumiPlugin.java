@@ -1,4 +1,4 @@
-package fr.kazejiyu.ekumi.core;
+package fr.kazejiyu.ekumi;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
