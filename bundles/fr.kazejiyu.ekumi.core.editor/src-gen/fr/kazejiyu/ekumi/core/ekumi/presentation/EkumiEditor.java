@@ -153,7 +153,8 @@ import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
 import fr.kazejiyu.ekumi.core.ekumi.provider.EkumiItemProviderAdapterFactory;
-
+import fr.kazejiyu.ekumi.catalog.presentation.EkumiEditorPlugin;
+import fr.kazejiyu.ekumi.catalog.provider.CatalogItemProviderAdapterFactory;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
@@ -673,6 +674,7 @@ public class EkumiEditor extends MultiPageEditorPart
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new CatalogItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new EkumiItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 

@@ -2,6 +2,7 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.presentation;
 
+import fr.kazejiyu.ekumi.catalog.presentation.EkumiEditorPlugin;
 import java.util.ArrayList;
 import java.util.Collection;
 

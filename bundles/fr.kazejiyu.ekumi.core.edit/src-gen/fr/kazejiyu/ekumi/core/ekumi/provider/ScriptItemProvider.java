@@ -2,6 +2,8 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.provider;
 
+import fr.kazejiyu.ekumi.catalog.provider.EkumiEditPlugin;
+
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.core.ekumi.Script;
 
