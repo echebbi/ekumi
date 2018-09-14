@@ -2,6 +2,8 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.impl;
 
+import fr.kazejiyu.ekumi.catalog.CatalogPackage;
+import fr.kazejiyu.ekumi.catalog.impl.CatalogPackageImpl;
 import fr.kazejiyu.ekumi.core.datatypes.DataType;
 
 import fr.kazejiyu.ekumi.core.ekumi.Activity;
@@ -344,11 +346,19 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 
 		isInited = true;
 
+		// Obtain or create and register interdependencies
+		CatalogPackageImpl theCatalogPackage = (CatalogPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(CatalogPackage.eNS_URI) instanceof CatalogPackageImpl
+						? EPackage.Registry.INSTANCE.getEPackage(CatalogPackage.eNS_URI)
+						: CatalogPackage.eINSTANCE);
+
 		// Create package meta-data objects
 		theEkumiPackage.createPackageContents();
+		theCatalogPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theEkumiPackage.initializePackageContents();
+		theCatalogPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theEkumiPackage.freeze();

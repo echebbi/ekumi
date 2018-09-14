@@ -4,14 +4,16 @@ package fr.kazejiyu.ekumi.core.ekumi.provider;
 
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
-
 import fr.kazejiyu.ekumi.core.ekumi.Execution;
+
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;

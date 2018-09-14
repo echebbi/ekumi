@@ -4,11 +4,12 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: fr.kazejiyu.ekumi.core.edit;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: fr.kazejiyu.ekumi.core.ekumi.provider.EkumiEditPlugin$Implementation
+Bundle-Activator: fr.kazejiyu.ekumi.catalog.provider.EkumiEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: fr.kazejiyu.ekumi.core.ekumi.provider,
+Export-Package: fr.kazejiyu.ekumi.catalog.provider,
+ fr.kazejiyu.ekumi.core.ekumi.provider,
  fr.kazejiyu.ekumi.core.ekumi.provider.label
 Require-Bundle: org.eclipse.core.runtime,
  fr.kazejiyu.ekumi.core;visibility:=reexport,

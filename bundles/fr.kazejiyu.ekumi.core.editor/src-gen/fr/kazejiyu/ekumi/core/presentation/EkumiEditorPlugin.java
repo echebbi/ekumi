@@ -1,25 +1,27 @@
 /**
  */
-package fr.kazejiyu.ekumi.core.ekumi.provider;
+package fr.kazejiyu.ekumi.core.presentation;
 
 import org.eclipse.emf.common.EMFPlugin;
+
+import org.eclipse.emf.common.ui.EclipseUIPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
- * This is the central singleton for the Ekumi edit plugin.
+ * This is the central singleton for the Ekumi editor plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public final class EkumiEditPlugin extends EMFPlugin {
+public final class EkumiEditorPlugin extends EMFPlugin {
 	/**
 	 * Keep track of the singleton.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final EkumiEditPlugin INSTANCE = new EkumiEditPlugin();
+	public static final EkumiEditorPlugin INSTANCE = new EkumiEditorPlugin();
 
 	/**
 	 * Keep track of the singleton.
@@ -35,7 +37,7 @@ public final class EkumiEditPlugin extends EMFPlugin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EkumiEditPlugin() {
+	public EkumiEditorPlugin() {
 		super(new ResourceLocator[] {});
 	}
 
@@ -68,7 +70,7 @@ public final class EkumiEditPlugin extends EMFPlugin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static class Implementation extends EclipsePlugin {
+	public static class Implementation extends EclipseUIPlugin {
 		/**
 		 * Creates an instance.
 		 * <!-- begin-user-doc -->
