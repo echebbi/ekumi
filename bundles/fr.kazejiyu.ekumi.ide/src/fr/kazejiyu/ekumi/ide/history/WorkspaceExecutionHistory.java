@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import fr.kazejiyu.ekumi.core.EKumiPlugin;
+import fr.kazejiyu.ekumi.EKumiPlugin;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.core.ekumi.Execution;
 import fr.kazejiyu.ekumi.core.ekumi.impl.HistoryImpl;
