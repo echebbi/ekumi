@@ -6,7 +6,9 @@
          <meta.schema plugin="fr.kazejiyu.ekumi.core" id="languages" name="Languages"/>
       </appinfo>
       <documentation>
-         Describes the programming languages that can be used to define a task&apos;s behavior.
+         Used to define a new programming language that can then be used to implement a task&apos;s behavior.
+
+A programming language is represented by an instance of ScriptingLanguage, which is an interface defining an adapter used to make a bridge between EKumi and the programming language.
       </documentation>
    </annotation>
 
