@@ -7,6 +7,7 @@
 <plugin>
    <extension-point id="languages" name="Languages" schema="schema/languages.exsd"/>
    <extension-point id="datatypes" name="DataTypes" schema="schema/datatypes.exsd"/>
+   <extension-point id="catalogs" name="catalogs" schema="schema/catalogs.exsd"/>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated ekumi -->

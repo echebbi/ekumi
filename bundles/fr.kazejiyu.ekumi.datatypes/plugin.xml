@@ -12,5 +12,22 @@
             name="fr.kazejiyu.ekumi.datatypes.double">
       </datatype>
    </extension>
+   <extension
+         point="fr.kazejiyu.ekumi.core.catalogs">
+      <category
+            id="fr.kazejiyu.ekumi.datatypes.category1"
+            name="category1"
+            parent="fr.kazejiyu.ekumi.datatypes.catalog1">
+      </category>
+      <category
+            id="fr.kazejiyu.ekumi.datatypes.category2"
+            name="category2"
+            parent="fr.kazejiyu.ekumi.datatypes.category1">
+      </category>
+      <catalog
+            id="fr.kazejiyu.ekumi.datatypes.catalog1"
+            name="Catalog 1">
+      </catalog>
+   </extension>
 
 </plugin>

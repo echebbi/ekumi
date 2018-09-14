@@ -6,7 +6,7 @@
          <meta.schema plugin="fr.kazejiyu.ekumi.core" id="datatypes" name="DataTypes"/>
       </appinfo>
       <documentation>
-         Defines new types for data. Data can be either inputs or outputs.
+         Used to define new types of data. A data can be either inputs or outputs.
       </documentation>
    </annotation>
 
