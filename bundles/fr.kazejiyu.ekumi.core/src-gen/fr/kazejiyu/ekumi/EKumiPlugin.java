@@ -22,6 +22,16 @@ public class EKumiPlugin implements BundleActivator {
 	
 	public static final String ID = "fr.kazejiyu.ekumi.core";
 	
+	/** ID of the 'catalogs' extension point */
+	public static final String CATALOGS_EXTENSION_ID = "fr.kazejiyu.ekumi.core.catalogs";
+	
+	/** ID of the 'datatypes' extension point */
+	public static final String DATATYPES_EXTENSION_ID = "fr.kazejiyu.ekumi.core.datatypes";
+	
+	/** ID of the 'languages' extension point */
+	public static final String LANGUAGES_EXTENSION_ID = "fr.kazejiyu.ekumi.core.languages";
+
+	/** URI of the plug-in's corresponding folder under the .metadata/.plugins directory */
 	private static final URI STATE_LOCATION_URI = URI.createURI("platform:/meta/" + ID + "/");
 
 	// The shared instance
