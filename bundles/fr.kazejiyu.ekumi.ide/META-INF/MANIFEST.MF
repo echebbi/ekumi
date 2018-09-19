@@ -11,5 +11,6 @@ Require-Bundle: fr.kazejiyu.ekumi.core,
  org.eclipse.e4.core.di;bundle-version="1.6.100",
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xmi
-Service-Component: OSGI-INF/views.xml
+Service-Component: OSGI-INF/views.xml,
+ OSGI-INF/catalogs.xml
 Bundle-ActivationPolicy: lazy
