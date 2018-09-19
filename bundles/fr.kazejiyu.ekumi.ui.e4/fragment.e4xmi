@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="ASCII"?>
 <fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/descriptor/basic" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmi:id="_BxaXACerEeWxCPrV0pAZQQ">
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_EI7oACerEeWxCPrV0pAZQQ" featurename="descriptors" parentElementId="xpath:/">
-    <elements xsi:type="basic:PartDescriptor" xmi:id="_KMklcCerEeWxCPrV0pAZQQ" elementId="test.partDescFragment.ASampleE4View" label="Execution History" iconURI="platform:/plugin/fr.kazejiyu.ekumi.ui.e4/icons/Sample.png" tooltip="" category="EKumi" contributionURI="bundleclass://fr.kazejiyu.ekumi.ui.e4/fr.kazejiyu.ekumi.ui.e4.parts.ExecutionHistoryView">
+    <elements xsi:type="basic:PartDescriptor" xmi:id="_KMklcCerEeWxCPrV0pAZQQ" elementId="fr.kazejiyu.ekumi.ui.e4.parts.executionhistory" label="Execution History" iconURI="platform:/plugin/fr.kazejiyu.ekumi.ui.e4/icons/Sample.png" tooltip="" category="EKumi" contributionURI="bundleclass://fr.kazejiyu.ekumi.ui.e4/fr.kazejiyu.ekumi.ui.e4.parts.ExecutionHistoryView">
       <tags>View</tags>
       <tags>categoryTag:EKumi</tags>
     </elements>
+    <elements xsi:type="basic:PartDescriptor" xmi:id="_DPJqwLpKEeiqAO7WYWW8Lg" elementId="fr.kazejiyu.ekumi.ui.e4.parts.catalog" label="Catalog" iconURI="platform:/plugin/fr.kazejiyu.ekumi.ui.e4/icons/Sample.png" category="EKumi" contributionURI="bundleclass://fr.kazejiyu.ekumi.ui.e4/fr.kazejiyu.ekumi.ui.e4.parts.CatalogsView"/>
   </fragments>
 </fragment:ModelFragments>
