@@ -6,6 +6,7 @@ import java.io.File;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.BasicEList;
@@ -42,6 +43,7 @@ public class PersistedHistory extends HistoryImpl {
 			Arrays.stream(executionFolders())
 			      .flatMap(file -> Arrays.stream(file.listFiles(f -> f.getName().endsWith(".ekumi"))))
 				  .map(file -> loadExecutionFromFile(file))
+				  .filter(Objects::nonNull)
 				  .collect(Collectors.toList())
 		);	
 	}
@@ -66,7 +68,7 @@ public class PersistedHistory extends HistoryImpl {
 			
 			resourceSet.getPackageRegistry().put(EkumiPackage.eNS_URI, EkumiPackage.eINSTANCE);
 			Resource resource = resourceSet.getResource(URI.createFileURI(file.getAbsolutePath()), true);
-				
+			
 			return (Execution) resource.getContents().get(0);
 			
 		} catch (Exception e) {

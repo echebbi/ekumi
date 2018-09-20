@@ -56,47 +56,45 @@ public class PersistExecution implements ActivityListener, ExecutionListener {
 	}
 
 	@Override
-	public void onExecutionStarted(Execution execution) {
-		this.execution = execution;
-		persistInWorkspaceMetada(execution);
+	public void onExecutionStarted(Execution started) {
+		this.execution = started;
+		persist(execution);
 	}
 
 	@Override
 	public void onActivityFailed(Activity failed) {
-		persistInWorkspaceMetada(execution);
+		persist(execution);
 	}
 
 	@Override
 	public void onActivitySucceeded(Activity succeeded) {
-		persistInWorkspaceMetada(execution);
+		persist(execution);
 	}
 	
 	@Override
 	public void onExecutionSucceeded(Execution succeeded) {
-		persistInWorkspaceMetada(execution);
+		this.execution = succeeded;
+		persist(execution);
 	}
 
 	/**
-	 * Persists given execution as an XMI file in workspace .metadata folder.
+	 * Persists given execution as an XMI file under given location.
 	 * 
 	 * @param execution
 	 * 			The execution to persist.
 	 */
-	private void persistInWorkspaceMetada(Execution execution) {
+	private void persist(Execution execution) {
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
-		
-		if (! m.containsKey("ekumi"))
-			m.put("ekumi", new XMIResourceFactoryImpl());
+		m.putIfAbsent("ekumi", new XMIResourceFactoryImpl());
 		
 		ResourceSet resourceSet = new ResourceSetImpl();
 		Resource resource = resourceSet.createResource(
 				location
 					.appendSegment(START_DATE_FORMAT.format(execution.getStartDate()) + "." + execution.getId())
-					.appendSegment(execution.getActivity().getName())
+					.appendSegment(execution.getName())
 					.appendFileExtension("ekumi")
 		 );
-		
 		resource.getContents().add(execution);
 		
 		try {
