@@ -8,6 +8,7 @@ import fr.kazejiyu.ekumi.core.ekumi.UnsafeContext;
 
 import fr.kazejiyu.ekumi.core.execution.events.Events;
 
+import fr.kazejiyu.ekumi.model.catalog.provider.EkumiEditPlugin;
 import java.util.Collection;
 import java.util.List;
 
@@ -245,7 +246,7 @@ public class UnsafeContextItemProvider extends ItemProviderAdapter implements IE
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return fr.kazejiyu.ekumi.model.catalog.provider.EkumiEditPlugin.INSTANCE;
+		return EkumiEditPlugin.INSTANCE;
 	}
 
 }

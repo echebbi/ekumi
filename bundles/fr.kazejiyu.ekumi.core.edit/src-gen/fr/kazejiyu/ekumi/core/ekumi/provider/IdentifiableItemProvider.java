@@ -5,6 +5,7 @@ package fr.kazejiyu.ekumi.core.ekumi.provider;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.core.ekumi.Identifiable;
 
+import fr.kazejiyu.ekumi.model.catalog.provider.EkumiEditPlugin;
 import java.util.Collection;
 import java.util.List;
 
@@ -165,7 +166,7 @@ public class IdentifiableItemProvider extends ItemProviderAdapter implements IEd
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return fr.kazejiyu.ekumi.model.catalog.provider.EkumiEditPlugin.INSTANCE;
+		return EkumiEditPlugin.INSTANCE;
 	}
 
 }

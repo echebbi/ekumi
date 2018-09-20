@@ -4,6 +4,7 @@ package fr.kazejiyu.ekumi.core.ekumi.provider;
 
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 
+import fr.kazejiyu.ekumi.model.catalog.provider.EkumiEditPlugin;
 import java.util.Collection;
 import java.util.List;
 
@@ -124,7 +125,7 @@ public class ContextItemProvider extends ItemProviderAdapter implements IEditing
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return fr.kazejiyu.ekumi.model.catalog.provider.EkumiEditPlugin.INSTANCE;
+		return EkumiEditPlugin.INSTANCE;
 	}
 
 }

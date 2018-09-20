@@ -22,7 +22,7 @@
     <genClasses image="false" ecoreClass="catalog.ecore#//Group">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//Group/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//Group/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference catalog.ecore#//Group/categories"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference catalog.ecore#//Group/categories"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference catalog.ecore#//Group/parent"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//Group/description"/>
     </genClasses>

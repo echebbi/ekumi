@@ -1,7 +1,8 @@
 Manifest-Version: 1.0
 Automatic-Module-Name: fr.kazejiyu.ekumi.core.editor
 Bundle-SymbolicName: fr.kazejiyu.ekumi.core.editor;singleton:=true
-Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources;visibility:=reexport,
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.resources;visibility:=reexport,
  fr.kazejiyu.ekumi.core.edit;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.emf.edit.ui;visibility:=reexport,
@@ -16,6 +17,4 @@ Bundle-Name: %pluginName
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Localization: plugin
-Bundle-Activator: fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEd
- itorPlugin$Implementation
-
+Bundle-Activator: fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin$Implementation

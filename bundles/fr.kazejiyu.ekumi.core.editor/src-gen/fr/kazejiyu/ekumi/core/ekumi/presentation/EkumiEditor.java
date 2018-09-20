@@ -153,6 +153,8 @@ import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
 import fr.kazejiyu.ekumi.core.ekumi.provider.EkumiItemProviderAdapterFactory;
+import fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin;
+import fr.kazejiyu.ekumi.model.catalog.provider.CatalogItemProviderAdapterFactory;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
@@ -518,7 +520,7 @@ public class EkumiEditor extends MultiPageEditorPart
 					});
 				}
 			} catch (CoreException exception) {
-				fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE.log(exception);
+				EkumiEditorPlugin.INSTANCE.log(exception);
 			}
 		}
 	};
@@ -624,7 +626,7 @@ public class EkumiEditor extends MultiPageEditorPart
 					setActivePage(lastEditorPage);
 					showTabs();
 				} catch (PartInitException exception) {
-					fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE.log(exception);
+					EkumiEditorPlugin.INSTANCE.log(exception);
 				}
 			}
 
@@ -632,7 +634,7 @@ public class EkumiEditor extends MultiPageEditorPart
 				try {
 					markerHelper.updateMarkers(diagnostic);
 				} catch (CoreException exception) {
-					fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE.log(exception);
+					EkumiEditorPlugin.INSTANCE.log(exception);
 				}
 			}
 		}
@@ -672,8 +674,7 @@ public class EkumiEditor extends MultiPageEditorPart
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
-		adapterFactory
-				.addAdapterFactory(new fr.kazejiyu.ekumi.model.catalog.provider.CatalogItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new CatalogItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new EkumiItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
@@ -1477,7 +1478,7 @@ public class EkumiEditor extends MultiPageEditorPart
 		} catch (Exception exception) {
 			// Something went wrong that shouldn't.
 			//
-			fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE.log(exception);
+			EkumiEditorPlugin.INSTANCE.log(exception);
 		}
 		updateProblemIndication = true;
 		updateProblemIndication();
@@ -1680,7 +1681,7 @@ public class EkumiEditor extends MultiPageEditorPart
 	 * @generated
 	 */
 	private static String getString(String key) {
-		return fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE.getString(key);
+		return EkumiEditorPlugin.INSTANCE.getString(key);
 	}
 
 	/**
@@ -1690,8 +1691,7 @@ public class EkumiEditor extends MultiPageEditorPart
 	 * @generated
 	 */
 	private static String getString(String key, Object s1) {
-		return fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE.getString(key,
-				new Object[] { s1 });
+		return EkumiEditorPlugin.INSTANCE.getString(key, new Object[] { s1 });
 	}
 
 	/**

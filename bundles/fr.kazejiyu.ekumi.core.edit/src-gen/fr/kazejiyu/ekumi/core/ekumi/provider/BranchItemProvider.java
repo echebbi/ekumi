@@ -6,6 +6,7 @@ import fr.kazejiyu.ekumi.core.ekumi.Branch;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 
+import fr.kazejiyu.ekumi.model.catalog.provider.EkumiEditPlugin;
 import java.util.Collection;
 import java.util.List;
 
@@ -199,7 +200,7 @@ public class BranchItemProvider extends ItemProviderAdapter implements IEditingD
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return fr.kazejiyu.ekumi.model.catalog.provider.EkumiEditPlugin.INSTANCE;
+		return EkumiEditPlugin.INSTANCE;
 	}
 
 }

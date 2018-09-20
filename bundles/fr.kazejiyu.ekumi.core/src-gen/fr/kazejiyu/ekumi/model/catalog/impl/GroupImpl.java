@@ -18,7 +18,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -80,7 +81,7 @@ public abstract class GroupImpl extends MinimalEObjectImpl.Container implements 
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getCategories() <em>Categories</em>}' reference list.
+	 * The cached value of the '{@link #getCategories() <em>Categories</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getCategories()
@@ -88,16 +89,6 @@ public abstract class GroupImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected EList<Group> categories;
-
-	/**
-	 * The cached value of the '{@link #getParent() <em>Parent</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParent()
-	 * @generated
-	 * @ordered
-	 */
-	protected Group parent;
 
 	/**
 	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
@@ -187,7 +178,7 @@ public abstract class GroupImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	public EList<Group> getCategories() {
 		if (categories == null) {
-			categories = new EObjectWithInverseResolvingEList<Group>(Group.class, this,
+			categories = new EObjectContainmentWithInverseEList<Group>(Group.class, this,
 					CatalogPackage.GROUP__CATEGORIES, CatalogPackage.GROUP__PARENT);
 		}
 		return categories;
@@ -199,25 +190,9 @@ public abstract class GroupImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	public Group getParent() {
-		if (parent != null && parent.eIsProxy()) {
-			InternalEObject oldParent = (InternalEObject) parent;
-			parent = (Group) eResolveProxy(oldParent);
-			if (parent != oldParent) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CatalogPackage.GROUP__PARENT, oldParent,
-							parent));
-			}
-		}
-		return parent;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Group basicGetParent() {
-		return parent;
+		if (eContainerFeatureID() != CatalogPackage.GROUP__PARENT)
+			return null;
+		return (Group) eInternalContainer();
 	}
 
 	/**
@@ -226,16 +201,7 @@ public abstract class GroupImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	public NotificationChain basicSetParent(Group newParent, NotificationChain msgs) {
-		Group oldParent = parent;
-		parent = newParent;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CatalogPackage.GROUP__PARENT,
-					oldParent, newParent);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
+		msgs = eBasicSetContainer((InternalEObject) newParent, CatalogPackage.GROUP__PARENT, msgs);
 		return msgs;
 	}
 
@@ -245,11 +211,13 @@ public abstract class GroupImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	public void setParent(Group newParent) {
-		if (newParent != parent) {
+		if (newParent != eInternalContainer()
+				|| (eContainerFeatureID() != CatalogPackage.GROUP__PARENT && newParent != null)) {
+			if (EcoreUtil.isAncestor(this, newParent))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (parent != null)
-				msgs = ((InternalEObject) parent).eInverseRemove(this, CatalogPackage.GROUP__CATEGORIES, Group.class,
-						msgs);
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
 			if (newParent != null)
 				msgs = ((InternalEObject) newParent).eInverseAdd(this, CatalogPackage.GROUP__CATEGORIES, Group.class,
 						msgs);
@@ -294,9 +262,8 @@ public abstract class GroupImpl extends MinimalEObjectImpl.Container implements 
 		case CatalogPackage.GROUP__CATEGORIES:
 			return ((InternalEList<InternalEObject>) (InternalEList<?>) getCategories()).basicAdd(otherEnd, msgs);
 		case CatalogPackage.GROUP__PARENT:
-			if (parent != null)
-				msgs = ((InternalEObject) parent).eInverseRemove(this, CatalogPackage.GROUP__CATEGORIES, Group.class,
-						msgs);
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
 			return basicSetParent((Group) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -324,6 +291,20 @@ public abstract class GroupImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+		case CatalogPackage.GROUP__PARENT:
+			return eInternalContainer().eInverseRemove(this, CatalogPackage.GROUP__CATEGORIES, Group.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case CatalogPackage.GROUP__ID:
@@ -333,9 +314,7 @@ public abstract class GroupImpl extends MinimalEObjectImpl.Container implements 
 		case CatalogPackage.GROUP__CATEGORIES:
 			return getCategories();
 		case CatalogPackage.GROUP__PARENT:
-			if (resolve)
-				return getParent();
-			return basicGetParent();
+			return getParent();
 		case CatalogPackage.GROUP__DESCRIPTION:
 			return getDescription();
 		}
@@ -413,7 +392,7 @@ public abstract class GroupImpl extends MinimalEObjectImpl.Container implements 
 		case CatalogPackage.GROUP__CATEGORIES:
 			return categories != null && !categories.isEmpty();
 		case CatalogPackage.GROUP__PARENT:
-			return parent != null;
+			return getParent() != null;
 		case CatalogPackage.GROUP__DESCRIPTION:
 			return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 		}
