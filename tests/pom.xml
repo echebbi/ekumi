@@ -53,6 +53,7 @@
                             <excludes>
                                 <!-- Ignore generated classes -->
                                 <exclude>fr/kazejiyu/ekumi/core/ekumi/**/*</exclude>
+                                <exclude>fr/kazejiyu/ekumi/model/catalog/**/*</exclude>
 
                                 <!-- Ignore Exceptions -->
                                 <exclude>**/*Exception.class</exclude>
