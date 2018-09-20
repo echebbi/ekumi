@@ -13,7 +13,7 @@
   <foreignModel>catalog.ecore</foreignModel>
   <foreignModel>ekumi.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>
-  <genPackages prefix="Catalog" basePackage="fr.kazejiyu.ekumi" disposableProviderFactory="true"
+  <genPackages prefix="Catalog" basePackage="fr.kazejiyu.ekumi.model" disposableProviderFactory="true"
       ecorePackage="catalog.ecore#/">
     <genClasses ecoreClass="catalog.ecore#//Catalog"/>
     <genClasses ecoreClass="catalog.ecore#//Category">

@@ -1,9 +1,9 @@
 /**
  */
-package fr.kazejiyu.ekumi.core.ekumi.provider;
+package fr.kazejiyu.ekumi.model.catalog.provider;
 
-import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
-import fr.kazejiyu.ekumi.core.ekumi.Identifiable;
+import fr.kazejiyu.ekumi.model.catalog.CatalogPackage;
+import fr.kazejiyu.ekumi.model.catalog.Group;
 
 import java.util.Collection;
 import java.util.List;
@@ -25,12 +25,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link fr.kazejiyu.ekumi.core.ekumi.Identifiable} object.
+ * This is the item provider adapter for a {@link fr.kazejiyu.ekumi.model.catalog.Group} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class IdentifiableItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+public class GroupItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
 		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -38,7 +38,7 @@ public class IdentifiableItemProvider extends ItemProviderAdapter implements IEd
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IdentifiableItemProvider(AdapterFactory adapterFactory) {
+	public GroupItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -55,6 +55,9 @@ public class IdentifiableItemProvider extends ItemProviderAdapter implements IEd
 
 			addIdPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
+			addCategoriesPropertyDescriptor(object);
+			addParentPropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -68,10 +71,9 @@ public class IdentifiableItemProvider extends ItemProviderAdapter implements IEd
 	protected void addIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Identifiable_id_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Identifiable_id_feature",
-								"_UI_Identifiable_type"),
-						EkumiPackage.Literals.IDENTIFIABLE__ID, true, false, false,
+						getResourceLocator(), getString("_UI_Group_id_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Group_id_feature", "_UI_Group_type"),
+						CatalogPackage.Literals.GROUP__ID, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -84,22 +86,55 @@ public class IdentifiableItemProvider extends ItemProviderAdapter implements IEd
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Identifiable_name_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Identifiable_name_feature",
-								"_UI_Identifiable_type"),
-						EkumiPackage.Literals.IDENTIFIABLE__NAME, true, false, false,
+						getResourceLocator(), getString("_UI_Group_name_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Group_name_feature", "_UI_Group_type"),
+						CatalogPackage.Literals.GROUP__NAME, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This returns Identifiable.gif.
+	 * This adds a property descriptor for the Categories feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Identifiable"));
+	protected void addCategoriesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Group_categories_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Group_categories_feature",
+								"_UI_Group_type"),
+						CatalogPackage.Literals.GROUP__CATEGORIES, true, false, true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Parent feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addParentPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Group_parent_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Group_parent_feature", "_UI_Group_type"),
+						CatalogPackage.Literals.GROUP__PARENT, true, false, true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Group_description_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Group_description_feature",
+								"_UI_Group_type"),
+						CatalogPackage.Literals.GROUP__DESCRIPTION, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -120,9 +155,9 @@ public class IdentifiableItemProvider extends ItemProviderAdapter implements IEd
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Identifiable) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_Identifiable_type")
-				: getString("_UI_Identifiable_type") + " " + label;
+		String label = ((Group) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_Group_type")
+				: getString("_UI_Group_type") + " " + label;
 	}
 
 	/**
@@ -136,9 +171,10 @@ public class IdentifiableItemProvider extends ItemProviderAdapter implements IEd
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Identifiable.class)) {
-		case EkumiPackage.IDENTIFIABLE__ID:
-		case EkumiPackage.IDENTIFIABLE__NAME:
+		switch (notification.getFeatureID(Group.class)) {
+		case CatalogPackage.GROUP__ID:
+		case CatalogPackage.GROUP__NAME:
+		case CatalogPackage.GROUP__DESCRIPTION:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
@@ -165,7 +201,7 @@ public class IdentifiableItemProvider extends ItemProviderAdapter implements IEd
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return fr.kazejiyu.ekumi.model.catalog.provider.EkumiEditPlugin.INSTANCE;
+		return EkumiEditPlugin.INSTANCE;
 	}
 
 }

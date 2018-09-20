@@ -1,6 +1,6 @@
 /**
  */
-package fr.kazejiyu.ekumi.core.ekumi.presentation;
+package fr.kazejiyu.ekumi.model.catalog.presentation;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -152,16 +152,19 @@ import org.eclipse.emf.edit.ui.util.EditUIUtil;
 
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
+import fr.kazejiyu.ekumi.model.catalog.provider.CatalogItemProviderAdapterFactory;
+
 import fr.kazejiyu.ekumi.core.ekumi.provider.EkumiItemProviderAdapterFactory;
+
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
- * This is an example of a Ekumi model editor.
+ * This is an example of a Catalog model editor.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class EkumiEditor extends MultiPageEditorPart
+public class CatalogEditor extends MultiPageEditorPart
 		implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IGotoMarker {
 	/**
 	 * This keeps track of the editing domain that is used to track all changes to the model.
@@ -321,16 +324,16 @@ public class EkumiEditor extends MultiPageEditorPart
 		public void partActivated(IWorkbenchPart p) {
 			if (p instanceof ContentOutline) {
 				if (((ContentOutline) p).getCurrentPage() == contentOutlinePage) {
-					getActionBarContributor().setActiveEditor(EkumiEditor.this);
+					getActionBarContributor().setActiveEditor(CatalogEditor.this);
 
 					setCurrentViewer(contentOutlineViewer);
 				}
 			} else if (p instanceof PropertySheet) {
 				if (propertySheetPages.contains(((PropertySheet) p).getCurrentPage())) {
-					getActionBarContributor().setActiveEditor(EkumiEditor.this);
+					getActionBarContributor().setActiveEditor(CatalogEditor.this);
 					handleActivate();
 				}
-			} else if (p == EkumiEditor.this) {
+			} else if (p == CatalogEditor.this) {
 				handleActivate();
 			}
 		}
@@ -501,7 +504,7 @@ public class EkumiEditor extends MultiPageEditorPart
 						public void run() {
 							removedResources.addAll(visitor.getRemovedResources());
 							if (!isDirty()) {
-								getSite().getPage().closeEditor(EkumiEditor.this, false);
+								getSite().getPage().closeEditor(CatalogEditor.this, false);
 							}
 						}
 					});
@@ -511,14 +514,14 @@ public class EkumiEditor extends MultiPageEditorPart
 					getSite().getShell().getDisplay().asyncExec(new Runnable() {
 						public void run() {
 							changedResources.addAll(visitor.getChangedResources());
-							if (getSite().getPage().getActiveEditor() == EkumiEditor.this) {
+							if (getSite().getPage().getActiveEditor() == CatalogEditor.this) {
 								handleActivate();
 							}
 						}
 					});
 				}
 			} catch (CoreException exception) {
-				fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE.log(exception);
+				EkumiEditorPlugin.INSTANCE.log(exception);
 			}
 		}
 	};
@@ -542,7 +545,7 @@ public class EkumiEditor extends MultiPageEditorPart
 
 		if (!removedResources.isEmpty()) {
 			if (handleDirtyConflict()) {
-				getSite().getPage().closeEditor(EkumiEditor.this, false);
+				getSite().getPage().closeEditor(CatalogEditor.this, false);
 			} else {
 				removedResources.clear();
 				changedResources.clear();
@@ -624,7 +627,7 @@ public class EkumiEditor extends MultiPageEditorPart
 					setActivePage(lastEditorPage);
 					showTabs();
 				} catch (PartInitException exception) {
-					fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE.log(exception);
+					EkumiEditorPlugin.INSTANCE.log(exception);
 				}
 			}
 
@@ -632,7 +635,7 @@ public class EkumiEditor extends MultiPageEditorPart
 				try {
 					markerHelper.updateMarkers(diagnostic);
 				} catch (CoreException exception) {
-					fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE.log(exception);
+					EkumiEditorPlugin.INSTANCE.log(exception);
 				}
 			}
 		}
@@ -655,7 +658,7 @@ public class EkumiEditor extends MultiPageEditorPart
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EkumiEditor() {
+	public CatalogEditor() {
 		super();
 		initializeEditingDomain();
 	}
@@ -672,8 +675,7 @@ public class EkumiEditor extends MultiPageEditorPart
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
-		adapterFactory
-				.addAdapterFactory(new fr.kazejiyu.ekumi.model.catalog.provider.CatalogItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new CatalogItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new EkumiItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
@@ -978,7 +980,7 @@ public class EkumiEditor extends MultiPageEditorPart
 			// Create a page for the selection tree view.
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), EkumiEditor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), CatalogEditor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						Tree tree = new Tree(composite, SWT.MULTI);
@@ -1014,7 +1016,7 @@ public class EkumiEditor extends MultiPageEditorPart
 			// Create a page for the parent tree view.
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), EkumiEditor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), CatalogEditor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						Tree tree = new Tree(composite, SWT.MULTI);
@@ -1043,7 +1045,7 @@ public class EkumiEditor extends MultiPageEditorPart
 			// This is the page for the list viewer
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), EkumiEditor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), CatalogEditor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						return new ListViewer(composite);
@@ -1068,7 +1070,7 @@ public class EkumiEditor extends MultiPageEditorPart
 			// This is the page for the tree viewer
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), EkumiEditor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), CatalogEditor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						return new TreeViewer(composite);
@@ -1095,7 +1097,7 @@ public class EkumiEditor extends MultiPageEditorPart
 			// This is the page for the table viewer.
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), EkumiEditor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), CatalogEditor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						return new TableViewer(composite);
@@ -1138,7 +1140,7 @@ public class EkumiEditor extends MultiPageEditorPart
 			// This is the page for the table tree viewer.
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), EkumiEditor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), CatalogEditor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						return new TreeViewer(composite);
@@ -1355,8 +1357,8 @@ public class EkumiEditor extends MultiPageEditorPart
 		PropertySheetPage propertySheetPage = new ExtendedPropertySheetPage(editingDomain) {
 			@Override
 			public void setSelectionToViewer(List<?> selection) {
-				EkumiEditor.this.setSelectionToViewer(selection);
-				EkumiEditor.this.setFocus();
+				CatalogEditor.this.setSelectionToViewer(selection);
+				CatalogEditor.this.setFocus();
 			}
 
 			@Override
@@ -1477,7 +1479,7 @@ public class EkumiEditor extends MultiPageEditorPart
 		} catch (Exception exception) {
 			// Something went wrong that shouldn't.
 			//
-			fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE.log(exception);
+			EkumiEditorPlugin.INSTANCE.log(exception);
 		}
 		updateProblemIndication = true;
 		updateProblemIndication();
@@ -1680,7 +1682,7 @@ public class EkumiEditor extends MultiPageEditorPart
 	 * @generated
 	 */
 	private static String getString(String key) {
-		return fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE.getString(key);
+		return EkumiEditorPlugin.INSTANCE.getString(key);
 	}
 
 	/**
@@ -1690,8 +1692,7 @@ public class EkumiEditor extends MultiPageEditorPart
 	 * @generated
 	 */
 	private static String getString(String key, Object s1) {
-		return fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE.getString(key,
-				new Object[] { s1 });
+		return EkumiEditorPlugin.INSTANCE.getString(key, new Object[] { s1 });
 	}
 
 	/**

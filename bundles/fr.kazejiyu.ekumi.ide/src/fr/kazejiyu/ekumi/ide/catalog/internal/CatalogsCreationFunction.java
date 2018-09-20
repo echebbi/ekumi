@@ -6,9 +6,9 @@ import org.eclipse.e4.core.contexts.IContextFunction;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 
 import fr.kazejiyu.ekumi.EKumiPlugin;
-import fr.kazejiyu.ekumi.catalog.Catalog;
-import fr.kazejiyu.ekumi.catalog.Catalogs;
-import fr.kazejiyu.ekumi.catalog.Category;
+import fr.kazejiyu.ekumi.model.catalog.Catalog;
+import fr.kazejiyu.ekumi.model.catalog.Catalogs;
+import fr.kazejiyu.ekumi.model.catalog.Category;
 
 /**
  * An OSGI Declarative Service making a {@link Catalogs} instance available for injection.<br>

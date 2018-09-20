@@ -3,8 +3,9 @@ package fr.kazejiyu.ekumi.catalog.provider;
 import org.eclipse.emf.edit.provider.DecoratorAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemProviderDecorator;
 
-import fr.kazejiyu.ekumi.catalog.Catalog;
-import fr.kazejiyu.ekumi.catalog.Category;
+import fr.kazejiyu.ekumi.model.catalog.Catalog;
+import fr.kazejiyu.ekumi.model.catalog.Category;
+import fr.kazejiyu.ekumi.model.catalog.provider.CatalogItemProviderAdapterFactory;
 
 public class CatalogDecoratorAdapterFactory extends DecoratorAdapterFactory {
 	

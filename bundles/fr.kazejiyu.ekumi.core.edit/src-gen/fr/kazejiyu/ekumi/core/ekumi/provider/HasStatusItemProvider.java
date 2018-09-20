@@ -2,8 +2,6 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.provider;
 
-import fr.kazejiyu.ekumi.catalog.provider.EkumiEditPlugin;
-
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.core.ekumi.HasStatus;
 import fr.kazejiyu.ekumi.core.ekumi.Status;
@@ -151,7 +149,7 @@ public class HasStatusItemProvider extends ItemProviderAdapter implements IEditi
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return EkumiEditPlugin.INSTANCE;
+		return fr.kazejiyu.ekumi.model.catalog.provider.EkumiEditPlugin.INSTANCE;
 	}
 
 }
