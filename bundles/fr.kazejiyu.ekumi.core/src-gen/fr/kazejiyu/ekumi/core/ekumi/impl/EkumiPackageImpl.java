@@ -40,6 +40,8 @@ import fr.kazejiyu.ekumi.core.execution.ExecutionStatus;
 import fr.kazejiyu.ekumi.core.execution.events.Events;
 import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
 
+import fr.kazejiyu.ekumi.model.catalog.CatalogPackage;
+import fr.kazejiyu.ekumi.model.catalog.impl.CatalogPackageImpl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -345,12 +347,10 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 		isInited = true;
 
 		// Obtain or create and register interdependencies
-		fr.kazejiyu.ekumi.model.catalog.impl.CatalogPackageImpl theCatalogPackage = (fr.kazejiyu.ekumi.model.catalog.impl.CatalogPackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(
-						fr.kazejiyu.ekumi.model.catalog.CatalogPackage.eNS_URI) instanceof fr.kazejiyu.ekumi.model.catalog.impl.CatalogPackageImpl
-								? EPackage.Registry.INSTANCE
-										.getEPackage(fr.kazejiyu.ekumi.model.catalog.CatalogPackage.eNS_URI)
-								: fr.kazejiyu.ekumi.model.catalog.CatalogPackage.eINSTANCE);
+		CatalogPackageImpl theCatalogPackage = (CatalogPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(CatalogPackage.eNS_URI) instanceof CatalogPackageImpl
+						? EPackage.Registry.INSTANCE.getEPackage(CatalogPackage.eNS_URI)
+						: CatalogPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theEkumiPackage.createPackageContents();

@@ -85,7 +85,7 @@ public interface CatalogPackage extends EPackage {
 	int GROUP__NAME = 1;
 
 	/**
-	 * The feature id for the '<em><b>Categories</b></em>' reference list.
+	 * The feature id for the '<em><b>Categories</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -94,7 +94,7 @@ public interface CatalogPackage extends EPackage {
 	int GROUP__CATEGORIES = 2;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' reference.
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -158,7 +158,7 @@ public interface CatalogPackage extends EPackage {
 	int CATALOG__NAME = GROUP__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Categories</b></em>' reference list.
+	 * The feature id for the '<em><b>Categories</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -167,7 +167,7 @@ public interface CatalogPackage extends EPackage {
 	int CATALOG__CATEGORIES = GROUP__CATEGORIES;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' reference.
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -231,7 +231,7 @@ public interface CatalogPackage extends EPackage {
 	int CATEGORY__NAME = GROUP__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Categories</b></em>' reference list.
+	 * The feature id for the '<em><b>Categories</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -240,7 +240,7 @@ public interface CatalogPackage extends EPackage {
 	int CATEGORY__CATEGORIES = GROUP__CATEGORIES;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' reference.
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -385,10 +385,10 @@ public interface CatalogPackage extends EPackage {
 	EAttribute getGroup_Name();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fr.kazejiyu.ekumi.model.catalog.Group#getCategories <em>Categories</em>}'.
+	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.model.catalog.Group#getCategories <em>Categories</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Categories</em>'.
+	 * @return the meta object for the containment reference list '<em>Categories</em>'.
 	 * @see fr.kazejiyu.ekumi.model.catalog.Group#getCategories()
 	 * @see #getGroup()
 	 * @generated
@@ -396,10 +396,10 @@ public interface CatalogPackage extends EPackage {
 	EReference getGroup_Categories();
 
 	/**
-	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.model.catalog.Group#getParent <em>Parent</em>}'.
+	 * Returns the meta object for the container reference '{@link fr.kazejiyu.ekumi.model.catalog.Group#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Parent</em>'.
+	 * @return the meta object for the container reference '<em>Parent</em>'.
 	 * @see fr.kazejiyu.ekumi.model.catalog.Group#getParent()
 	 * @see #getGroup()
 	 * @generated
@@ -516,7 +516,7 @@ public interface CatalogPackage extends EPackage {
 		EAttribute GROUP__NAME = eINSTANCE.getGroup_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Categories</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Categories</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -524,7 +524,7 @@ public interface CatalogPackage extends EPackage {
 		EReference GROUP__CATEGORIES = eINSTANCE.getGroup_Categories();
 
 		/**
-		 * The meta object literal for the '<em><b>Parent</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

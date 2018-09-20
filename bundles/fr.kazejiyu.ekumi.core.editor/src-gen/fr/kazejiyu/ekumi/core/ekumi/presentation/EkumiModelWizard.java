@@ -71,6 +71,7 @@ import org.eclipse.ui.part.ISetSelectionTarget;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.model.catalog.provider.EkumiEditPlugin;
+import fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin;
 import org.eclipse.core.runtime.Path;
 
 import org.eclipse.jface.viewers.ISelection;
@@ -94,9 +95,8 @@ public class EkumiModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<String> FILE_EXTENSIONS = Collections
-			.unmodifiableList(Arrays.asList(fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE
-					.getString("_UI_EkumiEditorFilenameExtensions").split("\\s*,\\s*")));
+	public static final List<String> FILE_EXTENSIONS = Collections.unmodifiableList(Arrays
+			.asList(EkumiEditorPlugin.INSTANCE.getString("_UI_EkumiEditorFilenameExtensions").split("\\s*,\\s*")));
 
 	/**
 	 * A formatted list of supported file extensions, suitable for display.
@@ -104,7 +104,7 @@ public class EkumiModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String FORMATTED_FILE_EXTENSIONS = fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE
+	public static final String FORMATTED_FILE_EXTENSIONS = EkumiEditorPlugin.INSTANCE
 			.getString("_UI_EkumiEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
 
 	/**
@@ -172,11 +172,9 @@ public class EkumiModelWizard extends Wizard implements INewWizard {
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.workbench = workbench;
 		this.selection = selection;
-		setWindowTitle(
-				fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
+		setWindowTitle(EkumiEditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
 		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE
-				.getImageDescriptor(fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE
-						.getImage("full/wizban/NewEkumi")));
+				.getImageDescriptor(EkumiEditorPlugin.INSTANCE.getImage("full/wizban/NewEkumi")));
 	}
 
 	/**
@@ -257,7 +255,7 @@ public class EkumiModelWizard extends Wizard implements INewWizard {
 						options.put(XMLResource.OPTION_ENCODING, initialObjectCreationPage.getEncoding());
 						resource.save(options);
 					} catch (Exception exception) {
-						fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE.log(exception);
+						EkumiEditorPlugin.INSTANCE.log(exception);
 					} finally {
 						progressMonitor.done();
 					}
@@ -287,15 +285,13 @@ public class EkumiModelWizard extends Wizard implements INewWizard {
 						workbench.getEditorRegistry().getDefaultEditor(modelFile.getFullPath().toString()).getId());
 			} catch (PartInitException exception) {
 				MessageDialog.openError(workbenchWindow.getShell(),
-						fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE
-								.getString("_UI_OpenEditorError_label"),
-						exception.getMessage());
+						EkumiEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), exception.getMessage());
 				return false;
 			}
 
 			return true;
 		} catch (Exception exception) {
-			fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE.log(exception);
+			EkumiEditorPlugin.INSTANCE.log(exception);
 			return false;
 		}
 	}
@@ -329,8 +325,8 @@ public class EkumiModelWizard extends Wizard implements INewWizard {
 				String extension = new Path(getFileName()).getFileExtension();
 				if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
 					String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension";
-					setErrorMessage(fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE
-							.getString(key, new Object[] { FORMATTED_FILE_EXTENSIONS }));
+					setErrorMessage(
+							EkumiEditorPlugin.INSTANCE.getString(key, new Object[] { FORMATTED_FILE_EXTENSIONS }));
 					return false;
 				}
 				return true;
@@ -408,8 +404,7 @@ public class EkumiModelWizard extends Wizard implements INewWizard {
 
 			Label containerLabel = new Label(composite, SWT.LEFT);
 			{
-				containerLabel.setText(fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE
-						.getString("_UI_ModelObject"));
+				containerLabel.setText(EkumiEditorPlugin.INSTANCE.getString("_UI_ModelObject"));
 
 				GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
@@ -435,8 +430,7 @@ public class EkumiModelWizard extends Wizard implements INewWizard {
 
 			Label encodingLabel = new Label(composite, SWT.LEFT);
 			{
-				encodingLabel.setText(fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE
-						.getString("_UI_XMLEncoding"));
+				encodingLabel.setText(EkumiEditorPlugin.INSTANCE.getString("_UI_XMLEncoding"));
 
 				GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
@@ -535,7 +529,7 @@ public class EkumiModelWizard extends Wizard implements INewWizard {
 			try {
 				return EkumiEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type");
 			} catch (MissingResourceException mre) {
-				fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE.log(mre);
+				EkumiEditorPlugin.INSTANCE.log(mre);
 			}
 			return typeName;
 		}
@@ -549,8 +543,8 @@ public class EkumiModelWizard extends Wizard implements INewWizard {
 			if (encodings == null) {
 				encodings = new ArrayList<String>();
 				for (StringTokenizer stringTokenizer = new StringTokenizer(
-						fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE
-								.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens();) {
+						EkumiEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer
+								.hasMoreTokens();) {
 					encodings.add(stringTokenizer.nextToken());
 				}
 			}
@@ -569,12 +563,10 @@ public class EkumiModelWizard extends Wizard implements INewWizard {
 		// Create a page, set the title, and the initial model file name.
 		//
 		newFileCreationPage = new EkumiModelWizardNewFileCreationPage("Whatever", selection);
-		newFileCreationPage.setTitle(fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE
-				.getString("_UI_EkumiModelWizard_label"));
-		newFileCreationPage.setDescription(fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE
-				.getString("_UI_EkumiModelWizard_description"));
-		newFileCreationPage.setFileName(fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE
-				.getString("_UI_EkumiEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0));
+		newFileCreationPage.setTitle(EkumiEditorPlugin.INSTANCE.getString("_UI_EkumiModelWizard_label"));
+		newFileCreationPage.setDescription(EkumiEditorPlugin.INSTANCE.getString("_UI_EkumiModelWizard_description"));
+		newFileCreationPage.setFileName(EkumiEditorPlugin.INSTANCE.getString("_UI_EkumiEditorFilenameDefaultBase") + "."
+				+ FILE_EXTENSIONS.get(0));
 		addPage(newFileCreationPage);
 
 		// Try and get the resource selection to determine a current directory for the file dialog.
@@ -600,7 +592,7 @@ public class EkumiModelWizard extends Wizard implements INewWizard {
 
 					// Make up a unique new name here.
 					//
-					String defaultModelBaseFilename = fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE
+					String defaultModelBaseFilename = EkumiEditorPlugin.INSTANCE
 							.getString("_UI_EkumiEditorFilenameDefaultBase");
 					String defaultModelFilenameExtension = FILE_EXTENSIONS.get(0);
 					String modelFilename = defaultModelBaseFilename + "." + defaultModelFilenameExtension;
@@ -612,10 +604,9 @@ public class EkumiModelWizard extends Wizard implements INewWizard {
 			}
 		}
 		initialObjectCreationPage = new EkumiModelWizardInitialObjectCreationPage("Whatever2");
-		initialObjectCreationPage.setTitle(fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE
-				.getString("_UI_EkumiModelWizard_label"));
-		initialObjectCreationPage.setDescription(fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE
-				.getString("_UI_Wizard_initial_object_description"));
+		initialObjectCreationPage.setTitle(EkumiEditorPlugin.INSTANCE.getString("_UI_EkumiModelWizard_label"));
+		initialObjectCreationPage
+				.setDescription(EkumiEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
 		addPage(initialObjectCreationPage);
 	}
 

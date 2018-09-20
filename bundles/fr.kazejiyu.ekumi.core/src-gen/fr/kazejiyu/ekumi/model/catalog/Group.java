@@ -77,10 +77,10 @@ public interface Group extends EObject {
 	 * The list contents are of type {@link fr.kazejiyu.ekumi.model.catalog.Group}.
 	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.model.catalog.Group#getParent <em>Parent</em>}'.
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Categories</em>' reference list.
+	 * @return the value of the '<em>Categories</em>' containment reference list.
 	 * @see fr.kazejiyu.ekumi.model.catalog.CatalogPackage#getGroup_Categories()
 	 * @see fr.kazejiyu.ekumi.model.catalog.Group#getParent
-	 * @model opposite="parent"
+	 * @model opposite="parent" containment="true"
 	 * @generated
 	 */
 	EList<Group> getCategories();
@@ -90,11 +90,11 @@ public interface Group extends EObject {
 	 * Returns the value of the '<em><b>Parent</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.model.catalog.Group#getCategories <em>Categories</em>}'.
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parent</em>' reference.
+	 * @return the value of the '<em>Parent</em>' container reference.
 	 * @see #setParent(Group)
 	 * @see fr.kazejiyu.ekumi.model.catalog.CatalogPackage#getGroup_Parent()
 	 * @see fr.kazejiyu.ekumi.model.catalog.Group#getCategories
-	 * @model opposite="categories"
+	 * @model opposite="categories" transient="false"
 	 * @generated
 	 */
 	Group getParent();
@@ -103,7 +103,7 @@ public interface Group extends EObject {
 	 * <!-- begin-user-doc -->
 	 * Sets the value of the '{@link fr.kazejiyu.ekumi.model.catalog.Group#getParent <em>Parent</em>}' reference.
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Parent</em>' reference.
+	 * @param value the new value of the '<em>Parent</em>' container reference.
 	 * @see #getParent()
 	 * @generated
 	 */
