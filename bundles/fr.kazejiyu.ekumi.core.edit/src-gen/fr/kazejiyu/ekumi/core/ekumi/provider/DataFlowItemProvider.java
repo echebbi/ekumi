@@ -2,8 +2,6 @@
  */
 package fr.kazejiyu.ekumi.core.ekumi.provider;
 
-import fr.kazejiyu.ekumi.catalog.provider.EkumiEditPlugin;
-
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 
 import java.util.Collection;
@@ -185,7 +183,7 @@ public class DataFlowItemProvider extends ItemProviderAdapter implements IEditin
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return EkumiEditPlugin.INSTANCE;
+		return fr.kazejiyu.ekumi.model.catalog.provider.EkumiEditPlugin.INSTANCE;
 	}
 
 }

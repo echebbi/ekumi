@@ -1,6 +1,6 @@
 /**
  */
-package fr.kazejiyu.ekumi.core.ekumi.presentation;
+package fr.kazejiyu.ekumi.model.catalog.presentation;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -40,12 +40,13 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
 
 /**
- * This is the action bar contributor for the Ekumi model editor.
+ * This is the action bar contributor for the Catalog model editor.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class EkumiActionBarContributor extends EditingDomainActionBarContributor implements ISelectionChangedListener {
+public class CatalogActionBarContributor extends EditingDomainActionBarContributor
+		implements ISelectionChangedListener {
 	/**
 	 * This keeps track of the active editor.
 	 * <!-- begin-user-doc -->
@@ -69,14 +70,13 @@ public class EkumiActionBarContributor extends EditingDomainActionBarContributor
 	 * @generated
 	 */
 	protected IAction showPropertiesViewAction = new Action(
-			fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE
-					.getString("_UI_ShowPropertiesView_menu_item")) {
+			EkumiEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
 		@Override
 		public void run() {
 			try {
 				getPage().showView("org.eclipse.ui.views.PropertySheet");
 			} catch (PartInitException exception) {
-				fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE.log(exception);
+				EkumiEditorPlugin.INSTANCE.log(exception);
 			}
 		}
 	};
@@ -89,8 +89,7 @@ public class EkumiActionBarContributor extends EditingDomainActionBarContributor
 	 * @generated
 	 */
 	protected IAction refreshViewerAction = new Action(
-			fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE
-					.getString("_UI_RefreshViewer_menu_item")) {
+			EkumiEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
 		@Override
 		public boolean isEnabled() {
 			return activeEditorPart instanceof IViewerProvider;
@@ -147,7 +146,7 @@ public class EkumiActionBarContributor extends EditingDomainActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EkumiActionBarContributor() {
+	public CatalogActionBarContributor() {
 		super(ADDITIONS_LAST_STYLE);
 		loadResourceAction = new LoadResourceAction();
 		validateAction = new ValidateAction();
@@ -162,8 +161,8 @@ public class EkumiActionBarContributor extends EditingDomainActionBarContributor
 	 */
 	@Override
 	public void contributeToToolBar(IToolBarManager toolBarManager) {
-		toolBarManager.add(new Separator("ekumi-settings"));
-		toolBarManager.add(new Separator("ekumi-additions"));
+		toolBarManager.add(new Separator("catalog-settings"));
+		toolBarManager.add(new Separator("catalog-additions"));
 	}
 
 	/**
@@ -177,10 +176,8 @@ public class EkumiActionBarContributor extends EditingDomainActionBarContributor
 	public void contributeToMenu(IMenuManager menuManager) {
 		super.contributeToMenu(menuManager);
 
-		IMenuManager submenuManager = new MenuManager(
-				fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE
-						.getString("_UI_EkumiEditor_menu"),
-				"fr.kazejiyu.ekumi.core.ekumiMenuID");
+		IMenuManager submenuManager = new MenuManager(EkumiEditorPlugin.INSTANCE.getString("_UI_CatalogEditor_menu"),
+				"fr.kazejiyu.ekumi.model.catalogMenuID");
 		menuManager.insertAfter("additions", submenuManager);
 		submenuManager.add(new Separator("settings"));
 		submenuManager.add(new Separator("actions"));
@@ -189,15 +186,12 @@ public class EkumiActionBarContributor extends EditingDomainActionBarContributor
 
 		// Prepare for CreateChild item addition or removal.
 		//
-		createChildMenuManager = new MenuManager(fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE
-				.getString("_UI_CreateChild_menu_item"));
+		createChildMenuManager = new MenuManager(EkumiEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
 		submenuManager.insertBefore("additions", createChildMenuManager);
 
 		// Prepare for CreateSibling item addition or removal.
 		//
-		createSiblingMenuManager = new MenuManager(
-				fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE
-						.getString("_UI_CreateSibling_menu_item"));
+		createSiblingMenuManager = new MenuManager(EkumiEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
 		submenuManager.insertBefore("additions", createSiblingMenuManager);
 
 		// Force an update because Eclipse hides empty menus now.
@@ -386,13 +380,11 @@ public class EkumiActionBarContributor extends EditingDomainActionBarContributor
 		super.menuAboutToShow(menuManager);
 		MenuManager submenuManager = null;
 
-		submenuManager = new MenuManager(fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE
-				.getString("_UI_CreateChild_menu_item"));
+		submenuManager = new MenuManager(EkumiEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
 		populateManager(submenuManager, createChildActions, null);
 		menuManager.insertBefore("edit", submenuManager);
 
-		submenuManager = new MenuManager(fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin.INSTANCE
-				.getString("_UI_CreateSibling_menu_item"));
+		submenuManager = new MenuManager(EkumiEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
 		populateManager(submenuManager, createSiblingActions, null);
 		menuManager.insertBefore("edit", submenuManager);
 	}

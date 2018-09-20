@@ -13,7 +13,7 @@
       <!-- @generated ekumi -->
       <package
             uri="http://fr.kazejiyu.io/ekumi/catalog"
-            class="fr.kazejiyu.ekumi.catalog.CatalogPackage"
+            class="fr.kazejiyu.ekumi.model.catalog.CatalogPackage"
             genModel="model/ekumi.genmodel"/>
    </extension>
 

@@ -6,5 +6,5 @@
       <provide interface="org.eclipse.e4.core.contexts.IContextFunction"/>
    </service>
    <property name="service.context.key" type="String"
-      value="fr.kazejiyu.ekumi.catalog.Catalogs"/>
+      value="fr.kazejiyu.ekumi.model.catalog.Catalogs"/>
 </scr:component>

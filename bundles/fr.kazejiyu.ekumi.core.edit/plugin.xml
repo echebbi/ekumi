@@ -10,7 +10,7 @@
       <!-- @generated ekumi -->
       <factory
             uri="http://fr.kazejiyu.io/ekumi/catalog"
-            class="fr.kazejiyu.ekumi.catalog.provider.CatalogItemProviderAdapterFactory"
+            class="fr.kazejiyu.ekumi.model.catalog.provider.CatalogItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

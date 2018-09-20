@@ -2,8 +2,8 @@ package fr.kazejiyu.ekumi.catalog.provider;
 
 import java.util.Collection;
 
-import fr.kazejiyu.ekumi.catalog.Category;
 import fr.kazejiyu.ekumi.core.ekumi.provider.ItemProviderAdapterDecorator;
+import fr.kazejiyu.ekumi.model.catalog.Category;
 
 /**
  * A custom item provider dedicated to {@link Category} instances.

@@ -20,9 +20,9 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Tree;
 
-import fr.kazejiyu.ekumi.catalog.Catalogs;
-import fr.kazejiyu.ekumi.catalog.Group;
 import fr.kazejiyu.ekumi.catalog.provider.CatalogDecoratorAdapterFactory;
+import fr.kazejiyu.ekumi.model.catalog.Catalogs;
+import fr.kazejiyu.ekumi.model.catalog.Group;
 
 /**
  * A view displaying an {@link Catalogs} within a Tree viewer.
@@ -38,7 +38,6 @@ public class CatalogsView {
 
 	@PostConstruct
 	public void createPartControl(Composite parent) {
-		catalogs.getContent().forEach(catalog -> System.out.println("CATALOG: " + catalog));
 		viewer = new TreeViewer(parent, SWT.BORDER);
 		Tree tree = viewer.getTree();
 		tree.setLinesVisible(true);

@@ -14,11 +14,11 @@ import java.util.stream.Collectors;
 import org.eclipse.core.runtime.IConfigurationElement;
 
 import fr.kazejiyu.ekumi.EKumiPlugin;
-import fr.kazejiyu.ekumi.catalog.Catalog;
-import fr.kazejiyu.ekumi.catalog.CatalogFactory;
-import fr.kazejiyu.ekumi.catalog.Catalogs;
-import fr.kazejiyu.ekumi.catalog.Category;
-import fr.kazejiyu.ekumi.catalog.Group;
+import fr.kazejiyu.ekumi.model.catalog.Catalog;
+import fr.kazejiyu.ekumi.model.catalog.CatalogFactory;
+import fr.kazejiyu.ekumi.model.catalog.Catalogs;
+import fr.kazejiyu.ekumi.model.catalog.Category;
+import fr.kazejiyu.ekumi.model.catalog.Group;
 
 /**
  * An adapter creating {@link Catalogs} instances from {@link IConfigurationElement}s.<br>
