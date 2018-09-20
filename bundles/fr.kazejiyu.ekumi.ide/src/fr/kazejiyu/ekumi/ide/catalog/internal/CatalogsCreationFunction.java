@@ -1,5 +1,7 @@
 package fr.kazejiyu.ekumi.ide.catalog.internal;
 
+import static java.util.Arrays.asList;
+
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IContextFunction;
@@ -28,7 +30,9 @@ public class CatalogsCreationFunction implements IContextFunction {
 		ExtensionToCatalogsAdapter adapter = new ExtensionToCatalogsAdapter();
 		
 		Catalogs catalogs = adapter.adapt(
-			extensions.getConfigurationElementsFor(EKumiPlugin.CATALOGS_EXTENSION_ID)
+			asList(
+				extensions.getConfigurationElementsFor(EKumiPlugin.CATALOGS_EXTENSION_ID)
+			)
 		);
 
 		ContextInjectionFactory.inject(catalogs, context);

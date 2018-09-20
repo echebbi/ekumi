@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EKumi IDE Test
+Bundle-SymbolicName: fr.kazejiyu.ekumi.ide.test
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Emmanuel CHEBBI
+Fragment-Host: fr.kazejiyu.ekumi.ide;bundle-version="1.0.0"
+Automatic-Module-Name: fr.kazejiyu.ekumi.ide.test
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: fr.kazejiyu.ekumi.tests.common;bundle-version="1.0.0"

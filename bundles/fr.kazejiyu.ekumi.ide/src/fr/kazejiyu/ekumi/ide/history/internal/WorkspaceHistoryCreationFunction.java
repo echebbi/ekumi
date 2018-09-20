@@ -20,7 +20,7 @@ import fr.kazejiyu.ekumi.ide.history.PersistedHistory;
  * 
  * @author Emmanuel CHEBBI
  */
-public class WorkspaceExecutionHistoryCreationFunction implements IContextFunction {
+public class WorkspaceHistoryCreationFunction implements IContextFunction {
 	
 	@Override
 	public Object compute(IEclipseContext context, String contextKey) {

@@ -1,14 +1,16 @@
 package fr.kazejiyu.ekumi.ide.catalog.internal;
 
-import static java.util.Arrays.asList;
-import static java.util.stream.Collectors.toSet;
+import static java.util.Objects.requireNonNull;
+import static java.util.stream.Collectors.toMap;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.function.Function;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -33,8 +35,8 @@ class ExtensionToCatalogsAdapter {
 	/** Ensures that the extensions provide proper data */
 	private final CatalogsExtensionConstraints constraints = new CatalogsExtensionConstraints();
 
-	/** Keeps track of categories that cannot be resolved because of missing information */
-	private Set<String> unresolvableCategories;
+	/** Keeps track of categories and catalogs that cannot be resolved because of missing information */
+	private Set<String> unresolvableElements;
 	
 	/** Stores the Category that have already been resolved, mapped with their id */
 	private Map<String, Category> alreadyCreatedCategories;
@@ -50,14 +52,14 @@ class ExtensionToCatalogsAdapter {
 	 * 
 	 * @return a new Catalogs instance.
 	 */
-	Catalogs adapt(IConfigurationElement[] rawConfigurationElements) {
-		List<IConfigurationElement> configurationElements = asList(rawConfigurationElements);
+	Catalogs adapt(List<IConfigurationElement> configurationElements) {
+		requireNonNull(configurationElements, "Cannot adapt null configuration elements");
 		
 		Catalogs catalogs = CatalogFactory.eINSTANCE.createCatalogs();
 		catalogs.getContent().addAll(catalogElementsIn(configurationElements));
 		
 		this.alreadyCreatedCategories = new HashMap<>();
-		this.unresolvableCategories = new HashSet<>();
+		this.unresolvableElements = new HashSet<>();
 		this.templates = categoryTemplatesIn(configurationElements);
 		
 		for (CategoryTemplate template : templates.values())
@@ -71,14 +73,28 @@ class ExtensionToCatalogsAdapter {
 		return configurationElements.stream()
 									.filter(constraints::isAValidCatalogElement)
 									.map(this::createCatalogFromExtension)
-									.collect(toSet());
+									.collect(toSetUsingIdsToCompare());
 	}
 	
+	/**
+	 * Allows to collect Catalog instances, keeping only one instance per id.
+	 * 
+	 * @return a collector collecting Catalog instances in a Set, using their id to compare them 
+	 */
+	private static Collector<Catalog, ?, Set<Catalog>> toSetUsingIdsToCompare() {
+		return Collectors.toCollection(
+				() -> new TreeSet<>(
+						(c1, c2) -> c1.getId().compareTo(c2.getId())
+				)
+		);
+	}
+	
+	/** @return category templates for all valid elements declared in the extensions, mapped to their id */
 	private Map<String, CategoryTemplate> categoryTemplatesIn(List<IConfigurationElement> configurationElements) {
 		return configurationElements.stream()
 				.filter(constraints::isAValidCategoryElement)
 				.map(this::createCategoryTemplateFromExtension)
-				.collect(Collectors.toMap(template -> template.id, Function.identity()));
+				.collect(toMap(template -> template.id, Function.identity(), (t1, t2) -> t1));
 	}
 	
 	/** 
@@ -99,21 +115,24 @@ class ExtensionToCatalogsAdapter {
 		if (alreadyCreatedCategories.containsKey(template.id))
 			return alreadyCreatedCategories.get(template.id);
 		
-		if (unresolvableCategories.contains(template.id))
+		if (unresolvableElements.contains(template.id))
 			return null;
 		
 		Group parent = getCatalog(catalogs, template.parentId);
 		
-		// parent must be a Category instead of a Catalog
+		// parent is not a Catalog ; maybe it is a Category, then ?
 		if (parent == null) {
 			CategoryTemplate parentCategoryTemplate = templates.get(template.parentId);
-			parent = resolveCategory(parentCategoryTemplate, catalogs);
+			
+			// Prevent NPE when the parent category does not exist
+			if (parentCategoryTemplate != null)
+				parent = resolveCategory(parentCategoryTemplate, catalogs);
 			
 			// still null: parent cannot be resolved
 			if (parent == null) {
 				// TODO [Log] A warning should be logged here
-				unresolvableCategories.add(template.id);
-				unresolvableCategories.add(template.parentId);
+				unresolvableElements.add(template.id);
+				unresolvableElements.add(template.parentId);
 
 				return null;
 			}

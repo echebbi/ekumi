@@ -54,6 +54,18 @@
 		</dependency>
 		<dependency>
 			<groupId>fr.kazejiyu.ekumi</groupId>
+			<artifactId>fr.kazejiyu.ekumi.ide</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>fr.kazejiyu.ekumi</groupId>
+			<artifactId>fr.kazejiyu.ekumi.ide.test</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>fr.kazejiyu.ekumi</groupId>
 			<artifactId>fr.kazejiyu.ekumi.languages.java</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 			<scope>compile</scope>
