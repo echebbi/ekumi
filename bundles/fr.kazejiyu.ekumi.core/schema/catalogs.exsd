@@ -22,6 +22,7 @@ A Catalog makes easier to share and reuse Activities.
          <sequence>
             <element ref="category" minOccurs="1" maxOccurs="unbounded"/>
             <element ref="catalog" minOccurs="1" maxOccurs="unbounded"/>
+            <element ref="activity" minOccurs="1" maxOccurs="unbounded"/>
          </sequence>
          <attribute name="point" type="string" use="required">
             <annotation>
@@ -124,6 +125,61 @@ Typically, in a tree view, a sub-category would be displayed as a child of the p
             <annotation>
                <documentation>
                   A short text describing the catalog. Can be used in UI.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="activity">
+      <annotation>
+         <documentation>
+            An Activity that belongs to a Category.
+
+Makes possible to register an Activity in a Catalog, and then to share and reuse it.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Uniquely identifies this Activity.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The name of the Activity. Likely to be used as label in UI.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="model" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The XMI model file describing the Activity.
+
+Such a model file likely ends with &apos;.ekumi&apos; and is located in the &apos;model/&apos; folder.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="resource"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="category" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Id of the category to which the Activity belongs.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="identifier" basedOn="fr.kazejiyu.ekumi.core.catalogs/category/@id"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  A short text describing the Activity Likely to be used in UI.
                </documentation>
             </annotation>
          </attribute>
