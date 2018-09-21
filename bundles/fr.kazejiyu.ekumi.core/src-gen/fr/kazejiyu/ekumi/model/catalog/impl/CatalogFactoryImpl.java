@@ -62,6 +62,8 @@ public class CatalogFactoryImpl extends EFactoryImpl implements CatalogFactory {
 			return createCategory();
 		case CatalogPackage.CATALOGS:
 			return createCatalogs();
+		case CatalogPackage.ACTIVITY_TEMPLATE:
+			return createActivityTemplate();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -95,6 +97,16 @@ public class CatalogFactoryImpl extends EFactoryImpl implements CatalogFactory {
 	public Catalogs createCatalogs() {
 		CatalogsImpl catalogs = new CatalogsImpl();
 		return catalogs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityTemplate createActivityTemplate() {
+		ActivityTemplateImpl activityTemplate = new ActivityTemplateImpl();
+		return activityTemplate;
 	}
 
 	/**

@@ -50,6 +50,15 @@ public interface CatalogFactory extends EFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Returns a new instance of class '<em>Activity Template</em>'.
+	 * <!-- end-user-doc -->
+	 * @return a new instance of class '<em>Activity Template</em>'.
+	 * @generated
+	 */
+	ActivityTemplate createActivityTemplate();
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * Returns the package supported by this factory.
 	 * <!-- end-user-doc -->
 	 * @return the package supported by this factory.
