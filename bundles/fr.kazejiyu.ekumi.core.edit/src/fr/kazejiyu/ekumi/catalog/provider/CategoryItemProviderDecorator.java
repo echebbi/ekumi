@@ -1,6 +1,8 @@
 package fr.kazejiyu.ekumi.catalog.provider;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import fr.kazejiyu.ekumi.core.ekumi.provider.ItemProviderAdapterDecorator;
 import fr.kazejiyu.ekumi.model.catalog.Category;
@@ -28,7 +30,11 @@ public class CategoryItemProviderDecorator extends ItemProviderAdapterDecorator 
 
 	@Override
 	public Collection<?> getChildren(Object object) {
-		return ((Category) object).getCategories();
+		Category category = ((Category) object);
+		
+		return Stream.concat(category.getCategories().stream(),
+							 category.getActivityTemplates().stream())
+					 .collect(Collectors.toList());
 	}
 
 }
