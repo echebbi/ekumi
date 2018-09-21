@@ -42,4 +42,25 @@ class CatalogsExtensionConstraints {
 		return true;
 	}
 	
+	/** @return whether the configuration element provides correct information */
+	boolean isAValidActivityElement(IConfigurationElement configurationElement) {
+		if (! configurationElement.getName().equals("activity"))
+			return false;
+		
+		if (configurationElement.getAttribute("id") == null || configurationElement.getAttribute("id").isEmpty())
+			return false;
+		
+		if (configurationElement.getAttribute("name") == null || configurationElement.getAttribute("name").isEmpty())
+			return false;
+		
+		if (configurationElement.getAttribute("model") == null || configurationElement.getAttribute("model").isEmpty())
+			return false;
+		
+		if (configurationElement.getAttribute("category") == null || configurationElement.getAttribute("category").isEmpty())
+			// ignore them for the moment, but will be added to a default category later
+			return false;
+		
+		return true;
+	}
+	
 }
