@@ -138,5 +138,82 @@ public class CatalogsExtensionConstraintsTest implements WithAssertions {
 		}
 		
 	}
+	
+	@Nested @DisplayName("when validating that a configuration element is an activity")
+	class WhenValidatingAnActivity {
+		
+		@BeforeEach
+		void createConstraints() {
+			constraints = new CatalogsExtensionConstraints();
+			
+			when(element.getName()).thenReturn("activity");
+			when(element.getAttribute("id")).thenReturn("defaultId");
+			when(element.getAttribute("name")).thenReturn("defaultName");
+			when(element.getAttribute("model")).thenReturn("path/to/model.ekumi");
+			when(element.getAttribute("category")).thenReturn("categoryId");
+		}
+		
+		@ParameterizedTest(name="when name = '{0}'")
+		@ValueSource(strings = {"", "ACTIVITY", "catalog", "category"})
+		@DisplayName("invalidates if the element's name is not exactly 'activity'")
+		void invalidates_if_the_element_name_is_not_exactly_activity(String name) {
+			when (element.getName()). thenReturn(name);
+			assertThat(constraints.isAValidActivityElement(element)).isFalse();
+		}
+		
+		@Test @DisplayName("invalidates if the element's id is null")
+		void invalidates_if_the_element_id_is_null() {
+			when(element.getAttribute("id")).thenReturn(null);
+			assertThat(constraints.isAValidActivityElement(element)).isFalse();
+		}
+		
+		@Test @DisplayName("invalidates if the element's id is empty")
+		void invalidates_if_the_element_id_is_empty() {
+			when(element.getAttribute("id")).thenReturn("");
+			assertThat(constraints.isAValidActivityElement(element)).isFalse();
+		}
+		
+		@Test @DisplayName("invalidates if the element's name is null")
+		void invalidates_if_the_element_name_is_null() {
+			when(element.getAttribute("name")).thenReturn(null);
+			assertThat(constraints.isAValidActivityElement(element)).isFalse();
+		}
+		
+		@Test @DisplayName("invalidates if the element's name is empty")
+		void invalidates_if_the_element_name_is_empty() {
+			when(element.getAttribute("name")).thenReturn("");
+			assertThat(constraints.isAValidActivityElement(element)).isFalse();
+		}
+		
+		@Test @DisplayName("invalidates if the element's model is null")
+		void invalidates_if_the_element_model_is_null() {
+			when(element.getAttribute("model")).thenReturn(null);
+			assertThat(constraints.isAValidActivityElement(element)).isFalse();
+		}
+		
+		@Test @DisplayName("invalidates if the element's model is empty")
+		void invalidates_if_the_element_model_is_empty() {
+			when(element.getAttribute("model")).thenReturn("");
+			assertThat(constraints.isAValidActivityElement(element)).isFalse();
+		}
+		
+		@Test @DisplayName("invalidates if the element's parent is null")
+		void invalidates_if_the_element_category_is_null() {
+			when(element.getAttribute("category")).thenReturn(null);
+			assertThat(constraints.isAValidActivityElement(element)).isFalse();
+		}
+		
+		@Test @DisplayName("invalidates if the element's parent is empty")
+		void invalidates_if_the_element_category_is_empty() {
+			when(element.getAttribute("category")).thenReturn("");
+			assertThat(constraints.isAValidActivityElement(element)).isFalse();
+		}
+		
+		@Test @DisplayName("validates if id, name and category are non-empty strings")
+		void validates_if_id_and_name__and_category_are_non_empty_strings() {
+			assertThat(constraints.isAValidActivityElement(element)).isTrue();
+		}
+		
+	}
 
 }

@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.assertj.core.api.WithAssertions;
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.emf.common.util.EList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -16,6 +17,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
+import fr.kazejiyu.ekumi.model.catalog.Catalog;
 import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
@@ -41,30 +43,41 @@ public class ExtensionToCatalogsAdapterTest implements WithAssertions {
 			when(configurationElement.getAttribute("name")).thenReturn("name");
 			when(configurationElement.getAttribute("parent")).thenReturn("parent");
 			
-			configurationElements = asList(configurationElement);
+			configurationElements = asList(configurationElement, createCatalogConfigurationElement());
 		}
 		
 		@Test @DisplayName("ignores the category if it does not have any id")
 		void ignores_the_category_if_it_does_not_have_any_id() {
 			when(configurationElement.getAttribute("id")).thenReturn("");
-			assertThat(adapter.adapt(configurationElements).getContent()).isEmpty();
+			
+			EList<Catalog> catalogs = adapter.adapt(configurationElements).getContent();
+			
+			assertThat(catalogs.get(0).getCategories()).isEmpty();
 		}
 		
 		@Test @DisplayName("ignores the category if it does not have any name")
 		void ignores_the_category_if_it_does_not_have_any_name() {
 			when(configurationElement.getAttribute("name")).thenReturn("");
-			assertThat(adapter.adapt(configurationElements).getContent()).isEmpty();
+			
+			EList<Catalog> catalogs = adapter.adapt(configurationElements).getContent();
+			
+			assertThat(catalogs.get(0).getCategories()).isEmpty();
 		}
 		
 		@Test @DisplayName("ignores the category if it does not have any parent")
 		void ignores_the_category_if_it_does_not_have_any_parent() {
 			when(configurationElement.getAttribute("parent")).thenReturn("");
-			assertThat(adapter.adapt(configurationElements).getContent()).isEmpty();
+			
+			EList<Catalog> catalogs = adapter.adapt(configurationElements).getContent();
+			
+			assertThat(catalogs.get(0).getCategories()).isEmpty();
 		}
 		
 		@Test @DisplayName("ignores the category if its parent does not exist")
 		void ignores_the_category_if_its_parent_does_not_exist() {
-			assertThat(adapter.adapt(configurationElements).getContent()).isEmpty();
+			EList<Catalog> catalogs = adapter.adapt(configurationElements).getContent();
+			
+			assertThat(catalogs.get(0).getCategories()).isEmpty();
 		}
 		
 	}
@@ -98,6 +111,71 @@ public class ExtensionToCatalogsAdapterTest implements WithAssertions {
 		void ignores_the_catalog_if_it_does_not_have_any_name() {
 			when(configurationElement.getAttribute("name")).thenReturn("");
 			assertThat(adapter.adapt(configurationElements).getContent()).isEmpty();
+		}
+		
+	}
+	
+	@Nested @DisplayName("when adapting an invalid activity")
+	class WhenAdaptingAnInvalidActivity {
+		
+		@Mock 
+		private IConfigurationElement configurationElement;
+		
+		private List<IConfigurationElement> configurationElements;
+		
+		@BeforeEach
+		void createAdapter() {
+			adapter = new ExtensionToCatalogsAdapter();
+			
+			when(configurationElement.getName()).thenReturn("activity");
+			when(configurationElement.getAttribute("id")).thenReturn("id");
+			when(configurationElement.getAttribute("name")).thenReturn("name");
+			when(configurationElement.getAttribute("model")).thenReturn("path/to/model.ekumi");
+			when(configurationElement.getAttribute("category")).thenReturn("categoryId");
+			
+			configurationElements = asList(configurationElement, createCatalogConfigurationElement());
+		}
+		
+		@Test @DisplayName("ignores the activity if it does not have any id")
+		void ignores_the_catalog_if_it_does_not_have_any_id() {
+			when(configurationElement.getAttribute("id")).thenReturn("");
+			
+			EList<Catalog> catalogs = adapter.adapt(configurationElements).getContent();
+			
+			assertThat(catalogs.get(0).getCategories()).isEmpty();
+		}
+		
+		@Test @DisplayName("ignores the activity if it does not have any name")
+		void ignores_the_catalog_if_it_does_not_have_any_name() {
+			when(configurationElement.getAttribute("name")).thenReturn("");
+			
+			EList<Catalog> catalogs = adapter.adapt(configurationElements).getContent();
+			
+			assertThat(catalogs.get(0).getCategories()).isEmpty();
+		}
+		
+		@Test @DisplayName("ignores the activity if it does not have a model")
+		void ignores_the_activity_if_it_does_not_have_a_model() {
+			when(configurationElement.getAttribute("model")).thenReturn("");
+			
+			EList<Catalog> catalogs = adapter.adapt(configurationElements).getContent();
+			
+			assertThat(catalogs.get(0).getCategories()).isEmpty();
+		}
+		
+		@Test @DisplayName("ignores the activity if it does not belong to any category")
+		void ignores_the_activity_if_it_does_not_belong_to_any_category() {
+			when(configurationElement.getAttribute("category")).thenReturn("");
+			
+			EList<Catalog> catalogs = adapter.adapt(configurationElements).getContent();
+			
+			assertThat(catalogs.get(0).getCategories()).isEmpty();
+		}
+		
+		@Test @DisplayName("ignores the activity if its category does not exist")
+		void ignores_the_activity_if_its_category_does_not_exist() {
+			EList<Catalog> catalogs = adapter.adapt(configurationElements).getContent();
+			assertThat(catalogs.get(0).getCategories()).isEmpty();
 		}
 		
 	}
@@ -136,17 +214,35 @@ public class ExtensionToCatalogsAdapterTest implements WithAssertions {
 		@Test @DisplayName("keeps only one category when there are two with the same id")
 		void keeps_only_one_category_when_there_are_two_with_the_same_id() {
 			for (String name : asList("First Category", "Second Category")) {
-				IConfigurationElement element = Mockito.mock(IConfigurationElement.class);
-				when(element.getName()).thenReturn("category");
+				IConfigurationElement element = createCategoryConfigurationElement();
 				when(element.getAttribute("id")).thenReturn("categoryId");
 				when(element.getAttribute("name")).thenReturn(name);
-				when(element.getAttribute("parent")).thenReturn("catalogId");
 				
 				configurationElements.add(element);
 			}
 			
 			// create 1 catalog + 1 category == 2
 			assertThat(adapter.adapt(configurationElements).eAllContents()).size().isEqualTo(2);
+		}
+		
+		@Test @DisplayName("keeps only one activity when there are two with the same id")
+		void keeps_only_one_activity_when_there_are_two_with_the_same_id() {
+			// A category is needed to add an Activity
+			configurationElements.add(createCategoryConfigurationElement());
+			
+			for (String name : asList("Activity 1", "Activity 2")) {
+				IConfigurationElement element = Mockito.mock(IConfigurationElement.class);
+				when(element.getName()).thenReturn("activity");
+				when(element.getAttribute("id")).thenReturn("activityId");
+				when(element.getAttribute("name")).thenReturn(name);
+				when(element.getAttribute("model")).thenReturn("path/to/" + name + ".ekumi");
+				when(element.getAttribute("category")).thenReturn("categoryId");
+				
+				configurationElements.add(element);
+			}
+			
+			// create 1 catalog + 1 category + 1 activity == 3
+			assertThat(adapter.adapt(configurationElements).eAllContents()).size().isEqualTo(3);
 		}
 		
 	}
@@ -210,6 +306,29 @@ public class ExtensionToCatalogsAdapterTest implements WithAssertions {
 			// create 1 catalog
 			assertThat(adapter.adapt(configurationElements).eAllContents()).size().isEqualTo(1);
 		}
+	}
+	
+	/** @return a configuration element describing a catalog (id: catalogId, name: First Catalog) */
+	static IConfigurationElement createCatalogConfigurationElement() {
+		IConfigurationElement element = Mockito.mock(IConfigurationElement.class);
+		
+		when(element.getName()).thenReturn("catalog");
+		when(element.getAttribute("id")).thenReturn("catalogId");
+		when(element.getAttribute("name")).thenReturn("First Catalog");
+		
+		return element;
+	}
+	
+	/** @return a configuration element describing a category (id: categoryId, name: First Category, parent: catalogId) */
+	static IConfigurationElement createCategoryConfigurationElement() {
+		IConfigurationElement element = Mockito.mock(IConfigurationElement.class);
+		
+		when(element.getName()).thenReturn("category");
+		when(element.getAttribute("id")).thenReturn("categoryId");
+		when(element.getAttribute("name")).thenReturn("First Category");
+		when(element.getAttribute("parent")).thenReturn("catalogId");
+		
+		return element;
 	}
 	
 }
