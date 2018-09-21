@@ -6,6 +6,7 @@ import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 
 import fr.kazejiyu.ekumi.core.ekumi.impl.EkumiPackageImpl;
 
+import fr.kazejiyu.ekumi.model.catalog.ActivityTemplate;
 import fr.kazejiyu.ekumi.model.catalog.Catalog;
 import fr.kazejiyu.ekumi.model.catalog.CatalogFactory;
 import fr.kazejiyu.ekumi.model.catalog.CatalogPackage;
@@ -13,8 +14,10 @@ import fr.kazejiyu.ekumi.model.catalog.Catalogs;
 import fr.kazejiyu.ekumi.model.catalog.Category;
 import fr.kazejiyu.ekumi.model.catalog.Group;
 
+import fr.kazejiyu.ekumi.model.catalog.Identifiable;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -54,6 +57,20 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * @generated
 	 */
 	private EClass catalogsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass activityTemplateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass identifiableEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -149,7 +166,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCategory_Activities() {
+	public EReference getCategory_ActivityTemplates() {
 		return (EReference) categoryEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -167,26 +184,8 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getGroup_Id() {
-		return (EAttribute) groupEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getGroup_Name() {
-		return (EAttribute) groupEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getGroup_Categories() {
-		return (EReference) groupEClass.getEStructuralFeatures().get(2);
+		return (EReference) groupEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -195,16 +194,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * @generated
 	 */
 	public EReference getGroup_Parent() {
-		return (EReference) groupEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getGroup_Description() {
-		return (EAttribute) groupEClass.getEStructuralFeatures().get(4);
+		return (EReference) groupEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -223,6 +213,78 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 */
 	public EReference getCatalogs_Content() {
 		return (EReference) catalogsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getActivityTemplate() {
+		return activityTemplateEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getActivityTemplate_ModelPath() {
+		return (EAttribute) activityTemplateEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getActivityTemplate_Category() {
+		return (EReference) activityTemplateEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getActivityTemplate__ToActivity() {
+		return activityTemplateEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getIdentifiable() {
+		return identifiableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIdentifiable_Id() {
+		return (EAttribute) identifiableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIdentifiable_Name() {
+		return (EAttribute) identifiableEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIdentifiable_Description() {
+		return (EAttribute) identifiableEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -257,17 +319,24 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 		catalogEClass = createEClass(CATALOG);
 
 		categoryEClass = createEClass(CATEGORY);
-		createEReference(categoryEClass, CATEGORY__ACTIVITIES);
+		createEReference(categoryEClass, CATEGORY__ACTIVITY_TEMPLATES);
 
 		groupEClass = createEClass(GROUP);
-		createEAttribute(groupEClass, GROUP__ID);
-		createEAttribute(groupEClass, GROUP__NAME);
 		createEReference(groupEClass, GROUP__CATEGORIES);
 		createEReference(groupEClass, GROUP__PARENT);
-		createEAttribute(groupEClass, GROUP__DESCRIPTION);
 
 		catalogsEClass = createEClass(CATALOGS);
 		createEReference(catalogsEClass, CATALOGS__CONTENT);
+
+		activityTemplateEClass = createEClass(ACTIVITY_TEMPLATE);
+		createEAttribute(activityTemplateEClass, ACTIVITY_TEMPLATE__MODEL_PATH);
+		createEReference(activityTemplateEClass, ACTIVITY_TEMPLATE__CATEGORY);
+		createEOperation(activityTemplateEClass, ACTIVITY_TEMPLATE___TO_ACTIVITY);
+
+		identifiableEClass = createEClass(IDENTIFIABLE);
+		createEAttribute(identifiableEClass, IDENTIFIABLE__ID);
+		createEAttribute(identifiableEClass, IDENTIFIABLE__NAME);
+		createEAttribute(identifiableEClass, IDENTIFIABLE__DESCRIPTION);
 	}
 
 	/**
@@ -304,35 +373,53 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 		// Add supertypes to classes
 		catalogEClass.getESuperTypes().add(this.getGroup());
 		categoryEClass.getESuperTypes().add(this.getGroup());
+		groupEClass.getESuperTypes().add(this.getIdentifiable());
+		activityTemplateEClass.getESuperTypes().add(this.getIdentifiable());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(catalogEClass, Catalog.class, "Catalog", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(categoryEClass, Category.class, "Category", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCategory_Activities(), theEkumiPackage.getActivity(), null, "activities", null, 0, 1,
-				Category.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCategory_ActivityTemplates(), this.getActivityTemplate(), this.getActivityTemplate_Category(),
+				"activityTemplates", null, 0, -1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(groupEClass, Group.class, "Group", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getGroup_Id(), ecorePackage.getEString(), "id", null, 0, 1, Group.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGroup_Name(), ecorePackage.getEString(), "name", null, 0, 1, Group.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGroup_Categories(), this.getGroup(), this.getGroup_Parent(), "categories", null, 0, -1,
 				Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGroup_Parent(), this.getGroup(), this.getGroup_Categories(), "parent", null, 0, 1,
 				Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGroup_Description(), ecorePackage.getEString(), "description", null, 0, 1, Group.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(catalogsEClass, Catalogs.class, "Catalogs", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCatalogs_Content(), this.getCatalog(), null, "content", null, 0, -1, Catalogs.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(activityTemplateEClass, ActivityTemplate.class, "ActivityTemplate", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getActivityTemplate_ModelPath(), ecorePackage.getEString(), "modelPath", null, 0, 1,
+				ActivityTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getActivityTemplate_Category(), this.getCategory(), this.getCategory_ActivityTemplates(),
+				"category", null, 0, 1, ActivityTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getActivityTemplate__ToActivity(), theEkumiPackage.getActivity(), "toActivity", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+
+		initEClass(identifiableEClass, Identifiable.class, "Identifiable", IS_ABSTRACT, IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIdentifiable_Id(), ecorePackage.getEString(), "id", null, 0, 1, Identifiable.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIdentifiable_Name(), ecorePackage.getEString(), "name", null, 0, 1, Identifiable.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIdentifiable_Description(), ecorePackage.getEString(), "description", null, 0, 1,
+				Identifiable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

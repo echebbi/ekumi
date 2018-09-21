@@ -4,6 +4,7 @@ package fr.kazejiyu.ekumi.model.catalog;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -57,6 +58,61 @@ public interface CatalogPackage extends EPackage {
 	CatalogPackage eINSTANCE = fr.kazejiyu.ekumi.model.catalog.impl.CatalogPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.model.catalog.Identifiable <em>Identifiable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.model.catalog.Identifiable
+	 * @see fr.kazejiyu.ekumi.model.catalog.impl.CatalogPackageImpl#getIdentifiable()
+	 * @generated
+	 */
+	int IDENTIFIABLE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIABLE__ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIABLE__NAME = 1;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIABLE__DESCRIPTION = 2;
+
+	/**
+	 * The number of structural features of the '<em>Identifiable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIABLE_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Identifiable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIABLE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.model.catalog.impl.GroupImpl <em>Group</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -73,7 +129,7 @@ public interface CatalogPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GROUP__ID = 0;
+	int GROUP__ID = IDENTIFIABLE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -82,25 +138,7 @@ public interface CatalogPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GROUP__NAME = 1;
-
-	/**
-	 * The feature id for the '<em><b>Categories</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GROUP__CATEGORIES = 2;
-
-	/**
-	 * The feature id for the '<em><b>Parent</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GROUP__PARENT = 3;
+	int GROUP__NAME = IDENTIFIABLE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -109,7 +147,25 @@ public interface CatalogPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GROUP__DESCRIPTION = 4;
+	int GROUP__DESCRIPTION = IDENTIFIABLE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Categories</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUP__CATEGORIES = IDENTIFIABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUP__PARENT = IDENTIFIABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Group</em>' class.
@@ -118,7 +174,7 @@ public interface CatalogPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GROUP_FEATURE_COUNT = 5;
+	int GROUP_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Group</em>' class.
@@ -127,7 +183,7 @@ public interface CatalogPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GROUP_OPERATION_COUNT = 0;
+	int GROUP_OPERATION_COUNT = IDENTIFIABLE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.model.catalog.impl.CatalogImpl <em>Catalog</em>}' class.
@@ -158,6 +214,15 @@ public interface CatalogPackage extends EPackage {
 	int CATALOG__NAME = GROUP__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATALOG__DESCRIPTION = GROUP__DESCRIPTION;
+
+	/**
 	 * The feature id for the '<em><b>Categories</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -174,15 +239,6 @@ public interface CatalogPackage extends EPackage {
 	 * @ordered
 	 */
 	int CATALOG__PARENT = GROUP__PARENT;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CATALOG__DESCRIPTION = GROUP__DESCRIPTION;
 
 	/**
 	 * The number of structural features of the '<em>Catalog</em>' class.
@@ -231,6 +287,15 @@ public interface CatalogPackage extends EPackage {
 	int CATEGORY__NAME = GROUP__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY__DESCRIPTION = GROUP__DESCRIPTION;
+
+	/**
 	 * The feature id for the '<em><b>Categories</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -249,22 +314,13 @@ public interface CatalogPackage extends EPackage {
 	int CATEGORY__PARENT = GROUP__PARENT;
 
 	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Activity Templates</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CATEGORY__DESCRIPTION = GROUP__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Activities</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CATEGORY__ACTIVITIES = GROUP_FEATURE_COUNT + 0;
+	int CATEGORY__ACTIVITY_TEMPLATES = GROUP_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Category</em>' class.
@@ -322,6 +378,88 @@ public interface CatalogPackage extends EPackage {
 	int CATALOGS_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.model.catalog.impl.ActivityTemplateImpl <em>Activity Template</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.model.catalog.impl.ActivityTemplateImpl
+	 * @see fr.kazejiyu.ekumi.model.catalog.impl.CatalogPackageImpl#getActivityTemplate()
+	 * @generated
+	 */
+	int ACTIVITY_TEMPLATE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_TEMPLATE__ID = IDENTIFIABLE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_TEMPLATE__NAME = IDENTIFIABLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_TEMPLATE__DESCRIPTION = IDENTIFIABLE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Model Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_TEMPLATE__MODEL_PATH = IDENTIFIABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Category</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_TEMPLATE__CATEGORY = IDENTIFIABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Activity Template</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_TEMPLATE_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>To Activity</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_TEMPLATE___TO_ACTIVITY = IDENTIFIABLE_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Activity Template</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_TEMPLATE_OPERATION_COUNT = IDENTIFIABLE_OPERATION_COUNT + 1;
+
+	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.model.catalog.Catalog <em>Catalog</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -342,15 +480,15 @@ public interface CatalogPackage extends EPackage {
 	EClass getCategory();
 
 	/**
-	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.model.catalog.Category#getActivities <em>Activities</em>}'.
+	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.model.catalog.Category#getActivityTemplates <em>Activity Templates</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Activities</em>'.
-	 * @see fr.kazejiyu.ekumi.model.catalog.Category#getActivities()
+	 * @return the meta object for the containment reference list '<em>Activity Templates</em>'.
+	 * @see fr.kazejiyu.ekumi.model.catalog.Category#getActivityTemplates()
 	 * @see #getCategory()
 	 * @generated
 	 */
-	EReference getCategory_Activities();
+	EReference getCategory_ActivityTemplates();
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.model.catalog.Group <em>Group</em>}'.
@@ -361,28 +499,6 @@ public interface CatalogPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getGroup();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.model.catalog.Group#getId <em>Id</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see fr.kazejiyu.ekumi.model.catalog.Group#getId()
-	 * @see #getGroup()
-	 * @generated
-	 */
-	EAttribute getGroup_Id();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.model.catalog.Group#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see fr.kazejiyu.ekumi.model.catalog.Group#getName()
-	 * @see #getGroup()
-	 * @generated
-	 */
-	EAttribute getGroup_Name();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.model.catalog.Group#getCategories <em>Categories</em>}'.
@@ -407,17 +523,6 @@ public interface CatalogPackage extends EPackage {
 	EReference getGroup_Parent();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.model.catalog.Group#getDescription <em>Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see fr.kazejiyu.ekumi.model.catalog.Group#getDescription()
-	 * @see #getGroup()
-	 * @generated
-	 */
-	EAttribute getGroup_Description();
-
-	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.model.catalog.Catalogs <em>Catalogs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -437,6 +542,91 @@ public interface CatalogPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCatalogs_Content();
+
+	/**
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.model.catalog.ActivityTemplate <em>Activity Template</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Activity Template</em>'.
+	 * @see fr.kazejiyu.ekumi.model.catalog.ActivityTemplate
+	 * @generated
+	 */
+	EClass getActivityTemplate();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.model.catalog.ActivityTemplate#getModelPath <em>Model Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Model Path</em>'.
+	 * @see fr.kazejiyu.ekumi.model.catalog.ActivityTemplate#getModelPath()
+	 * @see #getActivityTemplate()
+	 * @generated
+	 */
+	EAttribute getActivityTemplate_ModelPath();
+
+	/**
+	 * Returns the meta object for the container reference '{@link fr.kazejiyu.ekumi.model.catalog.ActivityTemplate#getCategory <em>Category</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Category</em>'.
+	 * @see fr.kazejiyu.ekumi.model.catalog.ActivityTemplate#getCategory()
+	 * @see #getActivityTemplate()
+	 * @generated
+	 */
+	EReference getActivityTemplate_Category();
+
+	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.model.catalog.ActivityTemplate#toActivity() <em>To Activity</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>To Activity</em>' operation.
+	 * @see fr.kazejiyu.ekumi.model.catalog.ActivityTemplate#toActivity()
+	 * @generated
+	 */
+	EOperation getActivityTemplate__ToActivity();
+
+	/**
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.model.catalog.Identifiable <em>Identifiable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Identifiable</em>'.
+	 * @see fr.kazejiyu.ekumi.model.catalog.Identifiable
+	 * @generated
+	 */
+	EClass getIdentifiable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.model.catalog.Identifiable#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see fr.kazejiyu.ekumi.model.catalog.Identifiable#getId()
+	 * @see #getIdentifiable()
+	 * @generated
+	 */
+	EAttribute getIdentifiable_Id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.model.catalog.Identifiable#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see fr.kazejiyu.ekumi.model.catalog.Identifiable#getName()
+	 * @see #getIdentifiable()
+	 * @generated
+	 */
+	EAttribute getIdentifiable_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.model.catalog.Identifiable#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see fr.kazejiyu.ekumi.model.catalog.Identifiable#getDescription()
+	 * @see #getIdentifiable()
+	 * @generated
+	 */
+	EAttribute getIdentifiable_Description();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -482,12 +672,12 @@ public interface CatalogPackage extends EPackage {
 		EClass CATEGORY = eINSTANCE.getCategory();
 
 		/**
-		 * The meta object literal for the '<em><b>Activities</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Activity Templates</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CATEGORY__ACTIVITIES = eINSTANCE.getCategory_Activities();
+		EReference CATEGORY__ACTIVITY_TEMPLATES = eINSTANCE.getCategory_ActivityTemplates();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.model.catalog.impl.GroupImpl <em>Group</em>}' class.
@@ -498,22 +688,6 @@ public interface CatalogPackage extends EPackage {
 		 * @generated
 		 */
 		EClass GROUP = eINSTANCE.getGroup();
-
-		/**
-		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GROUP__ID = eINSTANCE.getGroup_Id();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GROUP__NAME = eINSTANCE.getGroup_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Categories</b></em>' containment reference list feature.
@@ -532,14 +706,6 @@ public interface CatalogPackage extends EPackage {
 		EReference GROUP__PARENT = eINSTANCE.getGroup_Parent();
 
 		/**
-		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GROUP__DESCRIPTION = eINSTANCE.getGroup_Description();
-
-		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.model.catalog.impl.CatalogsImpl <em>Catalogs</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -556,6 +722,74 @@ public interface CatalogPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CATALOGS__CONTENT = eINSTANCE.getCatalogs_Content();
+
+		/**
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.model.catalog.impl.ActivityTemplateImpl <em>Activity Template</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.model.catalog.impl.ActivityTemplateImpl
+		 * @see fr.kazejiyu.ekumi.model.catalog.impl.CatalogPackageImpl#getActivityTemplate()
+		 * @generated
+		 */
+		EClass ACTIVITY_TEMPLATE = eINSTANCE.getActivityTemplate();
+
+		/**
+		 * The meta object literal for the '<em><b>Model Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACTIVITY_TEMPLATE__MODEL_PATH = eINSTANCE.getActivityTemplate_ModelPath();
+
+		/**
+		 * The meta object literal for the '<em><b>Category</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_TEMPLATE__CATEGORY = eINSTANCE.getActivityTemplate_Category();
+
+		/**
+		 * The meta object literal for the '<em><b>To Activity</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ACTIVITY_TEMPLATE___TO_ACTIVITY = eINSTANCE.getActivityTemplate__ToActivity();
+
+		/**
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.model.catalog.Identifiable <em>Identifiable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.model.catalog.Identifiable
+		 * @see fr.kazejiyu.ekumi.model.catalog.impl.CatalogPackageImpl#getIdentifiable()
+		 * @generated
+		 */
+		EClass IDENTIFIABLE = eINSTANCE.getIdentifiable();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IDENTIFIABLE__ID = eINSTANCE.getIdentifiable_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IDENTIFIABLE__NAME = eINSTANCE.getIdentifiable_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IDENTIFIABLE__DESCRIPTION = eINSTANCE.getIdentifiable_Description();
 
 	}
 

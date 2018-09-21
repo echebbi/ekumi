@@ -142,6 +142,29 @@ public class CatalogItemProviderAdapterFactory extends CatalogAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.model.catalog.ActivityTemplate} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ActivityTemplateItemProvider activityTemplateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.model.catalog.ActivityTemplate}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createActivityTemplateAdapter() {
+		if (activityTemplateItemProvider == null) {
+			activityTemplateItemProvider = new ActivityTemplateItemProvider(this);
+		}
+
+		return activityTemplateItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -246,6 +269,8 @@ public class CatalogItemProviderAdapterFactory extends CatalogAdapterFactory
 			categoryItemProvider.dispose();
 		if (catalogsItemProvider != null)
 			catalogsItemProvider.dispose();
+		if (activityTemplateItemProvider != null)
+			activityTemplateItemProvider.dispose();
 	}
 
 }

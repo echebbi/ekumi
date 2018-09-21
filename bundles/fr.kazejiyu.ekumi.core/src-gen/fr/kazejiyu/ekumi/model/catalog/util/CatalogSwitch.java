@@ -72,6 +72,8 @@ public class CatalogSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseGroup(catalog);
 			if (result == null)
+				result = caseIdentifiable(catalog);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -81,6 +83,8 @@ public class CatalogSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseGroup(category);
 			if (result == null)
+				result = caseIdentifiable(category);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -88,12 +92,30 @@ public class CatalogSwitch<T> extends Switch<T> {
 			Group group = (Group) theEObject;
 			T result = caseGroup(group);
 			if (result == null)
+				result = caseIdentifiable(group);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
 		case CatalogPackage.CATALOGS: {
 			Catalogs catalogs = (Catalogs) theEObject;
 			T result = caseCatalogs(catalogs);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CatalogPackage.ACTIVITY_TEMPLATE: {
+			ActivityTemplate activityTemplate = (ActivityTemplate) theEObject;
+			T result = caseActivityTemplate(activityTemplate);
+			if (result == null)
+				result = caseIdentifiable(activityTemplate);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CatalogPackage.IDENTIFIABLE: {
+			Identifiable identifiable = (Identifiable) theEObject;
+			T result = caseIdentifiable(identifiable);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -160,6 +182,36 @@ public class CatalogSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCatalogs(Catalogs object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Activity Template</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Activity Template</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseActivityTemplate(ActivityTemplate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Identifiable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Identifiable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIdentifiable(Identifiable object) {
 		return null;
 	}
 
