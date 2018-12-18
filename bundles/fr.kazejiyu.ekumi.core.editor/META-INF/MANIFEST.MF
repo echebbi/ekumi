@@ -14,7 +14,7 @@ Bundle-Vendor: %providerName
 Export-Package: fr.kazejiyu.ekumi.core.ekumi.presentation,
  fr.kazejiyu.ekumi.model.catalog.presentation
 Bundle-Name: %pluginName
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0
 Bundle-ClassPath: .
 Bundle-Localization: plugin
 Bundle-Activator: fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin$Implementation
