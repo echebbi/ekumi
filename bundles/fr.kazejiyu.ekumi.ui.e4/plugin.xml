@@ -10,5 +10,77 @@
             uri="fragment.e4xmi">
       </fragment>
    </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="fr.kazejiyu.ekumi.ui.category"
+            name="EKumi">
+      </category>
+      <view
+            category="fr.kazejiyu.ekumi.ui.category"
+            class="fr.kazejiyu.ekumi.ui.e4.parts.CatalogsNavigator"
+            icon="icons/Sample.png"
+            id="fr.kazejiyu.ekumi.catalogsNavigator.view"
+            inject="true"
+            name="Catalogs View"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            activeByDefault="true"
+            contentProvider="fr.kazejiyu.ekumi.ui.e4.parts.LocalCatalogsContentProvider"
+            id="fr.kazejiyu.ekumi.ui.e4.localCatalogs.navigatorContent"
+            labelProvider="fr.kazejiyu.ekumi.ui.e4.parts.LocalCatalogLabelProvider"
+            name="Local Catalogs"
+            priority="normal"
+            providesSaveables="false">
+         <triggerPoints>
+            <or>
+               <instanceof
+                     value="fr.kazejiyu.ekumi.model.catalog.Catalog">
+               </instanceof>
+               <instanceof
+                     value="fr.kazejiyu.ekumi.model.catalog.Category">
+               </instanceof>
+               <instanceof
+                     value="fr.kazejiyu.ekumi.model.catalog.ActivityTemplate">
+               </instanceof>
+               <instanceof
+                     value="fr.kazejiyu.ekumi.model.catalog.Catalogs">
+               </instanceof>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <or>
+               <instanceof
+                     value="fr.kazejiyu.ekumi.model.catalog.Catalog">
+               </instanceof>
+               <instanceof
+                     value="fr.kazejiyu.ekumi.model.catalog.Category">
+               </instanceof>
+               <instanceof
+                     value="fr.kazejiyu.ekumi.model.catalog.ActivityTemplate">
+               </instanceof>
+           </or>
+         </possibleChildren>
+      </navigatorContent>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewer
+            viewerId="fr.kazejiyu.ekumi.catalogsNavigator.view">
+      </viewer>
+      <viewerContentBinding
+            viewerId="fr.kazejiyu.ekumi.catalogsNavigator.view">
+         <includes>
+            <contentExtension
+                  isRoot="false"
+                  pattern="fr.kazejiyu.ekumi.ui.e4.localCatalogs.navigatorContent">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+   </extension>
 
 </plugin>
