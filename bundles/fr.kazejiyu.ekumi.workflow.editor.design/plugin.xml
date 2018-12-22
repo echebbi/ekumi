@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+  <extension point="org.eclipse.sirius.componentization">
+    <component class="fr.kazejiyu.ekumi.workflow.editor.design.Activator"
+               id="fr.kazejiyu.ekumi.workflow.editor.design"
+	       name="workflow-editor">
+    </component>
+  </extension>
+  <extension
+        point="org.eclipse.eef.properties.ui.eefTabDescriptorFilter">
+     <descriptor
+           class="fr.kazejiyu.ekumi.workflow.editor.design.properties.LegacyTabFilter"
+           description="Filters out the &apos;Main&apos; and &apos;Semantic&apos; tabs from the Properties view when editing an EKumi model with a Sirius based editor."
+           id="fr.kazejiyu.ekumi.workflow.editor.design.properties"
+           label="Legacy Sirius Tabs Filter for EKumi models">
+     </descriptor>
+  </extension>
+</plugin>

@@ -23,6 +23,7 @@
         <module>fr.kazejiyu.ekumi.core.test</module>
         <module>fr.kazejiyu.ekumi.ide.test</module>
         <module>fr.kazejiyu.ekumi.languages.java.test</module>
+        <module>fr.kazejiyu.ekumi.workflow.editor.design.test</module>
 	</modules>
     
     
@@ -53,13 +54,15 @@
                         <configuration>
                             <excludes>
                                 <!-- Ignore generated classes -->
-                                <exclude>fr/kazejiyu/ekumi/core/ekumi/**/*</exclude>
                                 <exclude>fr/kazejiyu/ekumi/model/catalog/**/*</exclude>
+                                <exclude>fr/kazejiyu/ekumi/model/spec/**/*</exclude>
+                                <exclude>fr/kazejiyu/ekumi/model/workflow/**/*</exclude>
 
                                 <!-- Ignore Exceptions -->
                                 <exclude>**/*Exception.class</exclude>
 
-                                <!-- Ignore untestable Activator -->
+                                <!-- Ignore untestable Activators -->
+                                <exclude>**/Activator.class</exclude>
                                 <exclude>**/EKumiPlugin.class</exclude>
                             </excludes>
                         </configuration>
