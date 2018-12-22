@@ -76,5 +76,17 @@
 			<version>0.1.0</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>fr.kazejiyu.ekumi</groupId>
+			<artifactId>fr.kazejiyu.ekumi.workflow.editor.design</artifactId>
+			<version>0.1.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>fr.kazejiyu.ekumi</groupId>
+			<artifactId>fr.kazejiyu.ekumi.workflow.editor.design.test</artifactId>
+			<version>0.1.0</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 </project>

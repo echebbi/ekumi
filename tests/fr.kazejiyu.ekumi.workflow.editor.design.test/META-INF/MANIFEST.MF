@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EKumi Workflow Diagram Editor Test
+Bundle-SymbolicName: fr.kazejiyu.ekumi.workflow.editor.design.test
+Bundle-Version: 0.1.0
+Bundle-Vendor: Emmanuel CHEBBI
+Fragment-Host: fr.kazejiyu.ekumi.workflow.editor.design;bundle-version="0.1.0"
+Automatic-Module-Name: fr.kazejiyu.ekumi.workflow.editor.design.test
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: fr.kazejiyu.ekumi.tests.common;bundle-version="0.1.0"
