@@ -8,6 +8,7 @@ import static fr.kazejiyu.ekumi.core.ekumi.Status.SUCCEEDED;
 import java.util.Date;
 
 import org.eclipse.core.runtime.ICoreRunnable;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.notify.Adapter;
 
@@ -55,14 +56,20 @@ public class BasicExecution extends ExecutionImpl {
 			context.setExecutionStatus(new BasicExecutionStatus(this, monitor));
 			context.getEvents().hasStarted(this);
 			
+			// TODO Properly handle monitor of sub tasks
+			monitor.beginTask("Starting the execution", IProgressMonitor.UNKNOWN);
+			
 			try {
 				getActivity().run(context.safe());
-				
+				Thread.sleep(5000);
 				setStatus(SUCCEEDED);
 				context.getEvents().hasSucceeded(this);
-				
-			} catch (Exception e) {
+			} 
+			catch (Exception e) {
 				setStatus(FAILED);
+			} 
+			finally {
+				monitor.done();
 			}
 			
 		});
