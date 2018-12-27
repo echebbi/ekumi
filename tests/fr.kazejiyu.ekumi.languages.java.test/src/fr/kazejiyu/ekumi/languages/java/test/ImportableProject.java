@@ -1,12 +1,17 @@
 package fr.kazejiyu.ekumi.languages.java.test;
 
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.ui.dialogs.IOverwriteQuery;
+import org.eclipse.ui.wizards.datatransfer.FileSystemStructureProvider;
+import org.eclipse.ui.wizards.datatransfer.ImportOperation;
 
 /**
  * Represents an Eclipse project that can be imported in the workspace.
@@ -16,7 +21,6 @@ import org.eclipse.core.runtime.Path;
 public class ImportableProject {
 
 	private final File location;
-	private IProject project;
 
 	/**
 	 * Creates a new importable project.
@@ -32,26 +36,38 @@ public class ImportableProject {
 	 * Imports the project in the workspace.
 	 * 
 	 * @throws CoreException if the project cannot be imported.
+	 * @throws InterruptedException 
+	 * @throws InvocationTargetException 
 	 */
-	public void importInWorkspace() throws CoreException {
+	public void importInWorkspace() throws CoreException, InvocationTargetException, InterruptedException {
 		IProjectDescription description = ResourcesPlugin
 				   .getWorkspace()
 				   .loadProjectDescription(projectFile());
 		
-		project = ResourcesPlugin
+		IProject project = ResourcesPlugin
 				   .getWorkspace()
 				   .getRoot()
 				   .getProject(description.getName());
 
-		// Works most of the time when executed from Eclipse IDE
+		// Prevent runtime errors when importing the project
+		description.setLocation(project.getFullPath());
+		
+		// Create the project in the workspace
 		project.create(description, null);
 		project.open(null);
+
+		// Import the content of the project
+		IOverwriteQuery overwriteQuery = file -> IOverwriteQuery.ALL;
+
+		ImportOperation importOperation = new ImportOperation(
+				project.getFullPath(), 
+				new File(location.getAbsolutePath()),
+				FileSystemStructureProvider.INSTANCE, 
+				overwriteQuery
+		);
 		
-		// Bad attempt to make the import works from Maven
-		// Still works from Eclipse IDE, but causes Maven tests
-		// to fail all the time
-//		project.refreshLocal(IResource.DEPTH_INFINITE, null);
-//		project.build(IncrementalProjectBuilder.FULL_BUILD, null);
+		importOperation.setCreateContainerStructure(false);
+		importOperation.run(new NullProgressMonitor());
 	}
 	
 	/** @return the path toward the location/.project file */
