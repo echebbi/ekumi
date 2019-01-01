@@ -30,13 +30,12 @@ public class WorkspaceHistoryCreationFunction implements IContextFunction {
 	
 	@Override
 	public Object compute(IEclipseContext context, String contextKey) {
-		PersistedHistory history = new PersistedHistory(EKumiPlugin.getStateLocation().resolve("executions"));
+		PersistedHistory history = new PersistedHistory(EKumiPlugin.getStateLocationPath().resolve("executions"));
 		try {
 			history.notifyOnChange(context.get(IEventBroker.class));
 			
 		} catch (Exception e) {
-			// TODO Properly log error
-			e.printStackTrace();
+			EKumiPlugin.error(e, "An error occurred while computing the history of executions. Won't be able to listen for changes in real time.");
 		}
 		ContextInjectionFactory.inject(history, context);
 		return history;

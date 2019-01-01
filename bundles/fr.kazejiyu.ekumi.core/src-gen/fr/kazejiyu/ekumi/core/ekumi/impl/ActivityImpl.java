@@ -371,18 +371,8 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 	 * @generated NOT
 	 */
 	public void run(Context context) {
-		//		context.events().started(this);
-		//		
-		//		setStatus(RUNNING);s
-		//		doRun();
-		//		
-		//		if (status == SUCCEEDED)
-		//			context.events().finished(this);
-		//		else if (status == FAILED)
-		//			context.events().failed(this);
-
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		// TODO: implement this method in sub classes
+		// so that this one can be abstract
 		throw new UnsupportedOperationException();
 	}
 

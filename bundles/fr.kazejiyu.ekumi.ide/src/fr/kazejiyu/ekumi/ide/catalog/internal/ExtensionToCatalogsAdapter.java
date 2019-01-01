@@ -150,7 +150,8 @@ class ExtensionToCatalogsAdapter {
 			
 			// still null: parent cannot be resolved
 			if (parent == null) {
-				// TODO [Log] A warning should be logged here
+				EKumiPlugin.warn("Unable to resolve the parent of the category with id '" + template.id + "'. Item will be ignored.");
+				
 				unresolvableElements.add(template.id);
 				unresolvableElements.add(template.parentId);
 
