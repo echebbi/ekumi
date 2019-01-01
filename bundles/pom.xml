@@ -19,6 +19,7 @@
         <module>fr.kazejiyu.ekumi.core.editor</module>
         <module>fr.kazejiyu.ekumi.datatypes</module>
         <module>fr.kazejiyu.ekumi.ide</module>
+        <module>fr.kazejiyu.ekumi.ide.events</module>
         <module>fr.kazejiyu.ekumi.languages.java</module>
 		<module>fr.kazejiyu.ekumi.ui.e4</module>
 	</modules>

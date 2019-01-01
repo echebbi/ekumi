@@ -17,6 +17,7 @@ import fr.kazejiyu.ekumi.core.ekumi.Activity;
 import fr.kazejiyu.ekumi.core.ekumi.Execution;
 import fr.kazejiyu.ekumi.core.execution.listeners.ActivityListener;
 import fr.kazejiyu.ekumi.core.execution.listeners.ExecutionListener;
+import fr.kazejiyu.ekumi.ide.internal.lock.LockFolderFile;
 
 /**
  * Watches an {@link Execution} in order to persist it in the workspace each time it changes.<br>
@@ -84,25 +85,41 @@ public class PersistExecution implements ActivityListener, ExecutionListener {
 	 * 			The execution to persist.
 	 */
 	private void persist(Execution execution) {
+		// Prepare the .ekumi writer
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
 		m.putIfAbsent("ekumi", new XMIResourceFactoryImpl());
 		
+		// Create a resource to save the Execution
+		URI folderURI = location.appendSegment(folderNameFor(execution));
+		
 		ResourceSet resourceSet = new ResourceSetImpl();
 		Resource resource = resourceSet.createResource(
-				location
-					.appendSegment(START_DATE_FORMAT.format(execution.getStartDate()) + "." + execution.getId())
+				folderURI
 					.appendSegment(execution.getName())
 					.appendFileExtension("ekumi")
 		 );
 		resource.getContents().add(execution);
 		
-		try {
+		// Save the resource with a lock to prevent readings while the resource is not fully written
+		try (LockFolderFile lock = new LockFolderFile(folderURI)) {
 			resource.save(Collections.emptyMap());
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * Returns the name of the folder in which the given execution can be saved.
+	 * 
+	 * @param execution
+	 * 			The execution for which a folder name is required.
+	 * 
+	 * @return the name of the folder in which the execution can be saved
+	 */
+	private String folderNameFor(Execution execution) {
+		return START_DATE_FORMAT.format(execution.getStartDate()) + "." + execution.getId();
 	}
 
 }

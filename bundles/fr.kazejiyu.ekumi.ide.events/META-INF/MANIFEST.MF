@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EKumi IDE Event Constants
+Bundle-SymbolicName: fr.kazejiyu.ekumi.ide.events
+Bundle-Version: 0.1.0
+Automatic-Module-Name: fr.kazejiyu.ekumi.ide.events
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: fr.kazejiyu.ekumi.ide.events
