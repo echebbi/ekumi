@@ -16,6 +16,7 @@
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20180606145124/repository"/>
 	<unit id="com.google.inject" version="3.0.0.v201605172100"/>
 	<unit id="com.google.inject.source" version="3.0.0.v201605172100"/>
+	<unit id="org.apache.commons.io" version="2.2.0.v201405211200"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.sdk.feature.group" version="2.13.0.v20170609-0928"/>

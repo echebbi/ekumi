@@ -11,5 +11,6 @@ Require-Bundle: org.eclipse.debug.core,
  org.eclipse.jface,
  org.eclipse.ui.ide,
  org.eclipse.emf.ecore,
- fr.kazejiyu.ekumi.core
+ fr.kazejiyu.ekumi.core,
+ fr.kazejiyu.ekumi.ide
 Export-Package: fr.kazejiyu.ekumi.debug

@@ -61,7 +61,6 @@ public class BasicExecution extends ExecutionImpl {
 			
 			try {
 				getActivity().run(context.safe());
-				Thread.sleep(5000);
 				setStatus(SUCCEEDED);
 				context.getEvents().hasSucceeded(this);
 			} 

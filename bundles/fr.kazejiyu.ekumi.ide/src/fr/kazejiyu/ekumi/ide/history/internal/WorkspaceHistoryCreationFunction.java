@@ -1,8 +1,11 @@
 package fr.kazejiyu.ekumi.ide.history.internal;
 
+import javax.inject.Inject;
+
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IContextFunction;
 import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.core.services.events.IEventBroker;
 
 import fr.kazejiyu.ekumi.EKumiPlugin;
 import fr.kazejiyu.ekumi.core.ekumi.History;
@@ -22,9 +25,19 @@ import fr.kazejiyu.ekumi.ide.history.PersistedHistory;
  */
 public class WorkspaceHistoryCreationFunction implements IContextFunction {
 	
+	@Inject
+	IEventBroker broker;
+	
 	@Override
 	public Object compute(IEclipseContext context, String contextKey) {
 		PersistedHistory history = new PersistedHistory(EKumiPlugin.getStateLocation().resolve("executions"));
+		try {
+			history.notifyOnChange(context.get(IEventBroker.class));
+			
+		} catch (Exception e) {
+			// TODO Properly log error
+			e.printStackTrace();
+		}
 		ContextInjectionFactory.inject(history, context);
 		return history;
 	}

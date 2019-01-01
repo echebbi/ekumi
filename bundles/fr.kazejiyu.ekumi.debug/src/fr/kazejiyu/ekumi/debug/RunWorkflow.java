@@ -2,6 +2,7 @@ package fr.kazejiyu.ekumi.debug;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.Date;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -13,9 +14,11 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
+import fr.kazejiyu.ekumi.EKumiPlugin;
 import fr.kazejiyu.ekumi.core.ekumi.Activity;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
 import fr.kazejiyu.ekumi.core.ekumi.Execution;
+import fr.kazejiyu.ekumi.ide.history.PersistExecution;
 
 /**
  * <p>Executes a given {@link Activity}</p>
@@ -43,6 +46,12 @@ public final class RunWorkflow extends LaunchConfigurationDelegate {
 			Activity activity = (Activity) resource.getContents().get(0);
 			
 			Execution execution = EkumiFactory.eINSTANCE.createExecution();
+			
+			// Ensure execution history is persisted in workspace's metadata
+			execution.getContext().getEvents().onExecutionEvent(new PersistExecution(EKumiPlugin.getStateLocationURI().appendSegment("executions")));
+			
+			execution.setId(new Date().hashCode() + "." + activity.getId());
+			execution.setName(activity.getName());
 			execution.setActivity(activity);
 			execution.start();
 			

@@ -1,5 +1,6 @@
 package fr.kazejiyu.ekumi.ui.e4.parts;
 
+import java.util.Objects;
 import java.util.function.Function;
 
 import javax.annotation.PostConstruct;
@@ -7,13 +8,16 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.eclipse.e4.core.di.annotations.Optional;
+import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.di.Focus;
+import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.e4.ui.services.IServiceConstants;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.CellLabelProvider;
 import org.eclipse.jface.viewers.DecoratingStyledCellLabelProvider;
+import org.eclipse.jface.viewers.IElementComparer;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
@@ -23,13 +27,17 @@ import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Tree;
+import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.PlatformUI;
 
 import fr.kazejiyu.ekumi.core.ekumi.Activity;
 import fr.kazejiyu.ekumi.core.ekumi.Execution;
 import fr.kazejiyu.ekumi.core.ekumi.History;
+import fr.kazejiyu.ekumi.core.ekumi.Identifiable;
 import fr.kazejiyu.ekumi.core.ekumi.provider.EkumiDecoratorAdapterFactory;
 import fr.kazejiyu.ekumi.core.ekumi.provider.label.DynamicStyledLabelProvider;
 import fr.kazejiyu.ekumi.core.ekumi.provider.label.StyledLabelProviderFactory;
+import fr.kazejiyu.ekumi.ide.events.EKumiEvents;
 
 /**
  * A view displaying an {@link ExecutionHistory} within a Table Tree viewer.
@@ -40,6 +48,9 @@ public class ExecutionHistoryView {
 	
 	@Inject
 	private History history;
+	
+	@Inject
+	IEventBroker events;
 	
 	private TreeViewer viewer;
 
@@ -56,11 +67,14 @@ public class ExecutionHistoryView {
 		viewer.setLabelProvider(labelProvider);
 		viewer.setInput(history);
 		viewer.setComparator(new NewExecutionsFirst());
+		viewer.setComparer(new ById());
 		
 		Function<Activity,String> activityStatus = activity -> activity.getStatus().getLiteral();
 		
 		addColumn(viewer, new DecoratingStyledCellLabelProvider(new StyledLabelProviderFactory(labelProvider), null, null), "Name", 200);
 		addColumn(viewer, new DecoratingStyledCellLabelProvider(new DynamicStyledLabelProvider<>(Activity.class, activityStatus), null, null), "Status", 50);
+		
+		PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_ELCL_REMOVEALL);
 	}
 	
 	/** Creates a new column and adds it to the given viewer */
@@ -69,6 +83,18 @@ public class ExecutionHistoryView {
         column.getColumn().setWidth(width);
         column.getColumn().setText(name);
         column.setLabelProvider(labelProvider);
+	}
+	
+	@Inject @Optional
+	void onModified(@UIEventTopic(EKumiEvents.HISTORY_EXECUTION_CHANGED) Execution modifiedExecution) {
+	    viewer.refresh(modifiedExecution);
+	}
+	
+	@Inject @Optional
+	void onAdd(@UIEventTopic(EKumiEvents.HISTORY_EXECUTION_STARTED) Execution newExecution) {
+		// TODO Find a better solution ? Not sure this is the good way to update the TreeViewer:
+		// icons are not set for new items
+	    viewer.add(history, newExecution);
 	}
 	
 	/** Compares two Execution by putting the one with the most recent start date first */
@@ -90,6 +116,35 @@ public class ExecutionHistoryView {
 			return super.compare(viewer, e1, e2);
 		}
 		
+	}
+	
+	/** Compares Activities by their id.
+	 *  Helps to refresh the TreeViewer properly. */
+	private static class ById implements IElementComparer {
+
+		@Override
+		public boolean equals(Object a, Object b) {
+			if (a instanceof Activity && b instanceof Activity)
+				return ((Activity) a).getId().equals(((Activity) b).getId());
+			
+			if (a instanceof Execution && b instanceof Execution)
+				return ((Execution) a).getId().equals(((Execution) b).getId());
+			
+			if (a instanceof History && b instanceof History)
+				// Assumes that the view only shows one history
+				return true;
+			
+			return false;
+		}
+
+		@Override
+		public int hashCode(Object element) {
+			if (element instanceof Identifiable)
+				return ((Identifiable) element).getId().hashCode();
+			
+			return Objects.hash(element);
+		}
+
 	}
 
 	@Focus

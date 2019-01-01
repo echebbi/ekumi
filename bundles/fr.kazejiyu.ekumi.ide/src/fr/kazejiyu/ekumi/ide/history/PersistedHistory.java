@@ -9,6 +9,10 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import org.apache.commons.io.monitor.FileAlterationListener;
+import org.apache.commons.io.monitor.FileAlterationMonitor;
+import org.apache.commons.io.monitor.FileAlterationObserver;
+import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
@@ -45,7 +49,26 @@ public class PersistedHistory extends HistoryImpl {
 				  .map(file -> loadExecutionFromFile(file))
 				  .filter(Objects::nonNull)
 				  .collect(Collectors.toList())
-		);	
+		);
+	}
+	
+	/**
+	 * Sets up the instance to send events when the history changes.
+	 * 
+	 * @param bus
+	 * 			The event broker to use to send events.
+	 * 
+	 * @throws Exception if an error occurs while preparing to listen for changes
+	 */
+	public void notifyOnChange(IEventBroker bus) throws Exception {
+		FileAlterationObserver observer = new FileAlterationObserver(location.toFile());
+		FileAlterationMonitor monitor = new FileAlterationMonitor(1000);
+		FileAlterationListener listener = new PostEventOnExecutionChange(bus);
+		
+		// Creates a new thread to listen for changes periodically
+		observer.addListener(listener);
+		monitor.addObserver(observer);
+		monitor.start();
 	}
 
 	private File[] executionFolders() {
@@ -57,7 +80,8 @@ public class PersistedHistory extends HistoryImpl {
 		return folders;
 	}
 	
-	private static Execution loadExecutionFromFile(File file) {
+	// TODO [Refactor] Move this method to a more appropriate place
+	static Execution loadExecutionFromFile(File file) {
 		try {
 			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 			Map<String, Object> m = reg.getExtensionToFactoryMap();
@@ -65,13 +89,13 @@ public class PersistedHistory extends HistoryImpl {
 			m.putIfAbsent("ekumi", new XMIResourceFactoryImpl());
 				
 			ResourceSet resourceSet = new ResourceSetImpl();
-			
 			resourceSet.getPackageRegistry().put(EkumiPackage.eNS_URI, EkumiPackage.eINSTANCE);
-			Resource resource = resourceSet.getResource(URI.createFileURI(file.getAbsolutePath()), true);
 			
+			Resource resource = resourceSet.getResource(URI.createFileURI(file.getAbsolutePath()), true);
 			return (Execution) resource.getContents().get(0);
 			
 		} catch (Exception e) {
+			// TODO Proper logging
 			e.printStackTrace();
 			return null;
 		}
