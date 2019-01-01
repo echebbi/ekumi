@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
+import fr.kazejiyu.ekumi.EKumiPlugin;
 import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
 import fr.kazejiyu.ekumi.core.ekumi.Execution;
 import fr.kazejiyu.ekumi.core.ekumi.History;
@@ -95,8 +96,7 @@ public class PersistedHistory extends HistoryImpl {
 			return (Execution) resource.getContents().get(0);
 			
 		} catch (Exception e) {
-			// TODO Proper logging
-			e.printStackTrace();
+			EKumiPlugin.error(e, "Unable to load an Execution from " + file.getAbsolutePath());
 			return null;
 		}
 	}

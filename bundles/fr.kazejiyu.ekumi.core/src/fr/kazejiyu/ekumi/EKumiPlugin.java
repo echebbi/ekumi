@@ -7,8 +7,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Plugin;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
-import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
 import fr.kazejiyu.ekumi.core.exceptions.EKumiRuntimeException;
@@ -18,7 +20,7 @@ import fr.kazejiyu.ekumi.core.exceptions.EKumiRuntimeException;
  * 
  * @author Emmanuel CHEBBI
  */
-public class EKumiPlugin implements BundleActivator {
+public class EKumiPlugin extends Plugin {
 	
 	public static final String ID = "fr.kazejiyu.ekumi.core";
 	
@@ -68,7 +70,7 @@ public class EKumiPlugin implements BundleActivator {
 	 * Returns the location of the state directory for this bundle under <i>.metadata/.plugins/</i>.
 	 * @return the location of the state directory for this bundle under <i>.metadata/.plugins/</i>
 	 */
-	public static Path getStateLocation() {
+	public static Path getStateLocationPath() {
 		try {
 			return Paths.get(FileLocator.resolve(new URL(getStateLocationURI().toString())).toURI());
 			
@@ -76,6 +78,48 @@ public class EKumiPlugin implements BundleActivator {
 			// Should never happen
 			throw new EKumiRuntimeException("An unexpected error occurred while resolving the state location of " + ID, e);
 		}
+	}
+	
+	/**
+	 * Logs a message for info or debugging purposes.
+	 * 
+	 * @param message
+	 * 			The message to log.
+	 */
+	public static void debug(String message) {
+		getDefault().getLog().log(new Status(IStatus.INFO, ID, message));
+	}
+	
+	/**
+	 * Logs a message for warning the user.
+	 * 
+	 * @param message
+	 * 			The message to log.
+	 */
+	public static void warn(String message) {
+		getDefault().getLog().log(new Status(IStatus.WARNING, ID, message));
+	}
+	
+	/**
+	 * Logs an error.
+	 * 
+	 * @param message
+	 * 			The error message.
+	 */
+	public static void error(String message) {
+		getDefault().getLog().log(new Status(IStatus.ERROR, ID, message));
+	}
+	
+	/**
+	 * Logs an Exception.
+	 * 
+	 * @param e
+	 * 			The exception to log.
+	 * @param message
+	 * 			The error message.
+	 */
+	public static void error(Exception e, String message) {
+		getDefault().getLog().log(new Status(IStatus.ERROR, ID, message, e));
 	}
 
 }

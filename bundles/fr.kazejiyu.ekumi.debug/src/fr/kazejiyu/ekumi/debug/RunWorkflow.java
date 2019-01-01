@@ -33,9 +33,10 @@ public final class RunWorkflow extends LaunchConfigurationDelegate {
 	public void launch(ILaunchConfiguration configuration, String mode, ILaunch launch, IProgressMonitor monitor) throws CoreException {
 		String uri = configuration.getAttribute(EKumiRunConfiguration.EKUMI_MODEL_URI, "");
 		
-		if (uri.isEmpty())
-			// TODO log error
+		if (uri.isEmpty()) {
+			EKumiPlugin.error("Unable to launch the workflow: the model URI is empty."); 
 			return;
+		}
 		
 		ResourceSet resourceSet = new ResourceSetImpl();
 		Resource resource = resourceSet.createResource(URI.createURI(uri));
@@ -56,8 +57,7 @@ public final class RunWorkflow extends LaunchConfigurationDelegate {
 			execution.start();
 			
 		} catch (IOException e) {
-			// TODO Process exception properly
-			e.printStackTrace();
+			EKumiPlugin.error(e, "An error occurred while executing " + uri);
 		}
 	}
 

@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import org.apache.commons.io.monitor.FileAlterationListenerAdaptor;
 import org.eclipse.e4.core.services.events.IEventBroker;
 
+import fr.kazejiyu.ekumi.EKumiPlugin;
 import fr.kazejiyu.ekumi.core.ekumi.Execution;
 import fr.kazejiyu.ekumi.ide.events.EKumiEvents;
 
@@ -49,13 +50,10 @@ class PostEventOnExecutionChange extends FileAlterationListenerAdaptor {
 	private void process(File file, String event) {
 		try {
     		Execution execution = load(file);
-    		System.out.println("POSTING " + event + " TO " + bus);
     		bus.post(event, execution);
-    		System.out.println("POSTED");
     		
     	} catch (Exception e) {
-    		// TODO Proper logging
-    		e.printStackTrace();
+    		EKumiPlugin.error(e, "An error occurred while processing changes in " + (file == null ? file : file.getAbsolutePath()));
     	}
 	}
     
