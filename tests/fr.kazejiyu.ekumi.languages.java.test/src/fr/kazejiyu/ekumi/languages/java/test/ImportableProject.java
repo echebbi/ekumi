@@ -50,7 +50,7 @@ public class ImportableProject {
 				   .getProject(description.getName());
 
 		// Prevent runtime errors when importing the project
-		description.setLocation(project.getFullPath());
+		description.setLocation(ResourcesPlugin.getWorkspace().getRoot().getLocation().append(project.getName()));
 		
 		// Create the project in the workspace
 		project.create(description, null);
