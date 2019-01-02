@@ -23,3 +23,4 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
 Automatic-Module-Name: fr.kazejiyu.ekumi.workflow.editor.design
+Export-Package: fr.kazejiyu.ekumi.workflow.editor.design.api
