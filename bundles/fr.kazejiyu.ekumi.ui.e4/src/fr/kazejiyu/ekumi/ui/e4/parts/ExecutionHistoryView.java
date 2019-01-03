@@ -30,14 +30,14 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 
-import fr.kazejiyu.ekumi.core.ekumi.Activity;
-import fr.kazejiyu.ekumi.core.ekumi.Execution;
-import fr.kazejiyu.ekumi.core.ekumi.History;
-import fr.kazejiyu.ekumi.core.ekumi.Identifiable;
-import fr.kazejiyu.ekumi.core.ekumi.provider.EkumiDecoratorAdapterFactory;
-import fr.kazejiyu.ekumi.core.ekumi.provider.label.DynamicStyledLabelProvider;
-import fr.kazejiyu.ekumi.core.ekumi.provider.label.StyledLabelProviderFactory;
+import fr.kazejiyu.ekumi.model.workflow.provider.label.DynamicStyledLabelProvider;
+import fr.kazejiyu.ekumi.model.workflow.provider.label.StyledLabelProviderFactory;
 import fr.kazejiyu.ekumi.ide.events.EKumiEvents;
+import fr.kazejiyu.ekumi.model.workflow.Activity;
+import fr.kazejiyu.ekumi.model.workflow.Execution;
+import fr.kazejiyu.ekumi.model.workflow.History;
+import fr.kazejiyu.ekumi.model.workflow.Identifiable;
+import fr.kazejiyu.ekumi.model.workflow.provider.EkumiDecoratorAdapterFactory;
 
 /**
  * A view displaying an {@link ExecutionHistory} within a Table Tree viewer.

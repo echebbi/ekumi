@@ -24,15 +24,15 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
 
-import fr.kazejiyu.ekumi.core.ekumi.Condition;
-import fr.kazejiyu.ekumi.core.ekumi.Context;
-import fr.kazejiyu.ekumi.core.ekumi.Runner;
-import fr.kazejiyu.ekumi.core.ekumi.Script;
-import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
-import fr.kazejiyu.ekumi.core.languages.exceptions.IllegalScripIdentifierException;
-import fr.kazejiyu.ekumi.core.languages.exceptions.ScriptLoadingFailureException;
 import fr.kazejiyu.ekumi.languages.java.inject.EventsModule;
 import fr.kazejiyu.ekumi.languages.java.inject.ExecutionStatusModule;
+import fr.kazejiyu.ekumi.model.scripting.ScriptingLanguage;
+import fr.kazejiyu.ekumi.model.scripting.exceptions.IllegalScriptIdentifierException;
+import fr.kazejiyu.ekumi.model.scripting.exceptions.ScriptLoadingFailureException;
+import fr.kazejiyu.ekumi.model.workflow.Condition;
+import fr.kazejiyu.ekumi.model.workflow.Context;
+import fr.kazejiyu.ekumi.model.workflow.Runner;
+import fr.kazejiyu.ekumi.model.workflow.Script;
 
 /**
  * Loads {@link Script}s written in Java.<br>
@@ -109,7 +109,7 @@ public final class JavaLanguage implements ScriptingLanguage {
 	 * @throws ClassNotFoundException if the class cannot be found.
 	 * @throws ClassCastException if the new script instance cannot be casted to the given clazz.
 	 * @throws ScriptLoadingFailureException if the identifier does not follow the require format.
-	 * @throws IllegalScripIdentifierException if the IProject or Bundle instance cannot be found from the id.
+	 * @throws IllegalScriptIdentifierException if the IProject or Bundle instance cannot be found from the id.
 	 */
 	private static <T> T resolve(ScriptIdentifier id, Class<T> clazz) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		if (id.isBundled()) {

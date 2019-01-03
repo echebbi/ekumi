@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 
-import fr.kazejiyu.ekumi.core.ekumi.Activity;
-import fr.kazejiyu.ekumi.core.execution.listeners.ActivityListener;
+import fr.kazejiyu.ekumi.model.workflow.Activity;
+import fr.kazejiyu.ekumi.model.execution.listeners.ActivityListener;
 import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)

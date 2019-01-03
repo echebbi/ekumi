@@ -8,16 +8,16 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 
-import fr.kazejiyu.ekumi.core.ekumi.Activity;
-import fr.kazejiyu.ekumi.core.ekumi.Execution;
-import fr.kazejiyu.ekumi.core.execution.events.Events;
-import fr.kazejiyu.ekumi.core.execution.listeners.ActivityListener;
-import fr.kazejiyu.ekumi.core.execution.listeners.ExecutionListener;
-import fr.kazejiyu.ekumi.core.execution.listeners.OnActivityFailed;
-import fr.kazejiyu.ekumi.core.execution.listeners.OnActivityStarted;
-import fr.kazejiyu.ekumi.core.execution.listeners.OnActivitySucceeded;
-import fr.kazejiyu.ekumi.core.execution.listeners.OnExecutionStarted;
-import fr.kazejiyu.ekumi.core.execution.listeners.OnExecutionSucceeded;
+import fr.kazejiyu.ekumi.model.execution.events.Events;
+import fr.kazejiyu.ekumi.model.execution.listeners.ActivityListener;
+import fr.kazejiyu.ekumi.model.execution.listeners.ExecutionListener;
+import fr.kazejiyu.ekumi.model.execution.listeners.OnActivityFailed;
+import fr.kazejiyu.ekumi.model.execution.listeners.OnActivityStarted;
+import fr.kazejiyu.ekumi.model.execution.listeners.OnActivitySucceeded;
+import fr.kazejiyu.ekumi.model.execution.listeners.OnExecutionStarted;
+import fr.kazejiyu.ekumi.model.execution.listeners.OnExecutionSucceeded;
+import fr.kazejiyu.ekumi.model.workflow.Activity;
+import fr.kazejiyu.ekumi.model.workflow.Execution;
 
 /**
  * A simple event bus.

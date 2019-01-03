@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import com.google.inject.AbstractModule;
 
-import fr.kazejiyu.ekumi.core.execution.events.Events;
+import fr.kazejiyu.ekumi.model.execution.events.Events;
 
 /**
  * Allows injection of a specific {@link Events} instance.

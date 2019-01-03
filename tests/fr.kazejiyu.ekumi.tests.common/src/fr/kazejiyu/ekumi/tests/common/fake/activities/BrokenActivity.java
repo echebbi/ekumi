@@ -1,10 +1,10 @@
 package fr.kazejiyu.ekumi.tests.common.fake.activities;
 
-import fr.kazejiyu.ekumi.core.ekumi.Activity;
-import fr.kazejiyu.ekumi.core.ekumi.Context;
-import fr.kazejiyu.ekumi.core.ekumi.Status;
-import fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl;
-import fr.kazejiyu.ekumi.core.exceptions.EKumiRuntimeException;
+import fr.kazejiyu.ekumi.model.exceptions.EKumiRuntimeException;
+import fr.kazejiyu.ekumi.model.workflow.Activity;
+import fr.kazejiyu.ekumi.model.workflow.Context;
+import fr.kazejiyu.ekumi.model.workflow.Status;
+import fr.kazejiyu.ekumi.model.workflow.impl.ActivityImpl;
 
 /**
  * An {@link Activity} that sets its status to {@link Status#FAILED}

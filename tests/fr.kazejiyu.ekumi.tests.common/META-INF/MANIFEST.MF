@@ -19,6 +19,6 @@ Require-Bundle: org.junit.jupiter.api;bundle-version="5.1.0";visibility:=reexpor
  org.hamcrest.core;bundle-version="1.3.0";visibility:=reexport,
  org.mockito;bundle-version="2.13.0";visibility:=reexport,
  net.bytebuddy.byte-buddy;bundle-version="1.7.9";visibility:=reexport,
- fr.kazejiyu.ekumi.core
+ fr.kazejiyu.ekumi.model
 Export-Package: fr.kazejiyu.ekumi.tests.common.fake.activities,
  fr.kazejiyu.ekumi.tests.common.mock

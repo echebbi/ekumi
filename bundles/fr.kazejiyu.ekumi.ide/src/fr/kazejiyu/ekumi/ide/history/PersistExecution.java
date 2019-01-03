@@ -13,11 +13,11 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import fr.kazejiyu.ekumi.core.ekumi.Activity;
-import fr.kazejiyu.ekumi.core.ekumi.Execution;
-import fr.kazejiyu.ekumi.core.execution.listeners.ActivityListener;
-import fr.kazejiyu.ekumi.core.execution.listeners.ExecutionListener;
 import fr.kazejiyu.ekumi.ide.internal.lock.LockFolderFile;
+import fr.kazejiyu.ekumi.model.execution.listeners.ActivityListener;
+import fr.kazejiyu.ekumi.model.execution.listeners.ExecutionListener;
+import fr.kazejiyu.ekumi.model.workflow.Activity;
+import fr.kazejiyu.ekumi.model.workflow.Execution;
 
 /**
  * Watches an {@link Execution} in order to persist it in the workspace each time it changes.<br>
@@ -88,7 +88,7 @@ public class PersistExecution implements ActivityListener, ExecutionListener {
 		// Prepare the .ekumi writer
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
-		m.putIfAbsent("ekumi", new XMIResourceFactoryImpl());
+		m.putIfAbsent("workflow", new XMIResourceFactoryImpl());
 		
 		// Create a resource to save the Execution
 		URI folderURI = location.appendSegment(folderNameFor(execution));
@@ -97,7 +97,7 @@ public class PersistExecution implements ActivityListener, ExecutionListener {
 		Resource resource = resourceSet.createResource(
 				folderURI
 					.appendSegment(execution.getName())
-					.appendFileExtension("ekumi")
+					.appendFileExtension("workflow")
 		 );
 		resource.getContents().add(execution);
 		

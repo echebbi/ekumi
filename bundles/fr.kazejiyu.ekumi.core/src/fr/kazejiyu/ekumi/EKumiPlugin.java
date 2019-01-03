@@ -13,7 +13,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.osgi.framework.BundleContext;
 
-import fr.kazejiyu.ekumi.core.exceptions.EKumiRuntimeException;
+import fr.kazejiyu.ekumi.model.exceptions.EKumiRuntimeException;
 
 /**
  * Activator of the {@code fr.kazejiyu.ekumi.core} bundle.

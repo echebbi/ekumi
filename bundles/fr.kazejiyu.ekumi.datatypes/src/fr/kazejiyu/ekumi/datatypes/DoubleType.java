@@ -2,8 +2,8 @@ package fr.kazejiyu.ekumi.datatypes;
 
 import static java.lang.Double.parseDouble;
 
-import fr.kazejiyu.ekumi.core.datatypes.DataType;
-import fr.kazejiyu.ekumi.core.datatypes.exceptions.DataTypeUnserializationException;
+import fr.kazejiyu.ekumi.model.datatypes.DataType;
+import fr.kazejiyu.ekumi.model.datatypes.exceptions.DataTypeUnserializationException;
 
 public class DoubleType implements DataType<Double> {
 

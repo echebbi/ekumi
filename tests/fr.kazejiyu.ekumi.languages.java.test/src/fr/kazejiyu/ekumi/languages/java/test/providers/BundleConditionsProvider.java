@@ -6,7 +6,7 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 
-import fr.kazejiyu.ekumi.core.ekumi.Condition;
+import fr.kazejiyu.ekumi.model.workflow.Condition;
 import fr.kazejiyu.ekumi.languages.java.test.fake.DumbCondition;
 import fr.kazejiyu.ekumi.languages.java.test.fake.InjectableCondition;
 

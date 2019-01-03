@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="fr.kazejiyu.ekumi.core.datatypes">
+         point="fr.kazejiyu.ekumi.model.datatypes">
       <datatype
             class="fr.kazejiyu.ekumi.datatypes.StringType"
             name="fr.kazejiyu.ekumi.datatypes.string">

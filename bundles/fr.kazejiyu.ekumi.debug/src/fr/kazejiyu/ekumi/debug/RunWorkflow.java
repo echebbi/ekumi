@@ -15,10 +15,10 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
 import fr.kazejiyu.ekumi.EKumiPlugin;
-import fr.kazejiyu.ekumi.core.ekumi.Activity;
-import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
-import fr.kazejiyu.ekumi.core.ekumi.Execution;
 import fr.kazejiyu.ekumi.ide.history.PersistExecution;
+import fr.kazejiyu.ekumi.model.workflow.Activity;
+import fr.kazejiyu.ekumi.model.workflow.Execution;
+import fr.kazejiyu.ekumi.model.workflow.WorkflowFactory;
 
 /**
  * <p>Executes a given {@link Activity}</p>
@@ -46,7 +46,7 @@ public final class RunWorkflow extends LaunchConfigurationDelegate {
 			
 			Activity activity = (Activity) resource.getContents().get(0);
 			
-			Execution execution = EkumiFactory.eINSTANCE.createExecution();
+			Execution execution = WorkflowFactory.eINSTANCE.createExecution();
 			
 			// Ensure execution history is persisted in workspace's metadata
 			execution.getContext().getEvents().onExecutionEvent(new PersistExecution(EKumiPlugin.getStateLocationURI().appendSegment("executions")));

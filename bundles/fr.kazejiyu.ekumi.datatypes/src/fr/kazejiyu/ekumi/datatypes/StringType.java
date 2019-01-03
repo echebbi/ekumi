@@ -1,6 +1,6 @@
 package fr.kazejiyu.ekumi.datatypes;
 
-import fr.kazejiyu.ekumi.core.datatypes.DataType;
+import fr.kazejiyu.ekumi.model.datatypes.DataType;
 
 public class StringType implements DataType<String> {
 

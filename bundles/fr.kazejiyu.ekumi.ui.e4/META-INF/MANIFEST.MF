@@ -11,14 +11,14 @@ Require-Bundle: javax.inject,
  org.eclipse.e4.ui.di,
  org.eclipse.e4.ui.services,
  org.eclipse.e4.core.di.annotations,
- fr.kazejiyu.ekumi.core,
- fr.kazejiyu.ekumi.core.edit,
+ fr.kazejiyu.ekumi.model,
  org.eclipse.emf.edit.ui,
  fr.kazejiyu.ekumi.ide,
  org.eclipse.e4.core.services,
  org.apache.commons.io,
  org.eclipse.e4.core.di,
- fr.kazejiyu.ekumi.ide.events;bundle-version="0.1.0"
+ fr.kazejiyu.ekumi.ide.events;bundle-version="0.1.0",
+ fr.kazejiyu.ekumi.model.edit
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: javax.annotation;version="1.0.0";resolution:=optional,
   javax.inject;version="1.0.0"

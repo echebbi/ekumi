@@ -23,8 +23,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.ui.IEditorPart;
 
-import fr.kazejiyu.ekumi.core.ekumi.Activity;
 import fr.kazejiyu.ekumi.debug.EKumiRunConfiguration;
+import fr.kazejiyu.ekumi.model.workflow.Activity;
 
 /**
  * <p>Creates a new Launch Configuration for a given EKumi model.</p>

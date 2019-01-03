@@ -1,8 +1,8 @@
 package fr.kazejiyu.ekumi.tests.common.fake.activities;
 
-import fr.kazejiyu.ekumi.core.ekumi.Context;
-import fr.kazejiyu.ekumi.core.ekumi.impl.RunnerImpl;
-import fr.kazejiyu.ekumi.core.exceptions.EKumiRuntimeException;
+import fr.kazejiyu.ekumi.model.exceptions.EKumiRuntimeException;
+import fr.kazejiyu.ekumi.model.workflow.Context;
+import fr.kazejiyu.ekumi.model.workflow.impl.RunnerImpl;
 
 public class BrokenRunner extends RunnerImpl {
 	

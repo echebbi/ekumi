@@ -1,7 +1,7 @@
 package fr.kazejiyu.ekumi.tests.common.fake.activities;
 
-import fr.kazejiyu.ekumi.core.ekumi.Context;
-import fr.kazejiyu.ekumi.core.ekumi.impl.DriverRunnerImpl;
+import fr.kazejiyu.ekumi.model.workflow.Context;
+import fr.kazejiyu.ekumi.model.workflow.impl.DriverRunnerImpl;
 
 public class DumbDriverRunner extends DriverRunnerImpl {
 	
