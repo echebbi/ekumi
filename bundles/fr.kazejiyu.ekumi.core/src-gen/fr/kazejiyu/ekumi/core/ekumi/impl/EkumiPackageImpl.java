@@ -42,6 +42,8 @@ import fr.kazejiyu.ekumi.core.languages.ScriptingLanguage;
 
 import fr.kazejiyu.ekumi.model.catalog.CatalogPackage;
 import fr.kazejiyu.ekumi.model.catalog.impl.CatalogPackageImpl;
+import fr.kazejiyu.ekumi.model.spec.SpecPackage;
+import fr.kazejiyu.ekumi.model.spec.impl.SpecPackageImpl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -351,14 +353,20 @@ public class EkumiPackageImpl extends EPackageImpl implements EkumiPackage {
 				.getEPackage(CatalogPackage.eNS_URI) instanceof CatalogPackageImpl
 						? EPackage.Registry.INSTANCE.getEPackage(CatalogPackage.eNS_URI)
 						: CatalogPackage.eINSTANCE);
+		SpecPackageImpl theSpecPackage = (SpecPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(SpecPackage.eNS_URI) instanceof SpecPackageImpl
+						? EPackage.Registry.INSTANCE.getEPackage(SpecPackage.eNS_URI)
+						: SpecPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theEkumiPackage.createPackageContents();
 		theCatalogPackage.createPackageContents();
+		theSpecPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theEkumiPackage.initializePackageContents();
 		theCatalogPackage.initializePackageContents();
+		theSpecPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theEkumiPackage.freeze();

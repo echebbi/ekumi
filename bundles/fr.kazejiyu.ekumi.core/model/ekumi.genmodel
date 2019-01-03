@@ -6,12 +6,14 @@
     modelPluginID="fr.kazejiyu.ekumi.core" templateDirectory="fr.kazejiyu.ekumi.core/templates"
     dynamicTemplates="true" redirection="" modelName="Ekumi" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
-    copyrightFields="false" operationReflection="true" importOrganizing="true">
+    copyrightFields="false" testsPluginID="fr.kazejiyu.ekumi.core.tests" operationReflection="true"
+    importOrganizing="true">
   <genAnnotations source="http://www.eclipse.org/OCL/GenModel">
     <details key="Use Delegates" value="false"/>
   </genAnnotations>
   <foreignModel>catalog.ecore</foreignModel>
   <foreignModel>ekumi.ecore</foreignModel>
+  <foreignModel>spec.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="Catalog" basePackage="fr.kazejiyu.ekumi.model" disposableProviderFactory="true"
       ecorePackage="catalog.ecore#/">
@@ -172,6 +174,28 @@
     </genClasses>
     <genClasses ecoreClass="ekumi.ecore#//HasStatus">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ekumi.ecore#//HasStatus/status"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Spec" basePackage="fr.kazejiyu.ekumi.model" disposableProviderFactory="true"
+      ecorePackage="spec.ecore#/">
+    <genClasses image="false" ecoreClass="spec.ecore#//Activity">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference spec.ecore#//Activity/successors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute spec.ecore#//Activity/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute spec.ecore#//Activity/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Activity/join"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="spec.ecore#//Join">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference spec.ecore#//Join/activities"/>
+    </genClasses>
+    <genClasses ecoreClass="spec.ecore#//StartJoin"/>
+    <genClasses ecoreClass="spec.ecore#//SplitJoin"/>
+    <genClasses ecoreClass="spec.ecore#//SimpleJoin"/>
+    <genClasses ecoreClass="spec.ecore#//RepeatJoin"/>
+    <genClasses ecoreClass="spec.ecore#//Workflow">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Workflow/activities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Workflow/start"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference spec.ecore#//Workflow/subWorkflow"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference spec.ecore#//Workflow/parentWorkflow"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

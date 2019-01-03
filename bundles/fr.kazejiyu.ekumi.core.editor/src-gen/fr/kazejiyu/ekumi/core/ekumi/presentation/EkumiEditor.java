@@ -155,6 +155,7 @@ import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import fr.kazejiyu.ekumi.core.ekumi.provider.EkumiItemProviderAdapterFactory;
 import fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin;
 import fr.kazejiyu.ekumi.model.catalog.provider.CatalogItemProviderAdapterFactory;
+import fr.kazejiyu.ekumi.model.spec.provider.SpecItemProviderAdapterFactory;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
@@ -676,6 +677,7 @@ public class EkumiEditor extends MultiPageEditorPart
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new CatalogItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new EkumiItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new SpecItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.
