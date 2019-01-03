@@ -3,7 +3,7 @@ package fr.kazejiyu.ekumi.ide.history;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.mockito.ArgumentMatcher;
 
-import fr.kazejiyu.ekumi.core.ekumi.Execution;
+import fr.kazejiyu.ekumi.model.workflow.Execution;
 
 /**
  * Helps to match a given Execution instance.
@@ -25,7 +25,6 @@ class ExecutionMatcher implements ArgumentMatcher<Execution> {
 
 	@Override
 	public boolean matches(Execution execution) {
-		System.out.println("EXECUTION MATCHER");
 		return EcoreUtil.equals(execution, expected);
 	}
 

@@ -4,6 +4,8 @@ import static java.util.Objects.requireNonNull;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 
+import fr.kazejiyu.ekumi.model.execution.ExecutionStatus;
+
 /**
  * An {@link ExecutionStatus} relying on {@link IProgressMonitor}
  * in order to work with {@link BasicExecution}. 

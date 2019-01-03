@@ -1,10 +1,10 @@
 package fr.kazejiyu.ekumi.core.execution;
 
-import fr.kazejiyu.ekumi.core.ekumi.Context;
-import fr.kazejiyu.ekumi.core.ekumi.impl.UnsafeContextImpl;
+import fr.kazejiyu.ekumi.model.workflow.Context;
+import fr.kazejiyu.ekumi.model.workflow.impl.UnsafeContextImpl;
 import fr.kazejiyu.ekumi.core.execution.events.impl.BasicEvents;
 
-public class BasicUnsafeContext extends UnsafeContextImpl {
+class BasicUnsafeContext extends UnsafeContextImpl {
 	
 	BasicUnsafeContext() {
 		setEvents(new BasicEvents());

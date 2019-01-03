@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="fr.kazejiyu.ekumi.core.languages">
+         point="fr.kazejiyu.ekumi.model.languages">
       <language
             class="fr.kazejiyu.ekumi.languages.java.JavaLanguage"
             name="Java"></language>

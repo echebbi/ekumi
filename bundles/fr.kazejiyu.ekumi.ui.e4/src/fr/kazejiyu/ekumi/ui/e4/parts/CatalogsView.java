@@ -20,9 +20,9 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Tree;
 
-import fr.kazejiyu.ekumi.catalog.provider.CatalogDecoratorAdapterFactory;
 import fr.kazejiyu.ekumi.model.catalog.Catalogs;
 import fr.kazejiyu.ekumi.model.catalog.Group;
+import fr.kazejiyu.ekumi.model.catalog.provider.CatalogDecoratorAdapterFactory;
 
 /**
  * A view displaying an {@link Catalogs} within a Tree viewer.

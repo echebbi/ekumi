@@ -17,8 +17,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 
-import fr.kazejiyu.ekumi.core.ekumi.Execution;
 import fr.kazejiyu.ekumi.ide.events.EKumiEvents;
+import fr.kazejiyu.ekumi.model.workflow.Execution;
 import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,7 +31,7 @@ public class PostEventOnExecutionChangeTest implements WithAssertions {
 	
 	PostEventOnExecutionChange listener;
 	
-	File expectedExecutionModel = new File("./rsc/executions/2018.09.20.1120402040.sequence-13/Sequence n°13.ekumi");
+	File expectedExecutionModel = new File("./rsc/executions/2018.09.20.1120402040.sequence-13/Sequence n°13.workflow");
 	
 	@BeforeEach
 	void setup() {

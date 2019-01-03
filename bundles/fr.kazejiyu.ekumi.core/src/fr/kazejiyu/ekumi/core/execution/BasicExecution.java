@@ -1,9 +1,9 @@
 package fr.kazejiyu.ekumi.core.execution;
 
-import static fr.kazejiyu.ekumi.core.ekumi.Status.CANCELLED;
-import static fr.kazejiyu.ekumi.core.ekumi.Status.FAILED;
-import static fr.kazejiyu.ekumi.core.ekumi.Status.RUNNING;
-import static fr.kazejiyu.ekumi.core.ekumi.Status.SUCCEEDED;
+import static fr.kazejiyu.ekumi.model.workflow.Status.CANCELLED;
+import static fr.kazejiyu.ekumi.model.workflow.Status.FAILED;
+import static fr.kazejiyu.ekumi.model.workflow.Status.RUNNING;
+import static fr.kazejiyu.ekumi.model.workflow.Status.SUCCEEDED;
 
 import java.util.Date;
 
@@ -12,10 +12,10 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.notify.Adapter;
 
-import fr.kazejiyu.ekumi.core.ekumi.Execution;
-import fr.kazejiyu.ekumi.core.ekumi.impl.ExecutionImpl;
-import fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException;
 import fr.kazejiyu.ekumi.core.execution.events.impl.StatusToEventAdapter;
+import fr.kazejiyu.ekumi.model.exceptions.InterruptedExecutionException;
+import fr.kazejiyu.ekumi.model.workflow.Execution;
+import fr.kazejiyu.ekumi.model.workflow.impl.ExecutionImpl;
 
 /**
  * An {@link Execution} that relies on {@link Job Jobs} 

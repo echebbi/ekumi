@@ -20,14 +20,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.mockito.Mock;
 
-import fr.kazejiyu.ekumi.core.ekumi.Condition;
-import fr.kazejiyu.ekumi.core.ekumi.Runner;
-import fr.kazejiyu.ekumi.core.ekumi.Script;
-import fr.kazejiyu.ekumi.core.ekumi.impl.ContextImpl;
-import fr.kazejiyu.ekumi.core.execution.ExecutionStatus;
-import fr.kazejiyu.ekumi.core.execution.events.Events;
-import fr.kazejiyu.ekumi.core.languages.exceptions.IllegalScripIdentifierException;
-import fr.kazejiyu.ekumi.core.languages.exceptions.ScriptLoadingFailureException;
+import fr.kazejiyu.ekumi.model.workflow.Condition;
+import fr.kazejiyu.ekumi.model.workflow.Runner;
+import fr.kazejiyu.ekumi.model.workflow.Script;
+import fr.kazejiyu.ekumi.model.workflow.impl.ContextImpl;
 import fr.kazejiyu.ekumi.languages.java.test.ImportableProject;
 import fr.kazejiyu.ekumi.languages.java.test.providers.BundleConditionsProvider;
 import fr.kazejiyu.ekumi.languages.java.test.providers.BundleInjectablesProvider;
@@ -37,6 +33,10 @@ import fr.kazejiyu.ekumi.languages.java.test.providers.ProjectConditionsProvider
 import fr.kazejiyu.ekumi.languages.java.test.providers.ProjectInjectablesProvider;
 import fr.kazejiyu.ekumi.languages.java.test.providers.ProjectProvider;
 import fr.kazejiyu.ekumi.languages.java.test.providers.ProjectRunnersProvider;
+import fr.kazejiyu.ekumi.model.execution.ExecutionStatus;
+import fr.kazejiyu.ekumi.model.execution.events.Events;
+import fr.kazejiyu.ekumi.model.scripting.exceptions.IllegalScriptIdentifierException;
+import fr.kazejiyu.ekumi.model.scripting.exceptions.ScriptLoadingFailureException;
 import fr.kazejiyu.ekumi.tests.common.fake.activities.Injectable;
 import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
 
@@ -331,7 +331,7 @@ public class JavaLanguageTest implements WithAssertions {
 		@ArgumentsSource(IllegalIdentifierProvider.class)
 		@DisplayName("throws instead of resolving a Runner")
 		void throws_instead_of_resolving_a_Runner(String illegalIdentifier) {
-			assertThatExceptionOfType(IllegalScripIdentifierException.class)
+			assertThatExceptionOfType(IllegalScriptIdentifierException.class)
 				.isThrownBy(() -> language.resolveRunner(illegalIdentifier, context));
 		}
 		
@@ -339,7 +339,7 @@ public class JavaLanguageTest implements WithAssertions {
 		@ArgumentsSource(IllegalIdentifierProvider.class)
 		@DisplayName("throws instead of resolving a Condition")
 		void throws_instead_of_resolving_a_Condition(String illegalIdentifier) {
-			assertThatExceptionOfType(IllegalScripIdentifierException.class)
+			assertThatExceptionOfType(IllegalScriptIdentifierException.class)
 				.isThrownBy(() -> language.resolveCondition(illegalIdentifier, context));
 		}
 		

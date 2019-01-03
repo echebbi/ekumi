@@ -19,10 +19,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import fr.kazejiyu.ekumi.core.ekumi.Activity;
-import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
-import fr.kazejiyu.ekumi.core.ekumi.Execution;
-import fr.kazejiyu.ekumi.core.ekumi.Status;
+import fr.kazejiyu.ekumi.model.workflow.Activity;
+import fr.kazejiyu.ekumi.model.workflow.Execution;
+import fr.kazejiyu.ekumi.model.workflow.Status;
+import fr.kazejiyu.ekumi.model.workflow.WorkflowFactory;
 
 /**
  * Tests the behavior of a {@link PersistExecution} instance.<br>
@@ -52,7 +52,7 @@ public class PersistExecutionTest implements WithAssertions {
 		
 		history = new PersistedHistory(Paths.get(location.getAbsolutePath()));
 		
-		expected = EkumiFactory.eINSTANCE.createExecution();
+		expected = WorkflowFactory.eINSTANCE.createExecution();
 		expected.setId("first-execution");
 		expected.setName("Execution n°1");
 		expected.setStartDate(new Date());
@@ -93,7 +93,7 @@ public class PersistExecutionTest implements WithAssertions {
 		// Required: expected to be called before any onActivity* method
 		serializer.onExecutionStarted(expected);
 		
-		Activity activity = EkumiFactory.eINSTANCE.createSequence();
+		Activity activity = WorkflowFactory.eINSTANCE.createSequence();
 		activity.setId("great-sequence");
 		activity.setName("Great Sequence");
 		activity.setStatus(Status.CANCELLED);
@@ -121,7 +121,7 @@ public class PersistExecutionTest implements WithAssertions {
 		// Required: expected to be called before any onActivity* method
 		serializer.onExecutionStarted(expected);
 		
-		Activity activity = EkumiFactory.eINSTANCE.createSequence();
+		Activity activity = WorkflowFactory.eINSTANCE.createSequence();
 		activity.setId("great-sequence");
 		activity.setName("Great Sequence");
 		activity.setStatus(Status.CANCELLED);

@@ -22,10 +22,10 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import fr.kazejiyu.ekumi.EKumiPlugin;
-import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
-import fr.kazejiyu.ekumi.core.ekumi.Execution;
-import fr.kazejiyu.ekumi.core.ekumi.History;
-import fr.kazejiyu.ekumi.core.ekumi.impl.HistoryImpl;
+import fr.kazejiyu.ekumi.model.workflow.Execution;
+import fr.kazejiyu.ekumi.model.workflow.History;
+import fr.kazejiyu.ekumi.model.workflow.WorkflowPackage;
+import fr.kazejiyu.ekumi.model.workflow.impl.HistoryImpl;
 
 /**
  * An {@link History} persisted under a given directory.<br>
@@ -46,7 +46,7 @@ public class PersistedHistory extends HistoryImpl {
 		// TODO [Refactor] This is a dumb implementation to test, will be refactored
 		return new BasicEList<>(
 			Arrays.stream(executionFolders())
-			      .flatMap(file -> Arrays.stream(file.listFiles(f -> f.getName().endsWith(".ekumi"))))
+			      .flatMap(file -> Arrays.stream(file.listFiles(f -> f.getName().endsWith(".workflow"))))
 				  .map(file -> loadExecutionFromFile(file))
 				  .filter(Objects::nonNull)
 				  .collect(Collectors.toList())
@@ -87,10 +87,10 @@ public class PersistedHistory extends HistoryImpl {
 			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 			Map<String, Object> m = reg.getExtensionToFactoryMap();
 				
-			m.putIfAbsent("ekumi", new XMIResourceFactoryImpl());
+			m.putIfAbsent("workflow", new XMIResourceFactoryImpl());
 				
 			ResourceSet resourceSet = new ResourceSetImpl();
-			resourceSet.getPackageRegistry().put(EkumiPackage.eNS_URI, EkumiPackage.eINSTANCE);
+			resourceSet.getPackageRegistry().put(WorkflowPackage.eNS_URI, WorkflowPackage.eINSTANCE);
 			
 			Resource resource = resourceSet.getResource(URI.createFileURI(file.getAbsolutePath()), true);
 			return (Execution) resource.getContents().get(0);

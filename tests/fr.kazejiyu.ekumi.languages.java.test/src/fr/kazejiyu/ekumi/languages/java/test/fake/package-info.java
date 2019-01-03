@@ -1,5 +1,5 @@
 /**
- * Fake {@link fr.kazejiyu.ekumi.core.ekumi.Script Scripts} written in Java
+ * Fake {@link fr.kazejiyu.ekumi.model.workflow.Script Scripts} written in Java
  * 
  * @author Emmanuel CHEBBI
  */

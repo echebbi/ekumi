@@ -1,15 +1,22 @@
 package fr.kazejiyu.ekumi.core.execution;
 
-import fr.kazejiyu.ekumi.core.ekumi.impl.ContextImpl;
-import fr.kazejiyu.ekumi.core.execution.events.Events;
+import static java.util.Objects.requireNonNull;
 
-public class BasicContext extends ContextImpl {
+import java.util.Optional;
+
+import fr.kazejiyu.ekumi.model.execution.ExecutionStatus;
+import fr.kazejiyu.ekumi.model.execution.events.Events;
+import fr.kazejiyu.ekumi.model.workflow.Variable;
+import fr.kazejiyu.ekumi.model.workflow.WorkflowFactory;
+import fr.kazejiyu.ekumi.model.workflow.impl.ContextImpl;
+
+class BasicContext extends ContextImpl {
 	
 	private final Events events;
 	
 	private final ExecutionStatus status;
 	
-	public BasicContext(Events events, ExecutionStatus status) {
+	BasicContext(Events events, ExecutionStatus status) {
 		super();
 		this.events = events;
 		this.status = status;
@@ -24,7 +31,32 @@ public class BasicContext extends ContextImpl {
 	public ExecutionStatus execution() {
 		return status;
 	}
-	
-	
 
+	@Override
+	public boolean contains(String name) {
+		return find(name).isPresent();
+	}
+
+	@Override
+	public Optional<Variable> find(String name) {
+		return getVariables().stream().filter(var -> var.getName().equals(name)).findAny();
+	}
+
+	@Override
+	public void set(String name, Object value) {
+		if (contains(name)) {
+			find(name).ifPresent(var -> var.setValue(value));
+		} else {
+			Variable var = WorkflowFactory.eINSTANCE.createVariable();
+			var.setName(requireNonNull(name));
+			var.setValue(value);
+			getVariables().add(var);
+		}
+	}
+
+	@Override
+	public void unset(String name) {
+		find(name).ifPresent(var -> getVariables().remove(var));
+	}
+	
 }

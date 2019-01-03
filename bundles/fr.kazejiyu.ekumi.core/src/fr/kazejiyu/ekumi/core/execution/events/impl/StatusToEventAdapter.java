@@ -1,8 +1,8 @@
 package fr.kazejiyu.ekumi.core.execution.events.impl;
 
-import static fr.kazejiyu.ekumi.core.ekumi.Status.FAILED;
-import static fr.kazejiyu.ekumi.core.ekumi.Status.RUNNING;
-import static fr.kazejiyu.ekumi.core.ekumi.Status.SUCCEEDED;
+import static fr.kazejiyu.ekumi.model.workflow.Status.FAILED;
+import static fr.kazejiyu.ekumi.model.workflow.Status.RUNNING;
+import static fr.kazejiyu.ekumi.model.workflow.Status.SUCCEEDED;
 import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
@@ -10,10 +10,10 @@ import java.util.Objects;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 
-import fr.kazejiyu.ekumi.core.ekumi.Activity;
-import fr.kazejiyu.ekumi.core.ekumi.EkumiPackage;
-import fr.kazejiyu.ekumi.core.ekumi.Status;
-import fr.kazejiyu.ekumi.core.execution.events.Events;
+import fr.kazejiyu.ekumi.model.execution.events.Events;
+import fr.kazejiyu.ekumi.model.workflow.Activity;
+import fr.kazejiyu.ekumi.model.workflow.Status;
+import fr.kazejiyu.ekumi.model.workflow.WorkflowPackage;
 
 /**
  * Listens for the {@link Status status} of an {@link Activity} to change.<br>
@@ -57,7 +57,7 @@ public class StatusToEventAdapter extends EContentAdapter {
 	}
 
 	private boolean relatedToAStatusChange(Notification notification) {
-		return notification.getFeature().equals(EkumiPackage.Literals.HAS_STATUS__STATUS);
+		return notification.getFeature().equals(WorkflowPackage.Literals.HAS_STATUS__STATUS);
 	}
 	
 	private boolean oldAndNewValueAreEqual(Notification notification) {

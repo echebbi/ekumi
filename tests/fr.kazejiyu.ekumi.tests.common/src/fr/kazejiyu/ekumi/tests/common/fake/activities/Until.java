@@ -1,8 +1,8 @@
 package fr.kazejiyu.ekumi.tests.common.fake.activities;
 
-import fr.kazejiyu.ekumi.core.ekumi.Context;
-import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
-import fr.kazejiyu.ekumi.core.ekumi.impl.ConditionImpl;
+import fr.kazejiyu.ekumi.model.workflow.Context;
+import fr.kazejiyu.ekumi.model.workflow.StructuredLoop;
+import fr.kazejiyu.ekumi.model.workflow.impl.ConditionImpl;
 
 public class Until extends ConditionImpl {
 	

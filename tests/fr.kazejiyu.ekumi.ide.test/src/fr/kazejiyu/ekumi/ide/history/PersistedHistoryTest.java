@@ -14,11 +14,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import fr.kazejiyu.ekumi.core.ekumi.EkumiFactory;
-import fr.kazejiyu.ekumi.core.ekumi.Execution;
-import fr.kazejiyu.ekumi.core.ekumi.Sequence;
-import fr.kazejiyu.ekumi.core.ekumi.Status;
-import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
+import fr.kazejiyu.ekumi.model.workflow.Execution;
+import fr.kazejiyu.ekumi.model.workflow.Sequence;
+import fr.kazejiyu.ekumi.model.workflow.Status;
+import fr.kazejiyu.ekumi.model.workflow.StructuredLoop;
+import fr.kazejiyu.ekumi.model.workflow.WorkflowFactory;
 
 @DisplayName("A PersistedHistory")
 public class PersistedHistoryTest implements WithAssertions {
@@ -131,18 +131,18 @@ public class PersistedHistoryTest implements WithAssertions {
 	
 	/** @return an Execution equal to rsc/executions/2018.09.20.1120402040.sequence-13/Sequence n°13.ekumi */
 	Execution createSequence13() {
-		Sequence mySequence = EkumiFactory.eINSTANCE.createSequence();
+		Sequence mySequence = WorkflowFactory.eINSTANCE.createSequence();
 		mySequence.setName("My Sequence");
 		mySequence.setId("my.sequence");
 		mySequence.setStatus(Status.SUCCEEDED);
 		
-		StructuredLoop myLoop = EkumiFactory.eINSTANCE.createStructuredLoop();
+		StructuredLoop myLoop = WorkflowFactory.eINSTANCE.createStructuredLoop();
 		myLoop.setName("My Loop");
 		myLoop.setId("my.loop");
 		myLoop.setStatus(Status.FAILED);
 		mySequence.setRoot(myLoop);
 		
-		Execution sequence13 = EkumiFactory.eINSTANCE.createExecution();
+		Execution sequence13 = WorkflowFactory.eINSTANCE.createExecution();
 		sequence13.setId("sequence-13");
 		sequence13.setName("Sequence n°13");
 		sequence13.setStatus(Status.FAILED);

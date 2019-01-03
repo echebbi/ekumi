@@ -2,11 +2,11 @@ package fr.kazejiyu.ekumi.languages.java.test.fake;
 
 import javax.inject.Inject;
 
-import fr.kazejiyu.ekumi.core.ekumi.Context;
-import fr.kazejiyu.ekumi.core.ekumi.StructuredLoop;
-import fr.kazejiyu.ekumi.core.ekumi.impl.ConditionImpl;
-import fr.kazejiyu.ekumi.core.execution.ExecutionStatus;
-import fr.kazejiyu.ekumi.core.execution.events.Events;
+import fr.kazejiyu.ekumi.model.execution.ExecutionStatus;
+import fr.kazejiyu.ekumi.model.execution.events.Events;
+import fr.kazejiyu.ekumi.model.workflow.Context;
+import fr.kazejiyu.ekumi.model.workflow.StructuredLoop;
+import fr.kazejiyu.ekumi.model.workflow.impl.ConditionImpl;
 import fr.kazejiyu.ekumi.tests.common.fake.activities.Injectable;
 
 public class InjectableCondition extends ConditionImpl implements Injectable {

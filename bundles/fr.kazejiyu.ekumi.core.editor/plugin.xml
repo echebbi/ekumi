@@ -1,88 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><?eclipse version="3.0"?><!--
---><plugin>
-
-<extension point="org.eclipse.ui.editors"><editor class="org.eclipse.emfforms.spi.editor.GenericEditor" default="false" extensions="catalog" icon="icons/full/obj16/CatalogModelFile.gif" id="fr.kazejiyu.ekumi.core.editor.Catalog.emfformseditor" name="EMFForms Editor"/></extension>
-   <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated ekumi -->
-      <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
-      <wizard
-            id="fr.kazejiyu.ekumi.model.catalog.presentation.CatalogModelWizardID"
-            name="%_UI_CatalogModelWizard_label"
-            class="fr.kazejiyu.ekumi.model.catalog.presentation.CatalogModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/CatalogModelFile.gif">
-         <description>%_UI_CatalogModelWizard_description</description>
-         <selection class="org.eclipse.core.resources.IResource"/>
-      </wizard>
-   </extension>
-
-   <extension point="org.eclipse.ui.editors">
-      <!-- @generated ekumi -->
-      <editor
-            id="fr.kazejiyu.ekumi.model.catalog.presentation.CatalogEditorID"
-            name="%_UI_CatalogEditor_label"
-            icon="icons/full/obj16/CatalogModelFile.gif"
-            extensions="catalog"
-            class="fr.kazejiyu.ekumi.model.catalog.presentation.CatalogEditor"
-            contributorClass="fr.kazejiyu.ekumi.model.catalog.presentation.CatalogActionBarContributor">
-      </editor>
-   </extension>
-
-   <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated ekumi -->
-      <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
-      <wizard
-            id="fr.kazejiyu.ekumi.core.ekumi.presentation.EkumiModelWizardID"
-            name="%_UI_EkumiModelWizard_label"
-            class="fr.kazejiyu.ekumi.core.ekumi.presentation.EkumiModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/EkumiModelFile.gif">
-         <description>%_UI_EkumiModelWizard_description</description>
-         <selection class="org.eclipse.core.resources.IResource"/>
-      </wizard>
-   </extension>
-
-   <extension point="org.eclipse.ui.editors">
-      <!-- @generated ekumi -->
-      <editor
-            id="fr.kazejiyu.ekumi.core.ekumi.presentation.EkumiEditorID"
-            name="%_UI_EkumiEditor_label"
-            icon="icons/full/obj16/EkumiModelFile.gif"
-            extensions="ekumi"
-            class="fr.kazejiyu.ekumi.core.ekumi.presentation.EkumiEditor"
-            contributorClass="fr.kazejiyu.ekumi.core.ekumi.presentation.EkumiActionBarContributor">
-      </editor>
-   </extension>
-
-   <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated ekumi -->
-      <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
-      <wizard
-            id="fr.kazejiyu.ekumi.model.spec.presentation.SpecModelWizardID"
-            name="%_UI_SpecModelWizard_label"
-            class="fr.kazejiyu.ekumi.model.spec.presentation.SpecModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/SpecModelFile.gif">
-         <description>%_UI_SpecModelWizard_description</description>
-         <selection class="org.eclipse.core.resources.IResource"/>
-      </wizard>
-   </extension>
-
-   <extension point="org.eclipse.ui.editors">
-      <!-- @generated ekumi -->
-      <editor
-            id="fr.kazejiyu.ekumi.model.spec.presentation.SpecEditorID"
-            name="%_UI_SpecEditor_label"
-            icon="icons/full/obj16/SpecModelFile.gif"
-            extensions="spec"
-            class="fr.kazejiyu.ekumi.model.spec.presentation.SpecEditor"
-            contributorClass="fr.kazejiyu.ekumi.model.spec.presentation.SpecActionBarContributor">
-      </editor>
-   </extension>
-</plugin>

@@ -2,9 +2,9 @@ package fr.kazejiyu.ekumi.tests.common.fake.activities;
 
 import java.util.List;
 
-import fr.kazejiyu.ekumi.core.ekumi.Context;
-import fr.kazejiyu.ekumi.core.ekumi.Status;
-import fr.kazejiyu.ekumi.core.ekumi.impl.ActivityImpl;
+import fr.kazejiyu.ekumi.model.workflow.Context;
+import fr.kazejiyu.ekumi.model.workflow.Status;
+import fr.kazejiyu.ekumi.model.workflow.impl.ActivityImpl;
 
 public class SetNameInList extends ActivityImpl {
 	

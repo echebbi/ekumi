@@ -8,9 +8,9 @@ import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.services.events.IEventBroker;
 
 import fr.kazejiyu.ekumi.EKumiPlugin;
-import fr.kazejiyu.ekumi.core.ekumi.History;
 import fr.kazejiyu.ekumi.ide.history.PersistExecution;
 import fr.kazejiyu.ekumi.ide.history.PersistedHistory;
+import fr.kazejiyu.ekumi.model.workflow.History;
 
 /**
  * An OSGI Declarative Service making an {@link History} instance available for injection.<br>

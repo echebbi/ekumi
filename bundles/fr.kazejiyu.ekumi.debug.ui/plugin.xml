@@ -21,7 +21,7 @@
                               type="org.eclipse.core.resources.IFile">
                            <test
                                  property="org.eclipse.core.resources.extension"
-                                 value="ekumi">
+                                 value="workflow">
                            </test>
                         </adapt>
                      </iterate>
