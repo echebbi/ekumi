@@ -25,4 +25,12 @@
             genModel="model/ekumi.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated ekumi -->
+      <package
+            uri="http://fr.kazejiyu.io/ekumi/spec"
+            class="fr.kazejiyu.ekumi.model.spec.SpecPackage"
+            genModel="model/ekumi.genmodel"/>
+   </extension>
+
 </plugin>

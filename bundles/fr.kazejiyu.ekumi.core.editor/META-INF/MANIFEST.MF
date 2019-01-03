@@ -12,7 +12,8 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %providerName
 Export-Package: fr.kazejiyu.ekumi.core.ekumi.presentation,
- fr.kazejiyu.ekumi.model.catalog.presentation
+ fr.kazejiyu.ekumi.model.catalog.presentation,
+ fr.kazejiyu.ekumi.model.spec.presentation
 Bundle-Name: %pluginName
 Bundle-Version: 0.1.0
 Bundle-ClassPath: .

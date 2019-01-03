@@ -15,6 +15,8 @@ import fr.kazejiyu.ekumi.model.catalog.Category;
 import fr.kazejiyu.ekumi.model.catalog.Group;
 
 import fr.kazejiyu.ekumi.model.catalog.Identifiable;
+import fr.kazejiyu.ekumi.model.spec.SpecPackage;
+import fr.kazejiyu.ekumi.model.spec.impl.SpecPackageImpl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
@@ -126,14 +128,20 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 				.getEPackage(EkumiPackage.eNS_URI) instanceof EkumiPackageImpl
 						? EPackage.Registry.INSTANCE.getEPackage(EkumiPackage.eNS_URI)
 						: EkumiPackage.eINSTANCE);
+		SpecPackageImpl theSpecPackage = (SpecPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(SpecPackage.eNS_URI) instanceof SpecPackageImpl
+						? EPackage.Registry.INSTANCE.getEPackage(SpecPackage.eNS_URI)
+						: SpecPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theCatalogPackage.createPackageContents();
 		theEkumiPackage.createPackageContents();
+		theSpecPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theCatalogPackage.initializePackageContents();
 		theEkumiPackage.initializePackageContents();
+		theSpecPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theCatalogPackage.freeze();

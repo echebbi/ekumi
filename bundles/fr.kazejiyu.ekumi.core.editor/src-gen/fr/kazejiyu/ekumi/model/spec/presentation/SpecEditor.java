@@ -1,6 +1,6 @@
 /**
  */
-package fr.kazejiyu.ekumi.model.catalog.presentation;
+package fr.kazejiyu.ekumi.model.spec.presentation;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -152,20 +152,23 @@ import org.eclipse.emf.edit.ui.util.EditUIUtil;
 
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
-import fr.kazejiyu.ekumi.model.catalog.provider.CatalogItemProviderAdapterFactory;
+import fr.kazejiyu.ekumi.model.spec.provider.SpecItemProviderAdapterFactory;
 
 import fr.kazejiyu.ekumi.core.ekumi.provider.EkumiItemProviderAdapterFactory;
 
-import fr.kazejiyu.ekumi.model.spec.provider.SpecItemProviderAdapterFactory;
+import fr.kazejiyu.ekumi.model.catalog.presentation.EkumiEditorPlugin;
+
+import fr.kazejiyu.ekumi.model.catalog.provider.CatalogItemProviderAdapterFactory;
+
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
- * This is an example of a Catalog model editor.
+ * This is an example of a Spec model editor.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class CatalogEditor extends MultiPageEditorPart
+public class SpecEditor extends MultiPageEditorPart
 		implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IGotoMarker {
 	/**
 	 * This keeps track of the editing domain that is used to track all changes to the model.
@@ -325,16 +328,16 @@ public class CatalogEditor extends MultiPageEditorPart
 		public void partActivated(IWorkbenchPart p) {
 			if (p instanceof ContentOutline) {
 				if (((ContentOutline) p).getCurrentPage() == contentOutlinePage) {
-					getActionBarContributor().setActiveEditor(CatalogEditor.this);
+					getActionBarContributor().setActiveEditor(SpecEditor.this);
 
 					setCurrentViewer(contentOutlineViewer);
 				}
 			} else if (p instanceof PropertySheet) {
 				if (propertySheetPages.contains(((PropertySheet) p).getCurrentPage())) {
-					getActionBarContributor().setActiveEditor(CatalogEditor.this);
+					getActionBarContributor().setActiveEditor(SpecEditor.this);
 					handleActivate();
 				}
-			} else if (p == CatalogEditor.this) {
+			} else if (p == SpecEditor.this) {
 				handleActivate();
 			}
 		}
@@ -505,7 +508,7 @@ public class CatalogEditor extends MultiPageEditorPart
 						public void run() {
 							removedResources.addAll(visitor.getRemovedResources());
 							if (!isDirty()) {
-								getSite().getPage().closeEditor(CatalogEditor.this, false);
+								getSite().getPage().closeEditor(SpecEditor.this, false);
 							}
 						}
 					});
@@ -515,7 +518,7 @@ public class CatalogEditor extends MultiPageEditorPart
 					getSite().getShell().getDisplay().asyncExec(new Runnable() {
 						public void run() {
 							changedResources.addAll(visitor.getChangedResources());
-							if (getSite().getPage().getActiveEditor() == CatalogEditor.this) {
+							if (getSite().getPage().getActiveEditor() == SpecEditor.this) {
 								handleActivate();
 							}
 						}
@@ -546,7 +549,7 @@ public class CatalogEditor extends MultiPageEditorPart
 
 		if (!removedResources.isEmpty()) {
 			if (handleDirtyConflict()) {
-				getSite().getPage().closeEditor(CatalogEditor.this, false);
+				getSite().getPage().closeEditor(SpecEditor.this, false);
 			} else {
 				removedResources.clear();
 				changedResources.clear();
@@ -659,7 +662,7 @@ public class CatalogEditor extends MultiPageEditorPart
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CatalogEditor() {
+	public SpecEditor() {
 		super();
 		initializeEditingDomain();
 	}
@@ -982,7 +985,7 @@ public class CatalogEditor extends MultiPageEditorPart
 			// Create a page for the selection tree view.
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), CatalogEditor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), SpecEditor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						Tree tree = new Tree(composite, SWT.MULTI);
@@ -1018,7 +1021,7 @@ public class CatalogEditor extends MultiPageEditorPart
 			// Create a page for the parent tree view.
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), CatalogEditor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), SpecEditor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						Tree tree = new Tree(composite, SWT.MULTI);
@@ -1047,7 +1050,7 @@ public class CatalogEditor extends MultiPageEditorPart
 			// This is the page for the list viewer
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), CatalogEditor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), SpecEditor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						return new ListViewer(composite);
@@ -1072,7 +1075,7 @@ public class CatalogEditor extends MultiPageEditorPart
 			// This is the page for the tree viewer
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), CatalogEditor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), SpecEditor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						return new TreeViewer(composite);
@@ -1099,7 +1102,7 @@ public class CatalogEditor extends MultiPageEditorPart
 			// This is the page for the table viewer.
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), CatalogEditor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), SpecEditor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						return new TableViewer(composite);
@@ -1142,7 +1145,7 @@ public class CatalogEditor extends MultiPageEditorPart
 			// This is the page for the table tree viewer.
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), CatalogEditor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), SpecEditor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						return new TreeViewer(composite);
@@ -1359,8 +1362,8 @@ public class CatalogEditor extends MultiPageEditorPart
 		PropertySheetPage propertySheetPage = new ExtendedPropertySheetPage(editingDomain) {
 			@Override
 			public void setSelectionToViewer(List<?> selection) {
-				CatalogEditor.this.setSelectionToViewer(selection);
-				CatalogEditor.this.setFocus();
+				SpecEditor.this.setSelectionToViewer(selection);
+				SpecEditor.this.setFocus();
 			}
 
 			@Override
