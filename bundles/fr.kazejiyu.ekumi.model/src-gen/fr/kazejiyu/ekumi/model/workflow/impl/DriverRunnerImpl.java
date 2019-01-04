@@ -5,9 +5,12 @@ package fr.kazejiyu.ekumi.model.workflow.impl;
 import fr.kazejiyu.ekumi.model.workflow.Activity;
 import fr.kazejiyu.ekumi.model.workflow.DriverRunner;
 import fr.kazejiyu.ekumi.model.workflow.WorkflowPackage;
+
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**

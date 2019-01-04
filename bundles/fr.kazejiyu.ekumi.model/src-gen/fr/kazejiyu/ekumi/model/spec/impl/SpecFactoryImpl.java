@@ -55,16 +55,32 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case SpecPackage.START_JOIN:
-			return createStartJoin();
-		case SpecPackage.SPLIT_JOIN:
-			return createSplitJoin();
-		case SpecPackage.SIMPLE_JOIN:
-			return createSimpleJoin();
-		case SpecPackage.REPEAT_JOIN:
-			return createRepeatJoin();
-		case SpecPackage.WORKFLOW:
-			return createWorkflow();
+		case SpecPackage.ACTIVITY:
+			return createActivity();
+		case SpecPackage.START:
+			return createStart();
+		case SpecPackage.PARALLEL_SPLIT:
+			return createParallelSplit();
+		case SpecPackage.EXTERNAL_TASK:
+			return createExternalTask();
+		case SpecPackage.LIBRARY_TASK:
+			return createLibraryTask();
+		case SpecPackage.SYNCHRONIZATION:
+			return createSynchronization();
+		case SpecPackage.MULTI_CHOICE:
+			return createMultiChoice();
+		case SpecPackage.SIMPLE_MERGE:
+			return createSimpleMerge();
+		case SpecPackage.VARIABLE:
+			return createVariable();
+		case SpecPackage.DATA_FLOWS:
+			return createDataFlows();
+		case SpecPackage.DATA_FLOW:
+			return createDataFlow();
+		case SpecPackage.CONDITIONAL_ROOT:
+			return createConditionalRoot();
+		case SpecPackage.CONDITION:
+			return createCondition();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -75,9 +91,9 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StartJoin createStartJoin() {
-		StartJoinImpl startJoin = new StartJoinImpl();
-		return startJoin;
+	public Activity createActivity() {
+		ActivityImpl activity = new ActivityImpl();
+		return activity;
 	}
 
 	/**
@@ -85,9 +101,9 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SplitJoin createSplitJoin() {
-		SplitJoinImpl splitJoin = new SplitJoinImpl();
-		return splitJoin;
+	public Start createStart() {
+		StartImpl start = new StartImpl();
+		return start;
 	}
 
 	/**
@@ -95,9 +111,9 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SimpleJoin createSimpleJoin() {
-		SimpleJoinImpl simpleJoin = new SimpleJoinImpl();
-		return simpleJoin;
+	public ParallelSplit createParallelSplit() {
+		ParallelSplitImpl parallelSplit = new ParallelSplitImpl();
+		return parallelSplit;
 	}
 
 	/**
@@ -105,9 +121,9 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RepeatJoin createRepeatJoin() {
-		RepeatJoinImpl repeatJoin = new RepeatJoinImpl();
-		return repeatJoin;
+	public ExternalTask createExternalTask() {
+		ExternalTaskImpl externalTask = new ExternalTaskImpl();
+		return externalTask;
 	}
 
 	/**
@@ -115,9 +131,89 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Workflow createWorkflow() {
-		WorkflowImpl workflow = new WorkflowImpl();
-		return workflow;
+	public LibraryTask createLibraryTask() {
+		LibraryTaskImpl libraryTask = new LibraryTaskImpl();
+		return libraryTask;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Synchronization createSynchronization() {
+		SynchronizationImpl synchronization = new SynchronizationImpl();
+		return synchronization;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MultiChoice createMultiChoice() {
+		MultiChoiceImpl multiChoice = new MultiChoiceImpl();
+		return multiChoice;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SimpleMerge createSimpleMerge() {
+		SimpleMergeImpl simpleMerge = new SimpleMergeImpl();
+		return simpleMerge;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Variable createVariable() {
+		VariableImpl variable = new VariableImpl();
+		return variable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataFlows createDataFlows() {
+		DataFlowsImpl dataFlows = new DataFlowsImpl();
+		return dataFlows;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataFlow createDataFlow() {
+		DataFlowImpl dataFlow = new DataFlowImpl();
+		return dataFlow;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConditionalRoot createConditionalRoot() {
+		ConditionalRootImpl conditionalRoot = new ConditionalRootImpl();
+		return conditionalRoot;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Condition createCondition() {
+		ConditionImpl condition = new ConditionImpl();
+		return condition;
 	}
 
 	/**

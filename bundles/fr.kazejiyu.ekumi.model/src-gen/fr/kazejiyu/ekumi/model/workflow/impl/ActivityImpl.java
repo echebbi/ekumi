@@ -2,17 +2,9 @@
  */
 package fr.kazejiyu.ekumi.model.workflow.impl;
 
-import fr.kazejiyu.ekumi.model.workflow.Activity;
-import fr.kazejiyu.ekumi.model.workflow.Context;
-import fr.kazejiyu.ekumi.model.workflow.DataFlows;
-import fr.kazejiyu.ekumi.model.workflow.Executable;
-import fr.kazejiyu.ekumi.model.workflow.HasStatus;
-import fr.kazejiyu.ekumi.model.workflow.Status;
-import fr.kazejiyu.ekumi.model.workflow.Variable;
-import fr.kazejiyu.ekumi.model.workflow.WorkflowFactory;
-import fr.kazejiyu.ekumi.model.workflow.WorkflowPackage;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -22,6 +14,16 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import fr.kazejiyu.ekumi.model.workflow.Activity;
+import fr.kazejiyu.ekumi.model.workflow.Context;
+import fr.kazejiyu.ekumi.model.workflow.DataFlows;
+import fr.kazejiyu.ekumi.model.workflow.Executable;
+import fr.kazejiyu.ekumi.model.workflow.HasStatus;
+import fr.kazejiyu.ekumi.model.workflow.Status;
+import fr.kazejiyu.ekumi.model.workflow.Variable;
+import fr.kazejiyu.ekumi.model.workflow.WorkflowFactory;
+import fr.kazejiyu.ekumi.model.workflow.WorkflowPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -115,7 +117,7 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected ActivityImpl() {
 		super();
@@ -317,7 +319,7 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public DataFlows getFlows() {
 		return flows;

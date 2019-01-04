@@ -175,7 +175,7 @@
     <eOperations name="contains" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean">
       <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
     </eOperations>
-    <eOperations name="get">
+    <eOperations name="get" eType="#//Variable" eExceptions="#//VariableNotFoundException">
       <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
     </eOperations>
     <eOperations name="set">
@@ -205,4 +205,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="HasStatus">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//Status"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="VariableNotFoundException" instanceClassName="fr.kazejiyu.ekumi.model.exceptions.VariableNotFoundException"/>
 </ecore:EPackage>

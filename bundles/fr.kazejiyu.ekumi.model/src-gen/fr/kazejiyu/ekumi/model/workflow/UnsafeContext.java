@@ -3,8 +3,11 @@
 package fr.kazejiyu.ekumi.model.workflow;
 
 import fr.kazejiyu.ekumi.model.execution.ExecutionStatus;
+
 import fr.kazejiyu.ekumi.model.execution.events.Events;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**

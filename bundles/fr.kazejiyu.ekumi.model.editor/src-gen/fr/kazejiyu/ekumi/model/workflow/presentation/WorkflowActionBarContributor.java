@@ -245,7 +245,6 @@ public class WorkflowActionBarContributor extends EditingDomainActionBarContribu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void selectionChanged(SelectionChangedEvent event) {
 		// Remove any menu items for old selection.
 		//

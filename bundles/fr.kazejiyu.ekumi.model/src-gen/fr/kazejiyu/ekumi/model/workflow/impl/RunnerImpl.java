@@ -5,8 +5,11 @@ package fr.kazejiyu.ekumi.model.workflow.impl;
 import fr.kazejiyu.ekumi.model.workflow.Context;
 import fr.kazejiyu.ekumi.model.workflow.Runner;
 import fr.kazejiyu.ekumi.model.workflow.WorkflowPackage;
+
 import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 
 /**

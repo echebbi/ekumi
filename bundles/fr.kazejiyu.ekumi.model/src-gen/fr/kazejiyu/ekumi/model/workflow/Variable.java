@@ -3,6 +3,7 @@
 package fr.kazejiyu.ekumi.model.workflow;
 
 import fr.kazejiyu.ekumi.model.datatypes.DataType;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**

@@ -4,6 +4,7 @@ package fr.kazejiyu.ekumi.model.catalog.impl;
 
 import fr.kazejiyu.ekumi.model.catalog.Catalog;
 import fr.kazejiyu.ekumi.model.catalog.CatalogPackage;
+
 import org.eclipse.emf.ecore.EClass;
 
 /**

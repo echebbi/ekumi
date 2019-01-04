@@ -2317,6 +2317,16 @@ public interface WorkflowPackage extends EPackage {
 	int EXECUTION_STATUS = 33;
 
 	/**
+	 * The meta object id for the '<em>Variable Not Found Exception</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.model.exceptions.VariableNotFoundException
+	 * @see fr.kazejiyu.ekumi.model.workflow.impl.WorkflowPackageImpl#getVariableNotFoundException()
+	 * @generated
+	 */
+	int VARIABLE_NOT_FOUND_EXCEPTION = 34;
+
+	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.model.workflow.Activity <em>Activity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3328,6 +3338,17 @@ public interface WorkflowPackage extends EPackage {
 	EDataType getExecutionStatus();
 
 	/**
+	 * Returns the meta object for data type '{@link fr.kazejiyu.ekumi.model.exceptions.VariableNotFoundException <em>Variable Not Found Exception</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Variable Not Found Exception</em>'.
+	 * @see fr.kazejiyu.ekumi.model.exceptions.VariableNotFoundException
+	 * @model instanceClass="fr.kazejiyu.ekumi.model.exceptions.VariableNotFoundException"
+	 * @generated
+	 */
+	EDataType getVariableNotFoundException();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4186,6 +4207,16 @@ public interface WorkflowPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType EXECUTION_STATUS = eINSTANCE.getExecutionStatus();
+
+		/**
+		 * The meta object literal for the '<em>Variable Not Found Exception</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.model.exceptions.VariableNotFoundException
+		 * @see fr.kazejiyu.ekumi.model.workflow.impl.WorkflowPackageImpl#getVariableNotFoundException()
+		 * @generated
+		 */
+		EDataType VARIABLE_NOT_FOUND_EXCEPTION = eINSTANCE.getVariableNotFoundException();
 
 	}
 

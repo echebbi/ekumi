@@ -11,6 +11,10 @@
             class="fr.kazejiyu.ekumi.core.workflow.impl.BasicWorkflowFactory"
             uri="http://fr.kazejiyu.io/ekumi/workflow">
       </factory>
+      <factory
+            class="fr.kazejiyu.ekumi.core.spec.impl.BasicSpecFactory"
+            uri="http://fr.kazejiyu.io/ekumi/spec">
+      </factory>
    </extension>
 
 

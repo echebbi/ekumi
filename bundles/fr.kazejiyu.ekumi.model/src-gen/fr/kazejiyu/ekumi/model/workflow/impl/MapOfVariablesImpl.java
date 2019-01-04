@@ -4,6 +4,7 @@ package fr.kazejiyu.ekumi.model.workflow.impl;
 
 import fr.kazejiyu.ekumi.model.workflow.MapOfVariables;
 import fr.kazejiyu.ekumi.model.workflow.WorkflowPackage;
+
 import org.eclipse.emf.ecore.EClass;
 
 /**
