@@ -60,6 +60,7 @@
     <genDataTypes ecoreDataType="workflow.ecore#//Events"/>
     <genDataTypes ecoreDataType="workflow.ecore#//InterruptedExecutionException"/>
     <genDataTypes ecoreDataType="workflow.ecore#//ExecutionStatus"/>
+    <genDataTypes ecoreDataType="workflow.ecore#//VariableNotFoundException"/>
     <genClasses ecoreClass="workflow.ecore#//Activity">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Activity/inputs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Activity/outputs"/>
@@ -193,24 +194,58 @@
   </genPackages>
   <genPackages prefix="Spec" basePackage="fr.kazejiyu.ekumi.model" disposableProviderFactory="true"
       ecorePackage="spec.ecore#/">
-    <genClasses image="false" ecoreClass="spec.ecore#//Activity">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference spec.ecore#//Activity/successors"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute spec.ecore#//Activity/id"/>
+    <genClasses ecoreClass="spec.ecore#//Task">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute spec.ecore#//Task/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute spec.ecore#//Task/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference spec.ecore#//Task/successor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Task/flows"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Task/inputs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Task/outputs"/>
+    </genClasses>
+    <genClasses ecoreClass="spec.ecore#//Activity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute spec.ecore#//Activity/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Activity/join"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute spec.ecore#//Activity/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Activity/start"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Activity/nestedActivity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference spec.ecore#//Activity/parentActivity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Activity/tasks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Activity/divergences"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="spec.ecore#//Join">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference spec.ecore#//Join/activities"/>
+    <genClasses ecoreClass="spec.ecore#//Start">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference spec.ecore#//Start/node"/>
     </genClasses>
-    <genClasses ecoreClass="spec.ecore#//StartJoin"/>
-    <genClasses ecoreClass="spec.ecore#//SplitJoin"/>
-    <genClasses ecoreClass="spec.ecore#//SimpleJoin"/>
-    <genClasses ecoreClass="spec.ecore#//RepeatJoin"/>
-    <genClasses ecoreClass="spec.ecore#//Workflow">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Workflow/activities"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Workflow/start"/>
-      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference spec.ecore#//Workflow/subWorkflow"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference spec.ecore#//Workflow/parentWorkflow"/>
+    <genClasses ecoreClass="spec.ecore#//ParallelSplit"/>
+    <genClasses ecoreClass="spec.ecore#//ExternalTask">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute spec.ecore#//ExternalTask/languageId"/>
     </genClasses>
+    <genClasses ecoreClass="spec.ecore#//LibraryTask"/>
+    <genClasses image="false" ecoreClass="spec.ecore#//Divergence">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Divergence/convergence"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference spec.ecore#//Divergence/roots"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="spec.ecore#//Convergence"/>
+    <genClasses ecoreClass="spec.ecore#//Synchronization"/>
+    <genClasses ecoreClass="spec.ecore#//MultiChoice"/>
+    <genClasses ecoreClass="spec.ecore#//SimpleMerge"/>
+    <genClasses ecoreClass="spec.ecore#//Variable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute spec.ecore#//Variable/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute spec.ecore#//Variable/typeId"/>
+    </genClasses>
+    <genClasses ecoreClass="spec.ecore#//DataFlows">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//DataFlows/incomings"/>
+    </genClasses>
+    <genClasses ecoreClass="spec.ecore#//DataFlow">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference spec.ecore#//DataFlow/input"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference spec.ecore#//DataFlow/output"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="spec.ecore#//Node">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference spec.ecore#//Node/predecessor"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="spec.ecore#//ConditionalDivergence"/>
+    <genClasses ecoreClass="spec.ecore#//ConditionalRoot">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference spec.ecore#//ConditionalRoot/task"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference spec.ecore#//ConditionalRoot/condition"/>
+    </genClasses>
+    <genClasses ecoreClass="spec.ecore#//Condition"/>
   </genPackages>
 </genmodel:GenModel>

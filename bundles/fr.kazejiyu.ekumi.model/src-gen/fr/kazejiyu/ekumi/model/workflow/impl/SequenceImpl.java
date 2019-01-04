@@ -5,11 +5,15 @@ package fr.kazejiyu.ekumi.model.workflow.impl;
 import fr.kazejiyu.ekumi.model.workflow.Activity;
 import fr.kazejiyu.ekumi.model.workflow.Sequence;
 import fr.kazejiyu.ekumi.model.workflow.WorkflowPackage;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**

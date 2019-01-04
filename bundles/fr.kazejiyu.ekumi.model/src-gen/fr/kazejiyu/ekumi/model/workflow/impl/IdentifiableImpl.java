@@ -4,8 +4,11 @@ package fr.kazejiyu.ekumi.model.workflow.impl;
 
 import fr.kazejiyu.ekumi.model.workflow.Identifiable;
 import fr.kazejiyu.ekumi.model.workflow.WorkflowPackage;
+
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 

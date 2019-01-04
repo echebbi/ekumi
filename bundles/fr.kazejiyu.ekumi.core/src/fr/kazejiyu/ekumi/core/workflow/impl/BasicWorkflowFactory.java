@@ -6,14 +6,14 @@ import fr.kazejiyu.ekumi.model.workflow.Execution;
 import fr.kazejiyu.ekumi.model.workflow.ScriptedTask;
 import fr.kazejiyu.ekumi.model.workflow.Sequence;
 import fr.kazejiyu.ekumi.model.workflow.StructuredLoop;
+import fr.kazejiyu.ekumi.model.workflow.WorkflowPackage;
 import fr.kazejiyu.ekumi.model.workflow.impl.WorkflowFactoryImpl;
 
+/**
+ * <p>Custom factory used to instantiate custom sub-classes of the {@link WorkflowPackage}.</p>  
+ */
 public class BasicWorkflowFactory extends WorkflowFactoryImpl {
 
-	public BasicWorkflowFactory() {
-		super();
-	}
-	
 	@Override
 	public DataFlows createDataFlows() {
 		return new BasicDataFlows();

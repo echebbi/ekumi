@@ -5,11 +5,16 @@ package fr.kazejiyu.ekumi.model.catalog.impl;
 import fr.kazejiyu.ekumi.model.catalog.ActivityTemplate;
 import fr.kazejiyu.ekumi.model.catalog.CatalogPackage;
 import fr.kazejiyu.ekumi.model.catalog.Category;
+
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 

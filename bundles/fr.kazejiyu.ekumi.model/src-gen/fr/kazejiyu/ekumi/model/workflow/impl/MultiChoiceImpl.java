@@ -5,11 +5,16 @@ package fr.kazejiyu.ekumi.model.workflow.impl;
 import fr.kazejiyu.ekumi.model.workflow.Branch;
 import fr.kazejiyu.ekumi.model.workflow.MultiChoice;
 import fr.kazejiyu.ekumi.model.workflow.WorkflowPackage;
+
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 

@@ -58,41 +58,11 @@ public class ActivityItemProvider extends ItemProviderAdapter implements IEditin
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addSuccessorsPropertyDescriptor(object);
-			addIdPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
+			addIdPropertyDescriptor(object);
+			addParentActivityPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Successors feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSuccessorsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Activity_successors_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Activity_successors_feature",
-								"_UI_Activity_type"),
-						SpecPackage.Literals.ACTIVITY__SUCCESSORS, true, false, true, null, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Id feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addIdPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Activity_id_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Activity_id_feature", "_UI_Activity_type"),
-						SpecPackage.Literals.ACTIVITY__ID, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -112,6 +82,36 @@ public class ActivityItemProvider extends ItemProviderAdapter implements IEditin
 	}
 
 	/**
+	 * This adds a property descriptor for the Id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Activity_id_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Activity_id_feature", "_UI_Activity_type"),
+						SpecPackage.Literals.ACTIVITY__ID, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Parent Activity feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addParentActivityPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Activity_parentActivity_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Activity_parentActivity_feature",
+								"_UI_Activity_type"),
+						SpecPackage.Literals.ACTIVITY__PARENT_ACTIVITY, true, false, true, null, null, null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -123,7 +123,10 @@ public class ActivityItemProvider extends ItemProviderAdapter implements IEditin
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(SpecPackage.Literals.ACTIVITY__JOIN);
+			childrenFeatures.add(SpecPackage.Literals.ACTIVITY__START);
+			childrenFeatures.add(SpecPackage.Literals.ACTIVITY__NESTED_ACTIVITY);
+			childrenFeatures.add(SpecPackage.Literals.ACTIVITY__TASKS);
+			childrenFeatures.add(SpecPackage.Literals.ACTIVITY__DIVERGENCES);
 		}
 		return childrenFeatures;
 	}
@@ -139,6 +142,17 @@ public class ActivityItemProvider extends ItemProviderAdapter implements IEditin
 		// adding (see {@link AddCommand}) it as a child.
 
 		return super.getChildFeature(object, child);
+	}
+
+	/**
+	 * This returns Activity.gif.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object getImage(Object object) {
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Activity"));
 	}
 
 	/**
@@ -176,11 +190,14 @@ public class ActivityItemProvider extends ItemProviderAdapter implements IEditin
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Activity.class)) {
-		case SpecPackage.ACTIVITY__ID:
 		case SpecPackage.ACTIVITY__NAME:
+		case SpecPackage.ACTIVITY__ID:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
-		case SpecPackage.ACTIVITY__JOIN:
+		case SpecPackage.ACTIVITY__START:
+		case SpecPackage.ACTIVITY__NESTED_ACTIVITY:
+		case SpecPackage.ACTIVITY__TASKS:
+		case SpecPackage.ACTIVITY__DIVERGENCES:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -198,17 +215,23 @@ public class ActivityItemProvider extends ItemProviderAdapter implements IEditin
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(
-				createChildParameter(SpecPackage.Literals.ACTIVITY__JOIN, SpecFactory.eINSTANCE.createStartJoin()));
+		newChildDescriptors
+				.add(createChildParameter(SpecPackage.Literals.ACTIVITY__START, SpecFactory.eINSTANCE.createStart()));
+
+		newChildDescriptors.add(createChildParameter(SpecPackage.Literals.ACTIVITY__NESTED_ACTIVITY,
+				SpecFactory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add(
-				createChildParameter(SpecPackage.Literals.ACTIVITY__JOIN, SpecFactory.eINSTANCE.createSplitJoin()));
+				createChildParameter(SpecPackage.Literals.ACTIVITY__TASKS, SpecFactory.eINSTANCE.createExternalTask()));
 
 		newChildDescriptors.add(
-				createChildParameter(SpecPackage.Literals.ACTIVITY__JOIN, SpecFactory.eINSTANCE.createSimpleJoin()));
+				createChildParameter(SpecPackage.Literals.ACTIVITY__TASKS, SpecFactory.eINSTANCE.createLibraryTask()));
 
 		newChildDescriptors.add(
-				createChildParameter(SpecPackage.Literals.ACTIVITY__JOIN, SpecFactory.eINSTANCE.createRepeatJoin()));
+				createChildParameter(SpecPackage.Literals.ACTIVITY__TASKS, SpecFactory.eINSTANCE.createCondition()));
+
+		newChildDescriptors.add(createChildParameter(SpecPackage.Literals.ACTIVITY__DIVERGENCES,
+				SpecFactory.eINSTANCE.createParallelSplit()));
 	}
 
 	/**

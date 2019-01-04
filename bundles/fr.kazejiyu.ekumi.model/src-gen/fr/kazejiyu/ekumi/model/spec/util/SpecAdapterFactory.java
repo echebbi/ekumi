@@ -67,38 +67,93 @@ public class SpecAdapterFactory extends AdapterFactoryImpl {
 	 */
 	protected SpecSwitch<Adapter> modelSwitch = new SpecSwitch<Adapter>() {
 		@Override
+		public Adapter caseTask(Task object) {
+			return createTaskAdapter();
+		}
+
+		@Override
 		public Adapter caseActivity(Activity object) {
 			return createActivityAdapter();
 		}
 
 		@Override
-		public Adapter caseJoin(Join object) {
-			return createJoinAdapter();
+		public Adapter caseStart(Start object) {
+			return createStartAdapter();
 		}
 
 		@Override
-		public Adapter caseStartJoin(StartJoin object) {
-			return createStartJoinAdapter();
+		public Adapter caseParallelSplit(ParallelSplit object) {
+			return createParallelSplitAdapter();
 		}
 
 		@Override
-		public Adapter caseSplitJoin(SplitJoin object) {
-			return createSplitJoinAdapter();
+		public Adapter caseExternalTask(ExternalTask object) {
+			return createExternalTaskAdapter();
 		}
 
 		@Override
-		public Adapter caseSimpleJoin(SimpleJoin object) {
-			return createSimpleJoinAdapter();
+		public Adapter caseLibraryTask(LibraryTask object) {
+			return createLibraryTaskAdapter();
 		}
 
 		@Override
-		public Adapter caseRepeatJoin(RepeatJoin object) {
-			return createRepeatJoinAdapter();
+		public Adapter caseDivergence(Divergence object) {
+			return createDivergenceAdapter();
 		}
 
 		@Override
-		public Adapter caseWorkflow(Workflow object) {
-			return createWorkflowAdapter();
+		public Adapter caseConvergence(Convergence object) {
+			return createConvergenceAdapter();
+		}
+
+		@Override
+		public Adapter caseSynchronization(Synchronization object) {
+			return createSynchronizationAdapter();
+		}
+
+		@Override
+		public Adapter caseMultiChoice(MultiChoice object) {
+			return createMultiChoiceAdapter();
+		}
+
+		@Override
+		public Adapter caseSimpleMerge(SimpleMerge object) {
+			return createSimpleMergeAdapter();
+		}
+
+		@Override
+		public Adapter caseVariable(Variable object) {
+			return createVariableAdapter();
+		}
+
+		@Override
+		public Adapter caseDataFlows(DataFlows object) {
+			return createDataFlowsAdapter();
+		}
+
+		@Override
+		public Adapter caseDataFlow(DataFlow object) {
+			return createDataFlowAdapter();
+		}
+
+		@Override
+		public Adapter caseNode(Node object) {
+			return createNodeAdapter();
+		}
+
+		@Override
+		public Adapter caseConditionalDivergence(ConditionalDivergence object) {
+			return createConditionalDivergenceAdapter();
+		}
+
+		@Override
+		public Adapter caseConditionalRoot(ConditionalRoot object) {
+			return createConditionalRootAdapter();
+		}
+
+		@Override
+		public Adapter caseCondition(Condition object) {
+			return createConditionAdapter();
 		}
 
 		@Override
@@ -121,6 +176,20 @@ public class SpecAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.Task <em>Task</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.model.spec.Task
+	 * @generated
+	 */
+	public Adapter createTaskAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.Activity <em>Activity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -135,86 +204,226 @@ public class SpecAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.Join <em>Join</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.Start <em>Start</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.kazejiyu.ekumi.model.spec.Join
+	 * @see fr.kazejiyu.ekumi.model.spec.Start
 	 * @generated
 	 */
-	public Adapter createJoinAdapter() {
+	public Adapter createStartAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.StartJoin <em>Start Join</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.ParallelSplit <em>Parallel Split</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.kazejiyu.ekumi.model.spec.StartJoin
+	 * @see fr.kazejiyu.ekumi.model.spec.ParallelSplit
 	 * @generated
 	 */
-	public Adapter createStartJoinAdapter() {
+	public Adapter createParallelSplitAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.SplitJoin <em>Split Join</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.ExternalTask <em>External Task</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.kazejiyu.ekumi.model.spec.SplitJoin
+	 * @see fr.kazejiyu.ekumi.model.spec.ExternalTask
 	 * @generated
 	 */
-	public Adapter createSplitJoinAdapter() {
+	public Adapter createExternalTaskAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.SimpleJoin <em>Simple Join</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.LibraryTask <em>Library Task</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.kazejiyu.ekumi.model.spec.SimpleJoin
+	 * @see fr.kazejiyu.ekumi.model.spec.LibraryTask
 	 * @generated
 	 */
-	public Adapter createSimpleJoinAdapter() {
+	public Adapter createLibraryTaskAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.RepeatJoin <em>Repeat Join</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.Divergence <em>Divergence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.kazejiyu.ekumi.model.spec.RepeatJoin
+	 * @see fr.kazejiyu.ekumi.model.spec.Divergence
 	 * @generated
 	 */
-	public Adapter createRepeatJoinAdapter() {
+	public Adapter createDivergenceAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.Workflow <em>Workflow</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.Convergence <em>Convergence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.kazejiyu.ekumi.model.spec.Workflow
+	 * @see fr.kazejiyu.ekumi.model.spec.Convergence
 	 * @generated
 	 */
-	public Adapter createWorkflowAdapter() {
+	public Adapter createConvergenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.Synchronization <em>Synchronization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.model.spec.Synchronization
+	 * @generated
+	 */
+	public Adapter createSynchronizationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.MultiChoice <em>Multi Choice</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.model.spec.MultiChoice
+	 * @generated
+	 */
+	public Adapter createMultiChoiceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.SimpleMerge <em>Simple Merge</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.model.spec.SimpleMerge
+	 * @generated
+	 */
+	public Adapter createSimpleMergeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.Variable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.model.spec.Variable
+	 * @generated
+	 */
+	public Adapter createVariableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.DataFlows <em>Data Flows</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.model.spec.DataFlows
+	 * @generated
+	 */
+	public Adapter createDataFlowsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.DataFlow <em>Data Flow</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.model.spec.DataFlow
+	 * @generated
+	 */
+	public Adapter createDataFlowAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.Node <em>Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.model.spec.Node
+	 * @generated
+	 */
+	public Adapter createNodeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.ConditionalDivergence <em>Conditional Divergence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.model.spec.ConditionalDivergence
+	 * @generated
+	 */
+	public Adapter createConditionalDivergenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.ConditionalRoot <em>Conditional Root</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.model.spec.ConditionalRoot
+	 * @generated
+	 */
+	public Adapter createConditionalRootAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.kazejiyu.ekumi.model.spec.Condition <em>Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.kazejiyu.ekumi.model.spec.Condition
+	 * @generated
+	 */
+	public Adapter createConditionAdapter() {
 		return null;
 	}
 

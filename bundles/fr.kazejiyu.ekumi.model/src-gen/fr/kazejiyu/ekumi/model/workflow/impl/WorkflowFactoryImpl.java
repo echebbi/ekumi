@@ -3,9 +3,9 @@
 package fr.kazejiyu.ekumi.model.workflow.impl;
 
 import fr.kazejiyu.ekumi.model.datatypes.DataType;
-
 import fr.kazejiyu.ekumi.model.exceptions.InterruptedExecutionException;
 
+import fr.kazejiyu.ekumi.model.exceptions.VariableNotFoundException;
 import fr.kazejiyu.ekumi.model.execution.ExecutionStatus;
 
 import fr.kazejiyu.ekumi.model.execution.events.Events;
@@ -132,6 +132,8 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 			return createInterruptedExecutionExceptionFromString(eDataType, initialValue);
 		case WorkflowPackage.EXECUTION_STATUS:
 			return createExecutionStatusFromString(eDataType, initialValue);
+		case WorkflowPackage.VARIABLE_NOT_FOUND_EXCEPTION:
+			return createVariableNotFoundExceptionFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -159,6 +161,8 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 			return convertInterruptedExecutionExceptionToString(eDataType, instanceValue);
 		case WorkflowPackage.EXECUTION_STATUS:
 			return convertExecutionStatusToString(eDataType, instanceValue);
+		case WorkflowPackage.VARIABLE_NOT_FOUND_EXCEPTION:
+			return convertVariableNotFoundExceptionToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -486,6 +490,25 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 	 * @generated
 	 */
 	public String convertExecutionStatusToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public VariableNotFoundException createVariableNotFoundExceptionFromString(EDataType eDataType,
+			String initialValue) {
+		return (VariableNotFoundException) super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertVariableNotFoundExceptionToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

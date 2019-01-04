@@ -2,16 +2,25 @@
  */
 package fr.kazejiyu.ekumi.model.workflow.impl;
 
+import fr.kazejiyu.ekumi.model.exceptions.VariableNotFoundException;
 import fr.kazejiyu.ekumi.model.execution.ExecutionStatus;
+
 import fr.kazejiyu.ekumi.model.execution.events.Events;
+
 import fr.kazejiyu.ekumi.model.workflow.Context;
 import fr.kazejiyu.ekumi.model.workflow.Variable;
 import fr.kazejiyu.ekumi.model.workflow.WorkflowPackage;
+
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
@@ -107,7 +116,7 @@ public class ContextImpl extends MinimalEObjectImpl.Container implements Context
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void get(String name) {
+	public Variable get(String name) throws VariableNotFoundException {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -210,8 +219,11 @@ public class ContextImpl extends MinimalEObjectImpl.Container implements Context
 		case WorkflowPackage.CONTEXT___CONTAINS__STRING:
 			return contains((String) arguments.get(0));
 		case WorkflowPackage.CONTEXT___GET__STRING:
-			get((String) arguments.get(0));
-			return null;
+			try {
+				return get((String) arguments.get(0));
+			} catch (Throwable throwable) {
+				throw new InvocationTargetException(throwable);
+			}
 		case WorkflowPackage.CONTEXT___SET__STRING_OBJECT:
 			set((String) arguments.get(0), arguments.get(1));
 			return null;

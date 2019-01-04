@@ -1,29 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="spec" nsURI="http://fr.kazejiyu.io/ekumi/spec" nsPrefix="spec">
-  <eClassifiers xsi:type="ecore:EClass" name="Activity" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="successors" upperBound="-1"
-        eType="#//Activity" volatile="true" derived="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Task" abstract="true" eSuperTypes="#//Node">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="join" eType="#//Join" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="successor" eType="#//Node"
+        eOpposite="#//Node/predecessor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="flows" eType="#//DataFlows"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
+        eType="#//Variable" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
+        eType="#//Variable" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Join" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="activities" upperBound="-1"
-        eType="#//Activity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Activity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="start" eType="#//Start"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nestedActivity" eType="#//Activity"
+        containment="true" eOpposite="#//Activity/parentActivity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parentActivity" eType="#//Activity"
+        eOpposite="#//Activity/nestedActivity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
+        eType="#//Task" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="divergences" upperBound="-1"
+        eType="#//Divergence" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StartJoin" eSuperTypes="#//Join"/>
-  <eClassifiers xsi:type="ecore:EClass" name="SplitJoin" eSuperTypes="#//Join"/>
-  <eClassifiers xsi:type="ecore:EClass" name="SimpleJoin" eSuperTypes="#//Join"/>
-  <eClassifiers xsi:type="ecore:EClass" name="RepeatJoin" eSuperTypes="#//Join"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Workflow">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="activities" upperBound="-1"
-        eType="#//Activity" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="start" eType="#//StartJoin"
-        volatile="true" derived="true" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="subWorkflow" eType="#//Workflow"
-        containment="true" eOpposite="#//Workflow/parentWorkflow"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parentWorkflow" eType="#//Workflow"
-        eOpposite="#//Workflow/subWorkflow"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Start">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="#//Node"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParallelSplit" eSuperTypes="#//Divergence"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExternalTask" eSuperTypes="#//Task">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="languageId" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LibraryTask" eSuperTypes="#//Task"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Divergence" abstract="true" eSuperTypes="#//Node">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="convergence" eType="#//Convergence"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roots" upperBound="-1"
+        eType="#//Task"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Convergence" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Synchronization" eSuperTypes="#//Convergence"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiChoice" eSuperTypes="#//ConditionalDivergence"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleMerge" eSuperTypes="#//Convergence"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Variable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="typeId" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataFlows">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incomings" upperBound="-1"
+        eType="#//DataFlow" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataFlow">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" eType="#//Variable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Node" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predecessor" eType="#//Task"
+        eOpposite="#//Task/successor"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionalDivergence" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionalRoot">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="task" eType="#//Task"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Condition"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Condition" eSuperTypes="#//Task"/>
 </ecore:EPackage>

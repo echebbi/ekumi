@@ -7,9 +7,9 @@ import fr.kazejiyu.ekumi.model.catalog.CatalogPackage;
 import fr.kazejiyu.ekumi.model.catalog.impl.CatalogPackageImpl;
 
 import fr.kazejiyu.ekumi.model.datatypes.DataType;
-
 import fr.kazejiyu.ekumi.model.exceptions.InterruptedExecutionException;
 
+import fr.kazejiyu.ekumi.model.exceptions.VariableNotFoundException;
 import fr.kazejiyu.ekumi.model.execution.ExecutionStatus;
 
 import fr.kazejiyu.ekumi.model.execution.events.Events;
@@ -308,6 +308,13 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * @generated
 	 */
 	private EDataType executionStatusEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType variableNotFoundExceptionEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -1258,6 +1265,15 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getVariableNotFoundException() {
+		return variableNotFoundExceptionEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public WorkflowFactory getWorkflowFactory() {
 		return (WorkflowFactory) getEFactoryInstance();
 	}
@@ -1408,6 +1424,7 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 		eventsEDataType = createEDataType(EVENTS);
 		interruptedExecutionExceptionEDataType = createEDataType(INTERRUPTED_EXECUTION_EXCEPTION);
 		executionStatusEDataType = createEDataType(EXECUTION_STATUS);
+		variableNotFoundExceptionEDataType = createEDataType(VARIABLE_NOT_FOUND_EXCEPTION);
 	}
 
 	/**
@@ -1677,8 +1694,9 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 				IS_ORDERED);
 		addEParameter(op, theXMLTypePackage.getString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = initEOperation(getContext__Get__String(), null, "get", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getContext__Get__String(), this.getVariable(), "get", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theXMLTypePackage.getString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, this.getVariableNotFoundException());
 
 		op = initEOperation(getContext__Set__String_Object(), null, "set", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theXMLTypePackage.getString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1732,6 +1750,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 				"InterruptedExecutionException", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(executionStatusEDataType, ExecutionStatus.class, "ExecutionStatus", IS_SERIALIZABLE,
 				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(variableNotFoundExceptionEDataType, VariableNotFoundException.class, "VariableNotFoundException",
+				IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

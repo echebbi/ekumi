@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Optional;
 
+import fr.kazejiyu.ekumi.model.exceptions.VariableNotFoundException;
 import fr.kazejiyu.ekumi.model.execution.ExecutionStatus;
 import fr.kazejiyu.ekumi.model.execution.events.Events;
 import fr.kazejiyu.ekumi.model.workflow.Variable;
@@ -18,8 +19,8 @@ class BasicContext extends ContextImpl {
 	
 	BasicContext(Events events, ExecutionStatus status) {
 		super();
-		this.events = events;
-		this.status = status;
+		this.events = requireNonNull(events, "Context cannot have null events");
+		this.status = requireNonNull(status, "Context cannot have null execution status");
 	}
 
 	@Override
@@ -35,6 +36,16 @@ class BasicContext extends ContextImpl {
 	@Override
 	public boolean contains(String name) {
 		return find(name).isPresent();
+	}
+	
+	@Override
+	public Variable get(String name) {
+		Optional<Variable> maybeVariable = find(name);
+		
+		if (! maybeVariable.isPresent())
+			throw new VariableNotFoundException("No variable named " + name + " exists in this context");
+		
+		return maybeVariable.get();
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
+import fr.kazejiyu.ekumi.model.exceptions.VariableNotFoundException;
 import fr.kazejiyu.ekumi.model.execution.ExecutionStatus;
 import fr.kazejiyu.ekumi.model.execution.events.Events;
 
@@ -60,13 +61,6 @@ public interface Context extends EObject {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * Returns whether a variables called {@code name} is defined.
-	 * 
-	 * @param name
-	 * 			The name of the variable to look for.
-	 * 
-	 * @return {@code true} is a variable called {@code name} exists, 
-	 * 		   {@code false} otherwise.
 	 * <!-- end-user-doc -->
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean" nameDataType="org.eclipse.emf.ecore.xml.type.String"
 	 * @generated
@@ -76,10 +70,10 @@ public interface Context extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model nameDataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @model exceptions="fr.kazejiyu.ekumi.model.workflow.VariableNotFoundException" nameDataType="org.eclipse.emf.ecore.xml.type.String"
 	 * @generated
 	 */
-	void get(String name);
+	Variable get(String name) throws VariableNotFoundException;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,10 +85,6 @@ public interface Context extends EObject {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * Removes a variable from the context.
-	 * 
-	 * @param name
-	 * 			The name of the variable to remove.
 	 * <!-- end-user-doc -->
 	 * @model nameDataType="org.eclipse.emf.ecore.xml.type.String"
 	 * @generated

@@ -3,21 +3,30 @@
 package fr.kazejiyu.ekumi.model.workflow.impl;
 
 import fr.kazejiyu.ekumi.model.execution.ExecutionStatus;
+
 import fr.kazejiyu.ekumi.model.execution.events.Events;
+
 import fr.kazejiyu.ekumi.model.workflow.Context;
 import fr.kazejiyu.ekumi.model.workflow.Execution;
 import fr.kazejiyu.ekumi.model.workflow.UnsafeContext;
 import fr.kazejiyu.ekumi.model.workflow.Variable;
 import fr.kazejiyu.ekumi.model.workflow.WorkflowPackage;
+
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;

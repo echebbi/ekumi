@@ -66,6 +66,15 @@ public class SpecSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+		case SpecPackage.TASK: {
+			Task task = (Task) theEObject;
+			T result = caseTask(task);
+			if (result == null)
+				result = caseNode(task);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case SpecPackage.ACTIVITY: {
 			Activity activity = (Activity) theEObject;
 			T result = caseActivity(activity);
@@ -73,52 +82,138 @@ public class SpecSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case SpecPackage.JOIN: {
-			Join join = (Join) theEObject;
-			T result = caseJoin(join);
+		case SpecPackage.START: {
+			Start start = (Start) theEObject;
+			T result = caseStart(start);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case SpecPackage.START_JOIN: {
-			StartJoin startJoin = (StartJoin) theEObject;
-			T result = caseStartJoin(startJoin);
+		case SpecPackage.PARALLEL_SPLIT: {
+			ParallelSplit parallelSplit = (ParallelSplit) theEObject;
+			T result = caseParallelSplit(parallelSplit);
 			if (result == null)
-				result = caseJoin(startJoin);
+				result = caseDivergence(parallelSplit);
 			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case SpecPackage.SPLIT_JOIN: {
-			SplitJoin splitJoin = (SplitJoin) theEObject;
-			T result = caseSplitJoin(splitJoin);
-			if (result == null)
-				result = caseJoin(splitJoin);
+				result = caseNode(parallelSplit);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case SpecPackage.SIMPLE_JOIN: {
-			SimpleJoin simpleJoin = (SimpleJoin) theEObject;
-			T result = caseSimpleJoin(simpleJoin);
+		case SpecPackage.EXTERNAL_TASK: {
+			ExternalTask externalTask = (ExternalTask) theEObject;
+			T result = caseExternalTask(externalTask);
 			if (result == null)
-				result = caseJoin(simpleJoin);
+				result = caseTask(externalTask);
 			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case SpecPackage.REPEAT_JOIN: {
-			RepeatJoin repeatJoin = (RepeatJoin) theEObject;
-			T result = caseRepeatJoin(repeatJoin);
-			if (result == null)
-				result = caseJoin(repeatJoin);
+				result = caseNode(externalTask);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case SpecPackage.WORKFLOW: {
-			Workflow workflow = (Workflow) theEObject;
-			T result = caseWorkflow(workflow);
+		case SpecPackage.LIBRARY_TASK: {
+			LibraryTask libraryTask = (LibraryTask) theEObject;
+			T result = caseLibraryTask(libraryTask);
+			if (result == null)
+				result = caseTask(libraryTask);
+			if (result == null)
+				result = caseNode(libraryTask);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case SpecPackage.DIVERGENCE: {
+			Divergence divergence = (Divergence) theEObject;
+			T result = caseDivergence(divergence);
+			if (result == null)
+				result = caseNode(divergence);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case SpecPackage.CONVERGENCE: {
+			Convergence convergence = (Convergence) theEObject;
+			T result = caseConvergence(convergence);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case SpecPackage.SYNCHRONIZATION: {
+			Synchronization synchronization = (Synchronization) theEObject;
+			T result = caseSynchronization(synchronization);
+			if (result == null)
+				result = caseConvergence(synchronization);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case SpecPackage.MULTI_CHOICE: {
+			MultiChoice multiChoice = (MultiChoice) theEObject;
+			T result = caseMultiChoice(multiChoice);
+			if (result == null)
+				result = caseConditionalDivergence(multiChoice);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case SpecPackage.SIMPLE_MERGE: {
+			SimpleMerge simpleMerge = (SimpleMerge) theEObject;
+			T result = caseSimpleMerge(simpleMerge);
+			if (result == null)
+				result = caseConvergence(simpleMerge);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case SpecPackage.VARIABLE: {
+			Variable variable = (Variable) theEObject;
+			T result = caseVariable(variable);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case SpecPackage.DATA_FLOWS: {
+			DataFlows dataFlows = (DataFlows) theEObject;
+			T result = caseDataFlows(dataFlows);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case SpecPackage.DATA_FLOW: {
+			DataFlow dataFlow = (DataFlow) theEObject;
+			T result = caseDataFlow(dataFlow);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case SpecPackage.NODE: {
+			Node node = (Node) theEObject;
+			T result = caseNode(node);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case SpecPackage.CONDITIONAL_DIVERGENCE: {
+			ConditionalDivergence conditionalDivergence = (ConditionalDivergence) theEObject;
+			T result = caseConditionalDivergence(conditionalDivergence);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case SpecPackage.CONDITIONAL_ROOT: {
+			ConditionalRoot conditionalRoot = (ConditionalRoot) theEObject;
+			T result = caseConditionalRoot(conditionalRoot);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case SpecPackage.CONDITION: {
+			Condition condition = (Condition) theEObject;
+			T result = caseCondition(condition);
+			if (result == null)
+				result = caseTask(condition);
+			if (result == null)
+				result = caseNode(condition);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -126,6 +221,21 @@ public class SpecSwitch<T> extends Switch<T> {
 		default:
 			return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Task</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Task</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTask(Task object) {
+		return null;
 	}
 
 	/**
@@ -144,92 +254,242 @@ public class SpecSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Join</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Start</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Join</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Start</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseJoin(Join object) {
+	public T caseStart(Start object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Start Join</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Parallel Split</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Start Join</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Parallel Split</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseStartJoin(StartJoin object) {
+	public T caseParallelSplit(ParallelSplit object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Split Join</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>External Task</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Split Join</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>External Task</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSplitJoin(SplitJoin object) {
+	public T caseExternalTask(ExternalTask object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Simple Join</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Library Task</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Simple Join</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Library Task</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSimpleJoin(SimpleJoin object) {
+	public T caseLibraryTask(LibraryTask object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Repeat Join</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Divergence</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Repeat Join</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Divergence</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseRepeatJoin(RepeatJoin object) {
+	public T caseDivergence(Divergence object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Workflow</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Convergence</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Workflow</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Convergence</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseWorkflow(Workflow object) {
+	public T caseConvergence(Convergence object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Synchronization</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Synchronization</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSynchronization(Synchronization object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Multi Choice</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Multi Choice</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMultiChoice(MultiChoice object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Simple Merge</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Simple Merge</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSimpleMerge(SimpleMerge object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Variable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVariable(Variable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Flows</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Flows</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataFlows(DataFlows object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Flow</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Flow</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataFlow(DataFlow object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Node</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNode(Node object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Conditional Divergence</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Conditional Divergence</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConditionalDivergence(ConditionalDivergence object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Conditional Root</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Conditional Root</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConditionalRoot(ConditionalRoot object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Condition</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Condition</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCondition(Condition object) {
 		return null;
 	}
 

@@ -73,118 +73,302 @@ public class SpecItemProviderAdapterFactory extends SpecAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.model.spec.StartJoin} instances.
+	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.model.spec.Activity} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected StartJoinItemProvider startJoinItemProvider;
+	protected ActivityItemProvider activityItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.model.spec.StartJoin}.
+	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.model.spec.Activity}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createStartJoinAdapter() {
-		if (startJoinItemProvider == null) {
-			startJoinItemProvider = new StartJoinItemProvider(this);
+	public Adapter createActivityAdapter() {
+		if (activityItemProvider == null) {
+			activityItemProvider = new ActivityItemProvider(this);
 		}
 
-		return startJoinItemProvider;
+		return activityItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.model.spec.SplitJoin} instances.
+	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.model.spec.Start} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SplitJoinItemProvider splitJoinItemProvider;
+	protected StartItemProvider startItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.model.spec.SplitJoin}.
+	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.model.spec.Start}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSplitJoinAdapter() {
-		if (splitJoinItemProvider == null) {
-			splitJoinItemProvider = new SplitJoinItemProvider(this);
+	public Adapter createStartAdapter() {
+		if (startItemProvider == null) {
+			startItemProvider = new StartItemProvider(this);
 		}
 
-		return splitJoinItemProvider;
+		return startItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.model.spec.SimpleJoin} instances.
+	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.model.spec.ParallelSplit} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SimpleJoinItemProvider simpleJoinItemProvider;
+	protected ParallelSplitItemProvider parallelSplitItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.model.spec.SimpleJoin}.
+	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.model.spec.ParallelSplit}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSimpleJoinAdapter() {
-		if (simpleJoinItemProvider == null) {
-			simpleJoinItemProvider = new SimpleJoinItemProvider(this);
+	public Adapter createParallelSplitAdapter() {
+		if (parallelSplitItemProvider == null) {
+			parallelSplitItemProvider = new ParallelSplitItemProvider(this);
 		}
 
-		return simpleJoinItemProvider;
+		return parallelSplitItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.model.spec.RepeatJoin} instances.
+	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.model.spec.ExternalTask} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected RepeatJoinItemProvider repeatJoinItemProvider;
+	protected ExternalTaskItemProvider externalTaskItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.model.spec.RepeatJoin}.
+	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.model.spec.ExternalTask}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createRepeatJoinAdapter() {
-		if (repeatJoinItemProvider == null) {
-			repeatJoinItemProvider = new RepeatJoinItemProvider(this);
+	public Adapter createExternalTaskAdapter() {
+		if (externalTaskItemProvider == null) {
+			externalTaskItemProvider = new ExternalTaskItemProvider(this);
 		}
 
-		return repeatJoinItemProvider;
+		return externalTaskItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.model.spec.Workflow} instances.
+	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.model.spec.LibraryTask} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected WorkflowItemProvider workflowItemProvider;
+	protected LibraryTaskItemProvider libraryTaskItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.model.spec.Workflow}.
+	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.model.spec.LibraryTask}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createWorkflowAdapter() {
-		if (workflowItemProvider == null) {
-			workflowItemProvider = new WorkflowItemProvider(this);
+	public Adapter createLibraryTaskAdapter() {
+		if (libraryTaskItemProvider == null) {
+			libraryTaskItemProvider = new LibraryTaskItemProvider(this);
 		}
 
-		return workflowItemProvider;
+		return libraryTaskItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.model.spec.Synchronization} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SynchronizationItemProvider synchronizationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.model.spec.Synchronization}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSynchronizationAdapter() {
+		if (synchronizationItemProvider == null) {
+			synchronizationItemProvider = new SynchronizationItemProvider(this);
+		}
+
+		return synchronizationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.model.spec.MultiChoice} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MultiChoiceItemProvider multiChoiceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.model.spec.MultiChoice}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMultiChoiceAdapter() {
+		if (multiChoiceItemProvider == null) {
+			multiChoiceItemProvider = new MultiChoiceItemProvider(this);
+		}
+
+		return multiChoiceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.model.spec.SimpleMerge} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SimpleMergeItemProvider simpleMergeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.model.spec.SimpleMerge}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSimpleMergeAdapter() {
+		if (simpleMergeItemProvider == null) {
+			simpleMergeItemProvider = new SimpleMergeItemProvider(this);
+		}
+
+		return simpleMergeItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.model.spec.Variable} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected VariableItemProvider variableItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.model.spec.Variable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createVariableAdapter() {
+		if (variableItemProvider == null) {
+			variableItemProvider = new VariableItemProvider(this);
+		}
+
+		return variableItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.model.spec.DataFlows} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DataFlowsItemProvider dataFlowsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.model.spec.DataFlows}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDataFlowsAdapter() {
+		if (dataFlowsItemProvider == null) {
+			dataFlowsItemProvider = new DataFlowsItemProvider(this);
+		}
+
+		return dataFlowsItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.model.spec.DataFlow} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DataFlowItemProvider dataFlowItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.model.spec.DataFlow}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDataFlowAdapter() {
+		if (dataFlowItemProvider == null) {
+			dataFlowItemProvider = new DataFlowItemProvider(this);
+		}
+
+		return dataFlowItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.model.spec.ConditionalRoot} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConditionalRootItemProvider conditionalRootItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.model.spec.ConditionalRoot}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createConditionalRootAdapter() {
+		if (conditionalRootItemProvider == null) {
+			conditionalRootItemProvider = new ConditionalRootItemProvider(this);
+		}
+
+		return conditionalRootItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.kazejiyu.ekumi.model.spec.Condition} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConditionItemProvider conditionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.kazejiyu.ekumi.model.spec.Condition}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createConditionAdapter() {
+		if (conditionItemProvider == null) {
+			conditionItemProvider = new ConditionItemProvider(this);
+		}
+
+		return conditionItemProvider;
 	}
 
 	/**
@@ -193,7 +377,6 @@ public class SpecItemProviderAdapterFactory extends SpecAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
@@ -204,7 +387,6 @@ public class SpecItemProviderAdapterFactory extends SpecAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
@@ -253,7 +435,6 @@ public class SpecItemProviderAdapterFactory extends SpecAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
@@ -264,7 +445,6 @@ public class SpecItemProviderAdapterFactory extends SpecAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
@@ -275,7 +455,6 @@ public class SpecItemProviderAdapterFactory extends SpecAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
@@ -290,18 +469,33 @@ public class SpecItemProviderAdapterFactory extends SpecAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void dispose() {
-		if (startJoinItemProvider != null)
-			startJoinItemProvider.dispose();
-		if (splitJoinItemProvider != null)
-			splitJoinItemProvider.dispose();
-		if (simpleJoinItemProvider != null)
-			simpleJoinItemProvider.dispose();
-		if (repeatJoinItemProvider != null)
-			repeatJoinItemProvider.dispose();
-		if (workflowItemProvider != null)
-			workflowItemProvider.dispose();
+		if (activityItemProvider != null)
+			activityItemProvider.dispose();
+		if (startItemProvider != null)
+			startItemProvider.dispose();
+		if (parallelSplitItemProvider != null)
+			parallelSplitItemProvider.dispose();
+		if (externalTaskItemProvider != null)
+			externalTaskItemProvider.dispose();
+		if (libraryTaskItemProvider != null)
+			libraryTaskItemProvider.dispose();
+		if (synchronizationItemProvider != null)
+			synchronizationItemProvider.dispose();
+		if (multiChoiceItemProvider != null)
+			multiChoiceItemProvider.dispose();
+		if (simpleMergeItemProvider != null)
+			simpleMergeItemProvider.dispose();
+		if (variableItemProvider != null)
+			variableItemProvider.dispose();
+		if (dataFlowsItemProvider != null)
+			dataFlowsItemProvider.dispose();
+		if (dataFlowItemProvider != null)
+			dataFlowItemProvider.dispose();
+		if (conditionalRootItemProvider != null)
+			conditionalRootItemProvider.dispose();
+		if (conditionItemProvider != null)
+			conditionItemProvider.dispose();
 	}
 
 }
