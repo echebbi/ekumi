@@ -8,11 +8,15 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * A node that can be executed.
+ * <!-- end-model-doc -->
+ *
  * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getTask()
  * @model abstract="true"
  * @generated
  */
-public interface Task extends Node {
+public interface Task extends StartingNode {
 	/**
 	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
@@ -20,7 +24,7 @@ public interface Task extends Node {
 	 * @see #setId(String)
 	 * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getTask_Id()
 	 * <!-- end-user-doc -->
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @model default="" dataType="org.eclipse.emf.ecore.xml.type.String"
 	 * @generated
 	 */
 	String getId();
@@ -42,7 +46,7 @@ public interface Task extends Node {
 	 * @see #setName(String)
 	 * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getTask_Name()
 	 * <!-- end-user-doc -->
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @model default="" dataType="org.eclipse.emf.ecore.xml.type.String"
 	 * @generated
 	 */
 	String getName();
@@ -56,30 +60,6 @@ public interface Task extends Node {
 	 * @generated
 	 */
 	void setName(String value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * Returns the value of the '<em><b>Successor</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.model.spec.Node#getPredecessor <em>Predecessor</em>}'.
-	 * @return the value of the '<em>Successor</em>' reference.
-	 * @see #setSuccessor(Node)
-	 * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getTask_Successor()
-	 * @see fr.kazejiyu.ekumi.model.spec.Node#getPredecessor
-	 * <!-- end-user-doc -->
-	 * @model opposite="predecessor"
-	 * @generated
-	 */
-	Node getSuccessor();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.model.spec.Task#getSuccessor <em>Successor</em>}' reference.
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Successor</em>' reference.
-	 * @see #getSuccessor()
-	 * @generated
-	 */
-	void setSuccessor(Node value);
 
 	/**
 	 * <!-- begin-user-doc -->

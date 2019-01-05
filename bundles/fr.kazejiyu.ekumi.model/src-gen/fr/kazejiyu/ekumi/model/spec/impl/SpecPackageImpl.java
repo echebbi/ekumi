@@ -5,7 +5,6 @@ package fr.kazejiyu.ekumi.model.spec.impl;
 import fr.kazejiyu.ekumi.model.catalog.CatalogPackage;
 
 import fr.kazejiyu.ekumi.model.catalog.impl.CatalogPackageImpl;
-
 import fr.kazejiyu.ekumi.model.spec.Activity;
 import fr.kazejiyu.ekumi.model.spec.Condition;
 import fr.kazejiyu.ekumi.model.spec.ConditionalDivergence;
@@ -23,6 +22,7 @@ import fr.kazejiyu.ekumi.model.spec.SimpleMerge;
 import fr.kazejiyu.ekumi.model.spec.SpecFactory;
 import fr.kazejiyu.ekumi.model.spec.SpecPackage;
 import fr.kazejiyu.ekumi.model.spec.Start;
+import fr.kazejiyu.ekumi.model.spec.StartingNode;
 import fr.kazejiyu.ekumi.model.spec.Synchronization;
 import fr.kazejiyu.ekumi.model.spec.Task;
 import fr.kazejiyu.ekumi.model.spec.Variable;
@@ -33,6 +33,7 @@ import fr.kazejiyu.ekumi.model.workflow.impl.WorkflowPackageImpl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -174,6 +175,13 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 	private EClass conditionEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass startingNodeEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -285,7 +293,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTask_Successor() {
+	public EReference getTask_Flows() {
 		return (EReference) taskEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -294,7 +302,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTask_Flows() {
+	public EReference getTask_Inputs() {
 		return (EReference) taskEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -303,17 +311,8 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTask_Inputs() {
-		return (EReference) taskEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getTask_Outputs() {
-		return (EReference) taskEClass.getEStructuralFeatures().get(5);
+		return (EReference) taskEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -330,26 +329,8 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getActivity_Name() {
-		return (EAttribute) activityEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getActivity_Id() {
-		return (EAttribute) activityEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getActivity_Start() {
-		return (EReference) activityEClass.getEStructuralFeatures().get(2);
+		return (EReference) activityEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -357,8 +338,8 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getActivity_NestedActivity() {
-		return (EReference) activityEClass.getEStructuralFeatures().get(3);
+	public EReference getActivity_NestedActivities() {
+		return (EReference) activityEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -367,7 +348,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 	 * @generated
 	 */
 	public EReference getActivity_ParentActivity() {
-		return (EReference) activityEClass.getEStructuralFeatures().get(4);
+		return (EReference) activityEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -376,7 +357,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 	 * @generated
 	 */
 	public EReference getActivity_Tasks() {
-		return (EReference) activityEClass.getEStructuralFeatures().get(5);
+		return (EReference) activityEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -385,6 +366,24 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 	 * @generated
 	 */
 	public EReference getActivity_Divergences() {
+		return (EReference) activityEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getActivity_Convergences() {
+		return (EReference) activityEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getActivity_ConditionalDivergences() {
 		return (EReference) activityEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -431,6 +430,15 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 	 */
 	public EAttribute getExternalTask_LanguageId() {
 		return (EAttribute) externalTaskEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExternalTask_ScriptId() {
+		return (EAttribute) externalTaskEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -537,6 +545,24 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getVariable_Value() {
+		return (EAttribute) variableEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVariable_IsRequired() {
+		return (EAttribute) variableEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDataFlows() {
 		return dataFlowsEClass;
 	}
@@ -591,8 +617,35 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getNode_Predecessor() {
+	public EReference getNode_Successors() {
 		return (EReference) nodeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getNode_Predecessors() {
+		return (EReference) nodeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getNode__CanPrecede__Node() {
+		return nodeEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getNode__CanSucceed__Node() {
+		return nodeEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -645,6 +698,15 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getStartingNode() {
+		return startingNodeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public SpecFactory getSpecFactory() {
 		return (SpecFactory) getEFactoryInstance();
 	}
@@ -672,19 +734,18 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 		taskEClass = createEClass(TASK);
 		createEAttribute(taskEClass, TASK__ID);
 		createEAttribute(taskEClass, TASK__NAME);
-		createEReference(taskEClass, TASK__SUCCESSOR);
 		createEReference(taskEClass, TASK__FLOWS);
 		createEReference(taskEClass, TASK__INPUTS);
 		createEReference(taskEClass, TASK__OUTPUTS);
 
 		activityEClass = createEClass(ACTIVITY);
-		createEAttribute(activityEClass, ACTIVITY__NAME);
-		createEAttribute(activityEClass, ACTIVITY__ID);
 		createEReference(activityEClass, ACTIVITY__START);
-		createEReference(activityEClass, ACTIVITY__NESTED_ACTIVITY);
+		createEReference(activityEClass, ACTIVITY__NESTED_ACTIVITIES);
 		createEReference(activityEClass, ACTIVITY__PARENT_ACTIVITY);
 		createEReference(activityEClass, ACTIVITY__TASKS);
 		createEReference(activityEClass, ACTIVITY__DIVERGENCES);
+		createEReference(activityEClass, ACTIVITY__CONVERGENCES);
+		createEReference(activityEClass, ACTIVITY__CONDITIONAL_DIVERGENCES);
 
 		startEClass = createEClass(START);
 		createEReference(startEClass, START__NODE);
@@ -693,6 +754,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 
 		externalTaskEClass = createEClass(EXTERNAL_TASK);
 		createEAttribute(externalTaskEClass, EXTERNAL_TASK__LANGUAGE_ID);
+		createEAttribute(externalTaskEClass, EXTERNAL_TASK__SCRIPT_ID);
 
 		libraryTaskEClass = createEClass(LIBRARY_TASK);
 
@@ -711,6 +773,8 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 		variableEClass = createEClass(VARIABLE);
 		createEAttribute(variableEClass, VARIABLE__NAME);
 		createEAttribute(variableEClass, VARIABLE__TYPE_ID);
+		createEAttribute(variableEClass, VARIABLE__VALUE);
+		createEAttribute(variableEClass, VARIABLE__IS_REQUIRED);
 
 		dataFlowsEClass = createEClass(DATA_FLOWS);
 		createEReference(dataFlowsEClass, DATA_FLOWS__INCOMINGS);
@@ -720,7 +784,10 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 		createEReference(dataFlowEClass, DATA_FLOW__OUTPUT);
 
 		nodeEClass = createEClass(NODE);
-		createEReference(nodeEClass, NODE__PREDECESSOR);
+		createEReference(nodeEClass, NODE__SUCCESSORS);
+		createEReference(nodeEClass, NODE__PREDECESSORS);
+		createEOperation(nodeEClass, NODE___CAN_PRECEDE__NODE);
+		createEOperation(nodeEClass, NODE___CAN_SUCCEED__NODE);
 
 		conditionalDivergenceEClass = createEClass(CONDITIONAL_DIVERGENCE);
 
@@ -729,6 +796,8 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 		createEReference(conditionalRootEClass, CONDITIONAL_ROOT__CONDITION);
 
 		conditionEClass = createEClass(CONDITION);
+
+		startingNodeEClass = createEClass(STARTING_NODE);
 	}
 
 	/**
@@ -764,25 +833,27 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		taskEClass.getESuperTypes().add(this.getNode());
+		taskEClass.getESuperTypes().add(this.getStartingNode());
+		activityEClass.getESuperTypes().add(this.getTask());
+		startEClass.getESuperTypes().add(this.getNode());
 		parallelSplitEClass.getESuperTypes().add(this.getDivergence());
 		externalTaskEClass.getESuperTypes().add(this.getTask());
 		libraryTaskEClass.getESuperTypes().add(this.getTask());
-		divergenceEClass.getESuperTypes().add(this.getNode());
+		divergenceEClass.getESuperTypes().add(this.getStartingNode());
+		convergenceEClass.getESuperTypes().add(this.getNode());
 		synchronizationEClass.getESuperTypes().add(this.getConvergence());
 		multiChoiceEClass.getESuperTypes().add(this.getConditionalDivergence());
 		simpleMergeEClass.getESuperTypes().add(this.getConvergence());
+		conditionalDivergenceEClass.getESuperTypes().add(this.getStartingNode());
 		conditionEClass.getESuperTypes().add(this.getTask());
+		startingNodeEClass.getESuperTypes().add(this.getNode());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(taskEClass, Task.class, "Task", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTask_Id(), theXMLTypePackage.getString(), "id", null, 0, 1, Task.class, !IS_TRANSIENT,
+		initEAttribute(getTask_Id(), theXMLTypePackage.getString(), "id", "", 0, 1, Task.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTask_Name(), theXMLTypePackage.getString(), "name", null, 0, 1, Task.class, !IS_TRANSIENT,
+		initEAttribute(getTask_Name(), theXMLTypePackage.getString(), "name", "", 0, 1, Task.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTask_Successor(), this.getNode(), this.getNode_Predecessor(), "successor", null, 0, 1,
-				Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTask_Flows(), this.getDataFlows(), null, "flows", null, 0, 1, Task.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
@@ -795,17 +866,13 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 
 		initEClass(activityEClass, Activity.class, "Activity", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getActivity_Name(), theXMLTypePackage.getString(), "name", null, 0, 1, Activity.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getActivity_Id(), theXMLTypePackage.getString(), "id", null, 0, 1, Activity.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getActivity_Start(), this.getStart(), null, "start", null, 0, 1, Activity.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		initEReference(getActivity_NestedActivity(), this.getActivity(), this.getActivity_ParentActivity(),
-				"nestedActivity", null, 0, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getActivity_ParentActivity(), this.getActivity(), this.getActivity_NestedActivity(),
+		initEReference(getActivity_NestedActivities(), this.getActivity(), this.getActivity_ParentActivity(),
+				"nestedActivities", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getActivity_ParentActivity(), this.getActivity(), this.getActivity_NestedActivities(),
 				"parentActivity", null, 0, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getActivity_Tasks(), this.getTask(), null, "tasks", null, 0, -1, Activity.class, !IS_TRANSIENT,
@@ -814,9 +881,15 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 		initEReference(getActivity_Divergences(), this.getDivergence(), null, "divergences", null, 0, -1,
 				Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getActivity_Convergences(), this.getConvergence(), null, "convergences", null, 0, -1,
+				Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getActivity_ConditionalDivergences(), this.getConditionalDivergence(), null,
+				"conditionalDivergences", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(startEClass, Start.class, "Start", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getStart_Node(), this.getNode(), null, "node", null, 0, 1, Start.class, !IS_TRANSIENT,
+		initEReference(getStart_Node(), this.getStartingNode(), null, "node", null, 0, 1, Start.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 
@@ -825,9 +898,11 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 
 		initEClass(externalTaskEClass, ExternalTask.class, "ExternalTask", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getExternalTask_LanguageId(), theXMLTypePackage.getString(), "languageId", null, 0, 1,
+		initEAttribute(getExternalTask_LanguageId(), theXMLTypePackage.getString(), "languageId", "", 0, 1,
 				ExternalTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExternalTask_ScriptId(), ecorePackage.getEString(), "scriptId", "", 0, 1, ExternalTask.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(libraryTaskEClass, LibraryTask.class, "LibraryTask", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -855,9 +930,13 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 
 		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getVariable_Name(), theXMLTypePackage.getString(), "name", null, 0, 1, Variable.class,
+		initEAttribute(getVariable_Name(), theXMLTypePackage.getString(), "name", "", 0, 1, Variable.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVariable_TypeId(), theXMLTypePackage.getString(), "typeId", null, 0, 1, Variable.class,
+		initEAttribute(getVariable_TypeId(), theXMLTypePackage.getString(), "typeId", "", 0, 1, Variable.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariable_Value(), theXMLTypePackage.getString(), "value", "", 0, 1, Variable.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariable_IsRequired(), ecorePackage.getEBoolean(), "isRequired", "true", 0, 1, Variable.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataFlowsEClass, DataFlows.class, "DataFlows", !IS_ABSTRACT, !IS_INTERFACE,
@@ -875,10 +954,21 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(nodeEClass, Node.class, "Node", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getNode_Predecessor(), this.getTask(), this.getTask_Successor(), "predecessor", null, 0, 1,
+		initEClass(nodeEClass, Node.class, "Node", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getNode_Successors(), this.getNode(), this.getNode_Predecessors(), "successors", null, 0, -1,
 				Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNode_Predecessors(), this.getNode(), this.getNode_Successors(), "predecessors", null, 0, -1,
+				Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		EOperation op = initEOperation(getNode__CanPrecede__Node(), theXMLTypePackage.getBoolean(), "canPrecede", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNode(), "node", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getNode__CanSucceed__Node(), theXMLTypePackage.getBoolean(), "canSucceed", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, this.getNode(), "node", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(conditionalDivergenceEClass, ConditionalDivergence.class, "ConditionalDivergence", IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -895,8 +985,40 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 		initEClass(conditionEClass, Condition.class, "Condition", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(startingNodeEClass, StartingNode.class, "StartingNode", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/emf/2002/GenModel
+		createGenModelAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/GenModel</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createGenModelAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/GenModel";
+		addAnnotation(taskEClass, source, new String[] { "documentation", "A node that can be executed." });
+		addAnnotation(startEClass, source, new String[] { "documentation", "Represents the beginning of a workflow." });
+		addAnnotation(externalTaskEClass, source,
+				new String[] { "documentation", "A task which behavior is implemented by the user." });
+		addAnnotation(libraryTaskEClass, source,
+				new String[] { "documentation", "A task which behavior is defined in an installed bundle." });
+		addAnnotation(divergenceEClass, source, new String[] { "documentation",
+				"Splits the execution in two or more branches that should be executed concurrently." });
+		addAnnotation(variableEClass, source, new String[] { "documentation", "Hold a typed value." });
+		addAnnotation(dataFlowsEClass, source, new String[] { "documentation", "A collection of dataflow." });
+		addAnnotation(dataFlowEClass, source,
+				new String[] { "documentation", "A flow of data between two variables." });
+		addAnnotation(nodeEClass, source, new String[] { "documentation", "An element that composes a workflow." });
+		addAnnotation(conditionalDivergenceEClass, source, new String[] { "documentation",
+				"Splits the workflow in two or more branches that should be executed concurrently, based on a predicate." });
 	}
 
 } //SpecPackageImpl

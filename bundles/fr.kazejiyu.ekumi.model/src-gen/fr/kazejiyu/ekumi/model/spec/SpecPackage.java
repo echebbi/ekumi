@@ -4,6 +4,7 @@ package fr.kazejiyu.ekumi.model.spec;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -57,23 +58,32 @@ public interface SpecPackage extends EPackage {
 	SpecPackage eINSTANCE = fr.kazejiyu.ekumi.model.spec.impl.SpecPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link fr.kazejiyu.ekumi.model.spec.Node <em>Node</em>}' class.
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.model.spec.impl.NodeImpl <em>Node</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fr.kazejiyu.ekumi.model.spec.Node
+	 * @see fr.kazejiyu.ekumi.model.spec.impl.NodeImpl
 	 * @see fr.kazejiyu.ekumi.model.spec.impl.SpecPackageImpl#getNode()
 	 * @generated
 	 */
 	int NODE = 14;
 
 	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE__PREDECESSOR = 0;
+	int NODE__SUCCESSORS = 0;
+
+	/**
+	 * The feature id for the '<em><b>Predecessors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__PREDECESSORS = 1;
 
 	/**
 	 * The number of structural features of the '<em>Node</em>' class.
@@ -82,7 +92,25 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_FEATURE_COUNT = 1;
+	int NODE_FEATURE_COUNT = 2;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE___CAN_PRECEDE__NODE = 0;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE___CAN_SUCCEED__NODE = 1;
 
 	/**
 	 * The number of operations of the '<em>Node</em>' class.
@@ -91,7 +119,71 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_OPERATION_COUNT = 0;
+	int NODE_OPERATION_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link fr.kazejiyu.ekumi.model.spec.impl.StartingNodeImpl <em>Starting Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.model.spec.impl.StartingNodeImpl
+	 * @see fr.kazejiyu.ekumi.model.spec.impl.SpecPackageImpl#getStartingNode()
+	 * @generated
+	 */
+	int STARTING_NODE = 18;
+
+	/**
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STARTING_NODE__SUCCESSORS = NODE__SUCCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Predecessors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STARTING_NODE__PREDECESSORS = NODE__PREDECESSORS;
+
+	/**
+	 * The number of structural features of the '<em>Starting Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STARTING_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STARTING_NODE___CAN_PRECEDE__NODE = NODE___CAN_PRECEDE__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STARTING_NODE___CAN_SUCCEED__NODE = NODE___CAN_SUCCEED__NODE;
+
+	/**
+	 * The number of operations of the '<em>Starting Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STARTING_NODE_OPERATION_COUNT = NODE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.model.spec.impl.TaskImpl <em>Task</em>}' class.
@@ -104,13 +196,22 @@ public interface SpecPackage extends EPackage {
 	int TASK = 0;
 
 	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__PREDECESSOR = NODE__PREDECESSOR;
+	int TASK__SUCCESSORS = STARTING_NODE__SUCCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Predecessors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__PREDECESSORS = STARTING_NODE__PREDECESSORS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -119,7 +220,7 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__ID = NODE_FEATURE_COUNT + 0;
+	int TASK__ID = STARTING_NODE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -128,16 +229,7 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__NAME = NODE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Successor</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK__SUCCESSOR = NODE_FEATURE_COUNT + 2;
+	int TASK__NAME = STARTING_NODE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
@@ -146,7 +238,7 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__FLOWS = NODE_FEATURE_COUNT + 3;
+	int TASK__FLOWS = STARTING_NODE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
@@ -155,7 +247,7 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__INPUTS = NODE_FEATURE_COUNT + 4;
+	int TASK__INPUTS = STARTING_NODE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
@@ -164,7 +256,7 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__OUTPUTS = NODE_FEATURE_COUNT + 5;
+	int TASK__OUTPUTS = STARTING_NODE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Task</em>' class.
@@ -173,7 +265,25 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_FEATURE_COUNT = NODE_FEATURE_COUNT + 6;
+	int TASK_FEATURE_COUNT = STARTING_NODE_FEATURE_COUNT + 5;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK___CAN_PRECEDE__NODE = STARTING_NODE___CAN_PRECEDE__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK___CAN_SUCCEED__NODE = STARTING_NODE___CAN_SUCCEED__NODE;
 
 	/**
 	 * The number of operations of the '<em>Task</em>' class.
@@ -182,7 +292,7 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_OPERATION_COUNT = NODE_OPERATION_COUNT + 0;
+	int TASK_OPERATION_COUNT = STARTING_NODE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.model.spec.impl.ActivityImpl <em>Activity</em>}' class.
@@ -195,13 +305,22 @@ public interface SpecPackage extends EPackage {
 	int ACTIVITY = 1;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__NAME = 0;
+	int ACTIVITY__SUCCESSORS = TASK__SUCCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Predecessors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__PREDECESSORS = TASK__PREDECESSORS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -210,7 +329,43 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__ID = 1;
+	int ACTIVITY__ID = TASK__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__NAME = TASK__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__FLOWS = TASK__FLOWS;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__INPUTS = TASK__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OUTPUTS = TASK__OUTPUTS;
 
 	/**
 	 * The feature id for the '<em><b>Start</b></em>' containment reference.
@@ -219,16 +374,16 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__START = 2;
+	int ACTIVITY__START = TASK_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Nested Activity</b></em>' containment reference.
+	 * The feature id for the '<em><b>Nested Activities</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__NESTED_ACTIVITY = 3;
+	int ACTIVITY__NESTED_ACTIVITIES = TASK_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Parent Activity</b></em>' container reference.
@@ -237,7 +392,7 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__PARENT_ACTIVITY = 4;
+	int ACTIVITY__PARENT_ACTIVITY = TASK_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
@@ -246,7 +401,7 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__TASKS = 5;
+	int ACTIVITY__TASKS = TASK_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Divergences</b></em>' containment reference list.
@@ -255,7 +410,25 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__DIVERGENCES = 6;
+	int ACTIVITY__DIVERGENCES = TASK_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Convergences</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__CONVERGENCES = TASK_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Conditional Divergences</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__CONDITIONAL_DIVERGENCES = TASK_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Activity</em>' class.
@@ -264,7 +437,25 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_FEATURE_COUNT = 7;
+	int ACTIVITY_FEATURE_COUNT = TASK_FEATURE_COUNT + 7;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY___CAN_PRECEDE__NODE = TASK___CAN_PRECEDE__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY___CAN_SUCCEED__NODE = TASK___CAN_SUCCEED__NODE;
 
 	/**
 	 * The number of operations of the '<em>Activity</em>' class.
@@ -273,7 +464,7 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_OPERATION_COUNT = 0;
+	int ACTIVITY_OPERATION_COUNT = TASK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.model.spec.impl.StartImpl <em>Start</em>}' class.
@@ -286,13 +477,31 @@ public interface SpecPackage extends EPackage {
 	int START = 2;
 
 	/**
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__SUCCESSORS = NODE__SUCCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Predecessors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__PREDECESSORS = NODE__PREDECESSORS;
+
+	/**
 	 * The feature id for the '<em><b>Node</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int START__NODE = 0;
+	int START__NODE = NODE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Start</em>' class.
@@ -301,7 +510,25 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int START_FEATURE_COUNT = 1;
+	int START_FEATURE_COUNT = NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START___CAN_PRECEDE__NODE = NODE___CAN_PRECEDE__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START___CAN_SUCCEED__NODE = NODE___CAN_SUCCEED__NODE;
 
 	/**
 	 * The number of operations of the '<em>Start</em>' class.
@@ -310,7 +537,7 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int START_OPERATION_COUNT = 0;
+	int START_OPERATION_COUNT = NODE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.model.spec.impl.DivergenceImpl <em>Divergence</em>}' class.
@@ -323,13 +550,22 @@ public interface SpecPackage extends EPackage {
 	int DIVERGENCE = 6;
 
 	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DIVERGENCE__PREDECESSOR = NODE__PREDECESSOR;
+	int DIVERGENCE__SUCCESSORS = STARTING_NODE__SUCCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Predecessors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIVERGENCE__PREDECESSORS = STARTING_NODE__PREDECESSORS;
 
 	/**
 	 * The feature id for the '<em><b>Convergence</b></em>' containment reference.
@@ -338,7 +574,7 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIVERGENCE__CONVERGENCE = NODE_FEATURE_COUNT + 0;
+	int DIVERGENCE__CONVERGENCE = STARTING_NODE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Roots</b></em>' reference list.
@@ -347,7 +583,7 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIVERGENCE__ROOTS = NODE_FEATURE_COUNT + 1;
+	int DIVERGENCE__ROOTS = STARTING_NODE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Divergence</em>' class.
@@ -356,7 +592,25 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIVERGENCE_FEATURE_COUNT = NODE_FEATURE_COUNT + 2;
+	int DIVERGENCE_FEATURE_COUNT = STARTING_NODE_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIVERGENCE___CAN_PRECEDE__NODE = STARTING_NODE___CAN_PRECEDE__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIVERGENCE___CAN_SUCCEED__NODE = STARTING_NODE___CAN_SUCCEED__NODE;
 
 	/**
 	 * The number of operations of the '<em>Divergence</em>' class.
@@ -365,7 +619,7 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIVERGENCE_OPERATION_COUNT = NODE_OPERATION_COUNT + 0;
+	int DIVERGENCE_OPERATION_COUNT = STARTING_NODE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.model.spec.impl.ParallelSplitImpl <em>Parallel Split</em>}' class.
@@ -378,13 +632,22 @@ public interface SpecPackage extends EPackage {
 	int PARALLEL_SPLIT = 3;
 
 	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARALLEL_SPLIT__PREDECESSOR = DIVERGENCE__PREDECESSOR;
+	int PARALLEL_SPLIT__SUCCESSORS = DIVERGENCE__SUCCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Predecessors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT__PREDECESSORS = DIVERGENCE__PREDECESSORS;
 
 	/**
 	 * The feature id for the '<em><b>Convergence</b></em>' containment reference.
@@ -414,6 +677,24 @@ public interface SpecPackage extends EPackage {
 	int PARALLEL_SPLIT_FEATURE_COUNT = DIVERGENCE_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT___CAN_PRECEDE__NODE = DIVERGENCE___CAN_PRECEDE__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT___CAN_SUCCEED__NODE = DIVERGENCE___CAN_SUCCEED__NODE;
+
+	/**
 	 * The number of operations of the '<em>Parallel Split</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -433,13 +714,22 @@ public interface SpecPackage extends EPackage {
 	int EXTERNAL_TASK = 4;
 
 	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_TASK__PREDECESSOR = TASK__PREDECESSOR;
+	int EXTERNAL_TASK__SUCCESSORS = TASK__SUCCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Predecessors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_TASK__PREDECESSORS = TASK__PREDECESSORS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -458,15 +748,6 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXTERNAL_TASK__NAME = TASK__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Successor</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTERNAL_TASK__SUCCESSOR = TASK__SUCCESSOR;
 
 	/**
 	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
@@ -505,13 +786,40 @@ public interface SpecPackage extends EPackage {
 	int EXTERNAL_TASK__LANGUAGE_ID = TASK_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Script Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_TASK__SCRIPT_ID = TASK_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>External Task</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_TASK_FEATURE_COUNT = TASK_FEATURE_COUNT + 1;
+	int EXTERNAL_TASK_FEATURE_COUNT = TASK_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_TASK___CAN_PRECEDE__NODE = TASK___CAN_PRECEDE__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_TASK___CAN_SUCCEED__NODE = TASK___CAN_SUCCEED__NODE;
 
 	/**
 	 * The number of operations of the '<em>External Task</em>' class.
@@ -533,13 +841,22 @@ public interface SpecPackage extends EPackage {
 	int LIBRARY_TASK = 5;
 
 	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIBRARY_TASK__PREDECESSOR = TASK__PREDECESSOR;
+	int LIBRARY_TASK__SUCCESSORS = TASK__SUCCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Predecessors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIBRARY_TASK__PREDECESSORS = TASK__PREDECESSORS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -558,15 +875,6 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int LIBRARY_TASK__NAME = TASK__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Successor</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LIBRARY_TASK__SUCCESSOR = TASK__SUCCESSOR;
 
 	/**
 	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
@@ -605,6 +913,24 @@ public interface SpecPackage extends EPackage {
 	int LIBRARY_TASK_FEATURE_COUNT = TASK_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIBRARY_TASK___CAN_PRECEDE__NODE = TASK___CAN_PRECEDE__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIBRARY_TASK___CAN_SUCCEED__NODE = TASK___CAN_SUCCEED__NODE;
+
+	/**
 	 * The number of operations of the '<em>Library Task</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -624,13 +950,49 @@ public interface SpecPackage extends EPackage {
 	int CONVERGENCE = 7;
 
 	/**
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVERGENCE__SUCCESSORS = NODE__SUCCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Predecessors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVERGENCE__PREDECESSORS = NODE__PREDECESSORS;
+
+	/**
 	 * The number of structural features of the '<em>Convergence</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONVERGENCE_FEATURE_COUNT = 0;
+	int CONVERGENCE_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVERGENCE___CAN_PRECEDE__NODE = NODE___CAN_PRECEDE__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVERGENCE___CAN_SUCCEED__NODE = NODE___CAN_SUCCEED__NODE;
 
 	/**
 	 * The number of operations of the '<em>Convergence</em>' class.
@@ -639,7 +1001,7 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONVERGENCE_OPERATION_COUNT = 0;
+	int CONVERGENCE_OPERATION_COUNT = NODE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.model.spec.impl.SynchronizationImpl <em>Synchronization</em>}' class.
@@ -652,6 +1014,24 @@ public interface SpecPackage extends EPackage {
 	int SYNCHRONIZATION = 8;
 
 	/**
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNCHRONIZATION__SUCCESSORS = CONVERGENCE__SUCCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Predecessors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNCHRONIZATION__PREDECESSORS = CONVERGENCE__PREDECESSORS;
+
+	/**
 	 * The number of structural features of the '<em>Synchronization</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -659,6 +1039,24 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int SYNCHRONIZATION_FEATURE_COUNT = CONVERGENCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNCHRONIZATION___CAN_PRECEDE__NODE = CONVERGENCE___CAN_PRECEDE__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNCHRONIZATION___CAN_SUCCEED__NODE = CONVERGENCE___CAN_SUCCEED__NODE;
 
 	/**
 	 * The number of operations of the '<em>Synchronization</em>' class.
@@ -680,13 +1078,49 @@ public interface SpecPackage extends EPackage {
 	int CONDITIONAL_DIVERGENCE = 15;
 
 	/**
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_DIVERGENCE__SUCCESSORS = STARTING_NODE__SUCCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Predecessors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_DIVERGENCE__PREDECESSORS = STARTING_NODE__PREDECESSORS;
+
+	/**
 	 * The number of structural features of the '<em>Conditional Divergence</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONDITIONAL_DIVERGENCE_FEATURE_COUNT = 0;
+	int CONDITIONAL_DIVERGENCE_FEATURE_COUNT = STARTING_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_DIVERGENCE___CAN_PRECEDE__NODE = STARTING_NODE___CAN_PRECEDE__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_DIVERGENCE___CAN_SUCCEED__NODE = STARTING_NODE___CAN_SUCCEED__NODE;
 
 	/**
 	 * The number of operations of the '<em>Conditional Divergence</em>' class.
@@ -695,7 +1129,7 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONDITIONAL_DIVERGENCE_OPERATION_COUNT = 0;
+	int CONDITIONAL_DIVERGENCE_OPERATION_COUNT = STARTING_NODE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.model.spec.impl.MultiChoiceImpl <em>Multi Choice</em>}' class.
@@ -708,6 +1142,24 @@ public interface SpecPackage extends EPackage {
 	int MULTI_CHOICE = 9;
 
 	/**
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_CHOICE__SUCCESSORS = CONDITIONAL_DIVERGENCE__SUCCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Predecessors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_CHOICE__PREDECESSORS = CONDITIONAL_DIVERGENCE__PREDECESSORS;
+
+	/**
 	 * The number of structural features of the '<em>Multi Choice</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -715,6 +1167,24 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int MULTI_CHOICE_FEATURE_COUNT = CONDITIONAL_DIVERGENCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_CHOICE___CAN_PRECEDE__NODE = CONDITIONAL_DIVERGENCE___CAN_PRECEDE__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_CHOICE___CAN_SUCCEED__NODE = CONDITIONAL_DIVERGENCE___CAN_SUCCEED__NODE;
 
 	/**
 	 * The number of operations of the '<em>Multi Choice</em>' class.
@@ -736,6 +1206,24 @@ public interface SpecPackage extends EPackage {
 	int SIMPLE_MERGE = 10;
 
 	/**
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_MERGE__SUCCESSORS = CONVERGENCE__SUCCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Predecessors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_MERGE__PREDECESSORS = CONVERGENCE__PREDECESSORS;
+
+	/**
 	 * The number of structural features of the '<em>Simple Merge</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -743,6 +1231,24 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int SIMPLE_MERGE_FEATURE_COUNT = CONVERGENCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_MERGE___CAN_PRECEDE__NODE = CONVERGENCE___CAN_PRECEDE__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_MERGE___CAN_SUCCEED__NODE = CONVERGENCE___CAN_SUCCEED__NODE;
 
 	/**
 	 * The number of operations of the '<em>Simple Merge</em>' class.
@@ -782,13 +1288,31 @@ public interface SpecPackage extends EPackage {
 	int VARIABLE__TYPE_ID = 1;
 
 	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE__VALUE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Is Required</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE__IS_REQUIRED = 3;
+
+	/**
 	 * The number of structural features of the '<em>Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_FEATURE_COUNT = 2;
+	int VARIABLE_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Variable</em>' class.
@@ -939,13 +1463,22 @@ public interface SpecPackage extends EPackage {
 	int CONDITION = 17;
 
 	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * The feature id for the '<em><b>Successors</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONDITION__PREDECESSOR = TASK__PREDECESSOR;
+	int CONDITION__SUCCESSORS = TASK__SUCCESSORS;
+
+	/**
+	 * The feature id for the '<em><b>Predecessors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITION__PREDECESSORS = TASK__PREDECESSORS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -964,15 +1497,6 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONDITION__NAME = TASK__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Successor</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONDITION__SUCCESSOR = TASK__SUCCESSOR;
 
 	/**
 	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
@@ -1009,6 +1533,24 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONDITION_FEATURE_COUNT = TASK_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITION___CAN_PRECEDE__NODE = TASK___CAN_PRECEDE__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITION___CAN_SUCCEED__NODE = TASK___CAN_SUCCEED__NODE;
 
 	/**
 	 * The number of operations of the '<em>Condition</em>' class.
@@ -1050,17 +1592,6 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTask_Name();
-
-	/**
-	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.model.spec.Task#getSuccessor <em>Successor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Successor</em>'.
-	 * @see fr.kazejiyu.ekumi.model.spec.Task#getSuccessor()
-	 * @see #getTask()
-	 * @generated
-	 */
-	EReference getTask_Successor();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link fr.kazejiyu.ekumi.model.spec.Task#getFlows <em>Flows</em>}'.
@@ -1106,28 +1637,6 @@ public interface SpecPackage extends EPackage {
 	EClass getActivity();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.model.spec.Activity#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see fr.kazejiyu.ekumi.model.spec.Activity#getName()
-	 * @see #getActivity()
-	 * @generated
-	 */
-	EAttribute getActivity_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.model.spec.Activity#getId <em>Id</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see fr.kazejiyu.ekumi.model.spec.Activity#getId()
-	 * @see #getActivity()
-	 * @generated
-	 */
-	EAttribute getActivity_Id();
-
-	/**
 	 * Returns the meta object for the containment reference '{@link fr.kazejiyu.ekumi.model.spec.Activity#getStart <em>Start</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1139,15 +1648,15 @@ public interface SpecPackage extends EPackage {
 	EReference getActivity_Start();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link fr.kazejiyu.ekumi.model.spec.Activity#getNestedActivity <em>Nested Activity</em>}'.
+	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.model.spec.Activity#getNestedActivities <em>Nested Activities</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Nested Activity</em>'.
-	 * @see fr.kazejiyu.ekumi.model.spec.Activity#getNestedActivity()
+	 * @return the meta object for the containment reference list '<em>Nested Activities</em>'.
+	 * @see fr.kazejiyu.ekumi.model.spec.Activity#getNestedActivities()
 	 * @see #getActivity()
 	 * @generated
 	 */
-	EReference getActivity_NestedActivity();
+	EReference getActivity_NestedActivities();
 
 	/**
 	 * Returns the meta object for the container reference '{@link fr.kazejiyu.ekumi.model.spec.Activity#getParentActivity <em>Parent Activity</em>}'.
@@ -1181,6 +1690,28 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getActivity_Divergences();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.model.spec.Activity#getConvergences <em>Convergences</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Convergences</em>'.
+	 * @see fr.kazejiyu.ekumi.model.spec.Activity#getConvergences()
+	 * @see #getActivity()
+	 * @generated
+	 */
+	EReference getActivity_Convergences();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link fr.kazejiyu.ekumi.model.spec.Activity#getConditionalDivergences <em>Conditional Divergences</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Conditional Divergences</em>'.
+	 * @see fr.kazejiyu.ekumi.model.spec.Activity#getConditionalDivergences()
+	 * @see #getActivity()
+	 * @generated
+	 */
+	EReference getActivity_ConditionalDivergences();
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.model.spec.Start <em>Start</em>}'.
@@ -1233,6 +1764,17 @@ public interface SpecPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getExternalTask_LanguageId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.model.spec.ExternalTask#getScriptId <em>Script Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Script Id</em>'.
+	 * @see fr.kazejiyu.ekumi.model.spec.ExternalTask#getScriptId()
+	 * @see #getExternalTask()
+	 * @generated
+	 */
+	EAttribute getExternalTask_ScriptId();
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.model.spec.LibraryTask <em>Library Task</em>}'.
@@ -1349,6 +1891,28 @@ public interface SpecPackage extends EPackage {
 	EAttribute getVariable_TypeId();
 
 	/**
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.model.spec.Variable#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see fr.kazejiyu.ekumi.model.spec.Variable#getValue()
+	 * @see #getVariable()
+	 * @generated
+	 */
+	EAttribute getVariable_Value();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.model.spec.Variable#isIsRequired <em>Is Required</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Required</em>'.
+	 * @see fr.kazejiyu.ekumi.model.spec.Variable#isIsRequired()
+	 * @see #getVariable()
+	 * @generated
+	 */
+	EAttribute getVariable_IsRequired();
+
+	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.model.spec.DataFlows <em>Data Flows</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1412,15 +1976,46 @@ public interface SpecPackage extends EPackage {
 	EClass getNode();
 
 	/**
-	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.model.spec.Node#getPredecessor <em>Predecessor</em>}'.
+	 * Returns the meta object for the reference list '{@link fr.kazejiyu.ekumi.model.spec.Node#getSuccessors <em>Successors</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Predecessor</em>'.
-	 * @see fr.kazejiyu.ekumi.model.spec.Node#getPredecessor()
+	 * @return the meta object for the reference list '<em>Successors</em>'.
+	 * @see fr.kazejiyu.ekumi.model.spec.Node#getSuccessors()
 	 * @see #getNode()
 	 * @generated
 	 */
-	EReference getNode_Predecessor();
+	EReference getNode_Successors();
+
+	/**
+	 * Returns the meta object for the reference list '{@link fr.kazejiyu.ekumi.model.spec.Node#getPredecessors <em>Predecessors</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Predecessors</em>'.
+	 * @see fr.kazejiyu.ekumi.model.spec.Node#getPredecessors()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EReference getNode_Predecessors();
+
+	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.model.spec.Node#canPrecede(fr.kazejiyu.ekumi.model.spec.Node) <em>Can Precede</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Can Precede</em>' operation.
+	 * @see fr.kazejiyu.ekumi.model.spec.Node#canPrecede(fr.kazejiyu.ekumi.model.spec.Node)
+	 * @generated
+	 */
+	EOperation getNode__CanPrecede__Node();
+
+	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.model.spec.Node#canSucceed(fr.kazejiyu.ekumi.model.spec.Node) <em>Can Succeed</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Can Succeed</em>' operation.
+	 * @see fr.kazejiyu.ekumi.model.spec.Node#canSucceed(fr.kazejiyu.ekumi.model.spec.Node)
+	 * @generated
+	 */
+	EOperation getNode__CanSucceed__Node();
 
 	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.model.spec.ConditionalDivergence <em>Conditional Divergence</em>}'.
@@ -1475,6 +2070,16 @@ public interface SpecPackage extends EPackage {
 	EClass getCondition();
 
 	/**
+	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.model.spec.StartingNode <em>Starting Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Starting Node</em>'.
+	 * @see fr.kazejiyu.ekumi.model.spec.StartingNode
+	 * @generated
+	 */
+	EClass getStartingNode();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1524,14 +2129,6 @@ public interface SpecPackage extends EPackage {
 		EAttribute TASK__NAME = eINSTANCE.getTask_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Successor</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TASK__SUCCESSOR = eINSTANCE.getTask_Successor();
-
-		/**
 		 * The meta object literal for the '<em><b>Flows</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1566,22 +2163,6 @@ public interface SpecPackage extends EPackage {
 		EClass ACTIVITY = eINSTANCE.getActivity();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ACTIVITY__NAME = eINSTANCE.getActivity_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ACTIVITY__ID = eINSTANCE.getActivity_Id();
-
-		/**
 		 * The meta object literal for the '<em><b>Start</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1590,12 +2171,12 @@ public interface SpecPackage extends EPackage {
 		EReference ACTIVITY__START = eINSTANCE.getActivity_Start();
 
 		/**
-		 * The meta object literal for the '<em><b>Nested Activity</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Nested Activities</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ACTIVITY__NESTED_ACTIVITY = eINSTANCE.getActivity_NestedActivity();
+		EReference ACTIVITY__NESTED_ACTIVITIES = eINSTANCE.getActivity_NestedActivities();
 
 		/**
 		 * The meta object literal for the '<em><b>Parent Activity</b></em>' container reference feature.
@@ -1620,6 +2201,22 @@ public interface SpecPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ACTIVITY__DIVERGENCES = eINSTANCE.getActivity_Divergences();
+
+		/**
+		 * The meta object literal for the '<em><b>Convergences</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY__CONVERGENCES = eINSTANCE.getActivity_Convergences();
+
+		/**
+		 * The meta object literal for the '<em><b>Conditional Divergences</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY__CONDITIONAL_DIVERGENCES = eINSTANCE.getActivity_ConditionalDivergences();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.model.spec.impl.StartImpl <em>Start</em>}' class.
@@ -1666,6 +2263,14 @@ public interface SpecPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EXTERNAL_TASK__LANGUAGE_ID = eINSTANCE.getExternalTask_LanguageId();
+
+		/**
+		 * The meta object literal for the '<em><b>Script Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXTERNAL_TASK__SCRIPT_ID = eINSTANCE.getExternalTask_ScriptId();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.model.spec.impl.LibraryTaskImpl <em>Library Task</em>}' class.
@@ -1770,6 +2375,22 @@ public interface SpecPackage extends EPackage {
 		EAttribute VARIABLE__TYPE_ID = eINSTANCE.getVariable_TypeId();
 
 		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE__VALUE = eINSTANCE.getVariable_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Required</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE__IS_REQUIRED = eINSTANCE.getVariable_IsRequired();
+
+		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.model.spec.impl.DataFlowsImpl <em>Data Flows</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1814,22 +2435,46 @@ public interface SpecPackage extends EPackage {
 		EReference DATA_FLOW__OUTPUT = eINSTANCE.getDataFlow_Output();
 
 		/**
-		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.model.spec.Node <em>Node</em>}' class.
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.model.spec.impl.NodeImpl <em>Node</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fr.kazejiyu.ekumi.model.spec.Node
+		 * @see fr.kazejiyu.ekumi.model.spec.impl.NodeImpl
 		 * @see fr.kazejiyu.ekumi.model.spec.impl.SpecPackageImpl#getNode()
 		 * @generated
 		 */
 		EClass NODE = eINSTANCE.getNode();
 
 		/**
-		 * The meta object literal for the '<em><b>Predecessor</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Successors</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference NODE__PREDECESSOR = eINSTANCE.getNode_Predecessor();
+		EReference NODE__SUCCESSORS = eINSTANCE.getNode_Successors();
+
+		/**
+		 * The meta object literal for the '<em><b>Predecessors</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NODE__PREDECESSORS = eINSTANCE.getNode_Predecessors();
+
+		/**
+		 * The meta object literal for the '<em><b>Can Precede</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation NODE___CAN_PRECEDE__NODE = eINSTANCE.getNode__CanPrecede__Node();
+
+		/**
+		 * The meta object literal for the '<em><b>Can Succeed</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation NODE___CAN_SUCCEED__NODE = eINSTANCE.getNode__CanSucceed__Node();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.model.spec.impl.ConditionalDivergenceImpl <em>Conditional Divergence</em>}' class.
@@ -1876,6 +2521,16 @@ public interface SpecPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CONDITION = eINSTANCE.getCondition();
+
+		/**
+		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.model.spec.impl.StartingNodeImpl <em>Starting Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.model.spec.impl.StartingNodeImpl
+		 * @see fr.kazejiyu.ekumi.model.spec.impl.SpecPackageImpl#getStartingNode()
+		 * @generated
+		 */
+		EClass STARTING_NODE = eINSTANCE.getStartingNode();
 
 	}
 

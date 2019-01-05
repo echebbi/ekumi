@@ -13,6 +13,18 @@ import fr.kazejiyu.ekumi.model.workflow.Runner;
  * @author Emmanuel CHEBBI
  */
 public interface ScriptingLanguage {
+	
+	/**
+	 * Returns a unique id identifying the language.
+	 * @return a unique id identifying the language
+	 */
+	String id();
+	
+	/**
+	 * Returns a human-readable name of the language.
+	 * @return a human-readable name of the language
+	 */
+	String name();
 
 	/**
 	 * Turns a runner written with the language into a EKumi {@link Runner}.

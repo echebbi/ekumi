@@ -7,8 +7,6 @@ import fr.kazejiyu.ekumi.model.spec.SpecPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Convergence</b></em>'.
@@ -16,7 +14,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public abstract class ConvergenceImpl extends MinimalEObjectImpl.Container implements Convergence {
+public abstract class ConvergenceImpl extends NodeImpl implements Convergence {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

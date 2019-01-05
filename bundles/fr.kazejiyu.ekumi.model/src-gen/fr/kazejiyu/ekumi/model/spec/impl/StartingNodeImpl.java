@@ -2,25 +2,25 @@
  */
 package fr.kazejiyu.ekumi.model.spec.impl;
 
-import fr.kazejiyu.ekumi.model.spec.ConditionalDivergence;
 import fr.kazejiyu.ekumi.model.spec.SpecPackage;
+import fr.kazejiyu.ekumi.model.spec.StartingNode;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Conditional Divergence</b></em>'.
+ * An implementation of the model object '<em><b>Starting Node</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public abstract class ConditionalDivergenceImpl extends StartingNodeImpl implements ConditionalDivergence {
+public abstract class StartingNodeImpl extends NodeImpl implements StartingNode {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ConditionalDivergenceImpl() {
+	protected StartingNodeImpl() {
 		super();
 	}
 
@@ -31,7 +31,7 @@ public abstract class ConditionalDivergenceImpl extends StartingNodeImpl impleme
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return SpecPackage.Literals.CONDITIONAL_DIVERGENCE;
+		return SpecPackage.Literals.STARTING_NODE;
 	}
 
-} //ConditionalDivergenceImpl
+} //StartingNodeImpl

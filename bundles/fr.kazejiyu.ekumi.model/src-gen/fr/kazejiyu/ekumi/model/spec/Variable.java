@@ -8,6 +8,10 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * Hold a typed value.
+ * <!-- end-model-doc -->
+ *
  * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getVariable()
  * @model
  * @generated
@@ -20,7 +24,7 @@ public interface Variable extends EObject {
 	 * @see #setName(String)
 	 * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getVariable_Name()
 	 * <!-- end-user-doc -->
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @model default="" dataType="org.eclipse.emf.ecore.xml.type.String"
 	 * @generated
 	 */
 	String getName();
@@ -42,7 +46,7 @@ public interface Variable extends EObject {
 	 * @see #setTypeId(String)
 	 * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getVariable_TypeId()
 	 * <!-- end-user-doc -->
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @model default="" dataType="org.eclipse.emf.ecore.xml.type.String"
 	 * @generated
 	 */
 	String getTypeId();
@@ -56,5 +60,50 @@ public interface Variable extends EObject {
 	 * @generated
 	 */
 	void setTypeId(String value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Value</b></em>' attribute.
+	 * @return the value of the '<em>Value</em>' attribute.
+	 * @see #setValue(String)
+	 * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getVariable_Value()
+	 * <!-- end-user-doc -->
+	 * @model default="" dataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @generated
+	 */
+	String getValue();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.model.spec.Variable#getValue <em>Value</em>}' attribute.
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value</em>' attribute.
+	 * @see #getValue()
+	 * @generated
+	 */
+	void setValue(String value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Is Required</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * @return the value of the '<em>Is Required</em>' attribute.
+	 * @see #setIsRequired(boolean)
+	 * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getVariable_IsRequired()
+	 * <!-- end-user-doc -->
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isIsRequired();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.model.spec.Variable#isIsRequired <em>Is Required</em>}' attribute.
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Is Required</em>' attribute.
+	 * @see #isIsRequired()
+	 * @generated
+	 */
+	void setIsRequired(boolean value);
 
 } // Variable

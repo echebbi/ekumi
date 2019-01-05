@@ -197,19 +197,18 @@
     <genClasses ecoreClass="spec.ecore#//Task">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute spec.ecore#//Task/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute spec.ecore#//Task/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference spec.ecore#//Task/successor"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Task/flows"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Task/inputs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Task/outputs"/>
     </genClasses>
     <genClasses ecoreClass="spec.ecore#//Activity">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute spec.ecore#//Activity/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute spec.ecore#//Activity/id"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Activity/start"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Activity/nestedActivity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Activity/nestedActivities"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference spec.ecore#//Activity/parentActivity"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Activity/tasks"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Activity/divergences"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Activity/convergences"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//Activity/conditionalDivergences"/>
     </genClasses>
     <genClasses ecoreClass="spec.ecore#//Start">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference spec.ecore#//Start/node"/>
@@ -217,6 +216,7 @@
     <genClasses ecoreClass="spec.ecore#//ParallelSplit"/>
     <genClasses ecoreClass="spec.ecore#//ExternalTask">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute spec.ecore#//ExternalTask/languageId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute spec.ecore#//ExternalTask/scriptId"/>
     </genClasses>
     <genClasses ecoreClass="spec.ecore#//LibraryTask"/>
     <genClasses image="false" ecoreClass="spec.ecore#//Divergence">
@@ -230,6 +230,8 @@
     <genClasses ecoreClass="spec.ecore#//Variable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute spec.ecore#//Variable/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute spec.ecore#//Variable/typeId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute spec.ecore#//Variable/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute spec.ecore#//Variable/isRequired"/>
     </genClasses>
     <genClasses ecoreClass="spec.ecore#//DataFlows">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference spec.ecore#//DataFlows/incomings"/>
@@ -239,7 +241,14 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference spec.ecore#//DataFlow/output"/>
     </genClasses>
     <genClasses image="false" ecoreClass="spec.ecore#//Node">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference spec.ecore#//Node/predecessor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference spec.ecore#//Node/successors"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference spec.ecore#//Node/predecessors"/>
+      <genOperations ecoreOperation="spec.ecore#//Node/canPrecede">
+        <genParameters ecoreParameter="spec.ecore#//Node/canPrecede/node"/>
+      </genOperations>
+      <genOperations ecoreOperation="spec.ecore#//Node/canSucceed">
+        <genParameters ecoreParameter="spec.ecore#//Node/canSucceed/node"/>
+      </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="spec.ecore#//ConditionalDivergence"/>
     <genClasses ecoreClass="spec.ecore#//ConditionalRoot">
@@ -247,5 +256,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference spec.ecore#//ConditionalRoot/condition"/>
     </genClasses>
     <genClasses ecoreClass="spec.ecore#//Condition"/>
+    <genClasses image="false" ecoreClass="spec.ecore#//StartingNode"/>
   </genPackages>
 </genmodel:GenModel>

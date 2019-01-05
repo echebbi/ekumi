@@ -3,7 +3,6 @@
 package fr.kazejiyu.ekumi.model.spec.impl;
 
 import fr.kazejiyu.ekumi.model.spec.DataFlows;
-import fr.kazejiyu.ekumi.model.spec.Node;
 import fr.kazejiyu.ekumi.model.spec.SpecPackage;
 import fr.kazejiyu.ekumi.model.spec.Task;
 import fr.kazejiyu.ekumi.model.spec.Variable;
@@ -19,7 +18,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -32,10 +30,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.TaskImpl#getPredecessor <em>Predecessor</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.TaskImpl#getId <em>Id</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.TaskImpl#getName <em>Name</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.TaskImpl#getSuccessor <em>Successor</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.TaskImpl#getFlows <em>Flows</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.TaskImpl#getInputs <em>Inputs</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.TaskImpl#getOutputs <em>Outputs</em>}</li>
@@ -43,17 +39,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public abstract class TaskImpl extends MinimalEObjectImpl.Container implements Task {
-	/**
-	 * The cached value of the '{@link #getPredecessor() <em>Predecessor</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPredecessor()
-	 * @generated
-	 * @ordered
-	 */
-	protected Task predecessor;
-
+public abstract class TaskImpl extends StartingNodeImpl implements Task {
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -62,7 +48,7 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ID_EDEFAULT = null;
+	protected static final String ID_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
@@ -82,7 +68,7 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -93,16 +79,6 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getSuccessor() <em>Successor</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSuccessor()
-	 * @generated
-	 * @ordered
-	 */
-	protected Node successor;
 
 	/**
 	 * The cached value of the '{@link #getFlows() <em>Flows</em>}' containment reference.
@@ -158,74 +134,6 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Task getPredecessor() {
-		if (predecessor != null && predecessor.eIsProxy()) {
-			InternalEObject oldPredecessor = (InternalEObject) predecessor;
-			predecessor = (Task) eResolveProxy(oldPredecessor);
-			if (predecessor != oldPredecessor) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SpecPackage.TASK__PREDECESSOR,
-							oldPredecessor, predecessor));
-			}
-		}
-		return predecessor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Task basicGetPredecessor() {
-		return predecessor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetPredecessor(Task newPredecessor, NotificationChain msgs) {
-		Task oldPredecessor = predecessor;
-		predecessor = newPredecessor;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					SpecPackage.TASK__PREDECESSOR, oldPredecessor, newPredecessor);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPredecessor(Task newPredecessor) {
-		if (newPredecessor != predecessor) {
-			NotificationChain msgs = null;
-			if (predecessor != null)
-				msgs = ((InternalEObject) predecessor).eInverseRemove(this, SpecPackage.TASK__SUCCESSOR, Task.class,
-						msgs);
-			if (newPredecessor != null)
-				msgs = ((InternalEObject) newPredecessor).eInverseAdd(this, SpecPackage.TASK__SUCCESSOR, Task.class,
-						msgs);
-			msgs = basicSetPredecessor(newPredecessor, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.TASK__PREDECESSOR, newPredecessor,
-					newPredecessor));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getId() {
 		return id;
 	}
@@ -261,74 +169,6 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.TASK__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Node getSuccessor() {
-		if (successor != null && successor.eIsProxy()) {
-			InternalEObject oldSuccessor = (InternalEObject) successor;
-			successor = (Node) eResolveProxy(oldSuccessor);
-			if (successor != oldSuccessor) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SpecPackage.TASK__SUCCESSOR, oldSuccessor,
-							successor));
-			}
-		}
-		return successor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Node basicGetSuccessor() {
-		return successor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetSuccessor(Node newSuccessor, NotificationChain msgs) {
-		Node oldSuccessor = successor;
-		successor = newSuccessor;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.TASK__SUCCESSOR,
-					oldSuccessor, newSuccessor);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSuccessor(Node newSuccessor) {
-		if (newSuccessor != successor) {
-			NotificationChain msgs = null;
-			if (successor != null)
-				msgs = ((InternalEObject) successor).eInverseRemove(this, SpecPackage.NODE__PREDECESSOR, Node.class,
-						msgs);
-			if (newSuccessor != null)
-				msgs = ((InternalEObject) newSuccessor).eInverseAdd(this, SpecPackage.NODE__PREDECESSOR, Node.class,
-						msgs);
-			msgs = basicSetSuccessor(newSuccessor, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.TASK__SUCCESSOR, newSuccessor,
-					newSuccessor));
 	}
 
 	/**
@@ -410,34 +250,8 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case SpecPackage.TASK__PREDECESSOR:
-			if (predecessor != null)
-				msgs = ((InternalEObject) predecessor).eInverseRemove(this, SpecPackage.TASK__SUCCESSOR, Task.class,
-						msgs);
-			return basicSetPredecessor((Task) otherEnd, msgs);
-		case SpecPackage.TASK__SUCCESSOR:
-			if (successor != null)
-				msgs = ((InternalEObject) successor).eInverseRemove(this, SpecPackage.NODE__PREDECESSOR, Node.class,
-						msgs);
-			return basicSetSuccessor((Node) otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case SpecPackage.TASK__PREDECESSOR:
-			return basicSetPredecessor(null, msgs);
-		case SpecPackage.TASK__SUCCESSOR:
-			return basicSetSuccessor(null, msgs);
 		case SpecPackage.TASK__FLOWS:
 			return basicSetFlows(null, msgs);
 		case SpecPackage.TASK__INPUTS:
@@ -456,18 +270,10 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case SpecPackage.TASK__PREDECESSOR:
-			if (resolve)
-				return getPredecessor();
-			return basicGetPredecessor();
 		case SpecPackage.TASK__ID:
 			return getId();
 		case SpecPackage.TASK__NAME:
 			return getName();
-		case SpecPackage.TASK__SUCCESSOR:
-			if (resolve)
-				return getSuccessor();
-			return basicGetSuccessor();
 		case SpecPackage.TASK__FLOWS:
 			return getFlows();
 		case SpecPackage.TASK__INPUTS:
@@ -487,17 +293,11 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case SpecPackage.TASK__PREDECESSOR:
-			setPredecessor((Task) newValue);
-			return;
 		case SpecPackage.TASK__ID:
 			setId((String) newValue);
 			return;
 		case SpecPackage.TASK__NAME:
 			setName((String) newValue);
-			return;
-		case SpecPackage.TASK__SUCCESSOR:
-			setSuccessor((Node) newValue);
 			return;
 		case SpecPackage.TASK__FLOWS:
 			setFlows((DataFlows) newValue);
@@ -522,17 +322,11 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case SpecPackage.TASK__PREDECESSOR:
-			setPredecessor((Task) null);
-			return;
 		case SpecPackage.TASK__ID:
 			setId(ID_EDEFAULT);
 			return;
 		case SpecPackage.TASK__NAME:
 			setName(NAME_EDEFAULT);
-			return;
-		case SpecPackage.TASK__SUCCESSOR:
-			setSuccessor((Node) null);
 			return;
 		case SpecPackage.TASK__FLOWS:
 			setFlows((DataFlows) null);
@@ -555,14 +349,10 @@ public abstract class TaskImpl extends MinimalEObjectImpl.Container implements T
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case SpecPackage.TASK__PREDECESSOR:
-			return predecessor != null;
 		case SpecPackage.TASK__ID:
 			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		case SpecPackage.TASK__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-		case SpecPackage.TASK__SUCCESSOR:
-			return successor != null;
 		case SpecPackage.TASK__FLOWS:
 			return flows != null;
 		case SpecPackage.TASK__INPUTS:

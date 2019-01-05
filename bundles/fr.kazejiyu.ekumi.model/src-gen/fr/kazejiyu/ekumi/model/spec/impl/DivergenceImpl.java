@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
@@ -30,24 +29,13 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.DivergenceImpl#getPredecessor <em>Predecessor</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.DivergenceImpl#getConvergence <em>Convergence</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.DivergenceImpl#getRoots <em>Roots</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class DivergenceImpl extends MinimalEObjectImpl.Container implements Divergence {
-	/**
-	 * The cached value of the '{@link #getPredecessor() <em>Predecessor</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPredecessor()
-	 * @generated
-	 * @ordered
-	 */
-	protected Task predecessor;
-
+public abstract class DivergenceImpl extends StartingNodeImpl implements Divergence {
 	/**
 	 * The cached value of the '{@link #getConvergence() <em>Convergence</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -85,74 +73,6 @@ public abstract class DivergenceImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	protected EClass eStaticClass() {
 		return SpecPackage.Literals.DIVERGENCE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Task getPredecessor() {
-		if (predecessor != null && predecessor.eIsProxy()) {
-			InternalEObject oldPredecessor = (InternalEObject) predecessor;
-			predecessor = (Task) eResolveProxy(oldPredecessor);
-			if (predecessor != oldPredecessor) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SpecPackage.DIVERGENCE__PREDECESSOR,
-							oldPredecessor, predecessor));
-			}
-		}
-		return predecessor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Task basicGetPredecessor() {
-		return predecessor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetPredecessor(Task newPredecessor, NotificationChain msgs) {
-		Task oldPredecessor = predecessor;
-		predecessor = newPredecessor;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					SpecPackage.DIVERGENCE__PREDECESSOR, oldPredecessor, newPredecessor);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPredecessor(Task newPredecessor) {
-		if (newPredecessor != predecessor) {
-			NotificationChain msgs = null;
-			if (predecessor != null)
-				msgs = ((InternalEObject) predecessor).eInverseRemove(this, SpecPackage.TASK__SUCCESSOR, Task.class,
-						msgs);
-			if (newPredecessor != null)
-				msgs = ((InternalEObject) newPredecessor).eInverseAdd(this, SpecPackage.TASK__SUCCESSOR, Task.class,
-						msgs);
-			msgs = basicSetPredecessor(newPredecessor, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.DIVERGENCE__PREDECESSOR, newPredecessor,
-					newPredecessor));
 	}
 
 	/**
@@ -223,27 +143,8 @@ public abstract class DivergenceImpl extends MinimalEObjectImpl.Container implem
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case SpecPackage.DIVERGENCE__PREDECESSOR:
-			if (predecessor != null)
-				msgs = ((InternalEObject) predecessor).eInverseRemove(this, SpecPackage.TASK__SUCCESSOR, Task.class,
-						msgs);
-			return basicSetPredecessor((Task) otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case SpecPackage.DIVERGENCE__PREDECESSOR:
-			return basicSetPredecessor(null, msgs);
 		case SpecPackage.DIVERGENCE__CONVERGENCE:
 			return basicSetConvergence(null, msgs);
 		}
@@ -258,10 +159,6 @@ public abstract class DivergenceImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case SpecPackage.DIVERGENCE__PREDECESSOR:
-			if (resolve)
-				return getPredecessor();
-			return basicGetPredecessor();
 		case SpecPackage.DIVERGENCE__CONVERGENCE:
 			return getConvergence();
 		case SpecPackage.DIVERGENCE__ROOTS:
@@ -279,9 +176,6 @@ public abstract class DivergenceImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case SpecPackage.DIVERGENCE__PREDECESSOR:
-			setPredecessor((Task) newValue);
-			return;
 		case SpecPackage.DIVERGENCE__CONVERGENCE:
 			setConvergence((Convergence) newValue);
 			return;
@@ -301,9 +195,6 @@ public abstract class DivergenceImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case SpecPackage.DIVERGENCE__PREDECESSOR:
-			setPredecessor((Task) null);
-			return;
 		case SpecPackage.DIVERGENCE__CONVERGENCE:
 			setConvergence((Convergence) null);
 			return;
@@ -322,8 +213,6 @@ public abstract class DivergenceImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case SpecPackage.DIVERGENCE__PREDECESSOR:
-			return predecessor != null;
 		case SpecPackage.DIVERGENCE__CONVERGENCE:
 			return convergence != null;
 		case SpecPackage.DIVERGENCE__ROOTS:

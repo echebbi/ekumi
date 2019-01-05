@@ -10,6 +10,10 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * A collection of dataflow.
+ * <!-- end-model-doc -->
+ *
  * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getDataFlows()
  * @model
  * @generated

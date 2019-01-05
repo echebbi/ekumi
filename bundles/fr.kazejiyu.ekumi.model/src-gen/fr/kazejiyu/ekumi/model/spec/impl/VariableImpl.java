@@ -22,6 +22,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.VariableImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.VariableImpl#getTypeId <em>Type Id</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.VariableImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.VariableImpl#isIsRequired <em>Is Required</em>}</li>
  * </ul>
  *
  * @generated
@@ -35,7 +37,7 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -55,7 +57,7 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TYPE_ID_EDEFAULT = null;
+	protected static final String TYPE_ID_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTypeId() <em>Type Id</em>}' attribute.
@@ -66,6 +68,46 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
 	 * @ordered
 	 */
 	protected String typeId = TYPE_ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VALUE_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected String value = VALUE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isIsRequired() <em>Is Required</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsRequired()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_REQUIRED_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isIsRequired() <em>Is Required</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsRequired()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isRequired = IS_REQUIRED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -133,6 +175,49 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getValue() {
+		return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setValue(String newValue) {
+		String oldValue = value;
+		value = newValue;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.VARIABLE__VALUE, oldValue, value));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isIsRequired() {
+		return isRequired;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIsRequired(boolean newIsRequired) {
+		boolean oldIsRequired = isRequired;
+		isRequired = newIsRequired;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.VARIABLE__IS_REQUIRED, oldIsRequired,
+					isRequired));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -140,6 +225,10 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
 			return getName();
 		case SpecPackage.VARIABLE__TYPE_ID:
 			return getTypeId();
+		case SpecPackage.VARIABLE__VALUE:
+			return getValue();
+		case SpecPackage.VARIABLE__IS_REQUIRED:
+			return isIsRequired();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -157,6 +246,12 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
 			return;
 		case SpecPackage.VARIABLE__TYPE_ID:
 			setTypeId((String) newValue);
+			return;
+		case SpecPackage.VARIABLE__VALUE:
+			setValue((String) newValue);
+			return;
+		case SpecPackage.VARIABLE__IS_REQUIRED:
+			setIsRequired((Boolean) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -176,6 +271,12 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
 		case SpecPackage.VARIABLE__TYPE_ID:
 			setTypeId(TYPE_ID_EDEFAULT);
 			return;
+		case SpecPackage.VARIABLE__VALUE:
+			setValue(VALUE_EDEFAULT);
+			return;
+		case SpecPackage.VARIABLE__IS_REQUIRED:
+			setIsRequired(IS_REQUIRED_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -192,6 +293,10 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case SpecPackage.VARIABLE__TYPE_ID:
 			return TYPE_ID_EDEFAULT == null ? typeId != null : !TYPE_ID_EDEFAULT.equals(typeId);
+		case SpecPackage.VARIABLE__VALUE:
+			return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+		case SpecPackage.VARIABLE__IS_REQUIRED:
+			return isRequired != IS_REQUIRED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -211,6 +316,10 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
 		result.append(name);
 		result.append(", typeId: ");
 		result.append(typeId);
+		result.append(", value: ");
+		result.append(value);
+		result.append(", isRequired: ");
+		result.append(isRequired);
 		result.append(')');
 		return result.toString();
 	}

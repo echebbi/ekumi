@@ -45,6 +45,7 @@ public class ExternalTaskItemProvider extends TaskItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addLanguageIdPropertyDescriptor(object);
+			addScriptIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -62,6 +63,22 @@ public class ExternalTaskItemProvider extends TaskItemProvider {
 						getString("_UI_PropertyDescriptor_description", "_UI_ExternalTask_languageId_feature",
 								"_UI_ExternalTask_type"),
 						SpecPackage.Literals.EXTERNAL_TASK__LANGUAGE_ID, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Script Id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addScriptIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_ExternalTask_scriptId_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_ExternalTask_scriptId_feature",
+								"_UI_ExternalTask_type"),
+						SpecPackage.Literals.EXTERNAL_TASK__SCRIPT_ID, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -112,6 +129,7 @@ public class ExternalTaskItemProvider extends TaskItemProvider {
 
 		switch (notification.getFeatureID(ExternalTask.class)) {
 		case SpecPackage.EXTERNAL_TASK__LANGUAGE_ID:
+		case SpecPackage.EXTERNAL_TASK__SCRIPT_ID:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

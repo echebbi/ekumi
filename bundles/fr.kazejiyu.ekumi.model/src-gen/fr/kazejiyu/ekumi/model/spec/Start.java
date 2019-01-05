@@ -2,28 +2,30 @@
  */
 package fr.kazejiyu.ekumi.model.spec;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * Represents the beginning of a workflow.
+ * <!-- end-model-doc -->
  *
  * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getStart()
  * @model
  * @generated
  */
-public interface Start extends EObject {
+public interface Start extends Node {
 	/**
 	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Node</b></em>' reference.
 	 * @return the value of the '<em>Node</em>' reference.
-	 * @see #setNode(Node)
+	 * @see #setNode(StartingNode)
 	 * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getStart_Node()
 	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
-	Node getNode();
+	StartingNode getNode();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -33,6 +35,6 @@ public interface Start extends EObject {
 	 * @see #getNode()
 	 * @generated
 	 */
-	void setNode(Node value);
+	void setNode(StartingNode value);
 
 } // Start

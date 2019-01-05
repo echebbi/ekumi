@@ -8,6 +8,10 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * A flow of data between two variables.
+ * <!-- end-model-doc -->
+ *
  * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getDataFlow()
  * @model
  * @generated

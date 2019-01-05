@@ -70,6 +70,8 @@ public class SpecSwitch<T> extends Switch<T> {
 			Task task = (Task) theEObject;
 			T result = caseTask(task);
 			if (result == null)
+				result = caseStartingNode(task);
+			if (result == null)
 				result = caseNode(task);
 			if (result == null)
 				result = defaultCase(theEObject);
@@ -79,12 +81,20 @@ public class SpecSwitch<T> extends Switch<T> {
 			Activity activity = (Activity) theEObject;
 			T result = caseActivity(activity);
 			if (result == null)
+				result = caseTask(activity);
+			if (result == null)
+				result = caseStartingNode(activity);
+			if (result == null)
+				result = caseNode(activity);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
 		case SpecPackage.START: {
 			Start start = (Start) theEObject;
 			T result = caseStart(start);
+			if (result == null)
+				result = caseNode(start);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -94,6 +104,8 @@ public class SpecSwitch<T> extends Switch<T> {
 			T result = caseParallelSplit(parallelSplit);
 			if (result == null)
 				result = caseDivergence(parallelSplit);
+			if (result == null)
+				result = caseStartingNode(parallelSplit);
 			if (result == null)
 				result = caseNode(parallelSplit);
 			if (result == null)
@@ -106,6 +118,8 @@ public class SpecSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseTask(externalTask);
 			if (result == null)
+				result = caseStartingNode(externalTask);
+			if (result == null)
 				result = caseNode(externalTask);
 			if (result == null)
 				result = defaultCase(theEObject);
@@ -117,6 +131,8 @@ public class SpecSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseTask(libraryTask);
 			if (result == null)
+				result = caseStartingNode(libraryTask);
+			if (result == null)
 				result = caseNode(libraryTask);
 			if (result == null)
 				result = defaultCase(theEObject);
@@ -125,6 +141,8 @@ public class SpecSwitch<T> extends Switch<T> {
 		case SpecPackage.DIVERGENCE: {
 			Divergence divergence = (Divergence) theEObject;
 			T result = caseDivergence(divergence);
+			if (result == null)
+				result = caseStartingNode(divergence);
 			if (result == null)
 				result = caseNode(divergence);
 			if (result == null)
@@ -135,6 +153,8 @@ public class SpecSwitch<T> extends Switch<T> {
 			Convergence convergence = (Convergence) theEObject;
 			T result = caseConvergence(convergence);
 			if (result == null)
+				result = caseNode(convergence);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -143,6 +163,8 @@ public class SpecSwitch<T> extends Switch<T> {
 			T result = caseSynchronization(synchronization);
 			if (result == null)
 				result = caseConvergence(synchronization);
+			if (result == null)
+				result = caseNode(synchronization);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -153,6 +175,10 @@ public class SpecSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseConditionalDivergence(multiChoice);
 			if (result == null)
+				result = caseStartingNode(multiChoice);
+			if (result == null)
+				result = caseNode(multiChoice);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -161,6 +187,8 @@ public class SpecSwitch<T> extends Switch<T> {
 			T result = caseSimpleMerge(simpleMerge);
 			if (result == null)
 				result = caseConvergence(simpleMerge);
+			if (result == null)
+				result = caseNode(simpleMerge);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -197,6 +225,10 @@ public class SpecSwitch<T> extends Switch<T> {
 			ConditionalDivergence conditionalDivergence = (ConditionalDivergence) theEObject;
 			T result = caseConditionalDivergence(conditionalDivergence);
 			if (result == null)
+				result = caseStartingNode(conditionalDivergence);
+			if (result == null)
+				result = caseNode(conditionalDivergence);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -213,7 +245,18 @@ public class SpecSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseTask(condition);
 			if (result == null)
+				result = caseStartingNode(condition);
+			if (result == null)
 				result = caseNode(condition);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case SpecPackage.STARTING_NODE: {
+			StartingNode startingNode = (StartingNode) theEObject;
+			T result = caseStartingNode(startingNode);
+			if (result == null)
+				result = caseNode(startingNode);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -490,6 +533,21 @@ public class SpecSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCondition(Condition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Starting Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Starting Node</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStartingNode(StartingNode object) {
 		return null;
 	}
 

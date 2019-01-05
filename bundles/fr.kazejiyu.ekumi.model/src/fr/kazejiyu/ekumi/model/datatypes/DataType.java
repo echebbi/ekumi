@@ -14,6 +14,12 @@ import fr.kazejiyu.ekumi.model.workflow.Variable;
 public interface DataType<T> {
 	
 	/**
+	 * Returns an identifier for this type.
+	 * @return an identifier for this type.
+	 */
+	String getId();
+	
+	/**
 	 * Returns the name of the type.
 	 * @return the name of the type.
 	 */
