@@ -2,8 +2,6 @@
  */
 package fr.kazejiyu.ekumi.model.spec.provider;
 
-import fr.kazejiyu.ekumi.model.provider.EKumiEditPlugin;
-
 import fr.kazejiyu.ekumi.model.spec.Activity;
 import fr.kazejiyu.ekumi.model.spec.SpecFactory;
 import fr.kazejiyu.ekumi.model.spec.SpecPackage;
@@ -14,19 +12,10 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -35,8 +24,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ActivityItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ActivityItemProvider extends TaskItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -58,42 +46,9 @@ public class ActivityItemProvider extends ItemProviderAdapter implements IEditin
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
-			addIdPropertyDescriptor(object);
 			addParentActivityPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Activity_name_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Activity_name_feature",
-								"_UI_Activity_type"),
-						SpecPackage.Literals.ACTIVITY__NAME, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Id feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addIdPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Activity_id_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Activity_id_feature", "_UI_Activity_type"),
-						SpecPackage.Literals.ACTIVITY__ID, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -124,9 +79,11 @@ public class ActivityItemProvider extends ItemProviderAdapter implements IEditin
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(SpecPackage.Literals.ACTIVITY__START);
-			childrenFeatures.add(SpecPackage.Literals.ACTIVITY__NESTED_ACTIVITY);
+			childrenFeatures.add(SpecPackage.Literals.ACTIVITY__NESTED_ACTIVITIES);
 			childrenFeatures.add(SpecPackage.Literals.ACTIVITY__TASKS);
 			childrenFeatures.add(SpecPackage.Literals.ACTIVITY__DIVERGENCES);
+			childrenFeatures.add(SpecPackage.Literals.ACTIVITY__CONVERGENCES);
+			childrenFeatures.add(SpecPackage.Literals.ACTIVITY__CONDITIONAL_DIVERGENCES);
 		}
 		return childrenFeatures;
 	}
@@ -190,14 +147,12 @@ public class ActivityItemProvider extends ItemProviderAdapter implements IEditin
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Activity.class)) {
-		case SpecPackage.ACTIVITY__NAME:
-		case SpecPackage.ACTIVITY__ID:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
 		case SpecPackage.ACTIVITY__START:
-		case SpecPackage.ACTIVITY__NESTED_ACTIVITY:
+		case SpecPackage.ACTIVITY__NESTED_ACTIVITIES:
 		case SpecPackage.ACTIVITY__TASKS:
 		case SpecPackage.ACTIVITY__DIVERGENCES:
+		case SpecPackage.ACTIVITY__CONVERGENCES:
+		case SpecPackage.ACTIVITY__CONDITIONAL_DIVERGENCES:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -218,8 +173,11 @@ public class ActivityItemProvider extends ItemProviderAdapter implements IEditin
 		newChildDescriptors
 				.add(createChildParameter(SpecPackage.Literals.ACTIVITY__START, SpecFactory.eINSTANCE.createStart()));
 
-		newChildDescriptors.add(createChildParameter(SpecPackage.Literals.ACTIVITY__NESTED_ACTIVITY,
+		newChildDescriptors.add(createChildParameter(SpecPackage.Literals.ACTIVITY__NESTED_ACTIVITIES,
 				SpecFactory.eINSTANCE.createActivity()));
+
+		newChildDescriptors.add(
+				createChildParameter(SpecPackage.Literals.ACTIVITY__TASKS, SpecFactory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add(
 				createChildParameter(SpecPackage.Literals.ACTIVITY__TASKS, SpecFactory.eINSTANCE.createExternalTask()));
@@ -232,17 +190,38 @@ public class ActivityItemProvider extends ItemProviderAdapter implements IEditin
 
 		newChildDescriptors.add(createChildParameter(SpecPackage.Literals.ACTIVITY__DIVERGENCES,
 				SpecFactory.eINSTANCE.createParallelSplit()));
+
+		newChildDescriptors.add(createChildParameter(SpecPackage.Literals.ACTIVITY__CONVERGENCES,
+				SpecFactory.eINSTANCE.createSynchronization()));
+
+		newChildDescriptors.add(createChildParameter(SpecPackage.Literals.ACTIVITY__CONVERGENCES,
+				SpecFactory.eINSTANCE.createSimpleMerge()));
+
+		newChildDescriptors.add(createChildParameter(SpecPackage.Literals.ACTIVITY__CONDITIONAL_DIVERGENCES,
+				SpecFactory.eINSTANCE.createMultiChoice()));
 	}
 
 	/**
-	 * Return the resource locator for this item provider's resources.
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public ResourceLocator getResourceLocator() {
-		return EKumiEditPlugin.INSTANCE;
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify = childFeature == SpecPackage.Literals.TASK__INPUTS
+				|| childFeature == SpecPackage.Literals.TASK__OUTPUTS
+				|| childFeature == SpecPackage.Literals.ACTIVITY__NESTED_ACTIVITIES
+				|| childFeature == SpecPackage.Literals.ACTIVITY__TASKS;
+
+		if (qualify) {
+			return getString("_UI_CreateChild_text2",
+					new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

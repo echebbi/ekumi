@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.ExternalTaskImpl#getLanguageId <em>Language Id</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.ExternalTaskImpl#getScriptId <em>Script Id</em>}</li>
  * </ul>
  *
  * @generated
@@ -33,7 +34,7 @@ public class ExternalTaskImpl extends TaskImpl implements ExternalTask {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String LANGUAGE_ID_EDEFAULT = null;
+	protected static final String LANGUAGE_ID_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getLanguageId() <em>Language Id</em>}' attribute.
@@ -44,6 +45,26 @@ public class ExternalTaskImpl extends TaskImpl implements ExternalTask {
 	 * @ordered
 	 */
 	protected String languageId = LANGUAGE_ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getScriptId() <em>Script Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getScriptId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SCRIPT_ID_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getScriptId() <em>Script Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getScriptId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String scriptId = SCRIPT_ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,11 +112,35 @@ public class ExternalTaskImpl extends TaskImpl implements ExternalTask {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getScriptId() {
+		return scriptId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setScriptId(String newScriptId) {
+		String oldScriptId = scriptId;
+		scriptId = newScriptId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXTERNAL_TASK__SCRIPT_ID, oldScriptId,
+					scriptId));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case SpecPackage.EXTERNAL_TASK__LANGUAGE_ID:
 			return getLanguageId();
+		case SpecPackage.EXTERNAL_TASK__SCRIPT_ID:
+			return getScriptId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -110,6 +155,9 @@ public class ExternalTaskImpl extends TaskImpl implements ExternalTask {
 		switch (featureID) {
 		case SpecPackage.EXTERNAL_TASK__LANGUAGE_ID:
 			setLanguageId((String) newValue);
+			return;
+		case SpecPackage.EXTERNAL_TASK__SCRIPT_ID:
+			setScriptId((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -126,6 +174,9 @@ public class ExternalTaskImpl extends TaskImpl implements ExternalTask {
 		case SpecPackage.EXTERNAL_TASK__LANGUAGE_ID:
 			setLanguageId(LANGUAGE_ID_EDEFAULT);
 			return;
+		case SpecPackage.EXTERNAL_TASK__SCRIPT_ID:
+			setScriptId(SCRIPT_ID_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -140,6 +191,8 @@ public class ExternalTaskImpl extends TaskImpl implements ExternalTask {
 		switch (featureID) {
 		case SpecPackage.EXTERNAL_TASK__LANGUAGE_ID:
 			return LANGUAGE_ID_EDEFAULT == null ? languageId != null : !LANGUAGE_ID_EDEFAULT.equals(languageId);
+		case SpecPackage.EXTERNAL_TASK__SCRIPT_ID:
+			return SCRIPT_ID_EDEFAULT == null ? scriptId != null : !SCRIPT_ID_EDEFAULT.equals(scriptId);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -157,6 +210,8 @@ public class ExternalTaskImpl extends TaskImpl implements ExternalTask {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (languageId: ");
 		result.append(languageId);
+		result.append(", scriptId: ");
+		result.append(scriptId);
 		result.append(')');
 		return result.toString();
 	}

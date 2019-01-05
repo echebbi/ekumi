@@ -2,9 +2,9 @@
  */
 package fr.kazejiyu.ekumi.model.spec.impl;
 
-import fr.kazejiyu.ekumi.model.spec.Node;
 import fr.kazejiyu.ekumi.model.spec.SpecPackage;
 import fr.kazejiyu.ekumi.model.spec.Start;
+import fr.kazejiyu.ekumi.model.spec.StartingNode;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,7 +26,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class StartImpl extends MinimalEObjectImpl.Container implements Start {
+public class StartImpl extends NodeImpl implements Start {
 	/**
 	 * The cached value of the '{@link #getNode() <em>Node</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -36,7 +35,7 @@ public class StartImpl extends MinimalEObjectImpl.Container implements Start {
 	 * @generated
 	 * @ordered
 	 */
-	protected Node node;
+	protected StartingNode node;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -62,10 +61,10 @@ public class StartImpl extends MinimalEObjectImpl.Container implements Start {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Node getNode() {
+	public StartingNode getNode() {
 		if (node != null && node.eIsProxy()) {
 			InternalEObject oldNode = (InternalEObject) node;
-			node = (Node) eResolveProxy(oldNode);
+			node = (StartingNode) eResolveProxy(oldNode);
 			if (node != oldNode) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SpecPackage.START__NODE, oldNode, node));
@@ -79,7 +78,7 @@ public class StartImpl extends MinimalEObjectImpl.Container implements Start {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Node basicGetNode() {
+	public StartingNode basicGetNode() {
 		return node;
 	}
 
@@ -88,8 +87,8 @@ public class StartImpl extends MinimalEObjectImpl.Container implements Start {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNode(Node newNode) {
-		Node oldNode = node;
+	public void setNode(StartingNode newNode) {
+		StartingNode oldNode = node;
 		node = newNode;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.START__NODE, oldNode, node));
@@ -120,7 +119,7 @@ public class StartImpl extends MinimalEObjectImpl.Container implements Start {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case SpecPackage.START__NODE:
-			setNode((Node) newValue);
+			setNode((StartingNode) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -135,7 +134,7 @@ public class StartImpl extends MinimalEObjectImpl.Container implements Start {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case SpecPackage.START__NODE:
-			setNode((Node) null);
+			setNode((StartingNode) null);
 			return;
 		}
 		super.eUnset(featureID);

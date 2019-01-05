@@ -2,39 +2,65 @@
  */
 package fr.kazejiyu.ekumi.model.spec;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * An element that composes a workflow.
+ * <!-- end-model-doc -->
+ *
  * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getNode()
- * @model interface="true" abstract="true"
+ * @model abstract="true"
  * @generated
  */
 public interface Node extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
-	 * Returns the value of the '<em><b>Predecessor</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.model.spec.Task#getSuccessor <em>Successor</em>}'.
-	 * @return the value of the '<em>Predecessor</em>' reference.
-	 * @see #setPredecessor(Task)
-	 * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getNode_Predecessor()
-	 * @see fr.kazejiyu.ekumi.model.spec.Task#getSuccessor
+	 * Returns the value of the '<em><b>Successors</b></em>' reference list.
+	 * The list contents are of type {@link fr.kazejiyu.ekumi.model.spec.Node}.
+	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.model.spec.Node#getPredecessors <em>Predecessors</em>}'.
+	 * @return the value of the '<em>Successors</em>' reference list.
+	 * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getNode_Successors()
+	 * @see fr.kazejiyu.ekumi.model.spec.Node#getPredecessors
 	 * <!-- end-user-doc -->
-	 * @model opposite="successor"
+	 * @model opposite="predecessors"
 	 * @generated
 	 */
-	Task getPredecessor();
+	EList<Node> getSuccessors();
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.model.spec.Node#getPredecessor <em>Predecessor</em>}' reference.
+	 * Returns the value of the '<em><b>Predecessors</b></em>' reference list.
+	 * The list contents are of type {@link fr.kazejiyu.ekumi.model.spec.Node}.
+	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.model.spec.Node#getSuccessors <em>Successors</em>}'.
+	 * @return the value of the '<em>Predecessors</em>' reference list.
+	 * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getNode_Predecessors()
+	 * @see fr.kazejiyu.ekumi.model.spec.Node#getSuccessors
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Predecessor</em>' reference.
-	 * @see #getPredecessor()
+	 * @model opposite="successors"
 	 * @generated
 	 */
-	void setPredecessor(Task value);
+	EList<Node> getPredecessors();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+	 * @generated
+	 */
+	boolean canPrecede(Node node);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+	 * @generated
+	 */
+	boolean canSucceed(Node node);
 
 } // Node

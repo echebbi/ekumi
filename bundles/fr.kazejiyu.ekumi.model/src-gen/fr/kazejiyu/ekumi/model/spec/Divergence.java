@@ -8,11 +8,15 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * Splits the execution in two or more branches that should be executed concurrently.
+ * <!-- end-model-doc -->
+ *
  * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getDivergence()
  * @model abstract="true"
  * @generated
  */
-public interface Divergence extends Node {
+public interface Divergence extends StartingNode {
 	/**
 	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Convergence</b></em>' containment reference.

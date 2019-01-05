@@ -58,6 +58,18 @@ import fr.kazejiyu.ekumi.model.workflow.Script;
  * @author Emmanuel CHEBBI
  */
 public final class JavaLanguage implements ScriptingLanguage {
+	
+	public static final String ID = "fr.kazejiyu.ekumi.languages.java";
+	
+	@Override
+	public String id() {
+		return ID;
+	}
+	
+	@Override
+	public String name() {
+		return "Java";
+	}
 
 	@Override
 	public Runner resolveRunner(String identifier, Context context) {

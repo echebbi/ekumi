@@ -57,6 +57,8 @@ public class VariableItemProvider extends ItemProviderAdapter implements IEditin
 
 			addNamePropertyDescriptor(object);
 			addTypeIdPropertyDescriptor(object);
+			addValuePropertyDescriptor(object);
+			addIsRequiredPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -91,6 +93,38 @@ public class VariableItemProvider extends ItemProviderAdapter implements IEditin
 								"_UI_Variable_type"),
 						SpecPackage.Literals.VARIABLE__TYPE_ID, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Value feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addValuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Variable_value_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Variable_value_feature",
+								"_UI_Variable_type"),
+						SpecPackage.Literals.VARIABLE__VALUE, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Is Required feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIsRequiredPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Variable_isRequired_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Variable_isRequired_feature",
+								"_UI_Variable_type"),
+						SpecPackage.Literals.VARIABLE__IS_REQUIRED, true, false, false,
+						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -141,6 +175,8 @@ public class VariableItemProvider extends ItemProviderAdapter implements IEditin
 		switch (notification.getFeatureID(Variable.class)) {
 		case SpecPackage.VARIABLE__NAME:
 		case SpecPackage.VARIABLE__TYPE_ID:
+		case SpecPackage.VARIABLE__VALUE:
+		case SpecPackage.VARIABLE__IS_REQUIRED:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

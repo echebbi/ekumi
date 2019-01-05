@@ -58,6 +58,21 @@ public class JavaLanguageTest implements WithAssertions {
 		when(context.execution()).thenReturn(status);
 	}
 	
+	@Test @DisplayName("has a non-empty id")
+	void has_a_non_empty_id() {
+		assertThat(language.id()).isNotBlank();
+	}
+	
+	@Test @DisplayName("has the expected id")
+	void has_the_expected_id() {
+		assertThat(language.id()).isEqualTo(JavaLanguage.ID);
+	}
+	
+	@Test @DisplayName("has a non-empty name")
+	void has_a_non_empty_name() {
+		assertThat(language.name()).isNotBlank();
+	}
+	
 	@Nested @DisplayName("when resolving from a bundle")
 	class WhenResolvingFromABundle {
 	

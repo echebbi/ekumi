@@ -2,8 +2,8 @@
  */
 package fr.kazejiyu.ekumi.model.spec.provider;
 
-import fr.kazejiyu.ekumi.model.spec.Divergence;
-import fr.kazejiyu.ekumi.model.spec.SpecFactory;
+import fr.kazejiyu.ekumi.model.provider.EKumiEditPlugin;
+
 import fr.kazejiyu.ekumi.model.spec.SpecPackage;
 
 import java.util.Collection;
@@ -12,26 +12,32 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
 /**
- * This is the item provider adapter for a {@link fr.kazejiyu.ekumi.model.spec.Divergence} object.
+ * This is the item provider adapter for a {@link fr.kazejiyu.ekumi.model.spec.Node} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class DivergenceItemProvider extends StartingNodeItemProvider {
+public class NodeItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DivergenceItemProvider(AdapterFactory adapterFactory) {
+	public NodeItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -46,54 +52,39 @@ public class DivergenceItemProvider extends StartingNodeItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addRootsPropertyDescriptor(object);
+			addSuccessorsPropertyDescriptor(object);
+			addPredecessorsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Roots feature.
+	 * This adds a property descriptor for the Successors feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addRootsPropertyDescriptor(Object object) {
+	protected void addSuccessorsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Divergence_roots_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Divergence_roots_feature",
-								"_UI_Divergence_type"),
-						SpecPackage.Literals.DIVERGENCE__ROOTS, true, false, true, null, null, null));
+						getResourceLocator(), getString("_UI_Node_successors_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Node_successors_feature", "_UI_Node_type"),
+						SpecPackage.Literals.NODE__SUCCESSORS, true, false, true, null, null, null));
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Predecessors feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(SpecPackage.Literals.DIVERGENCE__CONVERGENCE);
-		}
-		return childrenFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
+	protected void addPredecessorsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Node_predecessors_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Node_predecessors_feature",
+								"_UI_Node_type"),
+						SpecPackage.Literals.NODE__PREDECESSORS, true, false, true, null, null, null));
 	}
 
 	/**
@@ -114,7 +105,7 @@ public class DivergenceItemProvider extends StartingNodeItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Divergence_type");
+		return getString("_UI_Node_type");
 	}
 
 	/**
@@ -127,12 +118,6 @@ public class DivergenceItemProvider extends StartingNodeItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(Divergence.class)) {
-		case SpecPackage.DIVERGENCE__CONVERGENCE:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-			return;
-		}
 		super.notifyChanged(notification);
 	}
 
@@ -146,12 +131,17 @@ public class DivergenceItemProvider extends StartingNodeItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+	}
 
-		newChildDescriptors.add(createChildParameter(SpecPackage.Literals.DIVERGENCE__CONVERGENCE,
-				SpecFactory.eINSTANCE.createSynchronization()));
-
-		newChildDescriptors.add(createChildParameter(SpecPackage.Literals.DIVERGENCE__CONVERGENCE,
-				SpecFactory.eINSTANCE.createSimpleMerge()));
+	/**
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator() {
+		return EKumiEditPlugin.INSTANCE;
 	}
 
 }

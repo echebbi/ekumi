@@ -3,6 +3,8 @@
 package fr.kazejiyu.ekumi.model.spec.impl;
 
 import fr.kazejiyu.ekumi.model.spec.Activity;
+import fr.kazejiyu.ekumi.model.spec.ConditionalDivergence;
+import fr.kazejiyu.ekumi.model.spec.Convergence;
 import fr.kazejiyu.ekumi.model.spec.Divergence;
 import fr.kazejiyu.ekumi.model.spec.SpecPackage;
 import fr.kazejiyu.ekumi.model.spec.Start;
@@ -19,9 +21,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -33,58 +35,18 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.ActivityImpl#getName <em>Name</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.ActivityImpl#getId <em>Id</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.ActivityImpl#getStart <em>Start</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.ActivityImpl#getNestedActivity <em>Nested Activity</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.ActivityImpl#getNestedActivities <em>Nested Activities</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.ActivityImpl#getParentActivity <em>Parent Activity</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.ActivityImpl#getTasks <em>Tasks</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.ActivityImpl#getDivergences <em>Divergences</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.ActivityImpl#getConvergences <em>Convergences</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.model.spec.impl.ActivityImpl#getConditionalDivergences <em>Conditional Divergences</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ActivityImpl extends MinimalEObjectImpl.Container implements Activity {
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getId()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String ID_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getId()
-	 * @generated
-	 * @ordered
-	 */
-	protected String id = ID_EDEFAULT;
-
+public class ActivityImpl extends TaskImpl implements Activity {
 	/**
 	 * The cached value of the '{@link #getStart() <em>Start</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -96,14 +58,14 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 	protected Start start;
 
 	/**
-	 * The cached value of the '{@link #getNestedActivity() <em>Nested Activity</em>}' containment reference.
+	 * The cached value of the '{@link #getNestedActivities() <em>Nested Activities</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNestedActivity()
+	 * @see #getNestedActivities()
 	 * @generated
 	 * @ordered
 	 */
-	protected Activity nestedActivity;
+	protected EList<Activity> nestedActivities;
 
 	/**
 	 * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list.
@@ -126,6 +88,26 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 	protected EList<Divergence> divergences;
 
 	/**
+	 * The cached value of the '{@link #getConvergences() <em>Convergences</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConvergences()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Convergence> convergences;
+
+	/**
+	 * The cached value of the '{@link #getConditionalDivergences() <em>Conditional Divergences</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConditionalDivergences()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ConditionalDivergence> conditionalDivergences;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -142,48 +124,6 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 	@Override
 	protected EClass eStaticClass() {
 		return SpecPackage.Literals.ACTIVITY;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.ACTIVITY__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getId() {
-		return id;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setId(String newId) {
-		String oldId = id;
-		id = newId;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.ACTIVITY__ID, oldId, id));
 	}
 
 	/**
@@ -240,49 +180,12 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Activity getNestedActivity() {
-		return nestedActivity;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetNestedActivity(Activity newNestedActivity, NotificationChain msgs) {
-		Activity oldNestedActivity = nestedActivity;
-		nestedActivity = newNestedActivity;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					SpecPackage.ACTIVITY__NESTED_ACTIVITY, oldNestedActivity, newNestedActivity);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+	public EList<Activity> getNestedActivities() {
+		if (nestedActivities == null) {
+			nestedActivities = new EObjectContainmentWithInverseEList<Activity>(Activity.class, this,
+					SpecPackage.ACTIVITY__NESTED_ACTIVITIES, SpecPackage.ACTIVITY__PARENT_ACTIVITY);
 		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setNestedActivity(Activity newNestedActivity) {
-		if (newNestedActivity != nestedActivity) {
-			NotificationChain msgs = null;
-			if (nestedActivity != null)
-				msgs = ((InternalEObject) nestedActivity).eInverseRemove(this, SpecPackage.ACTIVITY__PARENT_ACTIVITY,
-						Activity.class, msgs);
-			if (newNestedActivity != null)
-				msgs = ((InternalEObject) newNestedActivity).eInverseAdd(this, SpecPackage.ACTIVITY__PARENT_ACTIVITY,
-						Activity.class, msgs);
-			msgs = basicSetNestedActivity(newNestedActivity, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.ACTIVITY__NESTED_ACTIVITY,
-					newNestedActivity, newNestedActivity));
+		return nestedActivities;
 	}
 
 	/**
@@ -320,7 +223,7 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newParentActivity != null)
-				msgs = ((InternalEObject) newParentActivity).eInverseAdd(this, SpecPackage.ACTIVITY__NESTED_ACTIVITY,
+				msgs = ((InternalEObject) newParentActivity).eInverseAdd(this, SpecPackage.ACTIVITY__NESTED_ACTIVITIES,
 						Activity.class, msgs);
 			msgs = basicSetParentActivity(newParentActivity, msgs);
 			if (msgs != null)
@@ -360,14 +263,38 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Convergence> getConvergences() {
+		if (convergences == null) {
+			convergences = new EObjectContainmentEList<Convergence>(Convergence.class, this,
+					SpecPackage.ACTIVITY__CONVERGENCES);
+		}
+		return convergences;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<ConditionalDivergence> getConditionalDivergences() {
+		if (conditionalDivergences == null) {
+			conditionalDivergences = new EObjectContainmentEList<ConditionalDivergence>(ConditionalDivergence.class,
+					this, SpecPackage.ACTIVITY__CONDITIONAL_DIVERGENCES);
+		}
+		return conditionalDivergences;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case SpecPackage.ACTIVITY__NESTED_ACTIVITY:
-			if (nestedActivity != null)
-				msgs = ((InternalEObject) nestedActivity).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - SpecPackage.ACTIVITY__NESTED_ACTIVITY, null, msgs);
-			return basicSetNestedActivity((Activity) otherEnd, msgs);
+		case SpecPackage.ACTIVITY__NESTED_ACTIVITIES:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getNestedActivities()).basicAdd(otherEnd, msgs);
 		case SpecPackage.ACTIVITY__PARENT_ACTIVITY:
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
@@ -386,14 +313,18 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 		switch (featureID) {
 		case SpecPackage.ACTIVITY__START:
 			return basicSetStart(null, msgs);
-		case SpecPackage.ACTIVITY__NESTED_ACTIVITY:
-			return basicSetNestedActivity(null, msgs);
+		case SpecPackage.ACTIVITY__NESTED_ACTIVITIES:
+			return ((InternalEList<?>) getNestedActivities()).basicRemove(otherEnd, msgs);
 		case SpecPackage.ACTIVITY__PARENT_ACTIVITY:
 			return basicSetParentActivity(null, msgs);
 		case SpecPackage.ACTIVITY__TASKS:
 			return ((InternalEList<?>) getTasks()).basicRemove(otherEnd, msgs);
 		case SpecPackage.ACTIVITY__DIVERGENCES:
 			return ((InternalEList<?>) getDivergences()).basicRemove(otherEnd, msgs);
+		case SpecPackage.ACTIVITY__CONVERGENCES:
+			return ((InternalEList<?>) getConvergences()).basicRemove(otherEnd, msgs);
+		case SpecPackage.ACTIVITY__CONDITIONAL_DIVERGENCES:
+			return ((InternalEList<?>) getConditionalDivergences()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -407,7 +338,7 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 		case SpecPackage.ACTIVITY__PARENT_ACTIVITY:
-			return eInternalContainer().eInverseRemove(this, SpecPackage.ACTIVITY__NESTED_ACTIVITY, Activity.class,
+			return eInternalContainer().eInverseRemove(this, SpecPackage.ACTIVITY__NESTED_ACTIVITIES, Activity.class,
 					msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
@@ -421,20 +352,20 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case SpecPackage.ACTIVITY__NAME:
-			return getName();
-		case SpecPackage.ACTIVITY__ID:
-			return getId();
 		case SpecPackage.ACTIVITY__START:
 			return getStart();
-		case SpecPackage.ACTIVITY__NESTED_ACTIVITY:
-			return getNestedActivity();
+		case SpecPackage.ACTIVITY__NESTED_ACTIVITIES:
+			return getNestedActivities();
 		case SpecPackage.ACTIVITY__PARENT_ACTIVITY:
 			return getParentActivity();
 		case SpecPackage.ACTIVITY__TASKS:
 			return getTasks();
 		case SpecPackage.ACTIVITY__DIVERGENCES:
 			return getDivergences();
+		case SpecPackage.ACTIVITY__CONVERGENCES:
+			return getConvergences();
+		case SpecPackage.ACTIVITY__CONDITIONAL_DIVERGENCES:
+			return getConditionalDivergences();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -448,17 +379,12 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case SpecPackage.ACTIVITY__NAME:
-			setName((String) newValue);
-			return;
-		case SpecPackage.ACTIVITY__ID:
-			setId((String) newValue);
-			return;
 		case SpecPackage.ACTIVITY__START:
 			setStart((Start) newValue);
 			return;
-		case SpecPackage.ACTIVITY__NESTED_ACTIVITY:
-			setNestedActivity((Activity) newValue);
+		case SpecPackage.ACTIVITY__NESTED_ACTIVITIES:
+			getNestedActivities().clear();
+			getNestedActivities().addAll((Collection<? extends Activity>) newValue);
 			return;
 		case SpecPackage.ACTIVITY__PARENT_ACTIVITY:
 			setParentActivity((Activity) newValue);
@@ -470,6 +396,14 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 		case SpecPackage.ACTIVITY__DIVERGENCES:
 			getDivergences().clear();
 			getDivergences().addAll((Collection<? extends Divergence>) newValue);
+			return;
+		case SpecPackage.ACTIVITY__CONVERGENCES:
+			getConvergences().clear();
+			getConvergences().addAll((Collection<? extends Convergence>) newValue);
+			return;
+		case SpecPackage.ACTIVITY__CONDITIONAL_DIVERGENCES:
+			getConditionalDivergences().clear();
+			getConditionalDivergences().addAll((Collection<? extends ConditionalDivergence>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -483,17 +417,11 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case SpecPackage.ACTIVITY__NAME:
-			setName(NAME_EDEFAULT);
-			return;
-		case SpecPackage.ACTIVITY__ID:
-			setId(ID_EDEFAULT);
-			return;
 		case SpecPackage.ACTIVITY__START:
 			setStart((Start) null);
 			return;
-		case SpecPackage.ACTIVITY__NESTED_ACTIVITY:
-			setNestedActivity((Activity) null);
+		case SpecPackage.ACTIVITY__NESTED_ACTIVITIES:
+			getNestedActivities().clear();
 			return;
 		case SpecPackage.ACTIVITY__PARENT_ACTIVITY:
 			setParentActivity((Activity) null);
@@ -503,6 +431,12 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 			return;
 		case SpecPackage.ACTIVITY__DIVERGENCES:
 			getDivergences().clear();
+			return;
+		case SpecPackage.ACTIVITY__CONVERGENCES:
+			getConvergences().clear();
+			return;
+		case SpecPackage.ACTIVITY__CONDITIONAL_DIVERGENCES:
+			getConditionalDivergences().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -516,41 +450,22 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case SpecPackage.ACTIVITY__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-		case SpecPackage.ACTIVITY__ID:
-			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		case SpecPackage.ACTIVITY__START:
 			return start != null;
-		case SpecPackage.ACTIVITY__NESTED_ACTIVITY:
-			return nestedActivity != null;
+		case SpecPackage.ACTIVITY__NESTED_ACTIVITIES:
+			return nestedActivities != null && !nestedActivities.isEmpty();
 		case SpecPackage.ACTIVITY__PARENT_ACTIVITY:
 			return getParentActivity() != null;
 		case SpecPackage.ACTIVITY__TASKS:
 			return tasks != null && !tasks.isEmpty();
 		case SpecPackage.ACTIVITY__DIVERGENCES:
 			return divergences != null && !divergences.isEmpty();
+		case SpecPackage.ACTIVITY__CONVERGENCES:
+			return convergences != null && !convergences.isEmpty();
+		case SpecPackage.ACTIVITY__CONDITIONAL_DIVERGENCES:
+			return conditionalDivergences != null && !conditionalDivergences.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(", id: ");
-		result.append(id);
-		result.append(')');
-		return result.toString();
 	}
 
 } //ActivityImpl

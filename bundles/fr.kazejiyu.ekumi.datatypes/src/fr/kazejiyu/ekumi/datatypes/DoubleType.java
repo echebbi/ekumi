@@ -5,7 +5,15 @@ import static java.lang.Double.parseDouble;
 import fr.kazejiyu.ekumi.model.datatypes.DataType;
 import fr.kazejiyu.ekumi.model.datatypes.exceptions.DataTypeUnserializationException;
 
+/**
+ * An EKumi {@link DataType datatype} corresponding to the Java {@link Double} class.
+ */
 public class DoubleType implements DataType<Double> {
+	
+	@Override
+	public String getId() {
+		return "fr.kazejiyu.ekumi.datatypes.double";
+	}
 
 	@Override
 	public String getName() {
@@ -36,5 +44,20 @@ public class DoubleType implements DataType<Double> {
 			throw new DataTypeUnserializationException("Unable to create a Double from the representation: \"" + representation + "\"", e);
 		}
 	}
-
+	
+	@Override
+	public String toString() {
+		return "Double Type";
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		return other instanceof DoubleType;
+	}
+	
+	@Override
+	public int hashCode() {
+		return getClass().hashCode();
+	}
+	
 }

@@ -7,22 +7,23 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
- * This is the item provider adapter for a {@link fr.kazejiyu.ekumi.model.spec.ConditionalDivergence} object.
+ * This is the item provider adapter for a {@link fr.kazejiyu.ekumi.model.spec.StartingNode} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ConditionalDivergenceItemProvider extends StartingNodeItemProvider {
+public class StartingNodeItemProvider extends NodeItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConditionalDivergenceItemProvider(AdapterFactory adapterFactory) {
+	public StartingNodeItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -59,7 +60,7 @@ public class ConditionalDivergenceItemProvider extends StartingNodeItemProvider 
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_ConditionalDivergence_type");
+		return getString("_UI_StartingNode_type");
 	}
 
 	/**

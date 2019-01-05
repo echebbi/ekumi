@@ -4,8 +4,6 @@ package fr.kazejiyu.ekumi.model.spec;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
@@ -14,51 +12,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Activity extends EObject {
-	/**
-	 * <!-- begin-user-doc -->
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getActivity_Name()
-	 * <!-- end-user-doc -->
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
-	 * @generated
-	 */
-	String getName();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.model.spec.Activity#getName <em>Name</em>}' attribute.
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(String value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * Returns the value of the '<em><b>Id</b></em>' attribute.
-	 * @return the value of the '<em>Id</em>' attribute.
-	 * @see #setId(String)
-	 * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getActivity_Id()
-	 * <!-- end-user-doc -->
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
-	 * @generated
-	 */
-	String getId();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.model.spec.Activity#getId <em>Id</em>}' attribute.
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Id</em>' attribute.
-	 * @see #getId()
-	 * @generated
-	 */
-	void setId(String value);
-
+public interface Activity extends Task {
 	/**
 	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Start</b></em>' containment reference.
@@ -83,38 +37,28 @@ public interface Activity extends EObject {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * Returns the value of the '<em><b>Nested Activity</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Nested Activities</b></em>' containment reference list.
+	 * The list contents are of type {@link fr.kazejiyu.ekumi.model.spec.Activity}.
 	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.model.spec.Activity#getParentActivity <em>Parent Activity</em>}'.
-	 * @return the value of the '<em>Nested Activity</em>' containment reference.
-	 * @see #setNestedActivity(Activity)
-	 * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getActivity_NestedActivity()
+	 * @return the value of the '<em>Nested Activities</em>' containment reference list.
+	 * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getActivity_NestedActivities()
 	 * @see fr.kazejiyu.ekumi.model.spec.Activity#getParentActivity
 	 * <!-- end-user-doc -->
 	 * @model opposite="parentActivity" containment="true"
 	 * @generated
 	 */
-	Activity getNestedActivity();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * Sets the value of the '{@link fr.kazejiyu.ekumi.model.spec.Activity#getNestedActivity <em>Nested Activity</em>}' containment reference.
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Nested Activity</em>' containment reference.
-	 * @see #getNestedActivity()
-	 * @generated
-	 */
-	void setNestedActivity(Activity value);
+	EList<Activity> getNestedActivities();
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * Returns the value of the '<em><b>Parent Activity</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.model.spec.Activity#getNestedActivity <em>Nested Activity</em>}'.
+	 * It is bidirectional and its opposite is '{@link fr.kazejiyu.ekumi.model.spec.Activity#getNestedActivities <em>Nested Activities</em>}'.
 	 * @return the value of the '<em>Parent Activity</em>' container reference.
 	 * @see #setParentActivity(Activity)
 	 * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getActivity_ParentActivity()
-	 * @see fr.kazejiyu.ekumi.model.spec.Activity#getNestedActivity
+	 * @see fr.kazejiyu.ekumi.model.spec.Activity#getNestedActivities
 	 * <!-- end-user-doc -->
-	 * @model opposite="nestedActivity" transient="false"
+	 * @model opposite="nestedActivities" transient="false"
 	 * @generated
 	 */
 	Activity getParentActivity();
@@ -152,5 +96,29 @@ public interface Activity extends EObject {
 	 * @generated
 	 */
 	EList<Divergence> getDivergences();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Convergences</b></em>' containment reference list.
+	 * The list contents are of type {@link fr.kazejiyu.ekumi.model.spec.Convergence}.
+	 * @return the value of the '<em>Convergences</em>' containment reference list.
+	 * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getActivity_Convergences()
+	 * <!-- end-user-doc -->
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Convergence> getConvergences();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Conditional Divergences</b></em>' containment reference list.
+	 * The list contents are of type {@link fr.kazejiyu.ekumi.model.spec.ConditionalDivergence}.
+	 * @return the value of the '<em>Conditional Divergences</em>' containment reference list.
+	 * @see fr.kazejiyu.ekumi.model.spec.SpecPackage#getActivity_ConditionalDivergences()
+	 * <!-- end-user-doc -->
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ConditionalDivergence> getConditionalDivergences();
 
 } // Activity
