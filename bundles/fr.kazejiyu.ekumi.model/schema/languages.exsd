@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="fr.kazejiyu.ekumi.core" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="fr.kazejiyu.ekumi.model" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="fr.kazejiyu.ekumi.core" id="languages" name="Languages"/>
+         <meta.schema plugin="fr.kazejiyu.ekumi.model" id="languages" name="Languages"/>
       </appinfo>
       <documentation>
          Used to define a new programming language that can then be used to implement a task&apos;s behavior.
@@ -64,7 +64,7 @@ A programming language is represented by an instance of ScriptingLanguage, which
                   The class that defines the new scripting language.
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":fr.kazejiyu.ekumi.core.languages.ScriptingLanguage"/>
+                  <meta.attribute kind="java" basedOn=":fr.kazejiyu.ekumi.model.languages.ScriptingLanguage"/>
                </appinfo>
             </annotation>
          </attribute>

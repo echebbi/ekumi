@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="fr.kazejiyu.ekumi.core" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="fr.kazejiyu.ekumi.model" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="fr.kazejiyu.ekumi.core" id="datatypes" name="DataTypes"/>
+         <meta.schema plugin="fr.kazejiyu.ekumi.model" id="datatypes" name="DataTypes"/>
       </appinfo>
       <documentation>
          Used to define new types of data. A data can be either inputs or outputs.
@@ -62,7 +62,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":fr.kazejiyu.ekumi.core.datatypes.DataType"/>
+                  <meta.attribute kind="java" basedOn=":fr.kazejiyu.ekumi.model.datatypes.DataType"/>
                </appinfo>
             </annotation>
          </attribute>

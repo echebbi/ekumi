@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="fr.kazejiyu.ekumi.core" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="fr.kazejiyu.ekumi.model" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="fr.kazejiyu.ekumi.core" id="catalogs" name="Catalogs"/>
+         <meta.schema plugin="fr.kazejiyu.ekumi.model" id="catalogs" name="Catalogs"/>
       </appinfo>
       <documentation>
          Used to define new catalogs, which are a way to bundle and organize templates of Activities.
@@ -83,7 +83,7 @@ A Catalog makes easier to share and reuse Activities.
 Typically, in a tree view, a sub-category would be displayed as a child of the parent category.
                </documentation>
                <appinfo>
-                  <meta.attribute kind="identifier" basedOn="fr.kazejiyu.ekumi.core.catalogs/category/@id,fr.kazejiyu.ekumi.core.catalogs/catalog/@id"/>
+                  <meta.attribute kind="identifier" basedOn="fr.kazejiyu.ekumi.model.catalogs/category/@id,fr.kazejiyu.ekumi.model.catalogs/catalog/@id"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -172,7 +172,7 @@ Such a model file likely ends with &apos;.ekumi&apos; and is located in the &apo
                   Id of the category to which the Activity belongs.
                </documentation>
                <appinfo>
-                  <meta.attribute kind="identifier" basedOn="fr.kazejiyu.ekumi.core.catalogs/category/@id"/>
+                  <meta.attribute kind="identifier" basedOn="fr.kazejiyu.ekumi.model.catalogs/category/@id"/>
                </appinfo>
             </annotation>
          </attribute>
