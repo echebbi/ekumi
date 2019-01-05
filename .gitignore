@@ -28,6 +28,7 @@ hs_err_pid*
 
 # Maven
 target/
+.polyglot.build.properties
 
 # Folder used during tests
 /tests/fr.kazejiyu.ekumi.ide.test/rsc/PersistExecutionTest
