@@ -1,5 +1,10 @@
 language: java
 
+# Allows UI tests
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+
 script: mvn clean verify -Pjacoco
 
 after_success:
