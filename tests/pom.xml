@@ -13,6 +13,11 @@
 	
 	<description>EKumi's tests.</description>
 
+    <properties>
+        <sonar.sources></sonar.sources>
+        <sonar.tests>src</sonar.tests>
+    </properties>
+
 	<modules>
         <!-- Common test plug-ins -->
         <module>org.assertj</module>
@@ -25,7 +30,6 @@
         <module>fr.kazejiyu.ekumi.languages.java.test</module>
         <module>fr.kazejiyu.ekumi.workflow.editor.design.test</module>
 	</modules>
-    
     
     <build>
         <plugins>

@@ -1,11 +1,26 @@
 language: java
 
+addons:
+  sonarcloud:
+    organization: "kazejiyu-github"
+    
+# Prevents "mvn install" default step
+install: true
+
 # Allows UI tests
 before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
+  - git fetch --unshallow
+  # Prevent installed packages from being used during build
+  - rm -rfv "$HOME/.m2/repository/fr/kazejiyu/ekumi/"
 
-script: mvn clean verify -Pjacoco
+script: mvn clean verify -P jacoco sonar:sonar
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+
+# Keep p2 information
+cache:
+   directories:
+     - "$HOME/.m2/repository"
