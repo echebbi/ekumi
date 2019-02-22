@@ -8,7 +8,7 @@
 	<packaging>pom</packaging>
 	
 	<name>EKumi</name>
-	<description>Workflow mangement system for Eclipse IDE</description>
+	<description>Workflow management system for Eclipse IDE</description>
 
 	<modules>
 		<module>bundles</module>
@@ -25,6 +25,19 @@
 		<acceleo-version>3.3.0</acceleo-version>
 		<tycho-version>1.2.0</tycho-version>
 		<jacoco-version>0.8.1</jacoco-version>
+
+        <!-- Always refer to the corresponding tests project (if it exists) otherwise 
+        Sonarqube won't be able to collect code coverage. For example, when analyzing 
+        project foo it wouldn't find code coverage information if it doesn't use 
+        foo.tests jacoco.exec. -->
+        <sonar.jacoco.reportPaths>../../tests/${project.artifactId}.test/target/jacoco.exec</sonar.jacoco.reportPaths>
+        
+		<!-- Ignore :
+				- generated source code,
+				- Exceptions,
+				- untestable activators
+		-->
+        <sonar.exclusions>**/src-gen/**/*.*,**/*Exception.java,**/Activator.java,**/EKumiPlugin.java</sonar.exclusions>
 	</properties>
 
 	<!-- COMMANDS:	
