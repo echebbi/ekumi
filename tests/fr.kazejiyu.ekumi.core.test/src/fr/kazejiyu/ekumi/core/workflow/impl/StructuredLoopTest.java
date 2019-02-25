@@ -2,8 +2,8 @@ package fr.kazejiyu.ekumi.core.workflow.impl;
 
 import static fr.kazejiyu.ekumi.model.workflow.Status.FAILED;
 import static fr.kazejiyu.ekumi.model.workflow.Status.SUCCEEDED;
-import static org.assertj.core.api.Assertions.assertThat;
 
+import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -25,7 +25,7 @@ import fr.kazejiyu.ekumi.tests.common.fake.activities.Until;
  * @author Emmanuel CHEBBI
  */
 @DisplayName("A Structured Loop")
-public class StructuredLoopTest {
+public class StructuredLoopTest implements WithAssertions {
 	
 	@Mock
 	private Context context;
@@ -97,7 +97,7 @@ public class StructuredLoopTest {
 		
 		@Test @DisplayName("do not throw when run")
 		void do_not_throw_when_run() {
-			corrupted.run(context);
+			assertThatCode(() -> corrupted.run(context)).doesNotThrowAnyException();
 		}
 		
 		@Test @DisplayName("has 'failed' status after run")

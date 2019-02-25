@@ -43,7 +43,7 @@ public class PersistedHistory extends HistoryImpl {
 	
 	@Override
 	public EList<Execution> getExecutions() {
-		// TODO [Refactor] This is a dumb implementation to test, will be refactored
+		// TODO [Refactor] This is a dumb implementation to test, should be optimized
 		return new BasicEList<>(
 			Arrays.stream(executionFolders())
 			      .flatMap(file -> Arrays.stream(file.listFiles(f -> f.getName().endsWith(".workflow"))))

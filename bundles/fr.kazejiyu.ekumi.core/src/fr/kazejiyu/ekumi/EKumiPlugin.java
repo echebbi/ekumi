@@ -101,6 +101,18 @@ public class EKumiPlugin extends Plugin {
 	}
 	
 	/**
+	 * Logs a message for warning the user providing an additional stack trace.
+	 * 
+	 * @param t
+	 * 			The throwable that causes the warning.
+	 * @param message
+	 * 			The message to log.
+	 */
+	public static void warn(Throwable t, String message) {
+		getDefault().getLog().log(new Status(IStatus.WARNING, ID, message, t));
+	}
+	
+	/**
 	 * Logs an error.
 	 * 
 	 * @param message

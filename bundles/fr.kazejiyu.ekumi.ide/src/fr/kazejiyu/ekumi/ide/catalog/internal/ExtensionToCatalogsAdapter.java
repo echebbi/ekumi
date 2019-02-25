@@ -76,7 +76,7 @@ class ExtensionToCatalogsAdapter {
 	private Set<Catalog> catalogElementsIn(List<IConfigurationElement> configurationElements) {
 		return configurationElements.stream()
 									.filter(constraints::isAValidCatalogElement)
-									.map(this::createCatalogFromExtension)
+									.map(conf -> createCatalogFrom(conf))
 									.collect(toSetUsingIdsToCompare());
 	}
 	
@@ -171,7 +171,7 @@ class ExtensionToCatalogsAdapter {
 	}
 	
 	/** @return a new Catalog instance corresponding to the given configuration element */
-	private Catalog createCatalogFromExtension(IConfigurationElement configurationElement) {
+	private static Catalog createCatalogFrom(IConfigurationElement configurationElement) {
 		Catalog catalog = CatalogFactory.eINSTANCE.createCatalog();
 		
 		catalog.setId(configurationElement.getAttribute("id"));

@@ -159,7 +159,7 @@ public class WorkspaceEKumiProject implements EKumiProject {
 	 * 
 	 * @throws CoreException
 	 */
-	private void createRepresentation(Activity model, IProject project, IProgressMonitor monitor) throws CoreException {
+	private static void createRepresentation(Activity model, IProject project, IProgressMonitor monitor) throws CoreException {
 		// Create a new Sirius session to handle the representation
 		Session session = ModelingProject.asModelingProject(project).get().getSession();
 		

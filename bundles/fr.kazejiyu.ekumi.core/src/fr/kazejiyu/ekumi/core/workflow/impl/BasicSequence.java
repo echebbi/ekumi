@@ -39,7 +39,19 @@ public class BasicSequence extends SequenceImpl {
 		setStatus(oneActivityHasFailed ? FAILED : SUCCEEDED);
 	}
 	
-	private boolean runSafely(Activity activity, Context context) {
+	/**
+	 * Runs an activity and catch any exception that may be thrown.
+	 * 
+	 * @param activity
+	 * 			The activity to run.
+	 * @param context
+	 * 			The context of the execution.
+	 * 
+	 * @return whether the activity has been run successfully. false
+	 * 		   if an exception has been thrown or if the status of
+	 * 		   the activity is not SUCCEEDED.
+	 */
+	private static boolean runSafely(Activity activity, Context context) {
 		try {
 			activity.getFlows().resolveInputs();
 			activity.run(context);

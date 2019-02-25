@@ -74,7 +74,7 @@ public class BasicDriverTest implements WithAssertions {
 		
 		@Test @DisplayName("runs without throwing")
 		void runs_without_throwing() {
-			driver.run(context);
+			assertThatCode(() -> driver.run(context)).doesNotThrowAnyException();
 		}
 		
 		@Test @DisplayName("has the status FAILED after a run")

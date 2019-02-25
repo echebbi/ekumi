@@ -4,7 +4,7 @@
    <extension
          point="org.eclipse.debug.ui.launchShortcuts">
       <shortcut
-            class="fr.kazejiyu.ekumi.launchconfiguration.ui.LaunchWorkflowShortcut"
+            class="fr.kazejiyu.ekumi.debug.ui.LaunchWorkflowShortcut"
             description="Run an EKumi Workflow"
             id="fr.kazejiyu.ekumi.launchConfiguration.ui.launchConfigurationType.shortcut"
             label="Workflow"
@@ -34,7 +34,7 @@
    <extension
          point="org.eclipse.debug.ui.launchConfigurationTabGroups">
       <launchConfigurationTabGroup
-            class="fr.kazejiyu.ekumi.launchconfiguration.ui.form.EkumiTabGroup"
+            class="fr.kazejiyu.ekumi.debug.ui.form.EkumiTabGroup"
             description="Executes a workflow."
             id="fr.kazejiyu.ekumi.launchConfiguration.ui.launchConfigurationType.tabGroup"
             type="fr.kazejiyu.ekumi.launchConfiguration.launchConfigurationType">

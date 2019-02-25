@@ -56,11 +56,11 @@ public class StatusToEventAdapter extends EContentAdapter {
 			events.hasFailed(activity);
 	}
 
-	private boolean relatedToAStatusChange(Notification notification) {
+	private static boolean relatedToAStatusChange(Notification notification) {
 		return notification.getFeature().equals(WorkflowPackage.Literals.HAS_STATUS__STATUS);
 	}
 	
-	private boolean oldAndNewValueAreEqual(Notification notification) {
+	private static boolean oldAndNewValueAreEqual(Notification notification) {
 		return Objects.equals(notification.getNewValue(), notification.getOldValue());
 	}
 	

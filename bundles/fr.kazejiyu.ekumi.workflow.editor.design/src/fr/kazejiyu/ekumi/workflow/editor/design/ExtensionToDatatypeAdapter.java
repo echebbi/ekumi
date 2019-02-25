@@ -43,13 +43,13 @@ class ExtensionToDatatypeAdapter {
 									.collect(toList());
 	}
 	
-	private Function<IConfigurationElement, DataType<?>> toDataType() {
+	private static Function<IConfigurationElement, DataType<?>> toDataType() {
 		return conf -> {
 			try {
 				return (DataType<?>) conf.createExecutableExtension("class");
 				
 			} catch (CoreException e) {
-				EKumiPlugin.warn("An error occured while creating an executable extension of property 'class' for configuration: " + conf);
+				EKumiPlugin.warn(e, "An error occured while creating an executable extension of property 'class' for configuration: " + conf);
 				return null;
 			}
 		};

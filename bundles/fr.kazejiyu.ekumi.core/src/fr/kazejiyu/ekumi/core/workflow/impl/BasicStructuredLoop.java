@@ -25,7 +25,6 @@ public class BasicStructuredLoop extends StructuredLoopImpl {
 				getActivity().run(context);
 			}
 			catch (Exception e) {
-				// TODO broadcast exception somehow
 				encounteredErrors = true;
 			}
 			

@@ -43,13 +43,13 @@ class ExtensionToScriptingLanguageAdapter {
 									.collect(toList());
 	}
 	
-	private Function<IConfigurationElement, ScriptingLanguage> toLanguage() {
+	private static Function<IConfigurationElement, ScriptingLanguage> toLanguage() {
 		return conf -> {
 			try {
 				return (ScriptingLanguage) conf.createExecutableExtension("class");
 				
 			} catch (CoreException e) {
-				EKumiPlugin.warn("An error occured while creating an executable extension of property 'class' for configuration: " + conf);
+				EKumiPlugin.warn(e, "An error occured while creating an executable extension of property 'class' for configuration: " + conf);
 				return null;
 			}
 		};

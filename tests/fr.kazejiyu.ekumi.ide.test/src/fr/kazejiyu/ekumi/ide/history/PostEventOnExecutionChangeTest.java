@@ -57,13 +57,13 @@ public class PostEventOnExecutionChangeTest implements WithAssertions {
 		@Test @DisplayName("does nothing if the file is '.lock'")
 		void does_nothing_if_the_file_is_lock() {
 			File lock = new File(".lock");
-			listener.onFileCreate(lock);
+			assertThatCode(() -> listener.onFileCreate(lock)).doesNotThrowAnyException();
 		}
 		
 		@Test @DisplayName("does not throw when the .ekumi file does not exist")
 		void does_not_throw_when_the_ekumi_file_does_not_exist() {
 			File model = new File("execution.ekumi");
-			listener.onFileCreate(model);
+			assertThatCode(() -> listener.onFileCreate(model)).doesNotThrowAnyException();
 		}
 		
 		@Test @DisplayName("posts the appropriate event")
@@ -86,7 +86,7 @@ public class PostEventOnExecutionChangeTest implements WithAssertions {
 		@Test @DisplayName("does nothing")
 		void does_nothing_if_the_file_is_lock() {
 			File deleted = new File(".");
-			listener.onFileDelete(deleted);
+			assertThatCode(() -> listener.onFileDelete(deleted)).doesNotThrowAnyException();
 		}
 		
 	}
@@ -97,13 +97,13 @@ public class PostEventOnExecutionChangeTest implements WithAssertions {
 		@Test @DisplayName("does nothing if the file is '.lock'")
 		void does_nothing_if_the_file_is_lock() {
 			File lock = new File(".lock");
-			listener.onFileChange(lock);
+			assertThatCode(() -> listener.onFileChange(lock)).doesNotThrowAnyException();
 		}
 		
 		@Test @DisplayName("does not throw when the .ekumi file does not exist")
 		void does_not_throw_when_the_ekumi_file_does_not_exist() {
 			File model = new File("execution.ekumi");
-			listener.onFileChange(model);
+			assertThatCode(() -> listener.onFileChange(model)).doesNotThrowAnyException();
 		}
 		
 		@Test @DisplayName("posts the appropriate event")

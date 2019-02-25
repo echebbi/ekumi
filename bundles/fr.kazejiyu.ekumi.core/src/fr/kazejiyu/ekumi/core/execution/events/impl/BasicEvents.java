@@ -45,7 +45,7 @@ public class BasicEvents implements Events {
 	/** Objects listening for an execution to change */
 	private final List<ExecutionListener> executionListeners = new ArrayList<>();
 	
-	private <T, U extends T> List<T> concat(Collection<T> list1, Collection<U> list2) {
+	private static <T, U extends T> List<T> concat(Collection<T> list1, Collection<U> list2) {
 		return Stream.concat(list1.stream(), list2.stream())
 					 .collect(toList());
 	}

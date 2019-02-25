@@ -65,7 +65,7 @@ public class JavaLanguageTest implements WithAssertions {
 	
 	@Test @DisplayName("has the expected id")
 	void has_the_expected_id() {
-		assertThat(language.id()).isEqualTo(JavaLanguage.ID);
+		assertThat(language.id()).isEqualTo(JavaLanguage.EXTENSION_ID);
 	}
 	
 	@Test @DisplayName("has a non-empty name")

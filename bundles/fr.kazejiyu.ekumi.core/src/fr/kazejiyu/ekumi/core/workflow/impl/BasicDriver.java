@@ -30,7 +30,6 @@ public class BasicDriver extends DriverImpl {
 			setStatus(SUCCEEDED);
 		}
 		catch (Exception e) {
-			// TODO log error
 			setStatus(FAILED);
 		}
 	}
