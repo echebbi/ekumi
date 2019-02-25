@@ -30,5 +30,13 @@
 		<unit id="org.eclipse.sirius.runtime.ide.ui.feature.group" version="6.1.1.201810260931"/>
 		<repository location="https://download.eclipse.org/sirius/updates/releases/6.1.1/oxygen/"/>
 	</location>
+	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+		<unit id="org.aspectj.feature.group" version="1.8.13.201805251550"/>
+		<unit id="org.eclipse.ajdt.feature.group" version="2.2.4.201805251550"/>
+		<unit id="org.eclipse.contribution.weaving.feature.group" version="2.2.4.201805251550"/>
+		<unit id="org.eclipse.contribution.xref.feature.group" version="2.2.4.201805251550"/>
+		<unit id="org.eclipse.equinox.weaving.sdk.feature.group" version="1.2.0.201805251550"/>
+		<repository location="http://download.eclipse.org/tools/ajdt/47/dev/update"/>
+	</location>
 </locations>
 </target>

@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EKumi Core — Logging Aspects
+Bundle-SymbolicName: fr.kazejiyu.ekumi.core.logging
+Bundle-Version: 0.1.0
+Bundle-Vendor: Emmanuel CHEBBI
+Automatic-Module-Name: fr.kazejiyu.ekumi.core.logging
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Require-Bundle: fr.kazejiyu.ekumi.core;bundle-version="0.1.0",
+ org.aspectj.runtime
+Export-Package: fr.kazejiyu.ekumi.core.logging;aspects="LogWithAnnotations,LogExceptions"
+Eclipse-SupplementBundle: fr.kazejiyu.ekumi.core
