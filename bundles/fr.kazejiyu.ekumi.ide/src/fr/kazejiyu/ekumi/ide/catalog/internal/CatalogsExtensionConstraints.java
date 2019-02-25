@@ -10,15 +10,21 @@ import org.eclipse.core.runtime.IConfigurationElement;
  */
 class CatalogsExtensionConstraints {
 
+	private static final String CATALOG = "catalog";
+	private static final String CATEGORY = "category";
+	private static final String ID = "id";
+	private static final String NAME = "name";
+	private static final String PARENT = "parent";
+
 	/** @return whether the configuration element provides correct information */
 	boolean isAValidCatalogElement(IConfigurationElement configurationElement) {
-		if (! configurationElement.getName().equals("catalog"))
+		if (! configurationElement.getName().equals(CATALOG))
 			return false;
 		
-		if (configurationElement.getAttribute("id") == null || configurationElement.getAttribute("id").isEmpty())
+		if (configurationElement.getAttribute(ID) == null || configurationElement.getAttribute(ID).isEmpty())
 			return false;
 		
-		if (configurationElement.getAttribute("name") == null || configurationElement.getAttribute("name").isEmpty())
+		if (configurationElement.getAttribute(NAME) == null || configurationElement.getAttribute(NAME).isEmpty())
 			return false;
 		
 		return true;
@@ -26,16 +32,16 @@ class CatalogsExtensionConstraints {
 	
 	/** @return whether the configuration element provides correct information */
 	boolean isAValidCategoryElement(IConfigurationElement configurationElement) {
-		if (! configurationElement.getName().equals("category"))
+		if (! configurationElement.getName().equals(CATEGORY))
 			return false;
 		
-		if (configurationElement.getAttribute("id") == null || configurationElement.getAttribute("id").isEmpty())
+		if (configurationElement.getAttribute(ID) == null || configurationElement.getAttribute(ID).isEmpty())
 			return false;
 		
-		if (configurationElement.getAttribute("name") == null || configurationElement.getAttribute("name").isEmpty())
+		if (configurationElement.getAttribute(NAME) == null || configurationElement.getAttribute(NAME).isEmpty())
 			return false;
 		
-		if (configurationElement.getAttribute("parent") == null || configurationElement.getAttribute("parent").isEmpty())
+		if (configurationElement.getAttribute(PARENT) == null || configurationElement.getAttribute(PARENT).isEmpty())
 			// ignore them for the moment, but will be added to a default category later
 			return false;
 		
@@ -47,16 +53,16 @@ class CatalogsExtensionConstraints {
 		if (! configurationElement.getName().equals("activity"))
 			return false;
 		
-		if (configurationElement.getAttribute("id") == null || configurationElement.getAttribute("id").isEmpty())
+		if (configurationElement.getAttribute(ID) == null || configurationElement.getAttribute(ID).isEmpty())
 			return false;
 		
-		if (configurationElement.getAttribute("name") == null || configurationElement.getAttribute("name").isEmpty())
+		if (configurationElement.getAttribute(NAME) == null || configurationElement.getAttribute(NAME).isEmpty())
 			return false;
 		
 		if (configurationElement.getAttribute("model") == null || configurationElement.getAttribute("model").isEmpty())
 			return false;
 		
-		if (configurationElement.getAttribute("category") == null || configurationElement.getAttribute("category").isEmpty())
+		if (configurationElement.getAttribute(CATEGORY) == null || configurationElement.getAttribute(CATEGORY).isEmpty())
 			// ignore them for the moment, but will be added to a default category later
 			return false;
 		

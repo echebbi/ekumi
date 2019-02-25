@@ -2,8 +2,8 @@ package fr.kazejiyu.ekumi.core.workflow.impl;
 
 import static fr.kazejiyu.ekumi.model.workflow.Status.FAILED;
 import static fr.kazejiyu.ekumi.model.workflow.Status.SUCCEEDED;
-import static org.assertj.core.api.Assertions.assertThat;
 
+import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -12,8 +12,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 
 import fr.kazejiyu.ekumi.model.workflow.Context;
-import fr.kazejiyu.ekumi.model.workflow.WorkflowFactory;
 import fr.kazejiyu.ekumi.model.workflow.ScriptedTask;
+import fr.kazejiyu.ekumi.model.workflow.WorkflowFactory;
 import fr.kazejiyu.ekumi.tests.common.fake.activities.BrokenRunner;
 import fr.kazejiyu.ekumi.tests.common.fake.activities.FakeRunner;
 import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
@@ -25,7 +25,7 @@ import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
  */
 @ExtendWith(MockitoExtension.class)
 @DisplayName("A Scripted Task")
-public class ScriptedTaskTest {
+public class ScriptedTaskTest implements WithAssertions {
 	
 	private ScriptedTask task;
 	
@@ -116,7 +116,7 @@ public class ScriptedTaskTest {
 		
 		@Test @DisplayName("do not throw when run")
 		void do_not_throw_when_run() {
-			corrupted.run(context);
+			assertThatCode(() -> corrupted.run(context)).doesNotThrowAnyException();
 		}
 		
 		@Test @DisplayName("has 'failed' status after run")

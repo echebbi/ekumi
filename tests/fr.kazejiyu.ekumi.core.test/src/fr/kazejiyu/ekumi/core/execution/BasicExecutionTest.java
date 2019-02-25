@@ -35,7 +35,7 @@ public class BasicExecutionTest implements WithAssertions {
 		
 		@Test @DisplayName("can be joined")
 		void can_be_joined() throws InterruptedExecutionException {
-			execution.join();
+			assertThatCode(execution::join).doesNotThrowAnyException();
 		}
 		
 		@Test @DisplayName("is not running")
@@ -137,6 +137,8 @@ public class BasicExecutionTest implements WithAssertions {
 			execution.join();
 			
 			softly.assertThat(execution.isRunning()).isFalse();
+			
+			softly.assertAll();
 		}
 		
 		@Test @DisplayName("is cancelled")
@@ -146,11 +148,17 @@ public class BasicExecutionTest implements WithAssertions {
 			execution.start();
 			execution.cancel();
 			
-			softly.assertThat(execution.isCancelled()).isTrue();
+			softly.assertThat(execution.isCancelled()).as("Execution is cancelled before joining")
+				  .isTrue();
 			
 			execution.join();
 			
-			softly.assertThat(execution.isCancelled()).isTrue();
+			softly.assertThat(execution.isCancelled()).as("Execution is still cancelled after joining")
+				  .isTrue();
+			
+			System.out.println(execution.getStatus());
+			
+			softly.assertAll();
 		}
 		
 	}

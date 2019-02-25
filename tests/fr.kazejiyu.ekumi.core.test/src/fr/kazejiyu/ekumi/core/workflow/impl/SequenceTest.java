@@ -2,12 +2,12 @@ package fr.kazejiyu.ekumi.core.workflow.impl;
 
 import static fr.kazejiyu.ekumi.model.workflow.Status.FAILED;
 import static fr.kazejiyu.ekumi.model.workflow.Status.SUCCEEDED;
-import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
@@ -31,7 +31,7 @@ import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
  */
 @ExtendWith(MockitoExtension.class)
 @DisplayName("A Sequence")
-public class SequenceTest {
+public class SequenceTest implements WithAssertions {
 	
 	@Mock
 	private Context context;
@@ -128,7 +128,7 @@ public class SequenceTest {
 		@Disabled
 		@Test @DisplayName("updates the inputs of a task before running it") 
 		void update_the_inputs_of_a_task_before_running_it() {
-			seq.run(context);
+			
 		}
 	}
 	
@@ -152,7 +152,7 @@ public class SequenceTest {
 		
 		@Test @DisplayName("does not throw when run")
 		void do_not_throw_when_run() {
-			corrupted.run(context);
+			assertThatCode(() -> corrupted.run(context)).doesNotThrowAnyException();
 		}
 		
 		@Test @DisplayName("has 'failed' status after run")
@@ -188,7 +188,7 @@ public class SequenceTest {
 		
 		@Test @DisplayName("does not throw when run")
 		void do_not_throw_when_run() {
-			corrupted.run(context);
+			assertThatCode(() -> corrupted.run(context)).doesNotThrowAnyException();
 		}
 		
 		@Test @DisplayName("has 'failed' status after run")

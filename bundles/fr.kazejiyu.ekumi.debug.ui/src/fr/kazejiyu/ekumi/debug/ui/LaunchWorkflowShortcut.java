@@ -1,4 +1,4 @@
-package fr.kazejiyu.ekumi.launchconfiguration.ui;
+package fr.kazejiyu.ekumi.debug.ui;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -68,11 +68,8 @@ public class LaunchWorkflowShortcut implements ILaunchShortcut {
 			// Run the new launch configuration
 			configuration.launch(ILaunchManager.RUN_MODE, null);
 			
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
-		catch (CoreException e) {
-			e.printStackTrace();
+		} catch(CoreException | IOException e) {
+			Activator.error(e, "An error occurred while launching the workflow " + fileURI);
 		}
 	}
 

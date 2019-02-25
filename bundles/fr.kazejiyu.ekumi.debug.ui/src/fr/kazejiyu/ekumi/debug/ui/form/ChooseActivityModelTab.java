@@ -1,4 +1,4 @@
-package fr.kazejiyu.ekumi.launchconfiguration.ui.form;
+package fr.kazejiyu.ekumi.debug.ui.form;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -29,6 +29,7 @@ import org.eclipse.ui.model.BaseWorkbenchContentProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 
 import fr.kazejiyu.ekumi.debug.EKumiRunConfiguration;
+import fr.kazejiyu.ekumi.debug.ui.Activator;
 import fr.kazejiyu.ekumi.model.workflow.Activity;
 
 /**
@@ -73,7 +74,7 @@ public class ChooseActivityModelTab extends AbstractLaunchConfigurationTab {
             modelURI.setText(consoleText);
             
         } catch (CoreException e) {
-        	e.printStackTrace();
+        	Activator.error(e, "Unable to initialize '" + getName() + "' tab");
         }
     }
 

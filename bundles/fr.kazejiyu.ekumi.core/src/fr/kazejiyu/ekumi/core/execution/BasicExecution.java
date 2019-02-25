@@ -61,8 +61,11 @@ public class BasicExecution extends ExecutionImpl {
 			
 			try {
 				getActivity().run(context.safe());
-				setStatus(SUCCEEDED);
-				context.getEvents().hasSucceeded(this);
+				
+				if (status != CANCELLED) {
+					setStatus(SUCCEEDED);
+					context.getEvents().hasSucceeded(this);
+				}
 			} 
 			catch (Exception e) {
 				setStatus(FAILED);

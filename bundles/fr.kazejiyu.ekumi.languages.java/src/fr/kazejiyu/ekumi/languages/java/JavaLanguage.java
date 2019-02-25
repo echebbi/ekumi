@@ -59,11 +59,12 @@ import fr.kazejiyu.ekumi.model.workflow.Script;
  */
 public final class JavaLanguage implements ScriptingLanguage {
 	
-	public static final String ID = "fr.kazejiyu.ekumi.languages.java";
+	/** The id of the extension providing this scripting language */
+	public static final String EXTENSION_ID = "fr.kazejiyu.ekumi.languages.java";
 	
 	@Override
 	public String id() {
-		return ID;
+		return EXTENSION_ID;
 	}
 	
 	@Override

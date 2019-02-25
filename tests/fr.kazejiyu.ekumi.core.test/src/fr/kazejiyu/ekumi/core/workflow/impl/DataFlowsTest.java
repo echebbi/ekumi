@@ -1,6 +1,7 @@
 package fr.kazejiyu.ekumi.core.workflow.impl;
 
 import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -19,7 +20,7 @@ import fr.kazejiyu.ekumi.tests.common.fake.activities.DoNothing;
  * @author Emmanuel CHEBBI
  */
 @DisplayName("A DataFlows")
-public class DataFlowsTest {
+public class DataFlowsTest implements WithAssertions {
 	
 	@Nested
 	@DisplayName("without any DataFlow")
@@ -35,7 +36,7 @@ public class DataFlowsTest {
 		
 		@Test @DisplayName("does not throw when resolving inputs")
 		void does_not_throw_when_resolving_inputs() {
-			flows.resolveInputs();
+			assertThatCode(flows::resolveInputs).doesNotThrowAnyException();
 		}
 	}
 	
@@ -76,7 +77,7 @@ public class DataFlowsTest {
 		
 		@Test @DisplayName("does not throw when resolving inputs")
 		void does_not_throw_when_resolving_inputs() {
-			flows.resolveInputs();
+			assertThatCode(flows::resolveInputs).doesNotThrowAnyException();
 		}
 		
 		@Test @DisplayName("resolves inputs by setting the right value")

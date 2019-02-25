@@ -29,7 +29,6 @@ public class BasicScriptedTask extends ScriptedTaskImpl {
 			setStatus(SUCCEEDED);
 		}
 		catch (Exception e) {
-			// TODO log error
 			setStatus(FAILED);
 		}
 	}

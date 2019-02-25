@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
+import fr.kazejiyu.ekumi.EKumiPlugin;
 import fr.kazejiyu.ekumi.ide.internal.lock.LockFolderFile;
 import fr.kazejiyu.ekumi.model.execution.listeners.ActivityListener;
 import fr.kazejiyu.ekumi.model.execution.listeners.ExecutionListener;
@@ -37,7 +38,7 @@ import fr.kazejiyu.ekumi.model.workflow.Execution;
 public class PersistExecution implements ActivityListener, ExecutionListener {
 
 	/** The format used to write execution's start date */
-	private static final SimpleDateFormat START_DATE_FORMAT = new SimpleDateFormat("yyyy.MM.dd.HHmmssms");
+	private final SimpleDateFormat startDateFormat = new SimpleDateFormat("yyyy.MM.dd.HHmmssms");
 	
 	/** Set on execution started */
 	private Execution execution;
@@ -106,7 +107,7 @@ public class PersistExecution implements ActivityListener, ExecutionListener {
 			resource.save(Collections.emptyMap());
 			
 		} catch (IOException e) {
-			e.printStackTrace();
+			EKumiPlugin.error(e, "An error occurred while persisting " + execution + " at URI " + location);
 		}
 	}
 
@@ -119,7 +120,7 @@ public class PersistExecution implements ActivityListener, ExecutionListener {
 	 * @return the name of the folder in which the execution can be saved
 	 */
 	private String folderNameFor(Execution execution) {
-		return START_DATE_FORMAT.format(execution.getStartDate()) + "." + execution.getId();
+		return startDateFormat.format(execution.getStartDate()) + "." + execution.getId();
 	}
 
 }

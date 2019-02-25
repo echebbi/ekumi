@@ -219,7 +219,7 @@ public class BasicContextTest implements WithAssertions {
 	
 		@Test @DisplayName("does nothing if the variable does not exist")
 		void does_nothing_when_unsetting_a_non_existing_variable() {
-			context.unset("name");
+			assertThatCode(() -> context.unset("name")).doesNotThrowAnyException();
 		}
 	
 		@Test @DisplayName("removes it from its variables")

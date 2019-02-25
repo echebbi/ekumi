@@ -1,4 +1,4 @@
-package fr.kazejiyu.ekumi.launchconfiguration.ui.form;
+package fr.kazejiyu.ekumi.debug.ui.form;
 
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTabGroup;
 import org.eclipse.debug.ui.ILaunchConfigurationDialog;

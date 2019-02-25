@@ -175,8 +175,8 @@ public class PersistExecutionTest implements WithAssertions {
 		}
 		
 		@Test @DisplayName("does not throw on event")
-		void does_not_persist_the_Execution() {
-			serializer.onExecutionStarted(expected);
+		void does_not_throw_on_event() {
+			assertThatCode(() -> serializer.onExecutionStarted(expected)).doesNotThrowAnyException();
 		}
 		
 		@AfterEach
