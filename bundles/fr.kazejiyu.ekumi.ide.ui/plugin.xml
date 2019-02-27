@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="fr.kazejiyu.ekumi.ide.ui.wizards.category"
+            name="EKumi">
+      </category>
+      <wizard
+            category="fr.kazejiyu.ekumi.ide.ui.wizards.category"
+            class="fr.kazejiyu.ekumi.ide.ui.wizards.NewWorkflowProjectWizard"
+            id="fr.kazejiyu.ekumi.ide.ui.wizards.new.project"
+            name="Workflow Project"
+            project="true">
+      </wizard>
+   </extension>
+
+</plugin>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="ekumi-nature"
+         name="EKumi Project Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="fr.kazejiyu.ekumi.ide.nature.EKumiProjectNature">
+         </run>
+      </runtime>
+   </extension>
+</plugin>

@@ -20,6 +20,7 @@
         <module>fr.kazejiyu.ekumi.debug.ui</module>
         <module>fr.kazejiyu.ekumi.ide</module>
         <module>fr.kazejiyu.ekumi.ide.events</module>
+        <module>fr.kazejiyu.ekumi.ide.ui</module>
         <module>fr.kazejiyu.ekumi.languages.java</module>
         <module>fr.kazejiyu.ekumi.model</module>
         <module>fr.kazejiyu.ekumi.model.edit</module>
