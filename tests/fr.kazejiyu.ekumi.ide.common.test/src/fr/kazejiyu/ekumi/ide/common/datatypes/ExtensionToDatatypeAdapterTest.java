@@ -1,4 +1,4 @@
-package fr.kazejiyu.ekumi.workflow.editor.design;
+package fr.kazejiyu.ekumi.ide.common.datatypes;
 
 import static org.mockito.Mockito.when;
 
