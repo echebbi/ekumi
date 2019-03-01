@@ -70,6 +70,10 @@ public class ImportableProject {
 		
 		importOperation.setCreateContainerStructure(false);
 		importOperation.run(new NullProgressMonitor());
+		
+		// It seems that I have no other to wait for the import to end
+		// Prevent Java classes from not being resolvable
+		Thread.sleep(5000);
 	}
 	
 	/** @return the path toward the location/.project file */

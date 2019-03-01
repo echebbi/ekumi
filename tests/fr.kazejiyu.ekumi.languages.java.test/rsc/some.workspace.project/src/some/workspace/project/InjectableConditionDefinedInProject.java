@@ -6,8 +6,8 @@ import fr.kazejiyu.ekumi.model.workflow.Condition;
 import fr.kazejiyu.ekumi.model.workflow.Context;
 import fr.kazejiyu.ekumi.model.workflow.StructuredLoop;
 import fr.kazejiyu.ekumi.model.workflow.impl.ConditionImpl;
-import fr.kazejiyu.ekumi.model.workflow.execution.ExecutionStatus;
-import fr.kazejiyu.ekumi.model.workflow.execution.events.Events;
+import fr.kazejiyu.ekumi.model.execution.ExecutionStatus;
+import fr.kazejiyu.ekumi.model.execution.events.Events;
 import fr.kazejiyu.ekumi.tests.common.fake.activities.Injectable;
 
 /**
