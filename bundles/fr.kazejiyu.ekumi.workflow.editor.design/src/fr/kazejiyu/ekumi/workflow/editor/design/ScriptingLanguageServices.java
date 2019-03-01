@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 
 import fr.kazejiyu.ekumi.EKumiPlugin;
+import fr.kazejiyu.ekumi.ide.common.languages.ExtensionToScriptingLanguageAdapter;
 import fr.kazejiyu.ekumi.model.scripting.ScriptingLanguage;
 import fr.kazejiyu.ekumi.model.spec.ExternalTask;
 

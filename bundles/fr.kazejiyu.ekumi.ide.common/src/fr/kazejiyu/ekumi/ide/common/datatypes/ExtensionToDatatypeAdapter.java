@@ -7,7 +7,7 @@
  * 
  * SPDX-License-Identifier: EPL-2.0
  ******************************************************************************/
-package fr.kazejiyu.ekumi.workflow.editor.design;
+package fr.kazejiyu.ekumi.ide.common.datatypes;
 
 import static java.util.Objects.requireNonNull;
 import static java.util.stream.Collectors.toList;
@@ -19,20 +19,19 @@ import java.util.function.Function;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 
-import fr.kazejiyu.ekumi.EKumiPlugin;
+import fr.kazejiyu.ekumi.ide.common.Activator;
 import fr.kazejiyu.ekumi.model.catalog.Catalogs;
-import fr.kazejiyu.ekumi.model.scripting.ScriptingLanguage;
+import fr.kazejiyu.ekumi.model.datatypes.DataType;
 
 /**
- * An adapter creating {@link ScriptingLanguage} instances from {@link IConfigurationElement}s.<br>
+ * An adapter creating {@link DataType} instances from {@link IConfigurationElement}s.<br>
  * <br>
- * This adapter is used to create a {@link ScriptingLanguage} from the contributions to the 
- * {@link EKumiPlugin#LANGUAGES_EXTENSION_ID} extension point.
+ * This adapter is used to create a {@link DataType} from the contributions to the 
+ * {@link EKumiPlugin#DATATYPES_EXTENSION_ID} extension point.
  * 
  * @author Emmanuel CHEBBI
  */
-// TODO [Refactor] Move this class to another bundle
-class ExtensionToScriptingLanguageAdapter {
+public class ExtensionToDatatypeAdapter {
 	
 	/**
 	 * Creates a new {@link Catalogs} according to the given configuration elements.
@@ -42,23 +41,23 @@ class ExtensionToScriptingLanguageAdapter {
 	 * 
 	 * @return a new Catalogs instance.
 	 */
-	List<ScriptingLanguage> adapt(List<IConfigurationElement> configurationElements) {
+	public List<DataType<?>> adapt(List<IConfigurationElement> configurationElements) {
 		requireNonNull(configurationElements, "Cannot adapt null configuration elements");
 		
 		return configurationElements.stream()
-									.map(toLanguage())
+									.map(toDataType())
 									.filter(Objects::nonNull)
-									.map(ScriptingLanguage.class::cast)
+									.map(DataType.class::cast)
 									.collect(toList());
 	}
 	
-	private static Function<IConfigurationElement, ScriptingLanguage> toLanguage() {
+	private static Function<IConfigurationElement, DataType<?>> toDataType() {
 		return conf -> {
 			try {
-				return (ScriptingLanguage) conf.createExecutableExtension("class");
+				return (DataType<?>) conf.createExecutableExtension("class");
 				
 			} catch (CoreException e) {
-				EKumiPlugin.warn(e, "An error occured while creating an executable extension of property 'class' for configuration: " + conf);
+				Activator.warn(e, "An error occured while creating an executable extension of property 'class' for configuration: " + conf);
 				return null;
 			}
 		};

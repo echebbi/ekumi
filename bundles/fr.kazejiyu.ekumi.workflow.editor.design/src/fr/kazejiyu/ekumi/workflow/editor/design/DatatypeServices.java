@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 
 import fr.kazejiyu.ekumi.EKumiPlugin;
+import fr.kazejiyu.ekumi.ide.common.datatypes.ExtensionToDatatypeAdapter;
 import fr.kazejiyu.ekumi.model.datatypes.DataType;
 import fr.kazejiyu.ekumi.model.spec.Variable;
 
