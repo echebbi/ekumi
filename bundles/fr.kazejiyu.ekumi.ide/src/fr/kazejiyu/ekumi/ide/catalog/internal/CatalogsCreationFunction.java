@@ -17,6 +17,7 @@ import org.eclipse.e4.core.contexts.IContextFunction;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 
 import fr.kazejiyu.ekumi.EKumiPlugin;
+import fr.kazejiyu.ekumi.model.EKumiExtensions;
 import fr.kazejiyu.ekumi.model.catalog.Catalog;
 import fr.kazejiyu.ekumi.model.catalog.Catalogs;
 import fr.kazejiyu.ekumi.model.catalog.Category;
@@ -40,7 +41,7 @@ public class CatalogsCreationFunction implements IContextFunction {
 		
 		Catalogs catalogs = adapter.adapt(
 			asList(
-				extensions.getConfigurationElementsFor(EKumiPlugin.CATALOGS_EXTENSION_ID)
+				extensions.getConfigurationElementsFor(EKumiExtensions.CATALOGS_EXTENSION_ID)
 			)
 		);
 

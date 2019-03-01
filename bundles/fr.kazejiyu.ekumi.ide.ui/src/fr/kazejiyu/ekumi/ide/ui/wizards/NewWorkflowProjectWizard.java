@@ -36,12 +36,12 @@ import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 
-import fr.kazejiyu.ekumi.EKumiPlugin;
 import fr.kazejiyu.ekumi.ide.EKumiIdePlugin;
 import fr.kazejiyu.ekumi.ide.nature.WorkflowProject;
 import fr.kazejiyu.ekumi.ide.project.customization.Customization;
 import fr.kazejiyu.ekumi.ide.ui.Activator;
 import fr.kazejiyu.ekumi.ide.ui.nature.impl.WorkspaceWorkflowProject;
+import fr.kazejiyu.ekumi.model.EKumiExtensions;
 import fr.kazejiyu.ekumi.model.scripting.ScriptingLanguage;
 
 /**
@@ -136,14 +136,14 @@ public class NewWorkflowProjectWizard extends Wizard implements INewWizard {
 	    	if (e instanceof InterruptedException)
 	    		Thread.currentThread().interrupt();
 
-	    	EKumiPlugin.error(e, "An error occurred while creating the new EKumi project");
+	    	Activator.error(e, "An error occurred while creating the new EKumi project");
 	    	showErrorDialog(e, "Project creation failed", e.getMessage());
 		}
 	    return false;
 	}
 	
 	private static Set<ScriptingLanguage> availableScriptingLanguages() {
-		IConfigurationElement[] elements = Platform.getExtensionRegistry().getConfigurationElementsFor(EKumiPlugin.LANGUAGES_EXTENSION_ID);
+		IConfigurationElement[] elements = Platform.getExtensionRegistry().getConfigurationElementsFor(EKumiExtensions.LANGUAGES_EXTENSION_ID);
 		
 		Set<ScriptingLanguage> languages = new HashSet<>();
 		for (IConfigurationElement element : elements) {

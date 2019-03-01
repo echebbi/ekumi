@@ -16,7 +16,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
-import fr.kazejiyu.ekumi.EKumiPlugin;
+import fr.kazejiyu.ekumi.model.EKumiExtensions;
 import fr.kazejiyu.ekumi.model.catalog.Catalog;
 import fr.kazejiyu.ekumi.model.catalog.CatalogFactory;
 import fr.kazejiyu.ekumi.model.catalog.Catalogs;
@@ -40,7 +40,7 @@ public class CatalogsCreationFunctionTest implements WithAssertions {
 		context.set(IExtensionRegistry.class, registry);
 		
 		IConfigurationElement[] configurationElements = createConfigurationElements();
-		when(registry.getConfigurationElementsFor(EKumiPlugin.CATALOGS_EXTENSION_ID))
+		when(registry.getConfigurationElementsFor(EKumiExtensions.CATALOGS_EXTENSION_ID))
 			.thenReturn(configurationElements);
 	}
 	
