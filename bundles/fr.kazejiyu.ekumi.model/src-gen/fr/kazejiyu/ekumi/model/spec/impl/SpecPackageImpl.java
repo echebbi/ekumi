@@ -653,6 +653,42 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getNode__Precedes__Node() {
+		return nodeEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getNode__Succeeds__Node() {
+		return nodeEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getNode__CanPrecede() {
+		return nodeEClass.getEOperations().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getNode__CanSucceed() {
+		return nodeEClass.getEOperations().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getConditionalDivergence() {
 		return conditionalDivergenceEClass;
 	}
@@ -788,6 +824,10 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 		createEReference(nodeEClass, NODE__PREDECESSORS);
 		createEOperation(nodeEClass, NODE___CAN_PRECEDE__NODE);
 		createEOperation(nodeEClass, NODE___CAN_SUCCEED__NODE);
+		createEOperation(nodeEClass, NODE___PRECEDES__NODE);
+		createEOperation(nodeEClass, NODE___SUCCEEDS__NODE);
+		createEOperation(nodeEClass, NODE___CAN_PRECEDE);
+		createEOperation(nodeEClass, NODE___CAN_SUCCEED);
 
 		conditionalDivergenceEClass = createEClass(CONDITIONAL_DIVERGENCE);
 
@@ -969,6 +1009,20 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 		op = initEOperation(getNode__CanSucceed__Node(), theXMLTypePackage.getBoolean(), "canSucceed", 0, 1, IS_UNIQUE,
 				IS_ORDERED);
 		addEParameter(op, this.getNode(), "node", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getNode__Precedes__Node(), theXMLTypePackage.getBoolean(), "precedes", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, this.getNode(), "successor", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getNode__Succeeds__Node(), theXMLTypePackage.getBoolean(), "succeeds", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, this.getNode(), "predecessor", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getNode__CanPrecede(), theXMLTypePackage.getBoolean(), "canPrecede", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+
+		initEOperation(getNode__CanSucceed(), theXMLTypePackage.getBoolean(), "canSucceed", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
 		initEClass(conditionalDivergenceEClass, ConditionalDivergence.class, "ConditionalDivergence", IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -126,6 +126,48 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements N
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean precedes(Node successor) {
+		return getSuccessors().contains(successor);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean succeeds(Node predecessor) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean canPrecede() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean canSucceed() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -239,6 +281,14 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements N
 			return canPrecede((Node) arguments.get(0));
 		case SpecPackage.NODE___CAN_SUCCEED__NODE:
 			return canSucceed((Node) arguments.get(0));
+		case SpecPackage.NODE___PRECEDES__NODE:
+			return precedes((Node) arguments.get(0));
+		case SpecPackage.NODE___SUCCEEDS__NODE:
+			return succeeds((Node) arguments.get(0));
+		case SpecPackage.NODE___CAN_PRECEDE:
+			return canPrecede();
+		case SpecPackage.NODE___CAN_SUCCEED:
+			return canSucceed();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

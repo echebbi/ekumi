@@ -49,6 +49,12 @@ public interface Node extends EObject {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Returns whether the given node can be a successor of this.
+	 * 
+	 * @param node
+	 * 			The node to check.
+	 * 
+	 * @return whether the given node can be a successor of this
 	 * <!-- end-user-doc -->
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
 	 * @generated
@@ -57,10 +63,64 @@ public interface Node extends EObject {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Returns whether the given node can be a predecessor of this.
+	 * 
+	 * @param node
+	 * 			The node to check.
+	 * 
+	 * @return whether the given node can be a predecessor of this
 	 * <!-- end-user-doc -->
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
 	 * @generated
 	 */
 	boolean canSucceed(Node node);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Returns whether the given node is a successor of this.
+	 * 
+	 * @param successor
+	 * 			The potential successor of this.
+	 * 
+	 * @return whether the given node is a successor of this 
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+	 * @generated
+	 */
+	boolean precedes(Node successor);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Returns whether the given node is a predecessor of this.
+	 * 
+	 * @param predecessor
+	 * 			The potential predecessor of this.
+	 * 
+	 * @return whether the given node is a predecessor of this
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+	 * @generated
+	 */
+	boolean succeeds(Node predecessor);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Returns whether this node can have a new successor.
+	 * @return whether this node can have a new successor
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+	 * @generated
+	 */
+	boolean canPrecede();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Returns whether this node can have a new predecessor.
+	 * @return whether this node can have a new predecessor
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+	 * @generated
+	 */
+	boolean canSucceed();
 
 } // Node
