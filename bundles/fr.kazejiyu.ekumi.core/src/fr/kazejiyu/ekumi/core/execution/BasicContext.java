@@ -40,12 +40,12 @@ class BasicContext extends ContextImpl {
 	
 	@Override
 	public Variable get(String name) {
-		Optional<Variable> maybeVariable = find(name);
+		Optional<Variable> variable = find(name);
 		
-		if (! maybeVariable.isPresent())
+		if (! variable.isPresent())
 			throw new VariableNotFoundException("No variable named " + name + " exists in this context");
 		
-		return maybeVariable.get();
+		return variable.get();
 	}
 
 	@Override

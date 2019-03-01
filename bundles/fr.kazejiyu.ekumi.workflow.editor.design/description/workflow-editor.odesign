@@ -125,7 +125,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Relationships">
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Relationship" precondition="aql: preSource.canPrecede(preTarget) and preTarget.canSucceed(preSource)" edgeMappings="//@ownedViewpoints[name='EKumi%20Workflow']/@ownedRepresentations[name='Workflow%20Diagram']/@defaultLayer/@edgeMappings[name='Node%20successor']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Precede" precondition="aql: preSource.canPrecede(preTarget) and preTarget.canSucceed(preSource)" edgeMappings="//@ownedViewpoints[name='EKumi%20Workflow']/@ownedRepresentations[name='Workflow%20Diagram']/@defaultLayer/@edgeMappings[name='Node%20successor']" connectionStartPrecondition="aql: preSource.canPrecede()">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
