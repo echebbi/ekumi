@@ -16,5 +16,4 @@ Bundle-Activator: fr.kazejiyu.ekumi.EKumiPlugin
 Export-Package: fr.kazejiyu.ekumi,
  fr.kazejiyu.ekumi.core.execution,
  fr.kazejiyu.ekumi.core.execution.events.impl,
- fr.kazejiyu.ekumi.core.workflow,
  fr.kazejiyu.ekumi.core.workflow.impl
