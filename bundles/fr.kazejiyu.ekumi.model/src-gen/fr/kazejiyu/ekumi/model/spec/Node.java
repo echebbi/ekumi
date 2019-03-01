@@ -123,4 +123,24 @@ public interface Node extends EObject {
 	 */
 	boolean canSucceed();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * Returns whether the node has at least one successor.
+	 * @return whether the node has at least one successor
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+	 * @generated
+	 */
+	boolean hasSuccessors();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Returns whether the node has at least one predecessor.
+	 * @return whether the node has at least one predecessor
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+	 * @generated
+	 */
+	boolean hasPredecessors();
+
 } // Node

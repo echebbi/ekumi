@@ -689,6 +689,15 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getScriptedTask_Language() {
+		return (EAttribute) scriptedTaskEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getScript() {
 		return scriptEClass;
 	}
@@ -1339,6 +1348,7 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 		scriptedTaskEClass = createEClass(SCRIPTED_TASK);
 		createEAttribute(scriptedTaskEClass, SCRIPTED_TASK__SCRIPT_PATH);
 		createEReference(scriptedTaskEClass, SCRIPTED_TASK__SCRIPT);
+		createEAttribute(scriptedTaskEClass, SCRIPTED_TASK__LANGUAGE);
 
 		scriptEClass = createEClass(SCRIPT);
 		createEAttribute(scriptEClass, SCRIPT__PATH);
@@ -1571,6 +1581,9 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 		initEReference(getScriptedTask_Script(), this.getRunner(), null, "script", null, 0, 1, ScriptedTask.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScriptedTask_Language(), this.getScriptingLanguage(), "language", null, 0, 1,
+				ScriptedTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(scriptEClass, Script.class, "Script", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getScript_Path(), ecorePackage.getEString(), "path", null, 0, 1, Script.class, !IS_TRANSIENT,

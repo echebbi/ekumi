@@ -107,6 +107,7 @@
     <genClasses ecoreClass="workflow.ecore#//ScriptedTask">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//ScriptedTask/scriptPath"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//ScriptedTask/script"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//ScriptedTask/language"/>
     </genClasses>
     <genClasses ecoreClass="workflow.ecore#//Script">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Script/path"/>
@@ -257,6 +258,8 @@
       </genOperations>
       <genOperations ecoreOperation="spec.ecore#//Node/canPrecede.1"/>
       <genOperations ecoreOperation="spec.ecore#//Node/canSucceed.1"/>
+      <genOperations ecoreOperation="spec.ecore#//Node/hasSuccessors"/>
+      <genOperations ecoreOperation="spec.ecore#//Node/hasPredecessors"/>
     </genClasses>
     <genClasses image="false" ecoreClass="spec.ecore#//ConditionalDivergence"/>
     <genClasses ecoreClass="spec.ecore#//ConditionalRoot">

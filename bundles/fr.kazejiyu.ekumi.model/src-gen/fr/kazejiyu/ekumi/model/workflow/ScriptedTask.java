@@ -2,6 +2,8 @@
  */
 package fr.kazejiyu.ekumi.model.workflow;
 
+import fr.kazejiyu.ekumi.model.scripting.ScriptingLanguage;
+
 /**
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
@@ -54,5 +56,27 @@ public interface ScriptedTask extends Task {
 	 * @generated
 	 */
 	void setScript(Runner value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Language</b></em>' attribute.
+	 * @return the value of the '<em>Language</em>' attribute.
+	 * @see #setLanguage(ScriptingLanguage)
+	 * @see fr.kazejiyu.ekumi.model.workflow.WorkflowPackage#getScriptedTask_Language()
+	 * <!-- end-user-doc -->
+	 * @model dataType="fr.kazejiyu.ekumi.model.workflow.ScriptingLanguage"
+	 * @generated
+	 */
+	ScriptingLanguage getLanguage();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link fr.kazejiyu.ekumi.model.workflow.ScriptedTask#getLanguage <em>Language</em>}' attribute.
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Language</em>' attribute.
+	 * @see #getLanguage()
+	 * @generated
+	 */
+	void setLanguage(ScriptingLanguage value);
 
 } // ScriptedTask

@@ -149,13 +149,31 @@ public interface SpecPackage extends EPackage {
 	int NODE___CAN_SUCCEED = 5;
 
 	/**
+	 * The operation id for the '<em>Has Successors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE___HAS_SUCCESSORS = 6;
+
+	/**
+	 * The operation id for the '<em>Has Predecessors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE___HAS_PREDECESSORS = 7;
+
+	/**
 	 * The number of operations of the '<em>Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_OPERATION_COUNT = 6;
+	int NODE_OPERATION_COUNT = 8;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.model.spec.impl.StartingNodeImpl <em>Starting Node</em>}' class.
@@ -247,6 +265,24 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int STARTING_NODE___CAN_SUCCEED = NODE___CAN_SUCCEED;
+
+	/**
+	 * The operation id for the '<em>Has Successors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STARTING_NODE___HAS_SUCCESSORS = NODE___HAS_SUCCESSORS;
+
+	/**
+	 * The operation id for the '<em>Has Predecessors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STARTING_NODE___HAS_PREDECESSORS = NODE___HAS_PREDECESSORS;
 
 	/**
 	 * The number of operations of the '<em>Starting Node</em>' class.
@@ -392,6 +428,24 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int TASK___CAN_SUCCEED = STARTING_NODE___CAN_SUCCEED;
+
+	/**
+	 * The operation id for the '<em>Has Successors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK___HAS_SUCCESSORS = STARTING_NODE___HAS_SUCCESSORS;
+
+	/**
+	 * The operation id for the '<em>Has Predecessors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK___HAS_PREDECESSORS = STARTING_NODE___HAS_PREDECESSORS;
 
 	/**
 	 * The number of operations of the '<em>Task</em>' class.
@@ -602,6 +656,24 @@ public interface SpecPackage extends EPackage {
 	int ACTIVITY___CAN_SUCCEED = TASK___CAN_SUCCEED;
 
 	/**
+	 * The operation id for the '<em>Has Successors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY___HAS_SUCCESSORS = TASK___HAS_SUCCESSORS;
+
+	/**
+	 * The operation id for the '<em>Has Predecessors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY___HAS_PREDECESSORS = TASK___HAS_PREDECESSORS;
+
+	/**
 	 * The number of operations of the '<em>Activity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -709,6 +781,24 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int START___CAN_SUCCEED = NODE___CAN_SUCCEED;
+
+	/**
+	 * The operation id for the '<em>Has Successors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START___HAS_SUCCESSORS = NODE___HAS_SUCCESSORS;
+
+	/**
+	 * The operation id for the '<em>Has Predecessors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START___HAS_PREDECESSORS = NODE___HAS_PREDECESSORS;
 
 	/**
 	 * The number of operations of the '<em>Start</em>' class.
@@ -829,6 +919,24 @@ public interface SpecPackage extends EPackage {
 	int DIVERGENCE___CAN_SUCCEED = STARTING_NODE___CAN_SUCCEED;
 
 	/**
+	 * The operation id for the '<em>Has Successors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIVERGENCE___HAS_SUCCESSORS = STARTING_NODE___HAS_SUCCESSORS;
+
+	/**
+	 * The operation id for the '<em>Has Predecessors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIVERGENCE___HAS_PREDECESSORS = STARTING_NODE___HAS_PREDECESSORS;
+
+	/**
 	 * The number of operations of the '<em>Divergence</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -945,6 +1053,24 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int PARALLEL_SPLIT___CAN_SUCCEED = DIVERGENCE___CAN_SUCCEED;
+
+	/**
+	 * The operation id for the '<em>Has Successors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT___HAS_SUCCESSORS = DIVERGENCE___HAS_SUCCESSORS;
+
+	/**
+	 * The operation id for the '<em>Has Predecessors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT___HAS_PREDECESSORS = DIVERGENCE___HAS_PREDECESSORS;
 
 	/**
 	 * The number of operations of the '<em>Parallel Split</em>' class.
@@ -1110,6 +1236,24 @@ public interface SpecPackage extends EPackage {
 	int EXTERNAL_TASK___CAN_SUCCEED = TASK___CAN_SUCCEED;
 
 	/**
+	 * The operation id for the '<em>Has Successors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_TASK___HAS_SUCCESSORS = TASK___HAS_SUCCESSORS;
+
+	/**
+	 * The operation id for the '<em>Has Predecessors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_TASK___HAS_PREDECESSORS = TASK___HAS_PREDECESSORS;
+
+	/**
 	 * The number of operations of the '<em>External Task</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1255,6 +1399,24 @@ public interface SpecPackage extends EPackage {
 	int LIBRARY_TASK___CAN_SUCCEED = TASK___CAN_SUCCEED;
 
 	/**
+	 * The operation id for the '<em>Has Successors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIBRARY_TASK___HAS_SUCCESSORS = TASK___HAS_SUCCESSORS;
+
+	/**
+	 * The operation id for the '<em>Has Predecessors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIBRARY_TASK___HAS_PREDECESSORS = TASK___HAS_PREDECESSORS;
+
+	/**
 	 * The number of operations of the '<em>Library Task</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1353,6 +1515,24 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONVERGENCE___CAN_SUCCEED = NODE___CAN_SUCCEED;
+
+	/**
+	 * The operation id for the '<em>Has Successors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVERGENCE___HAS_SUCCESSORS = NODE___HAS_SUCCESSORS;
+
+	/**
+	 * The operation id for the '<em>Has Predecessors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVERGENCE___HAS_PREDECESSORS = NODE___HAS_PREDECESSORS;
 
 	/**
 	 * The number of operations of the '<em>Convergence</em>' class.
@@ -1455,6 +1635,24 @@ public interface SpecPackage extends EPackage {
 	int SYNCHRONIZATION___CAN_SUCCEED = CONVERGENCE___CAN_SUCCEED;
 
 	/**
+	 * The operation id for the '<em>Has Successors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNCHRONIZATION___HAS_SUCCESSORS = CONVERGENCE___HAS_SUCCESSORS;
+
+	/**
+	 * The operation id for the '<em>Has Predecessors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNCHRONIZATION___HAS_PREDECESSORS = CONVERGENCE___HAS_PREDECESSORS;
+
+	/**
 	 * The number of operations of the '<em>Synchronization</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1553,6 +1751,24 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONDITIONAL_DIVERGENCE___CAN_SUCCEED = STARTING_NODE___CAN_SUCCEED;
+
+	/**
+	 * The operation id for the '<em>Has Successors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_DIVERGENCE___HAS_SUCCESSORS = STARTING_NODE___HAS_SUCCESSORS;
+
+	/**
+	 * The operation id for the '<em>Has Predecessors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_DIVERGENCE___HAS_PREDECESSORS = STARTING_NODE___HAS_PREDECESSORS;
 
 	/**
 	 * The number of operations of the '<em>Conditional Divergence</em>' class.
@@ -1655,6 +1871,24 @@ public interface SpecPackage extends EPackage {
 	int MULTI_CHOICE___CAN_SUCCEED = CONDITIONAL_DIVERGENCE___CAN_SUCCEED;
 
 	/**
+	 * The operation id for the '<em>Has Successors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_CHOICE___HAS_SUCCESSORS = CONDITIONAL_DIVERGENCE___HAS_SUCCESSORS;
+
+	/**
+	 * The operation id for the '<em>Has Predecessors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_CHOICE___HAS_PREDECESSORS = CONDITIONAL_DIVERGENCE___HAS_PREDECESSORS;
+
+	/**
 	 * The number of operations of the '<em>Multi Choice</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1753,6 +1987,24 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int SIMPLE_MERGE___CAN_SUCCEED = CONVERGENCE___CAN_SUCCEED;
+
+	/**
+	 * The operation id for the '<em>Has Successors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_MERGE___HAS_SUCCESSORS = CONVERGENCE___HAS_SUCCESSORS;
+
+	/**
+	 * The operation id for the '<em>Has Predecessors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_MERGE___HAS_PREDECESSORS = CONVERGENCE___HAS_PREDECESSORS;
 
 	/**
 	 * The number of operations of the '<em>Simple Merge</em>' class.
@@ -2091,6 +2343,24 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONDITION___CAN_SUCCEED = TASK___CAN_SUCCEED;
+
+	/**
+	 * The operation id for the '<em>Has Successors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITION___HAS_SUCCESSORS = TASK___HAS_SUCCESSORS;
+
+	/**
+	 * The operation id for the '<em>Has Predecessors</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITION___HAS_PREDECESSORS = TASK___HAS_PREDECESSORS;
 
 	/**
 	 * The number of operations of the '<em>Condition</em>' class.
@@ -2598,6 +2868,26 @@ public interface SpecPackage extends EPackage {
 	EOperation getNode__CanSucceed();
 
 	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.model.spec.Node#hasSuccessors() <em>Has Successors</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Has Successors</em>' operation.
+	 * @see fr.kazejiyu.ekumi.model.spec.Node#hasSuccessors()
+	 * @generated
+	 */
+	EOperation getNode__HasSuccessors();
+
+	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.model.spec.Node#hasPredecessors() <em>Has Predecessors</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Has Predecessors</em>' operation.
+	 * @see fr.kazejiyu.ekumi.model.spec.Node#hasPredecessors()
+	 * @generated
+	 */
+	EOperation getNode__HasPredecessors();
+
+	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.model.spec.ConditionalDivergence <em>Conditional Divergence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3087,6 +3377,22 @@ public interface SpecPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation NODE___CAN_SUCCEED = eINSTANCE.getNode__CanSucceed();
+
+		/**
+		 * The meta object literal for the '<em><b>Has Successors</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation NODE___HAS_SUCCESSORS = eINSTANCE.getNode__HasSuccessors();
+
+		/**
+		 * The meta object literal for the '<em><b>Has Predecessors</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation NODE___HAS_PREDECESSORS = eINSTANCE.getNode__HasPredecessors();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.model.spec.impl.ConditionalDivergenceImpl <em>Conditional Divergence</em>}' class.

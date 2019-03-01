@@ -1107,13 +1107,22 @@ public interface WorkflowPackage extends EPackage {
 	int SCRIPTED_TASK__SCRIPT = TASK_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Language</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPTED_TASK__LANGUAGE = TASK_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Scripted Task</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCRIPTED_TASK_FEATURE_COUNT = TASK_FEATURE_COUNT + 2;
+	int SCRIPTED_TASK_FEATURE_COUNT = TASK_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Run</em>' operation.
@@ -2667,6 +2676,17 @@ public interface WorkflowPackage extends EPackage {
 	EReference getScriptedTask_Script();
 
 	/**
+	 * Returns the meta object for the attribute '{@link fr.kazejiyu.ekumi.model.workflow.ScriptedTask#getLanguage <em>Language</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Language</em>'.
+	 * @see fr.kazejiyu.ekumi.model.workflow.ScriptedTask#getLanguage()
+	 * @see #getScriptedTask()
+	 * @generated
+	 */
+	EAttribute getScriptedTask_Language();
+
+	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.model.workflow.Script <em>Script</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3647,6 +3667,14 @@ public interface WorkflowPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SCRIPTED_TASK__SCRIPT = eINSTANCE.getScriptedTask_Script();
+
+		/**
+		 * The meta object literal for the '<em><b>Language</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SCRIPTED_TASK__LANGUAGE = eINSTANCE.getScriptedTask_Language();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.model.workflow.impl.ScriptImpl <em>Script</em>}' class.

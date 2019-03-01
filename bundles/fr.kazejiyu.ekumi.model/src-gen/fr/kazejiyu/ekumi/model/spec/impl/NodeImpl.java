@@ -170,6 +170,28 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements N
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean hasSuccessors() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean hasPredecessors() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -289,6 +311,10 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements N
 			return canPrecede();
 		case SpecPackage.NODE___CAN_SUCCEED:
 			return canSucceed();
+		case SpecPackage.NODE___HAS_SUCCESSORS:
+			return hasSuccessors();
+		case SpecPackage.NODE___HAS_PREDECESSORS:
+			return hasPredecessors();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

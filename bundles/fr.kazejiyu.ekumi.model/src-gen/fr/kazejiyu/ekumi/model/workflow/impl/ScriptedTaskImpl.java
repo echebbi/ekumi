@@ -2,6 +2,7 @@
  */
 package fr.kazejiyu.ekumi.model.workflow.impl;
 
+import fr.kazejiyu.ekumi.model.scripting.ScriptingLanguage;
 import fr.kazejiyu.ekumi.model.workflow.Runner;
 import fr.kazejiyu.ekumi.model.workflow.ScriptedTask;
 import fr.kazejiyu.ekumi.model.workflow.WorkflowPackage;
@@ -24,6 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link fr.kazejiyu.ekumi.model.workflow.impl.ScriptedTaskImpl#getScriptPath <em>Script Path</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.model.workflow.impl.ScriptedTaskImpl#getScript <em>Script</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.model.workflow.impl.ScriptedTaskImpl#getLanguage <em>Language</em>}</li>
  * </ul>
  *
  * @generated
@@ -58,6 +60,26 @@ public class ScriptedTaskImpl extends TaskImpl implements ScriptedTask {
 	 * @ordered
 	 */
 	protected Runner script;
+
+	/**
+	 * The default value of the '{@link #getLanguage() <em>Language</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLanguage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final ScriptingLanguage LANGUAGE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getLanguage() <em>Language</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLanguage()
+	 * @generated
+	 * @ordered
+	 */
+	protected ScriptingLanguage language = LANGUAGE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -155,6 +177,28 @@ public class ScriptedTaskImpl extends TaskImpl implements ScriptedTask {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ScriptingLanguage getLanguage() {
+		return language;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLanguage(ScriptingLanguage newLanguage) {
+		ScriptingLanguage oldLanguage = language;
+		language = newLanguage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, WorkflowPackage.SCRIPTED_TASK__LANGUAGE, oldLanguage,
+					language));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -176,6 +220,8 @@ public class ScriptedTaskImpl extends TaskImpl implements ScriptedTask {
 			return getScriptPath();
 		case WorkflowPackage.SCRIPTED_TASK__SCRIPT:
 			return getScript();
+		case WorkflowPackage.SCRIPTED_TASK__LANGUAGE:
+			return getLanguage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -193,6 +239,9 @@ public class ScriptedTaskImpl extends TaskImpl implements ScriptedTask {
 			return;
 		case WorkflowPackage.SCRIPTED_TASK__SCRIPT:
 			setScript((Runner) newValue);
+			return;
+		case WorkflowPackage.SCRIPTED_TASK__LANGUAGE:
+			setLanguage((ScriptingLanguage) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -212,6 +261,9 @@ public class ScriptedTaskImpl extends TaskImpl implements ScriptedTask {
 		case WorkflowPackage.SCRIPTED_TASK__SCRIPT:
 			setScript((Runner) null);
 			return;
+		case WorkflowPackage.SCRIPTED_TASK__LANGUAGE:
+			setLanguage(LANGUAGE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -228,6 +280,8 @@ public class ScriptedTaskImpl extends TaskImpl implements ScriptedTask {
 			return SCRIPT_PATH_EDEFAULT == null ? scriptPath != null : !SCRIPT_PATH_EDEFAULT.equals(scriptPath);
 		case WorkflowPackage.SCRIPTED_TASK__SCRIPT:
 			return script != null;
+		case WorkflowPackage.SCRIPTED_TASK__LANGUAGE:
+			return LANGUAGE_EDEFAULT == null ? language != null : !LANGUAGE_EDEFAULT.equals(language);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -245,6 +299,8 @@ public class ScriptedTaskImpl extends TaskImpl implements ScriptedTask {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (scriptPath: ");
 		result.append(scriptPath);
+		result.append(", language: ");
+		result.append(language);
 		result.append(')');
 		return result.toString();
 	}
