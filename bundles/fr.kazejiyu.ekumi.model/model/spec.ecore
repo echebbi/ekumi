@@ -111,6 +111,8 @@
     </eOperations>
     <eOperations name="canPrecede" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
     <eOperations name="canSucceed" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    <eOperations name="hasSuccessors" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    <eOperations name="hasPredecessors" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="successors" upperBound="-1"
         eType="#//Node" eOpposite="#//Node/predecessors"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="predecessors" upperBound="-1"

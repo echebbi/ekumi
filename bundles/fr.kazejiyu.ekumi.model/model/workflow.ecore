@@ -82,6 +82,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scriptPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="script" eType="#//Runner"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" eType="#//ScriptingLanguage"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Script" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

@@ -689,6 +689,24 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getNode__HasSuccessors() {
+		return nodeEClass.getEOperations().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getNode__HasPredecessors() {
+		return nodeEClass.getEOperations().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getConditionalDivergence() {
 		return conditionalDivergenceEClass;
 	}
@@ -828,6 +846,8 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 		createEOperation(nodeEClass, NODE___SUCCEEDS__NODE);
 		createEOperation(nodeEClass, NODE___CAN_PRECEDE);
 		createEOperation(nodeEClass, NODE___CAN_SUCCEED);
+		createEOperation(nodeEClass, NODE___HAS_SUCCESSORS);
+		createEOperation(nodeEClass, NODE___HAS_PREDECESSORS);
 
 		conditionalDivergenceEClass = createEClass(CONDITIONAL_DIVERGENCE);
 
@@ -1022,6 +1042,12 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage {
 				IS_ORDERED);
 
 		initEOperation(getNode__CanSucceed(), theXMLTypePackage.getBoolean(), "canSucceed", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+
+		initEOperation(getNode__HasSuccessors(), theXMLTypePackage.getBoolean(), "hasSuccessors", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+
+		initEOperation(getNode__HasPredecessors(), theXMLTypePackage.getBoolean(), "hasPredecessors", 0, 1, IS_UNIQUE,
 				IS_ORDERED);
 
 		initEClass(conditionalDivergenceEClass, ConditionalDivergence.class, "ConditionalDivergence", IS_ABSTRACT,

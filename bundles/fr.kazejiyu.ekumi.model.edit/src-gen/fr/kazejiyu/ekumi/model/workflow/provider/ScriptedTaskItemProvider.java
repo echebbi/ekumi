@@ -47,6 +47,7 @@ public class ScriptedTaskItemProvider extends TaskItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addScriptPathPropertyDescriptor(object);
+			addLanguagePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -64,6 +65,22 @@ public class ScriptedTaskItemProvider extends TaskItemProvider {
 						getString("_UI_PropertyDescriptor_description", "_UI_ScriptedTask_scriptPath_feature",
 								"_UI_ScriptedTask_type"),
 						WorkflowPackage.Literals.SCRIPTED_TASK__SCRIPT_PATH, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Language feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLanguagePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_ScriptedTask_language_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_ScriptedTask_language_feature",
+								"_UI_ScriptedTask_type"),
+						WorkflowPackage.Literals.SCRIPTED_TASK__LANGUAGE, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -144,6 +161,7 @@ public class ScriptedTaskItemProvider extends TaskItemProvider {
 
 		switch (notification.getFeatureID(ScriptedTask.class)) {
 		case WorkflowPackage.SCRIPTED_TASK__SCRIPT_PATH:
+		case WorkflowPackage.SCRIPTED_TASK__LANGUAGE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case WorkflowPackage.SCRIPTED_TASK__SCRIPT:
