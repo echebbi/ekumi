@@ -19,8 +19,8 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 
-import fr.kazejiyu.ekumi.EKumiPlugin;
 import fr.kazejiyu.ekumi.ide.common.languages.ExtensionToScriptingLanguageAdapter;
+import fr.kazejiyu.ekumi.model.EKumiExtensions;
 import fr.kazejiyu.ekumi.model.scripting.ScriptingLanguage;
 import fr.kazejiyu.ekumi.model.spec.ExternalTask;
 
@@ -103,7 +103,7 @@ public class ScriptingLanguageServices {
 	public List<ScriptingLanguage> availableScriptingLanguages(EObject object) {
 		ExtensionToScriptingLanguageAdapter adapter = new ExtensionToScriptingLanguageAdapter();
 		return adapter.adapt(asList(
-				extensions.getConfigurationElementsFor(EKumiPlugin.LANGUAGES_EXTENSION_ID)
+				extensions.getConfigurationElementsFor(EKumiExtensions.LANGUAGES_EXTENSION_ID)
 		));
 	}
 	

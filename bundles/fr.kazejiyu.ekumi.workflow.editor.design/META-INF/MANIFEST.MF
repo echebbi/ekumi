@@ -18,7 +18,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.gmf.runtime.diagram.ui.properties,
  org.eclipse.gmf.runtime.diagram.ui.resources.editor,
  org.eclipse.ui.ide,
- fr.kazejiyu.ekumi.core,
  fr.kazejiyu.ekumi.ide.common;bundle-version="0.1.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
