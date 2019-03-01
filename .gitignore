@@ -32,3 +32,6 @@ target/
 
 # Folder used during tests
 /tests/fr.kazejiyu.ekumi.ide.test/rsc/PersistExecutionTest
+
+# Eclipse IDE preferences
+fr.kazejiyu.discord.rpc.integration.prefs
