@@ -22,22 +22,23 @@
 	</prerequisites>
 
 	<properties>
-		<acceleo-version>3.3.0</acceleo-version>
+		<!-- DEPENDENCIES -->
 		<tycho-version>1.2.0</tycho-version>
 		<jacoco-version>0.8.1</jacoco-version>
 
-        <!-- Always refer to the corresponding tests project (if it exists) otherwise 
-        Sonarqube won't be able to collect code coverage. For example, when analyzing 
-        project foo it wouldn't find code coverage information if it doesn't use 
-        foo.tests jacoco.exec. -->
-        <sonar.jacoco.reportPaths>../../tests/${project.artifactId}.test/target/jacoco.exec</sonar.jacoco.reportPaths>
-        
+		<!-- SONARQUBE -->
+		<sonar.links.homepage>https://github.com/KazeJiyu/ekumi</sonar.links.homepage>
+		<sonar.links.ci>https://travis-ci.org/KazeJiyu/ekumi</sonar.links.ci>
+		<sonar.links.scm>https://github.com/KazeJiyu/ekumi</sonar.links.scm>
+		<sonar.links.issue>https://github.com/KazeJiyu/ekumi/issues</sonar.links.issue>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.java.source>8</sonar.java.source>
 		<!-- Ignore :
 				- generated source code,
 				- Exceptions,
-				- untestable activators
-		-->
+				- untestable activators -->
         <sonar.exclusions>**/src-gen/**/*.*,**/*Exception.java,**/Activator.java,**/EKumiPlugin.java</sonar.exclusions>
+        <sonar.jacoco.reportPaths>../../tests/${project.artifactId}.test/target/jacoco.exec</sonar.jacoco.reportPaths>
 	</properties>
 
 	<!-- COMMANDS:	
