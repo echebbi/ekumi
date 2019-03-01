@@ -113,13 +113,49 @@ public interface SpecPackage extends EPackage {
 	int NODE___CAN_SUCCEED__NODE = 1;
 
 	/**
+	 * The operation id for the '<em>Precedes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE___PRECEDES__NODE = 2;
+
+	/**
+	 * The operation id for the '<em>Succeeds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE___SUCCEEDS__NODE = 3;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE___CAN_PRECEDE = 4;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE___CAN_SUCCEED = 5;
+
+	/**
 	 * The number of operations of the '<em>Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_OPERATION_COUNT = 2;
+	int NODE_OPERATION_COUNT = 6;
 
 	/**
 	 * The meta object id for the '{@link fr.kazejiyu.ekumi.model.spec.impl.StartingNodeImpl <em>Starting Node</em>}' class.
@@ -175,6 +211,42 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int STARTING_NODE___CAN_SUCCEED__NODE = NODE___CAN_SUCCEED__NODE;
+
+	/**
+	 * The operation id for the '<em>Precedes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STARTING_NODE___PRECEDES__NODE = NODE___PRECEDES__NODE;
+
+	/**
+	 * The operation id for the '<em>Succeeds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STARTING_NODE___SUCCEEDS__NODE = NODE___SUCCEEDS__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STARTING_NODE___CAN_PRECEDE = NODE___CAN_PRECEDE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STARTING_NODE___CAN_SUCCEED = NODE___CAN_SUCCEED;
 
 	/**
 	 * The number of operations of the '<em>Starting Node</em>' class.
@@ -284,6 +356,42 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int TASK___CAN_SUCCEED__NODE = STARTING_NODE___CAN_SUCCEED__NODE;
+
+	/**
+	 * The operation id for the '<em>Precedes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK___PRECEDES__NODE = STARTING_NODE___PRECEDES__NODE;
+
+	/**
+	 * The operation id for the '<em>Succeeds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK___SUCCEEDS__NODE = STARTING_NODE___SUCCEEDS__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK___CAN_PRECEDE = STARTING_NODE___CAN_PRECEDE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK___CAN_SUCCEED = STARTING_NODE___CAN_SUCCEED;
 
 	/**
 	 * The number of operations of the '<em>Task</em>' class.
@@ -458,6 +566,42 @@ public interface SpecPackage extends EPackage {
 	int ACTIVITY___CAN_SUCCEED__NODE = TASK___CAN_SUCCEED__NODE;
 
 	/**
+	 * The operation id for the '<em>Precedes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY___PRECEDES__NODE = TASK___PRECEDES__NODE;
+
+	/**
+	 * The operation id for the '<em>Succeeds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY___SUCCEEDS__NODE = TASK___SUCCEEDS__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY___CAN_PRECEDE = TASK___CAN_PRECEDE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY___CAN_SUCCEED = TASK___CAN_SUCCEED;
+
+	/**
 	 * The number of operations of the '<em>Activity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -529,6 +673,42 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int START___CAN_SUCCEED__NODE = NODE___CAN_SUCCEED__NODE;
+
+	/**
+	 * The operation id for the '<em>Precedes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START___PRECEDES__NODE = NODE___PRECEDES__NODE;
+
+	/**
+	 * The operation id for the '<em>Succeeds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START___SUCCEEDS__NODE = NODE___SUCCEEDS__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START___CAN_PRECEDE = NODE___CAN_PRECEDE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START___CAN_SUCCEED = NODE___CAN_SUCCEED;
 
 	/**
 	 * The number of operations of the '<em>Start</em>' class.
@@ -613,6 +793,42 @@ public interface SpecPackage extends EPackage {
 	int DIVERGENCE___CAN_SUCCEED__NODE = STARTING_NODE___CAN_SUCCEED__NODE;
 
 	/**
+	 * The operation id for the '<em>Precedes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIVERGENCE___PRECEDES__NODE = STARTING_NODE___PRECEDES__NODE;
+
+	/**
+	 * The operation id for the '<em>Succeeds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIVERGENCE___SUCCEEDS__NODE = STARTING_NODE___SUCCEEDS__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIVERGENCE___CAN_PRECEDE = STARTING_NODE___CAN_PRECEDE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIVERGENCE___CAN_SUCCEED = STARTING_NODE___CAN_SUCCEED;
+
+	/**
 	 * The number of operations of the '<em>Divergence</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -693,6 +909,42 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int PARALLEL_SPLIT___CAN_SUCCEED__NODE = DIVERGENCE___CAN_SUCCEED__NODE;
+
+	/**
+	 * The operation id for the '<em>Precedes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT___PRECEDES__NODE = DIVERGENCE___PRECEDES__NODE;
+
+	/**
+	 * The operation id for the '<em>Succeeds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT___SUCCEEDS__NODE = DIVERGENCE___SUCCEEDS__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT___CAN_PRECEDE = DIVERGENCE___CAN_PRECEDE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT___CAN_SUCCEED = DIVERGENCE___CAN_SUCCEED;
 
 	/**
 	 * The number of operations of the '<em>Parallel Split</em>' class.
@@ -822,6 +1074,42 @@ public interface SpecPackage extends EPackage {
 	int EXTERNAL_TASK___CAN_SUCCEED__NODE = TASK___CAN_SUCCEED__NODE;
 
 	/**
+	 * The operation id for the '<em>Precedes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_TASK___PRECEDES__NODE = TASK___PRECEDES__NODE;
+
+	/**
+	 * The operation id for the '<em>Succeeds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_TASK___SUCCEEDS__NODE = TASK___SUCCEEDS__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_TASK___CAN_PRECEDE = TASK___CAN_PRECEDE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_TASK___CAN_SUCCEED = TASK___CAN_SUCCEED;
+
+	/**
 	 * The number of operations of the '<em>External Task</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -931,6 +1219,42 @@ public interface SpecPackage extends EPackage {
 	int LIBRARY_TASK___CAN_SUCCEED__NODE = TASK___CAN_SUCCEED__NODE;
 
 	/**
+	 * The operation id for the '<em>Precedes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIBRARY_TASK___PRECEDES__NODE = TASK___PRECEDES__NODE;
+
+	/**
+	 * The operation id for the '<em>Succeeds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIBRARY_TASK___SUCCEEDS__NODE = TASK___SUCCEEDS__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIBRARY_TASK___CAN_PRECEDE = TASK___CAN_PRECEDE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIBRARY_TASK___CAN_SUCCEED = TASK___CAN_SUCCEED;
+
+	/**
 	 * The number of operations of the '<em>Library Task</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -993,6 +1317,42 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONVERGENCE___CAN_SUCCEED__NODE = NODE___CAN_SUCCEED__NODE;
+
+	/**
+	 * The operation id for the '<em>Precedes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVERGENCE___PRECEDES__NODE = NODE___PRECEDES__NODE;
+
+	/**
+	 * The operation id for the '<em>Succeeds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVERGENCE___SUCCEEDS__NODE = NODE___SUCCEEDS__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVERGENCE___CAN_PRECEDE = NODE___CAN_PRECEDE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVERGENCE___CAN_SUCCEED = NODE___CAN_SUCCEED;
 
 	/**
 	 * The number of operations of the '<em>Convergence</em>' class.
@@ -1059,6 +1419,42 @@ public interface SpecPackage extends EPackage {
 	int SYNCHRONIZATION___CAN_SUCCEED__NODE = CONVERGENCE___CAN_SUCCEED__NODE;
 
 	/**
+	 * The operation id for the '<em>Precedes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNCHRONIZATION___PRECEDES__NODE = CONVERGENCE___PRECEDES__NODE;
+
+	/**
+	 * The operation id for the '<em>Succeeds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNCHRONIZATION___SUCCEEDS__NODE = CONVERGENCE___SUCCEEDS__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNCHRONIZATION___CAN_PRECEDE = CONVERGENCE___CAN_PRECEDE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNCHRONIZATION___CAN_SUCCEED = CONVERGENCE___CAN_SUCCEED;
+
+	/**
 	 * The number of operations of the '<em>Synchronization</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1121,6 +1517,42 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONDITIONAL_DIVERGENCE___CAN_SUCCEED__NODE = STARTING_NODE___CAN_SUCCEED__NODE;
+
+	/**
+	 * The operation id for the '<em>Precedes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_DIVERGENCE___PRECEDES__NODE = STARTING_NODE___PRECEDES__NODE;
+
+	/**
+	 * The operation id for the '<em>Succeeds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_DIVERGENCE___SUCCEEDS__NODE = STARTING_NODE___SUCCEEDS__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_DIVERGENCE___CAN_PRECEDE = STARTING_NODE___CAN_PRECEDE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_DIVERGENCE___CAN_SUCCEED = STARTING_NODE___CAN_SUCCEED;
 
 	/**
 	 * The number of operations of the '<em>Conditional Divergence</em>' class.
@@ -1187,6 +1619,42 @@ public interface SpecPackage extends EPackage {
 	int MULTI_CHOICE___CAN_SUCCEED__NODE = CONDITIONAL_DIVERGENCE___CAN_SUCCEED__NODE;
 
 	/**
+	 * The operation id for the '<em>Precedes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_CHOICE___PRECEDES__NODE = CONDITIONAL_DIVERGENCE___PRECEDES__NODE;
+
+	/**
+	 * The operation id for the '<em>Succeeds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_CHOICE___SUCCEEDS__NODE = CONDITIONAL_DIVERGENCE___SUCCEEDS__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_CHOICE___CAN_PRECEDE = CONDITIONAL_DIVERGENCE___CAN_PRECEDE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_CHOICE___CAN_SUCCEED = CONDITIONAL_DIVERGENCE___CAN_SUCCEED;
+
+	/**
 	 * The number of operations of the '<em>Multi Choice</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1249,6 +1717,42 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int SIMPLE_MERGE___CAN_SUCCEED__NODE = CONVERGENCE___CAN_SUCCEED__NODE;
+
+	/**
+	 * The operation id for the '<em>Precedes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_MERGE___PRECEDES__NODE = CONVERGENCE___PRECEDES__NODE;
+
+	/**
+	 * The operation id for the '<em>Succeeds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_MERGE___SUCCEEDS__NODE = CONVERGENCE___SUCCEEDS__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_MERGE___CAN_PRECEDE = CONVERGENCE___CAN_PRECEDE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_MERGE___CAN_SUCCEED = CONVERGENCE___CAN_SUCCEED;
 
 	/**
 	 * The number of operations of the '<em>Simple Merge</em>' class.
@@ -1551,6 +2055,42 @@ public interface SpecPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONDITION___CAN_SUCCEED__NODE = TASK___CAN_SUCCEED__NODE;
+
+	/**
+	 * The operation id for the '<em>Precedes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITION___PRECEDES__NODE = TASK___PRECEDES__NODE;
+
+	/**
+	 * The operation id for the '<em>Succeeds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITION___SUCCEEDS__NODE = TASK___SUCCEEDS__NODE;
+
+	/**
+	 * The operation id for the '<em>Can Precede</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITION___CAN_PRECEDE = TASK___CAN_PRECEDE;
+
+	/**
+	 * The operation id for the '<em>Can Succeed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITION___CAN_SUCCEED = TASK___CAN_SUCCEED;
 
 	/**
 	 * The number of operations of the '<em>Condition</em>' class.
@@ -2018,6 +2558,46 @@ public interface SpecPackage extends EPackage {
 	EOperation getNode__CanSucceed__Node();
 
 	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.model.spec.Node#precedes(fr.kazejiyu.ekumi.model.spec.Node) <em>Precedes</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Precedes</em>' operation.
+	 * @see fr.kazejiyu.ekumi.model.spec.Node#precedes(fr.kazejiyu.ekumi.model.spec.Node)
+	 * @generated
+	 */
+	EOperation getNode__Precedes__Node();
+
+	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.model.spec.Node#succeeds(fr.kazejiyu.ekumi.model.spec.Node) <em>Succeeds</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Succeeds</em>' operation.
+	 * @see fr.kazejiyu.ekumi.model.spec.Node#succeeds(fr.kazejiyu.ekumi.model.spec.Node)
+	 * @generated
+	 */
+	EOperation getNode__Succeeds__Node();
+
+	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.model.spec.Node#canPrecede() <em>Can Precede</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Can Precede</em>' operation.
+	 * @see fr.kazejiyu.ekumi.model.spec.Node#canPrecede()
+	 * @generated
+	 */
+	EOperation getNode__CanPrecede();
+
+	/**
+	 * Returns the meta object for the '{@link fr.kazejiyu.ekumi.model.spec.Node#canSucceed() <em>Can Succeed</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Can Succeed</em>' operation.
+	 * @see fr.kazejiyu.ekumi.model.spec.Node#canSucceed()
+	 * @generated
+	 */
+	EOperation getNode__CanSucceed();
+
+	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.model.spec.ConditionalDivergence <em>Conditional Divergence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2475,6 +3055,38 @@ public interface SpecPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation NODE___CAN_SUCCEED__NODE = eINSTANCE.getNode__CanSucceed__Node();
+
+		/**
+		 * The meta object literal for the '<em><b>Precedes</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation NODE___PRECEDES__NODE = eINSTANCE.getNode__Precedes__Node();
+
+		/**
+		 * The meta object literal for the '<em><b>Succeeds</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation NODE___SUCCEEDS__NODE = eINSTANCE.getNode__Succeeds__Node();
+
+		/**
+		 * The meta object literal for the '<em><b>Can Precede</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation NODE___CAN_PRECEDE = eINSTANCE.getNode__CanPrecede();
+
+		/**
+		 * The meta object literal for the '<em><b>Can Succeed</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation NODE___CAN_SUCCEED = eINSTANCE.getNode__CanSucceed();
 
 		/**
 		 * The meta object literal for the '{@link fr.kazejiyu.ekumi.model.spec.impl.ConditionalDivergenceImpl <em>Conditional Divergence</em>}' class.

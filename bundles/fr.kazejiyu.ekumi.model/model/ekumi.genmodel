@@ -249,6 +249,14 @@
       <genOperations ecoreOperation="spec.ecore#//Node/canSucceed">
         <genParameters ecoreParameter="spec.ecore#//Node/canSucceed/node"/>
       </genOperations>
+      <genOperations ecoreOperation="spec.ecore#//Node/precedes">
+        <genParameters ecoreParameter="spec.ecore#//Node/precedes/successor"/>
+      </genOperations>
+      <genOperations ecoreOperation="spec.ecore#//Node/succeeds">
+        <genParameters ecoreParameter="spec.ecore#//Node/succeeds/predecessor"/>
+      </genOperations>
+      <genOperations ecoreOperation="spec.ecore#//Node/canPrecede.1"/>
+      <genOperations ecoreOperation="spec.ecore#//Node/canSucceed.1"/>
     </genClasses>
     <genClasses image="false" ecoreClass="spec.ecore#//ConditionalDivergence"/>
     <genClasses ecoreClass="spec.ecore#//ConditionalRoot">
