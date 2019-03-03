@@ -51,6 +51,13 @@ A programming language is represented by an instance of ScriptingLanguage, which
 
    <element name="language">
       <complexType>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Uniquely identifies this language.
+               </documentation>
+            </annotation>
+         </attribute>
          <attribute name="name" type="string" use="required">
             <annotation>
                <documentation>
