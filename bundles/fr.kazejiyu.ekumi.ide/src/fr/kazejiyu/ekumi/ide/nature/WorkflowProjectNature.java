@@ -16,10 +16,10 @@ import org.eclipse.core.runtime.CoreException;
 /**
  * The nature of a project that hosts EKumi workflows.
  */
-public class EKumiProjectNature implements IProjectNature {
+public class WorkflowProjectNature implements IProjectNature {
 	
 	/** The ID of the nature as defined in the plugin.xml file */
-	public static final String NATURE_ID = "fr.kazejiyu.ekumi.ide.ekumi-nature";
+	public static final String ID = "fr.kazejiyu.ekumi.ide.workflow-nature";
 	
 	private IProject project;
 

@@ -32,11 +32,11 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 
 import fr.kazejiyu.ekumi.EKumiPlugin;
-import fr.kazejiyu.ekumi.ide.nature.EKumiProject;
-import fr.kazejiyu.ekumi.ide.ui.nature.impl.WorkspaceEKumiProject;
+import fr.kazejiyu.ekumi.ide.nature.WorkflowProject;
+import fr.kazejiyu.ekumi.ide.ui.nature.impl.WorkspaceWorkflowProject;
 
 /**
- * A wizard used to create new EKumi projects. 
+ * A wizard used to create new workflow projects. 
  */
 public class NewWorkflowProjectWizard extends Wizard implements INewWizard {
 	
@@ -102,7 +102,7 @@ public class NewWorkflowProjectWizard extends Wizard implements INewWizard {
 				@Override
 				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
 					try {
-						EKumiProject project = new WorkspaceEKumiProject(ResourcesPlugin.getWorkspace(), ModelingProjectManager.INSTANCE);
+						WorkflowProject project = new WorkspaceWorkflowProject(ResourcesPlugin.getWorkspace(), ModelingProjectManager.INSTANCE);
 						project.create(projectName, projectLocation, activityName, monitor);
 						
 					} catch (Exception e) {

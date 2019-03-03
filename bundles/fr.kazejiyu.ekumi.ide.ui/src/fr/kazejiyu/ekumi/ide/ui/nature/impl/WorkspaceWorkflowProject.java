@@ -37,19 +37,19 @@ import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelection
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
-import fr.kazejiyu.ekumi.ide.nature.EKumiProject;
-import fr.kazejiyu.ekumi.ide.nature.EKumiProjectNature;
+import fr.kazejiyu.ekumi.ide.nature.WorkflowProject;
+import fr.kazejiyu.ekumi.ide.nature.WorkflowProjectNature;
 import fr.kazejiyu.ekumi.model.spec.Activity;
 import fr.kazejiyu.ekumi.model.spec.SpecFactory;
 import fr.kazejiyu.ekumi.workflow.editor.design.api.EKumiViewpoints;
 
 /**
- * An EKumi project located in the workspace.
+ * A workflow project that is located in the workspace.
  */
 // ChangeViewpointSelectionCommand is not API but even Obeo guys
 // advise to use it since there are no strong alternatives
 @SuppressWarnings("restriction")
-public class WorkspaceEKumiProject implements EKumiProject {
+public class WorkspaceWorkflowProject implements WorkflowProject {
 	
 	/** The workspace containing the project */
 	private final IWorkspace workspace;
@@ -65,7 +65,7 @@ public class WorkspaceEKumiProject implements EKumiProject {
 	 * @param modeling
 	 * 			The manager used to set up the project as a Modeling one.
 	 */
-	public WorkspaceEKumiProject(IWorkspace workspace, ModelingProjectManager modeling) {
+	public WorkspaceWorkflowProject(IWorkspace workspace, ModelingProjectManager modeling) {
 		this.workspace = workspace;
 		this.modeling = modeling;
 	}
@@ -111,8 +111,8 @@ public class WorkspaceEKumiProject implements EKumiProject {
 		String[] newNatures = new String[natures.length + 1];
 		System.arraycopy(natures, 0, newNatures, 0, natures.length);
 
-		// Add EKumi project nature
-		newNatures[natures.length] = EKumiProjectNature.NATURE_ID;
+		// Add Workflow project nature
+		newNatures[natures.length] = WorkflowProjectNature.ID;
 		IStatus status = workspace.validateNatureSet(newNatures);
 
 		// Only apply new natures if the workspace allows it

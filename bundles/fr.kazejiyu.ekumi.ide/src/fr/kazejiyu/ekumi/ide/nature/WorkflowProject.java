@@ -15,13 +15,13 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 
 /**
- * <p>An Eclipse IDE project that owns an {@link EKumiProjectNature}.</p>
+ * <p>An Eclipse IDE project that owns an {@link WorkflowProjectNature}.</p>
  * 
  * <p>Such a project usually contains a specification model serialized under
  * the <i>model/</i> directory as well as a <i>.aird</i> file containing
  * a diagram representation of the model.
  */
-public interface EKumiProject {
+public interface WorkflowProject {
 	
 	/**
 	 * Creates the project.
