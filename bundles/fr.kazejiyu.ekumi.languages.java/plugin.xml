@@ -5,6 +5,7 @@
          point="fr.kazejiyu.ekumi.model.languages">
       <language
             class="fr.kazejiyu.ekumi.languages.java.JavaLanguage"
+            id="fr.kazejiyu.ekumi.languages.java.JavaLanguage"
             name="Java"></language>
    </extension>
 
