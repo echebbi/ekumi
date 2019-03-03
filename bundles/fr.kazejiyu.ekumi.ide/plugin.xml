@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension-point id="project_customization" name="Project Customization" schema="schema/project_customization.exsd"/>
    <extension
          id="ekumi-nature"
          name="EKumi Project Nature"

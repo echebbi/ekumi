@@ -6,7 +6,8 @@ Bundle-Version: 0.1.0
 Automatic-Module-Name: fr.kazejiyu.ekumi.ide
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: fr.kazejiyu.ekumi.ide.history,
- fr.kazejiyu.ekumi.ide.nature
+ fr.kazejiyu.ekumi.ide.nature,
+ fr.kazejiyu.ekumi.ide.project.customization
 Require-Bundle: fr.kazejiyu.ekumi.model,
  org.eclipse.e4.core.contexts;bundle-version="1.6.0",
  org.apache.commons.io,
