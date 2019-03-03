@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="fr.kazejiyu.ekumi.ide.project_customization">
+      <language-specific
+            class="fr.kazejiyu.ekumi.languages.java.ide.AddPDENature"
+            language="fr.kazejiyu.ekumi.languages.java.JavaLanguage">
+      </language-specific>
+   </extension>
+
+</plugin>

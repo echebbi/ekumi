@@ -69,7 +69,7 @@ import fr.kazejiyu.ekumi.model.workflow.Script;
 public final class JavaLanguage implements ScriptingLanguage {
 	
 	/** The id of the extension providing this scripting language */
-	public static final String EXTENSION_ID = "fr.kazejiyu.ekumi.languages.java";
+	public static final String EXTENSION_ID = "fr.kazejiyu.ekumi.languages.java.JavaLanguage";
 	
 	@Override
 	public String id() {
