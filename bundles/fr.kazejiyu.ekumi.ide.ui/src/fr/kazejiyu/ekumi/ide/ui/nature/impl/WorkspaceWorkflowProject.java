@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -25,6 +26,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -39,6 +41,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import fr.kazejiyu.ekumi.ide.nature.WorkflowProject;
 import fr.kazejiyu.ekumi.ide.nature.WorkflowProjectNature;
+import fr.kazejiyu.ekumi.ide.project.customization.Customization;
 import fr.kazejiyu.ekumi.model.spec.Activity;
 import fr.kazejiyu.ekumi.model.spec.SpecFactory;
 import fr.kazejiyu.ekumi.workflow.editor.design.api.EKumiViewpoints;
@@ -71,18 +74,17 @@ public class WorkspaceWorkflowProject implements WorkflowProject {
 	}
 
 	@Override
-	public IProject create(String name, IPath path, String activityName, IProgressMonitor monitor) throws CoreException {
+	public IProject create(String name, IPath path, String activityName, Set<Customization> customizations, IProgressMonitor monitor) throws CoreException {
 		IWorkspaceRunnable createProject = projectMonitor -> {
-			try {
-				IProject project = createProject(name, path, projectMonitor);
+			SubMonitor subMonitor = SubMonitor.convert(monitor, 3 + customizations.size());
+			
+			IProject project = createProject(name, path, subMonitor.split(1));
+            Activity workflow = createProjectModel(activityName, project, subMonitor.split(1));
+            createRepresentation(workflow, project, subMonitor.split(1));
                 
-                Activity workflow = createProjectModel(activityName, project);
-                
-                createRepresentation(workflow, project, projectMonitor);
-            } 
-			finally {
-            	monitor.done();
-            }
+            for (Customization customization : customizations) {
+				customization.customize(workspace, project, subMonitor.split(1));
+			}
 		};
 		workspace.run(createProject, monitor);
 		return workspace.getRoot().getProject(name);
@@ -103,6 +105,9 @@ public class WorkspaceWorkflowProject implements WorkflowProject {
 	 * @throws CoreException if an error occurs while creating the project
 	 */
 	private IProject createProject(String name, IPath path, IProgressMonitor monitor) throws CoreException {
+		SubMonitor subMonitor = SubMonitor.convert(monitor);
+		subMonitor.setTaskName("Creating the project");
+		
 		// First add the Modeling nature to the project
 		IProject project = modeling.createNewModelingProject(name, path, true, monitor);
 		
@@ -129,12 +134,17 @@ public class WorkspaceWorkflowProject implements WorkflowProject {
 	 * 			The name of the model to create.
 	 * @param project
 	 * 			The project in which the model is persisted.
+	 * @param monitor
+	 * 			The 
 	 * 
 	 * @return the new model
 	 * 
 	 * @throws CoreException if the new model cannot be persisted
 	 */
-	private static Activity createProjectModel(String activityName, IProject project) throws CoreException {
+	private static Activity createProjectModel(String activityName, IProject project, IProgressMonitor monitor) throws CoreException {
+		SubMonitor subMonitor = SubMonitor.convert(monitor);
+		subMonitor.setTaskName("Creating the workflow model");
+		
 		// Create the Activity representing the workflow
 		Activity workflow = SpecFactory.eINSTANCE.createActivity();
 		workflow.setId(project.getName() + "." + activityName);
@@ -169,6 +179,9 @@ public class WorkspaceWorkflowProject implements WorkflowProject {
 	 * @throws CoreException
 	 */
 	private static void createRepresentation(Activity model, IProject project, IProgressMonitor monitor) throws CoreException {
+		SubMonitor subMonitor = SubMonitor.convert(monitor);
+		subMonitor.setTaskName("Creating the diagram");
+		
 		// Create a new Sirius session to handle the representation
 		Session session = ModelingProject.asModelingProject(project).get().getSession();
 		
@@ -177,7 +190,8 @@ public class WorkspaceWorkflowProject implements WorkflowProject {
 			   .execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
 				   @Override
 				   protected void doExecute() {
-					   session.addSemanticResource(model.eResource().getURI(), monitor);
+					   SubMonitor commandMonitor = SubMonitor.convert(subMonitor);
+					   session.addSemanticResource(model.eResource().getURI(), commandMonitor);
 				   }
 			   });
 		
@@ -190,7 +204,8 @@ public class WorkspaceWorkflowProject implements WorkflowProject {
 			   .execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
 					@Override
 					protected void doExecute() {
-						session.createView(workflowViewpoint, asList(model), true, monitor);
+						SubMonitor commandMonitor = SubMonitor.convert(subMonitor);
+						session.createView(workflowViewpoint, asList(model), true, commandMonitor);
 					}
 			   });
 	}
