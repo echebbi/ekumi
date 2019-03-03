@@ -9,10 +9,14 @@
  ******************************************************************************/
 package fr.kazejiyu.ekumi.ide.nature;
 
+import java.util.Set;
+
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+
+import fr.kazejiyu.ekumi.ide.project.customization.Customization;
 
 /**
  * <p>An Eclipse IDE project that owns an {@link WorkflowProjectNature}.</p>
@@ -32,13 +36,14 @@ public interface WorkflowProject {
 	 * 			The path of the new project.
 	 * @param activityName
 	 * 			The name of the new activity.
+	 * @param customizations
+	 * 			The objects allow to customize the project after its creation.
 	 * @param monitor
 	 * 			The monitor used to follow the execution. Can be null.
-	 * 
 	 * @return the new project.
 	 * 
 	 * @throws CoreException 
 	 */
-	IProject create(String name, IPath path, String activityName, IProgressMonitor monitor) throws CoreException;
+	IProject create(String name, IPath path, String activityName, Set<Customization> customizations, IProgressMonitor monitor) throws CoreException;
 
 }
