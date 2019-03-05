@@ -7,7 +7,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
         eType="#//Variable" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="successor" eType="#//Activity"
-        eOpposite="#//Activity/predecessor"/>
+        containment="true" eOpposite="#//Activity/predecessor"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="predecessor" eType="#//Activity"
         eOpposite="#//Activity/successor"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="flows" lowerBound="1" eType="#//DataFlows"
@@ -81,7 +81,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="ScriptedTask" eSuperTypes="#//Task">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scriptPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="script" eType="#//Runner"
-        containment="true"/>
+        volatile="true" transient="true" unsettable="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" eType="#//ScriptingLanguage"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Script" abstract="true">

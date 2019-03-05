@@ -64,7 +64,7 @@
     <genClasses ecoreClass="workflow.ecore#//Activity">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Activity/inputs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Activity/outputs"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//Activity/successor"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//Activity/successor"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//Activity/predecessor"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Activity/flows"/>
     </genClasses>
@@ -106,7 +106,7 @@
     </genClasses>
     <genClasses ecoreClass="workflow.ecore#//ScriptedTask">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//ScriptedTask/scriptPath"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//ScriptedTask/script"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference workflow.ecore#//ScriptedTask/script"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//ScriptedTask/language"/>
     </genClasses>
     <genClasses ecoreClass="workflow.ecore#//Script">

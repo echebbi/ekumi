@@ -198,7 +198,9 @@ public class StructuredLoopItemProvider extends ActivityItemProvider {
 		Object childObject = child;
 
 		boolean qualify = childFeature == WorkflowPackage.Literals.ACTIVITY__INPUTS
-				|| childFeature == WorkflowPackage.Literals.ACTIVITY__OUTPUTS;
+				|| childFeature == WorkflowPackage.Literals.ACTIVITY__OUTPUTS
+				|| childFeature == WorkflowPackage.Literals.ACTIVITY__SUCCESSOR
+				|| childFeature == WorkflowPackage.Literals.STRUCTURED_LOOP__ACTIVITY;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2",

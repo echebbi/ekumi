@@ -42,7 +42,7 @@ public interface ScriptedTask extends Task {
 	 * @see #setScript(Runner)
 	 * @see fr.kazejiyu.ekumi.model.workflow.WorkflowPackage#getScriptedTask_Script()
 	 * <!-- end-user-doc -->
-	 * @model containment="true"
+	 * @model unsettable="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	Runner getScript();
@@ -51,11 +51,36 @@ public interface ScriptedTask extends Task {
 	 * <!-- begin-user-doc -->
 	 * Sets the value of the '{@link fr.kazejiyu.ekumi.model.workflow.ScriptedTask#getScript <em>Script</em>}' containment reference.
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Script</em>' containment reference.
+	 * @param value the new value of the '<em>Script</em>' reference.
+	 * @see #isSetScript()
+	 * @see #unsetScript()
 	 * @see #getScript()
 	 * @generated
 	 */
 	void setScript(Runner value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Unsets the value of the '{@link fr.kazejiyu.ekumi.model.workflow.ScriptedTask#getScript <em>Script</em>}' reference.
+	 * <!-- end-user-doc -->
+	 * @see #isSetScript()
+	 * @see #getScript()
+	 * @see #setScript(Runner)
+	 * @generated
+	 */
+	void unsetScript();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Returns whether the value of the '{@link fr.kazejiyu.ekumi.model.workflow.ScriptedTask#getScript <em>Script</em>}' reference is set.
+	 * @see #unsetScript()
+	 * @see #getScript()
+	 * @see #setScript(Runner)
+	 * @return whether the value of the '<em>Script</em>' reference is set.
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	boolean isSetScript();
 
 	/**
 	 * <!-- begin-user-doc -->

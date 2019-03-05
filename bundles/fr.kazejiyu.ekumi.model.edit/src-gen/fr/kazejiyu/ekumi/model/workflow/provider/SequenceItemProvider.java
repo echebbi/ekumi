@@ -194,7 +194,9 @@ public class SequenceItemProvider extends ActivityItemProvider {
 		Object childObject = child;
 
 		boolean qualify = childFeature == WorkflowPackage.Literals.ACTIVITY__INPUTS
-				|| childFeature == WorkflowPackage.Literals.ACTIVITY__OUTPUTS;
+				|| childFeature == WorkflowPackage.Literals.ACTIVITY__OUTPUTS
+				|| childFeature == WorkflowPackage.Literals.ACTIVITY__SUCCESSOR
+				|| childFeature == WorkflowPackage.Literals.SEQUENCE__ROOT;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2",

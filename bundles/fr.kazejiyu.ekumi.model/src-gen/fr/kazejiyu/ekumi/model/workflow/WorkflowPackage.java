@@ -161,7 +161,7 @@ public interface WorkflowPackage extends EPackage {
 	int ACTIVITY__OUTPUTS = IDENTIFIABLE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Successor</b></em>' reference.
+	 * The feature id for the '<em><b>Successor</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -170,7 +170,7 @@ public interface WorkflowPackage extends EPackage {
 	int ACTIVITY__SUCCESSOR = IDENTIFIABLE_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * The feature id for the '<em><b>Predecessor</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -270,7 +270,7 @@ public interface WorkflowPackage extends EPackage {
 	int SEQUENCE__OUTPUTS = ACTIVITY__OUTPUTS;
 
 	/**
-	 * The feature id for the '<em><b>Successor</b></em>' reference.
+	 * The feature id for the '<em><b>Successor</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -279,7 +279,7 @@ public interface WorkflowPackage extends EPackage {
 	int SEQUENCE__SUCCESSOR = ACTIVITY__SUCCESSOR;
 
 	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * The feature id for the '<em><b>Predecessor</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -397,7 +397,7 @@ public interface WorkflowPackage extends EPackage {
 	int MULTIPLE_INSTANCES__OUTPUTS = ACTIVITY__OUTPUTS;
 
 	/**
-	 * The feature id for the '<em><b>Successor</b></em>' reference.
+	 * The feature id for the '<em><b>Successor</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -406,7 +406,7 @@ public interface WorkflowPackage extends EPackage {
 	int MULTIPLE_INSTANCES__SUCCESSOR = ACTIVITY__SUCCESSOR;
 
 	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * The feature id for the '<em><b>Predecessor</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -634,7 +634,7 @@ public interface WorkflowPackage extends EPackage {
 	int STRUCTURED_LOOP__OUTPUTS = ACTIVITY__OUTPUTS;
 
 	/**
-	 * The feature id for the '<em><b>Successor</b></em>' reference.
+	 * The feature id for the '<em><b>Successor</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -643,7 +643,7 @@ public interface WorkflowPackage extends EPackage {
 	int STRUCTURED_LOOP__SUCCESSOR = ACTIVITY__SUCCESSOR;
 
 	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * The feature id for the '<em><b>Predecessor</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -889,7 +889,7 @@ public interface WorkflowPackage extends EPackage {
 	int TASK__OUTPUTS = ACTIVITY__OUTPUTS;
 
 	/**
-	 * The feature id for the '<em><b>Successor</b></em>' reference.
+	 * The feature id for the '<em><b>Successor</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -898,7 +898,7 @@ public interface WorkflowPackage extends EPackage {
 	int TASK__SUCCESSOR = ACTIVITY__SUCCESSOR;
 
 	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * The feature id for the '<em><b>Predecessor</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1062,7 +1062,7 @@ public interface WorkflowPackage extends EPackage {
 	int SCRIPTED_TASK__OUTPUTS = TASK__OUTPUTS;
 
 	/**
-	 * The feature id for the '<em><b>Successor</b></em>' reference.
+	 * The feature id for the '<em><b>Successor</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1071,7 +1071,7 @@ public interface WorkflowPackage extends EPackage {
 	int SCRIPTED_TASK__SUCCESSOR = TASK__SUCCESSOR;
 
 	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * The feature id for the '<em><b>Predecessor</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1098,7 +1098,7 @@ public interface WorkflowPackage extends EPackage {
 	int SCRIPTED_TASK__SCRIPT_PATH = TASK_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Script</b></em>' containment reference.
+	 * The feature id for the '<em><b>Script</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1198,7 +1198,7 @@ public interface WorkflowPackage extends EPackage {
 	int MULTI_CHOICE__OUTPUTS = ACTIVITY__OUTPUTS;
 
 	/**
-	 * The feature id for the '<em><b>Successor</b></em>' reference.
+	 * The feature id for the '<em><b>Successor</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1207,7 +1207,7 @@ public interface WorkflowPackage extends EPackage {
 	int MULTI_CHOICE__SUCCESSOR = ACTIVITY__SUCCESSOR;
 
 	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * The feature id for the '<em><b>Predecessor</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1791,7 +1791,7 @@ public interface WorkflowPackage extends EPackage {
 	int DRIVER__OUTPUTS = ACTIVITY__OUTPUTS;
 
 	/**
-	 * The feature id for the '<em><b>Successor</b></em>' reference.
+	 * The feature id for the '<em><b>Successor</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1800,7 +1800,7 @@ public interface WorkflowPackage extends EPackage {
 	int DRIVER__SUCCESSOR = ACTIVITY__SUCCESSOR;
 
 	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * The feature id for the '<em><b>Predecessor</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1991,7 +1991,7 @@ public interface WorkflowPackage extends EPackage {
 	int PARALLEL_SPLIT__OUTPUTS = ACTIVITY__OUTPUTS;
 
 	/**
-	 * The feature id for the '<em><b>Successor</b></em>' reference.
+	 * The feature id for the '<em><b>Successor</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2000,7 +2000,7 @@ public interface WorkflowPackage extends EPackage {
 	int PARALLEL_SPLIT__SUCCESSOR = ACTIVITY__SUCCESSOR;
 
 	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * The feature id for the '<em><b>Predecessor</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2368,10 +2368,10 @@ public interface WorkflowPackage extends EPackage {
 	EReference getActivity_Outputs();
 
 	/**
-	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.model.workflow.Activity#getSuccessor <em>Successor</em>}'.
+	 * Returns the meta object for the containment reference '{@link fr.kazejiyu.ekumi.model.workflow.Activity#getSuccessor <em>Successor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Successor</em>'.
+	 * @return the meta object for the containment reference '<em>Successor</em>'.
 	 * @see fr.kazejiyu.ekumi.model.workflow.Activity#getSuccessor()
 	 * @see #getActivity()
 	 * @generated
@@ -2379,10 +2379,10 @@ public interface WorkflowPackage extends EPackage {
 	EReference getActivity_Successor();
 
 	/**
-	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.model.workflow.Activity#getPredecessor <em>Predecessor</em>}'.
+	 * Returns the meta object for the container reference '{@link fr.kazejiyu.ekumi.model.workflow.Activity#getPredecessor <em>Predecessor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Predecessor</em>'.
+	 * @return the meta object for the container reference '<em>Predecessor</em>'.
 	 * @see fr.kazejiyu.ekumi.model.workflow.Activity#getPredecessor()
 	 * @see #getActivity()
 	 * @generated
@@ -2665,10 +2665,10 @@ public interface WorkflowPackage extends EPackage {
 	EAttribute getScriptedTask_ScriptPath();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link fr.kazejiyu.ekumi.model.workflow.ScriptedTask#getScript <em>Script</em>}'.
+	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.model.workflow.ScriptedTask#getScript <em>Script</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Script</em>'.
+	 * @return the meta object for the reference '<em>Script</em>'.
 	 * @see fr.kazejiyu.ekumi.model.workflow.ScriptedTask#getScript()
 	 * @see #getScriptedTask()
 	 * @generated
@@ -3418,7 +3418,7 @@ public interface WorkflowPackage extends EPackage {
 		EReference ACTIVITY__OUTPUTS = eINSTANCE.getActivity_Outputs();
 
 		/**
-		 * The meta object literal for the '<em><b>Successor</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Successor</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -3426,7 +3426,7 @@ public interface WorkflowPackage extends EPackage {
 		EReference ACTIVITY__SUCCESSOR = eINSTANCE.getActivity_Successor();
 
 		/**
-		 * The meta object literal for the '<em><b>Predecessor</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Predecessor</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -3661,7 +3661,7 @@ public interface WorkflowPackage extends EPackage {
 		EAttribute SCRIPTED_TASK__SCRIPT_PATH = eINSTANCE.getScriptedTask_ScriptPath();
 
 		/**
-		 * The meta object literal for the '<em><b>Script</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Script</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

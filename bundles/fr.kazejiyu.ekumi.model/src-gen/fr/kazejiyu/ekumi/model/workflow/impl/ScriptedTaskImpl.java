@@ -8,8 +8,6 @@ import fr.kazejiyu.ekumi.model.workflow.ScriptedTask;
 import fr.kazejiyu.ekumi.model.workflow.WorkflowPackage;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -50,16 +48,6 @@ public class ScriptedTaskImpl extends TaskImpl implements ScriptedTask {
 	 * @ordered
 	 */
 	protected String scriptPath = SCRIPT_PATH_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getScript() <em>Script</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getScript()
-	 * @generated
-	 * @ordered
-	 */
-	protected Runner script;
 
 	/**
 	 * The default value of the '{@link #getLanguage() <em>Language</em>}' attribute.
@@ -128,7 +116,8 @@ public class ScriptedTaskImpl extends TaskImpl implements ScriptedTask {
 	 * @generated
 	 */
 	public Runner getScript() {
-		return script;
+		Runner script = basicGetScript();
+		return script != null && script.eIsProxy() ? (Runner) eResolveProxy((InternalEObject) script) : script;
 	}
 
 	/**
@@ -136,18 +125,11 @@ public class ScriptedTaskImpl extends TaskImpl implements ScriptedTask {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetScript(Runner newScript, NotificationChain msgs) {
-		Runner oldScript = script;
-		script = newScript;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					WorkflowPackage.SCRIPTED_TASK__SCRIPT, oldScript, newScript);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
+	public Runner basicGetScript() {
+		// TODO: implement this method to return the 'Script' reference
+		// -> do not perform proxy resolution
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -156,20 +138,27 @@ public class ScriptedTaskImpl extends TaskImpl implements ScriptedTask {
 	 * @generated
 	 */
 	public void setScript(Runner newScript) {
-		if (newScript != script) {
-			NotificationChain msgs = null;
-			if (script != null)
-				msgs = ((InternalEObject) script).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - WorkflowPackage.SCRIPTED_TASK__SCRIPT, null, msgs);
-			if (newScript != null)
-				msgs = ((InternalEObject) newScript).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - WorkflowPackage.SCRIPTED_TASK__SCRIPT, null, msgs);
-			msgs = basicSetScript(newScript, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WorkflowPackage.SCRIPTED_TASK__SCRIPT, newScript,
-					newScript));
+		// TODO: implement this method to set the 'Script' reference
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void unsetScript() {
+		// TODO: implement this method to unset the 'Script' reference
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isSetScript() {
+		return getScript() != null;
 	}
 
 	/**
@@ -200,26 +189,14 @@ public class ScriptedTaskImpl extends TaskImpl implements ScriptedTask {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case WorkflowPackage.SCRIPTED_TASK__SCRIPT:
-			return basicSetScript(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case WorkflowPackage.SCRIPTED_TASK__SCRIPT_PATH:
 			return getScriptPath();
 		case WorkflowPackage.SCRIPTED_TASK__SCRIPT:
-			return getScript();
+			if (resolve)
+				return getScript();
+			return basicGetScript();
 		case WorkflowPackage.SCRIPTED_TASK__LANGUAGE:
 			return getLanguage();
 		}
@@ -259,7 +236,7 @@ public class ScriptedTaskImpl extends TaskImpl implements ScriptedTask {
 			setScriptPath(SCRIPT_PATH_EDEFAULT);
 			return;
 		case WorkflowPackage.SCRIPTED_TASK__SCRIPT:
-			setScript((Runner) null);
+			unsetScript();
 			return;
 		case WorkflowPackage.SCRIPTED_TASK__LANGUAGE:
 			setLanguage(LANGUAGE_EDEFAULT);
@@ -279,7 +256,7 @@ public class ScriptedTaskImpl extends TaskImpl implements ScriptedTask {
 		case WorkflowPackage.SCRIPTED_TASK__SCRIPT_PATH:
 			return SCRIPT_PATH_EDEFAULT == null ? scriptPath != null : !SCRIPT_PATH_EDEFAULT.equals(scriptPath);
 		case WorkflowPackage.SCRIPTED_TASK__SCRIPT:
-			return script != null;
+			return isSetScript();
 		case WorkflowPackage.SCRIPTED_TASK__LANGUAGE:
 			return LANGUAGE_EDEFAULT == null ? language != null : !LANGUAGE_EDEFAULT.equals(language);
 		}
