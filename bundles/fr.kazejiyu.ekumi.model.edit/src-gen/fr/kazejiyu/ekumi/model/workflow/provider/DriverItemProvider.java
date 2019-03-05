@@ -179,7 +179,9 @@ public class DriverItemProvider extends ActivityItemProvider {
 		Object childObject = child;
 
 		boolean qualify = childFeature == WorkflowPackage.Literals.ACTIVITY__INPUTS
-				|| childFeature == WorkflowPackage.Literals.ACTIVITY__OUTPUTS;
+				|| childFeature == WorkflowPackage.Literals.ACTIVITY__OUTPUTS
+				|| childFeature == WorkflowPackage.Literals.ACTIVITY__SUCCESSOR
+				|| childFeature == WorkflowPackage.Literals.DRIVER__DRIVEN;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2",

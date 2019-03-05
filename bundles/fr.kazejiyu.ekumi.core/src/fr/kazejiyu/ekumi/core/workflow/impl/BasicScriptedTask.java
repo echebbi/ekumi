@@ -12,15 +12,18 @@ package fr.kazejiyu.ekumi.core.workflow.impl;
 import static fr.kazejiyu.ekumi.model.workflow.Status.FAILED;
 import static fr.kazejiyu.ekumi.model.workflow.Status.SUCCEEDED;
 
+import java.util.Optional;
+
 import fr.kazejiyu.ekumi.model.workflow.Context;
 import fr.kazejiyu.ekumi.model.workflow.Runner;
+import fr.kazejiyu.ekumi.model.workflow.impl.NullContext;
 import fr.kazejiyu.ekumi.model.workflow.impl.ScriptedTaskImpl;
 
 public class BasicScriptedTask extends ScriptedTaskImpl {
 
 	@Override
 	public void run(Context context) {
-		Runner script = getScript();
+		Runner script = resolveRunner(context);
 		
 		if (script == null) {
 			setStatus(SUCCEEDED);
@@ -40,6 +43,22 @@ public class BasicScriptedTask extends ScriptedTaskImpl {
 		catch (Exception e) {
 			setStatus(FAILED);
 		}
+	}
+	
+	@Override
+	public Runner getScript() {
+		return basicGetScript();
+	}
+	
+	@Override
+	public Runner basicGetScript() {
+		return resolveRunner(new NullContext());
+	}
+	
+	private Runner resolveRunner(Context context) {
+		return Optional.ofNullable(getLanguage())
+					   .map(language -> language.resolveRunner(getScriptPath(), context))
+					   .orElse(null);
 	}
 	
 }

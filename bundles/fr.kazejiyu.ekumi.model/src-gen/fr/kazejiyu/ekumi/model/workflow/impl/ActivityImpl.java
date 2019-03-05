@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import fr.kazejiyu.ekumi.model.workflow.Activity;
@@ -85,7 +86,7 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 	protected EList<Variable> outputs;
 
 	/**
-	 * The cached value of the '{@link #getSuccessor() <em>Successor</em>}' reference.
+	 * The cached value of the '{@link #getSuccessor() <em>Successor</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getSuccessor()
@@ -93,16 +94,6 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 	 * @ordered
 	 */
 	protected Activity successor;
-
-	/**
-	 * The cached value of the '{@link #getPredecessor() <em>Predecessor</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPredecessor()
-	 * @generated
-	 * @ordered
-	 */
-	protected Activity predecessor;
 
 	/**
 	 * The cached value of the '{@link #getFlows() <em>Flows</em>}' containment reference.
@@ -186,24 +177,6 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 	 * @generated
 	 */
 	public Activity getSuccessor() {
-		if (successor != null && successor.eIsProxy()) {
-			InternalEObject oldSuccessor = (InternalEObject) successor;
-			successor = (Activity) eResolveProxy(oldSuccessor);
-			if (successor != oldSuccessor) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, WorkflowPackage.ACTIVITY__SUCCESSOR,
-							oldSuccessor, successor));
-			}
-		}
-		return successor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Activity basicGetSuccessor() {
 		return successor;
 	}
 
@@ -254,25 +227,9 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 	 * @generated
 	 */
 	public Activity getPredecessor() {
-		if (predecessor != null && predecessor.eIsProxy()) {
-			InternalEObject oldPredecessor = (InternalEObject) predecessor;
-			predecessor = (Activity) eResolveProxy(oldPredecessor);
-			if (predecessor != oldPredecessor) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, WorkflowPackage.ACTIVITY__PREDECESSOR,
-							oldPredecessor, predecessor));
-			}
-		}
-		return predecessor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Activity basicGetPredecessor() {
-		return predecessor;
+		if (eContainerFeatureID() != WorkflowPackage.ACTIVITY__PREDECESSOR)
+			return null;
+		return (Activity) eInternalContainer();
 	}
 
 	/**
@@ -281,16 +238,7 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 	 * @generated
 	 */
 	public NotificationChain basicSetPredecessor(Activity newPredecessor, NotificationChain msgs) {
-		Activity oldPredecessor = predecessor;
-		predecessor = newPredecessor;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					WorkflowPackage.ACTIVITY__PREDECESSOR, oldPredecessor, newPredecessor);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
+		msgs = eBasicSetContainer((InternalEObject) newPredecessor, WorkflowPackage.ACTIVITY__PREDECESSOR, msgs);
 		return msgs;
 	}
 
@@ -300,11 +248,13 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 	 * @generated
 	 */
 	public void setPredecessor(Activity newPredecessor) {
-		if (newPredecessor != predecessor) {
+		if (newPredecessor != eInternalContainer()
+				|| (eContainerFeatureID() != WorkflowPackage.ACTIVITY__PREDECESSOR && newPredecessor != null)) {
+			if (EcoreUtil.isAncestor(this, newPredecessor))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (predecessor != null)
-				msgs = ((InternalEObject) predecessor).eInverseRemove(this, WorkflowPackage.ACTIVITY__SUCCESSOR,
-						Activity.class, msgs);
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
 			if (newPredecessor != null)
 				msgs = ((InternalEObject) newPredecessor).eInverseAdd(this, WorkflowPackage.ACTIVITY__SUCCESSOR,
 						Activity.class, msgs);
@@ -389,13 +339,12 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 			return ((InternalEList<InternalEObject>) (InternalEList<?>) getInputs()).basicAdd(otherEnd, msgs);
 		case WorkflowPackage.ACTIVITY__SUCCESSOR:
 			if (successor != null)
-				msgs = ((InternalEObject) successor).eInverseRemove(this, WorkflowPackage.ACTIVITY__PREDECESSOR,
-						Activity.class, msgs);
+				msgs = ((InternalEObject) successor).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - WorkflowPackage.ACTIVITY__SUCCESSOR, null, msgs);
 			return basicSetSuccessor((Activity) otherEnd, msgs);
 		case WorkflowPackage.ACTIVITY__PREDECESSOR:
-			if (predecessor != null)
-				msgs = ((InternalEObject) predecessor).eInverseRemove(this, WorkflowPackage.ACTIVITY__SUCCESSOR,
-						Activity.class, msgs);
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
 			return basicSetPredecessor((Activity) otherEnd, msgs);
 		case WorkflowPackage.ACTIVITY__FLOWS:
 			if (flows != null)
@@ -434,6 +383,20 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+		case WorkflowPackage.ACTIVITY__PREDECESSOR:
+			return eInternalContainer().eInverseRemove(this, WorkflowPackage.ACTIVITY__SUCCESSOR, Activity.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case WorkflowPackage.ACTIVITY__STATUS:
@@ -443,13 +406,9 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 		case WorkflowPackage.ACTIVITY__OUTPUTS:
 			return getOutputs();
 		case WorkflowPackage.ACTIVITY__SUCCESSOR:
-			if (resolve)
-				return getSuccessor();
-			return basicGetSuccessor();
+			return getSuccessor();
 		case WorkflowPackage.ACTIVITY__PREDECESSOR:
-			if (resolve)
-				return getPredecessor();
-			return basicGetPredecessor();
+			return getPredecessor();
 		case WorkflowPackage.ACTIVITY__FLOWS:
 			return getFlows();
 		}
@@ -536,7 +495,7 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 		case WorkflowPackage.ACTIVITY__SUCCESSOR:
 			return successor != null;
 		case WorkflowPackage.ACTIVITY__PREDECESSOR:
-			return predecessor != null;
+			return getPredecessor() != null;
 		case WorkflowPackage.ACTIVITY__FLOWS:
 			return flows != null;
 		}

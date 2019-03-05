@@ -114,6 +114,7 @@ public class ActivityItemProvider extends IdentifiableItemProvider {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(WorkflowPackage.Literals.ACTIVITY__INPUTS);
 			childrenFeatures.add(WorkflowPackage.Literals.ACTIVITY__OUTPUTS);
+			childrenFeatures.add(WorkflowPackage.Literals.ACTIVITY__SUCCESSOR);
 			childrenFeatures.add(WorkflowPackage.Literals.ACTIVITY__FLOWS);
 		}
 		return childrenFeatures;
@@ -183,6 +184,7 @@ public class ActivityItemProvider extends IdentifiableItemProvider {
 			return;
 		case WorkflowPackage.ACTIVITY__INPUTS:
 		case WorkflowPackage.ACTIVITY__OUTPUTS:
+		case WorkflowPackage.ACTIVITY__SUCCESSOR:
 		case WorkflowPackage.ACTIVITY__FLOWS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
@@ -218,6 +220,27 @@ public class ActivityItemProvider extends IdentifiableItemProvider {
 
 		newChildDescriptors.add(createChildParameter(WorkflowPackage.Literals.ACTIVITY__OUTPUTS,
 				WorkflowFactory.eINSTANCE.createMapOfVariables()));
+
+		newChildDescriptors.add(createChildParameter(WorkflowPackage.Literals.ACTIVITY__SUCCESSOR,
+				WorkflowFactory.eINSTANCE.createSequence()));
+
+		newChildDescriptors.add(createChildParameter(WorkflowPackage.Literals.ACTIVITY__SUCCESSOR,
+				WorkflowFactory.eINSTANCE.createMultipleInstances()));
+
+		newChildDescriptors.add(createChildParameter(WorkflowPackage.Literals.ACTIVITY__SUCCESSOR,
+				WorkflowFactory.eINSTANCE.createStructuredLoop()));
+
+		newChildDescriptors.add(createChildParameter(WorkflowPackage.Literals.ACTIVITY__SUCCESSOR,
+				WorkflowFactory.eINSTANCE.createScriptedTask()));
+
+		newChildDescriptors.add(createChildParameter(WorkflowPackage.Literals.ACTIVITY__SUCCESSOR,
+				WorkflowFactory.eINSTANCE.createMultiChoice()));
+
+		newChildDescriptors.add(createChildParameter(WorkflowPackage.Literals.ACTIVITY__SUCCESSOR,
+				WorkflowFactory.eINSTANCE.createDriver()));
+
+		newChildDescriptors.add(createChildParameter(WorkflowPackage.Literals.ACTIVITY__SUCCESSOR,
+				WorkflowFactory.eINSTANCE.createParallelSplit()));
 
 		newChildDescriptors.add(createChildParameter(WorkflowPackage.Literals.ACTIVITY__FLOWS,
 				WorkflowFactory.eINSTANCE.createDataFlows()));

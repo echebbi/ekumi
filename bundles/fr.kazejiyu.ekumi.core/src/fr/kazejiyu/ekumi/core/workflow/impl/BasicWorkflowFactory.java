@@ -9,7 +9,10 @@
  ******************************************************************************/
 package fr.kazejiyu.ekumi.core.workflow.impl;
 
+import org.eclipse.emf.ecore.EDataType;
+
 import fr.kazejiyu.ekumi.core.execution.BasicExecution;
+import fr.kazejiyu.ekumi.model.scripting.ScriptingLanguage;
 import fr.kazejiyu.ekumi.model.workflow.DataFlows;
 import fr.kazejiyu.ekumi.model.workflow.Execution;
 import fr.kazejiyu.ekumi.model.workflow.ScriptedTask;
@@ -47,5 +50,20 @@ public class BasicWorkflowFactory extends WorkflowFactoryImpl {
 	public ScriptedTask createScriptedTask() {
 		return new BasicScriptedTask();
 	}
+
+	@Override
+	public ScriptingLanguage createScriptingLanguageFromString(EDataType eDataType, String initialValue) {
+		// TODO Should instantiate the language from the given id.
+		// Requires the Platform.getExtensionRegistry but I'm a tired of those singletons
+		return null;
+	}
+
+	@Override
+	public String convertScriptingLanguageToString(EDataType eDataType, Object instanceValue) {
+		// Properly serialize the language
+		return ((ScriptingLanguage) instanceValue).id();
+	}
+	
+	
 
 }

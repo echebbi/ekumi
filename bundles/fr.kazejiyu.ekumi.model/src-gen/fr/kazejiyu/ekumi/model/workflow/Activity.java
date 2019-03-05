@@ -76,7 +76,7 @@ public interface Activity extends Identifiable, Executable, HasStatus {
 	 * @see fr.kazejiyu.ekumi.model.workflow.WorkflowPackage#getActivity_Successor()
 	 * @see fr.kazejiyu.ekumi.model.workflow.Activity#getPredecessor
 	 * <!-- end-user-doc -->
-	 * @model opposite="predecessor"
+	 * @model opposite="predecessor" containment="true"
 	 * @generated
 	 */
 	Activity getSuccessor();
@@ -85,7 +85,7 @@ public interface Activity extends Identifiable, Executable, HasStatus {
 	 * <!-- begin-user-doc -->
 	 * Sets the value of the '{@link fr.kazejiyu.ekumi.model.workflow.Activity#getSuccessor <em>Successor</em>}' reference.
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Successor</em>' reference.
+	 * @param value the new value of the '<em>Successor</em>' containment reference.
 	 * @see #getSuccessor()
 	 * @generated
 	 */
@@ -100,7 +100,7 @@ public interface Activity extends Identifiable, Executable, HasStatus {
 	 * @see fr.kazejiyu.ekumi.model.workflow.WorkflowPackage#getActivity_Predecessor()
 	 * @see fr.kazejiyu.ekumi.model.workflow.Activity#getSuccessor
 	 * <!-- end-user-doc -->
-	 * @model opposite="successor"
+	 * @model opposite="successor" transient="false"
 	 * @generated
 	 */
 	Activity getPredecessor();
@@ -109,7 +109,7 @@ public interface Activity extends Identifiable, Executable, HasStatus {
 	 * <!-- begin-user-doc -->
 	 * Sets the value of the '{@link fr.kazejiyu.ekumi.model.workflow.Activity#getPredecessor <em>Predecessor</em>}' reference.
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Predecessor</em>' reference.
+	 * @param value the new value of the '<em>Predecessor</em>' container reference.
 	 * @see #getPredecessor()
 	 * @generated
 	 */

@@ -2,6 +2,9 @@ package fr.kazejiyu.ekumi.core.workflow.impl;
 
 import static fr.kazejiyu.ekumi.model.workflow.Status.FAILED;
 import static fr.kazejiyu.ekumi.model.workflow.Status.SUCCEEDED;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.eq;
+import static org.mockito.Mockito.when;
 
 import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,7 +14,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 
+import fr.kazejiyu.ekumi.model.scripting.ScriptingLanguage;
 import fr.kazejiyu.ekumi.model.workflow.Context;
+import fr.kazejiyu.ekumi.model.workflow.Runner;
 import fr.kazejiyu.ekumi.model.workflow.ScriptedTask;
 import fr.kazejiyu.ekumi.model.workflow.WorkflowFactory;
 import fr.kazejiyu.ekumi.tests.common.fake.activities.BrokenRunner;
@@ -64,10 +69,15 @@ public class ScriptedTaskTest implements WithAssertions {
 		private FakeRunner script;
 		
 		@BeforeEach
-		void initialize() {
+		void initialize(@Mock ScriptingLanguage language) {
 			script = new FakeRunner();
+			String scriptIdentifier = "MockRunner";
+			
+			when (language.resolveRunner(eq(scriptIdentifier), any(Context.class))) .thenReturn(script);
+			
 			task = WorkflowFactory.eINSTANCE.createScriptedTask();
-			task.setScript(script);
+			task.setLanguage(language);
+			task.setScriptPath(scriptIdentifier);
 		}
 		
 		// isEmpty()
@@ -106,12 +116,19 @@ public class ScriptedTaskTest implements WithAssertions {
 	@Nested
 	@DisplayName("with a broken runner")
 	class WhenContainingABrokenActivity {
+		
 		private ScriptedTask corrupted;
 		
 		@BeforeEach
-		void initialize() {
+		void initialize(@Mock ScriptingLanguage language) {
+			Runner script = new BrokenRunner();
+			String scriptIdentifier = "BrokenRunner";
+			
+			when (language.resolveRunner(scriptIdentifier, context)) .thenReturn(script);
+			
 			corrupted = WorkflowFactory.eINSTANCE.createScriptedTask();
-			corrupted.setScript(new BrokenRunner());
+			corrupted.setLanguage(language);
+			corrupted.setScriptPath(scriptIdentifier);
 		}
 		
 		@Test @DisplayName("do not throw when run")
