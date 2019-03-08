@@ -76,7 +76,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="Task" semanticCandidatesExpression="feature:tasks" domainClass="spec::Task" childrenPresentation="HorizontalStack">
+        <containerMappings name="Task" labelDirectEdit="//@ownedViewpoints[name='EKumi%20Workflow']/@ownedRepresentations[name='Workflow%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Rename%20Task']" semanticCandidatesExpression="feature:tasks" domainClass="spec::Task" childrenPresentation="HorizontalStack">
           <subContainerMappings name="Inputs" semanticCandidatesExpression="aql:self" domainClass="spec::Task" childrenPresentation="List">
             <subNodeMappings name="Input" semanticCandidatesExpression="feature:inputs" domainClass="spec::Variable">
               <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
@@ -122,6 +122,12 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Rename Task">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
+            </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Relationships">
