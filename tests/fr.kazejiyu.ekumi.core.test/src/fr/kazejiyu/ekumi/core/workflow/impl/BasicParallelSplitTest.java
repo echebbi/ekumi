@@ -1,13 +1,14 @@
 package fr.kazejiyu.ekumi.core.workflow.impl;
 
-import static org.mockito.Mockito.when;
-
 import static fr.kazejiyu.ekumi.model.workflow.Status.CANCELLED;
 import static fr.kazejiyu.ekumi.model.workflow.Status.FAILED;
 import static fr.kazejiyu.ekumi.model.workflow.Status.SUCCEEDED;
+import static java.util.stream.Collectors.toList;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.assertj.core.api.SoftAssertions;
 import org.assertj.core.api.WithAssertions;
@@ -21,20 +22,20 @@ import org.mockito.Mock;
 
 import fr.kazejiyu.ekumi.model.execution.ExecutionStatus;
 import fr.kazejiyu.ekumi.model.workflow.Context;
-import fr.kazejiyu.ekumi.model.workflow.Sequence;
 import fr.kazejiyu.ekumi.tests.common.fake.activities.BrokenActivity;
+import fr.kazejiyu.ekumi.tests.common.fake.activities.CheckExecutingThread;
 import fr.kazejiyu.ekumi.tests.common.fake.activities.HopelessActivity;
 import fr.kazejiyu.ekumi.tests.common.fake.activities.SetNameInList;
 import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
 
 /**
- * Tests the behaviour of {@link Sequence} instances.
+ * Tests the behaviour of {@link BasicParallelSplit} instances.
  * 
  * @author Emmanuel CHEBBI
  */
 @ExtendWith(MockitoExtension.class)
-@DisplayName("A Sequence")
-public class SequenceTest implements WithAssertions {
+@DisplayName("A BasicParallelSplit")
+public class BasicParallelSplitTest implements WithAssertions {
 	
 	@Mock
 	private Context context;
@@ -50,18 +51,18 @@ public class SequenceTest implements WithAssertions {
 	
 	@Nested @DisplayName("when empty")
 	class Empty {
-		private Sequence empty;
+		private BasicParallelSplit empty;
 		
 		@BeforeEach
 		void initialize(@Mock ExecutionStatus status) {
-			empty = new BasicWorkflowFactory().createSequence();
+			empty = new BasicParallelSplit();
 		}
 		
-		// getActivities()
+		// getBranches()
 		
-		@Test @DisplayName("has no activity")
-		void has_no_activity() {
-			assertThat(empty.getActivities()).isEmpty();
+		@Test @DisplayName("has no branch")
+		void has_no_branch() {
+			assertThat(empty.getBranches()).isEmpty();
 		}
 		
 		// run()
@@ -76,63 +77,72 @@ public class SequenceTest implements WithAssertions {
 	@Nested @DisplayName("when not empty")
 	class NonEmpty {
 		
-		private Sequence seq;
-		private List<SetNameInList> activities;
-		private List<String> names;
+		private final static int NBR_BRANCHES = 3;
+		
+		private BasicParallelSplit split;
+		private List<CheckExecutingThread> branches;
 		
 		@BeforeEach
 		void initialize() {
-			seq = new BasicWorkflowFactory().createSequence();
+			split = new BasicParallelSplit();
 			
-			names = new ArrayList<>();
-			activities = new ArrayList<>();
+			branches = new ArrayList<>();
+			for (int i = 0 ; i < NBR_BRANCHES ; ++i) 
+				branches.add(new CheckExecutingThread());
 			
-			activities.add(new SetNameInList("A", names));
-			activities.add(new SetNameInList("B", names));
-			activities.add(new SetNameInList("C", names));
-			
-			seq.setRoot(activities.get(0));
-			seq.getRoot().setSuccessor(activities.get(1));
-			seq.getRoot().getSuccessor().setSuccessor(activities.get(2));
+			split.getBranches().addAll(branches);
 		}
 		
-		// getActivities()
+		// getBranches()
 		
-		@Test @DisplayName("provides its activities in order")
-		void provides_its_activities_in_order() {
-			assertThat(seq.getActivities()).containsExactlyElementsOf(activities);
+		@Test @DisplayName("knowns its branches")
+		void knows_its_branches() {
+			assertThat(split.getBranches()).containsExactlyInAnyOrderElementsOf(branches);
 		}
 		
 		// run()
 		
 		@Test @DisplayName("executes all its tasks")
 		void execute_all_its_tasks() {
-			seq.run(context);
-			assertThat(seq.getActivities()).allMatch(activity -> ((SetNameInList) activity).hasRun());
+			split.run(context);
+			assertThat(split.getBranches()).allMatch(activity -> ((CheckExecutingThread) activity).hasRun());
 		}
 		
-		@Test @DisplayName("executes all its tasks in order")
-		void execute_all_its_tasks_in_order() {
-			seq.run(context);
-			assertThat(names).containsExactly("A", "B", "C");
+		@Test @DisplayName("executes all its tasks in different threads")
+		void execute_all_its_tasks_in_different_threads() {
+			split.run(context);
+			
+			List<Thread> distinctExecutingThreads = split.getBranches().stream()
+														 .map(CheckExecutingThread.class::cast)
+														 .map(activity -> activity.getExecutingThread())
+														 .distinct()
+														 .collect(toList());
+			
+			List<Thread> allExecutingThreads = split.getBranches().stream()
+													.map(CheckExecutingThread.class::cast)
+													.map(activity -> activity.getExecutingThread())
+													.distinct()
+													.collect(toList());
+			
+			assertThat(allExecutingThreads).containsExactlyInAnyOrderElementsOf(distinctExecutingThreads);
 		}
 		
 		@Test @DisplayName("provides the right context to its tasks")
 		void provides_the_right_context_to_its_tasks() {
-			seq.run(context);
+			split.run(context);
 			
 			SoftAssertions softly = new SoftAssertions();
 			
-			for (SetNameInList activity : activities)
-				softly.assertThat(activity.getContextOnRun()).isSameAs(context);
+			for (CheckExecutingThread branch : branches)
+				softly.assertThat(branch.getContextOnRun()).isSameAs(context);
 			
 			softly.assertAll();
 		}
 		
 		@Test @DisplayName("has 'finished' status after run")
 		void has_finished_status_after_run() {
-			seq.run(context);
-			assertThat(seq.getStatus()).isEqualTo(SUCCEEDED);
+			split.run(context);
+			assertThat(split.getStatus()).isEqualTo(SUCCEEDED);
 		}
 	
 		@Disabled
@@ -151,34 +161,39 @@ public class SequenceTest implements WithAssertions {
 			
 			@Test @DisplayName("does not execute all its tasks")
 			void does_not_execute_all_its_tasks() {
-				seq.run(context);
-				assertThat(seq.getActivities()).anyMatch(activity -> ! ((SetNameInList) activity).hasRun());
+				split.run(context);
+				assertThat(split.getBranches()).anyMatch(activity -> ! ((CheckExecutingThread) activity).hasRun());
 			}
 			
 			@Test @DisplayName("has the cancelled status")
 			void has_the_cancel_status() {
-				seq.run(context);
-				assertThat(seq.getStatus()).isEqualTo(CANCELLED);
+				split.run(context);
+				assertThat(split.getStatus()).isEqualTo(CANCELLED);
 			}
 			
+			@Test @DisplayName("cancel its branches")
+			void cancels_its_branches() {
+				split.run(context);
+				assertThat(split.getBranches()).allMatch(activity -> activity.getStatus() == CANCELLED);
+			}
 		}
 	}
 	
 	@Nested @DisplayName("when containing an activity that throws")
-	class WhenContainingABrokenActivity {
+	class WhenContainingAnActivityThatThrows {
 
-		private Sequence corrupted;
+		private BasicParallelSplit corrupted;
 		private List<String> activities;
 		
 		@BeforeEach
 		void initialize() {
-			activities = new ArrayList<String>();
+			activities = new CopyOnWriteArrayList<String>();
 			
-			corrupted = new BasicWorkflowFactory().createSequence();
-			corrupted.setRoot(new SetNameInList("A", activities));
-			corrupted.getRoot().setSuccessor(new SetNameInList("B", activities));
-			corrupted.getRoot().getSuccessor().setSuccessor(new BrokenActivity());
-			corrupted.getRoot().getSuccessor().getSuccessor().setSuccessor(new SetNameInList("C", activities));
+			corrupted = new BasicParallelSplit();
+			corrupted.getBranches().add(new SetNameInList("A", activities));
+			corrupted.getBranches().add(new SetNameInList("B", activities));
+			corrupted.getBranches().add(new BrokenActivity());
+			corrupted.getBranches().add(new SetNameInList("C", activities));
 		}
 		
 		@Test @DisplayName("does not throw when run")
@@ -192,28 +207,28 @@ public class SequenceTest implements WithAssertions {
 			assertThat(corrupted.getStatus()).isEqualTo(FAILED);
 		}
 		
-		@Test @DisplayName("stops its execution when an activity fails")
-		void stop_its_execution_when_an_activity_fails() {
+		@Test @DisplayName("executes all other activities")
+		void executes_all_other_activities() {
 			corrupted.run(context);
-			assertThat(activities).containsExactly("A", "B");
+			assertThat(activities).containsExactlyInAnyOrder("A", "B", "C");
 		}
 	}
 	
 	@Nested @DisplayName("when containing an activity that fails")
-	class WhenContainingAnHopelessActivity {
+	class WhenContainingAnActivityThatFails {
 
-		private Sequence corrupted;
+		private BasicParallelSplit corrupted;
 		private List<String> activities;
 		
 		@BeforeEach
 		void initialize() {
 			activities = new ArrayList<String>();
 			
-			corrupted = new BasicWorkflowFactory().createSequence();
-			corrupted.setRoot(new SetNameInList("A", activities));
-			corrupted.getRoot().setSuccessor(new SetNameInList("B", activities));
-			corrupted.getRoot().getSuccessor().setSuccessor(new HopelessActivity());
-			corrupted.getRoot().getSuccessor().getSuccessor().setSuccessor(new SetNameInList("C", activities));
+			corrupted = new BasicParallelSplit();
+			corrupted.getBranches().add(new SetNameInList("A", activities));
+			corrupted.getBranches().add(new SetNameInList("B", activities));
+			corrupted.getBranches().add(new HopelessActivity());
+			corrupted.getBranches().add(new SetNameInList("C", activities));
 		}
 		
 		@Test @DisplayName("does not throw when run")
@@ -227,10 +242,10 @@ public class SequenceTest implements WithAssertions {
 			assertThat(corrupted.getStatus()).isEqualTo(FAILED);
 		}
 		
-		@Test @DisplayName("stops its execution when an activity fails")
-		void stop_its_execution_when_an_activity_fails() {
+		@Test @DisplayName("executes all other activities")
+		void executes_all_other_activities() {
 			corrupted.run(context);
-			assertThat(activities).containsExactly("A", "B");
+			assertThat(activities).containsExactlyInAnyOrder("A", "B", "C");
 		}
 	}
 

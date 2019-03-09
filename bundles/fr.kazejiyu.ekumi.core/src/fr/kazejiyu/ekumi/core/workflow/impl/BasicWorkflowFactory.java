@@ -15,6 +15,7 @@ import fr.kazejiyu.ekumi.core.execution.BasicExecution;
 import fr.kazejiyu.ekumi.model.scripting.ScriptingLanguage;
 import fr.kazejiyu.ekumi.model.workflow.DataFlows;
 import fr.kazejiyu.ekumi.model.workflow.Execution;
+import fr.kazejiyu.ekumi.model.workflow.ParallelSplit;
 import fr.kazejiyu.ekumi.model.workflow.ScriptedTask;
 import fr.kazejiyu.ekumi.model.workflow.Sequence;
 import fr.kazejiyu.ekumi.model.workflow.StructuredLoop;
@@ -34,6 +35,11 @@ public class BasicWorkflowFactory extends WorkflowFactoryImpl {
 	@Override
 	public Execution createExecution() {
 		return new BasicExecution();
+	}
+	
+	@Override
+	public ParallelSplit createParallelSplit() {
+		return new BasicParallelSplit();
 	}
 
 	@Override
