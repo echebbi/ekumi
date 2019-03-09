@@ -22,8 +22,10 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.notify.Adapter;
 
 import fr.kazejiyu.ekumi.core.execution.events.impl.StatusToEventAdapter;
+import fr.kazejiyu.ekumi.core.workflow.impl.BasicSequence;
 import fr.kazejiyu.ekumi.model.exceptions.InterruptedExecutionException;
 import fr.kazejiyu.ekumi.model.workflow.Execution;
+import fr.kazejiyu.ekumi.model.workflow.Sequence;
 import fr.kazejiyu.ekumi.model.workflow.impl.ExecutionImpl;
 
 /**
@@ -69,7 +71,9 @@ public class BasicExecution extends ExecutionImpl {
 			monitor.beginTask("Starting the execution", IProgressMonitor.UNKNOWN);
 			
 			try {
-				getActivity().run(context.safe());
+				Sequence s = new BasicSequence();
+				s.setRoot(getActivity());
+				s.run(context.safe());
 				
 				if (status != CANCELLED) {
 					setStatus(SUCCEEDED);

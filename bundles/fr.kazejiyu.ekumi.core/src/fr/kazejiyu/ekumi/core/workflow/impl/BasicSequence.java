@@ -9,17 +9,19 @@
  ******************************************************************************/
 package fr.kazejiyu.ekumi.core.workflow.impl;
 
+import static fr.kazejiyu.ekumi.model.workflow.Status.CANCELLED;
 import static fr.kazejiyu.ekumi.model.workflow.Status.FAILED;
 import static fr.kazejiyu.ekumi.model.workflow.Status.SUCCEEDED;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
+import fr.kazejiyu.ekumi.EKumiPlugin;
 import fr.kazejiyu.ekumi.model.workflow.Activity;
 import fr.kazejiyu.ekumi.model.workflow.Context;
 import fr.kazejiyu.ekumi.model.workflow.impl.SequenceImpl;
 
-public class BasicSequence extends SequenceImpl {
+public final class BasicSequence extends SequenceImpl {
 
 	@Override
 	public EList<Activity> getActivities() {
@@ -41,11 +43,16 @@ public class BasicSequence extends SequenceImpl {
 		for (Activity activity : getActivities()) {
 			oneActivityHasFailed = ! runSafely(activity, context);
 			
-			if (oneActivityHasFailed)
+			if (oneActivityHasFailed || context.execution().isCancelled())
 				break;
 		}
 		
-		setStatus(oneActivityHasFailed ? FAILED : SUCCEEDED);
+		if (context.execution().isCancelled())
+			setStatus(CANCELLED);
+		else if (oneActivityHasFailed)
+			setStatus(FAILED);
+		else
+			setStatus(SUCCEEDED);
 	}
 	
 	/**
@@ -66,9 +73,9 @@ public class BasicSequence extends SequenceImpl {
 			activity.run(context);
 		}
 		catch (Exception e) {
+			EKumiPlugin.error(e, "Unable to run " + activity);
 			return false;
 		}
-		
 		return activity.getStatus() == SUCCEEDED;
 	}
 	
