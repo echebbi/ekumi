@@ -210,11 +210,15 @@
               <styles xmi:type="notation:FontStyle" xmi:id="_K1lzka1YEeiW7ukDnY6yYw" fontName="Segoe UI" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_K1lzkq1YEeiW7ukDnY6yYw"/>
             </children>
+            <children xmi:type="notation:Node" xmi:id="_zvmqkENkEem199YPpzRaEg" type="3010" element="_ztYdAENkEem199YPpzRaEg">
+              <styles xmi:type="notation:FontStyle" xmi:id="_zvnRoENkEem199YPpzRaEg" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_zvnRoUNkEem199YPpzRaEg"/>
+            </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_HWdNwRotEei0NeDP9wHHkg"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_HWdNwhotEei0NeDP9wHHkg"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_HWcmsRotEei0NeDP9wHHkg" fontName="Segoe UI" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HWcmshotEei0NeDP9wHHkg" x="57" y="-80" width="120" height="138"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HWcmshotEei0NeDP9wHHkg" x="57" y="-80" width="120" height="145"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_7_hVQBotEei0NeDP9wHHkg" type="2003" element="_7_YLUBotEei0NeDP9wHHkg">
           <children xmi:type="notation:Node" xmi:id="_7_h8UBotEei0NeDP9wHHkg" type="5007"/>
@@ -1598,6 +1602,14 @@
         <target xmi:type="ecore:EEnumLiteral" href="workflow.ecore#//Status/PAUSED"/>
         <semanticElements xmi:type="ecore:EEnumLiteral" href="workflow.ecore#//Status/PAUSED"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_K1Akwa1YEeiW7ukDnY6yYw" labelAlignment="LEFT">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_ztYdAENkEem199YPpzRaEg" name="SKIPPED" tooltipText="">
+        <target xmi:type="ecore:EEnumLiteral" href="workflow.ecore#//Status/SKIPPED"/>
+        <semanticElements xmi:type="ecore:EEnumLiteral" href="workflow.ecore#//Status/SKIPPED"/>
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_ztYdAUNkEem199YPpzRaEg" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>

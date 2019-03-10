@@ -72,6 +72,7 @@
     <eLiterals name="FAILED" value="3"/>
     <eLiterals name="CANCELLED" value="4"/>
     <eLiterals name="PAUSED" value="5"/>
+    <eLiterals name="SKIPPED" value="6"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Runner" abstract="true" eSuperTypes="#//Script">
     <eOperations name="run">
