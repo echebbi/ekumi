@@ -50,6 +50,7 @@
       <genEnumLiterals ecoreEnumLiteral="workflow.ecore#//Status/FAILED"/>
       <genEnumLiterals ecoreEnumLiteral="workflow.ecore#//Status/CANCELLED"/>
       <genEnumLiterals ecoreEnumLiteral="workflow.ecore#//Status/PAUSED"/>
+      <genEnumLiterals ecoreEnumLiteral="workflow.ecore#//Status/SKIPPED"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="workflow.ecore#//TestResult">
       <genEnumLiterals ecoreEnumLiteral="workflow.ecore#//TestResult/FULFILLED"/>

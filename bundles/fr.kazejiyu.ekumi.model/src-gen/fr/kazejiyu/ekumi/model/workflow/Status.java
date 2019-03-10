@@ -76,7 +76,16 @@ public enum Status implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	PAUSED(5, "PAUSED", "PAUSED");
+	PAUSED(5, "PAUSED", "PAUSED"),
+	/**
+	* <!-- begin-user-doc -->
+	* The '<em><b>SKIPPED</b></em>' literal object.
+	* <!-- end-user-doc -->
+	* @see #SKIPPED_VALUE
+	* @generated
+	* @ordered
+	*/
+	SKIPPED(6, "SKIPPED", "SKIPPED");
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -170,11 +179,27 @@ public enum Status implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * The '<em><b>SKIPPED</b></em>' literal value.
+	 * <p>
+	 * If the meaning of '<em><b>SKIPPED</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #SKIPPED
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SKIPPED_VALUE = 6;
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * An array of all the '<em><b>Status</b></em>' enumerators.
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final Status[] VALUES_ARRAY = new Status[] { IDLE, RUNNING, SUCCEEDED, FAILED, CANCELLED, PAUSED, };
+	private static final Status[] VALUES_ARRAY = new Status[] { IDLE, RUNNING, SUCCEEDED, FAILED, CANCELLED, PAUSED,
+			SKIPPED, };
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -242,6 +267,8 @@ public enum Status implements Enumerator {
 			return CANCELLED;
 		case PAUSED_VALUE:
 			return PAUSED;
+		case SKIPPED_VALUE:
+			return SKIPPED;
 		}
 		return null;
 	}

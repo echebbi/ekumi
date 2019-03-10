@@ -1749,6 +1749,7 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 		addEEnumLiteral(statusEEnum, Status.FAILED);
 		addEEnumLiteral(statusEEnum, Status.CANCELLED);
 		addEEnumLiteral(statusEEnum, Status.PAUSED);
+		addEEnumLiteral(statusEEnum, Status.SKIPPED);
 
 		initEEnum(testResultEEnum, TestResult.class, "TestResult");
 		addEEnumLiteral(testResultEEnum, TestResult.FULFILLED);
