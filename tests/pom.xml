@@ -29,6 +29,7 @@
         <module>fr.kazejiyu.ekumi.ide.test</module>
         <module>fr.kazejiyu.ekumi.ide.common.test</module>
         <module>fr.kazejiyu.ekumi.languages.java.test</module>
+        <module>fr.kazejiyu.ekumi.spec2workflow.test</module>
         <module>fr.kazejiyu.ekumi.workflow.editor.design.test</module>
 	</modules>
     

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="fr.kazejiyu.ekumi.model.specs">
+      <specification
+            adapter="fr.kazejiyu.ekumi.spec2workflow.BasicWorkflowAdapter">
+      </specification>
+   </extension>
+
+</plugin>

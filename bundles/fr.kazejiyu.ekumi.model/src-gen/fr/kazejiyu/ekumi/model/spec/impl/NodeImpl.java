@@ -167,24 +167,24 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements N
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Returns whether the node has at least one successor.
+	 * @return whether the node has at least one successor
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean hasSuccessors() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return ! getSuccessors().isEmpty();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Returns whether the node has at least one predecessor.
+	 * @return whether the node has at least one predecessor
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean hasPredecessors() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return ! getPredecessors().isEmpty();
 	}
 
 	/**

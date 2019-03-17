@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EKumi — Spec to Workflow Transformation Tests
+Bundle-SymbolicName: fr.kazejiyu.ekumi.spec2workflow.test
+Bundle-Version: 0.1.0
+Fragment-Host: fr.kazejiyu.ekumi.spec2workflow;bundle-version="0.1.0"
+Automatic-Module-Name: fr.kazejiyu.ekumi.spec2workflow.test
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: fr.kazejiyu.ekumi.tests.common;bundle-version="0.1.0"
