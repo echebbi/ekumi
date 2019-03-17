@@ -13,5 +13,7 @@ Require-Bundle: org.eclipse.debug.core,
  org.eclipse.emf.ecore,
  fr.kazejiyu.ekumi.model,
  fr.kazejiyu.ekumi.ide,
- fr.kazejiyu.ekumi.core
+ fr.kazejiyu.ekumi.core,
+ fr.kazejiyu.ekumi.spec2workflow;bundle-version="0.1.0",
+ fr.kazejiyu.ekumi.ide.common
 Export-Package: fr.kazejiyu.ekumi.debug

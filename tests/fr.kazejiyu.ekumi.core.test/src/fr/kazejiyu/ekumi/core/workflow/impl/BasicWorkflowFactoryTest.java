@@ -21,6 +21,7 @@ import org.mockito.Mock;
 import fr.kazejiyu.ekumi.model.scripting.ScriptingLanguage;
 import fr.kazejiyu.ekumi.model.workflow.DataFlows;
 import fr.kazejiyu.ekumi.model.workflow.Execution;
+import fr.kazejiyu.ekumi.model.workflow.ParallelSplit;
 import fr.kazejiyu.ekumi.model.workflow.ScriptedTask;
 import fr.kazejiyu.ekumi.model.workflow.Sequence;
 import fr.kazejiyu.ekumi.model.workflow.StructuredLoop;
@@ -46,6 +47,11 @@ public class BasicWorkflowFactoryTest implements WithAssertions {
 	@Test @DisplayName("creates Execution")
 	void creates_Execution() {
 		assertThat(factory.createExecution()).isInstanceOf(Execution.class);
+	}
+	
+	@Test @DisplayName("creates ParallelSplit")
+	void creates_ParallelSplit() {
+		assertThat(factory.createParallelSplit()).isInstanceOf(ParallelSplit.class);
 	}
 	
 	@Test @DisplayName("creates Sequence")
