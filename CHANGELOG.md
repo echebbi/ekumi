@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 ### Added
+- Execution of the workflow created thanks to the diagram editor ([#37](https://github.com/KazeJiyu/ekumi/pull/37))
+- User documentation ([#36](https://github.com/KazeJiyu/ekumi/pull/36))
 - Customization of new Workflow projects ([#34](https://github.com/KazeJiyu/ekumi/pull/34))
 - Simple workflow diagram editor ([#26](https://github.com/KazeJiyu/ekumi/pull/26))
 - Launch configurations for Activity ([#20](https://github.com/KazeJiyu/ekumi/pull/20))
