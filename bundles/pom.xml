@@ -27,6 +27,7 @@
         <module>fr.kazejiyu.ekumi.model</module>
         <module>fr.kazejiyu.ekumi.model.edit</module>
         <module>fr.kazejiyu.ekumi.model.editor</module>
+        <module>fr.kazejiyu.ekumi.spec2workflow</module>
 		<module>fr.kazejiyu.ekumi.ui.e4</module>
 		<module>fr.kazejiyu.ekumi.workflow.editor.design</module>
 	</modules>
