@@ -20,6 +20,9 @@ public final class EKumiExtensions {
 	/** ID of the 'languages' extension point */
 	public static final String LANGUAGES_EXTENSION_ID = "fr.kazejiyu.ekumi.model.languages";
 	
+	/** ID of the 'specs' extension point */
+	public static final String SPECS_EXTENSION_ID = "fr.kazejiyu.ekumi.model.specs";
+	
 	private EKumiExtensions() {
 		// makes no sense to instantiate it
 	}
