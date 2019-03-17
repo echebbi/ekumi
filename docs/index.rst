@@ -36,7 +36,8 @@ The behaviour of a task is defined by writting a `runner` using one of the suppo
 
 .. toctree::
    :maxdepth: 2
-   :caption: Extensibility
+   :caption: Extend EKumi
 
-   extensibility/add_scripting_language
-   extensibility/add_data_type
+   extend-ekumi/add_scripting_language
+   extend-ekumi/add_data_type
+   extend-ekumi/add-specification
