@@ -11,4 +11,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: fr.kazejiyu.ekumi.ide.common
 Bundle-ActivationPolicy: lazy
 Export-Package: fr.kazejiyu.ekumi.ide.common.datatypes,
- fr.kazejiyu.ekumi.ide.common.languages
+ fr.kazejiyu.ekumi.ide.common.languages,
+ fr.kazejiyu.ekumi.ide.common.spec

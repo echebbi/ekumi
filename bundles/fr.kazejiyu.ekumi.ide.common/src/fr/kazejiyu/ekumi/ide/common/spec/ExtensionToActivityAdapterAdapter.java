@@ -7,7 +7,7 @@
  * 
  * SPDX-License-Identifier: EPL-2.0
  ******************************************************************************/
-package fr.kazejiyu.ekumi.ide.common.datatypes;
+package fr.kazejiyu.ekumi.ide.common.spec;
 
 import static java.util.Objects.requireNonNull;
 import static java.util.stream.Collectors.toList;
@@ -22,6 +22,7 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import fr.kazejiyu.ekumi.ide.common.Activator;
 import fr.kazejiyu.ekumi.model.catalog.Catalogs;
 import fr.kazejiyu.ekumi.model.datatypes.DataType;
+import fr.kazejiyu.ekumi.model.spec.ActivityAdapter;
 
 /**
  * <p>An adapter creating {@link DataType} instances from {@link IConfigurationElement}s.</p>
@@ -38,7 +39,7 @@ import fr.kazejiyu.ekumi.model.datatypes.DataType;
  * 
  * @author Emmanuel CHEBBI
  */
-public class ExtensionToDatatypeAdapter {
+public class ExtensionToActivityAdapterAdapter {
 	
 	/**
 	 * Creates a new {@link Catalogs} according to the given configuration elements.
@@ -48,20 +49,20 @@ public class ExtensionToDatatypeAdapter {
 	 * 
 	 * @return a new Catalogs instance.
 	 */
-	public List<DataType<?>> adapt(List<IConfigurationElement> configurationElements) {
+	public List<ActivityAdapter> adapt(List<IConfigurationElement> configurationElements) {
 		requireNonNull(configurationElements, "Cannot adapt null configuration elements");
 		
 		return configurationElements.stream()
-									.map(toDataType())
+									.map(toActivityAdapter())
 									.filter(Objects::nonNull)
-									.map(DataType.class::cast)
+									.map(ActivityAdapter.class::cast)
 									.collect(toList());
 	}
 	
-	private static Function<IConfigurationElement, DataType<?>> toDataType() {
+	private static Function<IConfigurationElement, ActivityAdapter> toActivityAdapter() {
 		return conf -> {
 			try {
-				return (DataType<?>) conf.createExecutableExtension("class");
+				return (ActivityAdapter) conf.createExecutableExtension("adapter");
 				
 			} catch (CoreException e) {
 				Activator.warn(e, "An error occured while creating an executable extension of property 'class' for configuration: " + conf);
