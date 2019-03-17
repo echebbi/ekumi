@@ -9,6 +9,7 @@
  ******************************************************************************/
 package fr.kazejiyu.ekumi.workflow.editor.design;
 
+import static java.util.Objects.requireNonNull;
 import static java.util.Arrays.asList;
 
 import java.util.List;
@@ -26,6 +27,22 @@ import fr.kazejiyu.ekumi.model.spec.Variable;
  * Provides services related to {@link DataType} for EKumi's workflow editor viewpoint.
  */
 public class DatatypeServices {
+	
+	private IExtensionRegistry extensions;
+	
+	public DatatypeServices() {
+		this.extensions = Platform.getExtensionRegistry();
+	}
+	
+	/**
+	 * Sets the registry used to retrieve available datatypes.
+	 * 
+	 * @param extensions
+	 * 			The registry to use.
+	 */
+	public void setExtensionRegistry(IExtensionRegistry extensions) {
+		this.extensions = requireNonNull(extensions, "The ExtensionRegistry must not be null");
+	}
 
 	/**
 	 * <p>Returns the name of a given datatype.</p>
@@ -84,7 +101,6 @@ public class DatatypeServices {
 	 * @return the datatypes available for the given variable
 	 */
 	public List<DataType<?>> availableDatatypes(Variable variable) {
-		IExtensionRegistry extensions = Platform.getExtensionRegistry();
 		ExtensionToDatatypeAdapter adapter = new ExtensionToDatatypeAdapter();
 		return adapter.adapt(asList(
 				extensions.getConfigurationElementsFor(EKumiPlugin.DATATYPES_EXTENSION_ID)

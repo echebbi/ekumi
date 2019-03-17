@@ -10,6 +10,7 @@
 package fr.kazejiyu.ekumi.workflow.editor.design;
 
 import static java.util.Arrays.asList;
+import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 import java.util.Objects;
@@ -27,6 +28,22 @@ import fr.kazejiyu.ekumi.model.spec.ExternalTask;
  * Provides services related to {@link ScriptingLanguage} for EKumi's workflow editor viewpoint.
  */
 public class ScriptingLanguageServices {
+	
+	private IExtensionRegistry extensions;
+	
+	public ScriptingLanguageServices() {
+		this.extensions = Platform.getExtensionRegistry();
+	}
+	
+	/**
+	 * Sets the registry used to retrieve available datatypes.
+	 * 
+	 * @param extensions
+	 * 			The registry to use.
+	 */
+	public void setExtensionRegistry(IExtensionRegistry extensions) {
+		this.extensions = requireNonNull(extensions, "The ExtensionRegistry must not be null");
+	}
 
 	/**
 	 * <p>Returns the name of a given scripting language.</p>
@@ -84,7 +101,6 @@ public class ScriptingLanguageServices {
 	 * @return the list of available scripting languages
 	 */
 	public List<ScriptingLanguage> availableScriptingLanguages(EObject object) {
-		IExtensionRegistry extensions = Platform.getExtensionRegistry();
 		ExtensionToScriptingLanguageAdapter adapter = new ExtensionToScriptingLanguageAdapter();
 		return adapter.adapt(asList(
 				extensions.getConfigurationElementsFor(EKumiPlugin.LANGUAGES_EXTENSION_ID)
