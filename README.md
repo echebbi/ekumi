@@ -4,6 +4,8 @@
 
 Please check [the documentation](https://ekumi.kazejiyu.fr) for usages (_disclaimer_: the site is under construction).
 
+**IMPORTANT**: the project is still under development, and the current architecture is likely to change, including public API, extension points and overall architecture.
+
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md).

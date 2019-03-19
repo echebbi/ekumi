@@ -16,7 +16,7 @@ It is hence responsible of serializing and deserializing data so that they can b
 How to add a new datatype?
 -------------------------------------
 
-A new one can be defined by contributing to the ``fr.kazejiyu.ekumi.model.datatypes`` extension point.
+A new one can be defined by contributing to the ``fr.kazejiyu.ekumi.core.datatypes`` extension point.
 
 It requires one class that implements the ``DataType<T>`` interface.
 

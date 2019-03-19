@@ -6,16 +6,16 @@ Add a new Specification
 What is a specification?
 ------------------------------
 
-A specification describes a possible representation of a workflow. The main purposes of specifications is allowing new workflow editors.
+A specification is a definition of how a workflow is structured; as such, it can be affiliated to a concrete grammar.
+
+A specification can be used to customize the way workflows are persisted, but are mainly aimed at supporting new editors (see :ref:`part-add-representation`).
 
 How to add a new specification?
 -------------------------------------
 
-A new one can be defined by contributing to the ``fr.kazejiyu.ekumi.model.specs`` extension point.
+A new one can be defined by contributing to the ``fr.kazejiyu.ekumi.core.specs`` extension point which requires one class that implements the ``ActivityAdapter`` interface.
 
-It requires one class that implements the ``ActivityAdapter`` interface.
-
-The interface is defined as follows:
+The interface to implement is defined as follows:
 
 .. code-block:: java
    :linenos:
