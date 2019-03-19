@@ -10,28 +10,36 @@
 package fr.kazejiyu.ekumi.spec2workflow;
 
 import static java.util.Objects.requireNonNull;
+import static java.util.stream.Collectors.toList;
 
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
+import org.eclipse.emf.common.util.EList;
+
+import fr.kazejiyu.ekumi.EKumiPlugin;
+import fr.kazejiyu.ekumi.model.datatypes.DataType;
 import fr.kazejiyu.ekumi.model.datatypes.DataTypeFactory;
+import fr.kazejiyu.ekumi.model.datatypes.exceptions.DataTypeUnserializationException;
 import fr.kazejiyu.ekumi.model.scripting.ScriptingLanguage;
 import fr.kazejiyu.ekumi.model.scripting.ScriptingLanguageFactory;
+import fr.kazejiyu.ekumi.model.spec.ActivityAdapter;
 import fr.kazejiyu.ekumi.model.spec.Divergence;
 import fr.kazejiyu.ekumi.model.spec.ExternalTask;
 import fr.kazejiyu.ekumi.model.spec.Node;
 import fr.kazejiyu.ekumi.model.spec.ParallelSplit;
 import fr.kazejiyu.ekumi.model.spec.Start;
 import fr.kazejiyu.ekumi.model.spec.Synchronization;
-import fr.kazejiyu.ekumi.model.spec.ActivityAdapter;
 import fr.kazejiyu.ekumi.model.spec.util.SpecSwitch;
 import fr.kazejiyu.ekumi.model.workflow.Activity;
 import fr.kazejiyu.ekumi.model.workflow.ScriptedTask;
 import fr.kazejiyu.ekumi.model.workflow.Sequence;
+import fr.kazejiyu.ekumi.model.workflow.Variable;
 import fr.kazejiyu.ekumi.model.workflow.WorkflowFactory;
 
 public class BasicWorkflowAdapter extends SpecSwitch<Activity> implements ActivityAdapter {
 	
-	@SuppressWarnings("unused") // Will be used as soon as inputs & outputs are handled
 	private DataTypeFactory datatypes;
 	
 	private ScriptingLanguageFactory languages;
@@ -134,6 +142,8 @@ public class BasicWorkflowAdapter extends SpecSwitch<Activity> implements Activi
 		script.setId(task.getId());
 		script.setName(task.getName());
 		script.setScriptPath(task.getScriptId());
+		script.getInputs().addAll(adapt(script, task.getInputs()));
+		script.getOutputs().addAll(adapt(script, task.getOutputs()));
 		
 		Optional<ScriptingLanguage> scriptLanguage = languages.find(task.getLanguageId());
 		scriptLanguage.ifPresent(script::setLanguage);
@@ -142,6 +152,36 @@ public class BasicWorkflowAdapter extends SpecSwitch<Activity> implements Activi
 			Activator.warn(new IllegalArgumentException(task.getLanguageId()), "Unable to find any language for id: " + task.getLanguageId());
 		}
 		return script;
+	}
+	
+	private List<Variable> adapt(Activity activity, EList<fr.kazejiyu.ekumi.model.spec.Variable> variables) {
+		return variables.stream()
+						.map(this::adapt)
+						.filter(Objects::nonNull)
+						.peek(variable -> variable.setOwner(activity))
+						.collect(toList());
+	}
+	
+	private Variable adapt(fr.kazejiyu.ekumi.model.spec.Variable variable) {
+		Variable adapted = WorkflowFactory.eINSTANCE.createVariable();
+		adapted.setName(variable.getName());
+		Optional<DataType<?>> datatype = datatypes.find(variable.getTypeId());
+		
+		if (! datatype.isPresent()) {
+			adapted.setValue(null);
+		}
+		else {
+			adapted.setType(datatype.get());
+			try {
+				adapted.setValue(datatype.get().unserialize(variable.getValue()));
+			} 
+			catch (DataTypeUnserializationException e) {
+				EKumiPlugin.warn(e, "Unable to set value of variable " + variable.getName() + ", setting value to default");
+				adapted.setValue(datatype.get().getDefaultValue());
+			}
+		}
+		
+		return adapted;
 	}
 	
 	@Override
@@ -189,5 +229,5 @@ public class BasicWorkflowAdapter extends SpecSwitch<Activity> implements Activi
 		}
 		return null;
 	}
-
+	
 }
