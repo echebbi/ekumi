@@ -53,15 +53,6 @@ public class DatatypeServicesTest implements WithAssertions {
 		assertThat(services.getDatatype(variable)).isNull();
 	}
 	
-	@Test @DisplayName("can set the type of a variable")
-	void can_set_the_type_of_a_variable(@Mock DataType<String> type) {
-		when (type.getId()) .thenReturn ("type.of.String");
-		
-		services.setDatatype(variable, type);
-		
-		assertThat(variable.getTypeId()).isEqualTo("type.of.String");
-	}
-	
 	@SuppressWarnings("unused") // called by @MethodSource
 	private static Stream<String> emptyTypeId() {
 		return Stream.of("", null);
@@ -114,6 +105,33 @@ public class DatatypeServicesTest implements WithAssertions {
 			assertThat (services.getDatatype(variable)).isNull();
 		}
 		
+	}
+	
+	@Nested @DisplayName("when setting the type of a variable")
+	class WhenSettingTheTypeOfAVariable {
+		
+		@Mock
+		DataType<Double> doubleType;
+
+		@BeforeEach
+		void setup(@Mock IExtensionRegistry extensions) throws CoreException {
+			when (doubleType.getId()) .thenReturn ("type.double");
+			when (doubleType.getDefaultValue()) .thenReturn(0d);
+			when (doubleType.serialize(0d)) .thenReturn("0.0");
+		}
+		
+		@Test @DisplayName("sets variable's type id")
+		void sets_variable_type_id() {
+			services.setDatatype(variable, doubleType);
+			assertThat(variable.getTypeId()).isEqualTo(doubleType.getId());
+		}
+		
+		@Test @DisplayName("sets variable's value to type's default")
+		void sets_variable_valueto_type_default() {
+			services.setDatatype(variable, doubleType);
+			assertThat(variable.getValue()).isEqualTo("0.0");
+		}
+
 	}
 	
 }
