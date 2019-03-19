@@ -59,11 +59,13 @@ public class DataFlowsTest implements WithAssertions {
 				input.setName("in" + i);
 				input.setOwner(owner);
 				input.setValue(-i);
+				owner.getInputs().add(input);
 				
 				Variable output = WorkflowFactory.eINSTANCE.createVariable();
 				output.setName("out" + i);
 				output.setOwner(predecessor);
 				output.setValue(i);
+				owner.getOutputs().add(output);
 				
 				DataFlow flow = WorkflowFactory.eINSTANCE.createDataFlow();
 				flow.setInput(input);

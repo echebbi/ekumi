@@ -112,10 +112,10 @@ public class ActivityItemProvider extends IdentifiableItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(WorkflowPackage.Literals.ACTIVITY__INPUTS);
 			childrenFeatures.add(WorkflowPackage.Literals.ACTIVITY__OUTPUTS);
 			childrenFeatures.add(WorkflowPackage.Literals.ACTIVITY__SUCCESSOR);
 			childrenFeatures.add(WorkflowPackage.Literals.ACTIVITY__FLOWS);
+			childrenFeatures.add(WorkflowPackage.Literals.ACTIVITY__INPUTS);
 		}
 		return childrenFeatures;
 	}
@@ -182,10 +182,10 @@ public class ActivityItemProvider extends IdentifiableItemProvider {
 		case WorkflowPackage.ACTIVITY__STATUS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
-		case WorkflowPackage.ACTIVITY__INPUTS:
 		case WorkflowPackage.ACTIVITY__OUTPUTS:
 		case WorkflowPackage.ACTIVITY__SUCCESSOR:
 		case WorkflowPackage.ACTIVITY__FLOWS:
+		case WorkflowPackage.ACTIVITY__INPUTS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -202,15 +202,6 @@ public class ActivityItemProvider extends IdentifiableItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add(createChildParameter(WorkflowPackage.Literals.ACTIVITY__INPUTS,
-				WorkflowFactory.eINSTANCE.createVariable()));
-
-		newChildDescriptors.add(createChildParameter(WorkflowPackage.Literals.ACTIVITY__INPUTS,
-				WorkflowFactory.eINSTANCE.createListOfVariables()));
-
-		newChildDescriptors.add(createChildParameter(WorkflowPackage.Literals.ACTIVITY__INPUTS,
-				WorkflowFactory.eINSTANCE.createMapOfVariables()));
 
 		newChildDescriptors.add(createChildParameter(WorkflowPackage.Literals.ACTIVITY__OUTPUTS,
 				WorkflowFactory.eINSTANCE.createVariable()));
@@ -244,6 +235,15 @@ public class ActivityItemProvider extends IdentifiableItemProvider {
 
 		newChildDescriptors.add(createChildParameter(WorkflowPackage.Literals.ACTIVITY__FLOWS,
 				WorkflowFactory.eINSTANCE.createDataFlows()));
+
+		newChildDescriptors.add(createChildParameter(WorkflowPackage.Literals.ACTIVITY__INPUTS,
+				WorkflowFactory.eINSTANCE.createVariable()));
+
+		newChildDescriptors.add(createChildParameter(WorkflowPackage.Literals.ACTIVITY__INPUTS,
+				WorkflowFactory.eINSTANCE.createListOfVariables()));
+
+		newChildDescriptors.add(createChildParameter(WorkflowPackage.Literals.ACTIVITY__INPUTS,
+				WorkflowFactory.eINSTANCE.createMapOfVariables()));
 	}
 
 	/**
@@ -257,8 +257,8 @@ public class ActivityItemProvider extends IdentifiableItemProvider {
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == WorkflowPackage.Literals.ACTIVITY__INPUTS
-				|| childFeature == WorkflowPackage.Literals.ACTIVITY__OUTPUTS;
+		boolean qualify = childFeature == WorkflowPackage.Literals.ACTIVITY__OUTPUTS
+				|| childFeature == WorkflowPackage.Literals.ACTIVITY__INPUTS;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2",

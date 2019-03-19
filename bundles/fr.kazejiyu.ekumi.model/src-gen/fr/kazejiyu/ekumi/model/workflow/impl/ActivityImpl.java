@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -35,11 +34,11 @@ import fr.kazejiyu.ekumi.model.workflow.WorkflowPackage;
  * </p>
  * <ul>
  *   <li>{@link fr.kazejiyu.ekumi.model.workflow.impl.ActivityImpl#getStatus <em>Status</em>}</li>
- *   <li>{@link fr.kazejiyu.ekumi.model.workflow.impl.ActivityImpl#getInputs <em>Inputs</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.model.workflow.impl.ActivityImpl#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.model.workflow.impl.ActivityImpl#getSuccessor <em>Successor</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.model.workflow.impl.ActivityImpl#getPredecessor <em>Predecessor</em>}</li>
  *   <li>{@link fr.kazejiyu.ekumi.model.workflow.impl.ActivityImpl#getFlows <em>Flows</em>}</li>
+ *   <li>{@link fr.kazejiyu.ekumi.model.workflow.impl.ActivityImpl#getInputs <em>Inputs</em>}</li>
  * </ul>
  *
  * @generated
@@ -64,16 +63,6 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 	 * @ordered
 	 */
 	protected Status status = STATUS_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getInputs() <em>Inputs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInputs()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Variable> inputs;
 
 	/**
 	 * The cached value of the '{@link #getOutputs() <em>Outputs</em>}' containment reference list.
@@ -104,6 +93,16 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 	 * @ordered
 	 */
 	protected DataFlows flows;
+
+	/**
+	 * The cached value of the '{@link #getInputs() <em>Inputs</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Variable> inputs;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -153,8 +152,7 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 	 */
 	public EList<Variable> getInputs() {
 		if (inputs == null) {
-			inputs = new EObjectContainmentWithInverseEList<Variable>(Variable.class, this,
-					WorkflowPackage.ACTIVITY__INPUTS, WorkflowPackage.VARIABLE__OWNER);
+			inputs = new EObjectContainmentEList<Variable>(Variable.class, this, WorkflowPackage.ACTIVITY__INPUTS);
 		}
 		return inputs;
 	}
@@ -335,8 +333,6 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case WorkflowPackage.ACTIVITY__INPUTS:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getInputs()).basicAdd(otherEnd, msgs);
 		case WorkflowPackage.ACTIVITY__SUCCESSOR:
 			if (successor != null)
 				msgs = ((InternalEObject) successor).eInverseRemove(this,
@@ -363,8 +359,6 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case WorkflowPackage.ACTIVITY__INPUTS:
-			return ((InternalEList<?>) getInputs()).basicRemove(otherEnd, msgs);
 		case WorkflowPackage.ACTIVITY__OUTPUTS:
 			return ((InternalEList<?>) getOutputs()).basicRemove(otherEnd, msgs);
 		case WorkflowPackage.ACTIVITY__SUCCESSOR:
@@ -373,6 +367,8 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 			return basicSetPredecessor(null, msgs);
 		case WorkflowPackage.ACTIVITY__FLOWS:
 			return basicSetFlows(null, msgs);
+		case WorkflowPackage.ACTIVITY__INPUTS:
+			return ((InternalEList<?>) getInputs()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -401,8 +397,6 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 		switch (featureID) {
 		case WorkflowPackage.ACTIVITY__STATUS:
 			return getStatus();
-		case WorkflowPackage.ACTIVITY__INPUTS:
-			return getInputs();
 		case WorkflowPackage.ACTIVITY__OUTPUTS:
 			return getOutputs();
 		case WorkflowPackage.ACTIVITY__SUCCESSOR:
@@ -411,6 +405,8 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 			return getPredecessor();
 		case WorkflowPackage.ACTIVITY__FLOWS:
 			return getFlows();
+		case WorkflowPackage.ACTIVITY__INPUTS:
+			return getInputs();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -427,10 +423,6 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 		case WorkflowPackage.ACTIVITY__STATUS:
 			setStatus((Status) newValue);
 			return;
-		case WorkflowPackage.ACTIVITY__INPUTS:
-			getInputs().clear();
-			getInputs().addAll((Collection<? extends Variable>) newValue);
-			return;
 		case WorkflowPackage.ACTIVITY__OUTPUTS:
 			getOutputs().clear();
 			getOutputs().addAll((Collection<? extends Variable>) newValue);
@@ -443,6 +435,10 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 			return;
 		case WorkflowPackage.ACTIVITY__FLOWS:
 			setFlows((DataFlows) newValue);
+			return;
+		case WorkflowPackage.ACTIVITY__INPUTS:
+			getInputs().clear();
+			getInputs().addAll((Collection<? extends Variable>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -459,9 +455,6 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 		case WorkflowPackage.ACTIVITY__STATUS:
 			setStatus(STATUS_EDEFAULT);
 			return;
-		case WorkflowPackage.ACTIVITY__INPUTS:
-			getInputs().clear();
-			return;
 		case WorkflowPackage.ACTIVITY__OUTPUTS:
 			getOutputs().clear();
 			return;
@@ -473,6 +466,9 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 			return;
 		case WorkflowPackage.ACTIVITY__FLOWS:
 			setFlows((DataFlows) null);
+			return;
+		case WorkflowPackage.ACTIVITY__INPUTS:
+			getInputs().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -488,8 +484,6 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 		switch (featureID) {
 		case WorkflowPackage.ACTIVITY__STATUS:
 			return status != STATUS_EDEFAULT;
-		case WorkflowPackage.ACTIVITY__INPUTS:
-			return inputs != null && !inputs.isEmpty();
 		case WorkflowPackage.ACTIVITY__OUTPUTS:
 			return outputs != null && !outputs.isEmpty();
 		case WorkflowPackage.ACTIVITY__SUCCESSOR:
@@ -498,6 +492,8 @@ public abstract class ActivityImpl extends IdentifiableImpl implements Activity 
 			return getPredecessor() != null;
 		case WorkflowPackage.ACTIVITY__FLOWS:
 			return flows != null;
+		case WorkflowPackage.ACTIVITY__INPUTS:
+			return inputs != null && !inputs.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

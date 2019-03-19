@@ -411,7 +411,7 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * @generated
 	 */
 	public EReference getActivity_Inputs() {
-		return (EReference) activityEClass.getEStructuralFeatures().get(0);
+		return (EReference) activityEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -420,7 +420,7 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * @generated
 	 */
 	public EReference getActivity_Outputs() {
-		return (EReference) activityEClass.getEStructuralFeatures().get(1);
+		return (EReference) activityEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -429,7 +429,7 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * @generated
 	 */
 	public EReference getActivity_Successor() {
-		return (EReference) activityEClass.getEStructuralFeatures().get(2);
+		return (EReference) activityEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -438,7 +438,7 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * @generated
 	 */
 	public EReference getActivity_Predecessor() {
-		return (EReference) activityEClass.getEStructuralFeatures().get(3);
+		return (EReference) activityEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -447,7 +447,7 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * @generated
 	 */
 	public EReference getActivity_Flows() {
-		return (EReference) activityEClass.getEStructuralFeatures().get(4);
+		return (EReference) activityEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -564,7 +564,7 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * @generated
 	 */
 	public EReference getVariable_Owner() {
-		return (EReference) variableEClass.getEStructuralFeatures().get(2);
+		return (EReference) variableEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -573,7 +573,7 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * @generated
 	 */
 	public EAttribute getVariable_Value() {
-		return (EAttribute) variableEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) variableEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1308,11 +1308,11 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 
 		// Create classes and their features
 		activityEClass = createEClass(ACTIVITY);
-		createEReference(activityEClass, ACTIVITY__INPUTS);
 		createEReference(activityEClass, ACTIVITY__OUTPUTS);
 		createEReference(activityEClass, ACTIVITY__SUCCESSOR);
 		createEReference(activityEClass, ACTIVITY__PREDECESSOR);
 		createEReference(activityEClass, ACTIVITY__FLOWS);
+		createEReference(activityEClass, ACTIVITY__INPUTS);
 
 		sequenceEClass = createEClass(SEQUENCE);
 		createEReference(sequenceEClass, SEQUENCE__ROOT);
@@ -1329,8 +1329,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 		variableEClass = createEClass(VARIABLE);
 		createEAttribute(variableEClass, VARIABLE__NAME);
 		createEAttribute(variableEClass, VARIABLE__TYPE);
-		createEReference(variableEClass, VARIABLE__OWNER);
 		createEAttribute(variableEClass, VARIABLE__VALUE);
+		createEReference(variableEClass, VARIABLE__OWNER);
 
 		structuredLoopEClass = createEClass(STRUCTURED_LOOP);
 		createEReference(structuredLoopEClass, STRUCTURED_LOOP__PRE_CONDITION);
@@ -1491,9 +1491,6 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(activityEClass, Activity.class, "Activity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getActivity_Inputs(), this.getVariable(), this.getVariable_Owner(), "inputs", null, 0, -1,
-				Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getActivity_Outputs(), this.getVariable(), null, "outputs", null, 0, -1, Activity.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1506,6 +1503,9 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 		initEReference(getActivity_Flows(), this.getDataFlows(), this.getDataFlows_Owner(), "flows", null, 1, 1,
 				Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getActivity_Inputs(), this.getVariable(), null, "inputs", null, 0, -1, Activity.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sequenceEClass, Sequence.class, "Sequence", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1540,11 +1540,11 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVariable_Type(), this.getDataType(), "type", null, 0, 1, Variable.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVariable_Owner(), this.getActivity(), this.getActivity_Inputs(), "owner", null, 0, 1,
-				Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVariable_Value(), ecorePackage.getEJavaObject(), "value", null, 0, 1, Variable.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVariable_Owner(), this.getActivity(), null, "owner", null, 0, 1, Variable.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(structuredLoopEClass, StructuredLoop.class, "StructuredLoop", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

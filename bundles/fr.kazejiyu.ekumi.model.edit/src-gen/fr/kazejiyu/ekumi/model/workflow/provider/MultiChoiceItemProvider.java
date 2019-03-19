@@ -158,8 +158,8 @@ public class MultiChoiceItemProvider extends ActivityItemProvider {
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == WorkflowPackage.Literals.ACTIVITY__INPUTS
-				|| childFeature == WorkflowPackage.Literals.ACTIVITY__OUTPUTS;
+		boolean qualify = childFeature == WorkflowPackage.Literals.ACTIVITY__OUTPUTS
+				|| childFeature == WorkflowPackage.Literals.ACTIVITY__INPUTS;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2",

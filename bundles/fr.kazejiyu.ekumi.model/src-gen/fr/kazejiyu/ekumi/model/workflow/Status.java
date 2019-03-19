@@ -78,13 +78,13 @@ public enum Status implements Enumerator {
 	 */
 	PAUSED(5, "PAUSED", "PAUSED"),
 	/**
-	* <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	* The '<em><b>SKIPPED</b></em>' literal object.
 	* <!-- end-user-doc -->
-	* @see #SKIPPED_VALUE
-	* @generated
-	* @ordered
-	*/
+	 * @see #SKIPPED_VALUE
+	 * @generated
+	 * @ordered
+	 */
 	SKIPPED(6, "SKIPPED", "SKIPPED");
 
 	/**

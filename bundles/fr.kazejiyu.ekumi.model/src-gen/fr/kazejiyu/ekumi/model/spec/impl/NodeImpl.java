@@ -173,7 +173,7 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements N
 	 * @generated NOT
 	 */
 	public boolean hasSuccessors() {
-		return ! getSuccessors().isEmpty();
+		return !getSuccessors().isEmpty();
 	}
 
 	/**
@@ -184,7 +184,7 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements N
 	 * @generated NOT
 	 */
 	public boolean hasPredecessors() {
-		return ! getPredecessors().isEmpty();
+		return !getPredecessors().isEmpty();
 	}
 
 	/**
