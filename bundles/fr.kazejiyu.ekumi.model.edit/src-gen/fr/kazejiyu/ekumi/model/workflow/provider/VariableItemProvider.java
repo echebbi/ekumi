@@ -57,8 +57,8 @@ public class VariableItemProvider extends ItemProviderAdapter implements IEditin
 
 			addNamePropertyDescriptor(object);
 			addTypePropertyDescriptor(object);
-			addOwnerPropertyDescriptor(object);
 			addValuePropertyDescriptor(object);
+			addOwnerPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}

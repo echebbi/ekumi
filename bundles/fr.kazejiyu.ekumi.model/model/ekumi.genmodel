@@ -63,11 +63,11 @@
     <genDataTypes ecoreDataType="workflow.ecore#//ExecutionStatus"/>
     <genDataTypes ecoreDataType="workflow.ecore#//VariableNotFoundException"/>
     <genClasses ecoreClass="workflow.ecore#//Activity">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Activity/inputs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Activity/outputs"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//Activity/successor"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//Activity/predecessor"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Activity/flows"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Activity/inputs"/>
     </genClasses>
     <genClasses ecoreClass="workflow.ecore#//Sequence">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Sequence/root"/>
@@ -85,8 +85,8 @@
     <genClasses ecoreClass="workflow.ecore#//Variable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Variable/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Variable/type"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//Variable/owner"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Variable/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//Variable/owner"/>
     </genClasses>
     <genClasses ecoreClass="workflow.ecore#//StructuredLoop">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//StructuredLoop/preCondition"/>

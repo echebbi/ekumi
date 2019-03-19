@@ -68,7 +68,7 @@ public interface Variable extends EObject {
 	 * @see fr.kazejiyu.ekumi.model.workflow.WorkflowPackage#getVariable_Owner()
 	 * @see fr.kazejiyu.ekumi.model.workflow.Activity#getInputs
 	 * <!-- end-user-doc -->
-	 * @model opposite="inputs" transient="false"
+	 * @model
 	 * @generated
 	 */
 	Activity getOwner();
@@ -77,7 +77,7 @@ public interface Variable extends EObject {
 	 * <!-- begin-user-doc -->
 	 * Sets the value of the '{@link fr.kazejiyu.ekumi.model.workflow.Variable#getOwner <em>Owner</em>}' container reference.
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owner</em>' container reference.
+	 * @param value the new value of the '<em>Owner</em>' reference.
 	 * @see #getOwner()
 	 * @generated
 	 */

@@ -50,7 +50,7 @@ public interface Activity extends Identifiable, Executable, HasStatus {
 	 * @see fr.kazejiyu.ekumi.model.workflow.WorkflowPackage#getActivity_Inputs()
 	 * @see fr.kazejiyu.ekumi.model.workflow.Variable#getOwner
 	 * <!-- end-user-doc -->
-	 * @model opposite="owner" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Variable> getInputs();

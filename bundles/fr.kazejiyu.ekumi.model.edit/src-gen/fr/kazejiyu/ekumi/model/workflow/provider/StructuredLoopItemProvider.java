@@ -197,8 +197,8 @@ public class StructuredLoopItemProvider extends ActivityItemProvider {
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == WorkflowPackage.Literals.ACTIVITY__INPUTS
-				|| childFeature == WorkflowPackage.Literals.ACTIVITY__OUTPUTS
+		boolean qualify = childFeature == WorkflowPackage.Literals.ACTIVITY__OUTPUTS
+				|| childFeature == WorkflowPackage.Literals.ACTIVITY__INPUTS
 				|| childFeature == WorkflowPackage.Literals.ACTIVITY__SUCCESSOR
 				|| childFeature == WorkflowPackage.Literals.STRUCTURED_LOOP__ACTIVITY;
 

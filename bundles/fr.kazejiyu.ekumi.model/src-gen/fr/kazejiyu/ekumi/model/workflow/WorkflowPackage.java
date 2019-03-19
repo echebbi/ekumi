@@ -143,22 +143,13 @@ public interface WorkflowPackage extends EPackage {
 	int ACTIVITY__STATUS = IDENTIFIABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__INPUTS = IDENTIFIABLE_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__OUTPUTS = IDENTIFIABLE_FEATURE_COUNT + 2;
+	int ACTIVITY__OUTPUTS = IDENTIFIABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Successor</b></em>' containment reference.
@@ -167,7 +158,7 @@ public interface WorkflowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__SUCCESSOR = IDENTIFIABLE_FEATURE_COUNT + 3;
+	int ACTIVITY__SUCCESSOR = IDENTIFIABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Predecessor</b></em>' container reference.
@@ -176,7 +167,7 @@ public interface WorkflowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__PREDECESSOR = IDENTIFIABLE_FEATURE_COUNT + 4;
+	int ACTIVITY__PREDECESSOR = IDENTIFIABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Flows</b></em>' containment reference.
@@ -185,7 +176,16 @@ public interface WorkflowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__FLOWS = IDENTIFIABLE_FEATURE_COUNT + 5;
+	int ACTIVITY__FLOWS = IDENTIFIABLE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__INPUTS = IDENTIFIABLE_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Activity</em>' class.
@@ -252,15 +252,6 @@ public interface WorkflowPackage extends EPackage {
 	int SEQUENCE__STATUS = ACTIVITY__STATUS;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEQUENCE__INPUTS = ACTIVITY__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -295,6 +286,15 @@ public interface WorkflowPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEQUENCE__FLOWS = ACTIVITY__FLOWS;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE__INPUTS = ACTIVITY__INPUTS;
 
 	/**
 	 * The feature id for the '<em><b>Root</b></em>' containment reference.
@@ -379,15 +379,6 @@ public interface WorkflowPackage extends EPackage {
 	int MULTIPLE_INSTANCES__STATUS = ACTIVITY__STATUS;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MULTIPLE_INSTANCES__INPUTS = ACTIVITY__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -422,6 +413,15 @@ public interface WorkflowPackage extends EPackage {
 	 * @ordered
 	 */
 	int MULTIPLE_INSTANCES__FLOWS = ACTIVITY__FLOWS;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_INSTANCES__INPUTS = ACTIVITY__INPUTS;
 
 	/**
 	 * The number of structural features of the '<em>Multiple Instances</em>' class.
@@ -543,22 +543,22 @@ public interface WorkflowPackage extends EPackage {
 	int VARIABLE__TYPE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Owner</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE__OWNER = 2;
-
-	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE__VALUE = 3;
+	int VARIABLE__VALUE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE__OWNER = 3;
 
 	/**
 	 * The number of structural features of the '<em>Variable</em>' class.
@@ -616,15 +616,6 @@ public interface WorkflowPackage extends EPackage {
 	int STRUCTURED_LOOP__STATUS = ACTIVITY__STATUS;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRUCTURED_LOOP__INPUTS = ACTIVITY__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -659,6 +650,15 @@ public interface WorkflowPackage extends EPackage {
 	 * @ordered
 	 */
 	int STRUCTURED_LOOP__FLOWS = ACTIVITY__FLOWS;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_LOOP__INPUTS = ACTIVITY__INPUTS;
 
 	/**
 	 * The feature id for the '<em><b>Pre Condition</b></em>' containment reference.
@@ -871,15 +871,6 @@ public interface WorkflowPackage extends EPackage {
 	int TASK__STATUS = ACTIVITY__STATUS;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK__INPUTS = ACTIVITY__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -914,6 +905,15 @@ public interface WorkflowPackage extends EPackage {
 	 * @ordered
 	 */
 	int TASK__FLOWS = ACTIVITY__FLOWS;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__INPUTS = ACTIVITY__INPUTS;
 
 	/**
 	 * The number of structural features of the '<em>Task</em>' class.
@@ -1044,15 +1044,6 @@ public interface WorkflowPackage extends EPackage {
 	int SCRIPTED_TASK__STATUS = TASK__STATUS;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCRIPTED_TASK__INPUTS = TASK__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1087,6 +1078,15 @@ public interface WorkflowPackage extends EPackage {
 	 * @ordered
 	 */
 	int SCRIPTED_TASK__FLOWS = TASK__FLOWS;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPTED_TASK__INPUTS = TASK__INPUTS;
 
 	/**
 	 * The feature id for the '<em><b>Script Path</b></em>' attribute.
@@ -1180,15 +1180,6 @@ public interface WorkflowPackage extends EPackage {
 	int MULTI_CHOICE__STATUS = ACTIVITY__STATUS;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MULTI_CHOICE__INPUTS = ACTIVITY__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1223,6 +1214,15 @@ public interface WorkflowPackage extends EPackage {
 	 * @ordered
 	 */
 	int MULTI_CHOICE__FLOWS = ACTIVITY__FLOWS;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_CHOICE__INPUTS = ACTIVITY__INPUTS;
 
 	/**
 	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
@@ -1627,15 +1627,6 @@ public interface WorkflowPackage extends EPackage {
 	int LIST_OF_VARIABLES__TYPE = VARIABLE__TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Owner</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LIST_OF_VARIABLES__OWNER = VARIABLE__OWNER;
-
-	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1643,6 +1634,15 @@ public interface WorkflowPackage extends EPackage {
 	 * @ordered
 	 */
 	int LIST_OF_VARIABLES__VALUE = VARIABLE__VALUE;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_OF_VARIABLES__OWNER = VARIABLE__OWNER;
 
 	/**
 	 * The feature id for the '<em><b>Size</b></em>' attribute.
@@ -1700,15 +1700,6 @@ public interface WorkflowPackage extends EPackage {
 	int MAP_OF_VARIABLES__TYPE = VARIABLE__TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Owner</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAP_OF_VARIABLES__OWNER = VARIABLE__OWNER;
-
-	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1716,6 +1707,15 @@ public interface WorkflowPackage extends EPackage {
 	 * @ordered
 	 */
 	int MAP_OF_VARIABLES__VALUE = VARIABLE__VALUE;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_OF_VARIABLES__OWNER = VARIABLE__OWNER;
 
 	/**
 	 * The number of structural features of the '<em>Map Of Variables</em>' class.
@@ -1773,15 +1773,6 @@ public interface WorkflowPackage extends EPackage {
 	int DRIVER__STATUS = ACTIVITY__STATUS;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DRIVER__INPUTS = ACTIVITY__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1816,6 +1807,15 @@ public interface WorkflowPackage extends EPackage {
 	 * @ordered
 	 */
 	int DRIVER__FLOWS = ACTIVITY__FLOWS;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DRIVER__INPUTS = ACTIVITY__INPUTS;
 
 	/**
 	 * The feature id for the '<em><b>Driven</b></em>' containment reference.
@@ -1973,15 +1973,6 @@ public interface WorkflowPackage extends EPackage {
 	int PARALLEL_SPLIT__STATUS = ACTIVITY__STATUS;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARALLEL_SPLIT__INPUTS = ACTIVITY__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2016,6 +2007,15 @@ public interface WorkflowPackage extends EPackage {
 	 * @ordered
 	 */
 	int PARALLEL_SPLIT__FLOWS = ACTIVITY__FLOWS;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_SPLIT__INPUTS = ACTIVITY__INPUTS;
 
 	/**
 	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
@@ -2529,10 +2529,10 @@ public interface WorkflowPackage extends EPackage {
 	EAttribute getVariable_Type();
 
 	/**
-	 * Returns the meta object for the container reference '{@link fr.kazejiyu.ekumi.model.workflow.Variable#getOwner <em>Owner</em>}'.
+	 * Returns the meta object for the reference '{@link fr.kazejiyu.ekumi.model.workflow.Variable#getOwner <em>Owner</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Owner</em>'.
+	 * @return the meta object for the reference '<em>Owner</em>'.
 	 * @see fr.kazejiyu.ekumi.model.workflow.Variable#getOwner()
 	 * @see #getVariable()
 	 * @generated
@@ -3546,7 +3546,7 @@ public interface WorkflowPackage extends EPackage {
 		EAttribute VARIABLE__TYPE = eINSTANCE.getVariable_Type();
 
 		/**
-		 * The meta object literal for the '<em><b>Owner</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Owner</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
