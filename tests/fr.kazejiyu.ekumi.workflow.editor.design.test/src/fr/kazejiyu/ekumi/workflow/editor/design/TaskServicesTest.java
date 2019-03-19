@@ -24,6 +24,7 @@ import fr.kazejiyu.ekumi.model.spec.SimpleMerge;
 import fr.kazejiyu.ekumi.model.spec.SpecFactory;
 import fr.kazejiyu.ekumi.model.spec.Start;
 import fr.kazejiyu.ekumi.model.spec.Synchronization;
+import fr.kazejiyu.ekumi.model.spec.Task;
 import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
@@ -94,6 +95,26 @@ public class TaskServicesTest implements WithAssertions {
 		services.unsetSuccessor(edge);
 		
 		assertThat(sourceNode.getSuccessors()).containsExactly(anotherSuccessor);
+	}
+	
+	@Test @DisplayName("can add an input to a task")
+	void can_add_an_input_to_a_task() {
+		Task task = SpecFactory.eINSTANCE.createExternalTask();
+		
+		services.createInput(task);
+		
+		assertThat(task.getInputs().size()).isEqualTo(1);
+		assertThat(task.getInputs().get(0)).isNotNull();
+	}
+	
+	@Test @DisplayName("can add an output to a task")
+	void can_add_an_output_to_a_task() {
+		Task task = SpecFactory.eINSTANCE.createExternalTask();
+		
+		services.createOutput(task);
+		
+		assertThat(task.getOutputs()).size().isEqualTo(1);
+		assertThat(task.getOutputs().get(0)).isNotNull();
 	}
 	
 	/** Ease mocking */

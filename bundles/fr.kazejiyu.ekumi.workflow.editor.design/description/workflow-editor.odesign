@@ -129,6 +129,20 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Create Input" nodeMappings="//@ownedViewpoints[name='EKumi%20Workflow']/@ownedRepresentations[name='Workflow%20Diagram']/@defaultLayer/@containerMappings[name='Task']/@subContainerMappings[name='Inputs']/@subNodeMappings[name='Input']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createInput"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Create Output" nodeMappings="//@ownedViewpoints[name='EKumi%20Workflow']/@ownedRepresentations[name='Workflow%20Diagram']/@defaultLayer/@containerMappings[name='Task']/@subContainerMappings[name='Outputs']/@subNodeMappings[name='Output']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createOutput"/>
+            </initialOperation>
+          </ownedTools>
         </toolSections>
         <toolSections name="Relationships">
           <ownedTools xsi:type="tool:EdgeCreationDescription" name="Precede" precondition="aql: preSource.canPrecede(preTarget) and preTarget.canSucceed(preSource)" edgeMappings="//@ownedViewpoints[name='EKumi%20Workflow']/@ownedRepresentations[name='Workflow%20Diagram']/@defaultLayer/@edgeMappings[name='Node%20successor']" connectionStartPrecondition="aql: preSource.canPrecede()">
@@ -227,7 +241,9 @@
       <groups name="Variable Settings" domainClass="spec::Variable" semanticCandidateExpression="var:self">
         <controls xsi:type="properties:TextDescription" name="Variable Name" label="Name" labelExpression="Name" helpExpression="A human-readable name of the name" valueExpression="feature:name">
           <initialOperation>
-            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self"/>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:newValue"/>
+            </firstModelOperations>
           </initialOperation>
         </controls>
         <controls xsi:type="properties:SelectDescription" name="Datatype" labelExpression="Type" helpExpression="The type of the variable" valueExpression="service:getDatatype" candidatesExpression="service:availableDatatypes" candidateDisplayExpression="aql: candidate.name()">

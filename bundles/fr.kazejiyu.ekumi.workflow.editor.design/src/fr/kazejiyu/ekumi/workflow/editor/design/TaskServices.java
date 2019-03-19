@@ -19,8 +19,10 @@ import fr.kazejiyu.ekumi.model.spec.MultiChoice;
 import fr.kazejiyu.ekumi.model.spec.Node;
 import fr.kazejiyu.ekumi.model.spec.ParallelSplit;
 import fr.kazejiyu.ekumi.model.spec.SimpleMerge;
+import fr.kazejiyu.ekumi.model.spec.SpecFactory;
 import fr.kazejiyu.ekumi.model.spec.Synchronization;
 import fr.kazejiyu.ekumi.model.spec.Task;
+import fr.kazejiyu.ekumi.model.spec.Variable;
 
 /**
  * Provides services related to {@link Task} for EKumi's workflow editor viewpoint.
@@ -65,6 +67,32 @@ public class TaskServices {
 		DSemanticDecorator source = ((DSemanticDecorator) edge.getSourceNode());
 		DSemanticDecorator target = ((DSemanticDecorator) edge.getTargetNode());
 		((Node) source.getTarget()).getSuccessors().remove((Node) target.getTarget());
+	}
+	
+	/**
+	 * Creates a new input in the given task.
+	 * 
+	 * @param task
+	 * 			The task to which an input is added.
+	 */
+	public void createInput(Task task) {
+		Variable newInput = SpecFactory.eINSTANCE.createVariable();
+		newInput.setName("in " + task.getInputs().size());
+		
+		task.getInputs().add(newInput);
+	}
+	
+	/**
+	 * Creates a new output in the given task.
+	 * 
+	 * @param task
+	 * 			The task to which an input is added.
+	 */
+	public void createOutput(Task task) {
+		Variable newOutput = SpecFactory.eINSTANCE.createVariable();
+		newOutput.setName("out " + task.getInputs().size());
+		
+		task.getOutputs().add(newOutput);
 	}
 	
 }

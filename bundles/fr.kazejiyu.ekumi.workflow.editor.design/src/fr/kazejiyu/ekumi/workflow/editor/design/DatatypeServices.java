@@ -88,8 +88,9 @@ public class DatatypeServices {
 	 * @param type
 	 * 			The new type of the variable.
 	 */
-	public void setDatatype(Variable variable, DataType<?> type) {
+	public <T> void setDatatype(Variable variable, DataType<T> type) {
 		variable.setTypeId(type.getId());
+		variable.setValue(type.serialize(type.getDefaultValue()));
 	}
 	
 	/**
