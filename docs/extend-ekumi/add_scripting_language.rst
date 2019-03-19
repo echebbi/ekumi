@@ -16,7 +16,7 @@ It is hence responsible of serializing and deserializing Activities so that they
 How to add a new scripting language?
 -------------------------------------
 
-A new one can be defined by contributing to the ``fr.kazejiyu.ekumi.model.languages`` extension point.
+A new one can be defined by contributing to the ``fr.kazejiyu.ekumi.core.languages`` extension point.
 
 It requires one class that implements the ``ScriptingLanguage`` interface.
 
