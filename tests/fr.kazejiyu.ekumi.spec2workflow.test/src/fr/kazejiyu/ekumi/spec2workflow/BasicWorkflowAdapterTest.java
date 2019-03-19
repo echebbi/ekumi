@@ -21,8 +21,11 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 
+import fr.kazejiyu.ekumi.model.datatypes.DataType;
 import fr.kazejiyu.ekumi.model.datatypes.DataTypeFactory;
+import fr.kazejiyu.ekumi.model.datatypes.exceptions.DataTypeUnserializationException;
 import fr.kazejiyu.ekumi.model.scripting.ScriptingLanguage;
 import fr.kazejiyu.ekumi.model.scripting.ScriptingLanguageFactory;
 import fr.kazejiyu.ekumi.model.spec.Divergence;
@@ -33,6 +36,7 @@ import fr.kazejiyu.ekumi.model.workflow.Activity;
 import fr.kazejiyu.ekumi.model.workflow.ParallelSplit;
 import fr.kazejiyu.ekumi.model.workflow.ScriptedTask;
 import fr.kazejiyu.ekumi.model.workflow.Sequence;
+import fr.kazejiyu.ekumi.model.workflow.Variable;
 import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
@@ -284,6 +288,162 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 				
 				assertThat(script.getLanguage()).isNull();
 			}
+		}
+		
+		@Nested @DisplayName("that has inputs")
+		class ThatHasInputs {
+			
+			private fr.kazejiyu.ekumi.model.spec.Variable input;
+			private DataType<Double> datatype;
+
+			@SuppressWarnings("unchecked")
+			@BeforeEach
+			void createInputs() {
+				input = SpecFactory.eINSTANCE.createVariable();
+				input.setName("Input 1");
+				input.setTypeId("mocked-datatype");
+				input.setValue("mocked-value");
+				task.getInputs().add(input); 
+				
+				datatype = Mockito.mock(DataType.class);
+				when (datatypes.find("mocked-datatype")) .thenReturn(Optional.of(datatype));
+				when (datatype.unserialize("mocked-value")) .thenReturn(5.0);
+			}
+			
+			@Test @DisplayName("adapts the inputs")
+			void adapts_the_inputs() {
+				Activity adapted = adapter.caseExternalTask(task);
+				
+				assertThat(adapted.getInputs()).size().isEqualTo(1);
+				
+				Variable variable = adapted.getInputs().get(0);
+				
+				SoftAssertions softly = new SoftAssertions();
+				softly.assertThat(variable.getName()).isEqualTo(input.getName());
+				softly.assertThat(variable.getOwner()).isEqualTo(adapted);
+				softly.assertThat(variable.getType()).isEqualTo(datatype);
+				softly.assertThat(variable.getValue()).isEqualTo(5.0);
+				softly.assertAll();
+			}
+			
+			@Nested @DisplayName("which datatype is unknown")
+			class WhichDatatypeIsUnknown {
+				
+				@BeforeEach
+				void setInputDatatype() {
+					input.setTypeId("idonotexist");
+				}
+				
+				@Test @DisplayName("adapt the input with a null value")
+				void adapt_the_input_with_a_null_value() {
+					Activity adapted = adapter.caseExternalTask(task);
+					Variable adaptedInput = adapted.getInputs().get(0);
+					
+					assertThat(adaptedInput.getValue()).isNull();
+				}
+				
+			}
+			
+			@Nested @DisplayName("which value cannot be unserialize")
+			class WhichValueCannotBeUnserialize {
+				
+				private final static double DEFAULT_VAL = 0d;
+				
+				@BeforeEach
+				void makeValueUnserializable() {
+					input.setValue("unserializable");
+					when (datatype.unserialize("unserializable")) .thenThrow(DataTypeUnserializationException.class);
+					when (datatype.getDefaultValue()) .thenReturn(DEFAULT_VAL);
+				}
+				
+				@Test @DisplayName("adapt the input with datatype's default value")
+				void adapt_the_input_with_datatype_default_value() {
+					Activity adapted = adapter.caseExternalTask(task);
+					Variable adaptedInput = adapted.getInputs().get(0);
+					
+					assertThat(adaptedInput.getValue()).isEqualTo(DEFAULT_VAL);
+				}
+				
+			}
+			
+		}
+		
+		@Nested @DisplayName("that has outputs")
+		class ThatHasOutputs {
+			
+			private fr.kazejiyu.ekumi.model.spec.Variable output;
+			
+			@Mock 
+			private DataType<Double> datatype;
+
+			@BeforeEach
+			void createOutputs() {
+				output = SpecFactory.eINSTANCE.createVariable();
+				output.setName("Output 1");
+				output.setTypeId("mocked-datatype");
+				output.setValue("mocked-value");
+				task.getOutputs().add(output);
+				
+				when (datatypes.find("mocked-datatype")) .thenReturn(Optional.of(datatype));
+				when (datatype.unserialize("mocked-value")) .thenReturn(5.0);
+			}
+			
+			@Test @DisplayName("adapts the outputs")
+			void adapts_the_outputs() {
+				Activity adapted = adapter.caseExternalTask(task);
+				
+				assertThat(adapted.getOutputs()).size().isEqualTo(1);
+				
+				Variable variable = adapted.getOutputs().get(0);
+				
+				SoftAssertions softly = new SoftAssertions();
+				softly.assertThat(variable.getName()).isEqualTo(output.getName());
+				softly.assertThat(variable.getOwner()).isEqualTo(adapted);
+				softly.assertThat(variable.getType()).isEqualTo(datatype);
+				softly.assertThat(variable.getValue()).isEqualTo(5.0);
+				softly.assertAll();
+			}
+			
+			@Nested @DisplayName("which datatype is unknown")
+			class WhichDatatypeIsUnknown {
+				
+				@BeforeEach
+				void setOutputDatatype() {
+					output.setTypeId("idonotexist");
+				}
+				
+				@Test @DisplayName("adapt the output with a null value")
+				void adapt_the_output_with_a_null_value() {
+					Activity adapted = adapter.caseExternalTask(task);
+					Variable adaptedOutput = adapted.getOutputs().get(0);
+					
+					assertThat(adaptedOutput.getValue()).isNull();
+				}
+				
+			}
+			
+			@Nested @DisplayName("which value cannot be unserialize")
+			class WhichValueCannotBeUnserialize {
+				
+				private final static double DEFAULT_VAL = 0d;
+				
+				@BeforeEach
+				void makeValueUnserializable() {
+					output.setValue("unserializable");
+					when (datatype.unserialize("unserializable")) .thenThrow(DataTypeUnserializationException.class);
+					when (datatype.getDefaultValue()) .thenReturn(DEFAULT_VAL);
+				}
+				
+				@Test @DisplayName("adapt the outputs with datatype's default value")
+				void adapt_the_outputs_with_datatype_default_value() {
+					Activity adapted = adapter.caseExternalTask(task);
+					Variable adaptedOutput = adapted.getOutputs().get(0);
+					
+					assertThat(adaptedOutput.getValue()).isEqualTo(DEFAULT_VAL);
+				}
+				
+			}
+			
 		}
 		
 	}
