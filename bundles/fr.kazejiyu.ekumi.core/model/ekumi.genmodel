@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    copyrightText="" modelDirectory="/fr.kazejiyu.ekumi.core/src-gen"
+    creationIcons="false" editDirectory="/fr.kazejiyu.ekumi.core.edit/src-gen" editorDirectory="/fr.kazejiyu.ekumi.core.editor/src-gen"
+    modelPluginID="fr.kazejiyu.ekumi.core" templateDirectory="/fr.kazejiyu.ekumi.core/templates"
+    dynamicTemplates="true" redirection="" modelName="EKumi" editPluginClass="fr.kazejiyu.ekumi.core.provider.EKumiEditPlugin"
+    editorPluginClass="fr.kazejiyu.ekumi.core.presentation.EKumiEditorPlugin" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" testSuiteClass="fr.kazejiyu.ekumi.core.tests.EKumiAllTests"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" suppressGenModelAnnotations="false"
+    copyrightFields="false" editPluginID="fr.kazejiyu.ekumi.core.edit" editorPluginID="fr.kazejiyu.ekumi.core.editor"
+    testsPluginID="fr.kazejiyu.ekumi.core.tests" operationReflection="true" importOrganizing="true">
+  <genAnnotations source="http://www.eclipse.org/OCL/GenModel">
+    <details key="Use Delegates" value="false"/>
+  </genAnnotations>
+  <foreignModel>catalog.ecore</foreignModel>
+  <foreignModel>workflow.ecore</foreignModel>
+  <foreignModel>spec.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Catalog" basePackage="fr.kazejiyu.ekumi.core" disposableProviderFactory="true"
+      classPackageSuffix="gen.impl" utilityPackageSuffix="gen.util" providerPackageSuffix="gen.provider"
+      presentationPackageSuffix="gen.presentation" testsPackageSuffix="gen.tests"
+      ecorePackage="catalog.ecore#/">
+    <genClasses ecoreClass="catalog.ecore#//Catalog"/>
+    <genClasses ecoreClass="catalog.ecore#//Category">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//Category/activityTemplates"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="catalog.ecore#//Group">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference catalog.ecore#//Group/categories"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference catalog.ecore#//Group/parent"/>
+    </genClasses>
+    <genClasses ecoreClass="catalog.ecore#//Catalogs">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//Catalogs/content"/>
+    </genClasses>
+    <genClasses ecoreClass="catalog.ecore#//ActivityTemplate">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//ActivityTemplate/modelPath"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference catalog.ecore#//ActivityTemplate/category"/>
+      <genOperations ecoreOperation="catalog.ecore#//ActivityTemplate/toActivity"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="catalog.ecore#//Identifiable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//Identifiable/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//Identifiable/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//Identifiable/description"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Workflow" basePackage="fr.kazejiyu.ekumi.core" disposableProviderFactory="true"
+      classPackageSuffix="gen.impl" utilityPackageSuffix="gen.util" providerPackageSuffix="gen.provider"
+      presentationPackageSuffix="gen.presentation" testsPackageSuffix="gen.tests"
+      ecorePackage="workflow.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="workflow.ecore#//Status">
+      <genEnumLiterals ecoreEnumLiteral="workflow.ecore#//Status/IDLE"/>
+      <genEnumLiterals ecoreEnumLiteral="workflow.ecore#//Status/RUNNING"/>
+      <genEnumLiterals ecoreEnumLiteral="workflow.ecore#//Status/SUCCEEDED"/>
+      <genEnumLiterals ecoreEnumLiteral="workflow.ecore#//Status/FAILED"/>
+      <genEnumLiterals ecoreEnumLiteral="workflow.ecore#//Status/CANCELLED"/>
+      <genEnumLiterals ecoreEnumLiteral="workflow.ecore#//Status/PAUSED"/>
+      <genEnumLiterals ecoreEnumLiteral="workflow.ecore#//Status/SKIPPED"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="workflow.ecore#//TestResult">
+      <genEnumLiterals ecoreEnumLiteral="workflow.ecore#//TestResult/FULFILLED"/>
+      <genEnumLiterals ecoreEnumLiteral="workflow.ecore#//TestResult/UNSATISFIED"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="workflow.ecore#//ScriptingLanguage"/>
+    <genDataTypes ecoreDataType="workflow.ecore#//DataType"/>
+    <genDataTypes ecoreDataType="workflow.ecore#//Events"/>
+    <genDataTypes ecoreDataType="workflow.ecore#//InterruptedExecutionException"/>
+    <genDataTypes ecoreDataType="workflow.ecore#//ExecutionStatus"/>
+    <genDataTypes ecoreDataType="workflow.ecore#//VariableNotFoundException"/>
+    <genClasses ecoreClass="workflow.ecore#//Activity">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Activity/outputs"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//Activity/successor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//Activity/predecessor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Activity/flows"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Activity/inputs"/>
+    </genClasses>
+    <genClasses ecoreClass="workflow.ecore#//Sequence">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Sequence/root"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//Sequence/activities"/>
+    </genClasses>
+    <genClasses ecoreClass="workflow.ecore#//MultipleInstances"/>
+    <genClasses ecoreClass="workflow.ecore#//DataFlow">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//DataFlow/input"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//DataFlow/output"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//DataFlow/destination"
+          get="return output.getOwner();"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//DataFlow/source"
+          get="return input.getOwner();"/>
+    </genClasses>
+    <genClasses ecoreClass="workflow.ecore#//Variable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Variable/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Variable/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Variable/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//Variable/owner"/>
+    </genClasses>
+    <genClasses ecoreClass="workflow.ecore#//StructuredLoop">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//StructuredLoop/preCondition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//StructuredLoop/postCondition"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//StructuredLoop/activity"/>
+    </genClasses>
+    <genClasses ecoreClass="workflow.ecore#//Condition">
+      <genOperations ecoreOperation="workflow.ecore#//Condition/isVerified">
+        <genParameters ecoreParameter="workflow.ecore#//Condition/isVerified/loop"/>
+        <genParameters ecoreParameter="workflow.ecore#//Condition/isVerified/context"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="workflow.ecore#//Task"/>
+    <genClasses ecoreClass="workflow.ecore#//Runner">
+      <genOperations ecoreOperation="workflow.ecore#//Runner/run">
+        <genParameters ecoreParameter="workflow.ecore#//Runner/run/context"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="workflow.ecore#//ScriptedTask">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//ScriptedTask/scriptPath"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference workflow.ecore#//ScriptedTask/script"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//ScriptedTask/language"/>
+    </genClasses>
+    <genClasses ecoreClass="workflow.ecore#//Script">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Script/path"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//Script/inputs"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//Script/outputs"/>
+    </genClasses>
+    <genClasses ecoreClass="workflow.ecore#//MultiChoice">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//MultiChoice/branches"/>
+    </genClasses>
+    <genClasses ecoreClass="workflow.ecore#//Branch">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Branch/availability"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//Branch/activity"/>
+    </genClasses>
+    <genClasses ecoreClass="workflow.ecore#//UnsafeContext">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//UnsafeContext/variables"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//UnsafeContext/execution"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//UnsafeContext/events"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//UnsafeContext/executionStatus"/>
+      <genOperations ecoreOperation="workflow.ecore#//UnsafeContext/safe"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="workflow.ecore#//Serializable"/>
+    <genClasses ecoreClass="workflow.ecore#//DataFlows">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//DataFlows/incomings"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//DataFlows/outgoings"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//DataFlows/owner"/>
+      <genOperations ecoreOperation="workflow.ecore#//DataFlows/resolveInputs"/>
+    </genClasses>
+    <genClasses ecoreClass="workflow.ecore#//Execution">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//Execution/activity"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//Execution/context"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Execution/startDate"/>
+      <genOperations ecoreOperation="workflow.ecore#//Execution/start"/>
+      <genOperations ecoreOperation="workflow.ecore#//Execution/join"/>
+      <genOperations ecoreOperation="workflow.ecore#//Execution/cancel"/>
+      <genOperations ecoreOperation="workflow.ecore#//Execution/isRunning"/>
+      <genOperations ecoreOperation="workflow.ecore#//Execution/isCancelled"/>
+    </genClasses>
+    <genClasses ecoreClass="workflow.ecore#//ListOfVariables">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//ListOfVariables/size"/>
+    </genClasses>
+    <genClasses ecoreClass="workflow.ecore#//MapOfVariables"/>
+    <genClasses ecoreClass="workflow.ecore#//Driver">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Driver/driven"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Driver/script"/>
+    </genClasses>
+    <genClasses ecoreClass="workflow.ecore#//DriverRunner">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//DriverRunner/driven"/>
+    </genClasses>
+    <genClasses ecoreClass="workflow.ecore#//ParallelSplit">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//ParallelSplit/branches"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="workflow.ecore#//Context">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//Context/variables"/>
+      <genOperations ecoreOperation="workflow.ecore#//Context/events"/>
+      <genOperations ecoreOperation="workflow.ecore#//Context/execution"/>
+      <genOperations ecoreOperation="workflow.ecore#//Context/contains">
+        <genParameters ecoreParameter="workflow.ecore#//Context/contains/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="workflow.ecore#//Context/get">
+        <genParameters ecoreParameter="workflow.ecore#//Context/get/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="workflow.ecore#//Context/set">
+        <genParameters ecoreParameter="workflow.ecore#//Context/set/name"/>
+        <genParameters ecoreParameter="workflow.ecore#//Context/set/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="workflow.ecore#//Context/unset">
+        <genParameters ecoreParameter="workflow.ecore#//Context/unset/name"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="workflow.ecore#//History">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//History/executions"/>
+    </genClasses>
+    <genClasses ecoreClass="workflow.ecore#//Identifiable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Identifiable/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Identifiable/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="workflow.ecore#//Executable">
+      <genOperations ecoreOperation="workflow.ecore#//Executable/run">
+        <genParameters ecoreParameter="workflow.ecore#//Executable/run/context"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="workflow.ecore#//HasStatus">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//HasStatus/status"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

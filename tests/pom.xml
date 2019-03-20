@@ -10,7 +10,7 @@
 
 	<artifactId>fr.kazejiyu.ekumi.tests</artifactId>
 	<packaging>pom</packaging>
-	
+
 	<description>EKumi's tests.</description>
 
     <properties>
@@ -25,14 +25,15 @@
         <module>fr.kazejiyu.ekumi.tests.coverage.report</module>
 
         <!-- Test fragments -->
-        <module>fr.kazejiyu.ekumi.core.test</module>
-        <module>fr.kazejiyu.ekumi.ide.test</module>
+        <module>fr.kazejiyu.ekumi.core.impl.test</module>
         <module>fr.kazejiyu.ekumi.ide.common.test</module>
+        <module>fr.kazejiyu.ekumi.ide.test</module>
         <module>fr.kazejiyu.ekumi.languages.java.test</module>
-        <module>fr.kazejiyu.ekumi.spec2workflow.test</module>
-        <module>fr.kazejiyu.ekumi.workflow.editor.design.test</module>
+        <module>fr.kazejiyu.ekumi.specs.eds.test</module>
+        <module>fr.kazejiyu.ekumi.specs.eds.adapter.test</module>
+        <module>fr.kazejiyu.ekumi.specs.eds.design.test</module>
 	</modules>
-    
+
     <build>
         <plugins>
             <!-- Executes JUnit tests -->
@@ -63,9 +64,7 @@
                         <configuration>
                             <excludes>
                                 <!-- Ignore generated classes -->
-                                <exclude>fr/kazejiyu/ekumi/model/catalog/**/*</exclude>
-                                <exclude>fr/kazejiyu/ekumi/model/spec/**/*</exclude>
-                                <exclude>fr/kazejiyu/ekumi/model/workflow/**/*</exclude>
+                                <exclude>/**/gen/**</exclude>
 
                                 <!-- Ignore Exceptions -->
                                 <exclude>**/*Exception.class</exclude>

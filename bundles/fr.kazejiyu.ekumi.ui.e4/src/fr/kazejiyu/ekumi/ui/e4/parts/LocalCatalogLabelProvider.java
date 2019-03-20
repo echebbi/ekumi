@@ -14,7 +14,7 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.navigator.IDescriptionProvider;
 
-import fr.kazejiyu.ekumi.model.catalog.provider.CatalogDecoratorAdapterFactory;
+import fr.kazejiyu.ekumi.core.catalog.provider.CatalogDecoratorAdapterFactory;
 
 public class LocalCatalogLabelProvider extends LabelProvider implements IDescriptionProvider {
 

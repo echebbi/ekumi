@@ -15,8 +15,8 @@ import java.util.function.Supplier;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 
-import fr.kazejiyu.ekumi.model.spec.ActivityAdapter;
-import fr.kazejiyu.ekumi.model.spec.ActivityAdapterFactory;
+import fr.kazejiyu.ekumi.core.specs.ActivityAdapter;
+import fr.kazejiyu.ekumi.core.specs.ActivityAdapterFactory;
 
 /**
  * <p>Creates new datatypes from given configuration elements</p>

@@ -36,13 +36,13 @@ import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 
+import fr.kazejiyu.ekumi.core.EKumiExtensions;
+import fr.kazejiyu.ekumi.core.scripting.ScriptingLanguage;
 import fr.kazejiyu.ekumi.ide.EKumiIdePlugin;
 import fr.kazejiyu.ekumi.ide.nature.WorkflowProject;
 import fr.kazejiyu.ekumi.ide.project.customization.Customization;
 import fr.kazejiyu.ekumi.ide.ui.Activator;
 import fr.kazejiyu.ekumi.ide.ui.nature.impl.WorkspaceWorkflowProject;
-import fr.kazejiyu.ekumi.model.EKumiExtensions;
-import fr.kazejiyu.ekumi.model.scripting.ScriptingLanguage;
 
 /**
  * A wizard used to create new workflow projects. 

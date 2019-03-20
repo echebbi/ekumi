@@ -13,7 +13,7 @@ import javax.inject.Inject;
 
 import org.eclipse.ui.navigator.CommonNavigator;
 
-import fr.kazejiyu.ekumi.model.catalog.Catalogs;
+import fr.kazejiyu.ekumi.core.catalog.Catalogs;
 
 public class CatalogsNavigator extends CommonNavigator {
 	

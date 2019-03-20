@@ -15,8 +15,8 @@ import java.util.function.Supplier;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 
-import fr.kazejiyu.ekumi.model.datatypes.DataType;
-import fr.kazejiyu.ekumi.model.datatypes.DataTypeFactory;
+import fr.kazejiyu.ekumi.core.datatypes.DataType;
+import fr.kazejiyu.ekumi.core.datatypes.DataTypeFactory;
 
 /**
  * <p>Creates new datatypes from given configuration elements</p>

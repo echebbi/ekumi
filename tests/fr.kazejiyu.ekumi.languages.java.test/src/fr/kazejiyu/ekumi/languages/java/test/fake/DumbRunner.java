@@ -1,8 +1,8 @@
 package fr.kazejiyu.ekumi.languages.java.test.fake;
 
-import fr.kazejiyu.ekumi.model.workflow.Context;
-import fr.kazejiyu.ekumi.model.workflow.Runner;
-import fr.kazejiyu.ekumi.model.workflow.impl.RunnerImpl;
+import fr.kazejiyu.ekumi.core.workflow.Context;
+import fr.kazejiyu.ekumi.core.workflow.Runner;
+import fr.kazejiyu.ekumi.core.workflow.gen.impl.RunnerImpl;
 
 /**
  * A simple {@link Runner} that does nothing.

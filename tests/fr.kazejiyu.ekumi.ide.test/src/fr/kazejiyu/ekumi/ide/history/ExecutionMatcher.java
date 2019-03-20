@@ -3,7 +3,7 @@ package fr.kazejiyu.ekumi.ide.history;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.mockito.ArgumentMatcher;
 
-import fr.kazejiyu.ekumi.model.workflow.Execution;
+import fr.kazejiyu.ekumi.core.workflow.Execution;
 
 /**
  * Helps to match a given Execution instance.

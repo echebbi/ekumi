@@ -27,8 +27,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import fr.kazejiyu.ekumi.model.scripting.ScriptingLanguage;
-import fr.kazejiyu.ekumi.model.spec.Activity;
+import fr.kazejiyu.ekumi.core.scripting.ScriptingLanguage;
+import fr.kazejiyu.ekumi.core.workflow.Activity;
 
 /**
  * Wizard page used to enter the information required for the creation of a new {@link Activity}.

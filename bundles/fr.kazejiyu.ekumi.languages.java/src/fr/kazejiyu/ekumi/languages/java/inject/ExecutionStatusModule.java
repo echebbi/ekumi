@@ -13,7 +13,7 @@ import static java.util.Objects.requireNonNull;
 
 import com.google.inject.AbstractModule;
 
-import fr.kazejiyu.ekumi.model.execution.ExecutionStatus;
+import fr.kazejiyu.ekumi.core.execution.ExecutionStatus;
 
 /**
  * Allows injection of a specific {@link ExecutionStatus} instance.

@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.0"?>
+<?eclipse version="3.5"?>
 
 <!--
 -->
 
 <plugin>
-   <extension
-         point="org.eclipse.emf.ecore.factory_override">
-      <factory
-            class="fr.kazejiyu.ekumi.core.workflow.impl.BasicWorkflowFactory"
-            uri="http://fr.kazejiyu.io/ekumi/workflow">
-      </factory>
-      <factory
-            class="fr.kazejiyu.ekumi.core.spec.impl.BasicSpecFactory"
-            uri="http://fr.kazejiyu.io/ekumi/spec">
-      </factory>
+   <extension-point id="languages" name="Languages" schema="schema/languages.exsd"/>
+   <extension-point id="datatypes" name="DataTypes" schema="schema/datatypes.exsd"/>
+   <extension-point id="catalogs" name="Catalogs" schema="schema/catalogs.exsd"/>
+   <extension-point id="specs" name="Specifications" schema="schema/specs.exsd"/>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated ekumi -->
+      <package
+            uri="http://ekumi.kazejiyu.fr/catalog"
+            class="fr.kazejiyu.ekumi.core.catalog.CatalogPackage"
+            genModel="model/ekumi.genmodel"/>
    </extension>
 
-
-
-
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated ekumi -->
+      <package
+            uri="http://ekumi.kazejiyu.fr/workflow"
+            class="fr.kazejiyu.ekumi.core.workflow.WorkflowPackage"
+            genModel="model/ekumi.genmodel"/>
+   </extension>
 </plugin>

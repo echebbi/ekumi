@@ -19,9 +19,9 @@ import java.util.function.Function;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 
+import fr.kazejiyu.ekumi.core.catalog.Catalogs;
+import fr.kazejiyu.ekumi.core.datatypes.DataType;
 import fr.kazejiyu.ekumi.ide.common.Activator;
-import fr.kazejiyu.ekumi.model.catalog.Catalogs;
-import fr.kazejiyu.ekumi.model.datatypes.DataType;
 
 /**
  * <p>An adapter creating {@link DataType} instances from {@link IConfigurationElement}s.</p>

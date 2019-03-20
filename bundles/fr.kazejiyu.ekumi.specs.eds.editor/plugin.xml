@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated ekumi -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="fr.kazejiyu.ekumi.specs.eds.presentation.EdsModelWizardID"
+            name="%_UI_EdsModelWizard_label"
+            class="fr.kazejiyu.ekumi.specs.eds.gen.presentation.EdsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/EdsModelFile.gif">
+         <description>%_UI_EdsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated ekumi -->
+      <editor
+            id="fr.kazejiyu.ekumi.specs.eds.presentation.EdsEditorID"
+            name="%_UI_EdsEditor_label"
+            icon="icons/full/obj16/EdsModelFile.gif"
+            extensions="eds"
+            class="fr.kazejiyu.ekumi.specs.eds.gen.presentation.EdsEditor"
+            contributorClass="fr.kazejiyu.ekumi.specs.eds.gen.presentation.EdsActionBarContributor">
+      </editor>
+   </extension>
+</plugin>

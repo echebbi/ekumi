@@ -9,7 +9,7 @@
  ******************************************************************************/
 package fr.kazejiyu.ekumi.datatypes;
 
-import fr.kazejiyu.ekumi.model.datatypes.DataType;
+import fr.kazejiyu.ekumi.core.datatypes.DataType;
 
 /**
  * An EKumi {@link DataType datatype} corresponding to the Java {@link String} class. 

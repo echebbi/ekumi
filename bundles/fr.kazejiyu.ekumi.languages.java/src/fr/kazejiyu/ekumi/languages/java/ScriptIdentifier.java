@@ -18,8 +18,8 @@ import java.util.Set;
 import org.eclipse.core.resources.IProject;
 import org.osgi.framework.Bundle;
 
-import fr.kazejiyu.ekumi.model.scripting.exceptions.IllegalScriptIdentifierException;
-import fr.kazejiyu.ekumi.model.workflow.Script;
+import fr.kazejiyu.ekumi.core.scripting.exceptions.IllegalScriptIdentifierException;
+import fr.kazejiyu.ekumi.core.workflow.Script;
 
 /**
  * Uniquely identifies a Java {@link Script}.<br>

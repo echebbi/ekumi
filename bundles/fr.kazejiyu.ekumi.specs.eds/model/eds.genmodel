@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    copyrightText="" modelDirectory="/fr.kazejiyu.ekumi.specs.eds/src-gen"
+    creationIcons="false" editDirectory="/fr.kazejiyu.ekumi.specs.eds.edit/src-gen"
+    editorDirectory="/fr.kazejiyu.ekumi.specs.eds.editor/src-gen" modelPluginID="fr.kazejiyu.ekumi.specs.eds"
+    templateDirectory="/fr.kazejiyu.ekumi.specs.eds/templates" dynamicTemplates="true"
+    redirection="" modelName="EKumi Default Specification" editPluginClass="fr.kazejiyu.ekumi.specs.eds.provider.EdsEditPlugin"
+    editorPluginClass="fr.kazejiyu.ekumi.specs.eds.presentation.EdsEditorPlugin" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" testSuiteClass="fr.kazejiyu.ekumi.specs.eds.tests.EdsAllTests"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" suppressGenModelAnnotations="false"
+    copyrightFields="false" editPluginID="fr.kazejiyu.ekumi.specs.eds.edit" editorPluginID="fr.kazejiyu.ekumi.specs.eds.editor"
+    testsPluginID="fr.kazejiyu.ekumi.specs.eds/.tests" optimizedHasChildren="true"
+    operationReflection="true" importOrganizing="true">
+  <genAnnotations source="http://www.eclipse.org/OCL/GenModel">
+    <details key="Use Delegates" value="false"/>
+  </genAnnotations>
+  <foreignModel>catalog.ecore</foreignModel>
+  <foreignModel>workflow.ecore</foreignModel>
+  <foreignModel>eds.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Eds" basePackage="fr.kazejiyu.ekumi.specs" disposableProviderFactory="true"
+      utilityPackageSuffix="gen.util" providerPackageSuffix="gen.provider" presentationPackageSuffix="gen.presentation"
+      testsPackageSuffix="gen.tests" fileExtensions="eds" ecorePackage="eds.ecore#/">
+    <genClasses ecoreClass="eds.ecore#//Task">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eds.ecore#//Task/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eds.ecore#//Task/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eds.ecore#//Task/flows"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eds.ecore#//Task/inputs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eds.ecore#//Task/outputs"/>
+    </genClasses>
+    <genClasses ecoreClass="eds.ecore#//Activity">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eds.ecore#//Activity/start"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eds.ecore#//Activity/nestedActivities"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eds.ecore#//Activity/parentActivity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eds.ecore#//Activity/tasks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eds.ecore#//Activity/divergences"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eds.ecore#//Activity/convergences"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eds.ecore#//Activity/conditionalDivergences"/>
+    </genClasses>
+    <genClasses ecoreClass="eds.ecore#//Start">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference eds.ecore#//Start/node"/>
+    </genClasses>
+    <genClasses ecoreClass="eds.ecore#//ParallelSplit"/>
+    <genClasses ecoreClass="eds.ecore#//ExternalTask">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eds.ecore#//ExternalTask/languageId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eds.ecore#//ExternalTask/scriptId"/>
+    </genClasses>
+    <genClasses ecoreClass="eds.ecore#//LibraryTask"/>
+    <genClasses image="false" ecoreClass="eds.ecore#//Divergence">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eds.ecore#//Divergence/convergence"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eds.ecore#//Divergence/roots"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="eds.ecore#//Convergence"/>
+    <genClasses ecoreClass="eds.ecore#//Synchronization"/>
+    <genClasses ecoreClass="eds.ecore#//MultiChoice"/>
+    <genClasses ecoreClass="eds.ecore#//SimpleMerge"/>
+    <genClasses ecoreClass="eds.ecore#//Variable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eds.ecore#//Variable/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eds.ecore#//Variable/typeId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eds.ecore#//Variable/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eds.ecore#//Variable/isRequired"/>
+    </genClasses>
+    <genClasses ecoreClass="eds.ecore#//DataFlows">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eds.ecore#//DataFlows/incomings"/>
+    </genClasses>
+    <genClasses ecoreClass="eds.ecore#//DataFlow">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eds.ecore#//DataFlow/input"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eds.ecore#//DataFlow/output"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="eds.ecore#//Node">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eds.ecore#//Node/successors"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eds.ecore#//Node/predecessors"/>
+      <genOperations ecoreOperation="eds.ecore#//Node/canPrecede">
+        <genParameters ecoreParameter="eds.ecore#//Node/canPrecede/node"/>
+      </genOperations>
+      <genOperations ecoreOperation="eds.ecore#//Node/canSucceed">
+        <genParameters ecoreParameter="eds.ecore#//Node/canSucceed/node"/>
+      </genOperations>
+      <genOperations ecoreOperation="eds.ecore#//Node/precedes">
+        <genParameters ecoreParameter="eds.ecore#//Node/precedes/successor"/>
+      </genOperations>
+      <genOperations ecoreOperation="eds.ecore#//Node/succeeds">
+        <genParameters ecoreParameter="eds.ecore#//Node/succeeds/predecessor"/>
+      </genOperations>
+      <genOperations ecoreOperation="eds.ecore#//Node/canPrecede.1"/>
+      <genOperations ecoreOperation="eds.ecore#//Node/canSucceed.1"/>
+      <genOperations ecoreOperation="eds.ecore#//Node/hasSuccessors"/>
+      <genOperations ecoreOperation="eds.ecore#//Node/hasPredecessors"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="eds.ecore#//ConditionalDivergence"/>
+    <genClasses ecoreClass="eds.ecore#//ConditionalRoot">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eds.ecore#//ConditionalRoot/task"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eds.ecore#//ConditionalRoot/condition"/>
+    </genClasses>
+    <genClasses ecoreClass="eds.ecore#//Condition"/>
+    <genClasses image="false" ecoreClass="eds.ecore#//StartingNode"/>
+  </genPackages>
+</genmodel:GenModel>

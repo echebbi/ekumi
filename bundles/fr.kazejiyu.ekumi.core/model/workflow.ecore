@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="workflow" nsURI="http://ekumi.kazejiyu.fr/workflow" nsPrefix="workflow">
+  <eClassifiers xsi:type="ecore:EClass" name="Activity" abstract="true" eSuperTypes="#//Identifiable #//Executable #//HasStatus">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
+        eType="#//Variable" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="successor" eType="#//Activity"
+        containment="true" eOpposite="#//Activity/predecessor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predecessor" eType="#//Activity"
+        eOpposite="#//Activity/successor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="flows" lowerBound="1" eType="#//DataFlows"
+        containment="true" eOpposite="#//DataFlows/owner"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
+        eType="#//Variable" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Sequence" eSuperTypes="#//Activity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="root" eType="#//Activity"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activities" upperBound="-1"
+        eType="#//Activity" changeable="false" volatile="true" transient="true" derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultipleInstances" eSuperTypes="#//Activity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataFlow">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" lowerBound="1" eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" lowerBound="1"
+        eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="destination" eType="#//Activity"
+        changeable="false" volatile="true" unsettable="true" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="get" value="return output.getOwner();"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//Activity"
+        changeable="false" volatile="true" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="get" value="return input.getOwner();"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Variable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//DataType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="#//Activity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StructuredLoop" eSuperTypes="#//Activity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="preCondition" eType="#//Condition"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="postCondition" eType="#//Condition"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Condition" abstract="true" eSuperTypes="#//Script">
+    <eOperations name="isVerified" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="loop" eType="#//StructuredLoop"/>
+      <eParameters name="context" eType="#//Context"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Task" abstract="true" eSuperTypes="#//Activity"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="Status">
+    <eLiterals name="IDLE"/>
+    <eLiterals name="RUNNING" value="1"/>
+    <eLiterals name="SUCCEEDED" value="2"/>
+    <eLiterals name="FAILED" value="3"/>
+    <eLiterals name="CANCELLED" value="4"/>
+    <eLiterals name="PAUSED" value="5"/>
+    <eLiterals name="SKIPPED" value="6"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Runner" abstract="true" eSuperTypes="#//Script">
+    <eOperations name="run">
+      <eParameters name="context" eType="#//Context"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ScriptedTask" eSuperTypes="#//Task">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scriptPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="script" eType="#//Runner"
+        volatile="true" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" eType="#//ScriptingLanguage"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Script" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
+        eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
+        eType="#//Variable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TestResult">
+    <eLiterals name="FULFILLED"/>
+    <eLiterals name="UNSATISFIED" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ScriptingLanguage" instanceClassName="fr.kazejiyu.ekumi.core.scripting.ScriptingLanguage"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="DataType" instanceClassName="fr.kazejiyu.ekumi.core.datatypes.DataType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiChoice" eSuperTypes="#//Activity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Represents a simple If / Else statement.&#xD;&#xA;&#xD;&#xA;@see &lt;a href=&quot;http://www.workflowpatterns.com/patterns/control/basic/wcp4.php&quot;>www.workflowpatterns.com&lt;/a>."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="branches" upperBound="-1"
+        eType="#//Branch" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Branch">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="availability" eType="#//Condition"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnsafeContext">
+    <eOperations name="safe" eType="#//Context"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
+        eType="#//Variable" derived="true" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="execution" eType="#//Execution"
+        eOpposite="#//Execution/context"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="events" eType="#//Events"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="executionStatus" eType="#//ExecutionStatus"
+        transient="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Serializable" abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataFlows">
+    <eOperations name="resolveInputs"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incomings" upperBound="-1"
+        eType="#//DataFlow" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoings" upperBound="-1"
+        eType="#//DataFlow" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="#//Activity"
+        eOpposite="#//Activity/flows"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Execution" eSuperTypes="#//Identifiable #//HasStatus">
+    <eOperations name="start"/>
+    <eOperations name="join" eExceptions="#//InterruptedExecutionException"/>
+    <eOperations name="cancel"/>
+    <eOperations name="isRunning" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="isCancelled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="#//UnsafeContext"
+        containment="true" eOpposite="#//UnsafeContext/execution"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="startDate" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ListOfVariables" eSuperTypes="#//Variable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        changeable="false" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MapOfVariables" eSuperTypes="#//Variable"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Driver" eSuperTypes="#//Activity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="driven" eType="#//Activity"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="script" eType="#//DriverRunner"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DriverRunner" abstract="true" eSuperTypes="#//Runner">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="driven" eType="#//Activity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParallelSplit" eSuperTypes="#//Activity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="branches" upperBound="-1"
+        eType="#//Activity" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Events" instanceClassName="fr.kazejiyu.ekumi.core.execution.events.Events"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="InterruptedExecutionException" instanceClassName="fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="ExecutionStatus" instanceClassName="fr.kazejiyu.ekumi.core.execution.ExecutionStatus"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Context">
+    <eOperations name="events" eType="#//Events"/>
+    <eOperations name="execution" eType="#//ExecutionStatus"/>
+    <eOperations name="contains" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean">
+      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    </eOperations>
+    <eOperations name="get" eType="#//Variable" eExceptions="#//VariableNotFoundException">
+      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    </eOperations>
+    <eOperations name="set">
+      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="unset">
+      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
+        eType="#//Variable" transient="true" derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="History">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executions" upperBound="-1"
+        eType="#//Execution" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Identifiable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Executable" abstract="true" interface="true">
+    <eOperations name="run">
+      <eParameters name="context" eType="#//Context"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HasStatus">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//Status"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="VariableNotFoundException" instanceClassName="fr.kazejiyu.ekumi.core.exceptions.VariableNotFoundException"/>
+</ecore:EPackage>

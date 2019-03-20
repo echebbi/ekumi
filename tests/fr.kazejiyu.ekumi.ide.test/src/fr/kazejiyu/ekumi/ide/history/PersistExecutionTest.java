@@ -19,10 +19,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import fr.kazejiyu.ekumi.model.workflow.Activity;
-import fr.kazejiyu.ekumi.model.workflow.Execution;
-import fr.kazejiyu.ekumi.model.workflow.Status;
-import fr.kazejiyu.ekumi.model.workflow.WorkflowFactory;
+import fr.kazejiyu.ekumi.core.workflow.Activity;
+import fr.kazejiyu.ekumi.core.workflow.Execution;
+import fr.kazejiyu.ekumi.core.workflow.Status;
+import fr.kazejiyu.ekumi.core.workflow.WorkflowFactory;
 
 /**
  * Tests the behavior of a {@link PersistExecution} instance.<br>

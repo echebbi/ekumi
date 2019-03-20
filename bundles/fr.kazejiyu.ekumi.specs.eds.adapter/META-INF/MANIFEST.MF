@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EKumi — Spec to Workflow Transformation
+Bundle-SymbolicName: fr.kazejiyu.ekumi.specs.eds.adapter;singleton:=true
+Bundle-Version: 0.1.0
+Bundle-Vendor: Emmanuel CHEBBI
+Automatic-Module-Name: fr.kazejiyu.ekumi.specs.eds.adapter
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.osgi,
+ org.eclipse.core.runtime,
+ fr.kazejiyu.ekumi.specs.eds;bundle-version="0.1.0",
+ fr.kazejiyu.ekumi.core;bundle-version="0.1.0"
+Bundle-Activator: fr.kazejiyu.ekumi.specs.eds.adapter.Activator
+Export-Package: fr.kazejiyu.ekumi.specs.eds.adapter

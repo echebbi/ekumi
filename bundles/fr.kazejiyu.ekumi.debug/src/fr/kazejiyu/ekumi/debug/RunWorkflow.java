@@ -27,19 +27,19 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
-import fr.kazejiyu.ekumi.EKumiPlugin;
+import fr.kazejiyu.ekumi.core.EKumiExtensions;
+import fr.kazejiyu.ekumi.core.EKumiPlugin;
+import fr.kazejiyu.ekumi.core.datatypes.DataTypeFactory;
+import fr.kazejiyu.ekumi.core.scripting.ScriptingLanguageFactory;
+import fr.kazejiyu.ekumi.core.specs.ActivityAdapter;
+import fr.kazejiyu.ekumi.core.specs.ActivityAdapterFactory;
+import fr.kazejiyu.ekumi.core.workflow.Activity;
+import fr.kazejiyu.ekumi.core.workflow.Execution;
+import fr.kazejiyu.ekumi.core.workflow.WorkflowFactory;
 import fr.kazejiyu.ekumi.ide.common.datatypes.ExtensionToDatatypeFactory;
 import fr.kazejiyu.ekumi.ide.common.languages.ExtensionToLanguageFactory;
 import fr.kazejiyu.ekumi.ide.common.spec.ExtensionToActivityAdapterFactory;
 import fr.kazejiyu.ekumi.ide.history.PersistExecution;
-import fr.kazejiyu.ekumi.model.EKumiExtensions;
-import fr.kazejiyu.ekumi.model.datatypes.DataTypeFactory;
-import fr.kazejiyu.ekumi.model.scripting.ScriptingLanguageFactory;
-import fr.kazejiyu.ekumi.model.spec.ActivityAdapter;
-import fr.kazejiyu.ekumi.model.spec.ActivityAdapterFactory;
-import fr.kazejiyu.ekumi.model.workflow.Activity;
-import fr.kazejiyu.ekumi.model.workflow.Execution;
-import fr.kazejiyu.ekumi.model.workflow.WorkflowFactory;
 
 /**
  * <p>Executes a given {@link Activity}</p>
@@ -55,7 +55,7 @@ public final class RunWorkflow extends LaunchConfigurationDelegate {
 		String uri = configuration.getAttribute(EKumiRunConfiguration.EKUMI_MODEL_URI, "");
 		
 		if (uri.isEmpty()) {
-			EKumiPlugin.error("Unable to launch the workflow: the model URI is empty."); 
+			Activator.error("Unable to launch the workflow: the model URI is empty."); 
 			return;
 		}
 		ResourceSet resourceSet = new ResourceSetImpl();
@@ -68,12 +68,12 @@ public final class RunWorkflow extends LaunchConfigurationDelegate {
 			Optional<ActivityAdapter> adapter = findAdapterFor(specification);
 			
 			if (! adapter.isPresent()) {
-				EKumiPlugin.error("Unable to launch the workflow: no activity adapter found for the specification " + specification); 
+				Activator.error("Unable to launch the workflow: no activity adapter found for the specification " + specification); 
 				return;
 			}
 			Optional<Activity> maybeActivity = adapter.flatMap(adapt(specification));
 			if (! maybeActivity.isPresent()) {
-				EKumiPlugin.error("Unable to launch the workflow: the adapter " + adapter.get() + " is unable to create an activity from " + specification); 
+				Activator.error("Unable to launch the workflow: the adapter " + adapter.get() + " is unable to create an activity from " + specification); 
 				return;
 			}
 			Activity activity = maybeActivity.get();
@@ -88,7 +88,7 @@ public final class RunWorkflow extends LaunchConfigurationDelegate {
 			execution.start();
 			
 		} catch (Exception e) {
-			EKumiPlugin.error(e, "An error occurred while executing " + uri);
+			Activator.error(e, "An error occurred while executing " + uri);
 		}
 	}
 	

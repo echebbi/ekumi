@@ -24,14 +24,14 @@ import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 
-import fr.kazejiyu.ekumi.EKumiPlugin;
-import fr.kazejiyu.ekumi.model.catalog.ActivityTemplate;
-import fr.kazejiyu.ekumi.model.catalog.Catalog;
-import fr.kazejiyu.ekumi.model.catalog.CatalogFactory;
-import fr.kazejiyu.ekumi.model.catalog.Catalogs;
-import fr.kazejiyu.ekumi.model.catalog.Category;
-import fr.kazejiyu.ekumi.model.catalog.Group;
-import fr.kazejiyu.ekumi.model.catalog.Identifiable;
+import fr.kazejiyu.ekumi.core.EKumiPlugin;
+import fr.kazejiyu.ekumi.core.catalog.ActivityTemplate;
+import fr.kazejiyu.ekumi.core.catalog.Catalog;
+import fr.kazejiyu.ekumi.core.catalog.CatalogFactory;
+import fr.kazejiyu.ekumi.core.catalog.Catalogs;
+import fr.kazejiyu.ekumi.core.catalog.Category;
+import fr.kazejiyu.ekumi.core.catalog.Group;
+import fr.kazejiyu.ekumi.core.catalog.Identifiable;
 
 /**
  * An adapter creating {@link Catalogs} instances from {@link IConfigurationElement}s.<br>

@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<groupId>fr.kazejiyu.ekumi</groupId>
 	<artifactId>fr.kazejiyu.ekumi.root</artifactId>
 	<version>0.1.0</version>
 	<packaging>pom</packaging>
-	
+
 	<name>EKumi</name>
 	<description>Workflow management system for Eclipse IDE</description>
 
@@ -37,11 +37,11 @@
 				- generated source code,
 				- Exceptions,
 				- untestable activators -->
-        <sonar.exclusions>**/src-gen/**/*.*,**/*Exception.java,**/Activator.java,**/EKumiPlugin.java</sonar.exclusions>
-        <sonar.jacoco.reportPaths>../../tests/${project.artifactId}.test/target/jacoco.exec</sonar.jacoco.reportPaths>
+		<sonar.exclusions>**/src-gen/**/*.*,**/*Exception.java,**/Activator.java,**/EKumiPlugin.java</sonar.exclusions>
+		<sonar.jacoco.reportPaths>../../tests/${project.artifactId}.test/target/jacoco.exec</sonar.jacoco.reportPaths>
 	</properties>
 
-	<!-- COMMANDS:	
+	<!-- COMMANDS:
 		* Change project's version:
 			mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=major.minor.bug
 	-->
@@ -49,7 +49,7 @@
 	<build>
 		<plugins>
 			<plugin>
-				<!-- Activate Tycho, along as its extension Tycho's pomless extension 
+				<!-- Activate Tycho, along as its extension Tycho's pomless extension
 					is activated in .mvn folder -->
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>

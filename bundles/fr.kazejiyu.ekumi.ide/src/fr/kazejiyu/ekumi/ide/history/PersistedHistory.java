@@ -30,11 +30,11 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import fr.kazejiyu.ekumi.EKumiPlugin;
-import fr.kazejiyu.ekumi.model.workflow.Execution;
-import fr.kazejiyu.ekumi.model.workflow.History;
-import fr.kazejiyu.ekumi.model.workflow.WorkflowPackage;
-import fr.kazejiyu.ekumi.model.workflow.impl.HistoryImpl;
+import fr.kazejiyu.ekumi.core.EKumiPlugin;
+import fr.kazejiyu.ekumi.core.workflow.Execution;
+import fr.kazejiyu.ekumi.core.workflow.History;
+import fr.kazejiyu.ekumi.core.workflow.WorkflowPackage;
+import fr.kazejiyu.ekumi.core.workflow.gen.impl.HistoryImpl;
 
 /**
  * An {@link History} persisted under a given directory.<br>

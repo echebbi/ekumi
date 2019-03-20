@@ -8,6 +8,6 @@
  * SPDX-License-Identifier: EPL-2.0
  ******************************************************************************/
 /**
- * Classes related to the execution of an Activity. 
+ * Interfaces related to the execution of an Activity. 
  */
 package fr.kazejiyu.ekumi.core.execution;

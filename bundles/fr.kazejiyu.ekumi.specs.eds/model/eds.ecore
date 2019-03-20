@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="eds" nsURI="http://ekumi.kazejiyu.fr/specs/eds" nsPrefix="eds">
+  <eClassifiers xsi:type="ecore:EClass" name="Task" abstract="true" eSuperTypes="#//StartingNode">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A node that can be executed."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="flows" eType="#//DataFlows"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
+        eType="#//Variable" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
+        eType="#//Variable" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Activity" eSuperTypes="#//Task">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="start" eType="#//Start"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nestedActivities" upperBound="-1"
+        eType="#//Activity" containment="true" eOpposite="#//Activity/parentActivity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parentActivity" eType="#//Activity"
+        eOpposite="#//Activity/nestedActivities"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
+        eType="#//Task" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="divergences" upperBound="-1"
+        eType="#//Divergence" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="convergences" upperBound="-1"
+        eType="#//Convergence" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalDivergences"
+        upperBound="-1" eType="#//ConditionalDivergence" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Start" eSuperTypes="#//Node">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Represents the beginning of a workflow."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="#//StartingNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParallelSplit" eSuperTypes="#//Divergence"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExternalTask" eSuperTypes="#//Task">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A task which behavior is implemented by the user."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="languageId" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scriptId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LibraryTask" eSuperTypes="#//Task">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A task which behavior is defined in an installed bundle."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Divergence" abstract="true" eSuperTypes="#//StartingNode">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Splits the execution in two or more branches that should be executed concurrently."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="convergence" eType="#//Convergence"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roots" upperBound="-1"
+        eType="#//Task"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Convergence" abstract="true" eSuperTypes="#//Node"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Synchronization" eSuperTypes="#//Convergence"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiChoice" eSuperTypes="#//ConditionalDivergence"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleMerge" eSuperTypes="#//Convergence"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Variable">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Hold a typed value."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="typeId" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRequired" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataFlows">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A collection of dataflow."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incomings" upperBound="-1"
+        eType="#//DataFlow" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataFlow">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A flow of data between two variables."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" eType="#//Variable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Node" abstract="true">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="An element that composes a workflow."/>
+    </eAnnotations>
+    <eOperations name="canPrecede" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean">
+      <eParameters name="node" eType="#//Node"/>
+    </eOperations>
+    <eOperations name="canSucceed" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean">
+      <eParameters name="node" eType="#//Node"/>
+    </eOperations>
+    <eOperations name="precedes" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean">
+      <eParameters name="successor" eType="#//Node"/>
+    </eOperations>
+    <eOperations name="succeeds" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean">
+      <eParameters name="predecessor" eType="#//Node"/>
+    </eOperations>
+    <eOperations name="canPrecede" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    <eOperations name="canSucceed" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    <eOperations name="hasSuccessors" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    <eOperations name="hasPredecessors" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="successors" upperBound="-1"
+        eType="#//Node" eOpposite="#//Node/predecessors"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predecessors" upperBound="-1"
+        eType="#//Node" eOpposite="#//Node/successors"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionalDivergence" abstract="true"
+      eSuperTypes="#//StartingNode">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Splits the workflow in two or more branches that should be executed concurrently, based on a predicate."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionalRoot">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="task" eType="#//Task"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Condition"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Condition" eSuperTypes="#//Task"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StartingNode" abstract="true" eSuperTypes="#//Node"/>
+</ecore:EPackage>

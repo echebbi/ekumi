@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<parent>
 		<groupId>fr.kazejiyu.ekumi</groupId>
 		<artifactId>fr.kazejiyu.ekumi.tests</artifactId>
@@ -42,13 +42,13 @@
 	<dependencies>
 		<dependency>
 			<groupId>fr.kazejiyu.ekumi</groupId>
-			<artifactId>fr.kazejiyu.ekumi.core</artifactId>
+			<artifactId>fr.kazejiyu.ekumi.core.impl</artifactId>
 			<version>0.1.0</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>fr.kazejiyu.ekumi</groupId>
-			<artifactId>fr.kazejiyu.ekumi.core.test</artifactId>
+			<artifactId>fr.kazejiyu.ekumi.core.impl.test</artifactId>
 			<version>0.1.0</version>
 			<scope>test</scope>
 		</dependency>
@@ -78,13 +78,37 @@
 		</dependency>
 		<dependency>
 			<groupId>fr.kazejiyu.ekumi</groupId>
-			<artifactId>fr.kazejiyu.ekumi.spec2workflow</artifactId>
+			<artifactId>fr.kazejiyu.ekumi.specs.eds</artifactId>
 			<version>0.1.0</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>fr.kazejiyu.ekumi</groupId>
-			<artifactId>fr.kazejiyu.ekumi.spec2workflow.test</artifactId>
+			<artifactId>fr.kazejiyu.ekumi.specs.eds.test</artifactId>
+			<version>0.1.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>fr.kazejiyu.ekumi</groupId>
+			<artifactId>fr.kazejiyu.ekumi.specs.eds.adapter</artifactId>
+			<version>0.1.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>fr.kazejiyu.ekumi</groupId>
+			<artifactId>fr.kazejiyu.ekumi.specs.eds.adapter.test</artifactId>
+			<version>0.1.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>fr.kazejiyu.ekumi</groupId>
+			<artifactId>fr.kazejiyu.ekumi.specs.eds.design</artifactId>
+			<version>0.1.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>fr.kazejiyu.ekumi</groupId>
+			<artifactId>fr.kazejiyu.ekumi.specs.eds.design.test</artifactId>
 			<version>0.1.0</version>
 			<scope>test</scope>
 		</dependency>
@@ -97,18 +121,6 @@
 		<dependency>
 			<groupId>fr.kazejiyu.ekumi</groupId>
 			<artifactId>fr.kazejiyu.ekumi.languages.java.test</artifactId>
-			<version>0.1.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>fr.kazejiyu.ekumi</groupId>
-			<artifactId>fr.kazejiyu.ekumi.workflow.editor.design</artifactId>
-			<version>0.1.0</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>fr.kazejiyu.ekumi</groupId>
-			<artifactId>fr.kazejiyu.ekumi.workflow.editor.design.test</artifactId>
 			<version>0.1.0</version>
 			<scope>test</scope>
 		</dependency>

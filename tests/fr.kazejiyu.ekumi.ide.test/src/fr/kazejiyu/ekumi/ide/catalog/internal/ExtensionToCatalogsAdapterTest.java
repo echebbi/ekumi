@@ -17,7 +17,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
-import fr.kazejiyu.ekumi.model.catalog.Catalog;
+import fr.kazejiyu.ekumi.core.catalog.Catalog;
 import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
@@ -29,7 +29,7 @@ public class ExtensionToCatalogsAdapterTest implements WithAssertions {
 	@Nested @DisplayName("when adapting an invalid category")
 	class WhenAdaptingAnInvalidCategory {
 		
-		@Mock 
+		@Mock
 		private IConfigurationElement configurationElement;
 		
 		private List<IConfigurationElement> configurationElements;

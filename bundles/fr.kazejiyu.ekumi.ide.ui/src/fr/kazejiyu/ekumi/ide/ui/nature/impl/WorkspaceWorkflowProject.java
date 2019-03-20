@@ -42,9 +42,9 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import fr.kazejiyu.ekumi.ide.nature.WorkflowProject;
 import fr.kazejiyu.ekumi.ide.nature.WorkflowProjectNature;
 import fr.kazejiyu.ekumi.ide.project.customization.Customization;
-import fr.kazejiyu.ekumi.model.spec.Activity;
-import fr.kazejiyu.ekumi.model.spec.SpecFactory;
-import fr.kazejiyu.ekumi.workflow.editor.design.api.EKumiViewpoints;
+import fr.kazejiyu.ekumi.specs.eds.Activity;
+import fr.kazejiyu.ekumi.specs.eds.EdsFactory;
+import fr.kazejiyu.ekumi.specs.eds.design.api.EKumiViewpoints;
 
 /**
  * A workflow project that is located in the workspace.
@@ -146,14 +146,14 @@ public class WorkspaceWorkflowProject implements WorkflowProject {
 		subMonitor.setTaskName("Creating the workflow model");
 		
 		// Create the Activity representing the workflow
-		Activity workflow = SpecFactory.eINSTANCE.createActivity();
+		Activity workflow = EdsFactory.eINSTANCE.createActivity();
 		workflow.setId(project.getName() + "." + activityName);
 		workflow.setName(activityName);
-		workflow.setStart(SpecFactory.eINSTANCE.createStart());
+		workflow.setStart(EdsFactory.eINSTANCE.createStart());
 		
 		// Save the Activity in a resource 'model/activity.spec'
 		ResourceSet resourceSet = new ResourceSetImpl();
-		Resource workflowResource = resourceSet.createResource(URI.createURI(project.getFile("model/" + activityName + ".spec").getLocationURI().toString()));
+		Resource workflowResource = resourceSet.createResource(URI.createURI(project.getFile("model/" + activityName + ".eds").getLocationURI().toString()));
 		workflowResource.getContents().add(workflow);
 		
 		try {
@@ -222,7 +222,7 @@ public class WorkspaceWorkflowProject implements WorkflowProject {
 		Optional<Viewpoint> workflowViewpoint = EKumiViewpoints.workflow();
 		
 		if ( ! workflowViewpoint.isPresent()) {
-			Status error = new Status(IStatus.ERROR, "fr.kazejiyu.ekumi.ide", "Cannot find EKumi's workflow editor viewpoint. Check that fr.kazejiyu.ekumi.workflow.editor.design plug-in is available.");
+			Status error = new Status(IStatus.ERROR, "fr.kazejiyu.ekumi.ide.ui", "Cannot find EKumi's workflow editor viewpoint. Check that fr.kazejiyu.ekumi.specs.eds.design plug-in is available.");
 			throw new CoreException(error);
 		}
 		return workflowViewpoint.get();
