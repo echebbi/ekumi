@@ -15,8 +15,8 @@ import java.util.function.Supplier;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 
-import fr.kazejiyu.ekumi.model.scripting.ScriptingLanguage;
-import fr.kazejiyu.ekumi.model.scripting.ScriptingLanguageFactory;
+import fr.kazejiyu.ekumi.core.scripting.ScriptingLanguage;
+import fr.kazejiyu.ekumi.core.scripting.ScriptingLanguageFactory;
 
 /**
  * <p>Creates new datatypes from given configuration elements</p>

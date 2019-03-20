@@ -6,7 +6,7 @@ Bundle-Version: 0.1.0
 Bundle-Activator: fr.kazejiyu.ekumi.ide.common.Activator
 Bundle-Vendor: Emmanuel CHEBBI
 Require-Bundle: org.eclipse.core.runtime,
- fr.kazejiyu.ekumi.model;bundle-version="0.1.0"
+ fr.kazejiyu.ekumi.core;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: fr.kazejiyu.ekumi.ide.common
 Bundle-ActivationPolicy: lazy

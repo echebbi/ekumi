@@ -1,7 +1,7 @@
 package fr.kazejiyu.ekumi.tests.common.fake.activities;
 
-import fr.kazejiyu.ekumi.model.workflow.Context;
-import fr.kazejiyu.ekumi.model.workflow.impl.RunnerImpl;
+import fr.kazejiyu.ekumi.core.workflow.Context;
+import fr.kazejiyu.ekumi.core.workflow.gen.impl.RunnerImpl;
 
 public class SetVariableRunner extends RunnerImpl {
 	

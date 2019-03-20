@@ -33,15 +33,15 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
 
+import fr.kazejiyu.ekumi.core.scripting.ScriptingLanguage;
+import fr.kazejiyu.ekumi.core.scripting.exceptions.IllegalScriptIdentifierException;
+import fr.kazejiyu.ekumi.core.scripting.exceptions.ScriptLoadingFailureException;
+import fr.kazejiyu.ekumi.core.workflow.Condition;
+import fr.kazejiyu.ekumi.core.workflow.Context;
+import fr.kazejiyu.ekumi.core.workflow.Runner;
+import fr.kazejiyu.ekumi.core.workflow.Script;
 import fr.kazejiyu.ekumi.languages.java.inject.EventsModule;
 import fr.kazejiyu.ekumi.languages.java.inject.ExecutionStatusModule;
-import fr.kazejiyu.ekumi.model.scripting.ScriptingLanguage;
-import fr.kazejiyu.ekumi.model.scripting.exceptions.IllegalScriptIdentifierException;
-import fr.kazejiyu.ekumi.model.scripting.exceptions.ScriptLoadingFailureException;
-import fr.kazejiyu.ekumi.model.workflow.Condition;
-import fr.kazejiyu.ekumi.model.workflow.Context;
-import fr.kazejiyu.ekumi.model.workflow.Runner;
-import fr.kazejiyu.ekumi.model.workflow.Script;
 
 /**
  * Loads {@link Script}s written in Java.<br>

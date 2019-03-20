@@ -9,15 +9,14 @@ Export-Package: fr.kazejiyu.ekumi.ide,
  fr.kazejiyu.ekumi.ide.history,
  fr.kazejiyu.ekumi.ide.nature,
  fr.kazejiyu.ekumi.ide.project.customization
-Require-Bundle: fr.kazejiyu.ekumi.model,
- org.eclipse.e4.core.contexts;bundle-version="1.6.0",
+Require-Bundle: org.eclipse.e4.core.contexts;bundle-version="1.6.0",
  org.apache.commons.io,
  org.eclipse.e4.core.services,
  fr.kazejiyu.ekumi.ide.events;bundle-version="0.1.0",
  org.eclipse.emf.transaction,
- fr.kazejiyu.ekumi.core,
  org.eclipse.e4.core.di,
- org.eclipse.emf.ecore.xmi
+ org.eclipse.emf.ecore.xmi,
+ fr.kazejiyu.ekumi.core;bundle-version="0.1.0"
 Service-Component: OSGI-INF/history.xml,
  OSGI-INF/catalogs.xml
 Bundle-ActivationPolicy: lazy

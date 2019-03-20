@@ -18,9 +18,9 @@ import java.nio.file.Path;
 import org.apache.commons.io.monitor.FileAlterationListenerAdaptor;
 import org.eclipse.e4.core.services.events.IEventBroker;
 
-import fr.kazejiyu.ekumi.EKumiPlugin;
+import fr.kazejiyu.ekumi.core.EKumiPlugin;
+import fr.kazejiyu.ekumi.core.workflow.Execution;
 import fr.kazejiyu.ekumi.ide.events.EKumiEvents;
-import fr.kazejiyu.ekumi.model.workflow.Execution;
 
 /**
  * Sends specific events when an execution (*.ekumi) file changes.

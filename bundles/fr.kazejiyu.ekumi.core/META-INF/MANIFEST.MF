@@ -6,14 +6,28 @@ Bundle-Version: 0.1.0
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Automatic-Module-Name: fr.kazejiyu.ekumi.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-ActivationPolicy: lazy
-Require-Bundle: fr.kazejiyu.ekumi.model;bundle-version="0.1.0",
- org.eclipse.osgi,
- org.eclipse.core.runtime
-Bundle-Activator: fr.kazejiyu.ekumi.EKumiPlugin
-Export-Package: fr.kazejiyu.ekumi,
+Export-Package: fr.kazejiyu.ekumi.core,
+ fr.kazejiyu.ekumi.core.catalog,
+ fr.kazejiyu.ekumi.core.catalog.gen.impl,
+ fr.kazejiyu.ekumi.core.catalog.gen.util,
+ fr.kazejiyu.ekumi.core.datatypes,
+ fr.kazejiyu.ekumi.core.datatypes.exceptions,
+ fr.kazejiyu.ekumi.core.exceptions,
  fr.kazejiyu.ekumi.core.execution,
+ fr.kazejiyu.ekumi.core.execution.events,
  fr.kazejiyu.ekumi.core.execution.events.impl,
+ fr.kazejiyu.ekumi.core.execution.impl,
+ fr.kazejiyu.ekumi.core.execution.listeners,
+ fr.kazejiyu.ekumi.core.scripting,
+ fr.kazejiyu.ekumi.core.scripting.exceptions,
+ fr.kazejiyu.ekumi.core.specs,
+ fr.kazejiyu.ekumi.core.workflow,
+ fr.kazejiyu.ekumi.core.workflow.gen.impl,
+ fr.kazejiyu.ekumi.core.workflow.gen.util,
  fr.kazejiyu.ekumi.core.workflow.impl
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport
+Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: fr.kazejiyu.ekumi.core
+Bundle-Activator: fr.kazejiyu.ekumi.core.EKumiPlugin

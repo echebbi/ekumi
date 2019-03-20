@@ -2,14 +2,16 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="fr.kazejiyu.ekumi.model.datatypes">
+         point="fr.kazejiyu.ekumi.core.datatypes">
       <datatype
+      		id="fr.kazejiyu.ekumi.datatypes.string"
             class="fr.kazejiyu.ekumi.datatypes.StringType"
-            name="fr.kazejiyu.ekumi.datatypes.string">
+            name="String">
       </datatype>
       <datatype
+            id="fr.kazejiyu.ekumi.datatypes.double"
             class="fr.kazejiyu.ekumi.datatypes.DoubleType"
-            name="fr.kazejiyu.ekumi.datatypes.double">
+            name="Double">
       </datatype>
    </extension>
 </plugin>

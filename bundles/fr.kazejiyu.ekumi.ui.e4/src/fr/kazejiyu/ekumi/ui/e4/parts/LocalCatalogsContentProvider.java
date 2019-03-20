@@ -13,7 +13,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 
-import fr.kazejiyu.ekumi.model.catalog.provider.CatalogDecoratorAdapterFactory;
+import fr.kazejiyu.ekumi.core.catalog.provider.CatalogDecoratorAdapterFactory;
 
 public class LocalCatalogsContentProvider implements ITreeContentProvider {
 	

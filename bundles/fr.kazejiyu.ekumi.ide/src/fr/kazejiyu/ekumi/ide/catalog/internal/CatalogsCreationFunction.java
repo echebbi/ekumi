@@ -16,11 +16,11 @@ import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IContextFunction;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 
-import fr.kazejiyu.ekumi.EKumiPlugin;
-import fr.kazejiyu.ekumi.model.EKumiExtensions;
-import fr.kazejiyu.ekumi.model.catalog.Catalog;
-import fr.kazejiyu.ekumi.model.catalog.Catalogs;
-import fr.kazejiyu.ekumi.model.catalog.Category;
+import fr.kazejiyu.ekumi.core.EKumiExtensions;
+import fr.kazejiyu.ekumi.core.EKumiPlugin;
+import fr.kazejiyu.ekumi.core.catalog.Catalog;
+import fr.kazejiyu.ekumi.core.catalog.Catalogs;
+import fr.kazejiyu.ekumi.core.catalog.Category;
 
 /**
  * An OSGI Declarative Service making a {@link Catalogs} instance available for injection.<br>

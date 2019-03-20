@@ -39,29 +39,29 @@
          <triggerPoints>
             <or>
                <instanceof
-                     value="fr.kazejiyu.ekumi.model.catalog.Catalog">
+                     value="fr.kazejiyu.ekumi.core.catalog.Catalog">
                </instanceof>
                <instanceof
-                     value="fr.kazejiyu.ekumi.model.catalog.Category">
+                     value="fr.kazejiyu.ekumi.core.catalog.Category">
                </instanceof>
                <instanceof
-                     value="fr.kazejiyu.ekumi.model.catalog.ActivityTemplate">
+                     value="fr.kazejiyu.ekumi.core.catalog.ActivityTemplate">
                </instanceof>
                <instanceof
-                     value="fr.kazejiyu.ekumi.model.catalog.Catalogs">
+                     value="fr.kazejiyu.ekumi.core.catalog.Catalogs">
                </instanceof>
             </or>
          </triggerPoints>
          <possibleChildren>
             <or>
                <instanceof
-                     value="fr.kazejiyu.ekumi.model.catalog.Catalog">
+                     value="fr.kazejiyu.ekumi.core.catalog.Catalog">
                </instanceof>
                <instanceof
-                     value="fr.kazejiyu.ekumi.model.catalog.Category">
+                     value="fr.kazejiyu.ekumi.core.catalog.Category">
                </instanceof>
                <instanceof
-                     value="fr.kazejiyu.ekumi.model.catalog.ActivityTemplate">
+                     value="fr.kazejiyu.ekumi.core.catalog.ActivityTemplate">
                </instanceof>
            </or>
          </possibleChildren>

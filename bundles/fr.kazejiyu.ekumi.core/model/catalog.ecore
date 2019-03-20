@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="catalog" nsURI="http://ekumi.kazejiyu.fr/catalog" nsPrefix="catalog">
+  <eClassifiers xsi:type="ecore:EClass" name="Catalog" eSuperTypes="#//Group"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Category" eSuperTypes="#//Group">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activityTemplates" upperBound="-1"
+        eType="#//ActivityTemplate" containment="true" eOpposite="#//ActivityTemplate/category"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Group" abstract="true" eSuperTypes="#//Identifiable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="categories" upperBound="-1"
+        eType="#//Group" containment="true" eOpposite="#//Group/parent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Group"
+        eOpposite="#//Group/categories"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Catalogs">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="content" upperBound="-1"
+        eType="#//Catalog" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityTemplate" eSuperTypes="#//Identifiable">
+    <eOperations name="toActivity" eType="ecore:EClass workflow.ecore#//Activity"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modelPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="category" eType="#//Category"
+        eOpposite="#//Category/activityTemplates"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Identifiable" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -11,8 +11,8 @@ package fr.kazejiyu.ekumi.datatypes;
 
 import static java.lang.Double.parseDouble;
 
-import fr.kazejiyu.ekumi.model.datatypes.DataType;
-import fr.kazejiyu.ekumi.model.datatypes.exceptions.DataTypeUnserializationException;
+import fr.kazejiyu.ekumi.core.datatypes.DataType;
+import fr.kazejiyu.ekumi.core.datatypes.exceptions.DataTypeUnserializationException;
 
 /**
  * An EKumi {@link DataType datatype} corresponding to the Java {@link Double} class.

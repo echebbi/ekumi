@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: fr.kazejiyu.ekumi.specs.eds.edit;singleton:=true
+Automatic-Module-Name: fr.kazejiyu.ekumi.specs.eds.edit
+Bundle-Version: 0.1.0
+Bundle-ClassPath: .
+Bundle-Activator: fr.kazejiyu.ekumi.specs.eds.gen.provider.EdsEditPlugin$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: fr.kazejiyu.ekumi.specs.eds.gen.provider
+Require-Bundle: org.eclipse.core.runtime,
+ fr.kazejiyu.ekumi.specs.eds;visibility:=reexport,
+ org.eclipse.emf.edit;visibility:=reexport,
+ org.eclipse.jface
+Bundle-ActivationPolicy: lazy

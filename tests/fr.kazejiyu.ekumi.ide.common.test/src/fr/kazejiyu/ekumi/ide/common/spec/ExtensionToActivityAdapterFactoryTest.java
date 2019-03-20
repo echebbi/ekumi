@@ -1,6 +1,6 @@
 package fr.kazejiyu.ekumi.ide.common.spec;
 
-import static org.mockito.Mockito.any;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 
-import fr.kazejiyu.ekumi.model.spec.ActivityAdapter;
+import fr.kazejiyu.ekumi.core.specs.ActivityAdapter;
 import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)

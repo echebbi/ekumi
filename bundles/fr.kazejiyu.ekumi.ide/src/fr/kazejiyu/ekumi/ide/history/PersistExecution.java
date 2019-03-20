@@ -22,12 +22,12 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import fr.kazejiyu.ekumi.EKumiPlugin;
+import fr.kazejiyu.ekumi.core.EKumiPlugin;
+import fr.kazejiyu.ekumi.core.execution.listeners.ActivityListener;
+import fr.kazejiyu.ekumi.core.execution.listeners.ExecutionListener;
+import fr.kazejiyu.ekumi.core.workflow.Activity;
+import fr.kazejiyu.ekumi.core.workflow.Execution;
 import fr.kazejiyu.ekumi.ide.internal.lock.LockFolderFile;
-import fr.kazejiyu.ekumi.model.execution.listeners.ActivityListener;
-import fr.kazejiyu.ekumi.model.execution.listeners.ExecutionListener;
-import fr.kazejiyu.ekumi.model.workflow.Activity;
-import fr.kazejiyu.ekumi.model.workflow.Execution;
 
 /**
  * Watches an {@link Execution} in order to persist it in the workspace each time it changes.<br>

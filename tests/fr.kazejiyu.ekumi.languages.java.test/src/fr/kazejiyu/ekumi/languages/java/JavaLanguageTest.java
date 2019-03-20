@@ -20,10 +20,14 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.mockito.Mock;
 
-import fr.kazejiyu.ekumi.model.workflow.Condition;
-import fr.kazejiyu.ekumi.model.workflow.Runner;
-import fr.kazejiyu.ekumi.model.workflow.Script;
-import fr.kazejiyu.ekumi.model.workflow.impl.ContextImpl;
+import fr.kazejiyu.ekumi.core.execution.ExecutionStatus;
+import fr.kazejiyu.ekumi.core.execution.events.Events;
+import fr.kazejiyu.ekumi.core.scripting.exceptions.IllegalScriptIdentifierException;
+import fr.kazejiyu.ekumi.core.scripting.exceptions.ScriptLoadingFailureException;
+import fr.kazejiyu.ekumi.core.workflow.Condition;
+import fr.kazejiyu.ekumi.core.workflow.Runner;
+import fr.kazejiyu.ekumi.core.workflow.Script;
+import fr.kazejiyu.ekumi.core.workflow.gen.impl.ContextImpl;
 import fr.kazejiyu.ekumi.languages.java.test.ImportableProject;
 import fr.kazejiyu.ekumi.languages.java.test.providers.BundleConditionsProvider;
 import fr.kazejiyu.ekumi.languages.java.test.providers.BundleInjectablesProvider;
@@ -33,10 +37,6 @@ import fr.kazejiyu.ekumi.languages.java.test.providers.ProjectConditionsProvider
 import fr.kazejiyu.ekumi.languages.java.test.providers.ProjectInjectablesProvider;
 import fr.kazejiyu.ekumi.languages.java.test.providers.ProjectProvider;
 import fr.kazejiyu.ekumi.languages.java.test.providers.ProjectRunnersProvider;
-import fr.kazejiyu.ekumi.model.execution.ExecutionStatus;
-import fr.kazejiyu.ekumi.model.execution.events.Events;
-import fr.kazejiyu.ekumi.model.scripting.exceptions.IllegalScriptIdentifierException;
-import fr.kazejiyu.ekumi.model.scripting.exceptions.ScriptLoadingFailureException;
 import fr.kazejiyu.ekumi.tests.common.fake.activities.Injectable;
 import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
 

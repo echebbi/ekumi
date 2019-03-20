@@ -10,11 +10,14 @@
 
 	<artifactId>fr.kazejiyu.ekumi.bundles</artifactId>
 	<packaging>pom</packaging>
-	
+
 	<description>EKumi's plugins.</description>
 
 	<modules>
         <module>fr.kazejiyu.ekumi.core</module>
+        <module>fr.kazejiyu.ekumi.core.edit</module>
+        <module>fr.kazejiyu.ekumi.core.editor</module>
+        <module>fr.kazejiyu.ekumi.core.impl</module>
         <module>fr.kazejiyu.ekumi.datatypes</module>
         <module>fr.kazejiyu.ekumi.debug</module>
         <module>fr.kazejiyu.ekumi.debug.ui</module>
@@ -24,12 +27,12 @@
         <module>fr.kazejiyu.ekumi.ide.ui</module>
         <module>fr.kazejiyu.ekumi.languages.java</module>
         <module>fr.kazejiyu.ekumi.languages.java.ide</module>
-        <module>fr.kazejiyu.ekumi.model</module>
-        <module>fr.kazejiyu.ekumi.model.edit</module>
-        <module>fr.kazejiyu.ekumi.model.editor</module>
-        <module>fr.kazejiyu.ekumi.spec2workflow</module>
+        <module>fr.kazejiyu.ekumi.specs.eds</module>
+        <module>fr.kazejiyu.ekumi.specs.eds.adapter</module>
+        <module>fr.kazejiyu.ekumi.specs.eds.design</module>
+        <module>fr.kazejiyu.ekumi.specs.eds.edit</module>
+        <module>fr.kazejiyu.ekumi.specs.eds.editor</module>
 		<module>fr.kazejiyu.ekumi.ui.e4</module>
-		<module>fr.kazejiyu.ekumi.workflow.editor.design</module>
 	</modules>
 
 </project>

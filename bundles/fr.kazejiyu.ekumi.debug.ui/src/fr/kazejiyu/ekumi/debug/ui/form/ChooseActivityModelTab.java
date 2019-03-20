@@ -37,9 +37,9 @@ import org.eclipse.ui.dialogs.ElementTreeSelectionDialog;
 import org.eclipse.ui.model.BaseWorkbenchContentProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 
+import fr.kazejiyu.ekumi.core.workflow.Activity;
 import fr.kazejiyu.ekumi.debug.EKumiRunConfiguration;
 import fr.kazejiyu.ekumi.debug.ui.Activator;
-import fr.kazejiyu.ekumi.model.workflow.Activity;
 
 /**
  * A tab allowing to choose the {@link Activity} to execute. 

@@ -129,7 +129,7 @@ public final class AddPDENature implements Customization {
         parameters.append("Bundle-Name: " + project.getName() + "\n");
         parameters.append("Bundle-SymbolicName: " + project.getName() + "; singleton:=true\n");
         parameters.append("Bundle-Version: 1.0.0\n");
-        parameters.append("Require-Bundle: fr.kazejiyu.ekumi.model\n");
+        parameters.append("Require-Bundle: fr.kazejiyu.ekumi.core\n");
         parameters.append("Bundle-RequiredExecutionEnvironment: JavaSE-1.8\n");
         parameters.append("Bundle-ActivationPolicy: lazy\n");
         parameters.append("Automatic-Module-Name: " + project.getName() + "\n");

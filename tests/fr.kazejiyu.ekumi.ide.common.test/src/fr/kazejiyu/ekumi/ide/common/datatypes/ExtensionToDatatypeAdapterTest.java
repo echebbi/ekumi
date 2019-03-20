@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 
-import fr.kazejiyu.ekumi.model.datatypes.DataType;
+import fr.kazejiyu.ekumi.core.datatypes.DataType;
 import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)

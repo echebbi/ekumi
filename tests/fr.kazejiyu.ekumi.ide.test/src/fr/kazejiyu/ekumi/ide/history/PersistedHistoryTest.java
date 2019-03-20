@@ -14,11 +14,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import fr.kazejiyu.ekumi.model.workflow.Execution;
-import fr.kazejiyu.ekumi.model.workflow.Sequence;
-import fr.kazejiyu.ekumi.model.workflow.Status;
-import fr.kazejiyu.ekumi.model.workflow.StructuredLoop;
-import fr.kazejiyu.ekumi.model.workflow.WorkflowFactory;
+import fr.kazejiyu.ekumi.core.workflow.Execution;
+import fr.kazejiyu.ekumi.core.workflow.Sequence;
+import fr.kazejiyu.ekumi.core.workflow.Status;
+import fr.kazejiyu.ekumi.core.workflow.StructuredLoop;
+import fr.kazejiyu.ekumi.core.workflow.WorkflowFactory;
 
 @DisplayName("A PersistedHistory")
 public class PersistedHistoryTest implements WithAssertions {

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated ekumi -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="fr.kazejiyu.ekumi.core.catalog.presentation.CatalogModelWizardID"
+            name="%_UI_CatalogModelWizard_label"
+            class="fr.kazejiyu.ekumi.core.catalog.gen.presentation.CatalogModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/CatalogModelFile.gif">
+         <description>%_UI_CatalogModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated ekumi -->
+      <editor
+            id="fr.kazejiyu.ekumi.core.catalog.presentation.CatalogEditorID"
+            name="%_UI_CatalogEditor_label"
+            icon="icons/full/obj16/CatalogModelFile.gif"
+            extensions="catalog"
+            class="fr.kazejiyu.ekumi.core.catalog.gen.presentation.CatalogEditor"
+            contributorClass="fr.kazejiyu.ekumi.core.catalog.gen.presentation.CatalogActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated ekumi -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="fr.kazejiyu.ekumi.core.workflow.presentation.WorkflowModelWizardID"
+            name="%_UI_WorkflowModelWizard_label"
+            class="fr.kazejiyu.ekumi.core.workflow.gen.presentation.WorkflowModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/WorkflowModelFile.gif">
+         <description>%_UI_WorkflowModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated ekumi -->
+      <editor
+            id="fr.kazejiyu.ekumi.core.workflow.presentation.WorkflowEditorID"
+            name="%_UI_WorkflowEditor_label"
+            icon="icons/full/obj16/WorkflowModelFile.gif"
+            extensions="workflow"
+            class="fr.kazejiyu.ekumi.core.workflow.gen.presentation.WorkflowEditor"
+            contributorClass="fr.kazejiyu.ekumi.core.workflow.gen.presentation.WorkflowActionBarContributor">
+      </editor>
+   </extension>
+</plugin>
