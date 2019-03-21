@@ -31,16 +31,16 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 
 import fr.kazejiyu.ekumi.core.EKumiExtensions;
 import fr.kazejiyu.ekumi.core.scripting.ScriptingLanguage;
-import fr.kazejiyu.ekumi.ide.EKumiIdePlugin;
+import fr.kazejiyu.ekumi.ide.EKumiIdeExtensions;
 import fr.kazejiyu.ekumi.ide.nature.WorkflowProject;
 import fr.kazejiyu.ekumi.ide.project.customization.Customization;
+import fr.kazejiyu.ekumi.ide.project.customization.Representation;
 import fr.kazejiyu.ekumi.ide.ui.Activator;
 import fr.kazejiyu.ekumi.ide.ui.nature.impl.WorkspaceWorkflowProject;
 
@@ -75,7 +75,7 @@ public class NewWorkflowProjectWizard extends Wizard implements INewWizard {
 	    newProjectPage.setTitle("New Workflow Project");
 	    newProjectPage.setDescription("Create a new Workflow project.");
 	    
-		newActivityPage = new NewActivityPage(availableScriptingLanguages());
+		newActivityPage = new NewActivityPage(availableScriptingLanguages(), availableRepresentations());
 
 	    addPage(newProjectPage);
 	    addPage(newActivityPage);
@@ -96,7 +96,8 @@ public class NewWorkflowProjectWizard extends Wizard implements INewWizard {
 	public boolean canFinish() {
 		return ! newProjectPage.getProjectName().isEmpty()
 			&& ! newProjectPage.getLocationPath().isEmpty()
-			&& ! newActivityPage.getActivityName().isEmpty();
+			&& ! newActivityPage.getActivityName().isEmpty()
+			&& newActivityPage.getSelectedRepresentation().isPresent();
 	}
 
 	@Override
@@ -107,25 +108,18 @@ public class NewWorkflowProjectWizard extends Wizard implements INewWizard {
 	    	IPath projectLocation = newProjectPage.getLocationPath();
 	    	String activityName = newActivityPage.getActivityName();
 	    	Set<ScriptingLanguage> selectedLanguages = newActivityPage.getSelectedLanguages();
+	    	Representation selectedRepresentation = newActivityPage.getSelectedRepresentation()
+	    														   .orElseThrow(() -> new IllegalStateException("No Representation have been selected"));
 	    	
 			getContainer().run(true, false, new IRunnableWithProgress() {	
 				@Override
 				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
 					try {
-						IConfigurationElement[] elements = Platform.getExtensionRegistry().getConfigurationElementsFor(EKumiIdePlugin.PROJECT_CUSTOMIZATION_EXTENSION_ID);
-						
-						Set<Customization> customizations = new HashSet<>();
-						for (IConfigurationElement element : elements) {
-							String id = element.getAttribute("language");
-							boolean correspondingLanguageIsSelected = selectedLanguages.stream().anyMatch(language -> language.id().equals(id));
-									
-							if (correspondingLanguageIsSelected)
-								customizations.add((Customization) element.createExecutableExtension("class"));
-						}
-						WorkflowProject project = new WorkspaceWorkflowProject(ResourcesPlugin.getWorkspace(), ModelingProjectManager.INSTANCE);
+						Set<Customization> customizations = customizationsFor(selectedRepresentation, selectedLanguages);
+						WorkflowProject project = new WorkspaceWorkflowProject(ResourcesPlugin.getWorkspace());
 						project.create(projectName, projectLocation, activityName, customizations, monitor);
-						
-					} catch (Exception e) {
+					} 
+					catch (Exception e) {
 			            throw new InvocationTargetException(e, "An error occurred while creating the new EKumi workflow project " + projectName);
 					}
 				}
@@ -142,6 +136,32 @@ public class NewWorkflowProjectWizard extends Wizard implements INewWizard {
 	    return false;
 	}
 	
+	private static Set<Customization> customizationsFor(Representation selectedRepresentation, Set<ScriptingLanguage> selectedLanguages) throws CoreException {
+		Set<Customization> customizations = new HashSet<>();
+		
+		IConfigurationElement[] elements = Platform.getExtensionRegistry().getConfigurationElementsFor(EKumiIdeExtensions.PROJECT_CUSTOMIZATION_EXTENSION_ID);
+		
+		for (IConfigurationElement element : elements) {
+			// Scripting Language-specific customizations
+			if (element.getName().equals("language-specific")) {
+				String id = element.getAttribute("language");
+				boolean correspondingLanguageIsSelected = selectedLanguages.stream().anyMatch(language -> language.id().equals(id));
+						
+				if (correspondingLanguageIsSelected)
+					customizations.add((Customization) element.createExecutableExtension("class"));
+			}
+			// representation-specific customizations
+			else if (element.getName().equals("representation")) {
+				String id = element.getAttribute("id");
+
+				if (id.equals(selectedRepresentation.id()))
+					customizations.add((Customization) element.createExecutableExtension("class"));
+			}
+		}
+		return customizations;
+	}
+
+	// FIXME Should be encapsulated by a reusable class
 	private static Set<ScriptingLanguage> availableScriptingLanguages() {
 		IConfigurationElement[] elements = Platform.getExtensionRegistry().getConfigurationElementsFor(EKumiExtensions.LANGUAGES_EXTENSION_ID);
 		
@@ -154,6 +174,21 @@ public class NewWorkflowProjectWizard extends Wizard implements INewWizard {
 			}
 		}
 		return languages;
+	}
+	
+	private static Set<Representation> availableRepresentations() {
+		IConfigurationElement[] elements = Platform.getExtensionRegistry().getConfigurationElementsFor(EKumiIdeExtensions.PROJECT_CUSTOMIZATION_EXTENSION_ID);
+		
+		Set<Representation> representations = new HashSet<>();
+		for (IConfigurationElement element : elements) {
+			try {
+				if (element.getName().equals("representation"))
+					representations.add((Representation) element.createExecutableExtension("class"));
+			} catch (CoreException e) {
+				Activator.warn(e, "Unable to create a new Representation from " + element);
+			}
+		}
+		return representations;
 	}
 	
 	/**
@@ -186,7 +221,6 @@ public class NewWorkflowProjectWizard extends Wizard implements INewWizard {
                 childStatuses.toArray(new Status[] {}),
                 e.toString(), e
         );
-        
         ErrorDialog.openError(getShell(), title, message, status);
     }
 

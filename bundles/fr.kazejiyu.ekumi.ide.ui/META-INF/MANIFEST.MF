@@ -4,20 +4,11 @@ Bundle-Name: EKumi IDE UI
 Bundle-SymbolicName: fr.kazejiyu.ekumi.ide.ui;singleton:=true
 Bundle-Version: 0.1.0
 Bundle-Activator: fr.kazejiyu.ekumi.ide.ui.Activator
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
- org.eclipse.ui.ide,
+Require-Bundle: org.eclipse.ui;bundle-version="[3.109.0,4.0.0)",
+ org.eclipse.ui.ide;bundle-version="[3.13.1,4.0.0)",
  fr.kazejiyu.ekumi.ide;bundle-version="0.1.0",
- org.eclipse.core.resources,
- org.eclipse.emf.ecore,
- org.eclipse.sirius,
- org.eclipse.emf.transaction,
- org.eclipse.sirius.ui,
- org.eclipse.sirius.ext.base,
- fr.kazejiyu.ekumi.specs.eds.design;bundle-version="0.1.0",
- fr.kazejiyu.ekumi.core;bundle-version="0.1.0",
- fr.kazejiyu.ekumi.specs.eds
+ org.eclipse.emf.transaction;bundle-version="[1.9.0,2.0.0)",
+ fr.kazejiyu.ekumi.core;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: fr.kazejiyu.ekumi.ide.ui
 Bundle-ActivationPolicy: lazy
-Import-Package: org.eclipse.sirius.ui.tools.api.project

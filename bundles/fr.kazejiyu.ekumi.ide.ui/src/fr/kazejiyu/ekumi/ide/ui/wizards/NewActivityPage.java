@@ -12,6 +12,7 @@ package fr.kazejiyu.ekumi.ide.ui.wizards;
 import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toSet;
 
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -29,6 +30,7 @@ import org.eclipse.swt.widgets.Text;
 
 import fr.kazejiyu.ekumi.core.scripting.ScriptingLanguage;
 import fr.kazejiyu.ekumi.core.workflow.Activity;
+import fr.kazejiyu.ekumi.ide.project.customization.Representation;
 
 /**
  * Wizard page used to enter the information required for the creation of a new {@link Activity}.
@@ -40,9 +42,15 @@ public class NewActivityPage extends WizardPage {
     
     /** The languages that can be selected by the user */
     private final Set<ScriptingLanguage> availableLanguages;
+    
+    /** The representations that can be selected by the user */
+    private final Set<Representation> availableRepresentations;
 
     /** Displays the list of available languages */
 	private CheckboxTableViewer languagesViewer;
+	
+	/** Displays the list of available representations */
+	private CheckboxTableViewer representationsViewer;
 
 	/**
 	 * Creates a new page allowing the user to type a name and select
@@ -51,11 +59,12 @@ public class NewActivityPage extends WizardPage {
 	 * @param availableLanguages
 	 * 			The languages that can be selected by the user.
 	 */
-    public NewActivityPage(Set<ScriptingLanguage> availableLanguages) {
+    public NewActivityPage(Set<ScriptingLanguage> availableLanguages, Set<Representation> availableRepresentations) {
         super("New Workflow");
         setTitle("New Workflow");
         setDescription("Set up project's workflow");
         this.availableLanguages = availableLanguages;
+        this.availableRepresentations = availableRepresentations;
     }
 
     @Override
@@ -68,6 +77,8 @@ public class NewActivityPage extends WizardPage {
         createWorkflowNameTextField(container);
         createEmptySeparator(container, layout.numColumns);
         createLanguagesPicker(container, layout.numColumns);
+        createEmptySeparator(container, layout.numColumns);
+        createRepresentationPicker(container, layout.numColumns);
         
         // required to avoid an error in the system
         setControl(container);
@@ -92,8 +103,37 @@ public class NewActivityPage extends WizardPage {
         languagesViewer.setInput(availableLanguages);
         GridData languagesViewerLayout = new GridData(GridData.FILL_HORIZONTAL);
         languagesViewerLayout.horizontalSpan = 2;
-        languagesViewerLayout.horizontalAlignment = GridData.CENTER;
+        languagesViewerLayout.horizontalAlignment = SWT.CENTER;
         languagesViewer.getTable().setLayoutData(languagesViewerLayout);
+	}
+
+	private void createRepresentationPicker(Composite parent, int numColumns) {
+		Label representationsLabel = new Label(parent, SWT.NONE);
+        representationsLabel.setText("Please choose a representation:");
+        GridData representationsLabelLayout = new GridData(GridData.FILL_HORIZONTAL);
+        representationsLabelLayout.horizontalSpan = numColumns;
+        representationsLabel.setLayoutData(representationsLabelLayout);
+        
+        representationsViewer = CheckboxTableViewer.newCheckList(parent, SWT.BORDER | SWT.SINGLE | SWT.FULL_SELECTION);
+        representationsViewer.setLabelProvider(new LabelProvider() {
+			@Override
+			public String getText(Object element) {
+				Representation representation = (Representation) element;
+				return representation.name() + " (" + representation.description() + ")";
+			}
+		});
+        representationsViewer.setContentProvider(new ArrayContentProvider());
+        representationsViewer.setInput(availableRepresentations);
+        GridData representationsViewerLayout = new GridData(GridData.FILL_HORIZONTAL);
+        representationsViewerLayout.horizontalSpan = 2;
+        representationsViewerLayout.horizontalAlignment = SWT.CENTER;
+        representationsViewer.getTable().setLayoutData(representationsViewerLayout);
+        
+        // Updates the wizard's Finish button on check
+        representationsViewer.addCheckStateListener(event -> {
+        	boolean pageIsDone = event.getChecked() && ! activityName.getText().isEmpty();
+        	setPageComplete(pageIsDone);
+        });
 	}
 
 	private static void createEmptySeparator(Composite parent, int numColumns) {
@@ -147,12 +187,22 @@ public class NewActivityPage extends WizardPage {
     }
     
     /**
+     * Returns the representation that has been selected by the user
+     * @return the representation that has been selected by the user, if any
+     */
+    public Optional<Representation> getSelectedRepresentation() {
+    	return stream(representationsViewer.getCheckedElements())
+    			.map(Representation.class::cast)
+    			.findAny();
+    }
+    
+    /**
      * Returns all the languages that have been selected.
      * @return all the languages that have been selected 
      */
     public Set<ScriptingLanguage> getSelectedLanguages() {
     	return stream(languagesViewer.getCheckedElements())
-    		  .map(ScriptingLanguage.class::cast)
-    		  .collect(toSet());
+    			.map(ScriptingLanguage.class::cast)
+    			.collect(toSet());
     }
 }

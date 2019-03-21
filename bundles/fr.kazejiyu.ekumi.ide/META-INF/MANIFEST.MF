@@ -20,3 +20,4 @@ Require-Bundle: org.eclipse.e4.core.contexts;bundle-version="1.6.0",
 Service-Component: OSGI-INF/history.xml,
  OSGI-INF/catalogs.xml
 Bundle-ActivationPolicy: lazy
+Bundle-Activator: fr.kazejiyu.ekumi.ide.EKumiIdePlugin

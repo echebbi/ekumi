@@ -47,7 +47,6 @@ public class ExtensionToScriptingLanguageAdapter {
 		return configurationElements.stream()
 									.map(toLanguage())
 									.filter(Objects::nonNull)
-									.map(ScriptingLanguage.class::cast)
 									.collect(toList());
 	}
 	
