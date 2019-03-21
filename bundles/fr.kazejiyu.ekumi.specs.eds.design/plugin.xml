@@ -16,4 +16,13 @@
            label="Legacy Sirius Tabs Filter for EKumi models">
      </descriptor>
   </extension>
+  <extension
+        point="fr.kazejiyu.ekumi.ide.project_customization">
+     <representation
+           class="fr.kazejiyu.ekumi.specs.eds.design.EdsSiriusRepresentation"
+           description="A BPMN-inspired workflow diagram editor"
+           id="fr.kazejiyu.ekumi.specs.eds.design.EdsSiriusRepresentation"
+           name="EKumi Default Representation">
+     </representation>
+  </extension>
 </plugin>

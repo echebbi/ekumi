@@ -19,7 +19,7 @@ import java.util.function.Function;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 
-import fr.kazejiyu.ekumi.core.catalog.Catalogs;
+import fr.kazejiyu.ekumi.core.EKumiPlugin;
 import fr.kazejiyu.ekumi.core.datatypes.DataType;
 import fr.kazejiyu.ekumi.ide.common.Activator;
 
@@ -41,12 +41,12 @@ import fr.kazejiyu.ekumi.ide.common.Activator;
 public class ExtensionToDatatypeAdapter {
 	
 	/**
-	 * Creates a new {@link Catalogs} according to the given configuration elements.
+	 * Creates new {@link DataType} according to the given configuration elements.
 	 * 
 	 * @param configurationElements
 	 * 			The configuration elements describing user extensions.
 	 * 
-	 * @return a new Catalogs instance.
+	 * @return DataTypes objects instantiated from given elements
 	 */
 	public List<DataType<?>> adapt(List<IConfigurationElement> configurationElements) {
 		requireNonNull(configurationElements, "Cannot adapt null configuration elements");
@@ -54,7 +54,6 @@ public class ExtensionToDatatypeAdapter {
 		return configurationElements.stream()
 									.map(toDataType())
 									.filter(Objects::nonNull)
-									.map(DataType.class::cast)
 									.collect(toList());
 	}
 	

@@ -55,7 +55,6 @@ public class ExtensionToActivityAdapterAdapter {
 		return configurationElements.stream()
 									.map(toActivityAdapter())
 									.filter(Objects::nonNull)
-									.map(ActivityAdapter.class::cast)
 									.collect(toList());
 	}
 	

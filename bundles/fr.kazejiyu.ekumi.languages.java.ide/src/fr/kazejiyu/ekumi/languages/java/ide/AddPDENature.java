@@ -42,7 +42,7 @@ import fr.kazejiyu.ekumi.ide.project.customization.Customization;
 public final class AddPDENature implements Customization {
 
 	@Override
-	public void customize(IWorkspace workspace, IProject project, IProgressMonitor monitor) throws CoreException {
+	public void customize(String activityName, IWorkspace workspace, IProject project, IProgressMonitor monitor) throws CoreException {
 		SubMonitor subMonitor = SubMonitor.convert(monitor, 5);
 		subMonitor.subTask(""); // otherwise previous sub tasks are displayed
 		subMonitor.setTaskName("Allowing Java");

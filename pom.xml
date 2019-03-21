@@ -37,7 +37,7 @@
 				- generated source code,
 				- Exceptions,
 				- untestable activators -->
-		<sonar.exclusions>**/src-gen/**/*.*,**/*Exception.java,**/Activator.java,**/EKumiPlugin.java</sonar.exclusions>
+		<sonar.exclusions>**/src-gen/**/*.*,**/*Exception.java,**/Activator.java,**/EKumiPlugin.java,**/EKumiIdePlugin.java</sonar.exclusions>
 		<sonar.jacoco.reportPaths>../../tests/${project.artifactId}.test/target/jacoco.exec</sonar.jacoco.reportPaths>
 	</properties>
 

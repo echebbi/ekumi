@@ -21,6 +21,9 @@ public interface Customization {
 	
 	/**
 	 * Customizes the given project.
+	 * 
+	 * @param activityName
+	 * 			The name of the activity.
 	 * @param workspace
 	 * 			The workspace that contains the project.
 	 * @param project
@@ -30,6 +33,6 @@ public interface Customization {
 	 * 
 	 * @throws CoreException if an error occurs during the customization.
 	 */
-	void customize(IWorkspace workspace, IProject project, IProgressMonitor monitor) throws CoreException;
+	void customize(String activityName, IWorkspace workspace, IProject project, IProgressMonitor monitor) throws CoreException;
 
 }
