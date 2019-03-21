@@ -3,12 +3,16 @@
 <schema targetNamespace="fr.kazejiyu.ekumi.ide" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="fr.kazejiyu.ekumi.ide" id="languages.project.creation" name="Language Project Creation"/>
+         <meta.schema plugin="fr.kazejiyu.ekumi.ide" id="project_customization" name="Workflow Project Customization"/>
       </appinfo>
       <documentation>
          Used to tailor the way EKumi Workflow projects are created.
 
-More specifically, this extension point is supposed to be used to setup the project according to the ScriptingLanguage that will be used in the project, such as by adding specific nature or creating new files.
+More specifically, this extension point is supposed to be used to setup the project according to its settings:
+ - the ScriptingLanguage that will be used in the project, 
+ - the chosen Representation.
+ 
+ The project can be setup by, for instance, adding specific nature or creating new files.
       </documentation>
    </annotation>
 
@@ -21,6 +25,7 @@ More specifically, this extension point is supposed to be used to setup the proj
       <complexType>
          <choice minOccurs="1" maxOccurs="unbounded">
             <element ref="language-specific" minOccurs="1" maxOccurs="unbounded"/>
+            <element ref="representation" minOccurs="1" maxOccurs="unbounded"/>
          </choice>
          <attribute name="point" type="string" use="required">
             <annotation>
@@ -75,6 +80,49 @@ The customization is used when this language is chosen for a Workflow project.
                </documentation>
                <appinfo>
                   <meta.attribute kind="java" basedOn=":fr.kazejiyu.ekumi.ide.project.customization.Customization"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="representation">
+      <annotation>
+         <documentation>
+            A representation of an Activity.
+ 
+A representation is not necessarily visual: it may be textual or in-memory.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Uniquely identifies the representation.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  A human-readable name of the representation.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  An explanation of what the representation looks like.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The implementation of this representation.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":fr.kazejiyu.ekumi.ide.project.customization.Representation"/>
                </appinfo>
             </annotation>
          </attribute>
