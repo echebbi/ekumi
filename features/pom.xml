@@ -10,9 +10,13 @@
 
 	<artifactId>fr.kazejiyu.ekumi.features</artifactId>
 	<packaging>pom</packaging>
-	
+
 	<description>EKumi's features.</description>
 
 	<modules>
+		<module>fr.kazejiyu.ekumi.core.feature</module>
+		<module>fr.kazejiyu.ekumi.ide.feature</module>
+		<module>fr.kazejiyu.ekumi.languages.java.feature</module>
+		<module>fr.kazejiyu.ekumi.specs.eds.feature</module>
 	</modules>
 </project>

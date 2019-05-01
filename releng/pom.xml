@@ -10,10 +10,11 @@
 
 	<artifactId>fr.kazejiyu.ekumi.releng</artifactId>
 	<packaging>pom</packaging>
-	
+
 	<description>EKumi's build environment.</description>
 
 	<modules>
-        <module>fr.kazejiyu.ekumi.target</module>
+        	<module>fr.kazejiyu.ekumi.target</module>
+        	<module>fr.kazejiyu.ekumi.p2</module>
 	</modules>
 </project>
