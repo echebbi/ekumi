@@ -57,6 +57,7 @@ public class ImportableProject {
 		System.out.println("WORKSPACE PATH: " + ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile().getAbsolutePath());
 		System.out.println("PARENT: " + project.getParent().getLocation());
 		System.out.println("PARENT: " + project.getParent().getLocation().toFile().getAbsolutePath());
+		System.out.println("CAN WRITE ? " + new File(project.getParent().getLocation().toFile().getAbsolutePath()).canWrite());
 		description.setLocation(project.getFullPath());
 //		FileLocator.find(description.getLocationURI());
 		

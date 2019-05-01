@@ -20,8 +20,11 @@ before_script:
   # Attempt to make test project importable
   - mkdir -p /home/travis/build/echebbi/ekumi/tests/fr.kazejiyu.ekumi.languages.java.test/target/work/data
   - chmod -R 777 /home/travis/build/echebbi/ekumi/tests/fr.kazejiyu.ekumi.languages.java.test/target/work/data
+  - ll /home/travis/build/echebbi/ekumi/tests/fr.kazejiyu.ekumi.languages.java.test/target/work/data
 
 script: mvn verify -P jacoco sonar:sonar
+
+after_script: ll /home/travis/build/echebbi/ekumi/tests/fr.kazejiyu.ekumi.languages.java.test/target/work/data
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
