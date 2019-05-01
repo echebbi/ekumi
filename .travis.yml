@@ -17,8 +17,11 @@ before_script:
   - git fetch origin
   # Prevent installed packages from being used during build
   - rm -rfv "$HOME/.m2/repository/fr/kazejiyu/ekumi/"
+  # Attempt to make test project importable
+  - mkdir /home/travis/build/echebbi/ekumi/tests/fr.kazejiyu.ekumi.languages.java.test/target/work/data
+  - chmod -R 777 /home/travis/build/echebbi/ekumi/tests/fr.kazejiyu.ekumi.languages.java.test/target/work/data
 
-script: mvn clean verify -P jacoco sonar:sonar
+script: mvn verify -P jacoco sonar:sonar
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
