@@ -2,8 +2,8 @@ language: java
 
 addons:
   sonarcloud:
-    organization: "kazejiyu-github"
-    
+    organization: "echebbi-github"
+
 # Prevents "mvn install" default step
 install: true
 
