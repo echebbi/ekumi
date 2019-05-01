@@ -9,6 +9,8 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.jobs.IJobManager;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.ui.dialogs.IOverwriteQuery;
 import org.eclipse.ui.wizards.datatransfer.FileSystemStructureProvider;
 import org.eclipse.ui.wizards.datatransfer.ImportOperation;
@@ -50,6 +52,8 @@ public class ImportableProject {
 				   .getProject(description.getName());
 
 		// Prevent runtime errors when importing the project
+		System.out.println("IMPORT PROJECT PATH: " + project.getFullPath());
+		System.out.println("IMPORT PROJECT PATH: " + project.getFullPath().toOSString());
 		description.setLocation(project.getFullPath());
 		
 		// Create the project in the workspace
@@ -68,6 +72,7 @@ public class ImportableProject {
 		
 		importOperation.setCreateContainerStructure(false);
 		importOperation.run(new NullProgressMonitor());
+		Thread.sleep(5000);
 	}
 	
 	/** @return the path toward the location/.project file */
