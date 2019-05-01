@@ -4,24 +4,14 @@ Bundle-Name: EKumi UI E4
 Bundle-SymbolicName: fr.kazejiyu.ekumi.ui.e4;singleton:=true
 Bundle-Version: 0.1.0
 Bundle-Vendor: Emmanuel CHEBBI
-Require-Bundle: javax.inject,
- org.eclipse.osgi,
- org.eclipse.jface,
- org.eclipse.e4.ui.model.workbench,
- org.eclipse.e4.ui.di,
+Require-Bundle: org.eclipse.e4.ui.di,
  org.eclipse.e4.ui.services,
- org.eclipse.e4.core.di.annotations,
  org.eclipse.emf.edit.ui,
- fr.kazejiyu.ekumi.ide;bundle-version="0.1.0",
  org.eclipse.e4.core.services,
- org.apache.commons.io,
  org.eclipse.e4.core.di,
  fr.kazejiyu.ekumi.ide.events;bundle-version="0.1.0",
  org.eclipse.ui.navigator,
  org.eclipse.core.runtime,
- org.eclipse.ui.ide,
- org.eclipse.sirius.diagram.ui;bundle-version="6.1.1",
- fr.kazejiyu.ekumi.core;bundle-version="0.1.0",
  fr.kazejiyu.ekumi.core.edit;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: javax.annotation;version="1.0.0";resolution:=optional,
