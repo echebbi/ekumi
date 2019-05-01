@@ -53,7 +53,7 @@ public class ImportableProject {
 
 		// Prevent runtime errors when importing the project
 		System.out.println("IMPORT PROJECT PATH: " + project.getFullPath());
-		System.out.println("IMPORT PROJECT PATH: " + project.getFullPath().toOSString());
+		System.out.println("WORKSPACE PATH: " + ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile().getAbsolutePath());
 		description.setLocation(project.getFullPath());
 		
 		// Create the project in the workspace
