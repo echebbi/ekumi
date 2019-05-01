@@ -7,6 +7,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.jobs.IJobManager;
@@ -54,7 +55,10 @@ public class ImportableProject {
 		// Prevent runtime errors when importing the project
 		System.out.println("IMPORT PROJECT PATH: " + project.getFullPath());
 		System.out.println("WORKSPACE PATH: " + ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile().getAbsolutePath());
+		System.out.println("PARENT: " + project.getParent().getLocation());
+		System.out.println("PARENT: " + project.getParent().getLocation().toFile().getAbsolutePath());
 		description.setLocation(project.getFullPath());
+//		FileLocator.find(description.getLocationURI());
 		
 		// Create the project in the workspace
 		project.create(description, null);
