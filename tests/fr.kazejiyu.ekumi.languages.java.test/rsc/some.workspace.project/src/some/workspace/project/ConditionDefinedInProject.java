@@ -1,9 +1,9 @@
 package some.workspace.project;
 
-import fr.kazejiyu.ekumi.model.workflow.Condition;
-import fr.kazejiyu.ekumi.model.workflow.Context;
-import fr.kazejiyu.ekumi.model.workflow.StructuredLoop;
-import fr.kazejiyu.ekumi.model.workflow.impl.ConditionImpl;
+import fr.kazejiyu.ekumi.core.workflow.Condition;
+import fr.kazejiyu.ekumi.core.workflow.Context;
+import fr.kazejiyu.ekumi.core.workflow.StructuredLoop;
+import fr.kazejiyu.ekumi.core.workflow.gen.impl.ConditionImpl;
 
 /**
  * A simple {@link Condition} that is always verified.<br>

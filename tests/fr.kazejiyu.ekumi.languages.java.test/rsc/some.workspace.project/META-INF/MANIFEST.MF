@@ -6,7 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Automatic-Module-Name: some.workspace.project
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: Emmanuel CHEBBI
-Require-Bundle: fr.kazejiyu.ekumi.model.workflow,
- javax.inject,
- fr.kazejiyu.ekumi.tests.common
+Require-Bundle: javax.inject,
+ fr.kazejiyu.ekumi.tests.common,
+ fr.kazejiyu.ekumi.core;bundle-version="0.1.0"
 Export-Package: some.workspace.project
