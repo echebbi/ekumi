@@ -200,6 +200,7 @@ public final class JavaLanguage implements ScriptingLanguage {
 			IPath path = new Path(entry);
 			URL url = path.toFile().toURI().toURL();
 			urlList.add(url);
+			System.out.println("CLASSPATH URL: " + url);
 		}
 		
 		// parentClassLoader makes possible to cast instances

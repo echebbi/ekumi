@@ -7,7 +7,6 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.ui.dialogs.IOverwriteQuery;
@@ -50,9 +49,8 @@ public class ImportableProject {
 				   .getRoot()
 				   .getProject(description.getName());
 
-		// Prevent runtime errors by copying the project within the workspace
-		IPath inWorkspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().append(description.getName());
-		description.setLocation(inWorkspace);
+		// Prevent runtime errors when importing the project
+		description.setLocation(project.getFullPath());
 		
 		// Create the project in the workspace
 		project.create(description, null);
@@ -63,7 +61,7 @@ public class ImportableProject {
 
 		ImportOperation importOperation = new ImportOperation(
 				project.getFullPath(), 
-				location.getAbsoluteFile(),
+				new File(location.getAbsolutePath()),
 				FileSystemStructureProvider.INSTANCE, 
 				overwriteQuery
 		);
