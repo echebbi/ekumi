@@ -14,10 +14,10 @@ package fr.kazejiyu.ekumi.debug;
  */
 public final class EKumiRunConfiguration {
 	
-	/** ID of the EKumi extension contribution to the org.eclipse.debug.ui.launchShortcuts extension point */
+	/** ID of the extension contribution providing an EKumi Launch Configuration. */
 	public static final String ID = "fr.kazejiyu.ekumi.launchConfiguration.launchConfigurationType";
 	
-	/** Name of the configuration's attribute used to specify the URI of the Activity to execute */
+	/** Name of the configuration's attribute used to specify the URI of the Activity to execute. */
 	public static final String EKUMI_MODEL_URI = "fr.kazejiyu.ekumi.launchConfiguration.model";
 	
 	private EKumiRunConfiguration() {

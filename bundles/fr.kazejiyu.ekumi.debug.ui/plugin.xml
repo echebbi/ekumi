@@ -2,36 +2,6 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.eclipse.debug.ui.launchShortcuts">
-      <shortcut
-            class="fr.kazejiyu.ekumi.debug.ui.LaunchWorkflowShortcut"
-            description="Run an EKumi Workflow"
-            id="fr.kazejiyu.ekumi.launchConfiguration.ui.launchConfigurationType.shortcut"
-            label="Workflow"
-            modes="run">
-         <contextualLaunch>
-            <enablement>
-               <or>
-                  <adapt
-                        type="java.util.List">
-                     <iterate
-                           ifEmpty="false"
-                           operator="and">
-                        <adapt
-                              type="org.eclipse.core.resources.IFile">
-                           <test
-                                 property="org.eclipse.core.resources.extension"
-                                 value="workflow">
-                           </test>
-                        </adapt>
-                     </iterate>
-                  </adapt>
-               </or>
-            </enablement>
-         </contextualLaunch>
-      </shortcut>
-   </extension>
-   <extension
          point="org.eclipse.debug.ui.launchConfigurationTabGroups">
       <launchConfigurationTabGroup
             class="fr.kazejiyu.ekumi.debug.ui.form.EkumiTabGroup"

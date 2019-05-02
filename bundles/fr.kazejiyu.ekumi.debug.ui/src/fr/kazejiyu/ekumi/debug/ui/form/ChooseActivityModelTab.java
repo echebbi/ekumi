@@ -110,10 +110,10 @@ public class ChooseActivityModelTab extends AbstractLaunchConfigurationTab {
 			ElementTreeSelectionDialog dialog = new ElementTreeSelectionDialog(shell, new WorkbenchLabelProvider(), new BaseWorkbenchContentProvider());
 			
 			dialog.setTitle("Workspace");
-			dialog.setMessage("Select an activity (*.ekumi)");
+			dialog.setMessage("Select an activity");
 			dialog.setInput(ResourcesPlugin.getWorkspace().getRoot());
 			
-			if (dialog.open() == Dialog.OK) {
+			if (dialog.open() == Dialog.OK && dialog.getResult().length > 0) {
 				Object selected = dialog.getResult()[0];
 				
 				PlatformObject object = (PlatformObject) selected;

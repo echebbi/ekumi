@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.debug.ui.launchShortcuts">
+      <shortcut
+            class="fr.kazejiyu.ekumi.specs.eds.debug.ui.LaunchEdsModelShortcut"
+            id="fr.kazejiyu.ekumi.specs.eds.debug.ui.launchConfigurationShortcut"
+            label="EKumi Activity"
+            modes="run">
+         <contextualLaunch>
+            <enablement>
+               <or>
+                  <adapt
+                        type="java.util.List">
+                     <iterate
+                           ifEmpty="false"
+                           operator="and">
+                        <adapt
+                              type="org.eclipse.core.resources.IFile">
+                           <test
+                                 property="org.eclipse.core.resources.extension"
+                                 value="eds">
+                           </test>
+                        </adapt>
+                     </iterate>
+                  </adapt>
+               </or>
+            </enablement>
+         </contextualLaunch>
+      </shortcut>
+   </extension>
+
+</plugin>

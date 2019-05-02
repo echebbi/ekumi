@@ -73,3 +73,25 @@ Link two tasks
 .. |precede-tool| image:: images/precede_tool.png
 
 Two task can be linked in order to specify which one should be executed first. This can be achieved thanks to the |precede-tool|.
+
+Launch an activity
+-------------------
+
+Once the activity is ready, it can be executed. An execution can be launched in two ways.
+
+Create a dedicated launch configuration
+```````````````````````````````````````
+
+1. ``Run`` > ``Run Configurations...``
+2. Double-click on `Workflow`
+3. Click on `Browse`
+4. Select the `.eds` file located under the `model/` folder
+5. Click on `Run`
+
+Use the context menu shortcut
+`````````````````````````````
+
+In the file explorer:
+
+1. Right-click on the `.eds` file located under the `model/` folder
+2. Select ``Run As`` > ``EKumi Activity``
