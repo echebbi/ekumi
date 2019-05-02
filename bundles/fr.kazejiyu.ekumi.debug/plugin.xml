@@ -5,6 +5,8 @@
          point="org.eclipse.debug.core.launchConfigurationTypes">
       <launchConfigurationType
             delegate="fr.kazejiyu.ekumi.debug.RunWorkflow"
+            delegateDescription="Executes an EKumi activity in background"
+            delegateName="EKumi Activity Launcher"
             id="fr.kazejiyu.ekumi.launchConfiguration.launchConfigurationType"
             modes="run"
             name="Workflow">

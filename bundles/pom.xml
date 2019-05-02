@@ -29,6 +29,7 @@
         <module>fr.kazejiyu.ekumi.languages.java.ide</module>
         <module>fr.kazejiyu.ekumi.specs.eds</module>
         <module>fr.kazejiyu.ekumi.specs.eds.adapter</module>
+        <module>fr.kazejiyu.ekumi.specs.eds.debug.ui</module>
         <module>fr.kazejiyu.ekumi.specs.eds.design</module>
         <module>fr.kazejiyu.ekumi.specs.eds.edit</module>
         <module>fr.kazejiyu.ekumi.specs.eds.editor</module>

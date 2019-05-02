@@ -313,6 +313,10 @@ version(s), and exceptions or additional permissions here}.&quot;
       <import plugin="fr.kazejiyu.ekumi.ide.common" version="0.1.0" match="greaterOrEqual"/>
       <import plugin="fr.kazejiyu.ekumi.ide" version="0.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.sirius.ext.base"/>
+      <import plugin="org.eclipse.debug.ui" version="3.0.0" match="compatible"/>
+      <import plugin="org.eclipse.jface" version="3.0.0" match="compatible"/>
+      <import plugin="fr.kazejiyu.ekumi.debug.ui" version="0.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.common" version="2.0.0" match="compatible"/>
    </requires>
 
    <plugin
@@ -331,6 +335,13 @@ version(s), and exceptions or additional permissions here}.&quot;
 
    <plugin
          id="fr.kazejiyu.ekumi.specs.eds.design"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="fr.kazejiyu.ekumi.specs.eds.debug.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"

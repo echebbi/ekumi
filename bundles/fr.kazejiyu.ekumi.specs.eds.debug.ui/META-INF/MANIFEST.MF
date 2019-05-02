@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EKumi EDS Launch Configuration
+Bundle-SymbolicName: fr.kazejiyu.ekumi.specs.eds.debug.ui;singleton:=true
+Bundle-Version: 0.1.0
+Bundle-Vendor: Emmanuel CHEBBI
+Automatic-Module-Name: fr.kazejiyu.ekumi.specs.eds.debug.ui
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.debug.ui;bundle-version="[3.0.0,4.0.0)",
+ org.eclipse.ui.ide;bundle-version="[3.0.0,4.0.0)",
+ org.eclipse.jface;bundle-version="[3.0.0,4.0.0)",
+ fr.kazejiyu.ekumi.debug.ui;bundle-version="0.1.0",
+ org.eclipse.emf.common;bundle-version="[2.0.0,3.0.0)",
+ fr.kazejiyu.ekumi.specs.eds;bundle-version="0.1.0"
