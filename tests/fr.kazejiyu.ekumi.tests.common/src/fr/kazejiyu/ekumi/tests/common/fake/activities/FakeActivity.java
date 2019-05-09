@@ -1,14 +1,23 @@
 package fr.kazejiyu.ekumi.tests.common.fake.activities;
 
-import fr.kazejiyu.ekumi.core.workflow.Context;
-import fr.kazejiyu.ekumi.core.workflow.gen.impl.ActivityImpl;
+import java.util.Date;
 
-public class FakeActivity extends ActivityImpl {
+import fr.kazejiyu.ekumi.core.workflow.Context;
+import fr.kazejiyu.ekumi.core.workflow.impl.AbstractActivityWithStateManagement;
+
+/**
+ * A stub activity that counts the number of time it is run. 
+ */
+public final class FakeActivity extends AbstractActivityWithStateManagement {
 	
 	private int callsToRun = 0;
 	
+	public FakeActivity() {
+		super(new Date().hashCode() + "", "Fake Activity");
+	}
+	
 	@Override
-	public void run(Context context) {
+	protected void doRun(Context context) {
 		++callsToRun;
 	}
 	
@@ -16,6 +25,10 @@ public class FakeActivity extends ActivityImpl {
 		return callsToRun > 0;
 	}
 	
+	/**
+	 * Returns whether the activity has been run exactly once.
+	 * @return whether the activity has been run exactly once
+	 */
 	public boolean hasBeenRunOnce() {
 		return callsToRun == 1;
 	}

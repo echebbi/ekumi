@@ -1,7 +1,6 @@
 package fr.kazejiyu.ekumi.ide.history;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.only;
 import static org.mockito.Mockito.verify;
@@ -17,7 +16,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 
-import fr.kazejiyu.ekumi.core.workflow.Execution;
+import fr.kazejiyu.ekumi.core.execution.FrozenExecution;
 import fr.kazejiyu.ekumi.ide.events.EKumiEvents;
 import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
 
@@ -27,7 +26,7 @@ public class PostEventOnExecutionChangeTest implements WithAssertions {
 	
 	@Mock IEventBroker broker;
 	
-	Execution expectedExecution;
+	FrozenExecution expectedExecution;
 	
 	PostEventOnExecutionChange listener;
 	
@@ -75,7 +74,7 @@ public class PostEventOnExecutionChangeTest implements WithAssertions {
 		@Test @DisplayName("posts the appropriate execution")
 		void posts_the_appropriate_execution() {
 			listener.onFileCreate(expectedExecutionModel);
-			verify(broker, only()).post(any(), argThat(new ExecutionMatcher(expectedExecution)));
+			verify(broker, only()).post(any(), eq(expectedExecution));
 		}
 		
 	}
@@ -115,7 +114,7 @@ public class PostEventOnExecutionChangeTest implements WithAssertions {
 		@Test @DisplayName("posts the appropriate execution")
 		void posts_the_appropriate_execution() {
 			listener.onFileChange(expectedExecutionModel);
-			verify(broker, only()).post(any(), argThat(new ExecutionMatcher(expectedExecution)));
+			verify(broker, only()).post(any(), eq(expectedExecution));
 		}
 		
 	}

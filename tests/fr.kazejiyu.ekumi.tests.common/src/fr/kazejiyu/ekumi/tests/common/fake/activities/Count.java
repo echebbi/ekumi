@@ -1,13 +1,14 @@
 package fr.kazejiyu.ekumi.tests.common.fake.activities;
 
+import java.util.Date;
+
 import fr.kazejiyu.ekumi.core.workflow.Context;
-import fr.kazejiyu.ekumi.core.workflow.Status;
-import fr.kazejiyu.ekumi.core.workflow.gen.impl.ActivityImpl;
+import fr.kazejiyu.ekumi.core.workflow.impl.AbstractActivityWithStateManagement;
 
 /**
- * An Activity that increments the value of a specific variable. 
+ * An Activity that counts the number of times it is executed.
  */
-public class Count extends ActivityImpl {
+public final class Count extends AbstractActivityWithStateManagement {
 	
 	private int value;
 	
@@ -16,6 +17,7 @@ public class Count extends ActivityImpl {
 	}
 	
 	public Count(int start) {
+		super("" + new Date().hashCode(), "Count from " + start);
 		this.value = start;
 	}
 	
@@ -24,9 +26,8 @@ public class Count extends ActivityImpl {
 	}
 	
 	@Override
-	public void run(Context context) {
+	protected void doRun(Context context) {
 		++value;
-		setStatus(Status.SUCCEEDED);
 	}
 
 }

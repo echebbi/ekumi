@@ -153,9 +153,7 @@ import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
 import fr.kazejiyu.ekumi.core.catalog.gen.provider.CatalogItemProviderAdapterFactory;
-import fr.kazejiyu.ekumi.core.gen.presentation.EKumiEditorPlugin;
-import fr.kazejiyu.ekumi.core.workflow.gen.provider.WorkflowItemProviderAdapterFactory;
-
+import fr.kazejiyu.ekumi.core.presentation.EKumiEditorPlugin;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
@@ -676,7 +674,6 @@ public class CatalogEditor extends MultiPageEditorPart
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new CatalogItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new WorkflowItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.

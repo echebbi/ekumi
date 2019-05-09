@@ -20,22 +20,22 @@ import fr.kazejiyu.ekumi.core.datatypes.exceptions.DataTypeUnserializationExcept
 public class DoubleType implements DataType<Double> {
 	
 	@Override
-	public String getId() {
+	public String id() {
 		return "fr.kazejiyu.ekumi.datatypes.double";
 	}
 
 	@Override
-	public String getName() {
+	public String name() {
 		return "Double";
 	}
 
 	@Override
-	public Class<Double> getJavaClass() {
+	public Class<Double> toJavaClass() {
 		return Double.class;
 	}
 
 	@Override
-	public Double getDefaultValue() {
+	public Double defaultValue() {
 		return 0d;
 	}
 

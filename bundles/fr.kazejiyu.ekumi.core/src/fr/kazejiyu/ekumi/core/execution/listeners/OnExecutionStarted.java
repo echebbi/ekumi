@@ -12,13 +12,17 @@ package fr.kazejiyu.ekumi.core.execution.listeners;
 import fr.kazejiyu.ekumi.core.workflow.Execution;
 
 /**
- * 
- * @author Kaze
- *
+ * A listener that is notified when an {@link Execution} starts.
  */
 @FunctionalInterface
 public interface OnExecutionStarted {
 
+	/**
+	 * Called when an execution is started.
+	 * 
+	 * @param execution
+	 * 				The execution that has just started.
+	 */
 	void onExecutionStarted(Execution execution);
 	
 }

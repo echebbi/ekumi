@@ -70,9 +70,8 @@ import org.eclipse.ui.part.ISetSelectionTarget;
 
 import fr.kazejiyu.ekumi.core.catalog.CatalogFactory;
 import fr.kazejiyu.ekumi.core.catalog.CatalogPackage;
-import fr.kazejiyu.ekumi.core.gen.presentation.EKumiEditorPlugin;
-import fr.kazejiyu.ekumi.core.gen.provider.EKumiEditPlugin;
-
+import fr.kazejiyu.ekumi.core.provider.EKumiEditPlugin;
+import fr.kazejiyu.ekumi.core.presentation.EKumiEditorPlugin;
 import org.eclipse.core.runtime.Path;
 
 import org.eclipse.jface.viewers.ISelection;

@@ -15,13 +15,14 @@ import fr.kazejiyu.ekumi.core.workflow.Execution;
  * An object that listens for the status of an {@link Execution} to change.
  */
 public interface ExecutionListener extends OnExecutionStarted, 
-										   OnExecutionSucceeded, 
+										   OnExecutionSucceeded,
+										   OnExecutionFailed,
 										   OnExecutionPaused,
 										   OnExecutionResumed,
-										   OnExecutionTerminated {
+										   OnExecutionCancelled {
 
 	@Override
-	default void onExecutionTerminated(Execution terminated) {
+	default void onExecutionCancelled(Execution terminated) {
 		// in case the implementing class is not interested in this event
 	}
 
@@ -37,6 +38,11 @@ public interface ExecutionListener extends OnExecutionStarted,
 
 	@Override
 	default void onExecutionSucceeded(Execution succeeded) {
+		// in case the implementing class is not interested in this event
+	}
+	
+	@Override
+	default void onExecutionFailed(Execution failed) {
 		// in case the implementing class is not interested in this event
 	}
 

@@ -30,10 +30,10 @@ public class ExtensionToDatatypeFactory implements DataTypeFactory {
 	}
 
 	@Override
-	public Optional<DataType<?>> find(String id) {
+	public Optional<DataType<? extends Object>> find(String id) {
 		ExtensionToDatatypeAdapter adapter = new ExtensionToDatatypeAdapter();
 		return adapter.adapt(elements.get()).stream()
-					  .filter(type -> id.equals(type.getId()))
+					  .filter(type -> id.equals(type.id()))
 					  .findAny();
 	}
 	

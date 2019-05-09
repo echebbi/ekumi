@@ -30,7 +30,7 @@ public class ExtensionToDatatypeAdapterTest implements WithAssertions {
 	List<IConfigurationElement> configurationElements;
 	
 	// The datatypes that should be returned by the adapter
-	List<DataType<?>> expectedDatatypes;
+	List<DataType<? extends Object>> expectedDatatypes;
 	
 	@BeforeEach
 	@SuppressWarnings("unchecked")

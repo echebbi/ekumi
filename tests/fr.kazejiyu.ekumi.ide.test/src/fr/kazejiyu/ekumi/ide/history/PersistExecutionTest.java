@@ -1,28 +1,25 @@
-package fr.kazejiyu.ekumi.ide.history;
+ package fr.kazejiyu.ekumi.ide.history;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintStream;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
 
 import org.assertj.core.api.SoftAssertions;
 import org.assertj.core.api.WithAssertions;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.junit.jupiter.api.AfterEach;
+import org.assertj.core.util.Files;
+import org.eclipse.collections.api.list.ImmutableList;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import fr.kazejiyu.ekumi.core.workflow.Activity;
+import fr.kazejiyu.ekumi.core.exceptions.InterruptedExecutionException;
+import fr.kazejiyu.ekumi.core.execution.FrozenExecution;
+import fr.kazejiyu.ekumi.core.execution.impl.JobsExecution;
 import fr.kazejiyu.ekumi.core.workflow.Execution;
-import fr.kazejiyu.ekumi.core.workflow.Status;
-import fr.kazejiyu.ekumi.core.workflow.WorkflowFactory;
+import fr.kazejiyu.ekumi.tests.common.fake.activities.DoNothing;
 
 /**
  * Tests the behavior of a {@link PersistExecution} instance.<br>
@@ -42,34 +39,30 @@ public class PersistExecutionTest implements WithAssertions {
 	private PersistedHistory history;
 	
 	@BeforeEach
-	void createInstance() {
-		File location = new File("./rsc/PersistExecutionTest/");
-		URI locationURI = URI.createFileURI(location.getAbsolutePath());
+	void createInstance() throws InterruptedExecutionException {
+		Path location = Paths.get("./rsc/PersistExecutionTest/");
 		
-		deleteContentOf(location, false);
+		deleteContentOf(location.toFile(), false);
 		
-		serializer = new PersistExecution(locationURI);
+		serializer = new PersistExecution(location);
+		history = new PersistedHistory(location);
 		
-		history = new PersistedHistory(Paths.get(location.getAbsolutePath()));
-		
-		expected = WorkflowFactory.eINSTANCE.createExecution();
-		expected.setId("first-execution");
-		expected.setName("Execution n°1");
-		expected.setStartDate(new Date());
+		expected = new JobsExecution(new DoNothing());
+		expected.start();
+		expected.join();
 	}
 	
 	@Test @DisplayName("persists an Execution on execution started")
 	void persists_given_Execution_on_execution_started() {
 		serializer.onExecutionStarted(expected);
 		
-		List<Execution> executions = history.getExecutions();
+		ImmutableList<FrozenExecution> executions = history.executions();
 		
 		SoftAssertions softly = new SoftAssertions();
 		softly.assertThat(executions).size().isEqualTo(1);
-		softly.assertThat(executions.get(0).getId()).isEqualTo(expected.getId());
-		softly.assertThat(executions.get(0).getName()).isEqualTo(expected.getName());
-		softly.assertThat(executions.get(0).getStartDate()).hasSameTimeAs(expected.getStartDate());
-		softly.assertThat(executions.get(0).getActivity()).isNull();
+		softly.assertThat(executions.get(0).id()).isEqualTo(expected.id());
+		softly.assertThat(executions.get(0).name()).isEqualTo(expected.name());
+		softly.assertThat(executions.get(0).startDate()).hasSameTimeAs(expected.startDate().get());
 		softly.assertAll();
 	}
 	
@@ -77,69 +70,84 @@ public class PersistExecutionTest implements WithAssertions {
 	void persists_given_Execution_on_execution_succeeded() {
 		serializer.onExecutionSucceeded(expected);
 		
-		List<Execution> executions = history.getExecutions();
+		ImmutableList<FrozenExecution> executions = history.executions();
 		
 		SoftAssertions softly = new SoftAssertions();
 		softly.assertThat(executions).size().isEqualTo(1);
-		softly.assertThat(executions.get(0).getId()).isEqualTo(expected.getId());
-		softly.assertThat(executions.get(0).getName()).isEqualTo(expected.getName());
-		softly.assertThat(executions.get(0).getStartDate()).hasSameTimeAs(expected.getStartDate());
-		softly.assertThat(executions.get(0).getActivity()).isNull();
+		softly.assertThat(executions.get(0).id()).isEqualTo(expected.id());
+		softly.assertThat(executions.get(0).name()).isEqualTo(expected.name());
+		softly.assertThat(executions.get(0).startDate()).hasSameTimeAs(expected.startDate().get());
 		softly.assertAll();
 	}
 	
+	@Test @DisplayName("persists an Execution on execution failed")
+	void persists_given_Execution_on_execution_failed() {
+		serializer.onExecutionFailed(expected);
+		
+		ImmutableList<FrozenExecution> executions = history.executions();
+		
+		SoftAssertions softly = new SoftAssertions();
+		softly.assertThat(executions).size().isEqualTo(1);
+		softly.assertThat(executions.get(0).id()).isEqualTo(expected.id());
+		softly.assertThat(executions.get(0).name()).isEqualTo(expected.name());
+		softly.assertThat(executions.get(0).startDate()).hasSameTimeAs(expected.startDate().get());
+		softly.assertAll();
+	}
+	
+	@Disabled // activities are not serialized at the moment
 	@Test @DisplayName("persists an Execution on activity succeeded")
 	void persists_given_Execution_on_activity_succeeded() {
 		// Required: expected to be called before any onActivity* method
 		serializer.onExecutionStarted(expected);
 		
-		Activity activity = WorkflowFactory.eINSTANCE.createSequence();
-		activity.setId("great-sequence");
-		activity.setName("Great Sequence");
-		activity.setStatus(Status.CANCELLED);
-		expected.setActivity(activity);
-		
-		serializer.onActivitySucceeded(activity);
-		
-		List<Execution> executions = history.getExecutions();
-		
+//		Activity activity = WorkflowFactory.eINSTANCE.createSequence();
+//		activity.setId("great-sequence");
+//		activity.setName("Great Sequence");
+//		activity.setStatus(State.CANCELLED);
+//		expected.setActivity(activity);
+//		
+//		serializer.onActivitySucceeded(activity);
+//		
+//		List<Execution> executions = history.getExecutions();
+//		
 		SoftAssertions softly = new SoftAssertions();
-		softly.assertThat(executions).size().isEqualTo(1);
-		softly.assertThat(executions.get(0).getId()).isEqualTo(expected.getId());
-		softly.assertThat(executions.get(0).getName()).isEqualTo(expected.getName());
-		softly.assertThat(executions.get(0).getStartDate()).hasSameTimeAs(expected.getStartDate());
-		
-		softly.assertThat(EcoreUtil.equals(executions.get(0).getActivity(), activity))
-			  .as("Loaded activity is not equal to expected one")
-			  .isTrue();
+//		softly.assertThat(executions).size().isEqualTo(1);
+//		softly.assertThat(executions.get(0).id()).isEqualTo(expected.id());
+//		softly.assertThat(executions.get(0).name()).isEqualTo(expected.name());
+//		softly.assertThat(executions.get(0).getStartDate()).hasSameTimeAs(expected.getStartDate());
+//		
+//		softly.assertThat(EcoreUtil.equals(executions.get(0).getActivity(), activity))
+//			  .as("Loaded activity is not equal to expected one")
+//			  .isTrue();
 		
 		softly.assertAll();
 	}
 	
+	@Disabled // activities are not serialized at the moment
 	@Test @DisplayName("persists an Execution on activity failed")
 	void persists_given_Execution_on_activity_failed() {
 		// Required: expected to be called before any onActivity* method
 		serializer.onExecutionStarted(expected);
 		
-		Activity activity = WorkflowFactory.eINSTANCE.createSequence();
-		activity.setId("great-sequence");
-		activity.setName("Great Sequence");
-		activity.setStatus(Status.CANCELLED);
-		expected.setActivity(activity);
-		
-		serializer.onActivityFailed(activity);
-		
-		List<Execution> executions = history.getExecutions();
-		
+//		Activity activity = WorkflowFactory.eINSTANCE.createSequence();
+//		activity.setId("great-sequence");
+//		activity.setName("Great Sequence");
+//		activity.setStatus(State.CANCELLED);
+//		expected.setActivity(activity);
+//		
+//		serializer.onActivityFailed(activity);
+//		
+//		List<Execution> executions = history.getExecutions();
+//		
 		SoftAssertions softly = new SoftAssertions();
-		softly.assertThat(executions).size().isEqualTo(1);
-		softly.assertThat(executions.get(0).getId()).isEqualTo(expected.getId());
-		softly.assertThat(executions.get(0).getName()).isEqualTo(expected.getName());
-		softly.assertThat(executions.get(0).getStartDate()).hasSameTimeAs(expected.getStartDate());
-		
-		softly.assertThat(EcoreUtil.equals(executions.get(0).getActivity(), activity))
-			  .as("Loaded activity is not equal to expected one")
-			  .isTrue();
+//		softly.assertThat(executions).size().isEqualTo(1);
+//		softly.assertThat(executions.get(0).id()).isEqualTo(expected.id());
+//		softly.assertThat(executions.get(0).name()).isEqualTo(expected.name());
+//		softly.assertThat(executions.get(0).getStartDate()).hasSameTimeAs(expected.getStartDate());
+//		
+//		softly.assertThat(EcoreUtil.equals(executions.get(0).getActivity(), activity))
+//			  .as("Loaded activity is not equal to expected one")
+//			  .isTrue();
 		
 		softly.assertAll();
 	}
@@ -156,55 +164,6 @@ public class PersistExecutionTest implements WithAssertions {
 		
 	}
 	
-	@Nested @DisplayName("when instantiated with an illegal location")
-	class WhenInstantiatedWithAnIllegalLocation {
-		
-		private PrintStream originalErrorStream = null;
-		
-		private File location;
-		
-		@BeforeEach
-		void when_instantiated_with_an_illegal_location() {
-			location = new File("<>?");
-			URI locationURI = URI.createFileURI(location.getAbsolutePath());
-			
-			deleteContentOf(location, false);
-			
-			serializer = new PersistExecution(locationURI);
-			redirectErrorStreamToNull();
-		}
-		
-		@Test @DisplayName("does not throw on event")
-		void does_not_throw_on_event() {
-			assertThatCode(() -> serializer.onExecutionStarted(expected)).doesNotThrowAnyException();
-		}
-		
-		@AfterEach
-		void fixErrorStream() {
-			if (originalErrorStream != null) {
-				System.setErr(originalErrorStream);
-				originalErrorStream = null;
-			}
-		}
-
-		/** 
-		 * The test prints an Exception to stderr but we don't want to pollute the console with it.
-		 * This method allows to temporarily ignore any printed Exception.  
-		 */
-		private void redirectErrorStreamToNull() {
-			originalErrorStream = System.err;
-			System.setErr(new PrintStream(new OutputStream() {
-				
-				@Override
-				public void write(int b) throws IOException {
-					// do nothing
-				}
-				
-			}));
-		}
-		
-	}
-	
 	/**
 	 * Recursively delete the content of {@code location}.
 	 * 
@@ -215,14 +174,16 @@ public class PersistExecutionTest implements WithAssertions {
 	 */
 	private static void deleteContentOf(File location, boolean delete) {
 		if (location.isFile() && delete) {
-			location.delete();
-		} else {
-			if (location.listFiles() != null)
+			Files.delete(location);
+		} 
+		else {
+			if (location.listFiles() != null) {
 				Arrays.stream(location.listFiles())
 					  .forEach(file -> deleteContentOf(file, true));
-			
-			if (delete)
-				location.delete();
+			}
+			if (delete) {
+				Files.delete(location);
+			}
 		}
 	}
 	

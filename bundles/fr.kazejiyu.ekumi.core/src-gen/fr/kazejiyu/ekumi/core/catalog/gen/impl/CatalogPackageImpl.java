@@ -4,6 +4,7 @@ package fr.kazejiyu.ekumi.core.catalog.gen.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -18,8 +19,6 @@ import fr.kazejiyu.ekumi.core.catalog.Catalogs;
 import fr.kazejiyu.ekumi.core.catalog.Category;
 import fr.kazejiyu.ekumi.core.catalog.Group;
 import fr.kazejiyu.ekumi.core.catalog.Identifiable;
-import fr.kazejiyu.ekumi.core.workflow.WorkflowPackage;
-import fr.kazejiyu.ekumi.core.workflow.gen.impl.WorkflowPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -71,6 +70,13 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	private EClass identifiableEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType activityEDataType = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -119,19 +125,11 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 
 		isInited = true;
 
-		// Obtain or create and register interdependencies
-		WorkflowPackageImpl theWorkflowPackage = (WorkflowPackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(WorkflowPackage.eNS_URI) instanceof WorkflowPackageImpl
-						? EPackage.Registry.INSTANCE.getEPackage(WorkflowPackage.eNS_URI)
-						: WorkflowPackage.eINSTANCE);
-
 		// Create package meta-data objects
 		theCatalogPackage.createPackageContents();
-		theWorkflowPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theCatalogPackage.initializePackageContents();
-		theWorkflowPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theCatalogPackage.freeze();
@@ -290,6 +288,15 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getActivity() {
+		return activityEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CatalogFactory getCatalogFactory() {
 		return (CatalogFactory) getEFactoryInstance();
 	}
@@ -335,6 +342,9 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 		createEAttribute(identifiableEClass, IDENTIFIABLE__ID);
 		createEAttribute(identifiableEClass, IDENTIFIABLE__NAME);
 		createEAttribute(identifiableEClass, IDENTIFIABLE__DESCRIPTION);
+
+		// Create data types
+		activityEDataType = createEDataType(ACTIVITY);
 	}
 
 	/**
@@ -360,10 +370,6 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 		setName(eNAME);
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
-
-		// Obtain other dependent packages
-		WorkflowPackage theWorkflowPackage = (WorkflowPackage) EPackage.Registry.INSTANCE
-				.getEPackage(WorkflowPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -407,8 +413,8 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 				"category", null, 0, 1, ActivityTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				!IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getActivityTemplate__ToActivity(), theWorkflowPackage.getActivity(), "toActivity", 0, 1,
-				IS_UNIQUE, IS_ORDERED);
+		initEOperation(getActivityTemplate__ToActivity(), this.getActivity(), "toActivity", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
 		initEClass(identifiableEClass, Identifiable.class, "Identifiable", IS_ABSTRACT, IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -419,6 +425,10 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 		initEAttribute(getIdentifiable_Description(), ecorePackage.getEString(), "description", null, 0, 1,
 				Identifiable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+
+		// Initialize data types
+		initEDataType(activityEDataType, fr.kazejiyu.ekumi.core.workflow.Activity.class, "Activity", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

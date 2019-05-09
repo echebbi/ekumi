@@ -9,6 +9,7 @@
  ******************************************************************************/
 package fr.kazejiyu.ekumi.ui.e4.parts;
 
+import java.text.DateFormat;
 import java.util.Objects;
 import java.util.function.Function;
 
@@ -21,11 +22,8 @@ import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.e4.ui.services.IServiceConstants;
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.CellLabelProvider;
-import org.eclipse.jface.viewers.DecoratingStyledCellLabelProvider;
+import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
 import org.eclipse.jface.viewers.IElementComparer;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -40,12 +38,13 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 
 import fr.kazejiyu.ekumi.core.catalog.Identifiable;
+import fr.kazejiyu.ekumi.core.execution.FrozenExecution;
+import fr.kazejiyu.ekumi.core.execution.History;
 import fr.kazejiyu.ekumi.core.workflow.Activity;
 import fr.kazejiyu.ekumi.core.workflow.Execution;
-import fr.kazejiyu.ekumi.core.workflow.History;
-import fr.kazejiyu.ekumi.core.workflow.provider.EkumiDecoratorAdapterFactory;
+import fr.kazejiyu.ekumi.core.workflow.provider.FrozenExecutionItemProvider;
+import fr.kazejiyu.ekumi.core.workflow.provider.FrozenExecutionLabelProvider;
 import fr.kazejiyu.ekumi.core.workflow.provider.label.DynamicStyledLabelProvider;
-import fr.kazejiyu.ekumi.core.workflow.provider.label.StyledLabelProviderFactory;
 import fr.kazejiyu.ekumi.ide.events.EKumiEvents;
 
 /**
@@ -65,24 +64,23 @@ public class ExecutionHistoryView {
 
 	@PostConstruct
 	public void createPartControl(Composite parent) {
-		viewer = new TreeViewer(parent, SWT.BORDER);
+		viewer = new TreeViewer(parent, SWT.BORDER | SWT.H_SCROLL);
 		Tree tree = viewer.getTree();
 		tree.setLinesVisible(true);
 		tree.setHeaderVisible(true);
 		
-		AdapterFactory adapterFactory = new EkumiDecoratorAdapterFactory();
-		viewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-		AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
-		viewer.setLabelProvider(labelProvider);
-		viewer.setInput(history);
+		viewer.setContentProvider(new FrozenExecutionItemProvider());
 		viewer.setComparator(new NewExecutionsFirst());
 		viewer.setComparer(new ById());
 		
-		Function<Activity,String> activityStatus = activity -> activity.getStatus().getLiteral();
+		Function<FrozenExecution,String> showExecutionState = ex -> ex.state().toString();
+		Function<FrozenExecution,String> showExecutionStartDate= ex -> DateFormat.getInstance().format(ex.startDate());
 		
-		addColumn(viewer, new DecoratingStyledCellLabelProvider(new StyledLabelProviderFactory(labelProvider), null, null), "Name", 200);
-		addColumn(viewer, new DecoratingStyledCellLabelProvider(new DynamicStyledLabelProvider<>(Activity.class, activityStatus), null, null), "Status", 50);
+		addColumn(viewer, new DelegatingStyledCellLabelProvider(new FrozenExecutionLabelProvider()), "Name", 180);
+		addColumn(viewer, new DelegatingStyledCellLabelProvider(new DynamicStyledLabelProvider<>(FrozenExecution.class, showExecutionState)), "State", 90);
+		addColumn(viewer, new DelegatingStyledCellLabelProvider(new DynamicStyledLabelProvider<>(FrozenExecution.class, showExecutionStartDate)), "Start Date", 120);
 		
+		viewer.setInput(history);
 		PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_ELCL_REMOVEALL);
 	}
 	
@@ -95,12 +93,12 @@ public class ExecutionHistoryView {
 	}
 	
 	@Inject @Optional
-	void onModified(@UIEventTopic(EKumiEvents.HISTORY_EXECUTION_CHANGED) Execution modifiedExecution) {
-	    viewer.refresh(modifiedExecution);
+	void onModified(@UIEventTopic(EKumiEvents.HISTORY_EXECUTION_CHANGED) FrozenExecution modifiedExecution) {
+	    viewer.refresh();
 	}
 	
 	@Inject @Optional
-	void onAdd(@UIEventTopic(EKumiEvents.HISTORY_EXECUTION_STARTED) Execution newExecution) {
+	void onAdd(@UIEventTopic(EKumiEvents.HISTORY_EXECUTION_STARTED) FrozenExecution newExecution) {
 		// TODO Find a better solution ? Not sure this is the good way to update the TreeViewer:
 		// icons are not set for new items
 	    viewer.add(history, newExecution);
@@ -111,17 +109,12 @@ public class ExecutionHistoryView {
 
 		@Override
 		public int compare(Viewer viewer, Object e1, Object e2) {
-			if (e1 instanceof Execution && e2 instanceof Execution) {
-				Execution ex1 = (Execution) e1;
-				Execution ex2 = (Execution) e2;
+			if (e1 instanceof FrozenExecution && e2 instanceof FrozenExecution) {
+				FrozenExecution ex1 = (FrozenExecution) e1;
+				FrozenExecution ex2 = (FrozenExecution) e2;
 				
-				if (ex1.getStartDate().before(ex2.getStartDate()))
-					return 1;
-				if (ex1.getStartDate().after(ex2.getStartDate()))
-					return -1;
-				return 0;
+				return ex2.startDate().compareTo(ex1.startDate());
 			}
-			
 			return super.compare(viewer, e1, e2);
 		}
 		
@@ -134,10 +127,10 @@ public class ExecutionHistoryView {
 		@Override
 		public boolean equals(Object a, Object b) {
 			if (a instanceof Activity && b instanceof Activity)
-				return ((Activity) a).getId().equals(((Activity) b).getId());
+				return ((Activity) a).id().equals(((Activity) b).id());
 			
 			if (a instanceof Execution && b instanceof Execution)
-				return ((Execution) a).getId().equals(((Execution) b).getId());
+				return ((Execution) a).id().equals(((Execution) b).id());
 			
 			if (a instanceof History && b instanceof History)
 				// Assumes that the view only shows one history

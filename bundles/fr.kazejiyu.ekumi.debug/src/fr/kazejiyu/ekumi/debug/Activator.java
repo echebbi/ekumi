@@ -104,7 +104,7 @@ public class Activator extends Plugin {
 		if (getDefault() != null) {
 			getDefault().getLog().log(status);
 		}
-		else if (status.getCode() == IStatus.ERROR && status.getException() != null) {
+		else if (status.getSeverity() == IStatus.ERROR && status.getException() != null) {
 			status.getException().printStackTrace();
 		}
 		else {

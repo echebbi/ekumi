@@ -39,10 +39,10 @@ public class ExtensionToDatatypeFactoryTest implements WithAssertions {
 		// Create datatypes
 		
 		stringType = Mockito.mock(DataType.class);
-		when (stringType.getId()) .thenReturn("type.string");
+		when (stringType.id()) .thenReturn("type.string");
 		
 		DataType<String> doubleType = Mockito.mock(DataType.class);
-		when (doubleType.getId()) .thenReturn("type.double");
+		when (doubleType.id()) .thenReturn("type.double");
 		
 		expectedDatatypes = Arrays.asList(stringType, doubleType);
 		
@@ -84,7 +84,7 @@ public class ExtensionToDatatypeFactoryTest implements WithAssertions {
 		
 		@Test @DisplayName("finds the corresponding datatype")
 		void finds_the_corresponding_datatype() {
-			assertThat(factory.find(stringType.getId())).contains(stringType);
+			assertThat(factory.find(stringType.id())).contains(stringType);
 		}
 		
 	}

@@ -12,15 +12,10 @@ package fr.kazejiyu.ekumi.ide.history;
 import static java.util.Objects.requireNonNull;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.Map;
-
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import java.util.Date;
 
 import fr.kazejiyu.ekumi.core.EKumiPlugin;
 import fr.kazejiyu.ekumi.core.execution.listeners.ActivityListener;
@@ -30,8 +25,8 @@ import fr.kazejiyu.ekumi.core.workflow.Execution;
 import fr.kazejiyu.ekumi.ide.internal.lock.LockFolderFile;
 
 /**
- * Watches an {@link Execution} in order to persist it in the workspace each time it changes.<br>
- * <br>
+ * Watches an {@link Execution} in order to persist it in the workspace each time it changes.
+ * <<p>
  * The execution is persisted under the given URI using the following pattern:
  * <ul>
  * 	<li><i>&lt;yyyy.MM.dd.HHmmssms&gt;-&lt;execution-id&gt;</i>/<i>&lt;execution-name&gt;</i>.ekumi
@@ -39,11 +34,12 @@ import fr.kazejiyu.ekumi.ide.internal.lock.LockFolderFile;
  * For instance, the Execution {@code (id=a.simple.execution, name=Simple Execution)} started on December 17th, 2018,
  * at 13:03:42.27 would be persisted under:
  * <ul>
- * 	<li>2018.12.17.13034227-a.simple.execution/Simple Execution.ekumi
+ * 	<li>2018.12.17.13034227-a.simple.execution/Simple Execution.workflow
  * </ul>
  * 
  * @author Emmanuel CHEBBI
  */
+// TODO [Refactor] Should rely on OSGI declarative services
 public class PersistExecution implements ActivityListener, ExecutionListener {
 
 	/** The format used to write execution's start date */
@@ -53,7 +49,7 @@ public class PersistExecution implements ActivityListener, ExecutionListener {
 	private Execution execution;
 	
 	/** The directory where the execution is persisted */
-	private final URI location;
+	private final Path location;
 	
 	/**
 	 * Creates a new listener aimed to persist an execution to the given location.
@@ -62,7 +58,7 @@ public class PersistExecution implements ActivityListener, ExecutionListener {
 	 * 			The location where the execution must be persisted.
 	 * 			Must be a valid directory.
 	 */
-	public PersistExecution(URI location) {
+	public PersistExecution(Path location) {
 		this.location = requireNonNull(location, "The location must not be null");
 	}
 
@@ -87,6 +83,12 @@ public class PersistExecution implements ActivityListener, ExecutionListener {
 		this.execution = succeeded;
 		persist(execution);
 	}
+	
+	@Override
+	public void onExecutionFailed(Execution failed) {
+		this.execution = failed;
+		persist(execution);
+	}
 
 	/**
 	 * Persists given execution as an XMI file under given location.
@@ -95,27 +97,16 @@ public class PersistExecution implements ActivityListener, ExecutionListener {
 	 * 			The execution to persist.
 	 */
 	private void persist(Execution execution) {
-		// Prepare the .ekumi writer
-		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-		Map<String, Object> m = reg.getExtensionToFactoryMap();
-		m.putIfAbsent("workflow", new XMIResourceFactoryImpl());
-		
-		// Create a resource to save the Execution
-		URI folderURI = location.appendSegment(folderNameFor(execution));
-		
-		ResourceSet resourceSet = new ResourceSetImpl();
-		Resource resource = resourceSet.createResource(
-				folderURI
-					.appendSegment(execution.getName())
-					.appendFileExtension("workflow")
-		 );
-		resource.getContents().add(execution);
+		Path folder = location.resolve(folderNameFor(execution));
 		
 		// Save the resource with a lock to prevent readings while the resource is not fully written
-		try (LockFolderFile lock = new LockFolderFile(folderURI)) {
-			resource.save(Collections.emptyMap());
+		try (LockFolderFile lock = new LockFolderFile(folder.resolve(".lock"))) {
+			Path modelFile = folder.resolve(execution.name() + ".workflow");
 			
-		} catch (IOException e) {
+			Files.createDirectories(folder);
+			Files.write(modelFile, serialize(execution).getBytes());
+		}
+		catch (IOException e) {
 			EKumiPlugin.error(e, "An error occurred while persisting " + execution + " at URI " + location);
 		}
 	}
@@ -129,7 +120,16 @@ public class PersistExecution implements ActivityListener, ExecutionListener {
 	 * @return the name of the folder in which the execution can be saved
 	 */
 	private String folderNameFor(Execution execution) {
-		return startDateFormat.format(execution.getStartDate()) + "." + execution.getId();
+		return execution.startDate().map(startDateFormat::format)
+									.map(date -> date + "_" + execution.id())
+									.orElse("not started yet");
+	}
+	
+	private static String serialize(Execution execution) {
+		return execution.id() + ";" 
+			 + execution.name() 
+			 + ";" + execution.state() 
+			 + ";" + execution.startDate().map(Date::getTime).orElse(0l);
 	}
 
 }

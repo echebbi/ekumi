@@ -1,8 +1,9 @@
 package fr.kazejiyu.ekumi.core.workflow.impl;
 
-import static fr.kazejiyu.ekumi.core.workflow.Status.CANCELLED;
-import static fr.kazejiyu.ekumi.core.workflow.Status.FAILED;
-import static fr.kazejiyu.ekumi.core.workflow.Status.SUCCEEDED;
+import static fr.kazejiyu.ekumi.core.workflow.State.CANCELLED;
+import static fr.kazejiyu.ekumi.core.workflow.State.FAILED;
+import static fr.kazejiyu.ekumi.core.workflow.State.SKIPPED;
+import static fr.kazejiyu.ekumi.core.workflow.State.SUCCEEDED;
 import static java.util.stream.Collectors.toList;
 import static org.mockito.Mockito.when;
 
@@ -20,7 +21,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 
-import fr.kazejiyu.ekumi.core.execution.ExecutionStatus;
+import fr.kazejiyu.ekumi.core.execution.ExecutionState;
+import fr.kazejiyu.ekumi.core.execution.events.Events;
+import fr.kazejiyu.ekumi.core.workflow.Activity;
 import fr.kazejiyu.ekumi.core.workflow.Context;
 import fr.kazejiyu.ekumi.tests.common.fake.activities.BrokenActivity;
 import fr.kazejiyu.ekumi.tests.common.fake.activities.CheckExecutingThread;
@@ -34,17 +37,18 @@ import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
  * @author Emmanuel CHEBBI
  */
 @ExtendWith(MockitoExtension.class)
-@DisplayName("A BasicParallelSplit")
+@DisplayName("A Basic Parallel Split")
 public class BasicParallelSplitTest implements WithAssertions {
 	
 	@Mock
 	private Context context;
 	
 	@Mock 
-	private ExecutionStatus status;
+	private ExecutionState status;
 	
 	@BeforeEach
-	void initContext() {
+	void initContext(@Mock Events events) {
+		when (context.events()) .thenReturn(events);
 		when (context.execution()) .thenReturn(status);
 		when (status.isCancelled()) .thenReturn(false);
 	}
@@ -54,23 +58,23 @@ public class BasicParallelSplitTest implements WithAssertions {
 		private BasicParallelSplit empty;
 		
 		@BeforeEach
-		void initialize(@Mock ExecutionStatus status) {
-			empty = new BasicParallelSplit();
+		void initialize(@Mock ExecutionState status) {
+			empty = new BasicParallelSplit("id", "name'");
 		}
 		
 		// getBranches()
 		
-		@Test @DisplayName("has no branch")
-		void has_no_branch() {
-			assertThat(empty.getBranches()).isEmpty();
-		}
+//		@Test @DisplayName("has no branch")
+//		void has_no_branch() {
+//			assertThat(empty.getBranches()).isEmpty();
+//		}
 		
 		// run()
 		
 		@Test @DisplayName("has 'succeeded' status after run")
 		void has_succeeded_status_after_run() {
 			empty.run(context);
-			assertThat(empty.getStatus()).isEqualTo(SUCCEEDED);
+			assertThat(empty.state()).isEqualTo(SUCCEEDED);
 		}
 	}
 	
@@ -84,45 +88,43 @@ public class BasicParallelSplitTest implements WithAssertions {
 		
 		@BeforeEach
 		void initialize() {
-			split = new BasicParallelSplit();
-			
 			branches = new ArrayList<>();
-			for (int i = 0 ; i < NBR_BRANCHES ; ++i) 
+			for (int i = 0 ; i < NBR_BRANCHES ; ++i) { 
 				branches.add(new CheckExecutingThread());
-			
-			split.getBranches().addAll(branches);
+			}
+			split = new BasicParallelSplit("id", "name", branches);
 		}
 		
-		// getBranches()
-		
-		@Test @DisplayName("knowns its branches")
-		void knows_its_branches() {
-			assertThat(split.getBranches()).containsExactlyInAnyOrderElementsOf(branches);
-		}
+//		// getBranches()
+//		
+//		@Test @DisplayName("knowns its branches")
+//		void knows_its_branches() {
+//			assertThat(split.getBranches()).containsExactlyInAnyOrderElementsOf(branches);
+//		}
 		
 		// run()
 		
 		@Test @DisplayName("executes all its tasks")
 		void execute_all_its_tasks() {
 			split.run(context);
-			assertThat(split.getBranches()).allMatch(activity -> ((CheckExecutingThread) activity).hasRun());
+			assertThat(branches).allMatch(CheckExecutingThread::hasRun);
 		}
 		
 		@Test @DisplayName("executes all its tasks in different threads")
 		void execute_all_its_tasks_in_different_threads() {
 			split.run(context);
 			
-			List<Thread> distinctExecutingThreads = split.getBranches().stream()
-														 .map(CheckExecutingThread.class::cast)
-														 .map(activity -> activity.getExecutingThread())
-														 .distinct()
-														 .collect(toList());
+			List<Thread> distinctExecutingThreads = branches.stream()
+														    .map(CheckExecutingThread.class::cast)
+														    .map(activity -> activity.getExecutingThread())
+														    .distinct()
+														    .collect(toList());
 			
-			List<Thread> allExecutingThreads = split.getBranches().stream()
-													.map(CheckExecutingThread.class::cast)
-													.map(activity -> activity.getExecutingThread())
-													.distinct()
-													.collect(toList());
+			List<Thread> allExecutingThreads = branches.stream()
+													   .map(CheckExecutingThread.class::cast)
+													   .map(activity -> activity.getExecutingThread())
+													   .distinct()
+													   .collect(toList());
 			
 			assertThat(allExecutingThreads).containsExactlyInAnyOrderElementsOf(distinctExecutingThreads);
 		}
@@ -133,16 +135,16 @@ public class BasicParallelSplitTest implements WithAssertions {
 			
 			SoftAssertions softly = new SoftAssertions();
 			
-			for (CheckExecutingThread branch : branches)
+			for (CheckExecutingThread branch : branches) {
 				softly.assertThat(branch.getContextOnRun()).isSameAs(context);
-			
+			}
 			softly.assertAll();
 		}
 		
 		@Test @DisplayName("has 'finished' status after run")
 		void has_finished_status_after_run() {
 			split.run(context);
-			assertThat(split.getStatus()).isEqualTo(SUCCEEDED);
+			assertThat(split.state()).isEqualTo(SUCCEEDED);
 		}
 	
 		@Disabled
@@ -159,23 +161,24 @@ public class BasicParallelSplitTest implements WithAssertions {
 				when (status.isCancelled()) .thenReturn(true);
 			}
 			
-			@Test @DisplayName("does not execute all its tasks")
-			void does_not_execute_all_its_tasks() {
+			@Test @DisplayName("does not execute its tasks")
+			void does_not_execute_its_tasks() {
 				split.run(context);
-				assertThat(split.getBranches()).anyMatch(activity -> ! ((CheckExecutingThread) activity).hasRun());
+				assertThat(branches).noneMatch(CheckExecutingThread::hasRun);
+			}
+			
+			@Test @DisplayName("tag its tasks as skipped")
+			void tag_its_tasks_as_skipped() {
+				split.run(context);
+				assertThat(branches).allMatch(b -> b.state() == SKIPPED);
 			}
 			
 			@Test @DisplayName("has the cancelled status")
 			void has_the_cancel_status() {
 				split.run(context);
-				assertThat(split.getStatus()).isEqualTo(CANCELLED);
+				assertThat(split.state()).isEqualTo(CANCELLED);
 			}
 			
-			@Test @DisplayName("cancel its branches")
-			void cancels_its_branches() {
-				split.run(context);
-				assertThat(split.getBranches()).allMatch(activity -> activity.getStatus() == CANCELLED);
-			}
 		}
 	}
 	
@@ -187,13 +190,15 @@ public class BasicParallelSplitTest implements WithAssertions {
 		
 		@BeforeEach
 		void initialize() {
-			activities = new CopyOnWriteArrayList<String>();
+			activities = new CopyOnWriteArrayList<>();
 			
-			corrupted = new BasicParallelSplit();
-			corrupted.getBranches().add(new SetNameInList("A", activities));
-			corrupted.getBranches().add(new SetNameInList("B", activities));
-			corrupted.getBranches().add(new BrokenActivity());
-			corrupted.getBranches().add(new SetNameInList("C", activities));
+			List<Activity> roots = new ArrayList<>();
+			roots.add(new SetNameInList("A", activities));
+			roots.add(new SetNameInList("B", activities));
+			roots.add(new BrokenActivity());
+			roots.add(new SetNameInList("C", activities));
+			
+			corrupted = new BasicParallelSplit("id", "name", roots);
 		}
 		
 		@Test @DisplayName("does not throw when run")
@@ -204,7 +209,7 @@ public class BasicParallelSplitTest implements WithAssertions {
 		@Test @DisplayName("has 'failed' status after run")
 		void has_failed_status_after_run() {
 			corrupted.run(context);
-			assertThat(corrupted.getStatus()).isEqualTo(FAILED);
+			assertThat(corrupted.state()).isEqualTo(FAILED);
 		}
 		
 		@Test @DisplayName("executes all other activities")
@@ -222,13 +227,15 @@ public class BasicParallelSplitTest implements WithAssertions {
 		
 		@BeforeEach
 		void initialize() {
-			activities = new ArrayList<String>();
+			activities = new ArrayList<>();
 			
-			corrupted = new BasicParallelSplit();
-			corrupted.getBranches().add(new SetNameInList("A", activities));
-			corrupted.getBranches().add(new SetNameInList("B", activities));
-			corrupted.getBranches().add(new HopelessActivity());
-			corrupted.getBranches().add(new SetNameInList("C", activities));
+			List<Activity> roots = new ArrayList<>();
+			roots.add(new SetNameInList("A", activities));
+			roots.add(new SetNameInList("B", activities));
+			roots.add(new HopelessActivity());
+			roots.add(new SetNameInList("C", activities));
+			
+			corrupted = new BasicParallelSplit("id", "name", roots);
 		}
 		
 		@Test @DisplayName("does not throw when run")
@@ -239,7 +246,7 @@ public class BasicParallelSplitTest implements WithAssertions {
 		@Test @DisplayName("has 'failed' status after run")
 		void has_failed_status_after_run() {
 			corrupted.run(context);
-			assertThat(corrupted.getStatus()).isEqualTo(FAILED);
+			assertThat(corrupted.state()).isEqualTo(FAILED);
 		}
 		
 		@Test @DisplayName("executes all other activities")

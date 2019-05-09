@@ -14,6 +14,7 @@ import fr.kazejiyu.ekumi.core.execution.listeners.ExecutionListener;
 import fr.kazejiyu.ekumi.core.execution.listeners.OnActivityFailed;
 import fr.kazejiyu.ekumi.core.execution.listeners.OnActivityStarted;
 import fr.kazejiyu.ekumi.core.execution.listeners.OnActivitySucceeded;
+import fr.kazejiyu.ekumi.core.execution.listeners.OnExecutionFailed;
 import fr.kazejiyu.ekumi.core.execution.listeners.OnExecutionStarted;
 import fr.kazejiyu.ekumi.core.execution.listeners.OnExecutionSucceeded;
 
@@ -74,6 +75,14 @@ public interface CallbackRegistry {
 	 * 			The listener to call. Must not be {@code null}.
 	 */
 	void onExecutionSucceeded(OnExecutionSucceeded listener);
+	
+	/**
+	 * Adds a new listener to call when an execution fails.
+	 * 
+	 * @param listener
+	 * 			The listener to call. Must not be {@code null}.
+	 */
+	void onExecutionFailed(OnExecutionFailed listener);
 	
 	/**
 	 * Adds a new listener to call when an execution-related event is sent.

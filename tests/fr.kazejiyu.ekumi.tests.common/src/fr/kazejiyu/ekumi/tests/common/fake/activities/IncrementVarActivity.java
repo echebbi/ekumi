@@ -1,12 +1,14 @@
 package fr.kazejiyu.ekumi.tests.common.fake.activities;
 
+import java.util.Date;
+
 import fr.kazejiyu.ekumi.core.workflow.Context;
-import fr.kazejiyu.ekumi.core.workflow.gen.impl.ActivityImpl;
+import fr.kazejiyu.ekumi.core.workflow.impl.AbstractActivityWithStateManagement;
 
 /**
  * An Activity that increments the value of a specific variable. 
  */
-public class IncrementVarActivity extends ActivityImpl {
+public final class IncrementVarActivity extends AbstractActivityWithStateManagement {
 	
 	private final String variable;
 	
@@ -17,12 +19,13 @@ public class IncrementVarActivity extends ActivityImpl {
 	}
 	
 	public IncrementVarActivity(String variable, int start) {
+		super("" + new Date().hashCode(), "Increment " + variable + " from " + start);
 		this.variable = variable;
 		this.value = start;
 	}
 	
 	@Override
-	public void run(Context context) {
+	protected void doRun(Context context) {
 		context.set(variable, value++);
 	}
 

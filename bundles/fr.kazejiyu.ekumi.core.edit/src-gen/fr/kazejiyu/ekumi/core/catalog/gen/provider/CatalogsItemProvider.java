@@ -5,8 +5,7 @@ package fr.kazejiyu.ekumi.core.catalog.gen.provider;
 import fr.kazejiyu.ekumi.core.catalog.CatalogFactory;
 import fr.kazejiyu.ekumi.core.catalog.CatalogPackage;
 import fr.kazejiyu.ekumi.core.catalog.Catalogs;
-import fr.kazejiyu.ekumi.core.gen.provider.EKumiEditPlugin;
-
+import fr.kazejiyu.ekumi.core.provider.EKumiEditPlugin;
 import java.util.Collection;
 import java.util.List;
 

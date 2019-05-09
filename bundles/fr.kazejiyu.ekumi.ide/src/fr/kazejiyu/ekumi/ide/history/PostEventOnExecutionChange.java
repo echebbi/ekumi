@@ -19,7 +19,7 @@ import org.apache.commons.io.monitor.FileAlterationListenerAdaptor;
 import org.eclipse.e4.core.services.events.IEventBroker;
 
 import fr.kazejiyu.ekumi.core.EKumiPlugin;
-import fr.kazejiyu.ekumi.core.workflow.Execution;
+import fr.kazejiyu.ekumi.core.execution.FrozenExecution;
 import fr.kazejiyu.ekumi.ide.events.EKumiEvents;
 
 /**
@@ -57,25 +57,25 @@ class PostEventOnExecutionChange extends FileAlterationListenerAdaptor {
 
 	private void process(File file, String event) {
 		try {
-    		Execution execution = load(file);
+    		FrozenExecution execution = load(file);
     		bus.post(event, execution);
-    		
-    	} catch (Exception e) {
+    	} 
+		catch (Exception e) {
     		EKumiPlugin.error(e, "An error occurred while processing changes in " + (file == null ? file : file.getAbsolutePath()));
     	}
 	}
     
-    private Execution load(File file) {
+    private FrozenExecution load(File file) {
     	// Ignore lock files
-    	if (file.getName().equals(".lock"))
+    	if (file.getName().equals(".lock")) {
     		return null;
-    	
+    	}
     	Path lock = file.getParentFile().toPath().resolve(".lock");
     	
-    	// TODO Add a timer to prevent infinite loops
-    	while (lock.toFile().exists())
-    		;
-    	
+    	while (lock.toFile().exists()) {
+    		// wait for lock to be released
+    		// TODO Add a timer to prevent infinite loops
+    	}
     	return loadExecutionFromFile(file);
     }
     

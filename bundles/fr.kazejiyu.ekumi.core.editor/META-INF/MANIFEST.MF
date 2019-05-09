@@ -5,13 +5,13 @@ Bundle-SymbolicName: fr.kazejiyu.ekumi.core.editor;singleton:=true
 Automatic-Module-Name: fr.kazejiyu.ekumi.core.editor
 Bundle-Version: 0.1.0
 Bundle-ClassPath: .
-Bundle-Activator: fr.kazejiyu.ekumi.core.gen.presentation.EKumiEditorPlugin$Implementation
+Bundle-Activator: fr.kazejiyu.ekumi.core.presentation.EKumiEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: fr.kazejiyu.ekumi.core.catalog.gen.presentation,
- fr.kazejiyu.ekumi.core.gen.presentation,
- fr.kazejiyu.ekumi.core.workflow.gen.presentation
+ fr.kazejiyu.ekumi.core.presentation,
+ fr.kazejiyu.ekumi.core.gen.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  fr.kazejiyu.ekumi.core.edit;visibility:=reexport,

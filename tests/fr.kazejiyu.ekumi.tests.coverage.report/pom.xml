@@ -42,7 +42,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>fr.kazejiyu.ekumi</groupId>
-			<artifactId>fr.kazejiyu.ekumi.core.impl</artifactId>
+			<artifactId>fr.kazejiyu.ekumi.core</artifactId>
 			<version>0.1.0</version>
 			<scope>compile</scope>
 		</dependency>

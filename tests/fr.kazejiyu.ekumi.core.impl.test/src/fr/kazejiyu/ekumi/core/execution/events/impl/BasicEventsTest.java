@@ -16,6 +16,7 @@ import fr.kazejiyu.ekumi.core.execution.listeners.ExecutionListener;
 import fr.kazejiyu.ekumi.core.execution.listeners.OnActivityFailed;
 import fr.kazejiyu.ekumi.core.execution.listeners.OnActivityStarted;
 import fr.kazejiyu.ekumi.core.execution.listeners.OnActivitySucceeded;
+import fr.kazejiyu.ekumi.core.execution.listeners.OnExecutionFailed;
 import fr.kazejiyu.ekumi.core.execution.listeners.OnExecutionStarted;
 import fr.kazejiyu.ekumi.core.execution.listeners.OnExecutionSucceeded;
 import fr.kazejiyu.ekumi.core.workflow.Activity;
@@ -23,7 +24,7 @@ import fr.kazejiyu.ekumi.core.workflow.Execution;
 import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-@DisplayName("A BasicEvents")
+@DisplayName("A Basic Events")
 public class BasicEventsTest implements WithAssertions {
 	
 	// Software under test
@@ -86,6 +87,13 @@ public class BasicEventsTest implements WithAssertions {
 		void throws_if_OnExecutionSucceeded_is_null() {
 			assertThatNullPointerException().isThrownBy(() ->
 				events.onExecutionSucceeded(null)
+			);
+		}
+		
+		@Test @DisplayName("throws if OnExecutionFailed is null")
+		void throws_if_OnExecutionFailed_is_null() {
+			assertThatNullPointerException().isThrownBy(() ->
+				events.onExecutionFailed(null)
 			);
 		}
 		
@@ -164,6 +172,19 @@ public class BasicEventsTest implements WithAssertions {
 			// then the listeners are notified
 			verify(onSucceeded, only()).onExecutionSucceeded(execution);
 			verify(executionListener, only()).onExecutionSucceeded(execution);
+		}
+		
+		@Test @DisplayName("notifies all its listeners on execution failed")
+		void notifies_all_its_listeners_on_execution_failed(@Mock OnExecutionFailed onFailure) {
+			// given a dedicated listener
+			events.onExecutionFailed(onFailure);
+			
+			// when the event is broadcasted
+			events.hasFailed(execution);
+			
+			// then the listeners are notified
+			verify(onFailure, only()).onExecutionFailed(execution);
+			verify(executionListener, only()).onExecutionFailed(execution);
 		}
 		
 	}

@@ -11,7 +11,6 @@ package fr.kazejiyu.ekumi.core.datatypes;
 
 import fr.kazejiyu.ekumi.core.datatypes.exceptions.DataTypeSerializationException;
 import fr.kazejiyu.ekumi.core.datatypes.exceptions.DataTypeUnserializationException;
-import fr.kazejiyu.ekumi.core.workflow.Variable;
 
 /**
  * Defines the type of a {@link Variable}.
@@ -26,25 +25,56 @@ public interface DataType<T> {
 	 * Returns an identifier for this type.
 	 * @return an identifier for this type.
 	 */
-	String getId();
+	String id();
 	
 	/**
 	 * Returns the name of the type.
 	 * @return the name of the type.
 	 */
-	String getName();
+	String name();
 
 	/**
 	 * Returns the Java class corresponding to this type.
 	 * @return the Java class corresponding to this type.
 	 */
-	Class<T> getJavaClass();
+	Class<T> toJavaClass();
 	
 	/**
 	 * Returns the default value of a new instance of this type.
 	 * @return the default value of a new instance of this type.
 	 */
-	T getDefaultValue();
+	T defaultValue();
+	
+	/**
+	 * Returns {@code true} if this can serialize the given object,
+	 * {@code false} otherwise.
+	 * 
+	 * @param object
+	 * 			The object to check.
+	 * 
+	 * @return whether this can serialize the given object
+	 * 
+	 * @see #assertHandles(Object)
+	 */
+	default boolean handles(Object object) {
+		return toJavaClass().isInstance(object);
+	}
+	
+	/**
+	 * Asserts that this can serialize the given object.
+	 * 
+	 * @param object
+	 * 			The object to check.
+	 * 
+	 * @throws DataTypeSerializationException if the object cannot be serialized
+	 * 
+	 * @see #handles(Object)
+	 */
+	default void assertHandles(Object object) {
+		if (! handles(object)) {
+			throw new DataTypeSerializationException("Cannot serialize " + null);
+		}
+	}
 	
 	/**
 	 * Returns a String representation of the type.<br>

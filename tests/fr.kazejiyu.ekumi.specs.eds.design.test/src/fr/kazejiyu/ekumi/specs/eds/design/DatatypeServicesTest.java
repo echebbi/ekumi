@@ -41,7 +41,7 @@ public class DatatypeServicesTest implements WithAssertions {
 	
 	@Test @DisplayName("knows the name of a type")
 	void knows_the_name_of_a_type(@Mock DataType<String> type) {
-		when (type.getName()) .thenReturn("String");
+		when (type.name()) .thenReturn("String");
 		assertThat(services.name(type)).isEqualTo("String");
 	}
 	
@@ -70,7 +70,7 @@ public class DatatypeServicesTest implements WithAssertions {
 			// Create datatypes
 			
 			stringType = Mockito.mock(DataType.class);
-			when (stringType.getId()) .thenReturn ("type.string");
+			when (stringType.id()) .thenReturn ("type.string");
 			
 			// Create configuration elements
 			
@@ -96,7 +96,7 @@ public class DatatypeServicesTest implements WithAssertions {
 		
 		@Test @DisplayName("finds the type if it exists")
 		void finds_the_type_if_it_exists() {
-			variable.setTypeId(stringType.getId());
+			variable.setTypeId(stringType.id());
 			assertThat (services.getDatatype(variable)) .isEqualTo(stringType);
 		}
 		
@@ -116,15 +116,15 @@ public class DatatypeServicesTest implements WithAssertions {
 
 		@BeforeEach
 		void setup(@Mock IExtensionRegistry extensions) throws CoreException {
-			when (doubleType.getId()) .thenReturn ("type.double");
-			when (doubleType.getDefaultValue()) .thenReturn(0d);
+			when (doubleType.id()) .thenReturn ("type.double");
+			when (doubleType.defaultValue()) .thenReturn(0d);
 			when (doubleType.serialize(0d)) .thenReturn("0.0");
 		}
 		
 		@Test @DisplayName("sets variable's type id")
 		void sets_variable_type_id() {
 			services.setDatatype(variable, doubleType);
-			assertThat(variable.getTypeId()).isEqualTo(doubleType.getId());
+			assertThat(variable.getTypeId()).isEqualTo(doubleType.id());
 		}
 		
 		@Test @DisplayName("sets variable's value to type's default")

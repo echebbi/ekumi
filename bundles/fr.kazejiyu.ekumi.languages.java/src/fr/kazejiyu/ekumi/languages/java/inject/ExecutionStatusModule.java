@@ -13,16 +13,16 @@ import static java.util.Objects.requireNonNull;
 
 import com.google.inject.AbstractModule;
 
-import fr.kazejiyu.ekumi.core.execution.ExecutionStatus;
+import fr.kazejiyu.ekumi.core.execution.ExecutionState;
 
 /**
- * Allows injection of a specific {@link ExecutionStatus} instance.
+ * Allows injection of a specific {@link ExecutionState} instance.
  * 
  * @author Emmanuel CHEBBI
  */
 public class ExecutionStatusModule extends AbstractModule {
 	
-	private final ExecutionStatus statusToInject;
+	private final ExecutionState statusToInject;
 	
 	/**
 	 * Creates a new module.
@@ -30,14 +30,14 @@ public class ExecutionStatusModule extends AbstractModule {
 	 * @param statusToInject
 	 * 			The event bus to inject.
 	 */
-	public ExecutionStatusModule(ExecutionStatus statusToInject) {
+	public ExecutionStatusModule(ExecutionState statusToInject) {
 		super();
 		this.statusToInject = requireNonNull(statusToInject, "Cannot make a null execution status available for injection");
 	}
 	
 	@Override
 	protected void configure() {
-		bind(ExecutionStatus.class).toInstance(statusToInject);
+		bind(ExecutionState.class).toInstance(statusToInject);
 	}
 
 }

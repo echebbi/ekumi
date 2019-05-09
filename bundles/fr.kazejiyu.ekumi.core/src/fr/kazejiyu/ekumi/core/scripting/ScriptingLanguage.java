@@ -14,7 +14,7 @@ import fr.kazejiyu.ekumi.core.scripting.exceptions.ScriptLoadingFailureException
 import fr.kazejiyu.ekumi.core.workflow.Condition;
 import fr.kazejiyu.ekumi.core.workflow.Context;
 import fr.kazejiyu.ekumi.core.workflow.Execution;
-import fr.kazejiyu.ekumi.core.workflow.Runner;
+import fr.kazejiyu.ekumi.core.workflow.RunnableScript;
 
 /**
  * Defines a scripting language that can be used by EKumi. 
@@ -36,7 +36,7 @@ public interface ScriptingLanguage {
 	String name();
 
 	/**
-	 * Turns a runner written with the language into a EKumi {@link Runner}.
+	 * Turns a runner written with the language into a EKumi {@link RunnableScript}.
 	 *  
 	 * @param identifier
 	 * 			Uniquely identifies the runner to resolve.
@@ -51,7 +51,7 @@ public interface ScriptingLanguage {
 	 * @throws ScriptLoadingFailureException if the script cannot be loaded.
 	 * @throws IllegalScriptIdentifierException if the given identifier is not properly formatted.
 	 */
-	Runner resolveRunner(String identifier, Context context);
+	RunnableScript resolveRunner(String identifier, Context context);
 
 	/**
 	 * Turns a condition written with the language into a EKumi {@link Condition}.

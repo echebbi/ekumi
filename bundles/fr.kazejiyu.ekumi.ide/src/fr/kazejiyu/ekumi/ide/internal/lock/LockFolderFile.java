@@ -38,14 +38,22 @@ public class LockFolderFile implements AutoCloseable {
 	 * @throws IOException if an error occurs while creating the lock file
 	 */
 	public LockFolderFile(URI folderURI) throws IOException  {
+		this(asPath(folderURI));
+	}
+	
+	public LockFolderFile(Path location) throws IOException {
+		lock = location;
+		
+		Files.createDirectories(lock.getParent());
+		Files.createFile(lock);
+	}
+	
+	private static Path asPath(URI uri) throws IOException {
 		try {
-			lock = Paths.get(FileLocator.resolve(new URL(folderURI.appendSegment(".lock").toString())).toURI());
-			
-			Files.createDirectories(lock.getParent());
-			Files.createFile(lock);
-			
-		} catch (Exception e) {
-			throw new IOException("Unable to create the .lock file under " + folderURI, e);
+			return Paths.get(FileLocator.resolve(new URL(uri.appendSegment(".lock").toString())).toURI());
+		} 
+		catch (Exception e) {
+			throw new IOException("Unable to create the .lock file under " + uri, e);
 		}
 	}
 

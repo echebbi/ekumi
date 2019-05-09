@@ -1,20 +1,23 @@
 package fr.kazejiyu.ekumi.tests.common.fake.activities;
 
+import java.util.Date;
+
 import fr.kazejiyu.ekumi.core.workflow.Context;
-import fr.kazejiyu.ekumi.core.workflow.Status;
-import fr.kazejiyu.ekumi.core.workflow.gen.impl.ActivityImpl;
+import fr.kazejiyu.ekumi.core.workflow.impl.AbstractActivityWithStateManagement;
 
 /**
  * An Activity that increments the value of a specific variable. 
  */
-public class LoopUntilEnded extends ActivityImpl {
+public class LoopUntilEnded extends AbstractActivityWithStateManagement {
 	
+	public LoopUntilEnded() {
+		super("" + new Date().hashCode(), "Loop Until Ended");
+	}
+
 	private boolean shouldEnd = false;
 	
 	@Override
-	public void run(Context context) {
-		setStatus(Status.RUNNING);
-		
+	public void doRun(Context context) {
 		long start = System.currentTimeMillis();
 		
 		while (! shouldEnd) {
@@ -23,8 +26,6 @@ public class LoopUntilEnded extends ActivityImpl {
 			if (System.currentTimeMillis() - start > 2000)
 				break;
 		}
-		
-		setStatus(Status.SUCCEEDED);
 	}
 	
 	/** Asks the activity to end its execution */

@@ -4,6 +4,7 @@ package fr.kazejiyu.ekumi.core.catalog;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -460,6 +461,16 @@ public interface CatalogPackage extends EPackage {
 	int ACTIVITY_TEMPLATE_OPERATION_COUNT = IDENTIFIABLE_OPERATION_COUNT + 1;
 
 	/**
+	 * The meta object id for the '<em>Activity</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.kazejiyu.ekumi.core.workflow.Activity
+	 * @see fr.kazejiyu.ekumi.core.catalog.gen.impl.CatalogPackageImpl#getActivity()
+	 * @generated
+	 */
+	int ACTIVITY = 6;
+
+	/**
 	 * Returns the meta object for class '{@link fr.kazejiyu.ekumi.core.catalog.Catalog <em>Catalog</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -629,6 +640,17 @@ public interface CatalogPackage extends EPackage {
 	EAttribute getIdentifiable_Description();
 
 	/**
+	 * Returns the meta object for data type '{@link fr.kazejiyu.ekumi.core.workflow.Activity <em>Activity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Activity</em>'.
+	 * @see fr.kazejiyu.ekumi.core.workflow.Activity
+	 * @model instanceClass="fr.kazejiyu.ekumi.core.workflow.Activity"
+	 * @generated
+	 */
+	EDataType getActivity();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -790,6 +812,16 @@ public interface CatalogPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute IDENTIFIABLE__DESCRIPTION = eINSTANCE.getIdentifiable_Description();
+
+		/**
+		 * The meta object literal for the '<em>Activity</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.kazejiyu.ekumi.core.workflow.Activity
+		 * @see fr.kazejiyu.ekumi.core.catalog.gen.impl.CatalogPackageImpl#getActivity()
+		 * @generated
+		 */
+		EDataType ACTIVITY = eINSTANCE.getActivity();
 
 	}
 

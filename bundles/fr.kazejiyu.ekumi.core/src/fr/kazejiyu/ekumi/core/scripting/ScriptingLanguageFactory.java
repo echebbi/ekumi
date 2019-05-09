@@ -11,6 +11,8 @@ package fr.kazejiyu.ekumi.core.scripting;
 
 import java.util.Optional;
 
+import fr.kazejiyu.ekumi.core.scripting.exceptions.ScriptingLanguageNotFoundException;
+
 /**
  * Creates {@link ScriptingLanguage} instances.
  */
@@ -21,10 +23,24 @@ public interface ScriptingLanguageFactory {
 	 * Creates a new language according to the given id.
 	 *  
 	 * @param id
-	 * 			The id of the language to find.
+	 * 			The identifier of the language to find.
 	 * 
 	 * @return the language if it has been found
 	 */
 	Optional<ScriptingLanguage> find(String id);
+	
+	/**
+	 * Creates a new language according to the given id.
+	 * 
+	 * @param id
+	 * 			The identifier of the language to get.
+	 * 
+	 * @return the language
+	 * 
+	 * @throws ScriptingLanguageNotFoundException if no language is associated with the given id
+	 */
+	default ScriptingLanguage get(String id) {
+		return find(id).orElseThrow(() -> new ScriptingLanguageNotFoundException(id));
+	}
 
 }

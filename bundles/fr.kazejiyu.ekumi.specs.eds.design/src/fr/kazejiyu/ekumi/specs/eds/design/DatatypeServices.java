@@ -47,7 +47,7 @@ public class DatatypeServices {
 	/**
 	 * <p>Returns the name of a given datatype.</p>
 	 * 
-	 * <p>I can't make Sirius call {@link DataType#getName()} by itself
+	 * <p>I can't make Sirius call {@link DataType#name()} by itself
 	 * so this function compensate for that.</p>
 	 * 
 	 * @param type
@@ -56,7 +56,7 @@ public class DatatypeServices {
 	 * @return a human-readable name of the given datatype
 	 */
 	public String name(DataType<?> type) {
-		return type.getName();
+		return type.name();
 	}
 	
 	/**
@@ -73,7 +73,7 @@ public class DatatypeServices {
 			return null;
 		
 		for (DataType<?> dataType : availableDatatypes(variable)) {
-			if (Objects.equals(dataType.getId(), variable.getTypeId())) {
+			if (Objects.equals(dataType.id(), variable.getTypeId())) {
 				return (DataType<T>) dataType;
 			}
 		}
@@ -90,8 +90,8 @@ public class DatatypeServices {
 	 * 			The new type of the variable.
 	 */
 	public <T> void setDatatype(Variable variable, DataType<T> type) {
-		variable.setTypeId(type.getId());
-		variable.setValue(type.serialize(type.getDefaultValue()));
+		variable.setTypeId(type.id());
+		variable.setValue(type.serialize(type.defaultValue()));
 	}
 	
 	/**
@@ -102,7 +102,7 @@ public class DatatypeServices {
 	 * 
 	 * @return the datatypes available for the given variable
 	 */
-	public List<DataType<?>> availableDatatypes(Variable variable) {
+	public List<DataType<? extends Object>> availableDatatypes(Variable variable) {
 		ExtensionToDatatypeAdapter adapter = new ExtensionToDatatypeAdapter();
 		return adapter.adapt(asList(
 				extensions.getConfigurationElementsFor(EKumiExtensions.DATATYPES_EXTENSION_ID)

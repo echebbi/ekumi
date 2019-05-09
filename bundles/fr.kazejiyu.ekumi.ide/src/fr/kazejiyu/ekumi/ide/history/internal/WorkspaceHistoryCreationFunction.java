@@ -17,7 +17,7 @@ import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.services.events.IEventBroker;
 
 import fr.kazejiyu.ekumi.core.EKumiPlugin;
-import fr.kazejiyu.ekumi.core.workflow.History;
+import fr.kazejiyu.ekumi.core.execution.History;
 import fr.kazejiyu.ekumi.ide.history.PersistExecution;
 import fr.kazejiyu.ekumi.ide.history.PersistedHistory;
 

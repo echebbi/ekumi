@@ -20,14 +20,14 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.mockito.Mock;
 
-import fr.kazejiyu.ekumi.core.execution.ExecutionStatus;
+import fr.kazejiyu.ekumi.core.execution.ExecutionState;
 import fr.kazejiyu.ekumi.core.execution.events.Events;
 import fr.kazejiyu.ekumi.core.scripting.exceptions.IllegalScriptIdentifierException;
 import fr.kazejiyu.ekumi.core.scripting.exceptions.ScriptLoadingFailureException;
 import fr.kazejiyu.ekumi.core.workflow.Condition;
-import fr.kazejiyu.ekumi.core.workflow.Runner;
+import fr.kazejiyu.ekumi.core.workflow.Context;
+import fr.kazejiyu.ekumi.core.workflow.RunnableScript;
 import fr.kazejiyu.ekumi.core.workflow.Script;
-import fr.kazejiyu.ekumi.core.workflow.gen.impl.ContextImpl;
 import fr.kazejiyu.ekumi.languages.java.test.ImportableProject;
 import fr.kazejiyu.ekumi.languages.java.test.providers.BundleConditionsProvider;
 import fr.kazejiyu.ekumi.languages.java.test.providers.BundleInjectablesProvider;
@@ -49,10 +49,10 @@ public class JavaLanguageTest implements WithAssertions {
 	private JavaLanguage language;
 	
 	@Mock
-	private ContextImpl context;
+	private Context context;
 	
 	@BeforeEach
-	void createJavaLanguage(@Mock Events events, @Mock ExecutionStatus status) {
+	void createJavaLanguage(@Mock Events events, @Mock ExecutionState status) {
 		language = new JavaLanguage();
 		when(context.events()).thenReturn(events);
 		when(context.execution()).thenReturn(status);
@@ -83,7 +83,7 @@ public class JavaLanguageTest implements WithAssertions {
 			@ArgumentsSource(BundleRunnersProvider.class)
 			@DisplayName("can resolve a runner") 
 			void can_resolve_a_runner(String identifier, Class<?> expectedClass) {
-				Runner runner = language.resolveRunner(identifier, context);
+				RunnableScript runner = language.resolveRunner(identifier, context);
 				assertThat(runner).isInstanceOf(expectedClass);
 			}
 			
@@ -102,7 +102,7 @@ public class JavaLanguageTest implements WithAssertions {
 				Script script = null;
 				
 				// Ugly for a test, but avoids the need of a new Provider
-				if (Runner.class.isAssignableFrom(expectedClass))
+				if (RunnableScript.class.isAssignableFrom(expectedClass))
 					script = language.resolveRunner(identifier, context);
 				else 
 					script = language.resolveCondition(identifier, context);
@@ -163,7 +163,7 @@ public class JavaLanguageTest implements WithAssertions {
 			@ArgumentsSource(BundleRunnersProvider.class)
 			@DisplayName("can resolve a runner") 
 			void can_resolve_a_runner(String identifier, Class<?> expectedClass) {
-				Runner runner = language.resolveRunner(identifier, null);
+				RunnableScript runner = language.resolveRunner(identifier, null);
 				assertThat(runner).isInstanceOf(expectedClass);
 			}
 			
@@ -182,7 +182,7 @@ public class JavaLanguageTest implements WithAssertions {
 				Script script = null;
 				
 				// Ugly for a test, but avoids the need of a new Provider
-				if (Runner.class.isAssignableFrom(expectedClass))
+				if (RunnableScript.class.isAssignableFrom(expectedClass))
 					script = language.resolveRunner(identifier, null);
 				else 
 					script = language.resolveCondition(identifier, null);
@@ -206,7 +206,7 @@ public class JavaLanguageTest implements WithAssertions {
 	class WhenResolvingFromAWorkspaceProject implements ProjectProvider { // ProjectProvider provides some constants
 		
 		@BeforeEach
-		void createJavaLanguage(@Mock Events events, @Mock ExecutionStatus status) {
+		void createJavaLanguage(@Mock Events events, @Mock ExecutionState status) {
 			language = new JavaLanguage();
 			when(context.events()).thenReturn(events);
 			when(context.execution()).thenReturn(status);
@@ -228,7 +228,7 @@ public class JavaLanguageTest implements WithAssertions {
 			@ArgumentsSource(ProjectRunnersProvider.class)
 			@DisplayName("can resolve a runner") 
 			void can_resolve_a_runner(String identifier, String expectedClass) {
-				Runner runner = language.resolveRunner(identifier, context);
+				RunnableScript runner = language.resolveRunner(identifier, context);
 				assertThat(runner.getClass().getName()).isEqualTo(expectedClass);
 			}
 			
@@ -308,7 +308,7 @@ public class JavaLanguageTest implements WithAssertions {
 			@ArgumentsSource(ProjectRunnersProvider.class)
 			@DisplayName("can resolve a runner") 
 			void can_resolve_a_runner(String identifier, String expectedClass) {
-				Runner runner = language.resolveRunner(identifier, null);
+				RunnableScript runner = language.resolveRunner(identifier, null);
 				assertThat(runner.getClass().getName()).isEqualTo(expectedClass);
 			}
 			

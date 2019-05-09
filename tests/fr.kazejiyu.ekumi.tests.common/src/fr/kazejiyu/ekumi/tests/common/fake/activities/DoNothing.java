@@ -1,12 +1,18 @@
 package fr.kazejiyu.ekumi.tests.common.fake.activities;
 
-import fr.kazejiyu.ekumi.core.workflow.Context;
-import fr.kazejiyu.ekumi.core.workflow.gen.impl.ActivityImpl;
+import java.util.Date;
 
-public class DoNothing extends ActivityImpl {
+import fr.kazejiyu.ekumi.core.workflow.Context;
+import fr.kazejiyu.ekumi.core.workflow.impl.AbstractActivityWithStateManagement;
+
+public final class DoNothing extends AbstractActivityWithStateManagement {
 	
+	public DoNothing() {
+		super("" + new Date().hashCode(), "Do Nothing");
+	}
+
 	@Override
-	public void run(Context context) {
+	protected void doRun(Context context) {
 		// do nothing
 	}
 
