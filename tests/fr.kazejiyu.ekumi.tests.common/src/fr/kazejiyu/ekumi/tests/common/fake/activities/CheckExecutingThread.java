@@ -9,12 +9,20 @@
  ******************************************************************************/
 package fr.kazejiyu.ekumi.tests.common.fake.activities;
 
-import fr.kazejiyu.ekumi.core.workflow.Context;
-import fr.kazejiyu.ekumi.core.workflow.Status;
-import fr.kazejiyu.ekumi.core.workflow.gen.impl.ActivityImpl;
+import java.util.Date;
 
-public class CheckExecutingThread extends ActivityImpl {
+import fr.kazejiyu.ekumi.core.workflow.Context;
+import fr.kazejiyu.ekumi.core.workflow.impl.AbstractActivityWithStateManagement;
+
+/**
+ * A stub activity that checks the thread on which it is executed.
+ */
+public final class CheckExecutingThread extends AbstractActivityWithStateManagement {
 	
+	public CheckExecutingThread() {
+		super("" + new Date().hashCode(), "Check Executing Thread");
+	}
+
 	private Thread executingThread;
 	
 	private boolean hasRun = false;
@@ -22,12 +30,10 @@ public class CheckExecutingThread extends ActivityImpl {
 	private Context contextOnRun;
 	
 	@Override
-	public void run(Context context) {
+	protected void doRun(Context context) {
 		executingThread = Thread.currentThread();
 		hasRun = true;
 		contextOnRun = context;
-		
-		setStatus(Status.SUCCEEDED);
 	}
 	
 	public Thread getExecutingThread() {

@@ -17,25 +17,25 @@ import fr.kazejiyu.ekumi.core.datatypes.DataType;
 public class StringType implements DataType<String> {
 	
 	@Override
-	public String getId() {
+	public String id() {
 		return "fr.kazejiyu.ekumi.datatypes.string";
 	}
 
 	@Override
-	public String getName() {
+	public String name() {
 		return "String";
 	}
 
 	@Override
-	public Class<String> getJavaClass() {
+	public Class<String> toJavaClass() {
 		return String.class;
 	}
 
 	@Override
-	public String getDefaultValue() {
+	public String defaultValue() {
 		return "";
 	}
-
+	
 	@Override
 	public String serialize(String instance) {
 		return instance;

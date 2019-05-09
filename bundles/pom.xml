@@ -17,7 +17,6 @@
         <module>fr.kazejiyu.ekumi.core</module>
         <module>fr.kazejiyu.ekumi.core.edit</module>
         <module>fr.kazejiyu.ekumi.core.editor</module>
-        <module>fr.kazejiyu.ekumi.core.impl</module>
         <module>fr.kazejiyu.ekumi.datatypes</module>
         <module>fr.kazejiyu.ekumi.debug</module>
         <module>fr.kazejiyu.ekumi.debug.ui</module>

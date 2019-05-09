@@ -2,6 +2,7 @@
  */
 package fr.kazejiyu.ekumi.core.catalog.gen.presentation;
 
+import fr.kazejiyu.ekumi.core.presentation.EKumiEditorPlugin;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -38,8 +39,6 @@ import org.eclipse.jface.viewers.Viewer;
 
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
-
-import fr.kazejiyu.ekumi.core.gen.presentation.EKumiEditorPlugin;
 
 /**
  * This is the action bar contributor for the Catalog model editor.

@@ -64,5 +64,13 @@ public interface EventSource {
 	 * 			Must not be {@code null}.
 	 */
 	void hasSucceeded(Execution execution);
+	
+	/**
+	 * Triggers an event indicated that execution has failed.
+	 * 
+	 * @param execution
+	 * 			The execution that failed.
+	 */
+	void hasFailed(Execution execution);
 
 }

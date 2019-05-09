@@ -48,19 +48,20 @@ public class ExtensionToDatatypeAdapter {
 	 * 
 	 * @return DataTypes objects instantiated from given elements
 	 */
-	public List<DataType<?>> adapt(List<IConfigurationElement> configurationElements) {
+	public List<DataType<? extends Object>> adapt(List<IConfigurationElement> configurationElements) {
 		requireNonNull(configurationElements, "Cannot adapt null configuration elements");
 		
 		return configurationElements.stream()
-									.map(toDataType())
+									.map(ExtensionToDatatypeAdapter.toDataType())
 									.filter(Objects::nonNull)
 									.collect(toList());
 	}
 	
-	private static Function<IConfigurationElement, DataType<?>> toDataType() {
+	@SuppressWarnings("unchecked")
+	private static <T> Function<IConfigurationElement, DataType<T>> toDataType() {
 		return conf -> {
 			try {
-				return (DataType<?>) conf.createExecutableExtension("class");
+				return (DataType<T>) conf.createExecutableExtension("class");
 				
 			} catch (CoreException e) {
 				Activator.warn(e, "An error occured while creating an executable extension of property 'class' for configuration: " + conf);

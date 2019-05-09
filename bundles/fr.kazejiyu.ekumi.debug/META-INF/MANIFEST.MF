@@ -15,3 +15,4 @@ Require-Bundle: org.eclipse.debug.core,
  fr.kazejiyu.ekumi.ide.common;bundle-version="0.1.0",
  fr.kazejiyu.ekumi.core;bundle-version="0.1.0"
 Export-Package: fr.kazejiyu.ekumi.debug
+Bundle-Activator: fr.kazejiyu.ekumi.debug.Activator

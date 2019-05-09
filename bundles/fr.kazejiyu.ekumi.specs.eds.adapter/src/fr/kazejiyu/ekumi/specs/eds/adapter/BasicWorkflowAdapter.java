@@ -12,27 +12,36 @@ package fr.kazejiyu.ekumi.specs.eds.adapter;
 import static java.util.Objects.requireNonNull;
 import static java.util.stream.Collectors.toList;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import org.eclipse.collections.api.tuple.Pair;
+import org.eclipse.collections.impl.tuple.Tuples;
 import org.eclipse.emf.common.util.EList;
 
 import fr.kazejiyu.ekumi.core.datatypes.DataType;
 import fr.kazejiyu.ekumi.core.datatypes.DataTypeFactory;
 import fr.kazejiyu.ekumi.core.datatypes.exceptions.DataTypeUnserializationException;
+import fr.kazejiyu.ekumi.core.exceptions.DataTypeNotFoundException;
 import fr.kazejiyu.ekumi.core.scripting.ScriptingLanguage;
 import fr.kazejiyu.ekumi.core.scripting.ScriptingLanguageFactory;
 import fr.kazejiyu.ekumi.core.specs.ActivityAdapter;
 import fr.kazejiyu.ekumi.core.workflow.Activity;
-import fr.kazejiyu.ekumi.core.workflow.ScriptedTask;
+import fr.kazejiyu.ekumi.core.workflow.Input;
+import fr.kazejiyu.ekumi.core.workflow.Output;
+import fr.kazejiyu.ekumi.core.workflow.ParallelSplit;
+import fr.kazejiyu.ekumi.core.workflow.ScriptedActivity;
 import fr.kazejiyu.ekumi.core.workflow.Sequence;
-import fr.kazejiyu.ekumi.core.workflow.Variable;
-import fr.kazejiyu.ekumi.core.workflow.WorkflowFactory;
+import fr.kazejiyu.ekumi.core.workflow.impl.BasicInput;
+import fr.kazejiyu.ekumi.core.workflow.impl.BasicOutput;
+import fr.kazejiyu.ekumi.core.workflow.impl.BasicParallelSplit;
+import fr.kazejiyu.ekumi.core.workflow.impl.BasicScriptedActivity;
+import fr.kazejiyu.ekumi.core.workflow.impl.BasicSequence;
 import fr.kazejiyu.ekumi.specs.eds.Divergence;
 import fr.kazejiyu.ekumi.specs.eds.ExternalTask;
 import fr.kazejiyu.ekumi.specs.eds.Node;
-import fr.kazejiyu.ekumi.specs.eds.ParallelSplit;
 import fr.kazejiyu.ekumi.specs.eds.Start;
 import fr.kazejiyu.ekumi.specs.eds.Synchronization;
 import fr.kazejiyu.ekumi.specs.eds.gen.util.EdsSwitch;
@@ -48,10 +57,10 @@ public class BasicWorkflowAdapter extends EdsSwitch<Activity> implements Activit
 	}
 	
 	/**
-	 * <p>Creates a new adapter with specific factories.</p>
-	 * 
-	 * <p>This constructor is intended for users who do not plan to use the
-	 * {@link #adapt(Object, DataTypeFactory, ScriptingLanguageFactory)} method.</p>
+	 * Creates a new adapter with specific factories.
+	 * <p>
+	 * This constructor is intended for users who do not plan to use the
+	 * {@link #adapt(Object, DataTypeFactory, ScriptingLanguageFactory)} method.
 	 * 
 	 * @param datatypes
 	 * 			The factory used to create datatypes.
@@ -82,24 +91,23 @@ public class BasicWorkflowAdapter extends EdsSwitch<Activity> implements Activit
 	public Activity caseActivity(fr.kazejiyu.ekumi.specs.eds.Activity activity) {
 		Start start = activity.getStart();
 		
-		if (start == null)
+		if (start == null) {
 			return null;
-		
-		Sequence sequence = WorkflowFactory.eINSTANCE.createSequence();
-		sequence.setId(activity.getId());
-		sequence.setName(activity.getName());
-		
-		if (! start.hasSuccessors())
-			return sequence;
-			
-		Node remainingNode = fillSequence(start.getSuccessors().get(0), sequence);
+		}
+		if (! start.hasSuccessors()) {
+			return new BasicSequence(activity.getId(), activity.getName());
+		}
+		Pair<Sequence, Node> sequenceAndRemainingNode = fillSequence(activity.getId(), activity.getName(), start.getSuccessors().get(0));
+		Sequence sequence = sequenceAndRemainingNode.getOne();
+		Node remainingNode = sequenceAndRemainingNode.getTwo();
 		
 		// We're on a divergence
 		if (remainingNode != null) {
 			Activity adapted = doSwitch(remainingNode);
 			
-			if (adapted != null)
-				sequence.setSuccessor(adapted);
+			if (adapted != null) {
+				sequence.precede(adapted);
+			}
 		}
 		return sequence;
 	}
@@ -114,89 +122,106 @@ public class BasicWorkflowAdapter extends EdsSwitch<Activity> implements Activit
 	 * 
 	 * @return the first node that cannot be adapted
 	 */
-	private Node fillSequence(Node startingNode, Sequence sequence) {
+	private Pair<Sequence, Node> fillSequence(String id, String name, Node startingNode) {
 		Node current = startingNode;
 		Activity lastAdapted = null;
+		Sequence sequence = new BasicSequence(id, name);
 		
 		while (current != null && ! (current instanceof Divergence)) {
 			Activity adapted = doSwitch(current);
 			
 			if (adapted != null) {
-				if (sequence.getRoot() == null)
-					sequence.setRoot(adapted);
-				else if (lastAdapted != null)
-					lastAdapted.setSuccessor(adapted);
-				
+				// The sequence has not been created yet -> initialize it with its root
+				if (sequence.isEmpty()) {
+					sequence = new BasicSequence(id, name, adapted);
+				}
+				// The sequence exist -> add a new activity at its tail
+				else {
+					// note: cannot be null here, no matter what Sonar says
+					lastAdapted.precede(adapted);
+				}
+				// Prepare next iteration
 				lastAdapted = adapted;
 				current = current.hasSuccessors() ? current.getSuccessors().get(0) : null;
 			}
 		}
-		return current;
+		return Tuples.pair(sequence, current);
 	}
 	
 	@Override
 	public Activity caseExternalTask(ExternalTask task) {
-		ScriptedTask script = WorkflowFactory.eINSTANCE.createScriptedTask();
-		
-		script.setId(task.getId());
-		script.setName(task.getName());
-		script.setScriptPath(task.getScriptId());
-		script.getInputs().addAll(adapt(script, task.getInputs()));
-		script.getOutputs().addAll(adapt(script, task.getOutputs()));
-		
-		Optional<ScriptingLanguage> scriptLanguage = languages.find(task.getLanguageId());
-		scriptLanguage.ifPresent(script::setLanguage);
-		
-		if (! scriptLanguage.isPresent()) {
-			Activator.warn(new IllegalArgumentException(task.getLanguageId()), "Unable to find any language for id: " + task.getLanguageId());
-		}
+		ScriptingLanguage language = languages.get(task.getLanguageId());
+		ScriptedActivity script = new BasicScriptedActivity(task.getId(), task.getName(), language, task.getScriptId());
+		asInputs(task.getInputs()).forEach(script.inputs()::add);
+		asOutputs(task.getOutputs()).forEach(script.outputs()::add);
 		return script;
 	}
 	
-	private List<Variable> adapt(Activity activity, EList<fr.kazejiyu.ekumi.specs.eds.Variable> variables) {
+	private List<Input> asInputs(EList<fr.kazejiyu.ekumi.specs.eds.Variable> variables) {
 		return variables.stream()
-						.map(this::adapt)
+						.map(this::asInput)
 						.filter(Objects::nonNull)
-						.peek(variable -> variable.setOwner(activity))
 						.collect(toList());
 	}
 	
-	private Variable adapt(fr.kazejiyu.ekumi.specs.eds.Variable variable) {
-		Variable adapted = WorkflowFactory.eINSTANCE.createVariable();
-		adapted.setName(variable.getName());
-		Optional<DataType<Object>> datatype = datatypes.find(variable.getTypeId());
+	private Input asInput(fr.kazejiyu.ekumi.specs.eds.Variable variable) {
+		// Input's characteristics that are going to be computed.
+		String name = variable.getName();
+		DataType<Object> datatype = null;
+		Object value = null;
 		
-		if (! datatype.isPresent()) {
-			adapted.setValue(null);
+		datatype = datatypes.find(variable.getTypeId())
+						    .orElseThrow(() -> new DataTypeNotFoundException(variable.getTypeId()));
+
+		try {
+			value = datatype.unserialize(variable.getValue());
+			return new BasicInput(name, datatype, value);
+		} 
+		catch (DataTypeUnserializationException e) {
+			Activator.warn(e, "Unable to set value of variable " + variable.getName() + ", setting value to default");
+			return new BasicInput(name, datatype);
 		}
-		else {
-			adapted.setType(datatype.get());
-			try {
-				adapted.setValue(datatype.get().unserialize(variable.getValue()));
-			} 
-			catch (DataTypeUnserializationException e) {
-				Activator.warn(e, "Unable to set value of variable " + variable.getName() + ", setting value to default");
-				adapted.setValue(datatype.get().getDefaultValue());
-			}
+	}
+	
+	private List<Output> asOutputs(EList<fr.kazejiyu.ekumi.specs.eds.Variable> variables) {
+		return variables.stream()
+						.map(this::asOutput)
+						.filter(Objects::nonNull)
+						.collect(toList());
+	}
+	
+	private Output asOutput(fr.kazejiyu.ekumi.specs.eds.Variable variable) {
+		// Input's characteristics that are going to be computed.
+		String name = variable.getName();
+		DataType<Object> datatype = null;
+		Object value = null;
+		
+		datatype = datatypes.find(variable.getTypeId())
+						    .orElseThrow(() -> new DataTypeNotFoundException(variable.getTypeId()));
+
+		try {
+			value = datatype.unserialize(variable.getValue());
+			return new BasicOutput(name, datatype, value);
+		} 
+		catch (DataTypeUnserializationException e) {
+			Activator.warn(e, "Unable to set value of variable " + variable.getName() + ", setting value to default");
+			return new BasicOutput(name, datatype);
 		}
-		return adapted;
 	}
 	
 	@Override
-	public Activity caseParallelSplit(ParallelSplit spec) {
-		fr.kazejiyu.ekumi.core.workflow.ParallelSplit split = WorkflowFactory.eINSTANCE.createParallelSplit();
-		
+	public Activity caseParallelSplit(fr.kazejiyu.ekumi.specs.eds.ParallelSplit spec) {
 		Synchronization sync = null;
+		List<Activity> branches = new ArrayList<>();
 		
-		for (Node successor : spec.getSuccessors()) {
-			Sequence branch = WorkflowFactory.eINSTANCE.createSequence();
-			
-			Activity firstActivity = doSwitch(successor);
-			branch.setRoot(firstActivity);
-			branch.getActivities().add(firstActivity);
-			
+		for (int i = 0; i < spec.getSuccessors().size(); i++) {
+			Node successor = spec.getSuccessors().get(i);
 			Node next = successor;
+
+			Activity firstActivity = doSwitch(successor);
+			Sequence branch = new BasicSequence("split_" + firstActivity.id(), "Branch " + firstActivity.name(), firstActivity);
 			
+			Activity previousActivity = firstActivity;
 			while (next.hasSuccessors()) {
 				next = next.getSuccessors().get(0);
 				
@@ -205,16 +230,19 @@ public class BasicWorkflowAdapter extends EdsSwitch<Activity> implements Activit
 					break;
 				}
 				Activity nextActivity = doSwitch(next);
-				branch.getActivities().add(nextActivity);
+				nextActivity.succeed(previousActivity);
+				previousActivity = nextActivity;
 			}
 			
-			split.getBranches().add(branch);
+			branches.add(branch);
 		}
+		ParallelSplit split = new BasicParallelSplit("", "", branches);
 		if (sync != null) {
-			Activity splitSuccessor = doSwitch(sync);
+			Activity synchronize = doSwitch(sync);
 			
-			if (splitSuccessor != null)
-				split.setSuccessor(splitSuccessor);
+			if (synchronize != null) {
+				split.precede(synchronize);
+			}
 		}
 		return split;
 	}

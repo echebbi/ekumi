@@ -1,12 +1,12 @@
 package fr.kazejiyu.ekumi.tests.common.fake.activities;
 
+import java.util.Date;
 import java.util.List;
 
 import fr.kazejiyu.ekumi.core.workflow.Context;
-import fr.kazejiyu.ekumi.core.workflow.Status;
-import fr.kazejiyu.ekumi.core.workflow.gen.impl.ActivityImpl;
+import fr.kazejiyu.ekumi.core.workflow.impl.AbstractActivityWithStateManagement;
 
-public class SetNameInList extends ActivityImpl {
+public class SetNameInList extends AbstractActivityWithStateManagement {
 	
 	private boolean hasRun;
 	
@@ -15,7 +15,7 @@ public class SetNameInList extends ActivityImpl {
 	private List<String> names;
 	
 	public SetNameInList(String name, List<String> names) {
-		setName(name);
+		super("" + new Date().hashCode(), name);
 		this.names = names;
 	}
 	
@@ -28,13 +28,11 @@ public class SetNameInList extends ActivityImpl {
 	}
 	
 	@Override
-	public void run(Context context) {
+	public void doRun(Context context) {
 		hasRun = true;
 		contextOnRun = context;
 		
-		names.add(getName());
-		
-		setStatus(Status.SUCCEEDED);
+		names.add(this.name());
 	}
 	
 }

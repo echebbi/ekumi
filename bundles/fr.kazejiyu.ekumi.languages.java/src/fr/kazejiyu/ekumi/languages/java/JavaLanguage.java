@@ -9,11 +9,12 @@
  ******************************************************************************/
 package fr.kazejiyu.ekumi.languages.java;
 
+import static java.util.Arrays.asList;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -38,7 +39,7 @@ import fr.kazejiyu.ekumi.core.scripting.exceptions.IllegalScriptIdentifierExcept
 import fr.kazejiyu.ekumi.core.scripting.exceptions.ScriptLoadingFailureException;
 import fr.kazejiyu.ekumi.core.workflow.Condition;
 import fr.kazejiyu.ekumi.core.workflow.Context;
-import fr.kazejiyu.ekumi.core.workflow.Runner;
+import fr.kazejiyu.ekumi.core.workflow.RunnableScript;
 import fr.kazejiyu.ekumi.core.workflow.Script;
 import fr.kazejiyu.ekumi.languages.java.inject.EventsModule;
 import fr.kazejiyu.ekumi.languages.java.inject.ExecutionStatusModule;
@@ -61,7 +62,7 @@ import fr.kazejiyu.ekumi.languages.java.inject.ExecutionStatusModule;
  * <ul>
  * 	<li>{@code bundle;com.domain;com.domain.MyClass}
  * </ul>
- * Moreover, the script class must implement either {@link Runner} or {@link Condition} and must provide a
+ * Moreover, the script class must implement either {@link RunnableScript} or {@link Condition} and must provide a
  * default, nullary constructor.
  * 
  * @author Emmanuel CHEBBI
@@ -82,9 +83,9 @@ public final class JavaLanguage implements ScriptingLanguage {
 	}
 
 	@Override
-	public Runner resolveRunner(String identifier, Context context) {
+	public RunnableScript resolveRunner(String identifier, Context context) {
 		try {
-			Runner runner = resolve(new ScriptIdentifier(identifier), Runner.class);
+			RunnableScript runner = resolve(new ScriptIdentifier(identifier), RunnableScript.class);
 			
 			if (context == null)
 				return runner;
@@ -236,7 +237,7 @@ public final class JavaLanguage implements ScriptingLanguage {
 	
 	/** @return the list of modules that should be used by Guice injector */
 	private static Collection<Module> createModules(Context context) {
-		return Arrays.asList(
+		return asList(
 				new EventsModule(context.events()),
 				new ExecutionStatusModule(context.execution())
 		);

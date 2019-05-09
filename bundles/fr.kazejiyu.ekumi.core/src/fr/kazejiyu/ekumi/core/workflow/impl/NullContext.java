@@ -11,20 +11,23 @@ package fr.kazejiyu.ekumi.core.workflow.impl;
 
 import javax.swing.text.AbstractDocument.Content;
 
-import fr.kazejiyu.ekumi.core.execution.ExecutionStatus;
+import org.eclipse.collections.api.map.ImmutableMap;
+import org.eclipse.collections.impl.factory.Maps;
+
+import fr.kazejiyu.ekumi.core.execution.ExecutionState;
 import fr.kazejiyu.ekumi.core.execution.events.Events;
 import fr.kazejiyu.ekumi.core.execution.events.impl.NullEvents;
 import fr.kazejiyu.ekumi.core.execution.impl.NullExecutionStatus;
-import fr.kazejiyu.ekumi.core.workflow.gen.impl.ContextImpl;
+import fr.kazejiyu.ekumi.core.workflow.Context;
 
 /**
  * An implementation of {@link Content} with no behavior. 
  */
-public class NullContext extends ContextImpl {
+public class NullContext implements Context {
 	
 	private final Events events = new NullEvents();
 	
-	private final ExecutionStatus executionStatus = new NullExecutionStatus();
+	private final ExecutionState executionStatus = new NullExecutionStatus();
 	
 	@Override
 	public Events events() {
@@ -32,8 +35,29 @@ public class NullContext extends ContextImpl {
 	}
 	
 	@Override
-	public ExecutionStatus execution() {
+	public ExecutionState execution() {
 		return executionStatus;
+	}	
+
+	@Override
+	public ImmutableMap<String, Object> env() {
+		return Maps.immutable.empty();
+	}
+
+	@Override
+	public boolean contains(String name) {
+		return false;
+	}
+
+	@Override
+	public void set(String name, Object value) {
+		// 
+	}
+
+	@Override
+	public void unset(String name) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

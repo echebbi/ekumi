@@ -308,13 +308,6 @@ version(s), and exceptions or additional permissions here}.&quot;
          unpack="false"/>
 
    <plugin
-         id="fr.kazejiyu.ekumi.core.impl"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="fr.kazejiyu.ekumi.datatypes"
          download-size="0"
          install-size="0"

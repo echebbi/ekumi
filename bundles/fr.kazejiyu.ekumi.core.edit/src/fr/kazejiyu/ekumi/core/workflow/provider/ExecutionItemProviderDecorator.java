@@ -9,6 +9,8 @@
  ******************************************************************************/
 package fr.kazejiyu.ekumi.core.workflow.provider;
 
+import java.util.Date;
+
 import fr.kazejiyu.ekumi.core.workflow.Execution;
 
 /**
@@ -25,7 +27,7 @@ public class ExecutionItemProviderDecorator extends ItemProviderAdapterDecorator
 	@Override
 	public String getText(Object object) {
 		Execution execution = (Execution) object;
-		return execution.getStartDate().toString();
+		return execution.startDate().map(Date::toString).orElse("not started yet");
 	}
 
 }

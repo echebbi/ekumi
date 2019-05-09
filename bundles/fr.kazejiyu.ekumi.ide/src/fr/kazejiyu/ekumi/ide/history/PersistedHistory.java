@@ -12,36 +12,30 @@ package fr.kazejiyu.ekumi.ide.history;
 import static java.util.Objects.requireNonNull;
 
 import java.io.File;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
-import java.util.Map;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 import org.apache.commons.io.monitor.FileAlterationListener;
 import org.apache.commons.io.monitor.FileAlterationMonitor;
 import org.apache.commons.io.monitor.FileAlterationObserver;
 import org.eclipse.e4.core.services.events.IEventBroker;
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import fr.kazejiyu.ekumi.core.EKumiPlugin;
-import fr.kazejiyu.ekumi.core.workflow.Execution;
-import fr.kazejiyu.ekumi.core.workflow.History;
-import fr.kazejiyu.ekumi.core.workflow.WorkflowPackage;
-import fr.kazejiyu.ekumi.core.workflow.gen.impl.HistoryImpl;
+import fr.kazejiyu.ekumi.core.execution.FrozenExecution;
+import fr.kazejiyu.ekumi.core.execution.History;
+import fr.kazejiyu.ekumi.core.execution.impl.CsvFrozenExecution;
+import fr.kazejiyu.ekumi.ide.EKumiIdePlugin;
 
 /**
- * An {@link History} persisted under a given directory.<br>
- * <br>
+ * An {@link History} persisted under a given directory.
+ * <p>
  * An instance of this class can load executions persisted by an instance of {@link PersistExecution}.
  */
-public class PersistedHistory extends HistoryImpl {
+//TODO [Refactor] Should rely on OSGI declarative services
+public class PersistedHistory implements History {
 	
 	/** The directory where the executions are persisted */
 	private final Path location;
@@ -51,15 +45,12 @@ public class PersistedHistory extends HistoryImpl {
 	}
 	
 	@Override
-	public EList<Execution> getExecutions() {
-		// TODO [Refactor] This is a dumb implementation to test, should be optimized
-		return new BasicEList<>(
-			Arrays.stream(executionFolders())
-			      .flatMap(file -> Arrays.stream(file.listFiles(f -> f.getName().endsWith(".workflow"))))
-				  .map(file -> loadExecutionFromFile(file))
-				  .filter(Objects::nonNull)
-				  .collect(Collectors.toList())
-		);
+	public Iterator<FrozenExecution> iterator() {
+		return Arrays.stream(executionFolders())
+					 .flatMap(file -> Arrays.stream(file.listFiles(f -> f.getName().endsWith(".workflow"))))
+					 .map(file -> loadExecutionFromFile(file))
+					 .filter(Objects::nonNull)
+					 .iterator();
 	}
 	
 	/**
@@ -91,21 +82,16 @@ public class PersistedHistory extends HistoryImpl {
 	}
 	
 	// TODO [Refactor] Move this method to a more appropriate place
-	static Execution loadExecutionFromFile(File file) {
+	static FrozenExecution loadExecutionFromFile(File file) {
 		try {
-			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-			Map<String, Object> m = reg.getExtensionToFactoryMap();
-				
-			m.putIfAbsent("workflow", new XMIResourceFactoryImpl());
-				
-			ResourceSet resourceSet = new ResourceSetImpl();
-			resourceSet.getPackageRegistry().put(WorkflowPackage.eNS_URI, WorkflowPackage.eINSTANCE);
-			
-			Resource resource = resourceSet.getResource(URI.createFileURI(file.getAbsolutePath()), true);
-			return (Execution) resource.getContents().get(0);
-			
-		} catch (Exception e) {
-			EKumiPlugin.error(e, "Unable to load an Execution from " + file.getAbsolutePath());
+			List<String> lines = Files.readAllLines(file.toPath());
+			if (lines.isEmpty()) {
+				return null;
+			}
+			return new CsvFrozenExecution(lines.get(0));
+		} 
+		catch (Exception e) {
+			EKumiIdePlugin.error(e, "Unable to load an execution from " + file);
 			return null;
 		}
 	}

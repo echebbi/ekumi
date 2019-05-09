@@ -1,20 +1,23 @@
 package fr.kazejiyu.ekumi.tests.common.fake.activities;
 
+import java.util.Date;
+
 import fr.kazejiyu.ekumi.core.exceptions.EKumiRuntimeException;
-import fr.kazejiyu.ekumi.core.workflow.Activity;
 import fr.kazejiyu.ekumi.core.workflow.Context;
-import fr.kazejiyu.ekumi.core.workflow.Status;
-import fr.kazejiyu.ekumi.core.workflow.gen.impl.ActivityImpl;
+import fr.kazejiyu.ekumi.core.workflow.State;
+import fr.kazejiyu.ekumi.core.workflow.impl.AbstractActivityWithStateManagement;
 
 /**
- * An {@link Activity} that sets its status to {@link Status#FAILED}
- * and throws and Exception when executed. 
+ * A fake activity that sets its status to {@link State#FAILED} when executed. 
  */
-public class BrokenActivity extends ActivityImpl {
+public class BrokenActivity extends AbstractActivityWithStateManagement {
 	
+	public BrokenActivity() {
+		super("" + new Date().hashCode(), "Broken");
+	}
+
 	@Override
-	public void run(Context context) {
-		setStatus(Status.FAILED);
+	public void doRun(Context context) {
 		throw new EKumiRuntimeException("I won't run!");
 	}
 	

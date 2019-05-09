@@ -4,11 +4,14 @@ import static java.util.Arrays.asList;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.assertj.core.api.WithAssertions;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -206,9 +209,13 @@ public class ExtensionToCatalogsAdapterTest implements WithAssertions {
 				
 				configurationElements.add(element);
 			}
-			
 			// create 1 catalog
-			assertThat(adapter.adapt(configurationElements).eAllContents()).size().isEqualTo(1);
+			Iterator<EObject> catalogs = adapter.adapt(configurationElements).eAllContents();
+
+			AtomicInteger count = new AtomicInteger();
+			catalogs.forEachRemaining(c -> count.incrementAndGet());
+			
+			assertThat(count.get()).isEqualTo(1);
 		}
 		
 		@Test @DisplayName("keeps only one category when there are two with the same id")
@@ -220,9 +227,12 @@ public class ExtensionToCatalogsAdapterTest implements WithAssertions {
 				
 				configurationElements.add(element);
 			}
+			Iterator<EObject> catalogs = adapter.adapt(configurationElements).eAllContents();
+			AtomicInteger count = new AtomicInteger();
+			catalogs.forEachRemaining(c -> count.incrementAndGet());
 			
 			// create 1 catalog + 1 category == 2
-			assertThat(adapter.adapt(configurationElements).eAllContents()).size().isEqualTo(2);
+			assertThat(count.get()).isEqualTo(2);
 		}
 		
 		@Test @DisplayName("keeps only one activity when there are two with the same id")
@@ -240,9 +250,13 @@ public class ExtensionToCatalogsAdapterTest implements WithAssertions {
 				
 				configurationElements.add(element);
 			}
-			
 			// create 1 catalog + 1 category + 1 activity == 3
-			assertThat(adapter.adapt(configurationElements).eAllContents()).size().isEqualTo(3);
+			Iterator<EObject> catalogs = adapter.adapt(configurationElements).eAllContents();
+
+			AtomicInteger count = new AtomicInteger();
+			catalogs.forEachRemaining(c -> count.incrementAndGet());
+			
+			assertThat(count.get()).isEqualTo(3);
 		}
 		
 	}
@@ -284,7 +298,12 @@ public class ExtensionToCatalogsAdapterTest implements WithAssertions {
 			configurationElements.add(parentCategory);
 
 			// create 1 catalog + 1 category + 2 sub-categories == 4
-			assertThat(adapter.adapt(configurationElements).eAllContents()).size().isEqualTo(4);
+			Iterator<EObject> catalogs = adapter.adapt(configurationElements).eAllContents();
+			
+			AtomicInteger count = new AtomicInteger();
+			catalogs.forEachRemaining(c -> count.incrementAndGet());
+			
+			assertThat(count.get()).isEqualTo(4);
 		}
 		
 		@Test @DisplayName("does not create the categories if the parent cannot be created")
@@ -296,15 +315,24 @@ public class ExtensionToCatalogsAdapterTest implements WithAssertions {
 			when(parentCategory.getAttribute("parent")).thenReturn("nonExistingParentId");
 			
 			configurationElements.add(parentCategory);
+			
+			Iterator<EObject> catalogs = adapter.adapt(configurationElements).eAllContents();
+			AtomicInteger count = new AtomicInteger();
+			catalogs.forEachRemaining(c -> count.incrementAndGet());
 
 			// 1 catalog
-			assertThat(adapter.adapt(configurationElements).eAllContents()).size().isEqualTo(1);
+			assertThat(count.get()).isEqualTo(1);
 		}
 		
 		@Test @DisplayName("does not create the categories if the parent does not exist")
 		void does_not_create_the_categories() {
 			// create 1 catalog
-			assertThat(adapter.adapt(configurationElements).eAllContents()).size().isEqualTo(1);
+			Iterator<EObject> catalogs = adapter.adapt(configurationElements).eAllContents();
+			
+			AtomicInteger count = new AtomicInteger();
+			catalogs.forEachRemaining(c -> count.incrementAndGet());
+			
+			assertThat(count.get()).isEqualTo(1);
 		}
 	}
 	

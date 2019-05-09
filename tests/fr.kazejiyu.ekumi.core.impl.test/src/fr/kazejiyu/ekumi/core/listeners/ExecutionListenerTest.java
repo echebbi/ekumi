@@ -13,7 +13,7 @@ import fr.kazejiyu.ekumi.core.workflow.Execution;
 import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-@DisplayName("An executionListener")
+@DisplayName("An Execution Listener")
 public class ExecutionListenerTest {
 	
 	private ExecutionListener listener;
@@ -46,13 +46,19 @@ public class ExecutionListenerTest {
 	
 	@Test @DisplayName("does nothing on execution terminated")
 	void does_nothing_on_execution_terminated() {
-		listener.onExecutionTerminated(execution);
+		listener.onExecutionCancelled(execution);
 		verifyZeroInteractions(execution);
 	}
 	
 	@Test @DisplayName("does nothing on execution succeeded")
 	void does_nothing_on_execution_succeded() {
 		listener.onExecutionSucceeded(execution);
+		verifyZeroInteractions(execution);
+	}
+	
+	@Test @DisplayName("does nothing on execution failed")
+	void does_nothing_on_execution_failed() {
+		listener.onExecutionFailed(execution);
 		verifyZeroInteractions(execution);
 	}
 

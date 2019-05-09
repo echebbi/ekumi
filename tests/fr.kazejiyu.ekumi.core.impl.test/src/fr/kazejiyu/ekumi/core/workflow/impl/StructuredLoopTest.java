@@ -1,7 +1,6 @@
 package fr.kazejiyu.ekumi.core.workflow.impl;
 
-import static fr.kazejiyu.ekumi.core.workflow.Status.FAILED;
-import static fr.kazejiyu.ekumi.core.workflow.Status.SUCCEEDED;
+import static fr.kazejiyu.ekumi.core.workflow.State.FAILED;
 
 import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,13 +9,10 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
-import fr.kazejiyu.ekumi.core.workflow.Activity;
 import fr.kazejiyu.ekumi.core.workflow.Context;
 import fr.kazejiyu.ekumi.core.workflow.StructuredLoop;
-import fr.kazejiyu.ekumi.core.workflow.WorkflowFactory;
 import fr.kazejiyu.ekumi.tests.common.fake.activities.BrokenActivity;
 import fr.kazejiyu.ekumi.tests.common.fake.activities.Count;
-import fr.kazejiyu.ekumi.tests.common.fake.activities.DoNothing;
 import fr.kazejiyu.ekumi.tests.common.fake.activities.Until;
 
 /**
@@ -30,56 +26,9 @@ public class StructuredLoopTest implements WithAssertions {
 	@Mock
 	private Context context;
 	
-	@Nested
-	@DisplayName("when empty")
-	class Empty {
-		private StructuredLoop empty;
-		
-		@BeforeEach
-		void initialize() {
-			empty = WorkflowFactory.eINSTANCE.createStructuredLoop();
-		}
-		
-		// isEmpty()
-		
-		@Test @DisplayName("has no activity")
-		void is_empty() {
-			assertThat(empty.getActivity()).isNull();
-		}
-		
-		// run()
-		
-		@Test @DisplayName("has 'succeeded' status after run")
-		void has_finished_status_after_run() {
-			empty.run(context);
-			assertThat(empty.getStatus()).isEqualTo(SUCCEEDED);
-		}
-	}
-	
-	@Nested
-	@DisplayName("when not empty")
-	class NonEmpty {
-		
-		private StructuredLoop loop;
-		
-		private Activity activity;
-		
-		@BeforeEach
-		void initialize() {
-			activity = new DoNothing();
-			
-			loop = WorkflowFactory.eINSTANCE.createStructuredLoop();
-			loop.setActivity(activity);
-		}
-		
-		// isEmpty()
-		
-		@Test @DisplayName("has an activity")
-		void is_not_empty() {
-			assertThat(loop.getActivity()).isSameAs(activity);
-		}
-		
-		// NEITHER PRE-CONDITION NOR POST-CONDITION => run() would lead to an infinite loop
+	@BeforeEach
+	void createAContext() {
+		context = new NullContext();
 	}
 	
 	@Nested
@@ -89,21 +38,20 @@ public class StructuredLoopTest implements WithAssertions {
 		
 		@BeforeEach
 		void initialize() {
-			corrupted = WorkflowFactory.eINSTANCE.createStructuredLoop();
-			corrupted.setActivity(new BrokenActivity());
+			corrupted = new BasicStructuredLoop("id", "name", new BrokenActivity(), null, null);
 		}
 		
 		// run()
 		
-		@Test @DisplayName("do not throw when run")
-		void do_not_throw_when_run() {
+		@Test @DisplayName("does not throw when run")
+		void does_not_throw_when_run() {
 			assertThatCode(() -> corrupted.run(context)).doesNotThrowAnyException();
 		}
 		
 		@Test @DisplayName("has 'failed' status after run")
 		void has_failed_status_after_run() {
 			corrupted.run(context);
-			assertThat(corrupted.getStatus()).isEqualTo(FAILED);
+			assertThat(corrupted.state()).isEqualTo(FAILED);
 		}
 	}
 	
@@ -119,21 +67,25 @@ public class StructuredLoopTest implements WithAssertions {
 		@BeforeEach
 		void initialize() {
 			counter = new Count();
-			
-			whileDo = WorkflowFactory.eINSTANCE.createStructuredLoop();
-			whileDo.setActivity(counter);
-			whileDo.setPreCondition(new Until(counter, LIMIT));
 		}
 		
 		@Test @DisplayName("stops when the pre-condition is fulfilled")
 		void stops_when_the_pre_condition_is_fulfilled() {
+			Until preCondition = new Until(counter, LIMIT);
+			whileDo = new BasicStructuredLoop("id", "name", counter, preCondition, null);
+
 			whileDo.run(context);
+			
 			assertThat(counter.getValue()).isEqualTo(LIMIT);
 		}
 		
 		@Test @DisplayName("does not execute its activity if the pre-condition is not fulfilled")
 		void executes_its_activity_at_least_once() {
-			whileDo.setPreCondition(new Until(counter, -1));
+			Until preCondition = new Until(counter, -1);
+			whileDo = new BasicStructuredLoop("id", "name", counter, preCondition, null);
+			
+			whileDo.run(context);
+			
 			assertThat(counter.getValue()).isZero();
 		}
 		
@@ -143,7 +95,6 @@ public class StructuredLoopTest implements WithAssertions {
 	@DisplayName("when having a post-condition")
 	class WhenHavingAPostCondition {
 		private StructuredLoop doWhile;
-		private Context context;
 		
 		private Count counter;
 		
@@ -152,22 +103,25 @@ public class StructuredLoopTest implements WithAssertions {
 		@BeforeEach
 		void initialize() {
 			counter = new Count();
-			
-			doWhile = WorkflowFactory.eINSTANCE.createStructuredLoop();
-			doWhile.setActivity(counter);
-			doWhile.setPostCondition(new Until(counter, LIMIT));
 		}
 		
 		@Test @DisplayName("stops when the post-condition is fulfilled")
 		void stops_when_the_pre_condition_is_fulfilled() {
+			Until postCondition = new Until(counter, LIMIT);
+			doWhile = new BasicStructuredLoop("id", "name", counter, null, postCondition);
+			
 			doWhile.run(context);
+			
 			assertThat(counter.getValue()).isEqualTo(LIMIT);
 		}
 		
 		@Test @DisplayName("executes its activity at least once")
 		void executes_its_activity_at_least_once() {
-			doWhile.setPostCondition(new Until(counter, -1));
+			Until postCondition = new Until(counter, -1);
+			doWhile = new BasicStructuredLoop("id", "name", counter, null, postCondition);
+			
 			doWhile.run(context);
+			
 			assertThat(counter.getValue()).isEqualTo(1);
 		}
 		

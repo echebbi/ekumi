@@ -9,12 +9,12 @@
  ******************************************************************************/
 package fr.kazejiyu.ekumi.core.execution.impl;
 
-import fr.kazejiyu.ekumi.core.execution.ExecutionStatus;
+import fr.kazejiyu.ekumi.core.execution.ExecutionState;
 
 /**
- * An implementation of {@link ExecutionStatus} with no behavior. 
+ * An implementation of {@link ExecutionState} with no behavior. 
  */
-public class NullExecutionStatus implements ExecutionStatus {
+public class NullExecutionStatus implements ExecutionState {
 
 	@Override
 	public boolean isCancelled() {

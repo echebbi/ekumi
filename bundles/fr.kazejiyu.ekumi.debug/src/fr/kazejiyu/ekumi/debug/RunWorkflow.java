@@ -12,7 +12,6 @@ package fr.kazejiyu.ekumi.debug;
 import static java.util.Arrays.asList;
 
 import java.util.Collections;
-import java.util.Date;
 import java.util.Optional;
 import java.util.function.Function;
 
@@ -30,12 +29,12 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import fr.kazejiyu.ekumi.core.EKumiExtensions;
 import fr.kazejiyu.ekumi.core.EKumiPlugin;
 import fr.kazejiyu.ekumi.core.datatypes.DataTypeFactory;
+import fr.kazejiyu.ekumi.core.execution.impl.JobsExecution;
 import fr.kazejiyu.ekumi.core.scripting.ScriptingLanguageFactory;
 import fr.kazejiyu.ekumi.core.specs.ActivityAdapter;
 import fr.kazejiyu.ekumi.core.specs.ActivityAdapterFactory;
 import fr.kazejiyu.ekumi.core.workflow.Activity;
 import fr.kazejiyu.ekumi.core.workflow.Execution;
-import fr.kazejiyu.ekumi.core.workflow.WorkflowFactory;
 import fr.kazejiyu.ekumi.ide.common.datatypes.ExtensionToDatatypeFactory;
 import fr.kazejiyu.ekumi.ide.common.languages.ExtensionToLanguageFactory;
 import fr.kazejiyu.ekumi.ide.common.spec.ExtensionToActivityAdapterFactory;
@@ -77,25 +76,24 @@ public final class RunWorkflow extends LaunchConfigurationDelegate {
 				return;
 			}
 			Activity activity = maybeActivity.get();
-			Execution execution = WorkflowFactory.eINSTANCE.createExecution();
+			Execution execution = new JobsExecution(activity);
 			
 			// Ensure execution history is persisted in workspace's metadata
-			execution.getContext().getEvents().onExecutionEvent(new PersistExecution(EKumiPlugin.getStateLocationURI().appendSegment("executions")));
+			execution.context()
+					 .events()
+					 .onExecutionEvent(new PersistExecution(EKumiPlugin.getStateLocationPath().resolve("executions")));
 			
-			execution.setId(new Date().hashCode() + "." + activity.getId());
-			execution.setName(activity.getName());
-			execution.setActivity(activity);
 			execution.start();
-			
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			Activator.error(e, "An error occurred while executing " + uri);
 		}
 	}
 	
 	private static Optional<ActivityAdapter> findAdapterFor(Object specification) {
-		if (specification == null)
+		if (specification == null) {
 			return Optional.empty();
-		
+		}
 		ActivityAdapterFactory adapters = new ExtensionToActivityAdapterFactory(() -> asList(Platform.getExtensionRegistry().getConfigurationElementsFor(EKumiExtensions.SPECS_EXTENSION_ID)));
 		return adapters.findAdapterFor(specification);
 	}

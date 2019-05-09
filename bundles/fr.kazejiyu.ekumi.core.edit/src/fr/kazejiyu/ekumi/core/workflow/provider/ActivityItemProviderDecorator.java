@@ -25,7 +25,7 @@ public class ActivityItemProviderDecorator extends ItemProviderAdapterDecorator 
 	@Override
 	public String getText(Object object) {
 		Activity activity = (Activity) object;
-		return activity.getName();
+		return activity.name();
 	}
 
 }

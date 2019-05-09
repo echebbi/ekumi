@@ -9,9 +9,12 @@
  ******************************************************************************/
 package fr.kazejiyu.ekumi.specs.eds.adapter;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import org.assertj.core.api.SoftAssertions;
 import org.assertj.core.api.WithAssertions;
@@ -20,19 +23,25 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import fr.kazejiyu.ekumi.core.datatypes.DataType;
 import fr.kazejiyu.ekumi.core.datatypes.DataTypeFactory;
 import fr.kazejiyu.ekumi.core.datatypes.exceptions.DataTypeUnserializationException;
+import fr.kazejiyu.ekumi.core.exceptions.DataTypeNotFoundException;
 import fr.kazejiyu.ekumi.core.scripting.ScriptingLanguage;
 import fr.kazejiyu.ekumi.core.scripting.ScriptingLanguageFactory;
+import fr.kazejiyu.ekumi.core.scripting.exceptions.ScriptingLanguageNotFoundException;
 import fr.kazejiyu.ekumi.core.workflow.Activity;
+import fr.kazejiyu.ekumi.core.workflow.Input;
+import fr.kazejiyu.ekumi.core.workflow.Output;
 import fr.kazejiyu.ekumi.core.workflow.ParallelSplit;
-import fr.kazejiyu.ekumi.core.workflow.ScriptedTask;
+import fr.kazejiyu.ekumi.core.workflow.ScriptedActivity;
 import fr.kazejiyu.ekumi.core.workflow.Sequence;
-import fr.kazejiyu.ekumi.core.workflow.Variable;
 import fr.kazejiyu.ekumi.specs.eds.Divergence;
 import fr.kazejiyu.ekumi.specs.eds.EdsFactory;
 import fr.kazejiyu.ekumi.specs.eds.ExternalTask;
@@ -47,6 +56,9 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 	private DataTypeFactory datatypes;
 	
 	@Mock
+	private ScriptingLanguage language;
+	
+	@Mock
 	private ScriptingLanguageFactory languages;
 	
 	private BasicWorkflowAdapter adapter;
@@ -54,6 +66,14 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 	@BeforeEach
 	void instantiate() {
 		adapter = new BasicWorkflowAdapter(datatypes, languages);
+		
+		when (languages.get(any(String.class))) .thenAnswer(invocation -> {
+			if ("my-valid-language-id".equals(invocation.getArgument(0))) {
+				return language;
+			}
+			throw new ScriptingLanguageNotFoundException(invocation.getArgument(0).toString());
+		});
+		when (languages.find("my-valid-language-id")) .thenReturn(Optional.of(language));
 	}
 	
 	@Test @DisplayName("can adapt an Activity")
@@ -68,7 +88,23 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 	
 	@Test @DisplayName("cannot adapt a null object")
 	void cannot_adapt_a_null_object() {
+		assertThat(adapter.canAdapt(null)).isFalse();
+	}
+	
+	@ParameterizedTest
+	@MethodSource("unadaptableValues")
+	@DisplayName("returns nothing when adapting an illegal value")
+	void returns_nothing_when_adapting_an_unadaptable_value() {
 		assertThat(adapter.adapt(null, datatypes, languages)).isEmpty();
+	}
+	
+	@SuppressWarnings("unused")
+	private static Stream<Arguments> unadaptableValues() {
+		return Stream.of(
+			Arguments.of(new Object[] { null }),
+			Arguments.of("a string"),
+			Arguments.of(12)
+		);
 	}
 	
 	@Nested @DisplayName("when instantiated")
@@ -125,7 +161,7 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 				
 				Sequence seq = (Sequence) adapted;
 				
-				assertThat(seq.getActivities()).isEmpty();
+				assertThat(seq.activities()).isEmpty();
 			}
 			
 			@Test @DisplayName("returns a new Activity with the same ID and name")
@@ -133,9 +169,9 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 				Activity adapted = adapter.caseActivity(activity);
 
 				SoftAssertions softly = new SoftAssertions();
-				softly.assertThat(adapted.getId()).as("has the same ID")
+				softly.assertThat(adapted.id()).as("has the same ID")
 					  .isEqualTo(activity.getId());
-				softly.assertThat(adapted.getName()).as("has the same name")
+				softly.assertThat(adapted.name()).as("has the same name")
 					  .isEqualTo(activity.getName());
 				
 				softly.assertAll();
@@ -149,8 +185,10 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 			void createSuccessors() {
 				ExternalTask successor1 = EdsFactory.eINSTANCE.createExternalTask();
 				successor1.setId("Successor 1");
+				successor1.setLanguageId("my-valid-language-id");
 				ExternalTask successor2 = EdsFactory.eINSTANCE.createExternalTask();
 				successor2.setId("Successor 2");
+				successor2.setLanguageId("my-valid-language-id");
 				
 				activity.getStart().getSuccessors().add(successor1);
 				successor1.getSuccessors().add(successor2);
@@ -163,45 +201,41 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 				
 				Sequence seq = (Sequence) adapted;
 				
-				assertThat(seq.getActivities()).as("creates a sequence with the right length")
+				assertThat(seq.activities()).as("creates a sequence with the right length")
 											   .size().isEqualTo(2);
 				
 				SoftAssertions softly = new SoftAssertions();
 				
-				Activity first = seq.getActivities().get(0);
+				Activity first = seq.activities().get(0);
 				softly.assertThat(first).as("adapts the first successor")
-					  .isInstanceOf(ScriptedTask.class);
+					  .isInstanceOf(ScriptedActivity.class);
 				
-				Activity second = seq.getActivities().get(1);
+				Activity second = seq.activities().get(1);
 				softly.assertThat(second).as("adapts the second successor")
-					  .isInstanceOf(ScriptedTask.class);
+					  .isInstanceOf(ScriptedActivity.class);
 				
 				softly.assertAll();
 			}
 			
-			@Test @DisplayName("creates a sequence which activities are bounded together")
+			@Test @DisplayName("creates a sequence which activities are bound together")
 			void creates_a_sequence_which_activities_are_bounded_together() {
 				Activity adapted = adapter.adapt(activity, datatypes, languages).get();
 				assertThat(adapted).isInstanceOf(Sequence.class);
 				
 				Sequence seq = (Sequence) adapted;
 				
-				assertThat(seq.getActivities()).as("creates a sequence with the right length")
+				assertThat(seq.activities()).as("creates a sequence with the right length")
 											   .size().isEqualTo(2);
 				
-				Activity first = seq.getActivities().get(0);
-				Activity second = seq.getActivities().get(1);
+				Activity first = seq.activities().get(0);
+				Activity second = seq.activities().get(1);
 				
 				
 				SoftAssertions softly = new SoftAssertions();
-				softly.assertThat(first.getPredecessor()).as("sequence root has no predecessor")
-					  .isNull();
-				softly.assertThat(first.getSuccessor()).as("sequence root has second successor as successor")
-					  .isEqualTo(second);
-				softly.assertThat(second.getPredecessor()).as("second successor has sequence root as predecessor")
-					  .isEqualTo(first);
-				softly.assertThat(second.getSuccessor()).as("last element has no successor")
-					  .isNull();
+				softly.assertThat(first.predecessor()).as("sequence root has no predecessor").isEmpty();
+				softly.assertThat(first.successor()).as("sequence root has second successor as successor").contains(second);
+				softly.assertThat(second.predecessor()).as("second successor has sequence root as predecessor").contains(first);
+				softly.assertThat(second.successor()).as("last element has no successor").isEmpty();
 				softly.assertAll();
 			}
 		}
@@ -221,7 +255,7 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 				assertThat(adapted).as("is a sequence").isInstanceOf(Sequence.class);
 				
 				Sequence seq = (Sequence) adapted;
-				assertThat(seq.getSuccessor()).isInstanceOf(ParallelSplit.class);
+				assertThat(seq.successor()).containsInstanceOf(ParallelSplit.class);
 			}
 		}
 		
@@ -238,22 +272,23 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 			task.setId("My ExternalTask ID");
 			task.setName("My ExternalTask Name");
 			task.setScriptId("My script ID");
+			task.setLanguageId("my-valid-language-id");
 		}
 		
 		@Test @DisplayName("creates a similar ScriptedTask")
 		void creates_a_similar_ScriptedTask() {
 			Activity adapted = adapter.caseExternalTask(task);
 			
-			assertThat(adapted).isInstanceOf(ScriptedTask.class);
-			ScriptedTask script = (ScriptedTask) adapted;
+			assertThat(adapted).isInstanceOf(ScriptedActivity.class);
+			ScriptedActivity script = (ScriptedActivity) adapted;
 			
 			SoftAssertions softly = new SoftAssertions();
-			softly.assertThat(script.getId()).as("has the same ID")
+			softly.assertThat(script.id()).as("has the same ID")
 				  .isEqualTo(task.getId());
-			softly.assertThat(script.getName()).as("has the same name")
+			softly.assertThat(script.name()).as("has the same name")
 				  .isEqualTo(task.getName());
-			softly.assertThat(script.getScriptPath()).as("has the same script ID")
-				  .isEqualTo(task.getScriptId());
+//			softly.assertThat(script.getScriptPath()).as("has the same script ID")
+//				  .isEqualTo(task.getScriptId());
 			
 			softly.assertAll();
 		}
@@ -261,32 +296,27 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 		@Nested @DisplayName("that has a valid ScriptingLanguage ID")
 		class ThatHasAValidScriptingLanguageID {
 			
-			@Mock ScriptingLanguage language;
-			
 			@BeforeEach
 			void setup() {
 				task.setLanguageId("my-valid-language-id");
-				when(languages.find("my-valid-language-id")).thenReturn(Optional.of(language));
 			}
 			
 			@Test @DisplayName("creates a ScriptedTask with the corresponding ScriptingLanguage")
 			void creates_a_ScriptedTask_with_the_corresponding_ScriptingLanguage() {
 				Activity adapted = adapter.caseExternalTask(task);
-				ScriptedTask script = (ScriptedTask) adapted;
+				ScriptedActivity script = (ScriptedActivity) adapted;
 				
-				assertThat(script.getLanguage()).isEqualTo(language);
+				assertThat(script.language()).isEqualTo(language);
 			}
 		}
 		
 		@Nested @DisplayName("that does not have a valid ScriptingLanguage ID")
 		class ThatDoesNotHaveAValidScriptingLanguageID {
 			
-			@Test @DisplayName("creates a ScriptedTask without any ScriptingLanguage")
-			void creates_a_ScriptedTask_without_any__ScriptingLanguage() {
-				Activity adapted = adapter.caseExternalTask(task);
-				ScriptedTask script = (ScriptedTask) adapted;
-				
-				assertThat(script.getLanguage()).isNull();
+			@Test @DisplayName("throws a ScriptingLanguageNotFoundException")
+			void throws_a_ScriptingLanguageNotFoundException() {
+				task.setLanguageId("not-a-valid-language-id");
+				assertThrows(ScriptingLanguageNotFoundException.class, () -> adapter.caseExternalTask(task));
 			}
 		}
 		
@@ -314,15 +344,15 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 			void adapts_the_inputs() {
 				Activity adapted = adapter.caseExternalTask(task);
 				
-				assertThat(adapted.getInputs()).size().isEqualTo(1);
+				assertThat(adapted.inputs()).size().isEqualTo(1);
 				
-				Variable variable = adapted.getInputs().get(0);
+				Input adaptedInput = adapted.input(input.getName());
 				
 				SoftAssertions softly = new SoftAssertions();
-				softly.assertThat(variable.getName()).isEqualTo(input.getName());
-				softly.assertThat(variable.getOwner()).isEqualTo(adapted);
-				softly.assertThat(variable.getType()).isEqualTo(datatype);
-				softly.assertThat(variable.getValue()).isEqualTo(5.0);
+				softly.assertThat(adaptedInput.name()).isEqualTo(input.getName());
+//				softly.assertThat(input.getOwner()).isEqualTo(adapted);
+				softly.assertThat(adaptedInput.type()).isEqualTo(datatype);
+				softly.assertThat(adaptedInput.value()).isEqualTo(5.0);
 				softly.assertAll();
 			}
 			
@@ -334,12 +364,9 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 					input.setTypeId("idonotexist");
 				}
 				
-				@Test @DisplayName("adapt the input with a null value")
-				void adapt_the_input_with_a_null_value() {
-					Activity adapted = adapter.caseExternalTask(task);
-					Variable adaptedInput = adapted.getInputs().get(0);
-					
-					assertThat(adaptedInput.getValue()).isNull();
+				@Test @DisplayName("throws a DataTypeNotFoundException")
+				void throws_a_DataTypeNotFoundException() {
+					assertThrows(DataTypeNotFoundException.class, () -> adapter.caseExternalTask(task));
 				}
 				
 			}
@@ -353,15 +380,15 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 				void makeValueUnserializable() {
 					input.setValue("unserializable");
 					when (datatype.unserialize("unserializable")) .thenThrow(DataTypeUnserializationException.class);
-					when (datatype.getDefaultValue()) .thenReturn(DEFAULT_VAL);
+					when (datatype.defaultValue()) .thenReturn(DEFAULT_VAL);
 				}
 				
 				@Test @DisplayName("adapt the input with datatype's default value")
 				void adapt_the_input_with_datatype_default_value() {
 					Activity adapted = adapter.caseExternalTask(task);
-					Variable adaptedInput = adapted.getInputs().get(0);
+					Input adaptedInput = adapted.input(input.getName());
 					
-					assertThat(adaptedInput.getValue()).isEqualTo(DEFAULT_VAL);
+					assertThat(adaptedInput.value()).isEqualTo(DEFAULT_VAL);
 				}
 				
 			}
@@ -381,26 +408,36 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 				output = EdsFactory.eINSTANCE.createVariable();
 				output.setName("Output 1");
 				output.setTypeId("mocked-datatype");
-				output.setValue("mocked-value");
+				output.setValue("5.0");
 				task.getOutputs().add(output);
 				
 				when (datatypes.<Double>find("mocked-datatype")) .thenReturn(Optional.of(datatype));
-				when (datatype.unserialize("mocked-value")) .thenReturn(5.0);
+				
+				when (datatype.unserialize(any())) .thenAnswer(invocation -> {
+					try {
+						if (invocation.getArgument(0) instanceof String) {
+							return Double.parseDouble(invocation.getArgument(0));
+						}
+					} catch (Exception e) {
+						// throws an unserialization exception
+					}
+					throw new DataTypeUnserializationException("" + invocation.getArgument(0));
+				});
 			}
 			
 			@Test @DisplayName("adapts the outputs")
 			void adapts_the_outputs() {
 				Activity adapted = adapter.caseExternalTask(task);
 				
-				assertThat(adapted.getOutputs()).size().isEqualTo(1);
+				assertThat(adapted.outputs()).size().isEqualTo(1);
 				
-				Variable variable = adapted.getOutputs().get(0);
+				Output adaptedOutput = adapted.output(output.getName());
 				
 				SoftAssertions softly = new SoftAssertions();
-				softly.assertThat(variable.getName()).isEqualTo(output.getName());
-				softly.assertThat(variable.getOwner()).isEqualTo(adapted);
-				softly.assertThat(variable.getType()).isEqualTo(datatype);
-				softly.assertThat(variable.getValue()).isEqualTo(5.0);
+				softly.assertThat(adaptedOutput.name()).isEqualTo(output.getName());
+//				softly.assertThat(adaptedInput.getOwner()).isEqualTo(adapted);
+				softly.assertThat(adaptedOutput.type()).isEqualTo(datatype);
+				softly.assertThat(adaptedOutput.value()).isEqualTo(5.0);
 				softly.assertAll();
 			}
 			
@@ -412,12 +449,9 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 					output.setTypeId("idonotexist");
 				}
 				
-				@Test @DisplayName("adapt the output with a null value")
-				void adapt_the_output_with_a_null_value() {
-					Activity adapted = adapter.caseExternalTask(task);
-					Variable adaptedOutput = adapted.getOutputs().get(0);
-					
-					assertThat(adaptedOutput.getValue()).isNull();
+				@Test @DisplayName("throws a DataTypeNotFoundException")
+				void throws_a_DataTypeNotFoundException() {
+					assertThrows(DataTypeNotFoundException.class, () -> adapter.caseExternalTask(task));
 				}
 				
 			}
@@ -430,16 +464,15 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 				@BeforeEach
 				void makeValueUnserializable() {
 					output.setValue("unserializable");
-					when (datatype.unserialize("unserializable")) .thenThrow(DataTypeUnserializationException.class);
-					when (datatype.getDefaultValue()) .thenReturn(DEFAULT_VAL);
+					when (datatype.defaultValue()) .thenReturn(DEFAULT_VAL);
 				}
 				
-				@Test @DisplayName("adapt the outputs with datatype's default value")
-				void adapt_the_outputs_with_datatype_default_value() {
+				@Test @DisplayName("throws a DataNotFoundException")
+				void throws_a_DataNotFoundException() {
 					Activity adapted = adapter.caseExternalTask(task);
-					Variable adaptedOutput = adapted.getOutputs().get(0);
+					Output adaptedOutput = adapted.output(output.getName());
 					
-					assertThat(adaptedOutput.getValue()).isEqualTo(DEFAULT_VAL);
+					assertThat(adaptedOutput.value()).isEqualTo(DEFAULT_VAL);
 				}
 				
 			}
@@ -509,7 +542,7 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 				
 				ParallelSplit split = (ParallelSplit) adapted;
 				
-				assertThat(split.getBranches()).isEmpty();
+				assertThat(split.branches()).isEmpty();
 			}
 		}
 		
@@ -520,8 +553,10 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 			void createSuccessors() {
 				ExternalTask successor1 = EdsFactory.eINSTANCE.createExternalTask();
 				successor1.setId("Successor 1");
+				successor1.setLanguageId("my-valid-language-id");
 				ExternalTask successor2 = EdsFactory.eINSTANCE.createExternalTask();
 				successor2.setId("Successor 2");
+				successor2.setLanguageId("my-valid-language-id");
 				
 				splitSpec.getSuccessors().add(successor1);
 				splitSpec.getSuccessors().add(successor2);
@@ -534,7 +569,7 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 				
 				ParallelSplit split = (ParallelSplit) adapted;
 				
-				assertThat(split.getBranches()).as("creates a split with the right amount of branches")
+				assertThat(split.branches()).as("creates a split with the right amount of branches")
 											   .size().isEqualTo(2);
 			}
 			
@@ -545,7 +580,7 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 				
 				ParallelSplit split = (ParallelSplit) adapted;
 				
-				assertThat(split.getBranches()).allMatch(Sequence.class::isInstance);
+				assertThat(split.branches()).allMatch(Sequence.class::isInstance);
 			}
 			
 			@Test @DisplayName("creates a split using sequences containing successors")
@@ -556,9 +591,9 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 				ParallelSplit split = (ParallelSplit) adapted;
 				
 				SoftAssertions softly = new SoftAssertions();
-				for (Activity branch : split.getBranches()) {
-					Activity activity = ((Sequence) branch).getActivities().get(0);
-					softly.assertThat(activity).isInstanceOf(ScriptedTask.class);
+				for (Activity branch : split.branches()) {
+					Activity activity = ((Sequence) branch).activities().get(0);
+					softly.assertThat(activity).isInstanceOf(ScriptedActivity.class);
 				}
 				softly.assertAll();
 			}
@@ -573,8 +608,10 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 			void addSynchronizationNode() {
 				ExternalTask successor1 = EdsFactory.eINSTANCE.createExternalTask();
 				successor1.setId("Successor 1");
+				successor1.setLanguageId("my-valid-language-id");
 				ExternalTask successor2 = EdsFactory.eINSTANCE.createExternalTask();
 				successor2.setId("Successor 2");
+				successor2.setLanguageId("my-valid-language-id");
 				
 				splitSpec.getSuccessors().add(successor1);
 				splitSpec.getSuccessors().add(successor2);
@@ -582,10 +619,12 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 				Synchronization sync = EdsFactory.eINSTANCE.createSynchronization();
 				successor1.getSuccessors().add(sync);
 				successor2.getSuccessors().add(EdsFactory.eINSTANCE.createExternalTask());
+				((ExternalTask) successor2.getSuccessors().get(0)).setLanguageId("my-valid-language-id");
 				successor2.getSuccessors().get(0).getSuccessors().add(sync);
 				
 				syncSuccessor = EdsFactory.eINSTANCE.createExternalTask();
 				syncSuccessor.setId("Sync Successor");
+				syncSuccessor.setLanguageId("my-valid-language-id");
 				sync.getSuccessors().add(syncSuccessor);
 			}
 			
@@ -595,8 +634,8 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 				assertThat(adapted).as("is a ParallelSplit").isInstanceOf(ParallelSplit.class);
 				
 				ParallelSplit split = (ParallelSplit) adapted;
-				assertThat(split.getSuccessor()).isInstanceOf(ScriptedTask.class);
-				assertThat(split.getSuccessor().getId()).isEqualTo(syncSuccessor.getId());
+				assertThat(split.successor()).containsInstanceOf(ScriptedActivity.class);
+				assertThat(split.successor().get().id()).isEqualTo(syncSuccessor.getId());
 			}
 		}
 	

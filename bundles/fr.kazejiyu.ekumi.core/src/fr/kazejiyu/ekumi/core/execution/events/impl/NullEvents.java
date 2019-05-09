@@ -15,6 +15,7 @@ import fr.kazejiyu.ekumi.core.execution.listeners.ExecutionListener;
 import fr.kazejiyu.ekumi.core.execution.listeners.OnActivityFailed;
 import fr.kazejiyu.ekumi.core.execution.listeners.OnActivityStarted;
 import fr.kazejiyu.ekumi.core.execution.listeners.OnActivitySucceeded;
+import fr.kazejiyu.ekumi.core.execution.listeners.OnExecutionFailed;
 import fr.kazejiyu.ekumi.core.execution.listeners.OnExecutionStarted;
 import fr.kazejiyu.ekumi.core.execution.listeners.OnExecutionSucceeded;
 import fr.kazejiyu.ekumi.core.workflow.Activity;
@@ -51,6 +52,11 @@ public class NullEvents implements Events {
 	}
 
 	@Override
+	public void hasFailed(Execution execution) {
+		// does nothing
+	}
+
+	@Override
 	public void onActivityStarted(OnActivityStarted listener) {
 		// does nothing
 	}
@@ -77,6 +83,11 @@ public class NullEvents implements Events {
 
 	@Override
 	public void onExecutionSucceeded(OnExecutionSucceeded listener) {
+		// does nothing
+	}
+	
+	@Override
+	public void onExecutionFailed(OnExecutionFailed listener) {
 		// does nothing
 	}
 

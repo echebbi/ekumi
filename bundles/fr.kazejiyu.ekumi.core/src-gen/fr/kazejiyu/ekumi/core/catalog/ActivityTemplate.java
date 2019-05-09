@@ -62,7 +62,7 @@ public interface ActivityTemplate extends Identifiable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model dataType="fr.kazejiyu.ekumi.core.catalog.Activity"
 	 * @generated
 	 */
 	Activity toActivity();

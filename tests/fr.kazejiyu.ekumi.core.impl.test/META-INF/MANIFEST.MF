@@ -3,8 +3,9 @@ Bundle-ManifestVersion: 2
 Bundle-Name: EKumi Core Test
 Bundle-SymbolicName: fr.kazejiyu.ekumi.core.impl.test
 Bundle-Version: 0.1.0
-Fragment-Host: fr.kazejiyu.ekumi.core.impl;bundle-version="0.1.0"
+Fragment-Host: fr.kazejiyu.ekumi.core;bundle-version="0.1.0"
 Automatic-Module-Name: fr.kazejiyu.ekumi.core.impl.test
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: fr.kazejiyu.ekumi.tests.common;bundle-version="0.1.0"
+Require-Bundle: fr.kazejiyu.ekumi.tests.common;bundle-version="0.1.0",
+ fr.kazejiyu.ekumi.datatypes;bundle-version="0.1.0"
 Bundle-Vendor: Emmanuel CHEBBI

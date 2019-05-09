@@ -15,7 +15,7 @@ import fr.kazejiyu.ekumi.core.datatypes.DataTypeFactory;
 import fr.kazejiyu.ekumi.core.scripting.ScriptingLanguageFactory;
 
 /**
- * Adapts a specification to an {@link fr.kazejiyu.ekumi.model.workflow.Activity}. 
+ * Adapts a specification to an {@link fr.kazejiyu.ekumi.core.workflow.model.workflow.Activity}. 
  */
 public interface ActivityAdapter {
 	

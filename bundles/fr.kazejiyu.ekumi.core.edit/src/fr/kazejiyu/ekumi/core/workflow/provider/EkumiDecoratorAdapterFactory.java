@@ -14,12 +14,12 @@ import org.eclipse.emf.edit.provider.IItemProviderDecorator;
 
 import fr.kazejiyu.ekumi.core.workflow.Activity;
 import fr.kazejiyu.ekumi.core.workflow.Execution;
-import fr.kazejiyu.ekumi.core.workflow.gen.provider.WorkflowItemProviderAdapterFactory;
+import fr.kazejiyu.ekumi.core.catalog.gen.provider.CatalogItemProviderAdapterFactory;
 
 public class EkumiDecoratorAdapterFactory extends DecoratorAdapterFactory {
 	
 	public EkumiDecoratorAdapterFactory() {
-		super(new WorkflowItemProviderAdapterFactory());
+		super(new CatalogItemProviderAdapterFactory());
 	}
 
 	@Override
