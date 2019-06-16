@@ -10,7 +10,7 @@
 
 	<artifactId>org.assertj</artifactId>
 	<packaging>eclipse-plugin</packaging>
-	<version>3.9.0</version>
+	<version>3.12.2</version>
 
     <properties>
         <sonar.skip>true</sonar.skip>
