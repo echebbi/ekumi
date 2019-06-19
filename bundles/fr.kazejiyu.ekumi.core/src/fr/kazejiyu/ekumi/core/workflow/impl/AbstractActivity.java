@@ -89,8 +89,12 @@ public abstract class AbstractActivity implements Activity {
 	
 	@Override
 	public void precede(Activity successor) {
+		Activity oldSuccessor = this.successor;
 		this.successor = successor;
 		
+		if (oldSuccessor != null && oldSuccessor.succeeds(this)) {
+			oldSuccessor.succeed(null);
+		}
 		if (successor != null && !successor.succeeds(this)) {
 			successor.succeed(this);
 		}
@@ -103,8 +107,12 @@ public abstract class AbstractActivity implements Activity {
 	
 	@Override
 	public void succeed(Activity predecessor) {
+		Activity oldPredecessor = this.predecessor;
 		this.predecessor = predecessor;
-		
+
+		if (oldPredecessor != null && oldPredecessor.precedes(this)) {
+			oldPredecessor.precede(null);
+		}
 		if (predecessor != null && !predecessor.precedes(this)) {
 			predecessor.precede(this);
 		}
