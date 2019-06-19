@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: fr.kazejiyu.ekumi.specs.eds.editor;singleton:=true
 Automatic-Module-Name: fr.kazejiyu.ekumi.specs.eds.editor
-Bundle-Version: 0.1.0
+Bundle-Version: 0.2.0
 Bundle-ClassPath: .
 Bundle-Activator: fr.kazejiyu.ekumi.specs.eds.gen.presentation.EdsEditorPlugin$Implementation
 Bundle-Vendor: %providerName

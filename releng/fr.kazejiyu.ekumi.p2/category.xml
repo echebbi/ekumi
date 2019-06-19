@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/fr.kazejiyu.ekumi.core.feature_0.1.0.jar" id="fr.kazejiyu.ekumi.core.feature" version="0.1.0">
+   <feature url="features/fr.kazejiyu.ekumi.core.feature_0.2.0.jar" id="fr.kazejiyu.ekumi.core.feature" version="0.2.0">
       <category name="fr.kazejiyu.ekumi.categories.workflow-designer"/>
    </feature>
-   <feature url="features/fr.kazejiyu.ekumi.ide.feature_0.1.0.jar" id="fr.kazejiyu.ekumi.ide.feature" version="0.1.0">
+   <feature url="features/fr.kazejiyu.ekumi.ide.feature_0.2.0.jar" id="fr.kazejiyu.ekumi.ide.feature" version="0.2.0">
       <category name="fr.kazejiyu.ekumi.categories.workflow-designer"/>
    </feature>
-   <feature url="features/fr.kazejiyu.ekumi.languages.java.feature_0.1.0.jar" id="fr.kazejiyu.ekumi.languages.java.feature" version="0.1.0">
+   <feature url="features/fr.kazejiyu.ekumi.languages.java.feature_0.2.0.jar" id="fr.kazejiyu.ekumi.languages.java.feature" version="0.2.0">
       <category name="fr.kazejiyu.ekumi.categories.workflow-designer"/>
    </feature>
-   <feature url="features/fr.kazejiyu.ekumi.specs.eds.feature_0.1.0.jar" id="fr.kazejiyu.ekumi.specs.eds.feature" version="0.1.0">
+   <feature url="features/fr.kazejiyu.ekumi.specs.eds.feature_0.2.0.jar" id="fr.kazejiyu.ekumi.specs.eds.feature" version="0.2.0">
       <category name="fr.kazejiyu.ekumi.categories.workflow-designer"/>
    </feature>
    <category-def name="fr.kazejiyu.ekumi.categories.workflow-designer" label="EKumi (for workflow designers)">

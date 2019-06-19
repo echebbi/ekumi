@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>fr.kazejiyu.ekumi</groupId>
 		<artifactId>fr.kazejiyu.ekumi.bundles</artifactId>
-		<version>0.1.0</version>
+		<version>0.2.0</version>
 	</parent>
 
 	<artifactId>fr.kazejiyu.ekumi.specs.eds.editor</artifactId>
 	<packaging>eclipse-plugin</packaging>
-	<version>0.1.0</version>
+	<version>0.2.0</version>
 
     <properties>
         <sonar.skip>true</sonar.skip>

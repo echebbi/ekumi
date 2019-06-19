@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: EKumi Eclipse IDE Integration — Common Test
 Bundle-SymbolicName: fr.kazejiyu.ekumi.ide.common.test
-Bundle-Version: 0.1.0
+Bundle-Version: 0.2.0
 Bundle-Vendor: Emmanuel CHEBBI
 Fragment-Host: fr.kazejiyu.ekumi.ide.common;bundle-version="0.1.0"
 Automatic-Module-Name: fr.kazejiyu.ekumi.ide.common.test
