@@ -3,8 +3,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
-## [Unreleased]
+## [0.2.0] - 2019.06.20
 ### Added
+- A wonderful logo! ([#47](https://github.com/KazeJiyu/ekumi/pull/47))
+- A contextual menu on _.eds_ file allowing to execute the workflow ([#44](https://github.com/KazeJiyu/ekumi/pull/44))
+- Extension points allowing developers to provide new workflow editors ([#40](https://github.com/KazeJiyu/ekumi/pull/40))
 - Execution of the workflow created thanks to the diagram editor ([#37](https://github.com/KazeJiyu/ekumi/pull/37))
 - User documentation ([#36](https://github.com/KazeJiyu/ekumi/pull/36))
 - Customization of new Workflow projects ([#34](https://github.com/KazeJiyu/ekumi/pull/34))
