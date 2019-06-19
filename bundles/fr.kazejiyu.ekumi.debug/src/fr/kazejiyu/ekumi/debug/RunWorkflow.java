@@ -35,6 +35,7 @@ import fr.kazejiyu.ekumi.core.specs.ActivityAdapter;
 import fr.kazejiyu.ekumi.core.specs.ActivityAdapterFactory;
 import fr.kazejiyu.ekumi.core.workflow.Activity;
 import fr.kazejiyu.ekumi.core.workflow.Execution;
+import fr.kazejiyu.ekumi.core.workflow.impl.BasicSequence;
 import fr.kazejiyu.ekumi.ide.common.datatypes.ExtensionToDatatypeFactory;
 import fr.kazejiyu.ekumi.ide.common.languages.ExtensionToLanguageFactory;
 import fr.kazejiyu.ekumi.ide.common.spec.ExtensionToActivityAdapterFactory;
@@ -76,6 +77,12 @@ public final class RunWorkflow extends LaunchConfigurationDelegate {
 				return;
 			}
 			Activity activity = maybeActivity.get();
+			
+			// If the activity has a successor, we must wrap it under a Sequence
+			// otherwise activity's successor won't be executed
+			if (activity.successor().isPresent()) {
+				activity = new BasicSequence(activity.id(), activity.name(), activity);
+			}
 			Execution execution = new JobsExecution(activity);
 			
 			// Ensure execution history is persisted in workspace's metadata

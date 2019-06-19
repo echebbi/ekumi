@@ -81,21 +81,18 @@ public class BasicWorkflowAdapterTest implements WithAssertions {
 		assertThat(adapter.canAdapt(EdsFactory.eINSTANCE.createActivity())).isTrue();
 	}
 	
-	@Test @DisplayName("cannot adapt something that is not an Activity")
-	void cannot_adapt_something_that_is_not_an_Activity() {
-		assertThat(adapter.canAdapt("not an activity")).isFalse();
-	}
-	
-	@Test @DisplayName("cannot adapt a null object")
-	void cannot_adapt_a_null_object() {
-		assertThat(adapter.canAdapt(null)).isFalse();
+	@ParameterizedTest 
+	@MethodSource("unadaptableValues")
+	@DisplayName("cannot adapt something that is not an Activity")
+	void cannot_adapt_something_that_is_not_an_Activity(Object value) {
+		assertThat(adapter.canAdapt(value)).isFalse();
 	}
 	
 	@ParameterizedTest
 	@MethodSource("unadaptableValues")
 	@DisplayName("returns nothing when adapting an illegal value")
-	void returns_nothing_when_adapting_an_unadaptable_value() {
-		assertThat(adapter.adapt(null, datatypes, languages)).isEmpty();
+	void returns_nothing_when_adapting_an_unadaptable_value(Object value) {
+		assertThat(adapter.adapt(value, datatypes, languages)).isEmpty();
 	}
 	
 	@SuppressWarnings("unused")
