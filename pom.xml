@@ -23,8 +23,8 @@
 
 	<properties>
 		<!-- DEPENDENCIES -->
-		<tycho-version>1.2.0</tycho-version>
-		<jacoco-version>0.8.1</jacoco-version>
+		<tycho-version>1.4.0</tycho-version>
+		<jacoco-version>0.8.4</jacoco-version>
 
 		<!-- SONARQUBE -->
 		<sonar.links.homepage>https://github.com/echebbi/ekumi</sonar.links.homepage>
