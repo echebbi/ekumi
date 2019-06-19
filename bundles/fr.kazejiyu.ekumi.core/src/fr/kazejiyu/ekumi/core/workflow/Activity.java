@@ -12,7 +12,7 @@ package fr.kazejiyu.ekumi.core.workflow;
 import java.util.Optional;
 
 /**
- * 
+ * An identifiable task.
  */
 public interface Activity extends Identifiable, Task, HasState {
 
@@ -55,6 +55,16 @@ public interface Activity extends Identifiable, Task, HasState {
 	 */
 	Outputs outputs();
 	
+	/**
+	 * Returns a specified output.
+	 * 
+	 * @param name
+	 * 			The name of the output to get.
+	 * 
+	 * @return the output with the given name, if found
+	 * 
+	 * @throws DataNotFoundException if no output called {@code name} can be found
+	 */
 	default Output output(String name) {
 		return outputs().get(name);
 	}
@@ -79,7 +89,24 @@ public interface Activity extends Identifiable, Task, HasState {
   						  .orElse(false);
 	}
 
-	void precede(Activity predecessor);
+	/**
+	 * Sets the successor of this activity.
+	 * <p>
+	 * A successor is an activity that should be executed right after this.
+	 * <p>
+	 * If this has already a successor then:
+	 * <ul>
+	 * 	<li>successor's predecessor is unset
+	 * 	<li>the old successor is replaced with the specified one.
+	 * </ul>
+	 * <p>
+	 * Specified successor's predecessor is set to this.
+	 * 
+	 * @param successor
+	 * 			The activity that should be executed after this.
+	 * 			May be {@code null} to indicate no successor.
+	 */
+	void precede(Activity successor);
 
 	/**
 	 * Returns the activity that should be executed after this one.
@@ -101,6 +128,23 @@ public interface Activity extends Identifiable, Task, HasState {
  						    .orElse(false);
 	}
 	
-	void succeed(Activity successor);
+	/**
+	 * Sets the predecessor of this activity.
+	 * <p>
+	 * A predecessor is an activity that should always be executed before this.
+	 * <p>
+	 * If this has already a predecessor then:
+	 * <ul>
+	 * 	<li>predecessor's successor is unset
+	 * 	<li>the old predecessor is replaced with the specified one.
+	 * </ul>
+	 * <p>
+	 * Specified predecessor's successor is set to this.
+	 * 
+	 * @param predecessor
+	 * 			The activity that should be executed before this.
+	 * 			May be {@code null} to indicate no predecessor.
+	 */
+	void succeed(Activity predecessor);
 
 }
