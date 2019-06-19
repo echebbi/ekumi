@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: EKumi Workflow Diagram Editor Test
 Bundle-SymbolicName: fr.kazejiyu.ekumi.specs.eds.design.test
-Bundle-Version: 0.1.0
+Bundle-Version: 0.2.0
 Bundle-Vendor: Emmanuel CHEBBI
 Fragment-Host: fr.kazejiyu.ekumi.specs.eds.design;bundle-version="0.1.0"
 Automatic-Module-Name: fr.kazejiyu.ekumi.specs.eds.design.test

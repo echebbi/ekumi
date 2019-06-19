@@ -2,7 +2,7 @@
 <feature
       id="fr.kazejiyu.ekumi.specs.eds.feature"
       label="EKumi Default Specification (EDS)"
-      version="0.1.0"
+      version="0.2.0"
       provider-name="Emmanuel CHEBBI">
 
    <description url="https://github.com/echebbi/ekumi">
