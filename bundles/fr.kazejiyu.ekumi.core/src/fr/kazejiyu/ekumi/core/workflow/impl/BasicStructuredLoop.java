@@ -70,9 +70,10 @@ public final class BasicStructuredLoop extends AbstractActivityWithStateManageme
 	public void doRun(Context context) {
 		if (hasNeitherPreNorPostCondition()) {
 			run(activity, context);
-			return;
 		}
-		loopUntilAConditionIsFulfilled(context);
+		else {
+			loopUntilAConditionIsFulfilled(context);
+		}
 	}
 	
 	@Override
@@ -81,15 +82,23 @@ public final class BasicStructuredLoop extends AbstractActivityWithStateManageme
 	}
 
 	private void loopUntilAConditionIsFulfilled(Context context) {
+		boolean conditionIsFulfilled = false;
+		
 		while (! context.execution().isCancelled()) {
 			if (preConditionIsFulfilled(context)) {
+				conditionIsFulfilled = true;
 				break;
 			}
 			run(activity, context);
 
 			if (postConditionIsFulfilled(context)) {
+				conditionIsFulfilled = true;
 				break;
 			}
+		}
+		// Prevent canceling the loop if it has already succeeded
+		if (context.execution().isCancelled() && !conditionIsFulfilled) {
+			cancel();
 		}
 	}
 
