@@ -15,10 +15,17 @@ import fr.kazejiyu.ekumi.core.execution.ExecutionState;
  * An implementation of {@link ExecutionState} with no behavior. 
  */
 public class NullExecutionStatus implements ExecutionState {
+	
+	private boolean isCancelled = false;
 
 	@Override
 	public boolean isCancelled() {
-		return false;
+		return isCancelled;
+	}
+	
+	@Override
+	public void cancel() {
+		isCancelled = true;
 	}
 
 }

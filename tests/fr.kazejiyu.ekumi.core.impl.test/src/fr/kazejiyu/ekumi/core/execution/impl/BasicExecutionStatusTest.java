@@ -1,11 +1,13 @@
 package fr.kazejiyu.ekumi.core.execution.impl;
 
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import org.assertj.core.api.WithAssertions;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -49,5 +51,33 @@ public class BasicExecutionStatusTest implements WithAssertions {
 		
 		assertThat(status.isCancelled()).isFalse();
 	}
+	
+	@Nested @DisplayName("when cancelled")
+	class WhenCanceled {
+		
+		@Test @DisplayName("flags the monitor as cancelled")
+		void flags_the_monitor_as_canceled() {
+			status.cancel();
+			verify(monitor).setCanceled(true);
+		}
+		
+		@Test @DisplayName("puts the execution in the cancelled state")
+		void puts_the_execution_in_the_cancelled_state() {
+			status.cancel();
+			verify(execution).cancel();
+		}
+		
+		@Test @DisplayName("is cancelled")
+		void is_cancelled() {
+			status.cancel();
+			
+			when (monitor.isCanceled()) .thenReturn(true);
+			when (execution.isCancelled()) .thenReturn(true);
+			
+			assertThat(status.isCancelled()).isTrue();
+		}
+		
+	}
+	
 
 }

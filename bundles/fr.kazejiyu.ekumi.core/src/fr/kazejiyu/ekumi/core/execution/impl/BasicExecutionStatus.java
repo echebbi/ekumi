@@ -45,5 +45,11 @@ public class BasicExecutionStatus implements ExecutionState {
 	public boolean isCancelled() {
 		return monitor.isCanceled() || execution.isCancelled();
 	}
+	
+	@Override
+	public void cancel() {
+		execution.cancel();
+		monitor.setCanceled(true);
+	}
 
 }

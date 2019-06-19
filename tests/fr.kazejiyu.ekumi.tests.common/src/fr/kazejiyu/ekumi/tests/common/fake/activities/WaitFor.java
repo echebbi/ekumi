@@ -11,18 +11,25 @@ import fr.kazejiyu.ekumi.core.workflow.impl.AbstractActivityWithStateManagement;
  */
 public class WaitFor extends AbstractActivityWithStateManagement {
 	
-	private final long delay;
+	private final long delayInMillis;
 	
-	public WaitFor(long delay) {
-		super("" + new Date().hashCode(), "Wait For " + delay + "ms");
-		this.delay = delay;
+	/**
+	 * Creates a new activity that waits when run.
+	 * 
+	 * @param delayInMillis
+	 * 			The delay to wait when run, in milliseconds.
+	 */
+	public WaitFor(long delayInMillis) {
+		super("" + new Date().hashCode(), "Wait For " + delayInMillis + "ms");
+		this.delayInMillis = delayInMillis;
 	}
 	
 	@Override
 	public void doRun(Context context) {
 		try {
-			Thread.sleep(delay);
-		} catch (InterruptedException e) {
+			Thread.sleep(delayInMillis);
+		} 
+		catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			throw new EKumiRuntimeException("Thread interrupted while sleeping", e);
 		}

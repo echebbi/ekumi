@@ -22,4 +22,9 @@ public interface ExecutionState {
 	 */
 	boolean isCancelled();
 	
+	/**
+	 * Cancels the current execution.
+	 */
+	void cancel();
+	
 }
