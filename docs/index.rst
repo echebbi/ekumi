@@ -9,7 +9,7 @@ EKumi: an extensible workflow management system
 
 EKumi is a workflow management system licensed under the `Eclipse Public License 2.0 <https://www.eclipse.org/legal/epl-2.0/>`_.
 
-EKumi allows to automate the execution of a chain of tasks. Its bigger strength is its extensibility as it allows anyone to provide  and share new:
+EKumi allows to automate the execution of chains of tasks. Its bigger strength is its extensibility as it allows anyone to provide  and share new:
 
 - workflow editors,
 - scripting languages,
@@ -52,3 +52,10 @@ Table of Contents
    extend-ekumi/add-specification
    extend-ekumi/add-representation
    extend-ekumi/share-activity
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Java API
+
+   java-api/build_workflow
+   java-api/execute_workflow
