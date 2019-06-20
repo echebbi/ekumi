@@ -1,7 +1,6 @@
 package fr.kazejiyu.ekumi.languages.java.test.fake;
 
 import org.eclipse.collections.api.set.ImmutableSet;
-import org.eclipse.collections.impl.factory.Sets;
 
 import fr.kazejiyu.ekumi.core.workflow.Condition;
 import fr.kazejiyu.ekumi.core.workflow.Context;
@@ -9,13 +8,14 @@ import fr.kazejiyu.ekumi.core.workflow.Input;
 import fr.kazejiyu.ekumi.core.workflow.Inputs;
 import fr.kazejiyu.ekumi.core.workflow.Output;
 import fr.kazejiyu.ekumi.core.workflow.Script;
+import fr.kazejiyu.ekumi.core.workflow.ScriptedCondition;
 
 /**
  * A simple {@link Condition} that is always verified.
  * 
  * @author Emmanuel CHEBBI
  */
-public class DumbCondition implements Condition {
+public class DumbCondition implements ScriptedCondition {
 
 	@Override
 	public boolean isVerified(Context context) {
@@ -24,22 +24,26 @@ public class DumbCondition implements Condition {
 
 	@Override
 	public String path() {
-		return "";
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public ImmutableSet<Input> inputs() {
-		return Sets.immutable.empty();
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public ImmutableSet<Output> outputs() {
-		return Sets.immutable.empty();
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public Script withInputs(Inputs inputs) {
-		return this;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
