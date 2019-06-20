@@ -10,6 +10,10 @@
 package fr.kazejiyu.ekumi.core.workflow;
 
 import java.util.Optional;
+import java.util.function.Consumer;
+
+import fr.kazejiyu.ekumi.core.exceptions.DataNotFoundException;
+import fr.kazejiyu.ekumi.core.workflow.impl.DelegatingActivity;
 
 /**
  * An identifiable task.
@@ -146,5 +150,33 @@ public interface Activity extends Identifiable, Task, HasState {
 	 * 			May be {@code null} to indicate no predecessor.
 	 */
 	void succeed(Activity predecessor);
+	
+	/**
+	 * Creates a new activity from the given runnable.
+	 * <p>
+	 * When run, the returned activity will execute the runnable.
+	 * 
+	 * @param behavior
+	 * 			The runnable specifying the behavior of the activity.
+	 * 
+	 * @return a new activity which behavior corresponds to the given runnable.
+	 */
+	public static Activity of(Runnable behavior) {
+		return of(context -> behavior.run());
+	}
+	
+	/**
+	 * Creates a new activity from the given consumer.
+	 * <p>
+	 * When run, the returned activity will execute the consumer.
+	 * 
+	 * @param behavior
+	 * 			The consumer specifying the behavior of the activity.
+	 * 
+	 * @return a new activity which behavior corresponds to the given consumer.
+	 */
+	public static Activity of(Consumer<Context> behavior) {
+		return new DelegatingActivity(behavior.hashCode() + "", "Delegating to " + behavior.hashCode(), behavior);
+	}
 
 }

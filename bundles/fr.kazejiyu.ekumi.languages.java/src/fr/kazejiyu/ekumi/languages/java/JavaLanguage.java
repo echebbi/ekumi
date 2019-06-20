@@ -41,6 +41,7 @@ import fr.kazejiyu.ekumi.core.workflow.Condition;
 import fr.kazejiyu.ekumi.core.workflow.Context;
 import fr.kazejiyu.ekumi.core.workflow.RunnableScript;
 import fr.kazejiyu.ekumi.core.workflow.Script;
+import fr.kazejiyu.ekumi.core.workflow.ScriptedCondition;
 import fr.kazejiyu.ekumi.languages.java.inject.EventsModule;
 import fr.kazejiyu.ekumi.languages.java.inject.ExecutionStatusModule;
 
@@ -87,27 +88,27 @@ public final class JavaLanguage implements ScriptingLanguage {
 		try {
 			RunnableScript runner = resolve(new ScriptIdentifier(identifier), RunnableScript.class);
 			
-			if (context == null)
+			if (context == null) {
 				return runner;
-			
+			}
 			return injected(runner, context);
-			
-		} catch (IllegalArgumentException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+		}
+		catch (IllegalArgumentException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			throw new ScriptLoadingFailureException("Unable to instantiate a Runner from id: " + identifier, e); 
 		}
 	}
 
 	@Override
-	public Condition resolveCondition(String identifier, Context context) {
+	public ScriptedCondition resolveCondition(String identifier, Context context) {
 		try {
-			Condition condition = resolve(new ScriptIdentifier(identifier), Condition.class);
+			ScriptedCondition condition = resolve(new ScriptIdentifier(identifier), ScriptedCondition.class);
 			
-			if (context == null)
+			if (context == null) {
 				return condition;
-			
+			}
 			return injected(condition, context);
-			
-		} catch (IllegalArgumentException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+		}
+		catch (IllegalArgumentException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			throw new ScriptLoadingFailureException("Unable to instantiate a Condition from id: " + identifier, e); 
 		}
 	}

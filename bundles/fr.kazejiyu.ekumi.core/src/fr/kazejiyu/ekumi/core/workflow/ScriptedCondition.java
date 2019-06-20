@@ -12,6 +12,6 @@ package fr.kazejiyu.ekumi.core.workflow;
 /**
  * A condition which behavior is delegated in an external script. 
  */
-public interface ScriptedCondition extends Condition {
+public interface ScriptedCondition extends Condition, Script {
 
 }
