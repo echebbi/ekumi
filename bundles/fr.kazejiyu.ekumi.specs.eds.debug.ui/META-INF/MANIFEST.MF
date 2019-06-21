@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: EKumi EDS Launch Configuration
 Bundle-SymbolicName: fr.kazejiyu.ekumi.specs.eds.debug.ui;singleton:=true
-Bundle-Version: 0.2.0
+Bundle-Version: 0.3.0.qualifier
 Bundle-Vendor: Emmanuel CHEBBI
 Automatic-Module-Name: fr.kazejiyu.ekumi.specs.eds.debug.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
