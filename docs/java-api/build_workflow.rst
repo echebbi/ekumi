@@ -1,4 +1,4 @@
-Create a workflow
+Build a workflow
 =================
 
 Create an activity
