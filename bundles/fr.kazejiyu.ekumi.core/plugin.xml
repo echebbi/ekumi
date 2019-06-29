@@ -9,6 +9,7 @@
    <extension-point id="datatypes" name="DataTypes" schema="schema/datatypes.exsd"/>
    <extension-point id="catalogs" name="Catalogs" schema="schema/catalogs.exsd"/>
    <extension-point id="specs" name="Specifications" schema="schema/specs.exsd"/>
+   <extension-point id="execution" name="execution" schema="schema/execution.exsd"/>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated ekumi -->

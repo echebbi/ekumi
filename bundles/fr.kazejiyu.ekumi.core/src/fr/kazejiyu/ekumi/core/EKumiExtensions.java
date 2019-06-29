@@ -9,6 +9,9 @@
  ******************************************************************************/
 package fr.kazejiyu.ekumi.core;
 
+/**
+ * Provides access to the extension points declared by EKumi. 
+ */
 public final class EKumiExtensions {
 	
 	/** ID of the 'catalogs' extension point */
@@ -22,6 +25,9 @@ public final class EKumiExtensions {
 	
 	/** ID of the 'specs' extension point */
 	public static final String SPECS_EXTENSION_ID = EKumiPlugin.ID +".specs";
+	
+	/** ID of the 'execution' extension point */
+	public static final String EXECUTION_EXTENSION_ID = EKumiPlugin.ID +".execution";
 	
 	private EKumiExtensions() {
 		// makes no sense to instantiate it

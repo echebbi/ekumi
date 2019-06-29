@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="fr.kazejiyu.ekumi.core" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="fr.kazejiyu.ekumi.core" id="execution" name="execution"/>
+      </appinfo>
+      <documentation>
+         Used to register execution hooks allowing to monitor the execution of an activity.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="1" maxOccurs="unbounded">
+            <element ref="hook"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="hook">
+      <annotation>
+         <documentation>
+            Describe an observer that will be notified with each event triggered by an activity&apos;s execution.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Uniquely identifies this hook. Notably used to activate/deactivate this hook from the Run Configuration view.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A human-readable name briefly descripting this hook. Used to identify this hook in UI.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  A short description of what the hook does. Displayed in UI.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The class describing the hook. A new instance is created for each execution.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":fr.kazejiyu.ekumi.core.execution.listeners.ExecutionHook"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="activated_by_default" type="boolean" use="default" value="true">
+            <annotation>
+               <documentation>
+                  Whether this hook is used by default when an execution starts.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         0.3.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         Register hooks to monitor an activity&apos;s execution.
+      </documentation>
+   </annotation>
+
+
+
+
+</schema>

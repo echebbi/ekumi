@@ -19,11 +19,11 @@ import fr.kazejiyu.ekumi.core.execution.listeners.OnExecutionStarted;
 import fr.kazejiyu.ekumi.core.execution.listeners.OnExecutionSucceeded;
 
 /**
- * Defines a registry able to manage callbacks for specific events.<br>
- * <br>
+ * Defines a registry able to manage callbacks for specific events.
+ * <p>
  * The callbacks are supposed to be instances of {@link ActivityListener} and
- * siblings.<br>
- * <br>
+ * siblings.
+ * <p>
  * The events are supposed to be triggered by an {@link EventSource}.
  */
 public interface CallbackRegistry {
