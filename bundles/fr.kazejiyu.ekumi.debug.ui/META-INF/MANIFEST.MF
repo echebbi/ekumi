@@ -10,7 +10,8 @@ Require-Bundle: fr.kazejiyu.ekumi.core;bundle-version="0.1.0",
  org.eclipse.debug.ui,
  org.eclipse.jface,
  org.eclipse.ui.ide,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ fr.kazejiyu.ekumi.ide.common
 Bundle-Activator: fr.kazejiyu.ekumi.debug.ui.Activator
 Bundle-Vendor: Emmanuel CHEBBI
 Export-Package: fr.kazejiyu.ekumi.debug.ui

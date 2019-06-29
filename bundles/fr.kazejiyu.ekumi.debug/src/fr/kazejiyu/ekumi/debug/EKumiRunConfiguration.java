@@ -20,6 +20,9 @@ public final class EKumiRunConfiguration {
 	/** Name of the configuration's attribute used to specify the URI of the Activity to execute. */
 	public static final String EKUMI_MODEL_URI = "fr.kazejiyu.ekumi.launchConfiguration.model";
 	
+	/** IDs of the hooks that should be activated during the execution. */
+	public static final String COMMA_SEPARATED_HOOKS_ID = "fr.kazejiyu.ekumi.launchConfiguration.commaSeparatedHooksId";
+	
 	private EKumiRunConfiguration() {
 		// should not be instantiated
 	}

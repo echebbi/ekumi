@@ -9,12 +9,19 @@
  ******************************************************************************/
 package fr.kazejiyu.ekumi.debug.ui;
 
+import static java.lang.Boolean.parseBoolean;
+import static java.util.Arrays.stream;
+
 import java.io.IOException;
 import java.util.Collections;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.PlatformObject;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunchConfiguration;
@@ -31,15 +38,16 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.ui.IEditorPart;
 
+import fr.kazejiyu.ekumi.core.EKumiExtensions;
 import fr.kazejiyu.ekumi.core.workflow.Activity;
 import fr.kazejiyu.ekumi.debug.EKumiRunConfiguration;
 
 /**
- * <p>Creates a new Launch Configuration for a given EKumi model then runs it.</p>
- * 
- * <p>This class is intended to be sub-classed by clients. It provides an easy way
+ * Creates a new Launch Configuration for a given EKumi model then runs it.
+ * <p>
+ * This class is intended to be sub-classed by clients. It provides an easy way
  * to add a _Run As_ shortcut on files serializing an EMF model that can be adapted
- * to an EKumi {@link Activity}.</p>
+ * to an EKumi {@link Activity}.
  */
 public abstract class LaunchWorkflowFromFileShortcut implements ILaunchShortcut {
 
@@ -61,6 +69,7 @@ public abstract class LaunchWorkflowFromFileShortcut implements ILaunchShortcut 
 			
 			ILaunchConfigurationWorkingCopy workingCopy = type.newInstance(null, launchConfigurationName);
 			workingCopy.setAttribute(EKumiRunConfiguration.EKUMI_MODEL_URI, fileURI.toString());
+			workingCopy.setAttribute(EKumiRunConfiguration.COMMA_SEPARATED_HOOKS_ID, commaSeparatedActivatedHooks());
 			ILaunchConfiguration configuration = workingCopy.doSave();
 			
 			// Run the new launch configuration
@@ -77,10 +86,10 @@ public abstract class LaunchWorkflowFromFileShortcut implements ILaunchShortcut 
 	}
 	
 	/**
-	 * <p>Returns the name of the new launch configuration that will be created
-	 * for the given fileURI.</p>
-	 * 
-	 * <p>Any exception thrown by this method will be properly handled.</p>
+	 * Returns the name of the new launch configuration that will be created
+	 * for the given fileURI.
+	 * <p>
+	 * Any exception thrown by this method will be properly handled.
 	 * 
 	 * @param fileURI
 	 * 			The URI of the resource holding the model that is about to be executed.
@@ -186,6 +195,19 @@ public abstract class LaunchWorkflowFromFileShortcut implements ILaunchShortcut 
 			return null;
 		
 		return (T) resource.getContents().get(0);
+	}
+	
+	/**
+	 * Returns the identifiers of the execution hooks that are activated by default, separated by commas.
+	 */
+	private static String commaSeparatedActivatedHooks() {
+		IConfigurationElement[] extensions = Platform.getExtensionRegistry().getConfigurationElementsFor(EKumiExtensions.EXECUTION_EXTENSION_ID);
+		return stream(extensions)
+			.filter(extension -> "hook".equals(extension.getName()))
+			.filter(extension -> parseBoolean(extension.getAttribute("activated_by_default")))
+			.map(hook -> hook.getAttribute("id"))
+			.filter(Objects::nonNull)
+			.collect(Collectors.joining(","));
 	}
 
 }
