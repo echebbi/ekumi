@@ -9,6 +9,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.assertj.core.api.SoftAssertions;
@@ -62,13 +63,6 @@ public class BasicParallelSplitTest implements WithAssertions {
 			empty = new BasicParallelSplit("id", "name'");
 		}
 		
-		// getBranches()
-		
-//		@Test @DisplayName("has no branch")
-//		void has_no_branch() {
-//			assertThat(empty.getBranches()).isEmpty();
-//		}
-		
 		// run()
 		
 		@Test @DisplayName("has 'succeeded' status after run")
@@ -81,7 +75,7 @@ public class BasicParallelSplitTest implements WithAssertions {
 	@Nested @DisplayName("when not empty")
 	class NonEmpty {
 		
-		private final static int NBR_BRANCHES = 3;
+		private static final int NBR_BRANCHES = 3;
 		
 		private BasicParallelSplit split;
 		private List<CheckExecutingThread> branches;
@@ -94,13 +88,6 @@ public class BasicParallelSplitTest implements WithAssertions {
 			}
 			split = new BasicParallelSplit("id", "name", branches);
 		}
-		
-//		// getBranches()
-//		
-//		@Test @DisplayName("knowns its branches")
-//		void knows_its_branches() {
-//			assertThat(split.getBranches()).containsExactlyInAnyOrderElementsOf(branches);
-//		}
 		
 		// run()
 		
@@ -227,7 +214,7 @@ public class BasicParallelSplitTest implements WithAssertions {
 		
 		@BeforeEach
 		void initialize() {
-			activities = new ArrayList<>();
+			activities = new Vector<>();
 			
 			List<Activity> roots = new ArrayList<>();
 			roots.add(new SetNameInList("A", activities));
