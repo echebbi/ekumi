@@ -19,7 +19,7 @@ import fr.kazejiyu.ekumi.core.specs.ActivityAdapter;
 import fr.kazejiyu.ekumi.core.specs.ActivityAdapterFactory;
 
 /**
- * <p>Creates new datatypes from given configuration elements</p>
+ * Creates new {@link ActivityAdapter} from given configuration elements
  */
 public class ExtensionToActivityAdapterFactory implements ActivityAdapterFactory {
 	

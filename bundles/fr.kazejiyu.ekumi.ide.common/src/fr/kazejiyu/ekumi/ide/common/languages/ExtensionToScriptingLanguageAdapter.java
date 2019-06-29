@@ -19,15 +19,16 @@ import java.util.function.Function;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 
+import fr.kazejiyu.ekumi.core.EKumiExtensions;
 import fr.kazejiyu.ekumi.core.catalog.Catalogs;
 import fr.kazejiyu.ekumi.core.scripting.ScriptingLanguage;
 import fr.kazejiyu.ekumi.ide.common.Activator;
 
 /**
- * An adapter creating {@link ScriptingLanguage} instances from {@link IConfigurationElement}s.<br>
- * <br>
+ * An adapter creating {@link ScriptingLanguage} instances from {@link IConfigurationElement}s.
+ * <p>
  * This adapter is used to create a {@link ScriptingLanguage} from the contributions to the 
- * {@link EKumiPlugin#LANGUAGES_EXTENSION_ID} extension point.
+ * {@link EKumiExtensions#LANGUAGES_EXTENSION_ID} extension point.
  * 
  * @author Emmanuel CHEBBI
  */
@@ -56,7 +57,7 @@ public class ExtensionToScriptingLanguageAdapter {
 				return (ScriptingLanguage) conf.createExecutableExtension("class");
 				
 			} catch (CoreException e) {
-				Activator.warn(e, "An error occured while creating an executable extension of property 'class' for configuration: " + conf);
+				Activator.warn(e, "An error occurred while creating an executable extension of property 'class' for configuration: " + conf);
 				return null;
 			}
 		};

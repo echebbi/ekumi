@@ -19,7 +19,7 @@ import fr.kazejiyu.ekumi.core.scripting.ScriptingLanguage;
 import fr.kazejiyu.ekumi.core.scripting.ScriptingLanguageFactory;
 
 /**
- * <p>Creates new datatypes from given configuration elements</p>
+ * Creates new {@link ScriptingLanguage}s from given configuration elements.
  */
 public class ExtensionToLanguageFactory implements ScriptingLanguageFactory {
 	
