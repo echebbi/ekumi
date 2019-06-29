@@ -9,6 +9,8 @@ import java.util.List;
 import org.assertj.core.api.WithAssertions;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -17,6 +19,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 
 import fr.kazejiyu.ekumi.core.scripting.ScriptingLanguage;
+import fr.kazejiyu.ekumi.ide.common.Activator;
 import fr.kazejiyu.ekumi.tests.common.mock.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
@@ -29,7 +32,7 @@ public class ExtensionToScriptingLanguageAdapterTest implements WithAssertions {
 	// The configuration elements given to the adapter
 	List<IConfigurationElement> configurationElements;
 	
-	// The datatypes that should be returned by the adapter
+	// The languages that should be returned by the adapter
 	List<ScriptingLanguage> expectedLanguages;
 	
 	@BeforeEach
@@ -57,7 +60,8 @@ public class ExtensionToScriptingLanguageAdapterTest implements WithAssertions {
 		
 		// should be ignored as well
 		IConfigurationElement throwingConfiguration = Mockito.mock(IConfigurationElement.class);
-		when (nullConfiguration.createExecutableExtension("class")) .thenThrow(CoreException.class);
+		CoreException coreException = new CoreException(new Status(IStatus.ERROR, Activator.ID, "no class attribute"));
+		when (nullConfiguration.createExecutableExtension("class")) .thenThrow(coreException);
 		
 		configurationElements = Arrays.asList(
 			javaConfiguration, pythonConfiguration, nullConfiguration, throwingConfiguration

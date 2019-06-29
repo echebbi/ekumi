@@ -7,7 +7,7 @@
  * 
  * SPDX-License-Identifier: EPL-2.0
  ******************************************************************************/
-package fr.kazejiyu.ekumi.ide.common.datatypes;
+package fr.kazejiyu.ekumi.ide.common.execution;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,25 +15,25 @@ import java.util.function.Supplier;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 
-import fr.kazejiyu.ekumi.core.datatypes.DataType;
-import fr.kazejiyu.ekumi.core.datatypes.DataTypeFactory;
+import fr.kazejiyu.ekumi.core.execution.listeners.ExecutionHook;
+import fr.kazejiyu.ekumi.core.execution.listeners.ExecutionHookFactory;
 
 /**
- * Creates new datatypes from given configuration elements.
+ * Creates new {@link ExecutionHook} from given configuration elements
  */
-public class ExtensionToDatatypeFactory implements DataTypeFactory {
+public class ExtensionToExecutionHookFactory implements ExecutionHookFactory {
 	
 	private final Supplier<List<IConfigurationElement>> elements;
 
-	public ExtensionToDatatypeFactory(Supplier<List<IConfigurationElement>> elements) {
+	public ExtensionToExecutionHookFactory(Supplier<List<IConfigurationElement>> elements) {
 		this.elements = elements;
 	}
 
 	@Override
-	public Optional<DataType<? extends Object>> find(String id) {
-		ExtensionToDatatypeAdapter adapter = new ExtensionToDatatypeAdapter();
+	public Optional<ExecutionHook> find(String id) {
+		ExtensionToExecutionHookAdapter adapter = new ExtensionToExecutionHookAdapter();
 		return adapter.adapt(elements.get()).stream()
-					  .filter(type -> id.equals(type.id()))
+					  .filter(hook -> id.equals(hook.id()))
 					  .findAny();
 	}
 	
