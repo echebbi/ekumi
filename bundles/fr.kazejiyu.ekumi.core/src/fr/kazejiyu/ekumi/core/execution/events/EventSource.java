@@ -14,8 +14,8 @@ import fr.kazejiyu.ekumi.core.workflow.Activity;
 import fr.kazejiyu.ekumi.core.workflow.Execution;
 
 /**
- * Defines an object able to trigger activity-related events.<br>
- * <br>
+ * Defines an object able to trigger activity-related events.<p>
+ * <p>
  * These events are supposed to be handled by instances of {@link ActivityListener}.
  */
 public interface EventSource {
