@@ -13,7 +13,8 @@ EKumi allows to automate the execution of chains of tasks. Its bigger strength i
 
 - workflow editors,
 - scripting languages,
-- datatypes.
+- datatypes,
+- execution hooks.
 
 Please follow **Getting Started** chapters to learn how to create and execute a workflow using EKumi's built-in features.
 
@@ -47,6 +48,7 @@ Table of Contents
    :maxdepth: 2
    :caption: Extend EKumi
 
+   extend-ekumi/monitor_executions
    extend-ekumi/add_scripting_language
    extend-ekumi/add_data_type
    extend-ekumi/add-specification
@@ -59,3 +61,7 @@ Table of Contents
 
    java-api/build_workflow
    java-api/execute_workflow
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Architecture
