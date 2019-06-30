@@ -20,7 +20,6 @@
 
 	<modules>
         <!-- Common test plug-ins -->
-        <module>org.assertj</module>
         <module>fr.kazejiyu.ekumi.tests.common</module>
         <module>fr.kazejiyu.ekumi.tests.coverage.report</module>
 
@@ -32,6 +31,10 @@
         <module>fr.kazejiyu.ekumi.specs.eds.test</module>
         <module>fr.kazejiyu.ekumi.specs.eds.adapter.test</module>
         <module>fr.kazejiyu.ekumi.specs.eds.design.test</module>
+
+        <!-- Test dependencies -->
+        <module>org.assertj</module>
+        <module>io.cucumber</module>
 	</modules>
 
     <build>
