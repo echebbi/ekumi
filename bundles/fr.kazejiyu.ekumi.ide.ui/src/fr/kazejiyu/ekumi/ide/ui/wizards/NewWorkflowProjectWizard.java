@@ -60,6 +60,7 @@ public class NewWorkflowProjectWizard extends Wizard implements INewWizard {
 		super();
 		setNeedsProgressMonitor(true);
 		setWindowTitle("Workflow Project Wizard");
+		setDefaultPageImageDescriptor(Activator.imageDescriptorFromPlugin(Activator.ID, "icons/logo.png"));
 	}
 
 	@Override
@@ -127,9 +128,9 @@ public class NewWorkflowProjectWizard extends Wizard implements INewWizard {
 			return true;
 		} 
 	    catch (InvocationTargetException | InterruptedException e) {
-	    	if (e instanceof InterruptedException)
+	    	if (e instanceof InterruptedException) {
 	    		Thread.currentThread().interrupt();
-
+	    	}
 	    	Activator.error(e, "An error occurred while creating the new EKumi project");
 	    	showErrorDialog(e, "Project creation failed", e.getMessage());
 		}
@@ -147,15 +148,17 @@ public class NewWorkflowProjectWizard extends Wizard implements INewWizard {
 				String id = element.getAttribute("language");
 				boolean correspondingLanguageIsSelected = selectedLanguages.stream().anyMatch(language -> language.id().equals(id));
 						
-				if (correspondingLanguageIsSelected)
+				if (correspondingLanguageIsSelected) {
 					customizations.add((Customization) element.createExecutableExtension("class"));
+				}
 			}
 			// representation-specific customizations
 			else if (element.getName().equals("representation")) {
 				String id = element.getAttribute("id");
 
-				if (id.equals(selectedRepresentation.id()))
+				if (id.equals(selectedRepresentation.id())) {
 					customizations.add((Customization) element.createExecutableExtension("class"));
+				}
 			}
 		}
 		return customizations;
@@ -169,7 +172,8 @@ public class NewWorkflowProjectWizard extends Wizard implements INewWizard {
 		for (IConfigurationElement element : elements) {
 			try {
 				languages.add((ScriptingLanguage) element.createExecutableExtension("class"));
-			} catch (CoreException e) {
+			}
+			catch (CoreException e) {
 				Activator.warn(e, "Unable to create a new ScriptingLanguage from " + element);
 			}
 		}
@@ -182,9 +186,11 @@ public class NewWorkflowProjectWizard extends Wizard implements INewWizard {
 		Set<Representation> representations = new HashSet<>();
 		for (IConfigurationElement element : elements) {
 			try {
-				if (element.getName().equals("representation"))
+				if (element.getName().equals("representation")) {
 					representations.add((Representation) element.createExecutableExtension("class"));
-			} catch (CoreException e) {
+				}
+			} 
+			catch (CoreException e) {
 				Activator.warn(e, "Unable to create a new Representation from " + element);
 			}
 		}
