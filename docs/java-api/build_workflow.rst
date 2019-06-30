@@ -104,6 +104,41 @@ The following example shows how to create an ``AplusB`` activity that:
 
     }
 
+Inputs and outputs can also be assigned to fields for more convenience:
+
+.. code-block:: java
+   :linenos:
+
+    import fr.kazejiyu.ekumi.core.workflow.Context;
+    import fr.kazejiyu.ekumi.core.workflow.Input;
+    import fr.kazejiyu.ekumi.core.workflow.Output;
+    import fr.kazejiyu.ekumi.core.workflow.impl.AbstractActivityWithStateManagement;
+    import fr.kazejiyu.ekumi.datatypes.DoubleType;
+
+    public class AplusB extends AbstractActivityWithStateManagement {
+
+        private Input a;
+        private Input b;
+        private Output c;
+
+        public AplusB(String id) {
+            super(id, "AplusB");
+
+            a = inputs().create("A", new DoubleType());
+            b = inputs().create("B", new DoubleType());
+            c = outputs().create("C", new DoubleType());
+        }
+
+        @Override
+        protected void doRun(Context context) throws Exception {
+            double a = (double) this.a.value();
+            double b = (double) this.b.value();
+
+            c.set(a + b);
+        }
+
+    }
+
 From lambda expressions
 ~~~~~~~~~~~~~~~~~~~~~~~
 
