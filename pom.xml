@@ -27,6 +27,7 @@
 		<jacoco-version>0.8.4</jacoco-version>
 
 		<!-- SONARQUBE -->
+		<sonar.organization>echebbi-github</sonar.organization>
 		<sonar.links.homepage>https://github.com/echebbi/ekumi</sonar.links.homepage>
 		<sonar.links.ci>https://travis-ci.org/echebbi/ekumi</sonar.links.ci>
 		<sonar.links.scm>https://github.com/echebbi/ekumi</sonar.links.scm>
