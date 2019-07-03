@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<fragment>
+   <extension
+         point="fr.kazejiyu.ekumi.ide.project_customization">
+      <representation
+            class="fr.kazejiyu.ekumi.languages.java.ui.test.StubRepresentation"
+            description="Does nothing"
+            id="fr.kazejiyu.ekumi.languages.java.ui.test.StubRepresentation"
+            name="Stub Representation">
+      </representation>
+   </extension>
+
+</fragment>

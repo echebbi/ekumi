@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EKumi Java Language UI Support Test
+Bundle-SymbolicName: fr.kazejiyu.ekumi.languages.java.ui.test;singleton:=true
+Bundle-Version: 0.3.0.qualifier
+Bundle-Vendor: Emmanuel CHEBBI
+Fragment-Host: fr.kazejiyu.ekumi.languages.java;bundle-version="0.3.0"
+Automatic-Module-Name: fr.kazejiyu.ekumi.languages.java.ui.test
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.junit;bundle-version="4.12.0",
+ io.cucumber;bundle-version="4.3.0",
+ org.assertj;bundle-version="3.12.2",
+ fr.kazejiyu.ekumi.tests.common.ui;bundle-version="0.3.0",
+ org.eclipse.pde;bundle-version="3.13.4",
+ org.eclipse.pde.core;bundle-version="3.11.101",
+ fr.kazejiyu.ekumi.tests.common;bundle-version="0.3.0",
+ fr.kazejiyu.ekumi.ide.ui;bundle-version="0.3.0",
+ fr.kazejiyu.ekumi.ide;bundle-version="0.3.0",
+ fr.kazejiyu.ekumi.languages.java.ide;bundle-version="0.3.0"
