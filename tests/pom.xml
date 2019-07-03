@@ -21,6 +21,7 @@
 	<modules>
         <!-- Common test plug-ins -->
         <module>fr.kazejiyu.ekumi.tests.common</module>
+        <module>fr.kazejiyu.ekumi.tests.common.ui</module>
         <module>fr.kazejiyu.ekumi.tests.coverage.report</module>
 
         <!-- Test fragments -->

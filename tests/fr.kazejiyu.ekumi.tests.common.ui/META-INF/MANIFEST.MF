@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EKumi Tests Common UI
+Bundle-SymbolicName: fr.kazejiyu.ekumi.tests.common.ui
+Bundle-Version: 0.3.0.qualifier
+Bundle-Vendor: Emmanuel CHEBBI
+Automatic-Module-Name: fr.kazejiyu.ekumi.tests.common.ui
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.swtbot.eclipse.finder;bundle-version="2.8.0";visibility:=reexport,
+ org.eclipse.swtbot.junit4_x;bundle-version="2.8.0";visibility:=reexport,
+ org.eclipse.swt;bundle-version="[3.106.3,4.0.0)";visibility:=reexport,
+ io.cucumber;bundle-version="4.3.0",
+ org.assertj;bundle-version="3.12.2",
+ org.eclipse.core.resources;bundle-version="3.12.0",
+ org.eclipse.core.runtime;bundle-version="3.13.0",
+ fr.kazejiyu.ekumi.ide
+Export-Package: fr.kazejiyu.ekumi.tests.common.ui.steps.newproject
