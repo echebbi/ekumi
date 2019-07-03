@@ -33,7 +33,7 @@ import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.JavaCore;
-
+import org.eclipse.pde.core.project.IBundleProjectDescription;
 import fr.kazejiyu.ekumi.ide.project.customization.Customization;
 
 /**
@@ -66,16 +66,17 @@ public final class AddPDENature implements Customization {
 		Set<String> natures = new HashSet<>(asList(description.getNatureIds()));
 		
 		natures.add(JavaCore.NATURE_ID);
-		natures.add("org.eclipse.pde.PluginNature");
+		natures.add(IBundleProjectDescription.PLUGIN_NATURE);
 
 		String[] newNatures = natures.toArray(new String[natures.size()]);
 		IStatus status = workspace.validateNatureSet(newNatures);
 
-		// Only apply new natures if the workspace allows it
-		if (status.getCode() == IStatus.OK) {
-		    description.setNatureIds(newNatures);
-		    project.setDescription(description, null);
+		// Throw exception if unable to apply the natures
+		if (status.getCode() != IStatus.OK) {
+			throw new CoreException(status);
 		}
+		description.setNatureIds(newNatures);
+		project.setDescription(description, null);
 	}
 
 	private static void addBuilders(IProjectDescription description, IProgressMonitor monitor) {
@@ -158,8 +159,9 @@ public final class AddPDENature implements Customization {
 	
 	@Override
 	public boolean equals(Object other) {
-		if (other == null)
+		if (other == null) {
 			return false;
+		}
 		return getClass().equals(other.getClass());
 	}
 	
