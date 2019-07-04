@@ -8,7 +8,8 @@ Require-Bundle: org.eclipse.ui;bundle-version="[3.109.0,4.0.0)",
  org.eclipse.ui.ide;bundle-version="[3.13.1,4.0.0)",
  fr.kazejiyu.ekumi.ide;bundle-version="0.1.0",
  org.eclipse.emf.transaction;bundle-version="[1.9.0,2.0.0)",
- fr.kazejiyu.ekumi.core;bundle-version="0.1.0"
+ fr.kazejiyu.ekumi.core;bundle-version="0.1.0",
+ fr.kazejiyu.ekumi.ide.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: fr.kazejiyu.ekumi.ide.ui
 Bundle-ActivationPolicy: lazy

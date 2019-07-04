@@ -13,6 +13,7 @@ import java.util.Set;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRunnable;
 import org.eclipse.core.runtime.CoreException;
@@ -82,12 +83,15 @@ public class WorkspaceWorkflowProject implements WorkflowProject {
 		String[] natures = new String[] { WorkflowProjectNature.ID };
 		IStatus status = workspace.validateNatureSet(natures);
 
-		// Only actually apply new natures if the workspace allows it
-		if (status.getCode() == IStatus.OK) {
-			IProjectDescription description = project.getDescription();
-			description.setNatureIds(natures);
-		    project.setDescription(description, null);
+		// Throw exception if unable to apply the natures
+		if (status.getCode() != IStatus.OK) {
+			throw new CoreException(status);
 		}
+		IProjectDescription description = project.getDescription();
+		description.setNatureIds(natures);
+	    project.setDescription(description, null);
+		project.refreshLocal(IResource.DEPTH_INFINITE, null);
+		
 		return project;
 	}
 

@@ -66,6 +66,18 @@
 		</dependency>
 		<dependency>
 			<groupId>fr.kazejiyu.ekumi</groupId>
+			<artifactId>fr.kazejiyu.ekumi.ide.ui</artifactId>
+			<version>0.3.0-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>fr.kazejiyu.ekumi</groupId>
+			<artifactId>fr.kazejiyu.ekumi.ide.ui.test</artifactId>
+			<version>0.3.0-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>fr.kazejiyu.ekumi</groupId>
 			<artifactId>fr.kazejiyu.ekumi.ide.common</artifactId>
 			<version>0.3.0-SNAPSHOT</version>
 			<scope>compile</scope>
