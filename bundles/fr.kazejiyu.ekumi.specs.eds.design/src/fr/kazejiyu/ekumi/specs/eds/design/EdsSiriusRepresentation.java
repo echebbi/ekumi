@@ -118,7 +118,7 @@ public class EdsSiriusRepresentation implements Representation {
 			workflowResource.save(Collections.emptyMap());
 		} 
 		catch (IOException e) {
-			Status error = new Status(IStatus.ERROR, "fr.kazejiyu.ekumi.ide", "An error occured while creating " + workflowResource.getURI(), e);
+			Status error = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "An error occured while creating " + workflowResource.getURI(), e);
 			throw new CoreException(error);
 		}
 		return workflow;
@@ -180,7 +180,7 @@ public class EdsSiriusRepresentation implements Representation {
 		Optional<Viewpoint> workflowViewpoint = EKumiViewpoints.workflow();
 		
 		if ( ! workflowViewpoint.isPresent()) {
-			Status error = new Status(IStatus.ERROR, "fr.kazejiyu.ekumi.ide.ui", "Cannot find EKumi's workflow editor viewpoint. Check that fr.kazejiyu.ekumi.specs.eds.design plug-in is available.");
+			Status error = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Cannot find EKumi's workflow editor viewpoint. Check that fr.kazejiyu.ekumi.specs.eds.design plug-in is available.");
 			throw new CoreException(error);
 		}
 		return workflowViewpoint.get();
@@ -197,8 +197,9 @@ public class EdsSiriusRepresentation implements Representation {
 	 * @throws CoreException if an error occurs while adding the nature
 	 */
 	private static void ensureHasModelingNature(IProject project, IProgressMonitor monitor) throws CoreException {
-		if (! ModelingProject.hasModelingProjectNature(project))
+		if (! ModelingProject.hasModelingProjectNature(project)) {
 			ModelingProjectManager.INSTANCE.convertToModelingProject(project, monitor);
+		}
 	}
 
 }

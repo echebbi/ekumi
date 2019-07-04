@@ -34,6 +34,7 @@
         <module>fr.kazejiyu.ekumi.specs.eds.test</module>
         <module>fr.kazejiyu.ekumi.specs.eds.adapter.test</module>
         <module>fr.kazejiyu.ekumi.specs.eds.design.test</module>
+        <module>fr.kazejiyu.ekumi.specs.eds.design.ui.test</module>
 
         <!-- Test dependencies -->
         <module>org.assertj</module>
