@@ -28,6 +28,7 @@
         <module>fr.kazejiyu.ekumi.core.impl.test</module>
         <module>fr.kazejiyu.ekumi.ide.common.test</module>
         <module>fr.kazejiyu.ekumi.ide.test</module>
+        <module>fr.kazejiyu.ekumi.ide.ui.test</module>
         <module>fr.kazejiyu.ekumi.languages.java.test</module>
         <module>fr.kazejiyu.ekumi.specs.eds.test</module>
         <module>fr.kazejiyu.ekumi.specs.eds.adapter.test</module>

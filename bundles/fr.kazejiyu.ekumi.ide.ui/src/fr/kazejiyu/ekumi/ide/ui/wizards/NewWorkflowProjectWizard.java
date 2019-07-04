@@ -9,6 +9,8 @@
  ******************************************************************************/
 package fr.kazejiyu.ekumi.ide.ui.wizards;
 
+import static java.util.Arrays.asList;
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
@@ -38,6 +40,7 @@ import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import fr.kazejiyu.ekumi.core.EKumiExtensions;
 import fr.kazejiyu.ekumi.core.scripting.ScriptingLanguage;
 import fr.kazejiyu.ekumi.ide.EKumiIdeExtensions;
+import fr.kazejiyu.ekumi.ide.common.languages.ExtensionToScriptingLanguageAdapter;
 import fr.kazejiyu.ekumi.ide.nature.WorkflowProject;
 import fr.kazejiyu.ekumi.ide.project.customization.Customization;
 import fr.kazejiyu.ekumi.ide.project.customization.Representation;
@@ -164,20 +167,10 @@ public class NewWorkflowProjectWizard extends Wizard implements INewWizard {
 		return customizations;
 	}
 
-	// FIXME Should be encapsulated by a reusable class
 	private static Set<ScriptingLanguage> availableScriptingLanguages() {
 		IConfigurationElement[] elements = Platform.getExtensionRegistry().getConfigurationElementsFor(EKumiExtensions.LANGUAGES_EXTENSION_ID);
-		
-		Set<ScriptingLanguage> languages = new HashSet<>();
-		for (IConfigurationElement element : elements) {
-			try {
-				languages.add((ScriptingLanguage) element.createExecutableExtension("class"));
-			}
-			catch (CoreException e) {
-				Activator.warn(e, "Unable to create a new ScriptingLanguage from " + element);
-			}
-		}
-		return languages;
+		List<ScriptingLanguage> languages = new ExtensionToScriptingLanguageAdapter().adapt(asList(elements));
+		return new HashSet<>(languages);
 	}
 	
 	private static Set<Representation> availableRepresentations() {
