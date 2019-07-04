@@ -28,7 +28,7 @@
 
 		<!-- SONARQUBE -->
 		<sonar.organization>echebbi-github</sonar.organization>
-		<sonar.links.homepage>https://github.com/echebbi/ekumi</sonar.links.homepage>
+		<sonar.links.homepage>https://ekumi.kazejiyu.fr</sonar.links.homepage>
 		<sonar.links.ci>https://travis-ci.org/echebbi/ekumi</sonar.links.ci>
 		<sonar.links.scm>https://github.com/echebbi/ekumi</sonar.links.scm>
 		<sonar.links.issue>https://github.com/echebbi/ekumi/issues</sonar.links.issue>
