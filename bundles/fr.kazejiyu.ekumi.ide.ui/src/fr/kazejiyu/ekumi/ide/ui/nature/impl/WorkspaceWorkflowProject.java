@@ -56,6 +56,7 @@ public class WorkspaceWorkflowProject implements WorkflowProject {
 			}
 		};
 		workspace.run(createProject, monitor);
+		workspace.getRoot().getProject(name).refreshLocal(IResource.DEPTH_INFINITE, null);
 		return workspace.getRoot().getProject(name);
 	}
 

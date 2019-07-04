@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EKumi EDS IDE Integration UI Test
+Bundle-SymbolicName: fr.kazejiyu.ekumi.specs.eds.design.ui.test;singleton:=true
+Bundle-Version: 0.3.0.qualifier
+Bundle-Vendor: Emmanuel CHEBBI
+Fragment-Host: fr.kazejiyu.ekumi.specs.eds.design;bundle-version="0.3.0"
+Automatic-Module-Name: fr.kazejiyu.ekumi.specs.eds.design.ui.test
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.junit;bundle-version="4.12.0",
+ io.cucumber;bundle-version="4.3.0",
+ org.assertj;bundle-version="3.12.2",
+ org.eclipse.pde;bundle-version="3.13.4",
+ org.eclipse.pde.core;bundle-version="3.11.101",
+ fr.kazejiyu.ekumi.ide.ui;bundle-version="0.3.0",
+ fr.kazejiyu.ekumi.tests.common.ui
