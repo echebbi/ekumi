@@ -19,7 +19,7 @@ dist: trusty
 
 before_script:
   # Prepare the environment for UI tests
-  - "export DISPLAY:99"
+  - "export DISPLAY=:99.0"
   - sh -e /etc/init.d/xvfb start
   - sleep 3 # give xvbf some time to start
   - metacity --sm-disable --replace 2> metacity.err &
