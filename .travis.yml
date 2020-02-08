@@ -3,23 +3,27 @@ language: java
 jdk:
   - openjdk8
 
+# Prevent "mvn install" default step
+install: true
+
 addons:
   sonarcloud:
     organization: "echebbi-github"
-
-# Prevents "mvn install" default step
-install: true
-
-env: DISPLAY=:99.0
-
-addons:
   apt:
     packages:
+      # Required by XVFB
       - metacity
 
+# Allow UI tests
+dist: trusty
+
 before_script:
+  # Prepare the environment for UI tests
+  - "export DISPLAY:99"
   - sh -e /etc/init.d/xvfb start
+  - sleep 3 # give xvbf some time to start
   - metacity --sm-disable --replace 2> metacity.err &
+  # Fully clone repository to ease Sonar's analysis
   - git fetch --unshallow
   - git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
   - git fetch origin
@@ -35,3 +39,4 @@ after_success:
 cache:
    directories:
      - "$HOME/.m2/repository"
+     - "$HOME/.sonar/cache"
